@@ -1,0 +1,88 @@
+\newcommand{\figuraFluctuacionesDensidad}{%
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[>=Latex, font=\small]
+        % Panel izquierdo: volumen de control microscópico.
+        \draw[very thick,rounded corners=3pt,fill=blue!4]
+            (0,0) rectangle (4.8,4.6);
+        \node[font=\bfseries] at (2.4,4.95) {Volumen de control $V$};
+
+        \foreach \x/\y in {
+            0.45/0.55,1.15/0.80,2.05/0.50,3.05/0.75,4.15/0.55,
+            0.75/1.55,1.70/1.65,2.55/1.40,3.50/1.65,4.35/1.45,
+            0.40/2.55,1.30/2.75,2.20/2.40,3.10/2.70,4.10/2.45,
+            0.75/3.65,1.75/3.50,2.65/3.75,3.65/3.45,4.35/3.70}
+        {
+            \shade[ball color=blue!65] (\x,\y) circle (0.10);
+        }
+
+        \shade[ball color=red!75] (0.12,1.95) circle (0.12);
+        \shade[ball color=red!75] (4.68,3.05) circle (0.12);
+        \draw[very thick,red!75!black,-{Latex[length=3mm]}]
+            (-0.75,1.95)--(0.02,1.95);
+        \draw[very thick,red!75!black,-{Latex[length=3mm]}]
+            (4.78,3.05)--(5.55,3.05);
+        \node[red!75!black,anchor=east] at (-0.15,2.25) {entra};
+        \node[red!75!black,anchor=west] at (4.95,3.35) {sale};
+
+        \node[fill=white,rounded corners=2pt,draw=blue!35,
+              align=center,inner sep=5pt] at (2.4,2.25)
+            {$N(t)=\overline{N}+\delta N(t)$\\[3pt]
+             $\rho(t)=\dfrac{mN(t)}{V}$};
+        \node[align=center,text=black!70] at (2.4,-0.55)
+            {El número de moléculas cambia\\aleatoriamente con el tiempo};
+
+        % Panel derecho: señal temporal de la densidad.
+        \begin{axis}[
+            at={(6.25cm,0.15cm)},
+            anchor=south west,
+            width=8.4cm,
+            height=6.2cm,
+            xmin=0,
+            xmax=10,
+            ymin=0.68,
+            ymax=1.34,
+            xlabel={$t$},
+            ylabel={$\rho(t)/\overline{\rho}$},
+            axis lines=left,
+            xtick=\empty,
+            ytick={0.8,1,1.2},
+            yticklabels={$1-\epsilon$,$1$,$1+\epsilon$},
+            grid=major,
+            major grid style={gray!20},
+            clip=false
+        ]
+            \addplot[name path=upper,draw=none,domain=0:10] {1.2};
+            \addplot[name path=lower,draw=none,domain=0:10] {0.8};
+            \addplot[blue!10] fill between[of=upper and lower];
+
+            \addplot[very thick,blue!70!black,samples=350,domain=0:10]
+                {1+0.13*sin(deg(2*x))+0.065*sin(deg(5.2*x))
+                   +0.035*cos(deg(8.7*x))};
+            \addplot[thick,dashed,black!65,domain=0:10] {1};
+            \addplot[thick,densely dotted,green!55!black,domain=0:10] {1.2};
+            \addplot[thick,densely dotted,green!55!black,domain=0:10] {0.8};
+
+            \draw[<->,thick,red!75!black]
+                (axis cs:8.65,1)--node[right,fill=white,inner sep=1pt]
+                {$\Delta\rho$}(axis cs:8.65,1.18);
+            \node[anchor=west,fill=white,inner sep=2pt]
+                at (axis cs:0.4,1.03) {$\overline{\rho}$};
+            \node[align=center,fill=white,rounded corners=2pt,
+                  draw=red!25,inner sep=4pt]
+                at (axis cs:6.7,1.29)
+                {$\displaystyle
+                  \frac{\Delta\rho}{\overline{\rho}}
+                  \sim\frac{1}{\sqrt{N}}$};
+            \node[green!45!black,anchor=north]
+                at (axis cs:5,0.78) {banda de precisión};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Origen estadístico de las fluctuaciones de densidad. Las
+    moléculas entran y salen aleatoriamente de un volumen de control, haciendo
+    que $N(t)$ y, por tanto, $\rho(t)$ fluctúen alrededor de sus valores
+    medios. Al aumentar $N$, la amplitud relativa de las fluctuaciones decrece
+    como $N^{-1/2}$.}
+    \label{fig:fluctuaciones-densidad}
+\end{figure}%
+}

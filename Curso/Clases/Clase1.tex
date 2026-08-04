@@ -1,1 +1,561 @@
-{Inicialización}
+\chapter{Clase 1}
+
+\section{La materia como medio continuo}
+
+La aparente continuidad de la materia es una ilusión: en realidad, está
+formada por átomos y moléculas microscópicas que determinan sus propiedades a
+gran escala. Debido al tamaño diminuto de estas partículas, su naturaleza
+discreta suele pasar inadvertida en la experiencia cotidiana. Sin embargo,
+fenómenos como el movimiento browniano proporcionan evidencia de su presencia
+en los líquidos.
+
+La mecánica de medios continuos describe la materia en escalas de longitud
+mucho mayores que la escala molecular. Esta separación de escalas permite
+formular teorías macroscópicas sin seguir el movimiento individual de cada
+partícula. La idea subyacente puede expresarse como una especie de
+``meta-ley'': las leyes físicas válidas en una escala determinada no suelen
+depender de los detalles de lo que ocurre en escalas mucho menores.
+
+De esta manera, la descripción mediante partículas puntuales se reemplaza por
+una teoría de campos. Magnitudes como la densidad, la velocidad, la presión y
+la temperatura se consideran funciones continuas de la posición y del tiempo.
+Aunque esta descripción macroscópica tiene un fundamento estadístico, las
+fluctuaciones aleatorias quedan fuertemente suprimidas por el enorme número de
+moléculas presentes en una porción macroscópica de materia.
+
+\section{Mol y masa molar}
+
+El concepto de mol surgió de la necesidad de establecer una escala práctica
+para medir cantidades de sustancia. Un mol contiene el mismo número de
+entidades elementales ---átomos, moléculas o iones---, independientemente de la
+sustancia considerada. Este número es la constante de Avogadro,
+$$ N_A = 6.02214076\times 10^{23}\ \mathrm{mol}^{-1} $$
+
+cuyo valor es exacto en el Sistema Internacional de Unidades desde el 20 de
+mayo de 2019.
+
+La masa molar, denotada por $M_{\mathrm{mol}}$, es la masa correspondiente a
+un mol de partículas de una sustancia. Se relaciona con la masa $m$ de una
+muestra y la cantidad de sustancia $n$ mediante
+
+$$M_{\mathrm{mol}} = \frac{m}{n}$$
+
+Habitualmente se expresa en gramos por mol. Por ejemplo, la masa molar del
+hidrógeno atómico es aproximadamente $1.008\ \mathrm{g/mol}$, mientras que la
+del agua, $\mathrm{H_2O}$, es aproximadamente $18.015\ \mathrm{g/mol}$.
+
+\section{Longitud de separación molecular}
+
+La longitud de separación molecular, $L_{\mathrm{mol}}$, caracteriza la escala
+en la que la naturaleza discreta de la materia comienza a dominar. Por debajo
+de esta escala, la aproximación de medio continuo deja de ser adecuada.
+
+\figuraSeparacionMolecular
+
+\subsection{Derivación}
+
+Considérese una muestra de una sustancia pura con volumen $V$, masa $m$ y
+densidad $\rho = \frac{m}{V}$.
+
+La longitud de separación molecular puede obtenerse siguiendo estos pasos:
+\begin{enumerate}
+    \item La cantidad de sustancia es
+    $$
+        n = \frac{m}{M_{\mathrm{mol}}}.
+    $$
+
+    \item El número de moléculas presentes en la muestra es
+    $$
+        N = nN_A.
+    $$
+
+    \item El volumen promedio disponible por molécula es
+    $$
+        V_{\mathrm{mol}} = \frac{V}{N}.
+    $$
+
+    \item Si se supone que cada molécula ocupa, en promedio, una celda cúbica,
+    entonces
+    $$
+        V_{\mathrm{mol}} = L_{\mathrm{mol}}^3.
+    $$
+\end{enumerate}
+
+Al combinar estas relaciones se obtiene
+$$
+    \boxed{
+    L_{\mathrm{mol}}
+    = \left(\frac{V}{N}\right)^{1/3}
+    = \left(\frac{M_{\mathrm{mol}}}{\rho N_A}\right)^{1/3}}
+    .
+$$
+
+\subsection{Dependencia con el estado de la materia}
+
+En sólidos y líquidos, las moléculas se encuentran muy próximas entre sí. Por
+esta razón, $L_{\mathrm{mol}}$ es del orden del tamaño de una molécula. Algunos
+valores representativos son
+\begin{itemize}
+    \item hierro sólido: $L_{\mathrm{mol}}\approx 0.23\ \mathrm{nm}$;
+    \item agua líquida: $L_{\mathrm{mol}}\approx 0.31\ \mathrm{nm}$.
+\end{itemize}
+
+En un gas existe una separación mucho mayor entre moléculas. Para un gas ideal,
+la ecuación de estado microscópica es
+$$
+    pV = Nk_B T,
+$$
+donde $k_B$ es la constante de Boltzmann. Como $V/N=L_{\mathrm{mol}}^3$, se
+encuentra
+$$
+    \boxed{L_{\mathrm{mol}} =
+    \left(\frac{k_B T}{p}\right)^{1/3}}.
+$$
+En condiciones cercanas a $20\,^{\circ}\mathrm{C}$ y una atmósfera, esta
+expresión da aproximadamente $L_{\mathrm{mol}}=3.42\ \mathrm{nm}$ para un gas
+ideal.
+
+\subsection{Mezclas}
+
+Para una mezcla, como el aire seco, se utiliza una masa molar promedio
+$\overline{M}_{\mathrm{mol}}$. Si se conocen las fracciones molares $X_i$, esta
+se calcula como
+$$
+    \overline{M}_{\mathrm{mol}}
+    = \sum_i X_i M_{\mathrm{mol},i}.
+$$
+Si se conocen las fracciones másicas $Y_i$, se emplea
+$$
+    \frac{1}{\overline{M}_{\mathrm{mol}}}
+    = \sum_i \frac{Y_i}{M_{\mathrm{mol},i}}.
+$$
+
+\section{Fuerzas intermoleculares y estados de la materia}
+
+Las interacciones fundamentales de la materia, aparte de la gravedad, son de
+naturaleza electromagnética. Entre átomos y moléculas neutras se manifiestan
+principalmente mediante fuerzas de van der Waals. Estas fuerzas son
+intensamente repulsivas cuando las moléculas se acercan más de lo permitido por
+su tamaño natural, pero se vuelven moderadamente atractivas a distancias
+mayores. Como resultado, existe una distancia de equilibrio comparable con el
+tamaño molecular.
+
+Una representación habitual de esta interacción es el potencial de
+Lennard--Jones,
+
+$$
+V(r)=4\epsilon\left[
+\left(\frac{\sigma}{r}\right)^{12}
+-\left(\frac{\sigma}{r}\right)^6
+\right],
+$$
+
+donde $\epsilon$ representa la profundidad del pozo de potencial y $\sigma$ es
+la distancia para la cual el potencial se anula. La distancia de equilibrio,
+correspondiente al mínimo del potencial, es
+
+$$
+r_{\mathrm{eq}}=2^{1/6}\sigma.
+$$
+
+\figuraPotencialLennardJones
+
+La organización de la materia en sus diferentes estados depende de la
+competencia entre la energía potencial intermolecular, que tiende a mantener
+unidas las moléculas, y la energía cinética asociada con el movimiento térmico,
+que tiende a separarlas.
+
+\begin{itemize}
+    \item \textbf{Sólidos:} la energía de enlace es suficientemente grande para
+    que la agitación térmica no pueda separar las moléculas. Estas permanecen
+    ligadas mediante fuerzas elásticas y vibran con pequeñas amplitudes
+    alrededor de sus posiciones de equilibrio. Por ello, un sólido conserva
+    su forma de manera independiente.
+
+    \item \textbf{Líquidos:} las moléculas permanecen próximas y en contacto,
+    pero no están unidas permanentemente a las mismas vecinas. Esto permite que
+    el material fluya bajo fuerzas externas y adopte la forma del recipiente,
+    sin expandirse necesariamente hasta ocupar todo su volumen.
+
+    \item \textbf{Gases:} la energía térmica domina sobre la interacción
+    atractiva. Las moléculas se desplazan libremente entre colisiones y el gas
+    se expande hasta ocupar todo el volumen disponible.
+
+    \item \textbf{Plasmas:} son gases ionizados compuestos por electrones e
+    iones libres. Debido a la presencia de cargas eléctricas, presentan un
+    comportamiento electromagnético colectivo y constituyen la mayor parte de
+    la materia visible en estrellas y nebulosas.
+\end{itemize}
+
+\section{Materia granular}
+
+La materia granular, como la arena o los granos, está formada por elementos
+discretos cuyo comportamiento macroscópico está fuertemente condicionado por
+la fricción entre ellos. A diferencia de los fluidos convencionales, esta
+fricción permite la formación de estructuras estables y montones que no se
+aplanan como lo haría un charco de agua. Este comportamiento hace posibles
+estructuras como las dunas y los castillos de arena.
+
+Aunque los materiales granulares poseen una subestructura discreta, pueden
+describirse como medios continuos cuando se estudian en escalas suficientemente
+grandes. La validez de esta aproximación no depende del tamaño absoluto de los
+``granos'', sino de la separación entre la escala de observación y la escala de
+la estructura discreta. Por ejemplo, en escalas superiores a
+$100\,\mathrm{Mpc}$, la distribución de galaxias puede modelarse de manera
+efectiva como un medio continuo.
+
+\section{Aproximación del continuo}
+
+La aproximación del continuo trata la materia como si fuera divisible de forma
+indefinida e ignora su estructura granular compuesta por átomos y moléculas.
+Aunque la continuidad depende de la escala de observación, esta descripción es
+válida cuando las fluctuaciones estadísticas de las propiedades físicas son
+menores que una precisión prescrita $\epsilon$.
+
+\subsection{Fluctuaciones de densidad}
+
+En un gas, las moléculas se mueven aleatoriamente y entran y salen de cualquier
+volumen pequeño $V$. Si en un instante $t$ dicho volumen contiene $N$
+moléculas de masa $m$, su densidad de masa es
+
+$$
+\rho(t)=\frac{Nm}{V}.
+$$
+
+El número de moléculas fluctúa como consecuencia del carácter aleatorio del
+movimiento molecular. Para una distribución de Poisson, la fluctuación
+cuadrática media del número de partículas es
+
+$$
+\Delta N=\sqrt{N}.
+$$
+
+Como la densidad es proporcional a $N$, su fluctuación relativa es
+
+$$
+\frac{\Delta\rho}{\rho}
+=\frac{\Delta N}{N}
+=\frac{\sqrt{N}}{N}
+=\frac{1}{\sqrt{N}}.
+$$
+
+\figuraFluctuacionesDensidad
+
+Para que esta fluctuación sea menor que la precisión $\epsilon$, debe
+cumplirse
+
+$$
+\frac{\Delta\rho}{\rho}\lesssim\epsilon,
+$$
+
+lo que exige un número mínimo de moléculas dado por
+
+$$
+N\gtrsim\epsilon^{-2}.
+$$
+
+Este criterio define una escala microscópica $L_{\mathrm{micro}}$: el tamaño
+lineal de una celda cúbica que contiene suficientes moléculas para ignorar su
+granularidad. Si $L_{\mathrm{mol}}$ es la longitud de separación molecular,
+entonces
+
+$$
+L_{\mathrm{micro}}
+=\epsilon^{-2/3}L_{\mathrm{mol}}.
+$$
+
+Para un gas ideal en condiciones normales y una precisión
+$\epsilon=10^{-3}$, se obtiene aproximadamente
+
+$$
+L_{\mathrm{micro}}\approx0.34\,\mu\mathrm{m}.
+$$
+
+\subsection{Suavidad macroscópica}
+
+Además de contener suficientes moléculas, las celdas microscópicas vecinas
+deben presentar variaciones imperceptibles dentro de la precisión $\epsilon$.
+El cambio de densidad entre los centros de dos celdas separadas una distancia
+$L_{\mathrm{micro}}$ puede estimarse mediante una expansión de Taylor:
+
+$$
+\Delta\rho
+\approx L_{\mathrm{micro}}
+\left|\frac{\partial\rho}{\partial x}\right|.
+$$
+
+Al imponer el criterio $\Delta\rho/\rho\lesssim\epsilon$, se obtiene la
+restricción
+
+$$
+\left|\frac{\partial\rho}{\partial x}\right|
+\lesssim\frac{\rho}{L_{\mathrm{macro}}},
+$$
+
+donde la escala macroscópica se define como
+
+$$
+L_{\mathrm{macro}}
+=\epsilon^{-1}L_{\mathrm{micro}}.
+$$
+
+\figuraSuavidadMacroscopica
+
+Para $\epsilon=10^{-3}$, esta escala es aproximadamente
+$0.34\,\mathrm{mm}$ en aire estándar. Las interfaces físicas, como la
+superficie de un sólido, suelen tener un espesor del orden de
+$L_{\mathrm{mol}}$. Por ello quedan fuera de la descripción suave y aparecen
+en la mecánica del continuo como discontinuidades superficiales.
+
+\subsection{Fluctuaciones de velocidad}
+
+La velocidad de un medio continuo representa la velocidad del centro de masa
+de una colección de $N$ moléculas. Como las velocidades moleculares
+individuales son elevadas ---en el aire,
+$v_{\mathrm{mol}}\approx500\,\mathrm{m/s}$---, las fluctuaciones de velocidad
+pueden imponer una condición más restrictiva que las fluctuaciones de
+densidad.
+
+La fluctuación cuadrática media de la velocidad del centro de masa es
+
+$$
+\Delta v=\frac{v_{\mathrm{mol}}}{\sqrt{N}}.
+$$
+
+\figuraFluctuacionesVelocidad
+
+Para alcanzar una precisión $\epsilon$ en una velocidad macroscópica de flujo
+$v$, se requiere
+
+$$
+\frac{\Delta v}{v}\lesssim\epsilon.
+$$
+
+Esta condición introduce una escala microscópica corregida,
+
+$$
+L'_{\mathrm{micro}}
+=\left(\frac{v_{\mathrm{mol}}}{v}\right)^{2/3}
+L_{\mathrm{micro}}.
+$$
+
+Por ejemplo, para un viento suave con $v\approx0.5\,\mathrm{m/s}$ y una
+precisión $\epsilon=10^{-3}$, el tamaño lineal mínimo necesario para definir
+el continuo aumenta a
+
+$$
+L'_{\mathrm{micro}}\approx34\,\mu\mathrm{m},
+$$
+
+y la escala de suavidad correspondiente es
+
+$$
+L'_{\mathrm{macro}}\approx34\,\mathrm{mm}.
+$$
+
+En vientos intensos y huracanes, las fluctuaciones moleculares son pequeñas en
+comparación con las fluctuaciones macroscópicas producidas por la turbulencia.
+
+\section{Camino libre medio}
+
+El camino libre medio, denotado por $\lambda$, es la distancia promedio que
+recorre una molécula entre dos colisiones sucesivas. Esta longitud establece
+una escala física adicional para determinar la validez de la aproximación del
+continuo, especialmente en gases diluidos.
+
+\subsection{Definición y contexto físico}
+
+La interpretación del camino libre medio depende del estado de la materia:
+
+\begin{itemize}
+    \item \textbf{Sólidos y líquidos:} las moléculas están estrechamente
+    empaquetadas y sus interacciones ocurren casi continuamente sobre
+    distancias comparables con $L_{\mathrm{mol}}$.
+
+    \item \textbf{Gases:} las moléculas recorren trayectorias aproximadamente
+    rectas entre colisiones. La longitud $\lambda$ representa el promedio de
+    las distancias recorridas durante estos vuelos libres.
+\end{itemize}
+
+Las colisiones redistribuyen el momento y la energía entre las moléculas. Por
+ello son esenciales para suavizar las diferencias entre velocidades
+individuales y permitir la construcción de campos macroscópicos de velocidad,
+presión y temperatura.
+
+\subsection{Geometría de las colisiones}
+
+Considérese un gas compuesto por moléculas aproximadamente esféricas de
+diámetro $d$. Una molécula colisiona con otra cuando la distancia entre sus
+centros se hace menor o igual que $d$. Durante su movimiento relativo, la
+molécula barre un cilindro efectivo con sección transversal
+
+$$
+A_{\mathrm{col}}=\pi d^2.
+$$
+
+Las demás moléculas no permanecen inmóviles. Como sus direcciones de
+movimiento son aleatorias, la rapidez relativa promedio puede aproximarse por
+
+$$
+v_{\mathrm{rel}}\approx\sqrt{2}\,v_{\mathrm{mol}},
+$$
+
+donde $v_{\mathrm{mol}}$ es una rapidez molecular característica. El factor
+$\sqrt{2}$ aumenta el volumen efectivo barrido respecto al caso de blancos
+estacionarios.
+
+\figuraGeometriaCaminoLibreMedio
+
+\subsection{Derivación del camino libre medio}
+
+La densidad numérica de moléculas es
+
+$$
+n_N=\frac{N}{V}=\frac{1}{L_{\mathrm{mol}}^3}.
+$$
+
+Durante un recorrido de longitud $\lambda$, el volumen efectivo barrido en el
+movimiento relativo es
+
+$$
+V_{\mathrm{barrido}}
+=\sqrt{2}\,\pi d^2\lambda.
+$$
+
+El camino libre medio se define de modo que este volumen contenga, en
+promedio, una molécula objetivo. Por tanto,
+
+$$
+n_N V_{\mathrm{barrido}}=1,
+$$
+
+o, de forma equivalente,
+
+$$
+\sqrt{2}\,\pi d^2\lambda=L_{\mathrm{mol}}^3.
+$$
+
+Al despejar $\lambda$ se obtiene
+
+$$
+\boxed{
+\lambda
+=\frac{L_{\mathrm{mol}}^3}{\sqrt{2}\,\pi d^2}
+}.
+$$
+
+Como
+
+$$
+L_{\mathrm{mol}}^3
+=\frac{M_{\mathrm{mol}}}{\rho N_A},
+$$
+
+el camino libre medio también puede expresarse como
+
+$$
+\boxed{
+\lambda
+=\frac{M_{\mathrm{mol}}}
+{\sqrt{2}\,\pi d^2\rho N_A}
+}.
+$$
+
+Esta expresión muestra que, para una especie molecular determinada,
+$\lambda$ es inversamente proporcional a la densidad del gas:
+
+$$
+\lambda\propto\frac{1}{\rho}.
+$$
+
+Cualquier fórmula práctica de la forma $\lambda=C/(d^2\rho)$ requiere indicar
+explícitamente las unidades empleadas para $d$ y $\rho$, pues el valor numérico
+de la constante $C$ depende del sistema de unidades.
+
+\subsection{Tiempo medio entre colisiones}
+
+El tiempo medio entre dos colisiones sucesivas puede estimarse dividiendo el
+camino libre medio por la rapidez molecular característica:
+
+$$
+\tau\approx\frac{\lambda}{v_{\mathrm{mol}}}.
+$$
+
+Para el aire en condiciones normales, con
+$\lambda\approx65\,\mathrm{nm}$ y
+$v_{\mathrm{mol}}\approx500\,\mathrm{m/s}$, resulta
+
+$$
+\tau\approx0.13\,\mathrm{ns}.
+$$
+
+\subsection{Importancia para la aproximación del continuo}
+
+La aproximación del continuo requiere que la escala característica $L$ del
+fenómeno estudiado sea mucho mayor que el camino libre medio:
+
+$$
+L\gg\lambda.
+$$
+
+Esta condición suele expresarse mediante el número de Knudsen,
+
+$$
+\mathrm{Kn}=\frac{\lambda}{L}.
+$$
+
+Cuando $\mathrm{Kn}\ll1$, las colisiones son suficientemente frecuentes para
+establecer equilibrio local y la descripción continua es apropiada. Cuando
+$\mathrm{Kn}$ deja de ser pequeño, aparecen efectos de gas rarificado y es
+necesario utilizar una descripción cinética o de flujo molecular libre.
+
+Además, para una sustancia dada,
+
+$$
+L_{\mathrm{mol}}\propto\rho^{-1/3}
+\qquad\text{y}\qquad
+\lambda\propto\rho^{-1}.
+$$
+
+En consecuencia,
+
+$$
+\frac{\lambda}{L_{\mathrm{mol}}}
+\propto\rho^{-2/3}.
+$$
+
+Al disminuir la densidad, $\lambda$ crece más rápidamente que
+$L_{\mathrm{mol}}$. En gases suficientemente diluidos puede superar la escala
+$L_{\mathrm{micro}}$ y convertirse en la menor longitud admisible para una
+descripción continua.
+
+\subsection{Ejemplo: aire y efecto de la altitud}
+
+Para el aire, cuya masa molar promedio es aproximadamente
+$M_{\mathrm{mol}}=29\,\mathrm{g/mol}$ y cuyo diámetro molecular efectivo es
+$d\approx0.37\,\mathrm{nm}$, se obtienen los siguientes valores
+representativos:
+
+\figuraCaminoLibreMedioAltitud
+
+\begin{itemize}
+    \item \textbf{Condiciones normales:}
+    $\lambda\approx65\,\mathrm{nm}$. Para una precisión
+    $\epsilon=10^{-3}$, este valor es aproximadamente cinco veces menor que
+    $L_{\mathrm{micro}}\approx340\,\mathrm{nm}$.
+
+    \item \textbf{Nivel del mar:}
+    $\lambda\approx6.4\times10^{-6}\,\mathrm{cm}$, equivalente a unos
+    $64\,\mathrm{nm}$.
+
+    \item \textbf{Altitud de $100\,\mathrm{km}$:}
+    $\lambda\approx10\,\mathrm{cm}$.
+
+    \item \textbf{Altitud de $160\,\mathrm{km}$:}
+    $\lambda\approx5000\,\mathrm{cm}=50\,\mathrm{m}$.
+\end{itemize}
+
+El aumento de $\lambda$ con la altitud se debe a la rápida disminución de la
+densidad atmosférica. En las capas altas de la atmósfera, el camino libre medio
+puede ser comparable con la escala del sistema; en ese régimen, la hipótesis
+del continuo deja de ser aceptable.

@@ -1,0 +1,54 @@
+\newcommand{\figuraGeometriaCaminoLibreMedio}{%
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[>=Latex, font=\small,scale=1.15,transform shape]
+        \draw[very thick,rounded corners=3pt,fill=cyan!3]
+            (0,0) rectangle (7.0,4.9);
+        \node[font=\bfseries] at (3.5,5.25)
+            {Geometría microscópica de una colisión};
+
+        \fill[orange!12] (0.75,1.75) rectangle (6.25,3.05);
+        \draw[dashed,orange!80!black] (0.75,1.75)--(6.25,1.75);
+        \draw[dashed,orange!80!black] (0.75,3.05)--(6.25,3.05);
+        \draw[thick,-{Latex[length=3mm]}]
+            (0.75,2.40)--(6.25,2.40);
+
+        \shade[ball color=red!75] (0.95,2.40) circle (0.18);
+        \node[anchor=south,red!70!black] at (0.95,2.65)
+            {molécula viajera};
+
+        \shade[ball color=blue!70] (5.75,2.93) circle (0.18);
+        \draw[very thick,red!75!black]
+            (5.75,2.40)--node[right,fill=white,inner sep=1pt]{$d$}(5.75,2.93);
+        \node[anchor=south,blue!65!black] at (5.75,3.18)
+            {molécula objetivo};
+
+        \fill[red!80!black] (5.75,2.40) circle (0.06);
+        \draw[red!75!black,thick] (5.58,2.23)--(5.92,2.57);
+        \draw[red!75!black,thick] (5.58,2.57)--(5.92,2.23);
+        \node[red!75!black,anchor=north] at (5.75,2.15) {colisión};
+
+        \foreach \x/\y in {
+            0.45/0.55,1.55/1.05,2.75/0.60,4.20/1.10,6.35/0.70,
+            0.50/4.15,1.75/3.65,3.15/4.20,4.55/3.80,6.45/4.15}
+        {
+            \shade[ball color=blue!45] (\x,\y) circle (0.10);
+        }
+
+        \draw[<->,very thick,blue!70!black]
+            (0.95,0.38)--node[below,fill=white,inner sep=2pt]{$\lambda$}(5.75,0.38);
+        \draw[-{Latex[length=3mm]},very thick,green!45!black]
+            (1.15,4.15)--node[above]
+            {$v_{\mathrm{rel}}\approx\sqrt{2}\,v_{\mathrm{mol}}$}(4.55,4.15);
+        \node[align=center,fill=white,rounded corners=2pt,
+              draw=orange!50!black,inner sep=4pt] at (3.5,1.20)
+            {$A_{\mathrm{col}}=\pi d^2$\\[3pt]
+             $V_{\mathrm{barrido}}=\sqrt{2}\,\pi d^2\lambda$};
+    \end{tikzpicture}
+    \caption{Geometría empleada para estimar el camino libre medio. Una
+    molécula barre un cilindro efectivo de sección transversal $\pi d^2$ y
+    recorre, en promedio, una distancia $\lambda$ antes de encontrar otra
+    molécula dentro de la región de colisión.}
+    \label{fig:geometria-camino-libre-medio}
+\end{figure}%
+}

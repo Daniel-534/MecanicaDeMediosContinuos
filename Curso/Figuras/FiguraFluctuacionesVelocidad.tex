@@ -1,0 +1,115 @@
+\newcommand{\figuraFluctuacionesVelocidad}{%
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[>=Latex, font=\small]
+        % Panel izquierdo: velocidades moleculares y promedio colectivo.
+        \draw[very thick,rounded corners=3pt,fill=cyan!4]
+            (0,0) rectangle (5.4,4.9);
+        \node[font=\bfseries] at (2.7,5.25)
+            {Promedio sobre $N$ moléculas};
+
+        \foreach \x/\y in {
+            0.55/0.65,1.55/0.80,2.55/0.55,3.55/0.85,4.65/0.65,
+            0.80/1.75,1.85/1.65,2.80/1.85,3.85/1.65,4.75/1.90,
+            0.55/2.85,1.50/2.70,2.55/2.95,3.55/2.75,4.60/2.95,
+            0.85/3.95,1.85/3.75,2.85/4.05,3.85/3.80,4.75/4.05}
+        {
+            \shade[ball color=blue!60] (\x,\y) circle (0.10);
+        }
+
+        \draw[gray!75,-{Latex[length=2mm]}] (0.55,0.65)--(0.15,1.15);
+        \draw[gray!75,-{Latex[length=2mm]}] (1.55,0.80)--(2.05,0.30);
+        \draw[gray!75,-{Latex[length=2mm]}] (2.55,0.55)--(2.80,1.10);
+        \draw[gray!75,-{Latex[length=2mm]}] (3.55,0.85)--(3.05,0.45);
+        \draw[gray!75,-{Latex[length=2mm]}] (4.65,0.65)--(5.05,1.10);
+        \draw[gray!75,-{Latex[length=2mm]}] (0.80,1.75)--(1.30,2.10);
+        \draw[gray!75,-{Latex[length=2mm]}] (1.85,1.65)--(1.45,1.15);
+        \draw[gray!75,-{Latex[length=2mm]}] (2.80,1.85)--(3.25,1.35);
+        \draw[gray!75,-{Latex[length=2mm]}] (3.85,1.65)--(4.30,2.05);
+        \draw[gray!75,-{Latex[length=2mm]}] (4.75,1.90)--(4.40,2.40);
+        \draw[gray!75,-{Latex[length=2mm]}] (0.55,2.85)--(0.20,2.35);
+        \draw[gray!75,-{Latex[length=2mm]}] (1.50,2.70)--(2.00,3.10);
+        \draw[gray!75,-{Latex[length=2mm]}] (2.55,2.95)--(2.20,3.50);
+        \draw[gray!75,-{Latex[length=2mm]}] (3.55,2.75)--(4.05,2.35);
+        \draw[gray!75,-{Latex[length=2mm]}] (4.60,2.95)--(5.10,3.30);
+        \draw[gray!75,-{Latex[length=2mm]}] (0.85,3.95)--(1.25,4.40);
+        \draw[gray!75,-{Latex[length=2mm]}] (1.85,3.75)--(1.40,4.20);
+        \draw[gray!75,-{Latex[length=2mm]}] (2.85,4.05)--(3.30,4.45);
+        \draw[gray!75,-{Latex[length=2mm]}] (3.85,3.80)--(3.45,3.35);
+        \draw[gray!75,-{Latex[length=2mm]}] (4.75,4.05)--(5.15,3.60);
+
+        \draw[ultra thick,green!50!black,-{Latex[length=4mm]}]
+            (1.15,2.35)--(4.45,2.35);
+        \node[above,green!40!black,font=\bfseries]
+            at (2.80,2.35) {velocidad macroscópica $\vec v$};
+        \node[gray!70,anchor=west] at (0.20,4.55)
+            {vectores moleculares $\vec v_i$};
+
+        \node[align=center,fill=white,rounded corners=2pt,
+              draw=green!35!black,inner sep=4pt] at (2.7,-0.55)
+            {$\displaystyle \vec v_{\mathrm{CM}}
+              =\frac{1}{N}\sum_{i=1}^{N}\vec v_i$\\[4pt]
+             movimiento aleatorio $+$ flujo medio};
+
+        % Panel derecho: distribución del promedio para dos tamaños de muestra.
+        \begin{axis}[
+            at={(6.55cm,0.25cm)},
+            anchor=south west,
+            width=8.5cm,
+            height=6.4cm,
+            xmin=-1.15,
+            xmax=1.15,
+            ymin=0,
+            ymax=3.25,
+            xlabel={$(v_{\mathrm{CM}}-v)/v_{\mathrm{mol}}$},
+            ylabel={probabilidad},
+            axis lines=left,
+            ytick=\empty,
+            xtick={-1,0,1},
+            grid=major,
+            major grid style={gray!18},
+            legend style={
+                at={(0.98,0.97)},
+                anchor=north east,
+                draw=none,
+                fill=white,
+                font=\small
+            },
+            title={Fluctuación del promedio colectivo},
+            title style={font=\bfseries}
+        ]
+            \addplot[very thick,orange!85!black,samples=250,domain=-1.15:1.15]
+                {1.14*exp(-x^2/(2*0.35^2))};
+            \addlegendentry{$N$ pequeño}
+
+            \addplot[very thick,blue!70!black,samples=250,domain=-0.65:0.65]
+                {2.85*exp(-x^2/(2*0.14^2))};
+            \addlegendentry{$N$ grande}
+
+            \draw[thick,dashed,black!60]
+                (axis cs:0,0)--(axis cs:0,3.05);
+            \node[anchor=west,fill=white,inner sep=2pt]
+                at (axis cs:0.03,2.45) {valor medio $v$};
+
+            \draw[<->,thick,orange!85!black]
+                (axis cs:-0.35,0.38)--node[below]{$\Delta v$}
+                (axis cs:0.35,0.38);
+            \draw[<->,thick,blue!70!black]
+                (axis cs:-0.14,1.30)--node[above]{$\Delta v$}
+                (axis cs:0.14,1.30);
+
+            \node[align=center,fill=white,rounded corners=2pt,
+                  draw=red!25,inner sep=4pt]
+                at (axis cs:0.55,2.05)
+                {$\displaystyle
+                  \Delta v=\frac{v_{\mathrm{mol}}}{\sqrt{N}}$};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Origen estadístico de las fluctuaciones de velocidad. Las
+    velocidades moleculares individuales son grandes y aleatorias, mientras
+    que su promedio define la velocidad macroscópica. Al aumentar el número de
+    moléculas del volumen de promedio, la distribución de
+    $v_{\mathrm{CM}}$ se estrecha como $N^{-1/2}$.}
+    \label{fig:fluctuaciones-velocidad}
+\end{figure}%
+}

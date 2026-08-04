@@ -1,0 +1,63 @@
+\newcommand{\figuraCaminoLibreMedioAltitud}{%
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[>=Latex, font=\small]
+        \node[font=\bfseries\large] at (6.4,5.75)
+            {Rarefacción atmosférica y camino libre medio};
+        \node[text=black!60] at (6.4,5.38)
+            {(las distancias moleculares se muestran de forma esquemática)};
+
+        \draw[thick,rounded corners=3pt,fill=blue!8]
+            (0,3.65) rectangle (12.8,5.05);
+        \node[anchor=west,font=\bfseries] at (0.25,4.75) {Nivel del mar};
+        \node[anchor=east] at (12.50,4.75) {$\rho$ alta};
+        \foreach \x/\y in {
+            0.40/3.95,0.90/4.20,1.40/3.85,1.90/4.30,2.40/4.00,
+            2.90/4.35,3.40/3.90,3.90/4.22,4.40/3.82,4.90/4.30,
+            5.40/3.95,5.90/4.25,6.40/3.85,6.90/4.35,7.40/4.00,
+            7.90/4.25,8.40/3.85,8.90/4.32,9.40/3.95,9.90/4.25,
+            10.40/3.85,10.90/4.32,11.40/3.95,11.90/4.25,12.40/3.85}
+        {\fill[blue!65] (\x,\y) circle (0.065);}
+        \draw[very thick,red!70!black,-{Latex[length=3mm]}]
+            (1.15,4.05)--node[above,fill=blue!8,inner sep=2pt]
+            {$\lambda\approx65\,\mathrm{nm}$}(2.75,4.05);
+
+        \draw[thick,rounded corners=3pt,fill=blue!4]
+            (0,1.95) rectangle (12.8,3.35);
+        \node[anchor=west,font=\bfseries] at (0.25,3.05) {$100\,\mathrm{km}$};
+        \node[anchor=east] at (12.50,3.05) {$\rho$ baja};
+        \foreach \x/\y in {
+            0.60/2.25,2.15/2.65,3.80/2.20,5.50/2.75,
+            7.15/2.30,8.95/2.70,10.70/2.25,12.20/2.65}
+        {\fill[blue!65] (\x,\y) circle (0.08);}
+        \draw[very thick,red!70!black,-{Latex[length=3mm]}]
+            (0.65,2.35)--node[above,fill=blue!4,inner sep=2pt]
+            {$\lambda\approx10\,\mathrm{cm}$}(5.15,2.35);
+
+        \draw[thick,rounded corners=3pt,fill=blue!2]
+            (0,0.25) rectangle (12.8,1.65);
+        \node[anchor=west,font=\bfseries] at (0.25,1.35) {$160\,\mathrm{km}$};
+        \node[anchor=east] at (12.50,1.35) {$\rho$ muy baja};
+        \fill[blue!65] (0.75,0.62) circle (0.10);
+        \fill[blue!65] (11.75,1.05) circle (0.10);
+        \draw[very thick,red!70!black,-{Latex[length=3mm]}]
+            (0.75,0.72)--node[above,fill=blue!2,inner sep=2pt]
+            {$\lambda\approx50\,\mathrm{m}$}(11.55,0.72);
+
+        \draw[very thick,gray!65,-{Latex[length=3mm]}]
+            (13.20,4.75)--node[right,align=center]
+            {menor densidad\\mayor rarefacción}(13.20,0.55);
+
+        \node[align=center,fill=white,rounded corners=2pt,
+              draw=red!25,inner sep=5pt] at (6.40,-0.45)
+            {$\displaystyle\lambda\propto\rho^{-1}$\qquad
+             $\displaystyle\mathrm{Kn}=\frac{\lambda}{L}$};
+    \end{tikzpicture}
+    \caption{Aumento del camino libre medio con la altitud. Al disminuir la
+    densidad atmosférica, las moléculas se encuentran más separadas y recorren
+    distancias mayores entre colisiones. Cuando $\lambda$ se vuelve comparable
+    con la escala $L$ del sistema, la aproximación del continuo deja de ser
+    adecuada.}
+    \label{fig:camino-libre-medio-altitud}
+\end{figure}%
+}

@@ -1,1 +1,68 @@
-{Inicialización}
+\documentclass[12pt,letterpaper,oneside]{report}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb, mathrsfs}
+\usepackage[margin=2cm]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks,hypertexnames=false]{hyperref}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage{enumerate}
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{babel,arrows.meta,calc,decorations.pathreplacing}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepgfplotslibrary{fillbetween}
+
+\input{Figuras/FiguraSeparacionMolecular}
+\input{Figuras/FiguraPotencialLennardJones}
+\input{Figuras/FiguraFluctuacionesDensidad}
+\input{Figuras/FiguraSuavidadMacroscopica}
+\input{Figuras/FiguraFluctuacionesVelocidad}
+\input{Figuras/FiguraGeometriaCaminoLibreMedio}
+\input{Figuras/FiguraCaminoLibreMedioAltitud}
+
+\renewcommand{\chaptername}{Clase}
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries}
+  {\chaptername\ \thechapter}
+  {0.5em}
+  {\Huge}
+\titlespacing*{\chapter}{0pt}{0pt}{2em}
+
+\setcounter{tocdepth}{2}
+
+\begin{document}
+
+\pagenumbering{gobble}
+\begin{titlepage}
+    \centering
+    {\Large Universidad de Antioquia\par}
+    \vspace{1cm}
+    {\large Curso de Mecánica de Medios Continuos\par}
+    {\large Semestre 2026-2\par}
+
+    \vfill
+
+    {\Huge\bfseries Mecánica de Medios Continuos\par}
+    \vspace{1.5cm}
+    {\Large Notas de clase\par}
+
+    \vfill
+
+    {\large Daniel Soto Villada\par}
+    \vspace{1cm}
+    {\large \today\par}
+\end{titlepage}
+
+\pagenumbering{roman}
+\tableofcontents
+
+\pagenumbering{arabic}
+
+\input{Clases/Clase1}
+
+\end{document}
