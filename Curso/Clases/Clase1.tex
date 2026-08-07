@@ -1,3 +1,14 @@
+\shorthandoff{<>}
+\input{Clases/FigurasClase1/Fig1}
+\input{Clases/FigurasClase1/Fig2}
+\input{Clases/FigurasClase1/Fig3}
+\input{Clases/FigurasClase1/Fig4}
+\input{Clases/FigurasClase1/Fig5}
+\input{Clases/FigurasClase1/Fig6}
+\input{Clases/FigurasClase1/Fig7}
+\input{Clases/FigurasClase1/Fig8}
+\shorthandon{<>}
+
 \chapter{Clase 1}
 
 \section{La materia como medio continuo}
@@ -40,9 +51,22 @@ muestra y la cantidad de sustancia $n$ mediante
 
 $$M_{\mathrm{mol}} = \frac{m}{n}$$
 
+\figuraMolMasaMolar
+
 Habitualmente se expresa en gramos por mol. Por ejemplo, la masa molar del
 hidrógeno atómico es aproximadamente $1.008\ \mathrm{g/mol}$, mientras que la
 del agua, $\mathrm{H_2O}$, es aproximadamente $18.015\ \mathrm{g/mol}$.
+
+\subsection*{Recurso audiovisual}
+
+\href{https://www.youtube.com/watch?v=TEl4jeETVmg}
+{\textit{How big is a mole? (Not the animal, the other one.)}, de Daniel Dulek}
+
+Su idea central es mostrar la enorme
+magnitud del número de Avogadro: un mol representa
+$6.02214076\times10^{23}$ entidades elementales. Aunque esta cantidad es
+difícil de imaginar directamente, permite agrupar y contar átomos, moléculas e
+iones de una forma práctica.
 
 \section{Longitud de separación molecular}
 
@@ -223,11 +247,95 @@ $$
 $$
 
 El número de moléculas fluctúa como consecuencia del carácter aleatorio del
-movimiento molecular. Para una distribución de Poisson, la fluctuación
-cuadrática media del número de partículas es
+movimiento molecular. Para una distribución de Poisson, la fluctuación cuadrática media del número de partículas es
+
+$$\Delta N=\sqrt{N}$$
+
+\textbf{Demostración}
+
+La probabilidad de encontrar exactamente $n$ moléculas en el volumen es
 
 $$
-\Delta N=\sqrt{N}.
+\Pr(n\mid N)=\frac{N^n}{n!}e^{-N},
+\qquad n=0,1,2,\ldots
+$$
+
+Esta distribución está normalizada, pues
+
+$$
+\sum_{n=0}^{\infty}\Pr(n\mid N)
+=e^{-N}\sum_{n=0}^{\infty}\frac{N^n}{n!}
+=e^{-N}e^N
+=1.
+$$
+
+El valor medio del número de moléculas se obtiene mediante
+
+$$
+\begin{aligned}
+\langle n\rangle
+&=\sum_{n=0}^{\infty}n\Pr(n\mid N)\\
+&=e^{-N}\sum_{n=1}^{\infty}\frac{nN^n}{n!}\\
+&=e^{-N}\sum_{n=1}^{\infty}\frac{N^n}{(n-1)!}.
+\end{aligned}
+$$
+
+Al realizar el cambio de índice $m=n-1$, resulta
+
+$$
+\begin{aligned}
+\langle n\rangle
+&=e^{-N}\sum_{m=0}^{\infty}\frac{N^{m+1}}{m!}\\
+&=Ne^{-N}\sum_{m=0}^{\infty}\frac{N^m}{m!}\\
+&=Ne^{-N}e^N=N.
+\end{aligned}
+$$
+
+Para calcular la varianza se considera primero el segundo momento factorial:
+
+$$
+\begin{aligned}
+\langle n(n-1)\rangle
+&=e^{-N}\sum_{n=2}^{\infty}
+\frac{n(n-1)N^n}{n!}\\
+&=e^{-N}\sum_{n=2}^{\infty}\frac{N^n}{(n-2)!}.
+\end{aligned}
+$$
+
+Con el cambio de índice $m=n-2$, se obtiene
+
+$$
+\begin{aligned}
+\langle n(n-1)\rangle
+&=e^{-N}\sum_{m=0}^{\infty}\frac{N^{m+2}}{m!}\\
+&=N^2e^{-N}\sum_{m=0}^{\infty}\frac{N^m}{m!}\\
+&=N^2.
+\end{aligned}
+$$
+
+Como $n^2=n(n-1)+n$, el segundo momento es
+
+$$
+\langle n^2\rangle
+=\langle n(n-1)\rangle+\langle n\rangle
+=N^2+N.
+$$
+
+La varianza de $n$ mide el valor cuadrático medio de las fluctuaciones:
+
+$$
+\begin{aligned}
+(\Delta N)^2
+=\operatorname{Var}(n)
+&=\langle n^2\rangle-\langle n\rangle^2\\
+&=(N^2+N)-N^2=N.
+\end{aligned}
+$$
+
+Por tanto, la fluctuación absoluta del número de moléculas es
+
+$$
+\boxed{\Delta N=\sqrt{N}}.
 $$
 
 Como la densidad es proporcional a $N$, su fluctuación relativa es

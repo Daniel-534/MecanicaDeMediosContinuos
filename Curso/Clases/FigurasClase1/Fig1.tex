@@ -1,0 +1,61 @@
+\newcommand{\figuraMolMasaMolar}{%
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[>=Latex, font=\small]
+        % Una molécula de agua.
+        \draw[blue!55!black,thick] (-0.62,0.42)--(0,0);
+        \draw[blue!55!black,thick] (0,0)--(0.62,0.42);
+        \fill[red!75] (0,0) circle (0.27);
+        \fill[blue!65] (-0.68,0.46) circle (0.18);
+        \fill[blue!65] (0.68,0.46) circle (0.18);
+        \node[white,font=\scriptsize\bfseries] at (0,0) {O};
+        \node[white,font=\tiny\bfseries] at (-0.68,0.46) {H};
+        \node[white,font=\tiny\bfseries] at (0.68,0.46) {H};
+        \node[font=\bfseries] at (0,-0.82) {Una molécula de $\mathrm{H_2O}$};
+
+        % Paso desde una molécula hasta un mol.
+        \draw[->,very thick,red!70!black]
+            (1.45,0.10)--node[above,align=center]
+            {$\times\,N_A$}(3.15,0.10);
+
+        % Conjunto simbólico de moléculas de agua.
+        \foreach \x/\y/\a in {
+            4.05/0.55/8,4.85/0.85/-5,5.65/0.48/12,
+            4.25/-0.15/-10,5.05/0.05/5,5.85/-0.18/-8,
+            4.65/-0.70/10,5.45/-0.62/-5}
+        {
+            \begin{scope}[shift={(\x,\y)},rotate=\a,scale=0.42]
+                \draw[blue!55!black,thick] (-0.52,0.35)--(0,0)--(0.52,0.35);
+                \fill[red!75] (0,0) circle (0.23);
+                \fill[blue!65] (-0.56,0.38) circle (0.15);
+                \fill[blue!65] (0.56,0.38) circle (0.15);
+            \end{scope}
+        }
+        \node[font=\bfseries] at (5,-1.18) {$1\ \mathrm{mol}$ de agua};
+        \node at (5,-1.62)
+            {$N_A=6.02214076\times10^{23}$ moléculas};
+
+        % Conversión de cantidad de sustancia a masa.
+        \draw[->,very thick,red!70!black]
+            (6.75,0.10)--node[above]
+            {$\times\,M_{\mathrm{mol}}$}(8.45,0.10);
+
+        % Masa correspondiente a un mol de agua.
+        \draw[blue!65!black,thick,rounded corners=2pt]
+            (8.75,-0.40)--(11.35,-0.40)--(11.05,0.78)--(9.05,0.78)--cycle;
+        \draw[blue!65!black,thick] (9.05,0.78)--(11.05,0.78);
+        \node[font=\Large\bfseries,red!70!black] at (10.05,0.17)
+            {$18.015\ \mathrm{g}$};
+        \node[font=\bfseries] at (10.05,-0.92)
+            {Masa de $1\ \mathrm{mol}$ de $\mathrm{H_2O}$};
+
+        \node at (5.2,-2.48)
+            {$\displaystyle M_{\mathrm{mol}}=\frac{m}{n}
+            \qquad\text{y}\qquad m=nM_{\mathrm{mol}}$};
+    \end{tikzpicture}
+    \caption{Una cantidad
+    de un mol contiene $N_A$ moléculas de $\mathrm{H_2O}$ y tiene una masa de
+    aproximadamente $18.015\,\mathrm{g}$.}
+    \label{fig:mol-masa-molar}
+\end{figure}%
+}
