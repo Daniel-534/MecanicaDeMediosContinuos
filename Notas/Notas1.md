@@ -44,3 +44,4 @@ $L_{mol}$ es el parámetro fundamental para establecer las escalas de validez de
     En gases muy diluidos, $\lambda$ supera a $L_{micro}$ y se convierte en la escala limitante para la descripción del continuo.
 
     
+Clase Taller1
