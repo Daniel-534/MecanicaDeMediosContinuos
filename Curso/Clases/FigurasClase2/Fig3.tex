@@ -45,12 +45,6 @@
         \node[gray!70,anchor=west] at (0.20,4.55)
             {vectores moleculares $\vec v_i$};
 
-        \node[align=center,fill=white,rounded corners=2pt,
-              draw=green!35!black,inner sep=4pt] at (2.7,-0.55)
-            {$\displaystyle \vec v_{\mathrm{CM}}
-              =\frac{1}{N}\sum_{i=1}^{N}\vec v_i$\\[4pt]
-             movimiento aleatorio $+$ flujo medio};
-
         % Panel derecho: distribución del promedio para dos tamaños de muestra.
         \begin{axis}[
             at={(6.55cm,0.25cm)},
@@ -88,19 +82,17 @@
 
             \draw[thick,dashed,black!60]
                 (axis cs:0,0)--(axis cs:0,3.05);
-            \node[anchor=west,fill=white,inner sep=2pt]
-                at (axis cs:0.03,2.45) {valor medio $v$};
 
             \draw[<->,thick,orange!85!black]
-                (axis cs:-0.35,0.38)--node[below]{$\Delta v$}
-                (axis cs:0.35,0.38);
+                (axis cs:-0.45,0.38)--node[below]{$\Delta v$}
+                (axis cs:0.45,0.38);
             \draw[<->,thick,blue!70!black]
                 (axis cs:-0.14,1.30)--node[above]{$\Delta v$}
                 (axis cs:0.14,1.30);
 
             \node[align=center,fill=white,rounded corners=2pt,
                   draw=red!25,inner sep=4pt]
-                at (axis cs:0.55,2.05)
+                at (axis cs:-0.68,2.55)
                 {$\displaystyle
                   \Delta v=\frac{v_{\mathrm{mol}}}{\sqrt{N}}$};
         \end{axis}

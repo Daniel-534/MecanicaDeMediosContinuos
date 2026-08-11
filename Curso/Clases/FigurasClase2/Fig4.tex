@@ -19,7 +19,7 @@
 
         \shade[ball color=blue!70] (5.75,2.93) circle (0.18);
         \draw[very thick,red!75!black]
-            (5.75,2.40)--node[right,fill=white,inner sep=1pt]{$d$}(5.75,2.93);
+            (5.75,2.40)--node[right,inner sep=1pt]{$d$}(5.75,2.93);
         \node[anchor=south,blue!65!black] at (5.75,3.18)
             {molécula objetivo};
 
@@ -40,10 +40,10 @@
         \draw[-{Latex[length=3mm]},very thick,green!45!black]
             (1.15,4.15)--node[above]
             {$v_{\mathrm{rel}}\approx\sqrt{2}\,v_{\mathrm{mol}}$}(4.55,4.15);
-        \node[align=center,fill=white,rounded corners=2pt,
-              draw=orange!50!black,inner sep=4pt] at (3.5,1.20)
-            {$A_{\mathrm{col}}=\pi d^2$\\[3pt]
-             $V_{\mathrm{barrido}}=\sqrt{2}\,\pi d^2\lambda$};
+        \node[align=center] at (3.5,-0.42)
+            {$A_{\mathrm{col}}=\pi d^2
+             \qquad
+             V_{\mathrm{barrido}}=\sqrt{2}\,\pi d^2\lambda$};
     \end{tikzpicture}
     \caption{Geometría empleada para estimar el camino libre medio. Una
     molécula barre un cilindro efectivo de sección transversal $\pi d^2$ y
