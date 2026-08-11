@@ -3,7 +3,7 @@
     \centering
     \begin{tikzpicture}[>=Latex, font=\small]
         % Panel izquierdo: promedios locales en celdas microscópicas.
-        \node[font=\bfseries] at (3.3,5.35)
+        \node[font=\bfseries] at (3.3,5.58)
             {Celdas microscópicas vecinas};
 
         \foreach \x/\tono in {
@@ -29,16 +29,16 @@
         }
 
         \draw[decorate,decoration={brace,mirror,amplitude=5pt},thick]
-            (0,0.65)--node[below=6pt]{$L_{\mathrm{micro}}$}(1.1,0.65);
+            (0,0.65)--node[below=4pt]{$L_{\mathrm{micro}}$}(1.1,0.65);
         \draw[decorate,decoration={brace,amplitude=6pt},thick]
-            (0,4.80)--node[above=7pt]{$L_{\mathrm{macro}}$}(6.6,4.80);
+            (0,4.80)--node[above=4pt]{$L_{\mathrm{macro}}$}(6.6,4.80);
 
         \draw[<->,thick,red!70!black]
             (3.30,2.80)--node[above,fill=white,inner sep=2pt]
             {$\displaystyle\frac{|\rho_{i+1}-\rho_i|}{\rho_i}\lesssim\epsilon$}
             (4.40,2.80);
 
-        \node[align=center,text=black!70] at (3.3,-0.35)
+        \node[align=center,text=black!70] at (3.3,-0.78)
             {Cada celda contiene muchas moléculas,\\
              pero celdas vecinas son casi indistinguibles};
 
@@ -91,11 +91,9 @@
 
             \draw[very thick,red!75!black]
                 (axis cs:5.62,0.75)--(axis cs:5.62,1.30);
-            \node[rotate=90,red!75!black,anchor=south]
-                at (axis cs:5.73,1.02) {interfaz};
-            \node[align=center,anchor=north,text=red!70!black]
-                at (axis cs:5.62,0.70)
-                {cambio en una escala\\$\mathcal{O}(L_{\mathrm{mol}})$};
+            \node[align=left,anchor=west,text=red!70!black]
+                at (axis cs:5.73,1.03)
+                {interfaz\\$\mathcal{O}(L_{\mathrm{mol}})$};
 
             \node[align=center,fill=white,rounded corners=2pt,
                   draw=blue!25,inner sep=4pt]

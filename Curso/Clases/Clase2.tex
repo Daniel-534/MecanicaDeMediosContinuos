@@ -1,0 +1,740 @@
+\shorthandoff{<>}
+\input{Clases/FigurasClase2/Fig1}
+\input{Clases/FigurasClase2/Fig2}
+\input{Clases/FigurasClase2/Fig3}
+\input{Clases/FigurasClase2/Fig4}
+\input{Clases/FigurasClase2/Fig5}
+\shorthandon{<>}
+
+\chapter{Clase 2}
+
+\section{Aproximación del continuo}
+
+La aproximación del continuo trata la materia como si fuera divisible de forma
+indefinida e ignora su estructura granular compuesta por átomos y moléculas.
+Aunque la continuidad depende de la escala de observación, esta descripción es
+válida cuando las fluctuaciones estadísticas de las propiedades físicas son
+menores que una precisión prescrita $\epsilon$.
+
+\subsection{Fluctuaciones de densidad}
+
+En un gas, las moléculas se mueven aleatoriamente y entran y salen de cualquier
+volumen pequeño $V$. Si en un instante $t$ dicho volumen contiene $N$
+moléculas de masa $m$, su densidad de masa es
+
+$$
+\rho(t)=\frac{Nm}{V}.
+$$
+
+El número de moléculas fluctúa como consecuencia del carácter aleatorio del
+movimiento molecular. Para una distribución de Poisson, la fluctuación cuadrática media del número de partículas es
+
+$$\Delta N=\sqrt{N}$$
+
+\textbf{Demostración}
+
+La probabilidad de encontrar exactamente $n$ moléculas en el volumen es
+
+$$
+\Pr(n\mid N)=\frac{N^n}{n!}e^{-N},
+\qquad n=0,1,2,\ldots
+$$
+
+Esta distribución está normalizada, pues
+
+$$
+\sum_{n=0}^{\infty}\Pr(n\mid N)
+=e^{-N}\sum_{n=0}^{\infty}\frac{N^n}{n!}
+=e^{-N}e^N
+=1.
+$$
+
+El valor medio del número de moléculas se obtiene mediante
+
+$$
+\begin{aligned}
+\langle n\rangle
+&=\sum_{n=0}^{\infty}n\Pr(n\mid N)\\
+&=e^{-N}\sum_{n=1}^{\infty}\frac{nN^n}{n!}\\
+&=e^{-N}\sum_{n=1}^{\infty}\frac{N^n}{(n-1)!}.
+\end{aligned}
+$$
+
+Al realizar el cambio de índice $m=n-1$, resulta
+
+$$
+\begin{aligned}
+\langle n\rangle
+&=e^{-N}\sum_{m=0}^{\infty}\frac{N^{m+1}}{m!}\\
+&=Ne^{-N}\sum_{m=0}^{\infty}\frac{N^m}{m!}\\
+&=Ne^{-N}e^N=N.
+\end{aligned}
+$$
+
+Para calcular la varianza se considera primero el segundo momento factorial:
+
+$$
+\begin{aligned}
+\langle n(n-1)\rangle
+&=e^{-N}\sum_{n=2}^{\infty}
+\frac{n(n-1)N^n}{n!}\\
+&=e^{-N}\sum_{n=2}^{\infty}\frac{N^n}{(n-2)!}.
+\end{aligned}
+$$
+
+Con el cambio de índice $m=n-2$, se obtiene
+
+$$
+\begin{aligned}
+\langle n(n-1)\rangle
+&=e^{-N}\sum_{m=0}^{\infty}\frac{N^{m+2}}{m!}\\
+&=N^2e^{-N}\sum_{m=0}^{\infty}\frac{N^m}{m!}\\
+&=N^2.
+\end{aligned}
+$$
+
+Como $n^2=n(n-1)+n$, el segundo momento es
+
+$$
+\langle n^2\rangle
+=\langle n(n-1)\rangle+\langle n\rangle
+=N^2+N.
+$$
+
+La varianza de $n$ mide el valor cuadrático medio de las fluctuaciones:
+
+$$
+\begin{aligned}
+(\Delta N)^2
+=\operatorname{Var}(n)
+&=\langle n^2\rangle-\langle n\rangle^2\\
+&=(N^2+N)-N^2=N.
+\end{aligned}
+$$
+
+Por tanto, la fluctuación absoluta del número de moléculas es
+
+$$
+\boxed{\Delta N=\sqrt{N}}.
+$$
+
+Como la densidad es proporcional a $N$, su fluctuación relativa es
+
+$$
+\frac{\Delta\rho}{\rho}
+=\frac{\Delta N}{N}
+=\frac{\sqrt{N}}{N}
+=\frac{1}{\sqrt{N}}.
+$$
+
+\figuraFluctuacionesDensidad
+
+Para que esta fluctuación sea menor que la precisión $\epsilon$, debe
+cumplirse
+
+$$
+\frac{\Delta\rho}{\rho}\lesssim\epsilon,
+$$
+
+lo que exige un número mínimo de moléculas dado por
+
+$$
+N\gtrsim\epsilon^{-2}.
+$$
+
+Este criterio define una escala microscópica $L_{\mathrm{micro}}$: el tamaño
+lineal de una celda cúbica que contiene suficientes moléculas para ignorar su
+granularidad. Si $L_{\mathrm{mol}}$ es la longitud de separación molecular,
+entonces
+
+$$
+L_{\mathrm{micro}}
+=\epsilon^{-2/3}L_{\mathrm{mol}}.
+$$
+
+Para un gas ideal en condiciones normales y una precisión
+$\epsilon=10^{-3}$, se obtiene aproximadamente
+
+$$
+L_{\mathrm{micro}}\approx0.34\,\mu\mathrm{m}.
+$$
+
+\subsection{Suavidad macroscópica}
+
+Además de contener suficientes moléculas, las celdas microscópicas vecinas
+deben presentar variaciones imperceptibles dentro de la precisión $\epsilon$.
+El cambio de densidad entre los centros de dos celdas separadas una distancia
+$L_{\mathrm{micro}}$ puede estimarse mediante una expansión de Taylor:
+
+$$
+\Delta\rho
+\approx L_{\mathrm{micro}}
+\left|\frac{\partial\rho}{\partial x}\right|.
+$$
+
+Al imponer el criterio $\Delta\rho/\rho\lesssim\epsilon$, se obtiene la
+restricción
+
+$$
+\left|\frac{\partial\rho}{\partial x}\right|
+\lesssim\frac{\rho}{L_{\mathrm{macro}}},
+$$
+
+donde la escala macroscópica se define como
+
+$$
+L_{\mathrm{macro}}
+=\epsilon^{-1}L_{\mathrm{micro}}.
+$$
+
+\figuraSuavidadMacroscopica
+
+Para $\epsilon=10^{-3}$, esta escala es aproximadamente
+$0.34\,\mathrm{mm}$ en aire estándar. Las interfaces físicas, como la
+superficie de un sólido, suelen tener un espesor del orden de
+$L_{\mathrm{mol}}$. Por ello quedan fuera de la descripción suave y aparecen
+en la mecánica del continuo como discontinuidades superficiales.
+
+
+\subsection{Distribución de rapidez de Maxwell--Boltzmann}
+
+En equilibrio térmico, la probabilidad de un estado microscópico depende de
+su energía $E$. La mecánica estadística asigna a cada estado el peso de
+Boltzmann
+
+$$
+e^{-E/(k_BT)},
+$$
+
+donde $k_B$ es la constante de Boltzmann y $T$ es la temperatura absoluta.
+Este factor favorece los estados de menor energía, mientras que el aumento de
+la temperatura hace menos pronunciada la disminución de la probabilidad.
+
+Para una molécula de masa $m$ perteneciente a un gas ideal clásico y no
+relativista, la energía es puramente cinética:
+
+$$
+E=\frac{1}{2}m\left(v_x^2+v_y^2+v_z^2\right).
+$$
+
+Por isotropía e independencia de las componentes de la velocidad, la densidad
+de probabilidad en el espacio de velocidades tiene la forma
+
+$$
+p(\vec{v})\,d^3v
+=A\exp\left[-\frac{m(v_x^2+v_y^2+v_z^2)}{2k_BT}\right]
+dv_x\,dv_y\,dv_z.
+$$
+
+La constante $A$ se determina imponiendo la normalización
+
+$$
+\int_{\mathbb{R}^3}p(\vec{v})\,d^3v=1.
+$$
+
+Cada componente tiene una distribución gaussiana con varianza
+$k_BT/m$. En particular,
+
+$$
+\int_{-\infty}^{\infty}
+\exp\left(-\frac{mv_x^2}{2k_BT}\right)dv_x
+=\sqrt{\frac{2\pi k_BT}{m}}.
+$$
+
+Como las tres integrales son idénticas, la constante de normalización es
+
+$$
+A=\left(\frac{m}{2\pi k_BT}\right)^{3/2}.
+$$
+
+La densidad de probabilidad del vector velocidad queda entonces
+
+$$
+p(\vec{v})
+=\left(\frac{m}{2\pi k_BT}\right)^{3/2}
+\exp\left(-\frac{mv^2}{2k_BT}\right),
+\qquad v=\lVert\vec{v}\rVert.
+$$
+
+Para obtener la distribución de la rapidez se considera una cáscara esférica
+de radio $v$ y espesor $dv$ en el espacio de velocidades. Su volumen es
+
+$$
+d^3v=4\pi v^2\,dv.
+$$
+
+La probabilidad de encontrar una molécula con rapidez entre $v$ y $v+dv$ es
+$f(v)\,dv$. Por tanto,
+
+$$
+\boxed{
+f(v)=4\pi v^2
+\left(\frac{m}{2\pi k_BT}\right)^{3/2}
+\exp\left(-\frac{mv^2}{2k_BT}\right)
+},
+\qquad v\geq0.
+$$
+
+\subsection{Rapideces características de Maxwell--Boltzmann}
+
+La distribución de rapidez está normalizada de manera que
+
+$$
+\int_0^{\infty}f(v)\,dv=1.
+$$
+
+A partir de ella pueden definirse tres rapideces moleculares características.
+
+\subsubsection{Rapidez más probable}
+
+La rapidez más probable $v_{\mathrm{mp}}$ corresponde al máximo de $f(v)$.
+Como los factores constantes no afectan la posición del máximo, se deriva el
+logaritmo de la distribución:
+
+$$
+\frac{d}{dv}\ln f(v)
+=\frac{d}{dv}\left(2\ln v-\frac{mv^2}{2k_BT}\right)
+=\frac{2}{v}-\frac{m}{k_BT}v.
+$$
+
+Al igualar esta expresión a cero se obtiene
+
+$$
+\boxed{
+v_{\mathrm{mp}}=\sqrt{\frac{2k_BT}{m}}
+}.
+$$
+
+\subsubsection{Rapidez media}
+
+La rapidez media es el valor esperado de $v$:
+
+$$
+\langle v\rangle
+=\int_0^{\infty}v f(v)\,dv.
+$$
+
+Al sustituir la distribución y utilizar la integral gaussiana correspondiente,
+resulta
+
+$$
+\boxed{
+\langle v\rangle
+=\sqrt{\frac{8k_BT}{\pi m}}
+}.
+$$
+
+\subsubsection{Rapidez cuadrática media}
+
+La rapidez cuadrática media se define como
+
+$$
+v_{\mathrm{rms}}=\sqrt{\langle v^2\rangle}.
+$$
+
+El segundo momento de la distribución es
+
+$$
+\langle v^2\rangle
+=\int_0^{\infty}v^2f(v)\,dv
+=\frac{3k_BT}{m},
+$$
+
+de modo que
+
+$$
+\boxed{
+v_{\mathrm{rms}}=\sqrt{\frac{3k_BT}{m}}
+}.
+$$
+
+\subsubsection{Expresiones en términos de la masa molar}
+
+La masa de una molécula se relaciona con la masa molar mediante
+
+$$
+m=\frac{M_{\mathrm{mol}}}{N_A}.
+$$
+
+Al utilizar $R_{\mathrm{mol}}=N_Ak_B$, las tres rapideces se escriben como
+
+$$
+\boxed{
+v_{\mathrm{mp}}
+=\sqrt{\frac{2R_{\mathrm{mol}}T}{M_{\mathrm{mol}}}},
+\qquad
+\langle v\rangle
+=\sqrt{\frac{8R_{\mathrm{mol}}T}{\pi M_{\mathrm{mol}}}},
+\qquad
+v_{\mathrm{rms}}
+=\sqrt{\frac{3R_{\mathrm{mol}}T}{M_{\mathrm{mol}}}}
+}.
+$$
+
+Estas cantidades siempre satisfacen
+
+$$
+v_{\mathrm{mp}}<\langle v\rangle<v_{\mathrm{rms}}.
+$$
+
+Sus proporciones son independientes de la temperatura y de la especie
+molecular:
+
+\begin{itemize}
+    \item $v_{\mathrm{mp}}/v_{\mathrm{rms}}\approx0.8165$;
+    \item $\langle v\rangle/v_{\mathrm{rms}}\approx0.9213$;
+    \item $\langle v\rangle/v_{\mathrm{mp}}\approx1.1284$.
+\end{itemize}
+
+Para el aire a $T=300\,\mathrm{K}$, con
+$M_{\mathrm{mol}}\approx0.029\,\mathrm{kg\,mol^{-1}}$, se obtiene
+aproximadamente
+
+\begin{itemize}
+    \item $v_{\mathrm{mp}}\approx414\,\mathrm{m\,s^{-1}}$;
+    \item $\langle v\rangle\approx468\,\mathrm{m\,s^{-1}}$;
+    \item $v_{\mathrm{rms}}\approx507\,\mathrm{m\,s^{-1}}$.
+\end{itemize}
+
+\subsection{Fluctuación de la velocidad del centro de masa}
+
+Considérese una colección de $N$ moléculas idénticas que forma una partícula
+material. Sean $\vec{v}_n$ las velocidades moleculares instantáneas, con
+$n=1,2,\ldots,N$. En ausencia de una velocidad de deriva se supone que
+
+$$
+\langle\vec{v}_n\rangle=\vec{0}.
+$$
+
+Además, las velocidades de moléculas distintas se consideran no
+correlacionadas:
+
+$$
+\langle\vec{v}_n\cdot\vec{v}_m\rangle=0,
+\qquad n\neq m.
+$$
+
+Como las moléculas son estadísticamente idénticas,
+
+$$
+\langle v_n^2\rangle=v_0^2
+$$
+
+para cualquier $n$, donde $v_0$ representa una rapidez térmica cuadrática
+media característica.
+
+La velocidad del centro de masa de la colección es
+
+$$
+\vec{V}_{\mathrm{cm}}
+=\frac{1}{N}\sum_{n=1}^{N}\vec{v}_n.
+$$
+
+El promedio del cuadrado de su magnitud es
+
+$$
+\begin{aligned}
+\langle V_{\mathrm{cm}}^2\rangle
+&=\left\langle
+\left(\frac{1}{N}\sum_{n=1}^{N}\vec{v}_n\right)
+\cdot
+\left(\frac{1}{N}\sum_{m=1}^{N}\vec{v}_m\right)
+\right\rangle\\
+&=\frac{1}{N^2}
+\sum_{n,m=1}^{N}
+\langle\vec{v}_n\cdot\vec{v}_m\rangle.
+\end{aligned}
+$$
+
+Los términos cruzados con $n\neq m$ se anulan por falta de correlación. Los
+$N$ términos diagonales satisfacen
+
+$$
+\langle\vec{v}_n\cdot\vec{v}_n\rangle
+=\langle v_n^2\rangle
+=v_0^2.
+$$
+
+Por consiguiente,
+
+$$
+\langle V_{\mathrm{cm}}^2\rangle
+=\frac{1}{N^2}\sum_{n=1}^{N}v_0^2
+=\frac{v_0^2}{N}.
+$$
+
+La rapidez cuadrática media del centro de masa es entonces
+
+$$
+\boxed{
+V_{\mathrm{rms}}
+=\sqrt{\langle V_{\mathrm{cm}}^2\rangle}
+=\frac{v_0}{\sqrt{N}}
+}.
+$$
+
+Esta rapidez representa la fluctuación de velocidad de la partícula material:
+
+$$
+\boxed{
+\Delta v=\frac{v_0}{\sqrt{N}}
+}.
+$$
+
+Aunque las moléculas individuales poseen rapideces térmicas elevadas, la
+velocidad del centro de masa se vuelve cada vez más estable al aumentar $N$,
+porque las fluctuaciones se reducen como $N^{-1/2}$.
+
+
+\subsection{Fluctuaciones de velocidad}
+
+La velocidad de un medio continuo representa la velocidad del centro de masa
+de una colección de $N$ moléculas. Como las velocidades moleculares
+individuales son elevadas ---en el aire,
+$v_{\mathrm{mol}}\approx500\,\mathrm{m/s}$---, las fluctuaciones de velocidad
+pueden imponer una condición más restrictiva que las fluctuaciones de
+densidad.
+
+La fluctuación cuadrática media de la velocidad del centro de masa es
+
+$$
+\Delta v=\frac{v_{\mathrm{mol}}}{\sqrt{N}}.
+$$
+
+\figuraFluctuacionesVelocidad
+
+Para alcanzar una precisión $\epsilon$ en una velocidad macroscópica de flujo
+$v$, se requiere
+
+$$
+\frac{\Delta v}{v}\lesssim\epsilon.
+$$
+
+Esta condición introduce una escala microscópica corregida,
+
+$$
+L'_{\mathrm{micro}}
+=\left(\frac{v_{\mathrm{mol}}}{v}\right)^{2/3}
+L_{\mathrm{micro}}.
+$$
+
+Por ejemplo, para un viento suave con $v\approx0.5\,\mathrm{m/s}$ y una
+precisión $\epsilon=10^{-3}$, el tamaño lineal mínimo necesario para definir
+el continuo aumenta a
+
+$$
+L'_{\mathrm{micro}}\approx34\,\mu\mathrm{m},
+$$
+
+y la escala de suavidad correspondiente es
+
+$$
+L'_{\mathrm{macro}}\approx34\,\mathrm{mm}.
+$$
+
+En vientos intensos y huracanes, las fluctuaciones moleculares son pequeñas en
+comparación con las fluctuaciones macroscópicas producidas por la turbulencia.
+
+\section{Camino libre medio}
+
+El camino libre medio, denotado por $\lambda$, es la distancia promedio que
+recorre una molécula entre dos colisiones sucesivas. Esta longitud establece
+una escala física adicional para determinar la validez de la aproximación del
+continuo, especialmente en gases diluidos.
+
+\subsection{Definición y contexto físico}
+
+La interpretación del camino libre medio depende del estado de la materia:
+
+\begin{itemize}
+    \item \textbf{Sólidos y líquidos:} las moléculas están estrechamente
+    empaquetadas y sus interacciones ocurren casi continuamente sobre
+    distancias comparables con $L_{\mathrm{mol}}$.
+
+    \item \textbf{Gases:} las moléculas recorren trayectorias aproximadamente
+    rectas entre colisiones. La longitud $\lambda$ representa el promedio de
+    las distancias recorridas durante estos vuelos libres.
+\end{itemize}
+
+Las colisiones redistribuyen el momento y la energía entre las moléculas. Por
+ello son esenciales para suavizar las diferencias entre velocidades
+individuales y permitir la construcción de campos macroscópicos de velocidad,
+presión y temperatura.
+
+\subsection{Geometría de las colisiones}
+
+Considérese un gas compuesto por moléculas aproximadamente esféricas de
+diámetro $d$. Una molécula colisiona con otra cuando la distancia entre sus
+centros se hace menor o igual que $d$. Durante su movimiento relativo, la
+molécula barre un cilindro efectivo con sección transversal
+
+$$
+A_{\mathrm{col}}=\pi d^2.
+$$
+
+Las demás moléculas no permanecen inmóviles. Como sus direcciones de
+movimiento son aleatorias, la rapidez relativa promedio puede aproximarse por
+
+$$
+v_{\mathrm{rel}}\approx\sqrt{2}\,v_{\mathrm{mol}},
+$$
+
+donde $v_{\mathrm{mol}}$ es una rapidez molecular característica. El factor
+$\sqrt{2}$ aumenta el volumen efectivo barrido respecto al caso de blancos
+estacionarios.
+
+\figuraGeometriaCaminoLibreMedio
+
+\subsection{Derivación del camino libre medio}
+
+La densidad numérica de moléculas es
+
+$$
+n_N=\frac{N}{V}=\frac{1}{L_{\mathrm{mol}}^3}.
+$$
+
+Durante un recorrido de longitud $\lambda$, el volumen efectivo barrido en el
+movimiento relativo es
+
+$$
+V_{\mathrm{barrido}}
+=\sqrt{2}\,\pi d^2\lambda.
+$$
+
+El camino libre medio se define de modo que este volumen contenga, en
+promedio, una molécula objetivo. Por tanto,
+
+$$
+n_N V_{\mathrm{barrido}}=1,
+$$
+
+o, de forma equivalente,
+
+$$
+\sqrt{2}\,\pi d^2\lambda=L_{\mathrm{mol}}^3.
+$$
+
+Al despejar $\lambda$ se obtiene
+
+$$
+\boxed{
+\lambda
+=\frac{L_{\mathrm{mol}}^3}{\sqrt{2}\,\pi d^2}
+}.
+$$
+
+Como
+
+$$
+L_{\mathrm{mol}}^3
+=\frac{M_{\mathrm{mol}}}{\rho N_A},
+$$
+
+el camino libre medio también puede expresarse como
+
+$$
+\boxed{
+\lambda
+=\frac{M_{\mathrm{mol}}}
+{\sqrt{2}\,\pi d^2\rho N_A}
+}.
+$$
+
+Esta expresión muestra que, para una especie molecular determinada,
+$\lambda$ es inversamente proporcional a la densidad del gas:
+
+$$
+\lambda\propto\frac{1}{\rho}.
+$$
+
+Cualquier fórmula práctica de la forma $\lambda=C/(d^2\rho)$ requiere indicar
+explícitamente las unidades empleadas para $d$ y $\rho$, pues el valor numérico
+de la constante $C$ depende del sistema de unidades.
+
+\subsection{Tiempo medio entre colisiones}
+
+El tiempo medio entre dos colisiones sucesivas puede estimarse dividiendo el
+camino libre medio por la rapidez molecular característica:
+
+$$
+\tau\approx\frac{\lambda}{v_{\mathrm{mol}}}.
+$$
+
+Para el aire en condiciones normales, con
+$\lambda\approx65\,\mathrm{nm}$ y
+$v_{\mathrm{mol}}\approx500\,\mathrm{m/s}$, resulta
+
+$$
+\tau\approx0.13\,\mathrm{ns}.
+$$
+
+\subsection{Importancia para la aproximación del continuo}
+
+La aproximación del continuo requiere que la escala característica $L$ del
+fenómeno estudiado sea mucho mayor que el camino libre medio:
+
+$$
+L\gg\lambda.
+$$
+
+Esta condición suele expresarse mediante el número de Knudsen,
+
+$$
+\mathrm{Kn}=\frac{\lambda}{L}.
+$$
+
+Cuando $\mathrm{Kn}\ll1$, las colisiones son suficientemente frecuentes para
+establecer equilibrio local y la descripción continua es apropiada. Cuando
+$\mathrm{Kn}$ deja de ser pequeño, aparecen efectos de gas rarificado y es
+necesario utilizar una descripción cinética o de flujo molecular libre.
+
+Además, para una sustancia dada,
+
+$$
+L_{\mathrm{mol}}\propto\rho^{-1/3}
+\qquad\text{y}\qquad
+\lambda\propto\rho^{-1}.
+$$
+
+En consecuencia,
+
+$$
+\frac{\lambda}{L_{\mathrm{mol}}}
+\propto\rho^{-2/3}.
+$$
+
+Al disminuir la densidad, $\lambda$ crece más rápidamente que
+$L_{\mathrm{mol}}$. En gases suficientemente diluidos puede superar la escala
+$L_{\mathrm{micro}}$ y convertirse en la menor longitud admisible para una
+descripción continua.
+
+\subsection{Ejemplo: aire y efecto de la altitud}
+
+Para el aire, cuya masa molar promedio es aproximadamente
+$M_{\mathrm{mol}}=29\,\mathrm{g/mol}$ y cuyo diámetro molecular efectivo es
+$d\approx0.37\,\mathrm{nm}$, se obtienen los siguientes valores
+representativos:
+
+\figuraCaminoLibreMedioAltitud
+
+\begin{itemize}
+    \item \textbf{Condiciones normales:}
+    $\lambda\approx65\,\mathrm{nm}$. Para una precisión
+    $\epsilon=10^{-3}$, este valor es aproximadamente cinco veces menor que
+    $L_{\mathrm{micro}}\approx340\,\mathrm{nm}$.
+
+    \item \textbf{Nivel del mar:}
+    $\lambda\approx6.4\times10^{-6}\,\mathrm{cm}$, equivalente a unos
+    $64\,\mathrm{nm}$.
+
+    \item \textbf{Altitud de $100\,\mathrm{km}$:}
+    $\lambda\approx10\,\mathrm{cm}$.
+
+    \item \textbf{Altitud de $160\,\mathrm{km}$:}
+    $\lambda\approx5000\,\mathrm{cm}=50\,\mathrm{m}$.
+\end{itemize}
+
+El aumento de $\lambda$ con la altitud se debe a la rápida disminución de la
+densidad atmosférica. En las capas altas de la atmósfera, el camino libre medio
+puede ser comparable con la escala del sistema; en ese régimen, la hipótesis
+del continuo deja de ser aceptable.
