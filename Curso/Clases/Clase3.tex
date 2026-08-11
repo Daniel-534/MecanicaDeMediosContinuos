@@ -1,0 +1,381 @@
+\chapter{Clase 3}
+
+\section{Presión}
+
+Cualquier fluido alcanza eventualmente un estado de equilibrio hidrostático
+en ausencia de fuerzas impulsoras externas y ante la presencia de mecanismos
+disipativos. En este estado, el movimiento cesa y los campos físicos dejan de
+variar con el tiempo.
+
+La presión es una fuerza de contacto que actúa sobre superficies reales o
+imaginarias dentro de un cuerpo. Como un fluido en reposo no puede sostener
+esfuerzos de cizalla, la fuerza de contacto actúa exclusivamente en dirección
+normal a cada elemento de superficie.
+
+\subsection{Definición y unidades}
+
+La presión se define como la magnitud de la fuerza normal ejercida por unidad
+de área:
+
+$$
+p=\frac{F_{\mathrm{n}}}{A}.
+$$
+
+En el Sistema Internacional, su unidad es el pascal,
+
+$$
+1\,\mathrm{Pa}=1\,\mathrm{N\,m^{-2}}.
+$$
+
+También se utilizan con frecuencia las siguientes unidades:
+
+\begin{itemize}
+    \item bar:
+    $1\,\mathrm{bar}=10^5\,\mathrm{Pa}$;
+    \item atmósfera estándar:
+    $1\,\mathrm{atm}=101325\,\mathrm{Pa}$;
+    \item hectopascal:
+    $1\,\mathrm{hPa}=100\,\mathrm{Pa}$, equivalente a un milibar.
+\end{itemize}
+
+\subsection{El mar incompresible}
+
+Considérese una columna vertical de un fluido en equilibrio mecánico, con
+densidad constante $\rho_0$, área transversal $A$ y altura $h$. La presión en
+la base es $p$, mientras que en la superficie superior es $p_0$. El balance de
+fuerzas verticales exige que la fuerza ascendente en la base equilibre la
+fuerza descendente en la superficie y el peso de la columna:
+
+$$
+pA=p_0A+Mg_0.
+$$
+
+Como la masa del fluido es
+
+$$
+M=\rho_0Ah,
+$$
+
+la presión en la base resulta
+
+$$
+p=p_0+\rho_0g_0h.
+$$
+
+Si el eje $z$ se orienta verticalmente hacia arriba y la superficie libre se
+encuentra en $z=0$, los puntos bajo la superficie tienen $z<0$. En estas
+coordenadas, el campo de presión es
+
+$$
+\boxed{p(z)=p_0-\rho_0g_0z}.
+$$
+
+Por tanto, la presión aumenta linealmente con la profundidad. En el mar, este
+aumento es aproximadamente de un bar por cada diez metros de profundidad.
+
+\subsubsection*{Ejemplo: fuerza sobre una compuerta}
+
+Considérese una compuerta vertical de ancho $L$, con agua hasta una altura
+$h$. La presión atmosférica $p_0$ actúa a ambos lados, por lo que la fuerza
+neta depende del exceso de presión hidrostática:
+
+$$
+p(z)-p_0=-\rho_0g_0z.
+$$
+
+Un elemento horizontal de altura $dz$ tiene área $dA=L\,dz$. La fuerza total
+sobre la compuerta es entonces
+
+$$
+\begin{aligned}
+F
+&=\int_{-h}^{0}\bigl(p(z)-p_0\bigr)L\,dz\\
+&=-\rho_0g_0L\int_{-h}^{0}z\,dz\\
+&=\frac{1}{2}\rho_0g_0Lh^2.
+\end{aligned}
+$$
+
+Este resultado también puede interpretarse como el producto del área
+$Lh$ por el exceso de presión promedio,
+$\frac{1}{2}\rho_0g_0h$.
+
+\subsubsection*{Ejemplo: barómetro de mercurio de Torricelli}
+
+En un barómetro de mercurio, la columna alcanza una altura $h$ cuando su peso
+equilibra la presión atmosférica exterior $p$. Si la presión $p_0$ en la parte
+superior del tubo es prácticamente nula, se cumple
+
+$$
+p=\rho_0g_0h,
+$$
+
+y, por tanto,
+
+$$
+\boxed{h=\frac{p}{\rho_0g_0}}.
+$$
+
+Para una presión de una atmósfera y una densidad del mercurio de
+$13.534\,\mathrm{g\,cm^{-3}}$, la altura de la columna es aproximadamente
+$76.34\,\mathrm{cm}$.
+
+\subsection{¿Atmósfera incompresible?}
+
+Aunque el aire es compresible, el modelo de densidad constante proporciona
+una aproximación razonable durante los primeros kilómetros de la atmósfera.
+Si se supusiera una densidad constante $\rho_0$, la presión disminuiría
+linealmente con la altura:
+
+$$
+p(z)=p_0-\rho_0g_0z.
+$$
+
+En este modelo, la presión se anularía a la altura característica
+
+$$
+h_0=\frac{p_0}{\rho_0g_0}.
+$$
+
+Para valores atmosféricos estándar cercanos a $25\,^{\circ}\mathrm{C}$, se
+obtiene
+
+$$
+h_0\approx8.72\,\mathrm{km}.
+$$
+
+La presión real no se anula a esta altura porque la densidad del aire también
+disminuye con $z$. Sin embargo, $h_0$ proporciona la escala vertical en la que
+ocurren cambios atmosféricos importantes, mientras que la aproximación lineal
+es útil aproximadamente durante los primeros $2\,\mathrm{km}$.
+
+\subsection{Origen microscópico de la presión en gases}
+
+En un gas, la presión surge del intercambio de momento producido por las
+colisiones de las moléculas contra las paredes del recipiente. Considérese una
+pared perpendicular al eje $z$ y una molécula de masa $m$ que se aproxima con
+$v_z<0$. Si la colisión es elástica, su velocidad normal cambia de $v_z$ a
+$-v_z$.
+
+La magnitud del momento transferido a la pared por cada colisión es
+
+$$
+2m|v_z|.
+$$
+
+Si inicialmente se supone que todas las moléculas tienen la misma componente
+$v_z<0$, la masa que alcanza un área $A$ durante un intervalo $dt$ es
+
+$$
+dM=\rho A(-v_z)\,dt.
+$$
+
+El momento transferido en dirección normal es
+
+$$
+dP_z=2v_z\,dM
+=-2\rho v_z^2A\,dt,
+$$
+
+de modo que la fuerza ejercida sobre la pared es
+
+$$
+F_z=\frac{dP_z}{dt}
+=-2\rho v_z^2A.
+$$
+
+El signo negativo indica que la fuerza apunta en dirección opuesta al eje
+$z$. Para obtener la presión debe considerarse que solo la mitad de las
+moléculas se mueve hacia la pared y que existe una distribución de
+velocidades. La magnitud de la fuerza promedio por unidad de área es entonces
+
+$$
+p=\rho\langle v_z^2\rangle.
+$$
+
+En un gas isotrópico no existe una dirección privilegiada, por lo que
+
+$$
+\langle v_x^2\rangle
+=\langle v_y^2\rangle
+=\langle v_z^2\rangle
+=\frac{1}{3}\langle v^2\rangle.
+$$
+
+Se obtiene así la relación microscópica
+
+$$
+\boxed{
+p=\rho\langle v_z^2\rangle
+=\frac{1}{3}\rho\langle v^2\rangle
+}.
+$$
+
+La rapidez cuadrática media molecular se define como
+
+$$
+v_{\mathrm{mol}}=\sqrt{\langle v^2\rangle},
+$$
+
+por lo que
+
+$$
+\boxed{v_{\mathrm{mol}}=\sqrt{\frac{3p}{\rho}}}.
+$$
+
+Para el aire a una presión de una atmósfera y una temperatura cercana a
+$18\,^{\circ}\mathrm{C}$, esta rapidez es aproximadamente
+$500\,\mathrm{m\,s^{-1}}$, un valor del mismo orden de magnitud que la
+velocidad del sonido.
+
+\subsection{El campo de presión}
+
+La presión se manifiesta como una fuerza de contacto que actúa sobre
+superficies. Estas pueden ser interfaces físicas reales, donde las propiedades
+del material cambian abruptamente, o superficies imaginarias que separan dos
+partes de un mismo cuerpo.
+
+\subsubsection{Definición matemática de la fuerza de presión}
+
+Para analizar esta fuerza, se divide una superficie orientada en elementos
+infinitesimales. El vector de superficie se define como
+
+$$
+d\vec{S}=\vec{n}\,dS,
+$$
+
+donde $dS$ es el área del elemento y $\vec{n}$ es el vector unitario normal.
+Como un fluido en reposo no puede sostener fuerzas de cizalla, las fuerzas de
+contacto actúan únicamente en la dirección normal.
+
+La fuerza ejercida por el material situado en el lado positivo del elemento
+sobre el material situado en el lado negativo se expresa mediante el campo de
+presión $p(\vec{x})$ como
+
+$$
+d\vec{F}=-p(\vec{x})\,d\vec{S}.
+$$
+
+El signo negativo indica que una presión positiva produce una fuerza opuesta
+a la normal exterior, es decir, una compresión. Una presión negativa
+representaría una tensión sobre la superficie. La fuerza de presión total
+sobre una superficie $S$ es
+
+$$
+\boxed{
+\vec{F}=-\int_S p\,d\vec{S}
+}.
+$$
+
+\subsubsection{Fuerza resultante sobre una partícula material}
+
+Considérese una partícula material infinitesimal en forma de caja rectangular,
+con lados $dx$, $dy$ y $dz$. Su volumen es
+
+$$
+dV=dx\,dy\,dz.
+$$
+
+La fuerza resultante surge de la pequeña diferencia de presión entre caras
+opuestas. En la dirección $z$ se tiene
+
+$$
+dF_z
+=\bigl[p(x,y,z)-p(x,y,z+dz)\bigr]dx\,dy.
+$$
+
+Al expandir la presión de la cara superior hasta primer orden,
+
+$$
+p(x,y,z+dz)
+\approx p(x,y,z)+\frac{\partial p}{\partial z}dz,
+$$
+
+se obtiene
+
+$$
+dF_z
+\approx-\frac{\partial p}{\partial z}dV.
+$$
+
+Al sumar las contribuciones de las tres direcciones espaciales, la fuerza de
+presión total sobre la partícula es
+
+$$
+\boxed{
+d\vec{F}=-\vec{\nabla}p\,dV
+}.
+$$
+
+Esto significa que el efecto de todas las fuerzas de contacto es equivalente
+a una fuerza de volumen cuya densidad es el gradiente negativo de la presión,
+$-\vec{\nabla}p$.
+
+\subsubsection{Teorema de Gauss}
+
+La fuerza de presión total sobre un cuerpo de volumen $V$ y superficie cerrada
+$S$ puede calcularse mediante una integral de superficie o una integral de
+volumen. La equivalencia entre ambas expresiones conduce a
+
+$$
+\boxed{
+\oint_S p\,d\vec{S}
+=\int_V \vec{\nabla}p\,dV
+}.
+$$
+
+Para un campo vectorial general $\vec{U}$, el teorema de Gauss se expresa como
+
+$$
+\boxed{
+\oint_S \vec{U}\cdot d\vec{S}
+=\int_V \vec{\nabla}\cdot\vec{U}\,dV
+}.
+$$
+
+La integral de superficie representa el flujo de $\vec{U}$ a través de la
+frontera, mientras que la integral de volumen suma su divergencia en el
+interior del cuerpo.
+
+\subsubsection{Ley de Pascal: isotropía de la presión}
+
+La presión en un fluido en reposo no depende de la orientación del elemento de
+superficie. Esta propiedad se conoce como ley de Pascal y establece que la
+presión es un campo escalar.
+
+Para demostrarlo, considérese una partícula material con forma de tetraedro
+recto orientado según los ejes coordenados. Sean $dS$ el área de la cara
+oblicua y $dS_x$, $dS_y$ y $dS_z$ las áreas de sus proyecciones sobre los
+planos coordenados. Si las presiones en las caras fueran $p$, $p_x$, $p_y$ y
+$p_z$, el equilibrio mecánico exigiría
+
+$$
+d\vec{F}_S+d\vec{F}_V=\vec{0},
+$$
+
+donde $d\vec{F}_S$ es la fuerza total de contacto y
+
+$$
+d\vec{F}_V=\vec{f}\,dV
+$$
+
+es una fuerza de volumen, como la gravedad.
+
+Si todas las dimensiones del tetraedro se reducen por un factor
+$\lambda<1$, las áreas disminuyen como $\lambda^2$, mientras que el volumen y
+las fuerzas de volumen disminuyen como $\lambda^3$. En el límite
+$\lambda\to0$, la fuerza de volumen se vuelve despreciable frente a las
+fuerzas de superficie. Por consiguiente,
+
+$$
+d\vec{F}_S=\vec{0}.
+$$
+
+El equilibrio de las componentes de esta fuerza, junto con las relaciones
+geométricas entre la cara oblicua y sus proyecciones, exige que
+
+$$
+\boxed{p_x=p_y=p_z=p}.
+$$
+
+Por tanto, la presión en un punto de un fluido en reposo es la misma en todas
+las direcciones.
