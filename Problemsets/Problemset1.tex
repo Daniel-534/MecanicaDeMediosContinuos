@@ -1,0 +1,597 @@
+\documentclass[a4paper]{article}
+
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb}
+\usepackage[margin=2cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{parskip}
+\usepackage[most]{tcolorbox}
+\usepackage[hidelinks]{hyperref}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{mathrsfs}
+
+
+% cabecera
+\pagestyle{fancy}
+\fancyhead[l]{Mecánica de Medios Continuos}
+\fancyhead[c]{Taller 1}
+\fancyhead[r]{\today}
+\fancyfoot[c]{\thepage}
+\renewcommand{\headrulewidth}{0.2pt} % linea horizontal
+
+\begin{document}
+\tableofcontents
+
+\section{Problema 1}
+¿Por qué la aproximación del continuo puede aplicarse a la materia, aun cuando se sabe que está compuesta de elementos discretos como átomos y moléculas? ¿Bajo qué condiciones físicas es válida esta aproximación?
+
+\subsection{Solución 1}
+
+La materia está compuesta por moléculas y átomos, por lo que no es verdaderamente continua. Sin embargo, a escalas de longitud mayores que $\sim 10^{-8}$ m, es posible describir la materia mediante teorías que ignoran su estructura molecular. La teoría del continuo considera la materia como indefinidamente divisible, aceptando la idea de un volumen infinitesimal de material (partícula del continuo).
+
+La justificación fundamental es que las fluctuaciones estadísticas debidas a la naturaleza discreta de la materia son extremadamente pequeñas cuando el número de moléculas en cualquier elemento de volumen es enorme. La fluctuación relativa en la densidad es:
+$$
+\frac{\Delta \rho}{\rho} = \frac{1}{\sqrt{N}}
+$$
+Para $N \sim N_A \sim 10^{23}$ moléculas, la fluctuación relativa es del orden de $10^{-12}$, completamente despreciable.
+
+Las condiciones físicas bajo las cuales la aproximación del continuo es válida son:
+
+\begin{enumerate}
+    \item El elemento de volumen debe contener un número suficientemente grande de moléculas para que las fluctuaciones estadísticas sean despreciables:
+$$
+n\ell^3 \gg 1
+$$
+donde $n$ es la densidad numérica de partículas y $\ell$ es el tamaño lineal del elemento.
+
+    \item El tamaño del elemento $\ell$ debe ser mucho menor que la escala macroscópica de variación de las propiedades del fluido:
+$$
+\ell \ll \ell_{\text{escala}} \sim \frac{q}{\|\nabla q\|}
+$$
+
+    \item Para gases, el camino libre medio $\lambda$ debe ser mucho menor que el tamaño del elemento:
+$$
+\lambda \ll \ell
+$$
+
+    \item En conjunto, se requiere la jerarquía de escalas:
+$$
+\lambda \ll \ell \ll \ell_{\text{escala}}
+$$
+\end{enumerate}
+
+Bajo estas condiciones, las cantidades macroscópicas (densidad, presión, temperatura, velocidad) pueden definirse localmente como campos suaves, y la descripción continua es una excelente aproximación.
+
+\subsection{Solución 2}
+
+Aunque la materia está formada por átomos y moléculas, puede tratarse como un medio continuo cuando la escala de observación es mucho mayor que la separación entre sus partículas. En esas condiciones, cada pequeño volumen contiene suficientes partículas para que sus propiedades promedio, como la densidad, la presión y la temperatura, varíen suavemente. La aproximación es válida siempre que la escala microscópica característica del material sea mucho menor que la escala espacial en la que cambian sus propiedades macroscópicas; por ello, deja de ser adecuada en sistemas extremadamente pequeños, gases muy poco densos o regiones donde ocurren variaciones muy abruptas.
+
+%==============================================================
+\section{Problema 2}
+¿Qué asunciones justifican el uso de la distribución de Poisson para describir las fluctuaciones de un gas?
+
+\subsection{Solución}
+
+La distribución de Poisson se obtiene como el límite de la distribución binomial cuando el número de ensayos $N \to \infty$ y la probabilidad de éxito $p \to 0$, manteniendo el producto $\lambda = Np$ constante. Para describir las fluctuaciones en el número de moléculas dentro de un subvolumen pequeño $V$ de un gas, se requieren las siguientes asunciones:
+
+\begin{enumerate}
+    \item \textbf{Independencia:} Las moléculas se mueven de forma independiente unas de otras. La presencia de una molécula en el volumen $V$ no afecta la probabilidad de que otra molécula se encuentre allí.
+
+    \item \textbf{Probabilidad pequeña:} La probabilidad $p$ de que cualquier molécula particular se encuentre en el subvolumen $V$ es extremadamente pequeña ($p \ll 1$), ya que $V$ es una fracción muy pequeña del volumen total del gas.
+
+    \item \textbf{Número grande de moléculas:} El número total de moléculas $N$ en el volumen total es muy grande ($N \to \infty$).
+
+    \item \textbf{Producto finito:} El producto $\lambda = Np$ permanece finito y constante. Este $\lambda$ representa el número promedio (esperado) de moléculas en el subvolumen $V$.
+
+    \item \textbf{Tasa constante:} La tasa promedio de ocurrencia (número esperado de moléculas por unidad de volumen) es constante en el tiempo.
+\end{enumerate}
+
+Bajo estas condiciones, la probabilidad de encontrar exactamente $m$ moléculas en el volumen $V$ es:
+$$
+P(m|\lambda) = \frac{\lambda^m}{m!}\,e^{-\lambda}
+$$
+
+Esta distribución es apropiada para describir eventos raros e independientes, como el número de moléculas que se encuentran en un subvolumen pequeño de un gas. La distribución está normalizada ($\sum_{m=0}^{\infty} P(m) = 1$), tiene media $\langle m \rangle = \lambda$ y varianza $\Delta m^2 = \lambda$, de modo que la fluctuación es $\Delta m = \sqrt{\lambda}$.
+
+%==============================================================
+\section{Problema 3}
+Describa las diferencias entre las tres velocidades características de la distribución de Maxwell-Boltzmann. Ordénelas de menor a mayor.
+
+\subsection{Solución}
+
+La distribución de Maxwell-Boltzmann para la rapidez de las moléculas de un gas ideal en equilibrio térmico a temperatura $T$ es:
+$$
+f(v) = 4\pi v^2 \left(\frac{m}{2\pi k_B T}\right)^{3/2} \exp\left(-\frac{mv^2}{2k_B T}\right), \quad v \geq 0
+$$
+
+De esta distribución se extraen tres velocidades características:
+
+\begin{enumerate}
+    \item \textbf{Velocidad más probable} ($v_{\text{mp}}$): Es el valor de $v$ que maximiza $f(v)$. Se obtiene imponiendo $\frac{df}{dv} = 0$:
+$$
+v_{\text{mp}} = \sqrt{\frac{2k_B T}{m}} = \sqrt{\frac{2R_{\text{mol}} T}{M_{\text{mol}}}}
+$$
+Es la velocidad que poseen más moléculas (el pico de la distribución).
+
+    \item \textbf{Velocidad media} ($\langle v \rangle$): Es el promedio aritmético de todas las velocidades:
+$$
+\langle v \rangle = \int_0^\infty v\, f(v)\, dv = \sqrt{\frac{8k_B T}{\pi m}} = \sqrt{\frac{8R_{\text{mol}} T}{\pi M_{\text{mol}}}}
+$$
+
+    \item \textbf{Velocidad cuadrática media} ($v_{\text{rms}}$): Es la raíz cuadrada del promedio de $v^2$:
+$$
+v_{\text{rms}} = \sqrt{\langle v^2 \rangle} = \sqrt{\frac{3k_B T}{m}} = \sqrt{\frac{3R_{\text{mol}} T}{M_{\text{mol}}}}
+$$
+Está directamente relacionada con la energía cinética media: $\frac{1}{2}m\langle v^2 \rangle = \frac{3}{2}k_B T$.
+\end{enumerate}
+
+\textbf{Orden de menor a mayor:}
+$$
+\boxed{v_{\text{mp}} < \langle v \rangle < v_{\text{rms}}}
+$$
+
+Las razones entre ellas son constantes universales (independientes de $T$ y del gas):
+\begin{align*}
+\frac{v_{\text{mp}}}{v_{\text{rms}}} &= \sqrt{\frac{2}{3}} \approx 0{,}8165 \\[6pt]
+\frac{\langle v \rangle}{v_{\text{rms}}} &= \sqrt{\frac{8}{3\pi}} \approx 0{,}9213 \\[6pt]
+\frac{\langle v \rangle}{v_{\text{mp}}} &= \sqrt{\frac{4}{\pi}} \approx 1{,}1284
+\end{align*}
+
+Las tres velocidades son proporcionales a $\sqrt{T}$ e inversamente proporcionales a $\sqrt{m}$ (o $\sqrt{M_{\text{mol}}}$), por lo que a mayor temperatura las moléculas se mueven más rápido, y las moléculas más ligeras se mueven más rápido que las pesadas a la misma temperatura.
+
+%==============================================================
+\section{Problema 4}
+Dé ejemplos de campos escalares, vectoriales y tensoriales en la física.
+
+\subsection{Solución}
+
+Un campo es una función que asigna un valor a cada punto del espacio (y posiblemente del tiempo): $\phi = \phi(\vec{x}, t)$. Según la naturaleza del valor asignado, los campos se clasifican en:
+
+\begin{enumerate}
+    \item \textbf{Campos escalares:} Asignan un número (escalar) a cada punto del espacio.
+    \begin{itemize}
+        \item Campo de densidad: $\rho(\vec{x}, t)$
+        \item Campo de temperatura: $T(\vec{x}, t)$
+        \item Campo de presión: $p(\vec{x}, t)$
+        \item Potencial gravitacional: $\Phi(\vec{x}, t)$
+        \item Potencial eléctrico: $\phi(\vec{x}, t)$
+    \end{itemize}
+
+    \item \textbf{Campos vectoriales:} Asignan un vector a cada punto del espacio.
+    \begin{itemize}
+        \item Campo de velocidad de un fluido: $\vec{v}(\vec{x}, t)$
+        \item Campo gravitacional: $\vec{g}(\vec{x}, t)$
+        \item Campo eléctrico: $\vec{E}(\vec{x}, t)$
+        \item Campo magnético: $\vec{B}(\vec{x}, t)$
+        \item Campo de fuerza: $\vec{F}(\vec{x}, t)$
+    \end{itemize}
+
+    \item \textbf{Campos tensoriales:} Asignan un tensor a cada punto del espacio.
+    \begin{itemize}
+        \item Tensor de esfuerzos: $\sigma_{ij}(\vec{x}, t)$
+        \item Tensor de deformación (en elasticidad): $\varepsilon_{ij}(\vec{x}, t)$
+        \item Tensor electromagnético: $F^{\alpha\beta}(x^\mu)$
+        \item Tensor métrico (en relatividad general): $g_{\mu\nu}(x^\alpha)$
+    \end{itemize}
+\end{enumerate}
+
+En relatividad especial, los campos se generalizan: un escalar se escribe $\phi(x^\mu)$, un vector como $A^\nu(x^\mu)$, y un tensor como $F^{\alpha\beta}(x^\mu)$, donde $x^\mu = (ct, x, y, z)$ es el cuadrip vector de posición en el espacio-tiempo.
+
+\section{Problema 5}
+Calcule $L_{mol}$ para (a) agua líquida a temperatura ambiente ($\rho = 1000$ kg/m³) y (b) un gas a TPE. Discuta por qué la aproximación del continuo es más apropiada para líquidos que para gases y por qué no hace falta conocer la identidad del gas para este cálculo.
+
+\subsection{Solución}
+
+La longitud de separación molecular se define como:
+$$
+L_{mol} = \left(\frac{V}{N}\right)^{1/3} = \left(\frac{M_{mol}}{\rho\, N_A}\right)^{1/3}
+$$
+
+\subsubsection{(a) Agua líquida}
+
+Con $M_{mol} = 0{,}018$ kg/mol, $\rho = 1000$ kg/m³ y $N_A = 6{,}022 \times 10^{23}$ mol$^{-1}$:
+$$
+L_{mol} = \left(\frac{0{,}018}{1000 \times 6{,}022 \times 10^{23}}\right)^{1/3} = \left(2{,}99 \times 10^{-29}\right)^{1/3} \approx 3{,}1 \times 10^{-10} \text{ m} \approx 0{,}31 \text{ nm}
+$$
+
+\subsubsection{(b) Gas ideal a TPE}
+
+Para un gas ideal a temperatura y presión estándar ($T = 293{,}15$ K, $p = 101\,325$ Pa), usando la ley de los gases ideales $pV = Nk_B T$:
+$$
+\frac{V}{N} = \frac{k_B T}{p}
+$$
+Por tanto:
+$$
+L_{mol} = \left(\frac{k_B T}{p}\right)^{1/3} = \left(\frac{1{,}381 \times 10^{-23} \times 293{,}15}{101\,325}\right)^{1/3} = \left(3{,}99 \times 10^{-26}\right)^{1/3} \approx 3{,}42 \times 10^{-9} \text{ m} \approx 3{,}4 \text{ nm}
+$$
+
+\subsubsection{Discusión}
+
+La longitud de separación molecular es aproximadamente 11 veces mayor en el gas ($\sim 3{,}4$ nm) que en el líquido ($\sim 0{,}31$ nm). Esto significa que en un gas hay mucho más espacio vacío entre moléculas. La aproximación del continuo es más apropiada para líquidos porque las moléculas están más próximas entre sí, de modo que la estructura discreta se ``suaviza'' a escalas de longitud más pequeñas.
+
+Para el cálculo en el gas no hace falta conocer la identidad del gas porque, al usar la ley de los gases ideales $pV = Nk_B T$, el volumen por molécula $V/N = k_B T/p$ no depende de la masa molar ni de la naturaleza del gas, sino únicamente de la temperatura y la presión.
+
+%==============================================================
+\section{Problema 6}
+Considere una celda cúbica microscópica de lado $L_{micro}$ en un gas a TPE. (a) Derive la condición sobre $N$ tal que $\Delta\rho/\rho < \epsilon$. (b) Estime $L_{micro}$ para el aire a temperatura ambiente.
+
+\subsection{Solución}
+
+\subsubsection{(a) Condición sobre $N$}
+
+La fluctuación relativa en la densidad está dada por:
+$$
+\frac{\Delta\rho}{\rho} = \frac{\Delta N}{N} = \frac{1}{\sqrt{N}}
+$$
+Para que $\Delta\rho/\rho < \epsilon$, se requiere:
+$$
+\frac{1}{\sqrt{N}} < \epsilon \quad \Longrightarrow \quad N > \frac{1}{\epsilon^2}
+$$
+
+\subsubsection{(b) Estimación de $L_{micro}$ para el aire}
+
+Tomando $\epsilon = 10^{-3}$ como precisión deseada:
+$$
+N > \frac{1}{\epsilon^2} = 10^6 \text{ moléculas}
+$$
+
+La longitud microscópica se relaciona con la longitud de separación molecular mediante:
+$$
+L_{micro} = \epsilon^{-2/3}\, L_{mol}
+$$
+
+Para el aire a temperatura ambiente, $L_{mol} \approx 3{,}42 \times 10^{-9}$ m (calculado en el Problema 5). Con $\epsilon = 10^{-3}$:
+$$
+L_{micro} = (10^{-3})^{-2/3} \times 3{,}42 \times 10^{-9} = 10^2 \times 3{,}42 \times 10^{-9} \approx 3{,}4 \times 10^{-7} \text{ m} \approx 0{,}34 \ \mu\text{m}
+$$
+
+Así, una celda cúbica de lado $L_{micro} \approx 0{,}34$ $\mu$m contiene $10^6$ moléculas, lo cual garantiza que la fluctuación relativa en densidad sea menor que $10^{-3}$.
+
+%==============================================================
+\section{Problema 7}
+Para el nitrógeno molecular gaseoso ($M_{mol} = 0{,}028$ kg/mol) a $T = 300$ K calcule (a) la velocidad más probable $v_{mp}$, (b) la velocidad media $\langle v \rangle$ y (c) la velocidad media cuadrática $v_{rms}$.
+
+\subsection{Solución}
+
+Las tres velocidades características de la distribución de Maxwell-Boltzmann son:
+$$
+v_{mp} = \sqrt{\frac{2RT}{M_{mol}}}, \qquad \langle v \rangle = \sqrt{\frac{8RT}{\pi M_{mol}}}, \qquad v_{rms} = \sqrt{\frac{3RT}{M_{mol}}}
+$$
+donde $R = 8{,}314$ J/(mol·K).
+
+\subsubsection{(a) Velocidad más probable}
+
+$$
+v_{mp} = \sqrt{\frac{2 \times 8{,}314 \times 300}{0{,}028}} = \sqrt{\frac{4988{,}4}{0{,}028}} = \sqrt{178\,157} \approx 422 \text{ m/s}
+$$
+
+\subsubsection{(b) Velocidad media}
+
+$$
+\langle v \rangle = \sqrt{\frac{8 \times 8{,}314 \times 300}{\pi \times 0{,}028}} = \sqrt{\frac{19\,953{,}6}{0{,}08796}} = \sqrt{226\,846} \approx 476 \text{ m/s}
+$$
+
+\subsubsection{(c) Velocidad media cuadrática}
+
+$$
+v_{rms} = \sqrt{\frac{3 \times 8{,}314 \times 300}{0{,}028}} = \sqrt{\frac{7482{,}6}{0{,}028}} = \sqrt{267\,236} \approx 517 \text{ m/s}
+$$
+
+\subsubsection{Verificación del orden}
+
+Se cumple el orden universal:
+$$
+v_{mp} < \langle v \rangle < v_{rms} \quad \Longrightarrow \quad 422 < 476 < 517 \text{ m/s} \quad \checkmark
+$$
+
+Las razones entre estas velocidades son constantes universales:
+$$
+\frac{v_{mp}}{v_{rms}} = \sqrt{\frac{2}{3}} \approx 0{,}817, \qquad \frac{\langle v \rangle}{v_{rms}} = \sqrt{\frac{8}{3\pi}} \approx 0{,}921, \qquad \frac{\langle v \rangle}{v_{mp}} = \sqrt{\frac{4}{\pi}} \approx 1{,}128
+$$
+
+%==============================================================
+\section{Problema 8}
+Considere un volumen pequeño de gas que es una fracción $f$ de un volumen más grande que contiene $N$ moléculas. La probabilidad de que cualquier molécula se encuentre en el volumen pequeño es $f$. (a) Calcule la probabilidad de que el volumen pequeño contenga $m$ moléculas. (b) Muestre que el número promedio de moléculas en el volumen pequeño es $\langle m \rangle = Nf$. (c) Muestre que la varianza es $\langle m^2 \rangle - \langle m \rangle^2 = Nf(1-f) \equiv \lambda$ para $f \approx 0$.
+
+\subsection{Solución}
+
+\subsubsection{(a) Probabilidad de encontrar $m$ moléculas}
+
+Cada una de las $N$ moléculas tiene, de forma independiente, probabilidad $f$ de encontrarse en el volumen pequeño y probabilidad $1-f$ de no encontrarse. El número de formas de elegir $m$ moléculas de un total de $N$ es $\binom{N}{m}$. Por tanto, la probabilidad sigue una distribución binomial:
+$$
+P(m) = \binom{N}{m} f^m (1-f)^{N-m} = \frac{N!}{m!\,(N-m)!}\, f^m\, (1-f)^{N-m}
+$$
+
+\subsubsection{(b) Número promedio de moléculas}
+
+El valor esperado es:
+$$
+\langle m \rangle = \sum_{m=0}^{N} m\, P(m) = \sum_{m=0}^{N} m\, \frac{N!}{m!\,(N-m)!}\, f^m\, (1-f)^{N-m}
+$$
+El término $m=0$ no contribuye. Para $m \geq 1$, usando $m/m! = 1/(m-1)!$ y $N!/(N-m)! = N \cdot (N-1)!/(N-m)!$:
+\begin{align*}
+\langle m \rangle &= \sum_{m=1}^{N} \frac{N!}{(m-1)!\,(N-m)!}\, f^m\, (1-f)^{N-m} \\
+&= Nf \sum_{m=1}^{N} \frac{(N-1)!}{(m-1)!\,(N-m)!}\, f^{m-1}\, (1-f)^{N-m}
+\end{align*}
+Haciendo el cambio $m' = m - 1$:
+$$
+\langle m \rangle = Nf \sum_{m'=0}^{N-1} \frac{(N-1)!}{m'!\,(N-1-m')!}\, f^{m'}\, (1-f)^{N-1-m'} = Nf \sum_{m'=0}^{N-1} \binom{N-1}{m'} f^{m'} (1-f)^{N-1-m'}
+$$
+La suma es la normalización de una distribución binomial con parámetros $N-1$ y $f$, que vale 1. Por tanto:
+$$
+\boxed{\langle m \rangle = Nf}
+$$
+
+\subsubsection{(c) Varianza}
+
+La varianza de la distribución binomial se puede obtener calculando $\langle m^2 \rangle$. Usando $m^2 = m(m-1) + m$:
+$$
+\langle m^2 \rangle = \langle m(m-1) \rangle + \langle m \rangle
+$$
+Calculamos $\langle m(m-1) \rangle$ de forma análoga:
+\begin{align*}
+\langle m(m-1) \rangle &= \sum_{m=2}^{N} m(m-1)\, \frac{N!}{m!\,(N-m)!}\, f^m\, (1-f)^{N-m} \\
+&= N(N-1)\,f^2 \sum_{m'=0}^{N-2} \binom{N-2}{m'} f^{m'} (1-f)^{N-2-m'} = N(N-1)\,f^2
+\end{align*}
+Por tanto:
+$$
+\langle m^2 \rangle = N(N-1)\,f^2 + Nf
+$$
+Y la varianza:
+$$
+\langle m^2 \rangle - \langle m \rangle^2 = N(N-1)\,f^2 + Nf - N^2 f^2 = Nf - Nf^2 = Nf(1-f)
+$$
+
+Para $f \approx 0$ (volumen pequeño comparado con el total), $(1-f) \approx 1$, y la varianza se reduce a:
+$$
+\boxed{\langle m^2 \rangle - \langle m \rangle^2 = Nf(1-f) \approx Nf \equiv \lambda}
+$$
+
+Esto corresponde precisamente al límite de Poisson: cuando $N \to \infty$ y $f \to 0$ con $Nf = \lambda$ constante, la distribución binomial converge a la distribución de Poisson:
+$$
+P(m) \longrightarrow \frac{\lambda^m}{m!}\, e^{-\lambda}
+$$
+con $\langle m \rangle = \lambda$ y varianza $\Delta m^2 = \lambda$, de modo que la fluctuación es $\Delta m = \sqrt{\lambda}$.
+
+
+\section{Problema 9}
+Muestre que un cubo que contenga $N = M^3$ cubos más pequeños de igual tamaño tendrá $K = 6M^2 - 12M + 8$ cubos pequeños en su superficie. Estime la fluctuación $\Delta N$ cuando $N$ moléculas en un cubo oscilen con amplitud igual al tamaño molecular.
+
+\subsection{Solución}
+
+\subsubsection{Número de cubos en la superficie}
+
+Considérese un cubo de lado $L$ dividido en $M^3$ cubos pequeños de lado $L/M$. El número total de cubos pequeños es $N = M^3$.
+
+Los cubos que \emph{no} están en la superficie son los cubos interiores, que forman un cubo de lado $(M-2)$ (se excluye una capa de cubos en cada una de las seis caras). Por tanto, el número de cubos interiores es $(M-2)^3$.
+
+El número de cubos en la superficie es:
+$$
+K = M^3 - (M-2)^3
+$$
+
+Desarrollando $(M-2)^3 = M^3 - 6M^2 + 12M - 8$, se obtiene:
+$$
+K = M^3 - M^3 + 6M^2 - 12M + 8
+$$
+$$
+\boxed{K = 6M^2 - 12M + 8}
+$$
+
+\subsubsection{Estimación de la fluctuación}
+
+Cuando las moléculas oscilan con amplitud igual al tamaño molecular $L_{mol}$, únicamente las moléculas en la capa superficial (de espesor $L_{mol}$) pueden entrar o salir del cubo. El número de moléculas en esta capa superficial es aproximadamente $K$ (para $M$ grande).
+
+Para $M \gg 1$, el número de cubos superficiales se aproxima como:
+$$
+K \approx 6M^2
+$$
+
+La fluctuación en el número de moléculas dentro del cubo es la raíz cuadrada del número de moléculas que pueden fluctuar (las de la superficie):
+$$
+\Delta N \approx \sqrt{K} \approx \sqrt{6M^2} = \sqrt{6}\, M
+$$
+
+Dado que $N = M^3$, tenemos $M = N^{1/3}$, y por tanto:
+$$
+\boxed{\Delta N \approx \sqrt{6}\, N^{1/3}}
+$$
+
+La fluctuación relativa es:
+$$
+\frac{\Delta N}{N} \approx \frac{\sqrt{6}}{N^{2/3}}
+$$
+
+que se hace extremadamente pequeña para $N \sim N_A \sim 10^{23}$.
+
+%==============================================================
+\section{Problema 10}
+Un volumen esférico contiene un número grande $N$ de moléculas. Estime el número de moléculas $N_S$ en la superficie de la esfera y pruebe que la fluctuación en este número es $\Delta N_S \approx 6^{1/3}\pi^{1/6}N^{1/3} \approx 2{,}2\, N^{1/3}$ cuando oscilan con amplitud igual al tamaño molecular.
+
+\subsection{Solución}
+
+\subsubsection{Número de moléculas en la superficie}
+
+Sea $R$ el radio de la esfera y $L_{mol}$ la separación molecular. El número total de moléculas es:
+$$
+N = \frac{\frac{4}{3}\pi R^3}{L_{mol}^3}
+$$
+
+de donde:
+$$
+R = \left(\frac{3N}{4\pi}\right)^{1/3} L_{mol}
+$$
+
+Las moléculas que se encuentran en la superficie son aquellas dentro de una capa de espesor $L_{mol}$. El volumen de esta capa es aproximadamente $4\pi R^2 L_{mol}$, por lo que el número de moléculas superficiales es:
+$$
+N_S = \frac{4\pi R^2 L_{mol}}{L_{mol}^3} = \frac{4\pi R^2}{L_{mol}^2}
+$$
+
+Sustituyendo $R$:
+$$
+N_S = \frac{4\pi}{L_{mol}^2}\left(\frac{3N}{4\pi}\right)^{2/3} L_{mol}^2 = 4\pi\left(\frac{3N}{4\pi}\right)^{2/3}
+$$
+
+Simplificando:
+$$
+N_S = \frac{4\pi \cdot 3^{2/3}}{(4\pi)^{2/3}} N^{2/3} = (4\pi)^{1/3}\cdot 3^{2/3}\cdot N^{2/3} = (36\pi)^{1/3}\, N^{2/3}
+$$
+
+$$
+\boxed{N_S = (36\pi)^{1/3}\, N^{2/3} \approx 4{,}84\, N^{2/3}}
+$$
+
+\subsubsection{Fluctuación}
+
+Cuando las moléculas oscilan con amplitud $L_{mol}$, las únicas que pueden entrar o salir de la esfera son las $N_S$ moléculas de la superficie. La fluctuación es:
+$$
+\Delta N_S \approx \sqrt{N_S} = (36\pi)^{1/6}\, N^{1/3}
+$$
+
+Notando que $(36\pi)^{1/6} = (6^2\cdot\pi)^{1/6} = 6^{1/3}\cdot\pi^{1/6}$, se obtiene:
+$$
+\boxed{\Delta N_S \approx 6^{1/3}\pi^{1/6}\, N^{1/3} \approx 2{,}2\, N^{1/3}}
+$$
+
+La fluctuación relativa es:
+$$
+\frac{\Delta N_S}{N_S} \approx \frac{1}{\sqrt{N_S}} \approx \frac{1}{2{,}2\, N^{1/3}}
+$$
+
+que es extremadamente pequeña para $N \sim 10^{23}$.
+
+%==============================================================
+\section{Problema 11}
+Considere una partícula de gas material que contiene $N$ moléculas idénticas. Escriba la velocidad de la enésima molécula como $\vec{v}_n = \vec{v} + \vec{u}_n$ donde $\vec{v}$ es la velocidad del centro de masa y $\vec{u}_n$ es una contribución aleatoria debido al movimiento térmico. Asuma que $\langle \vec{u}_n \rangle = 0$, que las velocidades aleatorias no están correlacionadas y que $\langle u_n^2 \rangle = v_0^2$. Muestre que el promedio de la velocidad del centro de masa para la partícula de fluido es $\langle \vec{v}_c \rangle = \vec{v}$ y su fluctuación debido al movimiento térmico es $\Delta v_c = v_0/\sqrt{N}$.
+
+\subsection{Solución}
+
+\subsubsection{Velocidad del centro de masa}
+
+La velocidad del centro de masa de la partícula de fluido es:
+$$
+\vec{v}_c = \frac{1}{N}\sum_{n=1}^{N} \vec{v}_n = \frac{1}{N}\sum_{n=1}^{N}(\vec{v} + \vec{u}_n) = \vec{v} + \frac{1}{N}\sum_{n=1}^{N}\vec{u}_n
+$$
+
+\subsubsection{Promedio}
+
+Tomando el promedio y usando $\langle \vec{u}_n \rangle = 0$:
+$$
+\langle \vec{v}_c \rangle = \vec{v} + \frac{1}{N}\sum_{n=1}^{N}\langle \vec{u}_n \rangle = \vec{v}
+$$
+
+$$
+\boxed{\langle \vec{v}_c \rangle = \vec{v}}
+$$
+
+\subsubsection{Fluctuación}
+
+La fluctuación cuadrática es $\Delta v_c^2 = \langle v_c^2 \rangle - \langle \vec{v}_c \rangle^2$. Calculamos $\langle v_c^2 \rangle$:
+$$
+\langle v_c^2 \rangle = \frac{1}{N^2}\sum_{n=1}^{N}\sum_{m=1}^{N}\langle \vec{v}_n \cdot \vec{v}_m \rangle
+$$
+
+Para $n \neq m$, usando que las velocidades térmicas no están correlacionadas ($\langle \vec{u}_n \cdot \vec{u}_m \rangle = 0$) y que $\langle \vec{u}_n \rangle = 0$:
+$$
+\langle \vec{v}_n \cdot \vec{v}_m \rangle = \langle (\vec{v}+\vec{u}_n)\cdot(\vec{v}+\vec{u}_m)\rangle = v^2
+$$
+
+Para $n = m$:
+$$
+\langle v_n^2 \rangle = \langle |\vec{v}+\vec{u}_n|^2 \rangle = v^2 + 2\vec{v}\cdot\langle\vec{u}_n\rangle + \langle u_n^2 \rangle = v^2 + v_0^2
+$$
+
+Por tanto:
+$$
+\langle v_c^2 \rangle = \frac{1}{N^2}\left[N(v^2 + v_0^2) + N(N-1)v^2\right] = \frac{1}{N^2}\left[N^2 v^2 + Nv_0^2\right] = v^2 + \frac{v_0^2}{N}
+$$
+
+La fluctuación cuadrática es:
+$$
+\Delta v_c^2 = \langle v_c^2 \rangle - \langle \vec{v}_c \rangle^2 = v^2 + \frac{v_0^2}{N} - v^2 = \frac{v_0^2}{N}
+$$
+
+$$
+\boxed{\Delta v_c = \frac{v_0}{\sqrt{N}}}
+$$
+
+La fluctuación relativa es $\Delta v_c / v = v_0/(v\sqrt{N})$, que se hace despreciable para $N$ grande, justificando la descripción del continuo.
+
+%==============================================================
+\section{Problema 12}
+¿A qué precisión es la escala microscópica $L_{micro}$ igual al camino libre medio del aire cuando su densidad es 100 veces menor que lo usual?
+
+\subsection{Solución}
+
+\subsubsection{Relaciones fundamentales}
+
+La escala microscópica se define como:
+$$
+L_{micro} = \epsilon^{-2/3}\, L_{mol}
+$$
+
+donde $\epsilon$ es la precisión deseada y $L_{mol}$ es la separación molecular. El camino libre medio es:
+$$
+\lambda = \frac{L_{mol}^3}{\sqrt{2}\,\pi\, d^2}
+$$
+
+donde $d$ es el diámetro molecular.
+
+\subsubsection{Efecto de reducir la densidad}
+
+Cuando la densidad se reduce en un factor 100 ($\rho' = \rho_0/100$):
+
+\begin{itemize}
+    \item La separación molecular aumenta: $L_{mol}' = 100^{1/3}\, L_{mol,0}$
+    \item El camino libre medio aumenta en un factor 100 (pues $\lambda \propto L_{mol}^3 \propto 1/\rho$):
+$$
+\lambda' = 100\,\lambda_0
+$$
+\end{itemize}
+
+\subsubsection{Condición de igualdad}
+
+Se requiere $L_{micro} = \lambda'$:
+$$
+\epsilon^{-2/3}\, L_{mol}' = \lambda'
+$$
+$$
+\epsilon^{-2/3}\cdot 100^{1/3}\, L_{mol,0} = 100\,\lambda_0
+$$
+
+Despejando $\epsilon^{-2/3}$:
+$$
+\epsilon^{-2/3} = \frac{100\,\lambda_0}{100^{1/3}\, L_{mol,0}} = 100^{2/3}\,\frac{\lambda_0}{L_{mol,0}}
+$$
+
+\subsubsection{Evaluación numérica}
+
+Para el aire en condiciones normales: $L_{mol,0} \approx 3{,}4$ nm y $\lambda_0 \approx 65$ nm, de modo que:
+$$
+\frac{\lambda_0}{L_{mol,0}} \approx \frac{65}{3{,}4} \approx 19{,}1
+$$
+
+Por tanto:
+$$
+\epsilon^{-2/3} = 100^{2/3}\times 19{,}1 \approx 21{,}5 \times 19{,}1 \approx 412
+$$
+
+De donde:
+$$
+\epsilon = 412^{-3/2} = \frac{1}{412\sqrt{412}} \approx \frac{1}{8350}
+$$
+
+$$
+\boxed{\epsilon \approx 1{,}2 \times 10^{-4}}
+$$
+
+\subsubsection{Interpretación}
+
+Cuando la densidad del aire es 100 veces menor que lo normal (por ejemplo, a gran altitud), el camino libre medio crece tanto ($\lambda' \approx 6{,}5\;\mu$m) que la escala microscópica $L_{micro}$ solo puede alcanzarlo si se exige una precisión relativamente baja de $\epsilon \approx 10^{-4}$. Esto significa que a bajas densidades la aproximación del continuo se deteriora significativamente, y se requiere una descripción más detallada (como la dinámica de gases rarificados) para describir correctamente el flujo.
+
+
+\end{document}
