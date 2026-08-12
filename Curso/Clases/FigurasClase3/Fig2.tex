@@ -1,0 +1,71 @@
+\newcommand{\figuraCeldaPresion}{%
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small]
+        \coordinate (A) at (2.10,0.85);
+        \coordinate (B) at (6.65,0.85);
+        \coordinate (C) at (6.65,4.45);
+        \coordinate (D) at (2.10,4.45);
+        \coordinate (E) at (3.35,1.80);
+        \coordinate (F) at (7.90,1.80);
+        \coordinate (G) at (7.90,5.40);
+        \coordinate (H) at (3.35,5.40);
+
+        \fill[blue!5] (A)--(B)--(C)--(D)--cycle;
+        \fill[blue!12] (B)--(F)--(G)--(C)--cycle;
+        \fill[blue!18] (D)--(C)--(G)--(H)--cycle;
+        \draw[very thick] (A)--(B)--(C)--(D)--cycle;
+        \draw[very thick] (B)--(F)--(G)--(C);
+        \draw[very thick] (C)--(G)--(H)--(D);
+        \draw[very thick,dashed] (A)--(E)--(F);
+        \draw[very thick,dashed] (E)--(H);
+
+        \node[font=\bfseries] at (5.00,6.42)
+            {Presión sobre una celda cúbica};
+        \node[text=black!70] at (4.38,2.55)
+            {$p=p(\vec{r},t)$};
+
+        % Cara superior: vector de superficie y fuerza de presión.
+        \coordinate (T) at (5.18,4.92);
+        \draw[very thick,blue!70!black,-{Latex[length=3mm]}]
+            (T)--(5.18,5.95);
+        \node[blue!70!black,anchor=west] at (5.28,5.66)
+            {$d\vec{S}_z$};
+        \draw[very thick,red!75!black,-{Latex[length=3mm]}]
+            (4.72,5.92)--(4.72,5.03);
+        \node[red!75!black,anchor=east] at (4.62,5.60)
+            {$d\vec{F}_{p,z}$};
+
+        % Cara derecha.
+        \coordinate (R) at (7.28,3.30);
+        \draw[very thick,blue!70!black,-{Latex[length=3mm]}]
+            (R)--(8.73,3.72);
+        \node[blue!70!black,anchor=west] at (8.73,3.72)
+            {$d\vec{S}_x$};
+        \draw[very thick,red!75!black,-{Latex[length=3mm]}]
+            (8.60,3.16)--(7.42,2.82);
+        \node[red!75!black,anchor=west] at (8.52,2.88)
+            {$d\vec{F}_{p,x}$};
+
+        % Dimensiones de la celda.
+        \draw[<->,thick] (2.10,0.48)--node[below]{$dx$}(6.65,0.48);
+        \draw[<->,thick] (1.72,0.85)--node[left]{$dz$}(1.72,4.45);
+        \draw[<->,thick] (6.87,0.65)--node[below,sloped]{$dy$}(8.12,1.60);
+
+        \node[align=left,anchor=west] at (9.20,4.90)
+            {\textcolor{blue!70!black}{\rule{0.55cm}{1.2pt}}\;
+             vector de superficie\\[5pt]
+             \textcolor{red!75!black}{\rule{0.55cm}{1.2pt}}\;
+             fuerza de presión};
+        \node[align=center,anchor=west] at (9.20,2.48)
+            {$d\vec{F}_p=-p\,d\vec{S}$\\[4pt]
+             La fuerza apunta\\hacia el interior};
+    \end{tikzpicture}
+    \caption{Vectores de superficie y fuerzas de presión sobre dos caras de
+    una celda cúbica. Cada vector $d\vec{S}$ apunta hacia afuera, mientras que
+    la fuerza $d\vec{F}_p=-p\,d\vec{S}$ actúa normal a la cara y hacia el
+    interior. La presión isotrópica tiene el mismo valor para todas las
+    orientaciones.}
+    \label{fig:celda-presion}
+\end{figure}%
+}

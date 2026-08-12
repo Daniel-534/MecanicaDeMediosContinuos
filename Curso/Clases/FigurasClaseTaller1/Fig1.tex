@@ -1,0 +1,75 @@
+\newcommand{\figuraMoleculasVolumen}{%
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small]
+        % Recipiente grande y volumen de observación.
+        \draw[very thick,rounded corners=3pt,fill=blue!3]
+            (0,0) rectangle (6.2,4.2);
+        \node[font=\bfseries] at (3.1,4.55)
+            {Gas con $N_{\mathrm{tot}}$ moléculas};
+
+        \foreach \x/\y in {
+            0.35/0.45,0.85/1.25,0.55/2.20,1.15/3.25,1.65/0.65,
+            1.85/1.65,1.55/2.75,2.25/3.65,2.55/0.35,2.85/0.95,
+            2.55/1.55,3.15/1.95,3.65/2.65,3.85/1.25,4.35/0.55,
+            4.65/1.55,4.25/2.25,4.85/3.35,5.35/0.85,5.65/1.95,
+            5.35/2.75,5.85/3.65,3.25/3.55,0.75/3.75}
+        {
+            \fill[blue!65] (\x,\y) circle (0.075);
+        }
+
+        \draw[very thick,red!70!black,fill=red!5,rounded corners=2pt]
+            (2.20,1.05) rectangle (4.15,3.15);
+        \node[font=\bfseries,red!70!black] at (3.175,3.48)
+            {volumen $V$};
+
+        \foreach \x/\y in {
+            2.55/1.55,3.15/1.95,3.65/2.65,3.85/1.25,3.25/3.00}
+        {
+            \fill[red!75] (\x,\y) circle (0.095);
+        }
+        \node[align=center] at (3.175,0.62)
+            {$m$ moléculas observadas\\$p=V/V_{\mathrm{tot}}$};
+
+        \draw[->,very thick,red!70!black]
+            (6.55,2.10)--node[above]{muchas repeticiones}(7.75,2.10);
+
+        % Distribución de Poisson para lambda=3.
+        \begin{scope}[shift={(8.15,0.35)}]
+            \draw[->,thick] (0,0)--(5.4,0) node[right]{$m$};
+            \draw[->,thick] (0,0)--(0,3.65) node[left]{$P(m)$};
+
+            \foreach \m/\x/\h in {
+                0/0.35/0.65,1/0.85/1.94,2/1.35/2.91,3/1.85/2.91,
+                4/2.35/2.18,5/2.85/1.31,6/3.35/0.66,7/3.85/0.28,
+                8/4.35/0.11,9/4.85/0.04}
+            {
+                \fill[blue!30] (\x-0.18,0) rectangle (\x+0.18,\h);
+                \draw[blue!70!black,thick]
+                    (\x-0.18,0) rectangle (\x+0.18,\h);
+                \node[font=\scriptsize,anchor=north] at (\x,-0.04) {$\m$};
+            }
+
+            \draw[dashed,red!75!black,thick]
+                (1.85,0)--(1.85,3.35);
+            \node[red!70!black,anchor=south] at (1.85,3.35)
+                {$\langle m\rangle=\lambda=3$};
+            \draw[<->,very thick,orange!85!black]
+                (0.98,0.38)--node[above]{$\Delta m=\sqrt{3}$}(2.72,0.38);
+            \node[font=\bfseries] at (2.70,4.12)
+                {Distribución de Poisson};
+        \end{scope}
+
+        \node at (6.7,-0.65)
+            {$\displaystyle
+             P(m)=\frac{\lambda^m e^{-\lambda}}{m!}
+             \qquad
+             \frac{\Delta m}{\langle m\rangle}=\frac{1}{\sqrt{\lambda}}$};
+    \end{tikzpicture}
+    \caption{Conteo de moléculas en un volumen pequeño. Cada molécula del gas
+    tiene una probabilidad $p$ de encontrarse dentro de $V$. Al repetir la
+    observación, el número $m$ fluctúa alrededor de $\lambda=N_{\mathrm{tot}}p$
+    y sigue, en el límite diluido, una distribución de Poisson.}
+    \label{fig:taller-poisson-volumen}
+\end{figure}%
+}

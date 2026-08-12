@@ -1,0 +1,517 @@
+\shorthandoff{<>}
+\input{Clases/FigurasClaseTaller1/Fig1}
+\input{Clases/FigurasClaseTaller1/Fig2}
+\shorthandon{<>}
+
+\chapter{Clase Taller 1}
+
+%==============================================================
+\section{Experimentos aleatorios y probabilidad}
+%==============================================================
+
+\subsection{Definición de experimento aleatorio}
+
+Un \textbf{experimento aleatorio} es aquel cuyo resultado no puede predecirse con certeza antes de realizarlo, incluso cuando se repite bajo las mismas condiciones iniciales.
+
+\begin{itemize}
+    \item Cada repetición del experimento bajo condiciones iniciales (C.I.) idénticas puede producir un resultado diferente.
+    \item No tiene sentido preguntarse por \emph{el} resultado de un experimento aleatorio individual, sino por la \textbf{frecuencia} con que ocurre cada resultado posible al repetir el experimento un número muy grande de veces.
+\end{itemize}
+
+\begin{quote}
+\textit{Ejemplo:} Lanzar un dado. Cada lanzamiento con las mismas C.I. puede dar 1, 2, 3, 4, 5 o 6. Al repetir el lanzamiento muchas veces, se observa que cada cara aparece con una frecuencia relativa que tiende a $\frac{1}{6}$.
+\end{quote}
+
+\subsection{Espacio muestral}
+
+El \textbf{espacio muestral} $\mathcal{S}$ es el conjunto de todos los resultados posibles del experimento aleatorio:
+$$
+\mathcal{S} = \{s_1,\, s_2,\, s_3,\, \ldots\}
+$$
+
+\begin{quote}
+\textit{Ejemplo del dado:} $\mathcal{S} = \{1, 2, 3, 4, 5, 6\}$.
+\end{quote}
+
+\subsection{Evento}
+
+Un \textbf{evento} $A$ es cualquier subconjunto del espacio muestral:
+$$
+A \subseteq \mathcal{S}
+$$
+
+\subsection{Probabilidad}
+
+La \textbf{probabilidad} $P(A)$ de un evento $A$ se define como la frecuencia relativa con que ocurre dicho evento al realizar un número muy grande de repeticiones del experimento:
+$$
+P(A) = \lim_{N \to \infty} \frac{n_A}{N}
+$$
+donde $n_A$ es el número de veces que ocurre el evento $A$ en $N$ repeticiones.
+
+Se cumple siempre que:
+$$
+0 \leq P(A) \leq 1, \qquad P(\mathcal{S}) = 1
+$$
+
+\begin{quote}
+\textit{Nota:} También es válido asignar $P(s) = \frac{1}{|\mathcal{S}|}$ cuando todos los resultados son equiprobables. Por ejemplo, para un dado justo: $P(s) = \frac{1}{6}$ para cada cara.
+\end{quote}
+
+%==============================================================
+\section{Variables aleatorias}
+%==============================================================
+
+\subsection{Definición}
+
+Una \textbf{variable aleatoria} $X$ es una función que asigna un valor numérico a cada resultado del espacio muestral:
+$$
+X: \mathcal{S} \longrightarrow \mathbb{R}
+$$
+
+\begin{quote}
+\textit{Ejemplo:} Si el experimento es lanzar un dado, la variable aleatoria $X(\omega)$ toma los valores:
+$$
+X(\omega_1) = 1,\quad X(\omega_2) = 2,\quad X(\omega_3) = 3,\quad \ldots,\quad X(\omega_6) = 6
+$$
+\end{quote}
+
+\subsection{Clasificación}
+
+Las variables aleatorias se clasifican en:
+
+\begin{itemize}
+    \item \textbf{Discretas:} toman un número finito o numerable de valores (ejemplo: número de moléculas en un volumen).
+    \item \textbf{Continuas:} toman valores en un intervalo continuo (ejemplo: velocidad de una molécula).
+\end{itemize}
+
+Dependiendo del tipo de variable, la distribución de probabilidad será \textbf{discreta} o \textbf{continua}.
+
+%==============================================================
+\section{Distribuciones de probabilidad}
+%==============================================================
+
+\subsection{Distribución binomial}
+
+\subsubsection{Contexto}
+
+Se aplica cuando:
+\begin{itemize}
+    \item Hay $N$ experimentos independientes.
+    \item Cada experimento tiene solo dos resultados: éxito (probabilidad $p$) o fracaso (probabilidad $1-p$).
+    \item Se busca la probabilidad de obtener exactamente $m$ éxitos.
+\end{itemize}
+
+\subsubsection{Fórmula}
+
+$$
+P(m;\, N,\, p) = \binom{N}{m}\, p^m\, (1-p)^{N-m} = \frac{N!}{m!\,(N-m)!}\, p^m\, (1-p)^{N-m}
+$$
+
+donde:
+\begin{itemize}
+    \item $N$: número total de experimentos.
+    \item $m$: número de éxitos.
+    \item $p$: probabilidad de éxito en cada experimento.
+    \item $(1-p)$: probabilidad de fracaso.
+\end{itemize}
+
+\subsection{Distribución de Poisson}
+
+\subsubsection{Contexto}
+
+Surge como límite de la distribución binomial cuando $N \to \infty$ y $p \to 0$, manteniendo $\lambda = Np$ constante. Describe eventos raros e independientes.
+
+\subsubsection{Fórmula}
+
+$$
+P(m;\, \lambda) = \frac{\lambda^m \, e^{-\lambda}}{m!}
+$$
+
+donde $\lambda$ es el valor esperado (número promedio de éxitos).
+
+\subsection{Distribución de Maxwell-Boltzmann}
+
+\subsubsection{Contexto}
+
+Describe la distribución de velocidades moleculares en un gas ideal en equilibrio térmico. Es una distribución \textbf{continua}.
+
+\subsubsection{Densidad de probabilidad en velocidad}
+
+La probabilidad de encontrar una molécula con velocidad entre $v$ y $v + dv$ es:
+$$
+f(v)\, dv = 4\pi \left(\frac{m}{2\pi k_B T}\right)^{3/2} v^2 \, e^{-\frac{mv^2}{2k_B T}}\, dv
+$$
+
+donde:
+\begin{itemize}
+    \item $m$: masa de la molécula.
+    \item $k_B$: constante de Boltzmann ($k_B = 1{,}380\,649 \times 10^{-23}$ J/K).
+    \item $T$: temperatura absoluta.
+\end{itemize}
+
+\subsubsection{Forma en coordenadas cartesianas}
+
+En tres dimensiones, la distribución conjunta de las componentes de velocidad es:
+$$
+P(v_x, v_y, v_z)\, dv_x\, dv_y\, dv_z = \left(\frac{m}{2\pi k_B T}\right)^{3/2} e^{-\frac{m(v_x^2 + v_y^2 + v_z^2)}{2k_B T}}\, dv_x\, dv_y\, dv_z
+$$
+
+\subsubsection{Isotropía}
+
+La distribución es \textbf{isótropa} (no depende de la dirección), por lo que en coordenadas esféricas el elemento de volumen en el espacio de velocidades es:
+$$
+d^3 v = 4\pi\, v^2\, dv
+$$
+y la distribución se reduce a la forma radial $f(v)\,dv$ dada arriba.
+
+%==============================================================
+\section{Normalización de distribuciones}
+%==============================================================
+
+Toda distribución de probabilidad debe estar \textbf{normalizada}:
+
+\begin{itemize}
+    \item Para distribuciones \textbf{discretas}:
+$$
+\sum_{m=0}^{\infty} P(m) = 1
+$$
+
+    \item Para distribuciones \textbf{continuas}:
+$$
+\int_{-\infty}^{\infty} f(x)\, dx = 1
+$$
+\end{itemize}
+
+\begin{quote}
+\textit{Verificación para la distribución de Poisson:}
+$$
+\sum_{m=0}^{\infty} \frac{\lambda^m e^{-\lambda}}{m!} = e^{-\lambda} \sum_{m=0}^{\infty} \frac{\lambda^m}{m!} = e^{-\lambda} \cdot e^{\lambda} = 1 \quad \checkmark
+$$
+\end{quote}
+
+%==============================================================
+\section{Momentos estadísticos}
+%==============================================================
+
+\subsection{Valor esperado (media)}
+
+El \textbf{valor esperado} de una variable aleatoria $X$ se define como:
+
+\begin{itemize}
+    \item Caso discreto:
+$$
+\langle X \rangle = \sum_{m} m\, P(m)
+$$
+
+    \item Caso continuo:
+$$
+\langle X \rangle = \int_{-\infty}^{\infty} x\, f(x)\, dx
+$$
+\end{itemize}
+
+\subsection{Varianza}
+
+La \textbf{varianza} mide la dispersión de la distribución respecto a la media:
+$$
+(\Delta X)^2 = \langle (X - \langle X \rangle)^2 \rangle = \langle X^2 \rangle - \langle X \rangle^2
+$$
+
+\subsection{Desviación estándar (fluctuación)}
+
+La \textbf{desviación estándar} o \textbf{fluctuación} es:
+$$
+\Delta X = \sqrt{(\Delta X)^2} = \sqrt{\langle X^2 \rangle - \langle X \rangle^2}
+$$
+
+\subsection{Fluctuación relativa}
+
+La \textbf{fluctuación relativa} es el cociente:
+$$
+\frac{\Delta X}{\langle X \rangle}
+$$
+
+Esta cantidad es fundamental en mecánica de medios continuos: la aproximación del continuo es válida cuando la fluctuación relativa es despreciable.
+
+%==============================================================
+\section{Aplicación: moléculas en un volumen (Distribución de Poisson)}
+%==============================================================
+
+\subsection{Planteamiento}
+
+Considérese un volumen pequeño $V$ dentro de un volumen mucho mayor de gas que contiene $N_{\text{tot}}$ moléculas. La probabilidad de que cualquier molécula se encuentre en $V$ es $p$, muy pequeña. Se busca la probabilidad de encontrar exactamente $m$ moléculas en $V$.
+
+\figuraMoleculasVolumen
+
+\subsection{Modelo binomial}
+
+Cada molécula independente está o no está en $V$:
+\begin{itemize}
+    \item Probabilidad de estar en $V$: $p$.
+    \item Probabilidad de no estar: $1 - p$.
+\end{itemize}
+
+La distribución es binomial con parámetros $N_{\text{tot}}$ y $p$. En el límite $N_{\text{tot}} \to \infty$, $p \to 0$, con $\lambda = N_{\text{tot}}\, p$ constante, se obtiene la distribución de Poisson:
+$$
+P(m) = \frac{\lambda^m\, e^{-\lambda}}{m!}
+$$
+
+\subsection{Cálculo del valor esperado}
+
+$$
+\langle m \rangle = \sum_{m=0}^{\infty} m\, P(m) = \sum_{m=0}^{\infty} m\, \frac{\lambda^m e^{-\lambda}}{m!}
+$$
+
+Haciendo el cambio $m' = m - 1$:
+\begin{align*}
+\langle m \rangle &= e^{-\lambda} \sum_{m=1}^{\infty} \frac{\lambda^m}{(m-1)!} = e^{-\lambda} \sum_{m'=0}^{\infty} \frac{\lambda^{m'+1}}{m'!} \\
+&= \lambda\, e^{-\lambda} \sum_{m'=0}^{\infty} \frac{\lambda^{m'}}{m'!} = \lambda\, e^{-\lambda}\, e^{\lambda} = \lambda
+\end{align*}
+
+Por tanto:
+$$
+\boxed{\langle m \rangle = \lambda}
+$$
+
+\subsection{Cálculo de la varianza}
+
+Se usa la identidad $m^2 = m(m-1) + m$:
+$$
+\langle m^2 \rangle = \langle m(m-1) \rangle + \langle m \rangle
+$$
+
+Calculando $\langle m(m-1) \rangle$:
+\begin{align*}
+\langle m(m-1) \rangle &= \sum_{m=0}^{\infty} m(m-1)\, \frac{\lambda^m e^{-\lambda}}{m!} = e^{-\lambda} \sum_{m=2}^{\infty} \frac{\lambda^m}{(m-2)!} \\
+&= e^{-\lambda}\, \lambda^2 \sum_{m''=0}^{\infty} \frac{\lambda^{m''}}{m''!} = \lambda^2
+\end{align*}
+
+Entonces:
+$$
+\langle m^2 \rangle = \lambda^2 + \lambda
+$$
+
+Y la varianza:
+$$
+(\Delta m)^2 = \langle m^2 \rangle - \langle m \rangle^2 = (\lambda^2 + \lambda) - \lambda^2 = \lambda
+$$
+
+Por tanto:
+$$
+\boxed{\Delta m = \sqrt{\lambda}}
+$$
+
+\subsection{Fluctuación relativa}
+
+$$
+\frac{\Delta m}{\langle m \rangle} = \frac{\sqrt{\lambda}}{\lambda} = \frac{1}{\sqrt{\lambda}}
+$$
+
+\textbf{Conclusión:} Para $N \sim N_A \sim 10^{23}$ moléculas, la fluctuación relativa es del orden de $10^{-12}$, completamente despreciable. Esto justifica la descripción continua.
+
+%==============================================================
+\section{Aplicación: moléculas en la superficie de una esfera}
+%==============================================================
+
+\subsection{Planteamiento}
+
+Un volumen esférico contiene un número grande $N$ de moléculas. Se desea estimar el número de moléculas $N_S$ situadas en la superficie de la esfera y la fluctuación en este número cuando las moléculas oscilan con amplitud igual al tamaño molecular.
+
+\figuraMoleculasSuperficieEsfera
+
+\subsection{Cálculo del número de moléculas en la superficie}
+
+El volumen total de la esfera de radio $R$ es:
+$$
+V = \frac{4}{3}\pi R^3
+$$
+
+El número total de moléculas es $N$, y el volumen por molécula es:
+$$
+V_{\text{mol}} = \frac{V}{N} = L_{\text{mol}}^3
+$$
+
+Las moléculas que se encuentran en la superficie son aquellas que están dentro de una capa de espesor $L_{\text{mol}}$. El volumen de esta capa es aproximadamente:
+$$
+V_S \approx 4\pi R^2 \cdot L_{\text{mol}}
+$$
+
+El número de moléculas en la superficie es:
+$$
+N_S = \frac{V_S}{V_{\text{mol}}} = \frac{4\pi R^2 L_{\text{mol}}}{L_{\text{mol}}^3} = \frac{4\pi R^2}{L_{\text{mol}}^2}
+$$
+
+Usando que $N = \frac{4}{3}\pi R^3 / L_{\text{mol}}^3$, se tiene $R = \left(\frac{3N}{4\pi}\right)^{1/3} L_{\text{mol}}$, y por tanto:
+$$
+N_S = 4\pi \left(\frac{3N}{4\pi}\right)^{2/3} = (36\pi)^{1/3}\, N^{2/3} \approx 4{,}84\, N^{2/3}
+$$
+
+\subsection{Fluctuación en el número de moléculas superficiales}
+
+Las moléculas en la superficie son las únicas que pueden fluctuar (entrar o salir de la capa superficial). La fluctuación es:
+$$
+\Delta N_S \approx \sqrt{N_S} \approx (36\pi)^{1/6}\, N^{1/3} \approx 2{,}2\, N^{1/3}
+$$
+
+\subsection{Fluctuación relativa}
+
+$$
+\frac{\Delta N_S}{N_S} \approx \frac{2{,}2\, N^{1/3}}{4{,}84\, N^{2/3}} \approx \frac{1}{2{,}2\, N^{1/3}}
+$$
+
+Para $N \sim 10^{23}$: $\Delta N_S / N_S \sim 10^{-8}$, aún despreciable.
+
+%==============================================================
+\section{Fluctuaciones de velocidad y velocidad del centro de masa}
+%==============================================================
+
+\subsection{Planteamiento}
+
+Considérese una partícula material de fluido (un ``paquete'' de $N$ moléculas idénticas). La velocidad de la $n$-ésima molécula se escribe como:
+$$
+\vec{v}_n = \vec{v} + \vec{u}_n
+$$
+donde:
+\begin{itemize}
+    \item $\vec{v}$: velocidad del centro de masa de la partícula de fluido.
+    \item $\vec{u}_n$: contribución aleatoria (térmica) de la $n$-ésima molécula.
+\end{itemize}
+
+\subsection{Hipótesis}
+
+\begin{enumerate}[(i)]
+    \item $\langle \vec{u}_n \rangle = 0$ (la contribución térmica promedio es nula).
+    \item $\langle \vec{u}_n \cdot \vec{u}_m \rangle = 0$ para $n \neq m$ (velocidades no correlacionadas).
+    \item $\langle u_n^2 \rangle = v_0^2$ para todo $n$ (misma fluctuación cuadrática).
+\end{enumerate}
+
+\subsection{Velocidad del centro de masa}
+
+$$
+\vec{V}_{\text{cm}} = \frac{1}{N} \sum_{n=1}^{N} \vec{v}_n = \vec{v} + \frac{1}{N}\sum_{n=1}^{N} \vec{u}_n
+$$
+
+Tomando el promedio:
+$$
+\langle \vec{V}_{\text{cm}} \rangle = \vec{v}
+$$
+
+\subsection{Fluctuación de la velocidad del centro de masa}
+
+$$
+\langle V_{\text{cm}}^2 \rangle = \left\langle \left(\frac{1}{N}\sum_{n=1}^N \vec{v}_n\right) \cdot \left(\frac{1}{N}\sum_{m=1}^N \vec{v}_m\right)\right\rangle = \frac{1}{N^2}\sum_{n,m} \langle \vec{v}_n \cdot \vec{v}_m \rangle
+$$
+
+Los términos cruzados ($n \neq m$) se anulan por la hipótesis (ii), y queda:
+$$
+\langle V_{\text{cm}}^2 \rangle = \frac{1}{N^2}\sum_{n=1}^N v_0^2 = \frac{N v_0^2}{N^2} = \frac{v_0^2}{N}
+$$
+
+Por tanto, la fluctuación (desviación estándar) de la velocidad del centro de masa es:
+$$
+\boxed{\Delta V_{\text{cm}} = \frac{v_0}{\sqrt{N}}}
+$$
+
+\subsection{Interpretación}
+
+La fluctuación de la velocidad del centro de masa disminuye como $1/\sqrt{N}$. Para $N \sim 10^6$ moléculas (típico de una partícula de fluido en la descripción continua), la fluctuación relativa es $\sim 10^{-3}$, lo cual es aceptable para la mayoría de aplicaciones.
+
+Para que la fluctuación relativa sea menor que una precisión $\epsilon$:
+$$
+\frac{\Delta V_{\text{cm}}}{v} \lesssim \epsilon \quad \Longrightarrow \quad N \gtrsim \left(\frac{v_0}{\epsilon\, v}\right)^2
+$$
+
+%==============================================================
+\section{Longitud de separación molecular}
+%==============================================================
+
+\subsection{Definición}
+
+La \textbf{longitud de separación molecular} $L_{\text{mol}}$ es la distancia característica entre moléculas vecinas. Se define a partir del volumen por molécula:
+$$
+L_{\text{mol}} = \left(\frac{V}{N}\right)^{1/3} = \left(\frac{M_{\text{mol}}}{\rho\, N_A}\right)^{1/3}
+$$
+
+donde:
+\begin{itemize}
+    \item $M_{\text{mol}}$: masa molar de la sustancia.
+    \item $\rho$: densidad másica.
+    \item $N_A = 6{,}022 \times 10^{23}$ mol$^{-1}$: número de Avogadro.
+\end{itemize}
+
+\subsection{Cálculo para agua líquida}
+
+Para agua líquida a temperatura ambiente: $\rho = 1000$ kg/m$^3$, $M_{\text{mol}} = 0{,}018$ kg/mol.
+
+$$
+L_{\text{mol}} = \left(\frac{0{,}018}{1000 \times 6{,}022 \times 10^{23}}\right)^{1/3} \approx 3{,}1 \times 10^{-10} \text{ m} \approx 0{,}31 \text{ nm}
+$$
+
+\subsection{Cálculo para un gas ideal a TPE}
+
+Para un gas ideal a temperatura y presión estándar ($T = 293{,}15$ K, $p = 1$ atm $= 101\,325$ Pa), usando la ley de los gases ideales $pV = Nk_B T$:
+$$
+\frac{V}{N} = \frac{k_B T}{p}
+$$
+
+$$
+L_{\text{mol}} = \left(\frac{k_B T}{p}\right)^{1/3} = \left(\frac{1{,}381 \times 10^{-23} \times 293{,}15}{101\,325}\right)^{1/3}
+$$
+
+$$
+\boxed{L_{\text{mol}} \approx 3{,}4 \times 10^{-9} \text{ m} \approx 3{,}4 \text{ nm}}
+$$
+
+\subsection{Comparación y discusión}
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Sustancia} & \textbf{Condiciones} & $\boldsymbol{L_{\text{mol}}}$ \\
+\midrule
+Agua líquida & $T=20\,^{\circ}\mathrm{C}$, $\rho=1000\,\mathrm{kg\,m^{-3}}$ & $0{,}31\,\mathrm{nm}$ \\
+Gas ideal (aire) & TPE ($T = 293$ K, $p = 1$ atm) & $3{,}4$ nm \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+La aproximación del continuo es \textbf{más apropiada para líquidos} que para gases porque:
+\begin{itemize}
+    \item En líquidos, $L_{\text{mol}}$ es del orden del tamaño molecular ($\sim 0{,}3$ nm), y las moléculas están en contacto directo.
+    \item En gases, $L_{\text{mol}}$ es aproximadamente 10 veces mayor que el tamaño molecular, y hay mucho espacio vacío entre moléculas. Se necesitan volúmenes de muestreo más grandes para que la descripción continua sea válida.
+\end{itemize}
+
+\subsection{Condición para la validez del continuo}
+
+Para que la descripción continua sea válida con una precisión relativa $\epsilon$, se requiere:
+\begin{enumerate}
+    \item Que el número de moléculas en la partícula de fluido sea $N \gtrsim \epsilon^{-2}$.
+    \item Que el tamaño de la partícula de fluido $\ell$ satisfaga:
+$$
+\lambda \ll \ell \ll \ell_{\text{scale}}
+$$
+donde $\lambda$ es el camino libre medio y $\ell_{\text{scale}}$ es la escala macroscópica de variación.
+    \item Que la fluctuación relativa de densidad sea:
+$$
+\frac{\Delta \rho}{\rho} = \frac{1}{\sqrt{N}} \lesssim \epsilon
+$$
+\end{enumerate}
+
+%==============================================================
+\section{Resumen de resultados principales}
+%==============================================================
+
+\begin{center}
+\begin{tabular}{p{6cm} p{7cm}}
+\toprule
+\textbf{Concepto} & \textbf{Resultado} \\
+\midrule
+Distribución de Poisson & $P(m) = \lambda^m e^{-\lambda}/m!$ \\
+Media de Poisson & $\langle m \rangle = \lambda$ \\
+Varianza de Poisson & $(\Delta m)^2 = \lambda$ \\
+Fluctuación relativa & $\Delta m / \langle m \rangle = 1/\sqrt{\lambda}$ \\
+Fluctuación de $V_{\text{cm}}$ & $\Delta V_{\text{cm}} = v_0/\sqrt{N}$ \\
+Separación molecular & $L_{\text{mol}} = (M_{\text{mol}}/\rho N_A)^{1/3}$ \\
+Condición del continuo & $\Delta\rho/\rho = 1/\sqrt{N} \lesssim \epsilon$ \\
+\bottomrule
+\end{tabular}
+\end{center}

@@ -6,16 +6,19 @@
 \usepackage{amsmath,amssymb, mathrsfs}
 \usepackage[margin=2cm]{geometry}
 \usepackage{microtype}
-\usepackage[hidelinks,hypertexnames=false]{hyperref}
 \usepackage{titlesec}
-\usepackage{parskip}
 \usepackage{enumerate}
 \usepackage{float}
+\usepackage{booktabs}
 \usepackage{tikz}
 \usetikzlibrary{babel,arrows.meta,calc,decorations.pathreplacing}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
 \usepgfplotslibrary{fillbetween}
+\usepackage[hidelinks,hypertexnames=false]{hyperref}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5\baselineskip plus 2pt}
 
 \renewcommand{\chaptername}{Clase}
 \titleformat{\chapter}[display]
@@ -51,12 +54,15 @@
 \end{titlepage}
 
 \pagenumbering{roman}
+\begingroup
+\setlength{\parskip}{0pt}
 \tableofcontents
+\endgroup
 
 \pagenumbering{arabic}
 
 \input{Clases/Clase1}
 \input{Clases/Clase2}
+\input{Clases/ClaseTaller1}
 \input{Clases/Clase3}
-
 \end{document}

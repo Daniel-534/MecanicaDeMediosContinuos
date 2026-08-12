@@ -1,0 +1,86 @@
+\newcommand{\figuraElementoFluido}{%
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small]
+        % Escala macroscópica.
+        \draw[very thick,rounded corners=3pt,fill=cyan!5]
+            (0,0.65) rectangle (6.15,4.75);
+        \node[font=\bfseries] at (3.08,5.08)
+            {Campo macroscópico};
+
+        \draw[very thick,blue!65!black]
+            plot[smooth] coordinates {
+                (0.35,1.35) (1.25,1.70) (2.15,2.05)
+                (3.05,2.62) (4.05,3.20) (5.80,4.10)};
+        \draw[thick,blue!35]
+            plot[smooth] coordinates {
+                (0.35,2.05) (1.20,2.30) (2.15,2.75)
+                (3.10,3.15) (4.20,3.75) (5.80,4.35)};
+        \draw[thick,blue!35]
+            plot[smooth] coordinates {
+                (0.35,0.95) (1.30,1.15) (2.25,1.50)
+                (3.25,2.00) (4.35,2.55) (5.80,3.25)};
+
+        \draw[very thick,red!75!black,fill=red!8]
+            (3.52,2.20) rectangle (4.27,2.95);
+        \node[red!75!black,anchor=south] at (3.90,3.03)
+            {elemento local};
+        \draw[<->,thick,red!75!black]
+            (3.52,2.05)--node[below]{$\ell$}(4.27,2.05);
+
+        \draw[<->,thick,blue!65!black]
+            (0.45,0.98)--node[below,fill=cyan!5,inner sep=1pt]
+            {$\ell_{\mathrm{escala}}$}(5.70,0.98);
+
+        % Ampliación del elemento de fluido.
+        \draw[gray!65,dashed,thick] (4.27,2.95)--(8.05,4.82);
+        \draw[gray!65,dashed,thick] (4.27,2.20)--(8.05,1.15);
+
+        \coordinate (A) at (8.05,1.15);
+        \coordinate (B) at (11.35,1.15);
+        \coordinate (C) at (11.35,4.30);
+        \coordinate (D) at (8.05,4.30);
+        \coordinate (E) at (9.00,1.85);
+        \coordinate (F) at (12.30,1.85);
+        \coordinate (G) at (12.30,5.00);
+        \coordinate (H) at (9.00,5.00);
+
+        \fill[blue!5] (A)--(B)--(C)--(D)--cycle;
+        \fill[blue!10] (B)--(F)--(G)--(C)--cycle;
+        \fill[blue!16] (D)--(C)--(G)--(H)--cycle;
+        \draw[very thick] (A)--(B)--(C)--(D)--cycle;
+        \draw[very thick] (B)--(F)--(G)--(C);
+        \draw[very thick] (C)--(G)--(H)--(D);
+        \draw[very thick,dashed] (A)--(E)--(F);
+        \draw[very thick,dashed] (E)--(H);
+
+        \node[font=\bfseries] at (10.15,5.68)
+            {Elemento de fluido};
+
+        \foreach \x/\y in {
+            8.42/1.52,9.15/1.42,10.05/1.60,10.82/1.40,
+            8.30/2.20,9.05/2.42,9.85/2.12,10.65/2.48,11.18/2.02,
+            8.42/3.02,9.28/3.20,10.05/2.92,10.88/3.32,
+            8.30/3.78,9.10/3.92,9.92/3.62,10.70/4.02,
+            11.55/2.15,11.78/2.82,11.62/3.55,11.92/4.20,
+            9.22/4.52,10.00/4.42,10.85/4.55,11.55/4.68}
+        {
+            \shade[ball color=blue!65] (\x,\y) circle (0.075);
+        }
+
+        \draw[<->,thick,red!75!black]
+            (8.05,0.88)--node[below]{$\ell$}(11.35,0.88);
+        \draw[<->,thick,green!45!black]
+            (9.15,2.42)--node[above,sloped]{$\lambda$}(9.85,2.12);
+
+        \node[align=center,text=black!75] at (10.15,0.05)
+            {$\lambda\ll\ell\ll\ell_{\mathrm{escala}}$
+             \qquad $n\ell^3\gg1$};
+    \end{tikzpicture}
+    \caption{Separación de escalas para un elemento de fluido. El tamaño
+    $\ell$ es suficientemente pequeño para que los campos macroscópicos sean
+    casi uniformes, pero suficientemente grande para contener muchas
+    partículas y varios caminos libres medios.}
+    \label{fig:elemento-fluido}
+\end{figure}%
+}

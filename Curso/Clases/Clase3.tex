@@ -1,381 +1,300 @@
+\shorthandoff{<>}
+\input{Clases/FigurasClase3/Fig1}
+\input{Clases/FigurasClase3/Fig2}
+\input{Clases/FigurasClase3/Fig3}
+\shorthandon{<>}
+
 \chapter{Clase 3}
+\section{Partículas materiales}
+En la física del continuo, la materia se describe mediante \textit{partículas materiales}. Aunque una partícula material contiene un gran número de moléculas, se considera infinitesimal o puntual a escala macroscópica. Representa el cuerpo más pequeño que puede tratarse consistentemente como parte del continuo con la precisión requerida. Por lo tanto, la descripción del continuo no es válida a escalas inferiores a las de la partícula material.
+
+La interpretación microscópica depende del estado de la materia. En un sólido, contiene aproximadamente una colección fija de moléculas. En líquidos y gases, las moléculas entran y salen continuamente de la partícula. Si la composición molecular varía espacialmente, este intercambio produce difusión de materia. De manera similar, las variaciones espaciales de velocidad conducen a la difusión de momento, lo que macroscópicamente se manifiesta como fricción viscosa.
+
+\subsection{El concepto de elemento de fluido}
+Las ecuaciones de la mecánica del continuo se basan en el concepto de \textit{elemento de fluido}: una pequeña región de materia sobre la cual se pueden definir localmente cantidades macroscópicas como densidad, presión, temperatura y velocidad. Su tamaño característico $\ell$ debe satisfacer dos requisitos competitivos:
+
+\begin{enumerate}
+    \item Debe ser mucho menor que la escala macroscópica sobre la cual varían las propiedades del fluido. Para una cantidad $q$, esta escala se estima como:
+    $$ \ell_{\text{escala}} \sim \frac{q}{\|\nabla q\|} \implies \ell \ll \ell_{\text{escala}} $$
+    Esto permite considerar las variables macroscópicas como aproximadamente uniformes dentro del elemento.
+    
+    \item Debe contener un número suficientemente grande de partículas para que las fluctuaciones estadísticas sean despreciables. Si $n$ es la densidad numérica de partículas, se requiere:
+    $$ n\ell^3 \gg 1 $$
+\end{enumerate}
+
+Para un fluido colisional, se necesita una condición adicional: las partículas deben interactuar con la frecuencia suficiente para establecer el equilibrio termodinámico local. Si $\lambda$ es el camino libre medio, esto requiere $\lambda \ll \ell$. Combinando estas condiciones, se obtiene la jerarquía de escalas para un fluido colisional convencional:
+$$ \lambda \ll \ell \ll \ell_{\text{escala}} $$
+junto con el requisito $n\ell^3 \gg 1$. Las interacciones microscópicas frecuentes permiten definir cantidades termodinámicas e introducir una ecuación de estado $p = p(\rho, T)$. En sistemas astrofísicos efectivamente sin colisiones (como estrellas orbitando en una galaxia), se pueden usar descripciones tipo continuo, pero generalmente no se puede asumir el equilibrio termodinámico local ni una ecuación de estado convencional.
+
+\figuraElementoFluido
+
+\section{Descripciones euleriana y lagrangiana}
+Existen dos enfoques complementarios para describir la evolución de un fluido:
+
+\begin{itemize}
+    \item \textbf{Descripción euleriana:} El fluido se observa en posiciones fijas en el espacio. Las cantidades físicas se representan mediante campos, como $\rho = \rho(\vec{r}, t)$ o $\vec{v} = \vec{v}(\vec{r}, t)$. La derivada parcial $\partial q / \partial t$ mide la tasa de cambio de $q$ en una posición fija. Un flujo es \textit{estacionario} cuando todas las cantidades eulerianas son independientes del tiempo ($\partial q / \partial t = 0$).
+    \item \textbf{Descripción lagrangiana:} Se sigue a un elemento de fluido individual a medida que se mueve. Cada elemento se identifica con una etiqueta $\vec{a}$ (por ejemplo, su posición inicial), y su posición posterior es $\vec{r} = \vec{r}(\vec{a}, t)$. La tasa de cambio de las propiedades a lo largo de la trayectoria se denota por $Dq/Dt$.
+\end{itemize}
+
+Ambas descripciones se relacionan mediante la \textit{derivada material}:
+$$ \frac{Dq}{Dt} = \frac{\partial q}{\partial t} + \vec{v} \cdot \nabla q $$
+Incluso en un flujo estacionario ($\partial q / \partial t = 0$), un elemento de fluido puede experimentar cambios en sus propiedades al moverse a través de gradientes espaciales ($Dq/Dt = \vec{v} \cdot \nabla q \neq 0$). Numéricamente, los métodos eulerianos describen el fluido en una malla espacial (usando a menudo Refinamiento Adaptativo de Malla, AMR), mientras que los métodos lagrangianos siguen elementos discretos (como en la Hidrodinámica de Partículas Suavizadas, SPH, muy usada en astrofísica).
+
+\section{Fluidos en el Universo}
+Una gran fracción de la materia bariónica del Universo se encuentra en forma de fluidos. Las estrellas son cuerpos gaseosos (principalmente hidrógeno y helio) que, en primera aproximación, pueden verse como fluidos estáticos donde la gravedad hacia el interior se equilibra con un gradiente de presión hacia el exterior. El gas también se distribuye en el medio interestelar (ISM) y el medio intergaláctico (IGM), abarcando desde nubes moleculares frías y densas hasta gas caliente y diluido. Otros ejemplos incluyen vientos estelares, chorros (jets), discos de acreción, enanas blancas y estrellas de neutrones.
+
+Una característica notable de la dinámica de fluidos es que gran parte de esta complejidad microscópica puede incorporarse a través de una ecuación de estado $p = p(\rho, T)$. Una vez especificada, las mismas ecuaciones generales de la mecánica del continuo pueden aplicarse a sistemas tan diferentes como estrellas ordinarias, planetas gigantes o estrellas de neutrones.
+
+\section{Densidad}
+El término fluido es el nombre genérico para líquidos y gases. La densidad de masa de un fluido se define como:
+$$ \rho \equiv \lim_{\Delta V \to 0} \frac{\Delta m}{\Delta V} $$
+En la física del continuo, la densidad se entiende como un promedio macroscópico sobre un número suficientemente grande de constituyentes microscópicos, lo que requiere una clara separación de escalas.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{l c | l c}
+\hline
+\textbf{Material} & \textbf{Densidad (kg/m$^3$)} & \textbf{Material} & \textbf{Densidad (kg/m$^3$)} \\
+\hline
+Aire (1 atm, 20$^\circ$C) & 1.20 & Hierro/Acero & $7.8 \times 10^3$ \\
+Etanol & $0.81 \times 10^3$ & Latón & $8.6 \times 10^3$ \\
+Benceno & $0.90 \times 10^3$ & Cobre & $8.9 \times 10^3$ \\
+Hielo & $0.92 \times 10^3$ & Plata & $10.5 \times 10^3$ \\
+Agua & $1.00 \times 10^3$ & Plomo & $11.3 \times 10^3$ \\
+Agua de mar & $1.03 \times 10^3$ & Mercurio & $13.6 \times 10^3$ \\
+Sangre & $1.06 \times 10^3$ & Oro & $19.3 \times 10^3$ \\
+Glicerina & $1.26 \times 10^3$ & Platino & $21.4 \times 10^3$ \\
+Concreto & $2.0 \times 10^3$ & Iridio & $22.56 \times 10^3$ \\
+Aluminio & $2.7 \times 10^3$ & Osmio & $22.59 \times 10^3$ \\
+\hline
+\end{tabular}
+\caption{Densidades de algunas sustancias comunes.}
+\end{table}
+
+\subsection{Densidad en ambientes astrofísicos}
+Los sistemas astrofísicos abarcan un rango extraordinario de densidades. El Sol, por ejemplo, tiene una densidad media comparable a la del agua ($\sim 1.4 \times 10^3 \text{ kg/m}^3$), mientras que su densidad central alcanza $\sim 1.5 \times 10^5 \text{ kg/m}^3$. En el otro extremo, las estrellas compactas presentan densidades extremas: las enanas blancas alcanzan $10^9 - 10^{10} \text{ kg/m}^3$ y las estrellas de neutrones $\sim 10^{18} \text{ kg/m}^3$. Por el contrario, el medio interestelar es extraordinariamente diluido.
+
+A escalas aún mayores, la densidad media del Universo se caracteriza por la \textit{densidad crítica}:
+$$ \rho_c = \frac{3H_0^2}{8\pi G} $$
+la cual es del orden de $10^{-26} \text{ kg/m}^3$ para el valor actual de la constante de Hubble.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{l c}
+\hline
+\textbf{Sistema} & \textbf{Densidad (kg/m$^3$)} \\
+\hline
+Aire (1 atm, 20$^\circ$C) & $\sim 1$ \\
+Agua & $1.0 \times 10^3$ \\
+Densidad media del Sol & $1.4 \times 10^3$ \\
+Núcleo solar & $1.5 \times 10^5$ \\
+Enana blanca & $10^9 - 10^{10}$ \\
+Estrella de neutrones & $\sim 10^{18}$ \\
+Medio interestelar & $\sim 10^{-21} - 10^{-18}$ \\
+Densidad crítica del Universo & $\sim 10^{-26}$ \\
+\hline
+\end{tabular}
+\caption{Densidades características de algunos sistemas terrestres y astrofísicos.}
+\end{table}
 
 \section{Presión}
 
-Cualquier fluido alcanza eventualmente un estado de equilibrio hidrostático
-en ausencia de fuerzas impulsoras externas y ante la presencia de mecanismos
-disipativos. En este estado, el movimiento cesa y los campos físicos dejan de
-variar con el tiempo.
+Considérese las fuerzas que actúan entre elementos de fluido vecinos. En un fluido colisional, estas fuerzas internas están estrechamente relacionadas con el movimiento microscópico y las interacciones de las partículas constituyentes.
 
-La presión es una fuerza de contacto que actúa sobre superficies reales o
-imaginarias dentro de un cuerpo. Como un fluido en reposo no puede sostener
-esfuerzos de cizalla, la fuerza de contacto actúa exclusivamente en dirección
-normal a cada elemento de superficie.
+A temperatura finita, las moléculas experimentan movimiento aleatorio respecto al marco de reposo local del fluido. Cuando cruzan o interactúan a través de una superficie imaginaria, transportan momento. La presión puede interpretarse microscópicamente como el \textbf{flujo de momento} asociado a estos movimientos aleatorios.
 
-\subsection{Definición y unidades}
-
-La presión se define como la magnitud de la fuerza normal ejercida por unidad
-de área:
-
+En equilibrio térmico, los movimientos microscópicos aleatorios son isotrópicos, de modo que no existe una dirección espacial privilegiada. En consecuencia, la fuerza asociada a la presión actúa \textbf{normal} a cualquier superficie y tiene la misma magnitud por unidad de área para todas las orientaciones en un punto dado. Así, la presión es un \textbf{campo escalar}:
 $$
-p=\frac{F_{\mathrm{n}}}{A}.
+p = p(\vec{r}, t)
 $$
 
-En el Sistema Internacional, su unidad es el pascal,
-
+y la fuerza de presión que actúa sobre un elemento de superficie orientado $d\vec{S} = \hat{s}\, dS$ es:
 $$
-1\,\mathrm{Pa}=1\,\mathrm{N\,m^{-2}}.
+d\vec{F}_p = -p\, d\vec{S}
 $$
 
-También se utilizan con frecuencia las siguientes unidades:
+\figuraCeldaPresion
 
+En un continuo más general, la fuerza por unidad de área que actúa a través de una superficie no necesita ser perpendicular a ella. La fuerza de superficie se describe entonces mediante el \textbf{tensor de esfuerzos} $\sigma_{ij}$. Con la convención de que un esfuerzo normal positivo representa tensión, el esfuerzo isotrópico asociado a la presión es:
+$$
+\sigma^{(p)}_{ij} = -p\,\delta_{ij}
+$$
+
+Más generalmente, el tensor de esfuerzos de un fluido puede escribirse como:
+$$
+\sigma_{ij} = -p\,\delta_{ij} + \tau_{ij}
+$$
+donde $\tau_{ij}$ representa esfuerzos no isotrópicos, como los asociados a la viscosidad.
+
+%==============================================================
+\section{Conservación de la masa}
+
+Considérese un volumen fijo $V$ limitado por una superficie cerrada $S$. Si $\rho$ es la densidad másica, la masa total contenida en el volumen es:
+$$
+M = \int_V \rho\, dV
+$$
+y su tasa de cambio es:
+$$
+\frac{dM}{dt} = \frac{\partial}{\partial t}\int_V \rho\, dV
+$$
+
+El flujo de masa a través de un elemento de superficie infinitesimal $d\vec{S}$ es $\rho\,\vec{v}\cdot d\vec{S}$. Dado que $d\vec{S}$ apunta hacia afuera, la tasa neta a la que la masa entra al volumen es:
+$$
+-\oint_S \rho\,\vec{v}\cdot d\vec{S}
+$$
+
+En ausencia de fuentes o sumideros, la conservación de la masa exige:
+$$
+\frac{\partial}{\partial t}\int_V \rho\, dV = -\oint_S \rho\,\vec{v}\cdot d\vec{S}
+$$
+
+Usando el teorema de la divergencia:
+$$
+\oint_S \rho\,\vec{v}\cdot d\vec{S} = \int_V \vec{\nabla}\cdot(\rho\,\vec{v})\, dV
+$$
+
+se obtiene:
+$$
+\int_V \left[\frac{\partial \rho}{\partial t} + \vec{\nabla}\cdot(\rho\,\vec{v})\right] dV = 0
+$$
+
+Dado que esta relación debe cumplirse para cualquier volumen arbitrario $V$, el integrando debe anularse. Por tanto, la forma local de la conservación de la masa es:
+$$
+\boxed{\frac{\partial \rho}{\partial t} + \vec{\nabla}\cdot(\rho\,\vec{v}) = 0}
+$$
+
+Esta es la \textbf{ecuación de continuidad} en forma euleriana.
+
+Usando la identidad $\vec{\nabla}\cdot(\rho\,\vec{v}) = \rho\,\vec{\nabla}\cdot\vec{v} + \vec{v}\cdot\vec{\nabla}\rho$ y la definición de la derivada material:
+$$
+\frac{D\rho}{Dt} = \frac{\partial \rho}{\partial t} + \vec{v}\cdot\vec{\nabla}\rho
+$$
+
+la ecuación de continuidad puede escribirse equivalentemente en forma lagrangiana como:
+$$
+\boxed{\frac{D\rho}{Dt} + \rho\,\vec{\nabla}\cdot\vec{v} = 0}
+$$
+
+\subsection{Flujo incompresible}
+
+Un flujo incompresible es aquel en el que cada elemento de fluido preserva su densidad mientras se mueve:
+$$
+\frac{D\rho}{Dt} = 0
+$$
+
+La ecuación de continuidad implica entonces:
+$$
+\boxed{\vec{\nabla}\cdot\vec{v} = 0}
+$$
+
+Así, un campo de velocidad incompresible es libre de divergencia. Nótese que la incompresibilidad no requiere necesariamente que la densidad tenga el mismo valor en todas partes; requiere que la densidad de cada elemento de fluido permanezca constante a lo largo de su trayectoria.
+
+\figuraFlujoIncompresible
+
+%==============================================================
+\section{Ecuación de momento}
+
+Se deriva ahora la ecuación que gobierna el movimiento de un fluido sujeto a fuerzas de presión y gravitacionales. Considérese un volumen material $V$ de fluido con densidad $\rho$ y velocidad $\vec{v}$. La segunda ley de Newton establece que la tasa de cambio de su momento es igual a la fuerza total que actúa sobre él.
+
+La presión ejercida por el fluido circundante sobre un elemento de superficie infinitesimal $d\vec{S}$ está dirigida hacia adentro y es:
+$$
+d\vec{F}_p = -p\, d\vec{S}
+$$
+
+La fuerza total de presión que actúa sobre el volumen de fluido es entonces:
+$$
+\vec{F}_p = -\oint_S p\, d\vec{S} = -\int_V \vec{\nabla} p\, dV
+$$
+donde se ha usado el teorema de la divergencia. Así, una presión espacialmente uniforme no produce fuerza neta; es el \textbf{gradiente de presión} el que acelera el fluido.
+
+Si $\vec{g}$ denota la aceleración gravitacional local, la fuerza gravitacional que actúa sobre el volumen es:
+$$
+\vec{F}_g = \int_V \rho\,\vec{g}\, dV
+$$
+
+La segunda ley de Newton aplicada al volumen material da:
+$$
+\frac{D}{Dt}\int_V \rho\,\vec{v}\, dV = -\int_V \vec{\nabla} p\, dV + \int_V \rho\,\vec{g}\, dV
+$$
+
+Para un elemento material infinitesimal de volumen $\delta V$, la conservación de la masa implica:
+$$
+\frac{D}{Dt}(\rho\,\delta V) = 0
+$$
+
+En consecuencia:
+$$
+\frac{D}{Dt}(\rho\,\vec{v}\,\delta V) = \rho\,\delta V\,\frac{D\vec{v}}{Dt}
+$$
+
+La segunda ley de Newton se convierte entonces en:
+$$
+\rho\,\delta V\,\frac{D\vec{v}}{Dt} = -\delta V\,\vec{\nabla} p + \rho\,\delta V\,\vec{g}
+$$
+
+Dividiendo por $\delta V$ se obtiene la \textbf{ecuación de momento en forma lagrangiana}:
+$$
+\boxed{\rho\,\frac{D\vec{v}}{Dt} = -\vec{\nabla} p + \rho\,\vec{g}}
+$$
+
+Usando la derivada material:
+$$
+\frac{D\vec{v}}{Dt} = \frac{\partial \vec{v}}{\partial t} + (\vec{v}\cdot\vec{\nabla})\vec{v}
+$$
+
+la ecuación de momento puede escribirse equivalentemente en \textbf{forma euleriana} como:
+$$
+\boxed{\rho\left[\frac{\partial \vec{v}}{\partial t} + (\vec{v}\cdot\vec{\nabla})\vec{v}\right] = -\vec{\nabla} p + \rho\,\vec{g}}
+$$
+
+Los dos términos del lado izquierdo tienen significados físicos distintos:
 \begin{itemize}
-    \item bar:
-    $1\,\mathrm{bar}=10^5\,\mathrm{Pa}$;
-    \item atmósfera estándar:
-    $1\,\mathrm{atm}=101325\,\mathrm{Pa}$;
-    \item hectopascal:
-    $1\,\mathrm{hPa}=100\,\mathrm{Pa}$, equivalente a un milibar.
+    \item $\partial\vec{v}/\partial t$ describe el cambio local de la velocidad en una posición fija.
+    \item $(\vec{v}\cdot\vec{\nabla})\vec{v}$ es la \textbf{aceleración convectiva}, que surge porque un elemento de fluido se mueve a través de regiones con diferentes velocidades.
 \end{itemize}
 
-\subsection{El mar incompresible}
+La ecuación de momento establece que un elemento de fluido se acelera en respuesta a gradientes de presión y fuerzas de cuerpo como la gravedad. En ausencia de esfuerzos viscosos, esta ecuación es la \textbf{ecuación de Euler} de la dinámica de fluidos.
 
-Considérese una columna vertical de un fluido en equilibrio mecánico, con
-densidad constante $\rho_0$, área transversal $A$ y altura $h$. La presión en
-la base es $p$, mientras que en la superficie superior es $p_0$. El balance de
-fuerzas verticales exige que la fuerza ascendente en la base equilibre la
-fuerza descendente en la superficie y el peso de la columna:
+%==============================================================
+\section{Ecuación de energía}
 
-$$
-pA=p_0A+Mg_0.
-$$
-
-Como la masa del fluido es
-
-$$
-M=\rho_0Ah,
-$$
-
-la presión en la base resulta
-
-$$
-p=p_0+\rho_0g_0h.
-$$
-
-Si el eje $z$ se orienta verticalmente hacia arriba y la superficie libre se
-encuentra en $z=0$, los puntos bajo la superficie tienen $z<0$. En estas
-coordenadas, el campo de presión es
-
-$$
-\boxed{p(z)=p_0-\rho_0g_0z}.
-$$
-
-Por tanto, la presión aumenta linealmente con la profundidad. En el mar, este
-aumento es aproximadamente de un bar por cada diez metros de profundidad.
-
-\subsubsection*{Ejemplo: fuerza sobre una compuerta}
-
-Considérese una compuerta vertical de ancho $L$, con agua hasta una altura
-$h$. La presión atmosférica $p_0$ actúa a ambos lados, por lo que la fuerza
-neta depende del exceso de presión hidrostática:
-
-$$
-p(z)-p_0=-\rho_0g_0z.
-$$
-
-Un elemento horizontal de altura $dz$ tiene área $dA=L\,dz$. La fuerza total
-sobre la compuerta es entonces
-
-$$
-\begin{aligned}
-F
-&=\int_{-h}^{0}\bigl(p(z)-p_0\bigr)L\,dz\\
-&=-\rho_0g_0L\int_{-h}^{0}z\,dz\\
-&=\frac{1}{2}\rho_0g_0Lh^2.
-\end{aligned}
-$$
-
-Este resultado también puede interpretarse como el producto del área
-$Lh$ por el exceso de presión promedio,
-$\frac{1}{2}\rho_0g_0h$.
-
-\subsubsection*{Ejemplo: barómetro de mercurio de Torricelli}
-
-En un barómetro de mercurio, la columna alcanza una altura $h$ cuando su peso
-equilibra la presión atmosférica exterior $p$. Si la presión $p_0$ en la parte
-superior del tubo es prácticamente nula, se cumple
-
-$$
-p=\rho_0g_0h,
-$$
-
-y, por tanto,
-
-$$
-\boxed{h=\frac{p}{\rho_0g_0}}.
-$$
-
-Para una presión de una atmósfera y una densidad del mercurio de
-$13.534\,\mathrm{g\,cm^{-3}}$, la altura de la columna es aproximadamente
-$76.34\,\mathrm{cm}$.
-
-\subsection{¿Atmósfera incompresible?}
-
-Aunque el aire es compresible, el modelo de densidad constante proporciona
-una aproximación razonable durante los primeros kilómetros de la atmósfera.
-Si se supusiera una densidad constante $\rho_0$, la presión disminuiría
-linealmente con la altura:
-
-$$
-p(z)=p_0-\rho_0g_0z.
-$$
-
-En este modelo, la presión se anularía a la altura característica
-
-$$
-h_0=\frac{p_0}{\rho_0g_0}.
-$$
-
-Para valores atmosféricos estándar cercanos a $25\,^{\circ}\mathrm{C}$, se
-obtiene
-
-$$
-h_0\approx8.72\,\mathrm{km}.
-$$
-
-La presión real no se anula a esta altura porque la densidad del aire también
-disminuye con $z$. Sin embargo, $h_0$ proporciona la escala vertical en la que
-ocurren cambios atmosféricos importantes, mientras que la aproximación lineal
-es útil aproximadamente durante los primeros $2\,\mathrm{km}$.
-
-\subsection{Origen microscópico de la presión en gases}
-
-En un gas, la presión surge del intercambio de momento producido por las
-colisiones de las moléculas contra las paredes del recipiente. Considérese una
-pared perpendicular al eje $z$ y una molécula de masa $m$ que se aproxima con
-$v_z<0$. Si la colisión es elástica, su velocidad normal cambia de $v_z$ a
-$-v_z$.
-
-La magnitud del momento transferido a la pared por cada colisión es
-
-$$
-2m|v_z|.
-$$
-
-Si inicialmente se supone que todas las moléculas tienen la misma componente
-$v_z<0$, la masa que alcanza un área $A$ durante un intervalo $dt$ es
-
-$$
-dM=\rho A(-v_z)\,dt.
-$$
-
-El momento transferido en dirección normal es
-
-$$
-dP_z=2v_z\,dM
-=-2\rho v_z^2A\,dt,
-$$
-
-de modo que la fuerza ejercida sobre la pared es
-
-$$
-F_z=\frac{dP_z}{dt}
-=-2\rho v_z^2A.
-$$
-
-El signo negativo indica que la fuerza apunta en dirección opuesta al eje
-$z$. Para obtener la presión debe considerarse que solo la mitad de las
-moléculas se mueve hacia la pared y que existe una distribución de
-velocidades. La magnitud de la fuerza promedio por unidad de área es entonces
-
-$$
-p=\rho\langle v_z^2\rangle.
-$$
-
-En un gas isotrópico no existe una dirección privilegiada, por lo que
-
-$$
-\langle v_x^2\rangle
-=\langle v_y^2\rangle
-=\langle v_z^2\rangle
-=\frac{1}{3}\langle v^2\rangle.
-$$
-
-Se obtiene así la relación microscópica
-
-$$
-\boxed{
-p=\rho\langle v_z^2\rangle
-=\frac{1}{3}\rho\langle v^2\rangle
-}.
-$$
-
-La rapidez cuadrática media molecular se define como
-
-$$
-v_{\mathrm{mol}}=\sqrt{\langle v^2\rangle},
-$$
-
-por lo que
-
-$$
-\boxed{v_{\mathrm{mol}}=\sqrt{\frac{3p}{\rho}}}.
-$$
-
-Para el aire a una presión de una atmósfera y una temperatura cercana a
-$18\,^{\circ}\mathrm{C}$, esta rapidez es aproximadamente
-$500\,\mathrm{m\,s^{-1}}$, un valor del mismo orden de magnitud que la
-velocidad del sonido.
-
-\subsection{El campo de presión}
-
-La presión se manifiesta como una fuerza de contacto que actúa sobre
-superficies. Estas pueden ser interfaces físicas reales, donde las propiedades
-del material cambian abruptamente, o superficies imaginarias que separan dos
-partes de un mismo cuerpo.
-
-\subsubsection{Definición matemática de la fuerza de presión}
-
-Para analizar esta fuerza, se divide una superficie orientada en elementos
-infinitesimales. El vector de superficie se define como
-
-$$
-d\vec{S}=\vec{n}\,dS,
-$$
-
-donde $dS$ es el área del elemento y $\vec{n}$ es el vector unitario normal.
-Como un fluido en reposo no puede sostener fuerzas de cizalla, las fuerzas de
-contacto actúan únicamente en la dirección normal.
-
-La fuerza ejercida por el material situado en el lado positivo del elemento
-sobre el material situado en el lado negativo se expresa mediante el campo de
-presión $p(\vec{x})$ como
-
-$$
-d\vec{F}=-p(\vec{x})\,d\vec{S}.
-$$
-
-El signo negativo indica que una presión positiva produce una fuerza opuesta
-a la normal exterior, es decir, una compresión. Una presión negativa
-representaría una tensión sobre la superficie. La fuerza de presión total
-sobre una superficie $S$ es
-
-$$
-\boxed{
-\vec{F}=-\int_S p\,d\vec{S}
-}.
-$$
-
-\subsubsection{Fuerza resultante sobre una partícula material}
+La tercera ley fundamental de conservación que gobierna un fluido es la conservación de la energía. Además de su energía cinética macroscópica, un fluido posee \textbf{energía interna} asociada al movimiento microscópico y las interacciones de sus partículas constituyentes.
 
-Considérese una partícula material infinitesimal en forma de caja rectangular,
-con lados $dx$, $dy$ y $dz$. Su volumen es
-
-$$
-dV=dx\,dy\,dz.
-$$
-
-La fuerza resultante surge de la pequeña diferencia de presión entre caras
-opuestas. En la dirección $z$ se tiene
-
-$$
-dF_z
-=\bigl[p(x,y,z)-p(x,y,z+dz)\bigr]dx\,dy.
-$$
-
-Al expandir la presión de la cara superior hasta primer orden,
-
-$$
-p(x,y,z+dz)
-\approx p(x,y,z)+\frac{\partial p}{\partial z}dz,
-$$
-
-se obtiene
-
-$$
-dF_z
-\approx-\frac{\partial p}{\partial z}dV.
-$$
-
-Al sumar las contribuciones de las tres direcciones espaciales, la fuerza de
-presión total sobre la partícula es
-
+Sea $e$ la \textbf{energía interna específica}, es decir, la energía interna por unidad de masa. Para un fluido invíscido, la primera ley de la termodinámica aplicada a un elemento de fluido puede escribirse como:
 $$
-\boxed{
-d\vec{F}=-\vec{\nabla}p\,dV
-}.
+\rho\,\frac{De}{Dt} = -p\,\vec{\nabla}\cdot\vec{v} + \rho\,\dot{q}
 $$
+donde $\dot{q}$ representa la tasa neta de calentamiento por unidad de masa debida a procesos distintos de la compresión o expansión mecánica.
 
-Esto significa que el efecto de todas las fuerzas de contacto es equivalente
-a una fuerza de volumen cuya densidad es el gradiente negativo de la presión,
-$-\vec{\nabla}p$.
+El término $-p\,\vec{\nabla}\cdot\vec{v}$ describe el trabajo mecánico asociado a la compresión o expansión del fluido:
+\begin{itemize}
+    \item Si $\vec{\nabla}\cdot\vec{v} < 0$, el elemento de fluido se comprime y su energía interna aumenta.
+    \item Si $\vec{\nabla}\cdot\vec{v} > 0$, el fluido se expande y realiza trabajo sobre su entorno, reduciendo su energía interna.
+\end{itemize}
 
-\subsubsection{Teorema de Gauss}
+\subsection{Caso adiabático}
 
-La fuerza de presión total sobre un cuerpo de volumen $V$ y superficie cerrada
-$S$ puede calcularse mediante una integral de superficie o una integral de
-volumen. La equivalencia entre ambas expresiones conduce a
-
-$$
-\boxed{
-\oint_S p\,d\vec{S}
-=\int_V \vec{\nabla}p\,dV
-}.
-$$
-
-Para un campo vectorial general $\vec{U}$, el teorema de Gauss se expresa como
-
-$$
-\boxed{
-\oint_S \vec{U}\cdot d\vec{S}
-=\int_V \vec{\nabla}\cdot\vec{U}\,dV
-}.
-$$
-
-La integral de superficie representa el flujo de $\vec{U}$ a través de la
-frontera, mientras que la integral de volumen suma su divergencia en el
-interior del cuerpo.
-
-\subsubsection{Ley de Pascal: isotropía de la presión}
-
-La presión en un fluido en reposo no depende de la orientación del elemento de
-superficie. Esta propiedad se conoce como ley de Pascal y establece que la
-presión es un campo escalar.
-
-Para demostrarlo, considérese una partícula material con forma de tetraedro
-recto orientado según los ejes coordenados. Sean $dS$ el área de la cara
-oblicua y $dS_x$, $dS_y$ y $dS_z$ las áreas de sus proyecciones sobre los
-planos coordenados. Si las presiones en las caras fueran $p$, $p_x$, $p_y$ y
-$p_z$, el equilibrio mecánico exigiría
-
+Para un elemento de fluido adiabático, no hay intercambio de calor con su entorno, de modo que $\dot{q} = 0$. La ecuación de energía se reduce a:
 $$
-d\vec{F}_S+d\vec{F}_V=\vec{0},
+\rho\,\frac{De}{Dt} = -p\,\vec{\nabla}\cdot\vec{v}
 $$
-
-donde $d\vec{F}_S$ es la fuerza total de contacto y
 
+Usando la ecuación de continuidad en forma lagrangiana, $\displaystyle\frac{D\rho}{Dt} = -\rho\,\vec{\nabla}\cdot\vec{v}$, la ecuación de energía adiabática puede escribirse equivalentemente como:
 $$
-d\vec{F}_V=\vec{f}\,dV
+\frac{De}{Dt} = \frac{p}{\rho^2}\,\frac{D\rho}{Dt}
 $$
 
-es una fuerza de volumen, como la gravedad.
+Esta relación conecta la evolución termodinámica de un elemento de fluido con su compresión o expansión.
 
-Si todas las dimensiones del tetraedro se reducen por un factor
-$\lambda<1$, las áreas disminuyen como $\lambda^2$, mientras que el volumen y
-las fuerzas de volumen disminuyen como $\lambda^3$. En el límite
-$\lambda\to0$, la fuerza de volumen se vuelve despreciable frente a las
-fuerzas de superficie. Por consiguiente,
+\subsection{Sistema completo de ecuaciones}
 
-$$
-d\vec{F}_S=\vec{0}.
-$$
+Junto con las ecuaciones de masa y momento, la ecuación de energía forma el sistema dinámico básico de la mecánica de fluidos. Se requiere además una relación constitutiva, o ecuación de estado, para relacionar las variables termodinámicas. El sistema cerrado más simple puede resumirse como:
 
-El equilibrio de las componentes de esta fuerza, junto con las relaciones
-geométricas entre la cara oblicua y sus proyecciones, exige que
-
-$$
-\boxed{p_x=p_y=p_z=p}.
-$$
+\begin{align*}
+\frac{D\rho}{Dt} + \rho\,\vec{\nabla}\cdot\vec{v} &= 0 && \text{(conservación de masa)} \\[6pt]
+\rho\,\frac{D\vec{v}}{Dt} &= -\vec{\nabla} p + \rho\,\vec{g} && \text{(conservación de momento)} \\[6pt]
+\rho\,\frac{De}{Dt} &= -p\,\vec{\nabla}\cdot\vec{v} + \rho\,\dot{q} && \text{(conservación de energía)} \\[6pt]
+p &= p(\rho, e) && \text{(ecuación de estado)}
+\end{align*}
 
-Por tanto, la presión en un punto de un fluido en reposo es la misma en todas
-las direcciones.
+La derivación completa de la ecuación de energía, así como la inclusión de procesos de transporte adicionales como conducción térmica, disipación viscosa y calentamiento o enfriamiento radiativo, se pospone para más adelante en el curso.
