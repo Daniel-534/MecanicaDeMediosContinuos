@@ -68,50 +68,47 @@ En la figura, $H = 16$ cm. Si la presión del aire en la figura aumenta en 10 kP
 
 \subsection{Solución}
 
-El sistema es un manómetro con una columna de agua y otra de mercurio. La ecuación de equilibrio hidrostático inicial se escribe igualando presiones al mismo nivel de referencia en la interfaz agua-mercurio:
+El tubo en U contiene mercurio. Su brazo izquierdo está conectado al aire del depósito, mientras que el brazo derecho está abierto a la atmósfera. Para plantear el equilibrio se eligen dos puntos, $A$ y $B$, situados a la misma altura dentro del mercurio. Como pertenecen al mismo fluido en reposo, sus presiones son iguales.
+
+\input{FigurasPS2/Fig2.tex}
+
 $$
-p_{\text{aire}} + \rho_w\, g\, H = p_{\text{atm}} + \rho_{\text{Hg}}\, g\, H
+p_{\text{aire}} + \rho_{\text{Hg}}\, g\, H = p_{\text{atm}}
 $$
 
-Cuando la presión del aire se incrementa en $\Delta p = 10$ kPa, la columna se desplaza hasta un nuevo equilibrio con altura $H'$:
+En efecto, para llegar desde la superficie izquierda del mercurio hasta el punto $A$ se desciende una distancia $H$, de modo que la presión aumenta en $\rho_{\text{Hg}}gH$. En el brazo derecho, el punto $B$ coincide con la superficie libre sometida a la presión atmosférica.
+
+Cuando la presión del aire aumenta en $\Delta p = 10$ kPa, el mercurio desciende en el brazo izquierdo y asciende en el derecho, por lo que la diferencia de niveles disminuye hasta un nuevo valor $H'$:
 $$
-\left(p_{\text{aire}} + \Delta p\right) + \rho_w\, g\, H' = p_{\text{atm}} + \rho_{\text{Hg}}\, g\, H'
+\left(p_{\text{aire}} + \Delta p\right) + \rho_{\text{Hg}}\, g\, H' = p_{\text{atm}}
 $$
 
 Restando la ecuación inicial de la nueva:
 $$
-\Delta p + \rho_w\, g\left(H' - H\right) = \rho_{\text{Hg}}\, g\left(H' - H\right)
-$$
-
-$$
-\Delta p = \left(\rho_{\text{Hg}} - \rho_w\right) g \left(H' - H\right)
+\Delta p + \rho_{\text{Hg}}\, g\left(H' - H\right) = 0
 $$
 
 Despejando $H'$:
 $$
-H' = H + \frac{\Delta p}{\left(\rho_{\text{Hg}} - \rho_w\right) g}
+H' = H - \frac{\Delta p}{\rho_{\text{Hg}}g}
 $$
 
-Sustituyendo $\rho_{\text{Hg}} = 13{,}6\,\rho_w$ y $\rho_w = 1000$ kg/m$^3$:
+Sustituyendo $\rho_{\text{Hg}} = 13{,}6\,\rho_w = 13\,600$ kg/m$^3$:
 $$
-H' = H + \frac{\Delta p}{\rho_w\left(13{,}6 - 1\right) g} = H + \frac{\Delta p}{12{,}6\;\rho_w\; g}
+H' = 0{,}16 - \frac{10\,000}{13\,600 \times 9{,}81}
+    = 0{,}16 - 0{,}0749
+    = 0{,}0851 \text{ m}
 $$
 
-Con los valores numéricos:
-\begin{align*}
-H' &= 0{,}16 + \frac{10\,000}{12{,}6 \times 1000 \times 9{,}81} \\[6pt]
-&= 0{,}16 + \frac{10\,000}{123\,606} \\[6pt]
-&= 0{,}16 + 0{,}0809 \\[6pt]
-&= 0{,}2409 \text{ m}
-\end{align*}
-
 $$
-\boxed{H' \approx 24{,}1 \text{ cm}}
+\boxed{H' \approx 8{,}5 \text{ cm}}
 $$
 
 %==============================================================
 \section{Problema 3}
 Se aplica una presión a 20 L de agua. Se observa que el volumen disminuye a 18{,}7 L. Calcule la presión aplicada.
+
+\input{FigurasPS2/Fig3.tex}
 
 \subsection{Solución}
 
@@ -199,7 +196,7 @@ Esto significa que para experimentar la misma presión que en el fondo del antig
 \section{Problema 5}
 En la figura se muestra una compuerta rectangular de ancho $w$ que puede rotar en torno al punto $C$ y hace un ángulo $\alpha$ con el suelo. Calcule la fuerza $P$ necesaria para mantener la compuerta en posición. Ignore la presión atmosférica.
 
-\input{FigurasPS2/Fig2.tex}
+\input{FigurasPS2/Fig4.tex}
 
 \subsection{Solución}
 
@@ -251,7 +248,7 @@ $$
 \section{Problema 6}
 Calcule la fuerza por unidad de longitud requerida para evitar que el cilindro de la figura ruede bajo la acción del agua a su izquierda.
 
-\input{FigurasPS2/Fig3.tex}
+%\input{FigurasPS2/Fig5.tex}
 
 \subsection{Solución}
 

@@ -1,45 +1,51 @@
 \begin{figure}[htbp]
     \centering
-    \definecolor{waterblue}{RGB}{65,190,225}
+    \definecolor{mercurygray}{RGB}{105,105,105}
     \begin{tikzpicture}[x=1cm,y=1cm,line cap=round,line join=round]
-        % Geometría principal
-        \coordinate (C) at (3.65,0.45);
-        \coordinate (S) at (5.25,2.65);
+        % Manómetro en U conectado al aire del depósito por la izquierda
+        \draw[line width=0.8pt]
+            (1.00,3.65) -- (1.00,0.25) -- (4.70,0.25) -- (4.70,3.65);
+        \draw[line width=0.8pt]
+            (1.65,3.65) -- (1.65,0.90) -- (4.05,0.90) -- (4.05,3.65);
 
-        % Agua contenida por la compuerta
-        \fill[waterblue] (0.35,0.45) -- (C) -- (S) -- (0.35,2.65) -- cycle;
-        \draw[line width=0.8pt] (0.35,0.45) -- (0.35,2.65);
-        \draw[line width=0.5pt] (0.35,2.65) -- (S);
-        \node at (2.25,1.55) {Agua};
+        % Mercurio: nivel izquierdo más alto que el derecho
+        \fill[mercurygray] (1.01,0.26) rectangle (1.64,3.00);
+        \fill[mercurygray] (1.64,0.26) rectangle (4.06,0.89);
+        \fill[mercurygray] (4.06,0.26) rectangle (4.69,1.20);
+        \draw[line width=0.5pt] (1.01,3.00) -- (1.64,3.00);
+        \draw[line width=0.5pt] (4.06,1.20) -- (4.69,1.20);
 
-        % Suelo y achurado
-        \draw[line width=0.8pt] (0.35,0.45) -- (5.85,0.45);
-        \foreach \x in {0.40,0.62,...,5.72} {
-            \draw[line width=0.35pt] (\x,0.43) -- ++(-0.28,-0.28);
-        }
+        % Presiones sobre las superficies del mercurio
+        \draw[line width=0.7pt,-latex] (1.32,3.85) -- (1.32,3.10);
+        \node[above] at (1.32,3.85) {$p_{\text{aire}}$};
+        \draw[line width=0.7pt,-latex] (4.38,3.10) -- (4.38,1.30);
+        \node[above] at (4.38,3.10) {$p_{\text{atm}}$};
 
-        % Compuerta inclinada y prolongación superior
-        \draw[line width=1.1pt] (C) -- (5.72,3.30);
+        % Diferencia de niveles H
+        \draw[latex-latex,line width=0.6pt] (3.25,1.20) -- (3.25,3.00);
+        \draw[line width=0.45pt] (3.00,1.20) -- (3.50,1.20);
+        \draw[line width=0.45pt] (3.00,3.00) -- (3.50,3.00);
+        \node[right] at (3.29,2.10) {$H$};
 
-        % Articulación en C
-        \fill[white] (C) circle (0.10);
-        \draw[line width=0.8pt] (C) circle (0.10);
-        \node[above left] at (3.62,0.52) {$C$};
+        % Puntos A y B al mismo nivel dentro del mercurio
+        \draw[dashed,line width=0.55pt] (0.45,1.20) -- (5.25,1.20);
+        \fill (1.32,1.20) circle (0.055);
+        \fill (4.38,1.20) circle (0.055);
+        \node[below left] at (1.32,1.20) {$A$};
+        \node[below right] at (4.38,1.20) {$B$};
+        \node[right,align=left] at (5.25,1.20) {mismo nivel\\de referencia};
 
-        % Altura del agua
-        \draw[latex-latex,line width=0.6pt] (0.85,0.45) -- (0.85,2.65);
-        \draw[line width=0.45pt] (0.67,0.45) -- (1.03,0.45);
-        \draw[line width=0.45pt] (0.67,2.65) -- (1.03,2.65);
-        \node[left] at (0.82,1.55) {$H$};
+        \node[rotate=90,text=white] at (1.32,2.05) {Hg};
+        \node[rotate=90,text=white] at (4.38,0.70) {Hg};
 
-        % Ángulo alfa entre la compuerta y el suelo
-        \draw[line width=0.55pt] (4.18,0.45) arc[start angle=0,end angle=54,radius=0.53];
-        \node at (4.33,0.72) {$\alpha$};
-
-        % Fuerza aplicada perpendicularmente a la compuerta
-        \draw[red,line width=1.0pt,-latex] (S) -- (4.25,3.38);
-        \node[red,above] at (4.30,3.35) {$P$};
+        % Balance hidrostático desde cada superficie hasta la referencia
+        \node[align=center] at (2.85,-0.35)
+            {$p_A=p_{\text{aire}}+\rho_{\text{Hg}}gH$};
+        \node[align=center] at (2.85,-0.85)
+            {$p_B=p_{\text{atm}}$};
+        \node[align=center] at (2.85,-1.40)
+            {$A$ y $B$ pertenecen al mismo mercurio y están a la misma altura: $p_A=p_B$.};
     \end{tikzpicture}
     \par\smallskip
-    {\small Figura 2: Problema 5.}
+    {\small Figura 2: Balance de presión en un mismo nivel del mercurio.}
 \end{figure}

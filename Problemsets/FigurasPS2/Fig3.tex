@@ -1,40 +1,46 @@
 \begin{figure}[htbp]
     \centering
     \definecolor{waterblue}{RGB}{65,190,225}
+    \definecolor{waterdark}{RGB}{35,145,190}
     \begin{tikzpicture}[x=1cm,y=1cm,line cap=round,line join=round]
-        \coordinate (O) at (4.15,1.55);
-        \def\R{1.25}
+        % Vértices del cubo en perspectiva
+        \coordinate (A) at (0,0);
+        \coordinate (B) at (3.6,0);
+        \coordinate (C) at (3.6,2.8);
+        \coordinate (D) at (0,2.8);
+        \coordinate (Ap) at (0.9,0.65);
+        \coordinate (Bp) at (4.5,0.65);
+        \coordinate (Cp) at (4.5,3.45);
+        \coordinate (Dp) at (0.9,3.45);
 
-        % Agua y contorno del depósito
-        \fill[waterblue] (0.65,0.30) rectangle (4.15,2.80);
-        \draw[line width=0.8pt] (0.65,0.30) -- (0.65,2.80);
-        \draw[line width=0.5pt] (0.65,2.80) -- (4.15,2.80);
+        % Agua dentro del recipiente cúbico
+        \fill[waterblue,opacity=0.58] (A) -- (B) -- (C) -- (D) -- cycle;
+        \fill[waterdark,opacity=0.48] (B) -- (Bp) -- (Cp) -- (C) -- cycle;
+        \fill[waterblue,opacity=0.38] (D) -- (C) -- (Cp) -- (Dp) -- cycle;
 
-        % Cilindro, que oculta el agua detrás de él
-        \fill[white] (O) circle (\R);
-        \draw[line width=0.9pt] (O) circle (\R);
+        % Aristas visibles del cubo
+        \draw[line width=0.9pt] (A) -- (B) -- (C) -- (D) -- cycle;
+        \draw[line width=0.9pt] (B) -- (Bp) -- (Cp) -- (C);
+        \draw[line width=0.9pt] (D) -- (Dp) -- (Cp);
+        \draw[dashed,line width=0.55pt] (A) -- (Ap) -- (Bp);
+        \draw[dashed,line width=0.55pt] (Ap) -- (Dp);
 
-        % Suelo
-        \draw[line width=0.8pt] (0.65,0.30) -- (5.65,0.30);
-        \foreach \x in {0.72,0.94,...,5.58} {
-            \draw[line width=0.35pt] (\x,0.28) -- ++(-0.28,-0.28);
-        }
+        % Etiqueta del fluido
+        \node at (1.85,1.38) {\Large Agua};
 
-        % Pared izquierda achurada
-        \foreach \y in {0.38,0.60,...,2.78} {
-            \draw[line width=0.35pt] (0.63,\y) -- ++(-0.28,0.28);
-        }
+        % Presión aplicada hacia el interior
+        \draw[red,line width=1.0pt,-latex] (1.45,4.40) -- (1.45,3.35);
+        \draw[red,line width=1.0pt,-latex] (3.05,4.40) -- (3.05,3.35);
+        \draw[red,line width=1.0pt,-latex] (-1.15,1.35) -- (-0.05,1.35);
+        \draw[red,line width=1.0pt,-latex] (5.55,1.80) -- (4.52,1.80);
+        \draw[red,line width=1.0pt,-latex] (1.25,-0.85) -- (1.25,-0.05);
+        \draw[red,line width=1.0pt,-latex] (2.75,-0.85) -- (2.75,-0.05);
+        \node[red,above] at (2.25,4.38) {$p$};
 
-        % Radio del cilindro
-        \draw[latex-latex,line width=0.6pt] (4.15,1.55) -- (4.15,2.80);
-        \draw[line width=0.45pt] (3.95,1.55) -- (4.35,1.55);
-        \draw[line width=0.45pt] (3.95,2.80) -- (4.35,2.80);
-        \node[right] at (4.18,2.17) {$R$};
-
-        % Fuerza aplicada para impedir el rodamiento
-        \draw[red,line width=1.0pt,-latex] (6.05,1.55) -- (5.40,1.55);
-        \node[red,above] at (5.72,1.60) {$F$};
+        % Cambio de volumen producido por la compresión
+        \node[align=center] at (2.25,-1.42)
+            {$V_0=20\ \text{L}\quad\longrightarrow\quad V_f=18{,}7\ \text{L}$};
     \end{tikzpicture}
     \par\smallskip
-    {\small Figura 3: Problema 6.}
+    {\small Figura 3: Compresión de un volumen cúbico de agua.}
 \end{figure}
