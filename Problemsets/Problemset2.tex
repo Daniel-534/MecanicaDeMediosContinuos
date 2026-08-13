@@ -1,0 +1,629 @@
+\documentclass[a4paper]{article}
+
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb}
+\usepackage[margin=2cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{parskip}
+\usepackage[most]{tcolorbox}
+\usepackage[hidelinks]{hyperref}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+
+
+% cabecera
+\pagestyle{fancy}
+\fancyhead[l]{Mecánica de Medios Continuos}
+\fancyhead[c]{Taller 2}
+\fancyhead[r]{\today}
+\fancyfoot[c]{\thepage}
+\renewcommand{\headrulewidth}{0.2pt} % linea horizontal
+
+\begin{document}
+\tableofcontents
+
+\section{Problema 1}
+A cierta profundidad en un líquido incompresible, la presión absoluta es $p$. Al doble de esta profundidad, ¿la presión absoluta será igual, menor o mayor que $2p$?
+
+\subsection{Solución}
+
+En un líquido incompresible de densidad $\rho$, la presión absoluta a una profundidad $h$ está dada por:
+$$
+p = p_0 + \rho g h
+$$
+donde $p_0$ es la presión atmosférica en la superficie libre.
+
+Al doble de profundidad ($2h$), la presión absoluta es:
+$$
+p' = p_0 + \rho g (2h) = p_0 + 2\rho g h
+$$
+
+Ahora comparamos $p'$ con $2p$:
+$$
+2p = 2\left(p_0 + \rho g h\right) = 2p_0 + 2\rho g h
+$$
+
+Calculamos la diferencia:
+$$
+p' - 2p = \left(p_0 + 2\rho g h\right) - \left(2p_0 + 2\rho g h\right) = -p_0
+$$
+
+Dado que $p_0 > 0$, se tiene que:
+$$
+\boxed{p' < 2p}
+$$
+
+La presión absoluta al doble de profundidad es \textbf{menor} que $2p$. La razón física es que la presión atmosférica, que es un término aditivo constante, se duplica al multiplicar $p$ por 2, pero no se duplica en la realidad al duplicar la profundidad. Solo la contribución hidrostática $\rho g h$ se duplica.
+
+%==============================================================
+\section{Problema 2}
+En la figura, $H = 16$ cm. Si la presión del aire en la figura aumenta en 10 kPa y el extremo de la tubería está expuesto al aire, calcule el nuevo valor de $H$. ($\rho_{\text{Hg}} = 13{,}6\,\rho_{\text{H}_2\text{O}}$)
+
+\input{FigurasPS2/Fig1.tex}
+
+\subsection{Solución}
+
+El sistema es un manómetro con una columna de agua y otra de mercurio. La ecuación de equilibrio hidrostático inicial se escribe igualando presiones al mismo nivel de referencia en la interfaz agua-mercurio:
+$$
+p_{\text{aire}} + \rho_w\, g\, H = p_{\text{atm}} + \rho_{\text{Hg}}\, g\, H
+$$
+
+Cuando la presión del aire se incrementa en $\Delta p = 10$ kPa, la columna se desplaza hasta un nuevo equilibrio con altura $H'$:
+$$
+\left(p_{\text{aire}} + \Delta p\right) + \rho_w\, g\, H' = p_{\text{atm}} + \rho_{\text{Hg}}\, g\, H'
+$$
+
+Restando la ecuación inicial de la nueva:
+$$
+\Delta p + \rho_w\, g\left(H' - H\right) = \rho_{\text{Hg}}\, g\left(H' - H\right)
+$$
+
+$$
+\Delta p = \left(\rho_{\text{Hg}} - \rho_w\right) g \left(H' - H\right)
+$$
+
+Despejando $H'$:
+$$
+H' = H + \frac{\Delta p}{\left(\rho_{\text{Hg}} - \rho_w\right) g}
+$$
+
+Sustituyendo $\rho_{\text{Hg}} = 13{,}6\,\rho_w$ y $\rho_w = 1000$ kg/m$^3$:
+$$
+H' = H + \frac{\Delta p}{\rho_w\left(13{,}6 - 1\right) g} = H + \frac{\Delta p}{12{,}6\;\rho_w\; g}
+$$
+
+Con los valores numéricos:
+\begin{align*}
+H' &= 0{,}16 + \frac{10\,000}{12{,}6 \times 1000 \times 9{,}81} \\[6pt]
+&= 0{,}16 + \frac{10\,000}{123\,606} \\[6pt]
+&= 0{,}16 + 0{,}0809 \\[6pt]
+&= 0{,}2409 \text{ m}
+\end{align*}
+
+$$
+\boxed{H' \approx 24{,}1 \text{ cm}}
+$$
+
+%==============================================================
+\section{Problema 3}
+Se aplica una presión a 20 L de agua. Se observa que el volumen disminuye a 18{,}7 L. Calcule la presión aplicada.
+
+\subsection{Solución}
+
+El módulo de compresibilidad (módulo volumétrico) $K$ se define como:
+$$
+K = -V\,\frac{\Delta p}{\Delta V} = -\frac{\Delta p}{\Delta V / V}
+$$
+
+Para el agua, el valor del módulo de compresibilidad es $K \approx 2{,}18$ GPa $= 2{,}18 \times 10^9$ Pa.
+
+Los datos del problema son:
+$$
+V_0 = 20 \text{ L}, \qquad V_f = 18{,}7 \text{ L}
+$$
+
+El cambio de volumen es:
+$$
+\Delta V = V_f - V_0 = 18{,}7 - 20 = -1{,}3 \text{ L}
+$$
+
+La deformación volumétrica relativa es:
+$$
+\frac{\Delta V}{V_0} = \frac{-1{,}3}{20} = -0{,}065
+$$
+
+Despejando $\Delta p$ de la definición de $K$:
+$$
+\Delta p = -K\,\frac{\Delta V}{V_0} = -\left(2{,}18 \times 10^9\right)(-0{,}065)
+$$
+
+$$
+\Delta p = 1{,}417 \times 10^8 \text{ Pa} \approx 141{,}7 \text{ MPa}
+$$
+
+$$
+\boxed{\Delta p \approx 142 \text{ MPa} \approx 1400 \text{ atm}}
+$$
+
+Este resultado ilustra la muy baja compresibilidad del agua: se requiere una presión del orden de 1400 atmósferas para reducir su volumen en apenas un 6{,}5\%.
+
+%==============================================================
+\section{Problema 4}
+Se ha encontrado evidencia de que Marte pudo haber tenido un océano de 0{,}5 km de profundidad. La aceleración gravitacional en Marte es de 3{,}71 m/s$^2$.
+\begin{enumerate}[a)]
+    \item Calcule la presión manométrica en el fondo de dicho océano, suponiendo que es de agua dulce.
+    \item ¿A qué profundidad debe ir en un cuerpo de agua dulce terrestre para experimentar tal presión?
+\end{enumerate}
+
+\subsection{Solución}
+
+\subsubsection{(a) Presión manométrica en el fondo del océano marciano}
+
+La presión manométrica (presión relativa a la atmosférica) en el fondo de una columna de líquido incompresible está dada por:
+$$
+p_{\text{gauge}} = \rho\, g_{\text{Marte}}\, h
+$$
+
+Con $\rho = 1000$ kg/m$^3$ (agua dulce), $g_{\text{Marte}} = 3{,}71$ m/s$^2$ y $h = 500$ m:
+$$
+p_{\text{gauge}} = 1000 \times 3{,}71 \times 500 = 1\,855\,000 \text{ Pa}
+$$
+
+$$
+\boxed{p_{\text{gauge}} \approx 1{,}86 \text{ MPa} \approx 18{,}3 \text{ atm}}
+$$
+
+\subsubsection{(b) Profundidad equivalente en la Tierra}
+
+Para encontrar la profundidad $h_{\text{Tierra}}$ en un cuerpo de agua dulce terrestre que produzca la misma presión manométrica, igualamos:
+$$
+\rho\, g_{\text{Tierra}}\, h_{\text{Tierra}} = p_{\text{gauge}}
+$$
+
+Despejando $h_{\text{Tierra}}$ con $g_{\text{Tierra}} = 9{,}81$ m/s$^2$:
+$$
+h_{\text{Tierra}} = \frac{p_{\text{gauge}}}{\rho\, g_{\text{Tierra}}} = \frac{1\,855\,000}{1000 \times 9{,}81} = \frac{1\,855\,000}{9810}
+$$
+
+$$
+\boxed{h_{\text{Tierra}} \approx 189 \text{ m}}
+$$
+
+Esto significa que para experimentar la misma presión que en el fondo del antiguo océano marciano de 500 m de profundidad, bastaría con sumergirse a unos 189 m en agua dulce en la Tierra, debido a que la gravedad terrestre es aproximadamente 2{,}64 veces mayor que la marciana.
+
+\section{Problema 5}
+En la figura se muestra una compuerta rectangular de ancho $w$ que puede rotar en torno al punto $C$ y hace un ángulo $\alpha$ con el suelo. Calcule la fuerza $P$ necesaria para mantener la compuerta en posición. Ignore la presión atmosférica.
+
+\input{FigurasPS2/Fig2.tex}
+
+\subsection{Solución}
+
+La compuerta está inclinada un ángulo $\alpha$ respecto al suelo, con el punto $C$ en la base. El agua se encuentra a un lado hasta una altura $H$. La longitud de la compuerta sumergida medida a lo largo de su superficie es:
+$$
+L = \frac{H}{\sin\alpha}
+$$
+
+Se elige una coordenada $s$ medida desde $C$ a lo largo de la compuerta. La profundidad hidrostática a una distancia $s$ desde $C$ es:
+$$
+h(s) = s\sin\alpha
+$$
+
+La presión hidrostática (ignorando la presión atmosférica) es:
+$$
+p(s) = \rho g\, s\sin\alpha
+$$
+
+La fuerza diferencial sobre un elemento de ancho $w$ y longitud $ds$ de la compuerta es:
+$$
+dF = p(s)\, w\, ds = \rho g \sin\alpha\, s\, w\, ds
+$$
+
+La fuerza total del agua sobre la compuerta es:
+$$
+F_{\text{agua}} = \int_0^L \rho g \sin\alpha\, s\, w\, ds = \rho g \sin\alpha\, w\, \frac{L^2}{2}
+$$
+
+El momento de la fuerza del agua respecto al punto $C$ es:
+$$
+M_{\text{agua}} = \int_0^L \rho g \sin\alpha\, s^2\, w\, ds = \rho g \sin\alpha\, w\, \frac{L^3}{3}
+$$
+
+La fuerza $P$ se aplica perpendicularmente a la compuerta en su extremo superior, a una distancia $L$ del punto $C$. El equilibrio de momentos respecto a $C$ exige:
+$$
+P \cdot L = \rho g \sin\alpha\, w\, \frac{L^3}{3}
+$$
+
+Despejando $P$ y sustituyendo $L = H/\sin\alpha$:
+$$
+P = \frac{\rho g \sin\alpha\, w\, L^2}{3} = \frac{\rho g \sin\alpha\, w}{3}\cdot\frac{H^2}{\sin^2\alpha}
+$$
+
+$$
+\boxed{P = \frac{\rho g\, w\, H^2}{3\sin\alpha}}
+$$
+
+%==============================================================
+\section{Problema 6}
+Calcule la fuerza por unidad de longitud requerida para evitar que el cilindro de la figura ruede bajo la acción del agua a su izquierda.
+
+\input{FigurasPS2/Fig3.tex}
+
+\subsection{Solución}
+
+El cilindro de radio $R$ tiene agua a su izquierda hasta la parte superior del cilindro (altura $2R$). Se calculan las componentes de la fuerza hidrostática por unidad de longitud.
+
+\subsubsection{Fuerza horizontal}
+
+La fuerza horizontal sobre una superficie curva se calcula como la fuerza sobre su proyección vertical. La proyección vertical del semicírculo izquierdo es un rectángulo de altura $2R$ y ancho unitario. La presión varía linealmente desde $0$ (superficie libre) hasta $\rho g(2R)$ en el fondo. La fuerza horizontal es:
+$$
+F_h = \int_0^{2R} \rho g\, y\, dy = \rho g\, \frac{(2R)^2}{2} = 2\rho g R^2
+$$
+
+\subsubsection{Fuerza vertical}
+
+La fuerza vertical es el peso del agua situada encima del semicírculo superior del cilindro. Por unidad de longitud, el volumen de agua encima del semicírculo es $\pi R^2/2$, así que:
+$$
+F_v = \rho g\, \frac{\pi R^2}{2}
+$$
+
+\subsubsection{Fuerza para evitar el rodamiento}
+
+Para evitar que el cilindro ruede hacia la derecha, se debe aplicar una fuerza horizontal $F$ hacia la izquierda que equilibre la componente horizontal de la fuerza del agua. La componente vertical es equilibrada por la reacción normal del suelo. La fuerza por unidad de longitud requerida es:
+$$
+\boxed{F = 2\rho g R^2}
+$$
+
+%==============================================================
+\section{Problema 7}
+La presión en la superficie de Venus es de 92 atm, y la aceleración gravitacional es de $0{,}894\,g$. En una misión de exploración, un tanque cilíndrico vertical que contiene benceno está sellado y presurizado a 92 atm justo en la superficie del benceno. El tanque tiene un diámetro de $1{,}72$ m y la columna de benceno tiene $11{,}5$ m de altura. Ignore los efectos térmicos.
+\begin{enumerate}[a)]
+    \item Calcule la fuerza total ejercida sobre la superficie interior del fondo del tanque.
+    \item Calcule la fuerza total que ejerce la atmósfera sobre las paredes verticales del cilindro.
+\end{enumerate}
+
+\subsection{Solución}
+
+Se utilizan los siguientes datos: $p_{\text{atm}} = 92$ atm $= 92 \times 101\,325$ Pa $= 9{,}322 \times 10^6$ Pa; $g_{\text{Venus}} = 0{,}894 \times 9{,}81 = 8{,}77$ m/s$^2$; $\rho_{\text{benceno}} = 900$ kg/m$^3$ (de la Tabla 1 del documento); $d = 1{,}72$ m; $h = 11{,}5$ m.
+
+\subsubsection{(a) Fuerza en el fondo del tanque}
+
+La presión en el fondo del tanque es la suma de la presión en la superficie del benceno más la presión hidrostática de la columna de benceno:
+$$
+p_{\text{fondo}} = p_{\text{atm}} + \rho_{\text{benceno}}\, g_{\text{Venus}}\, h
+$$
+$$
+p_{\text{fondo}} = 9{,}322 \times 10^6 + 900 \times 8{,}77 \times 11{,}5 = 9{,}322 \times 10^6 + 9{,}08 \times 10^4 \approx 9{,}41 \times 10^6 \text{ Pa}
+$$
+
+El área del fondo del tanque es:
+$$
+A = \pi\left(\frac{d}{2}\right)^2 = \pi(0{,}86)^2 = 2{,}324 \text{ m}^2
+$$
+
+La fuerza total en el fondo es:
+$$
+F_{\text{fondo}} = p_{\text{fondo}}\, A = 9{,}41 \times 10^6 \times 2{,}324
+$$
+
+$$
+\boxed{F_{\text{fondo}} \approx 2{,}19 \times 10^7 \text{ N}}
+$$
+
+\subsubsection{(b) Fuerza de la atmósfera sobre las paredes verticales}
+
+La atmósfera de Venus ejerce una presión uniforme $p_{\text{atm}} = 92$ atm sobre toda la superficie exterior del cilindro. La superficie lateral del cilindro tiene área:
+$$
+A_{\text{lateral}} = \pi\, d\, h = \pi \times 1{,}72 \times 11{,}5 = 62{,}1 \text{ m}^2
+$$
+
+La fuerza total de compresión que la atmósfera ejerce sobre las paredes verticales es:
+$$
+F_{\text{atm}} = p_{\text{atm}}\, A_{\text{lateral}} = 9{,}322 \times 10^6 \times 62{,}1
+$$
+
+$$
+\boxed{F_{\text{atm}} \approx 5{,}79 \times 10^8 \text{ N}}
+$$
+
+Cabe notar que esta fuerza actúa radialmente hacia adentro en toda la superficie lateral, de modo que la fuerza neta vectorial es cero por simetría. Sin embargo, la magnitud de la fuerza de compresión total es la calculada.
+
+%==============================================================
+\section{Problema 8}
+La ecuación de estado para el agua está dada, en buena aproximación, por
+$$
+\frac{p + B}{p_0 + B} = \left(\frac{\rho}{\rho_0}\right)^n
+$$
+con $B = 3000$ atm, $n = 7$, $p_0 = 1$ atm y $\rho_0 = 1$ g/cm$^3$.
+\begin{enumerate}[a)]
+    \item Calcule el módulo de compresibilidad $K$ para el agua.
+    \item Calcule la distribución de densidad y presión en el mar.
+    \item ¿Cuál es la presión y la compresión relativa del agua en el punto más profundo del mar ($z = 10\,924$ m, medido positivamente hacia abajo)?
+\end{enumerate}
+
+\subsection{Solución}
+
+\subsubsection{(a) Módulo de compresibilidad}
+
+El módulo de compresibilidad se define como $K = \rho\, dp/d\rho$. De la ecuación de estado:
+$$
+p + B = (p_0 + B)\left(\frac{\rho}{\rho_0}\right)^n
+$$
+
+Derivando respecto a $\rho$:
+$$
+\frac{dp}{d\rho} = \frac{n(p_0 + B)}{\rho_0}\left(\frac{\rho}{\rho_0}\right)^{n-1}
+$$
+
+Por tanto:
+$$
+K = \rho\,\frac{dp}{d\rho} = n(p_0 + B)\left(\frac{\rho}{\rho_0}\right)^n = n(p + B)
+$$
+
+En la superficie, donde $p = p_0$:
+$$
+K_0 = n(p_0 + B) = 7 \times (1 + 3000) = 7 \times 3001 = 21\,007 \text{ atm}
+$$
+
+En unidades SI:
+$$
+\boxed{K_0 \approx 21\,007 \text{ atm} \approx 2{,}13 \times 10^9 \text{ Pa} \approx 2{,}13 \text{ GPa}}
+$$
+
+Este valor es consistente con el módulo de compresibilidad del agua tabulado ($\sim 2{,}18$ GPa).
+
+\subsubsection{(b) Distribución de densidad y presión en el mar}
+
+En equilibrio hidrostático, con $z$ medido positivamente hacia abajo (profundidad):
+$$
+\frac{dp}{dz} = \rho\, g
+$$
+
+De la ecuación de estado, $\rho = \rho_0\left[(p+B)/(p_0+B)\right]^{1/n}$. Definiendo $u = p + B$:
+$$
+\frac{du}{dz} = \rho_0\, g\left(\frac{u}{p_0 + B}\right)^{1/n}
+$$
+
+Separando variables e integrando con la condición $p = p_0$ en $z = 0$:
+$$
+\frac{n}{n-1}\left[u^{(n-1)/n} - (p_0+B)^{(n-1)/n}\right] = \rho_0\, g\,(p_0+B)^{-1/n}\, z
+$$
+
+Despejando:
+$$
+\boxed{p(z) = (p_0 + B)\left[1 + \frac{n-1}{n}\cdot\frac{\rho_0\, g\, z}{p_0 + B}\right]^{n/(n-1)} - B}
+$$
+
+La densidad se obtiene de la ecuación de estado:
+$$
+\boxed{\rho(z) = \rho_0\left[1 + \frac{n-1}{n}\cdot\frac{\rho_0\, g\, z}{p_0 + B}\right]^{1/(n-1)}}
+$$
+
+\subsubsection{(c) Presión y compresión relativa en el punto más profundo}
+
+En el punto más profundo del mar, $z = 10\,924$ m. Se calcula el parámetro adimensional:
+$$
+\frac{\rho_0\, g\, z}{p_0 + B} = \frac{1000 \times 9{,}81 \times 10\,924}{3001 \times 101\,325} = \frac{1{,}072 \times 10^8}{3{,}041 \times 10^8} \approx 0{,}3525
+$$
+
+Con $(n-1)/n = 6/7$:
+$$
+1 + \frac{6}{7}\times 0{,}3525 = 1 + 0{,}3021 = 1{,}3021
+$$
+
+La presión es:
+$$
+p + B = (p_0 + B)\,(1{,}3021)^{7/6} = 3001 \times 1{,}361 = 4084 \text{ atm}
+$$
+$$
+\boxed{p \approx 4084 - 3000 = 1084 \text{ atm} \approx 1{,}10 \times 10^8 \text{ Pa}}
+$$
+
+La compresión relativa es:
+$$
+\frac{\rho}{\rho_0} = \left(\frac{p + B}{p_0 + B}\right)^{1/n} = \left(\frac{4084}{3001}\right)^{1/7} = (1{,}361)^{1/7} \approx 1{,}045
+$$
+
+$$
+\boxed{\frac{\Delta\rho}{\rho_0} = \frac{\rho - \rho_0}{\rho_0} \approx 4{,}5\%}
+$$
+
+Este resultado es consistente con la afirmación del documento de referencia, que indica que en el punto más profundo del mar la densidad del agua es solo un $\sim 5\%$ mayor que en la superficie, lo que justifica la aproximación de incompresibilidad para el agua en la mayoría de aplicaciones prácticas.
+
+
+\section{Problema 9}
+Calcule la presión y la densidad del mar, asumiendo el módulo de compresibilidad constante. Muestre que ambas cantidades son singulares a cierta profundidad $h$ y calcúlela.
+
+\subsection{Solución}
+
+El módulo de compresibilidad se define como:
+$$
+K = \rho\,\frac{dp}{d\rho}
+$$
+
+Si $K$ es constante, podemos integrar directamente:
+$$
+\frac{dp}{d\rho} = \frac{K}{\rho} \quad \Longrightarrow \quad p - p_0 = K\ln\frac{\rho}{\rho_0}
+$$
+
+Despejando la densidad en función de la presión:
+$$
+\rho = \rho_0\,\exp\!\left(\frac{p - p_0}{K}\right)
+$$
+
+\subsubsection{Ecuación de equilibrio hidrostático}
+
+Con $z$ medido positivamente hacia abajo (profundidad), el equilibrio hidrostático es:
+$$
+\frac{dp}{dz} = \rho\, g
+$$
+
+Sustituyendo la expresión de la densidad:
+$$
+\frac{dp}{dz} = \rho_0\, g\,\exp\!\left(\frac{p - p_0}{K}\right)
+$$
+
+Esta ecuación es separable:
+$$
+\exp\!\left(-\frac{p - p_0}{K}\right) dp = \rho_0\, g\, dz
+$$
+
+Integrando con la condición $p = p_0$ en $z = 0$:
+$$
+-K\left[\exp\!\left(-\frac{p - p_0}{K}\right) - 1\right] = \rho_0\, g\, z
+$$
+
+Despejando la presión:
+$$
+\boxed{p(z) = p_0 - K\ln\!\left(1 - \frac{\rho_0\, g\, z}{K}\right)}
+$$
+
+La densidad se obtiene directamente:
+$$
+\rho(z) = \rho_0\,\exp\!\left(\frac{p - p_0}{K}\right) = \rho_0\,\exp\!\left[-\ln\!\left(1 - \frac{\rho_0\, g\, z}{K}\right)\right]
+$$
+
+$$
+\boxed{\rho(z) = \frac{\rho_0}{1 - \dfrac{\rho_0\, g\, z}{K}}}
+$$
+
+\subsubsection{Profundidad singular}
+
+Ambas expresiones divergen cuando el denominador se anula:
+$$
+1 - \frac{\rho_0\, g\, h}{K} = 0 \quad \Longrightarrow \quad \boxed{h = \frac{K}{\rho_0\, g}}
+$$
+
+Para el agua de mar con $K \approx 2{,}18$ GPa, $\rho_0 = 1000$ kg/m$^3$ y $g = 9{,}81$ m/s$^2$:
+$$
+h = \frac{2{,}18 \times 10^9}{1000 \times 9{,}81} \approx 222 \text{ km}
+$$
+
+Esta profundidad singular es mucho mayor que la profundidad real del océano ($\sim 11$ km), lo cual confirma que el modelo con $K$ constante es una aproximación razonable para las profundidades oceánicas reales. La singularidad es un artefacto del modelo: a profundidades reales, la compresibilidad del agua varía y evita la divergencia.
+
+%==============================================================
+\section{Problema 10}
+Atmósferas hidrostáticas. En este problema, usted hará una caracterización simple de las atmósferas del Sol y la Tierra, asumiendo que la ecuación del gas ideal $p = \rho k_B T/(\mu m)$ es válida. En ella, $k_B$ es la constante de Boltzmann, $\mu$ es el peso molecular medio y $m$ es la unidad de masa atómica.
+
+\begin{enumerate}[a)]
+    \item Además de la suposición del gas ideal, suponga que la presión y la densidad están relacionadas según $p = K\rho^{1+1/n}$, donde $K$ y $n$ son constantes. ¿Qué implicaciones tiene para el perfil de temperatura que $n \to \infty$?
+
+    \item Suponga que tiene una atmósfera plana y de temperatura constante. Suponga además que la masa de la atmósfera es despreciable en comparación con la masa del cuerpo (el Sol o la Tierra). A partir de la ecuación de equilibrio hidrostático $\nabla p = \vec{f}$, demuestre que el perfil de presión es
+    $$
+    p = p_0\,\exp\!\left[-\frac{\mu m g}{k_B T}(z - z_0)\right],
+    $$
+    donde $g$ es la aceleración gravitacional.
+
+    \item Identifique una medida de la escala de altura o altura característica en esta expresión e interprete su significado.
+
+    \item Calcule la altura característica para la fotósfera del Sol a $T_\odot = 5770$ K y para la Tierra a $T_\oplus = 300$ K. La fotósfera solar está altamente ionizada, de modo que tiene un peso molecular medio de $\mu = 0{,}6$, mientras que la atmósfera terrestre se compone principalmente de nitrógeno molecular con $\mu = 28$.
+\end{enumerate}
+
+\subsection{Solución}
+
+\subsubsection{(a) Límite \texorpdfstring{$n \to \infty$}{n hacia infinito}: atmósfera isotérmica}
+
+Combinando la relación politrópica con la ley del gas ideal:
+$$
+K\rho^{1+1/n} = \frac{\rho\, k_B T}{\mu m}
+$$
+
+Despejando la temperatura:
+$$
+T = \frac{K\mu m}{k_B}\,\rho^{1/n}
+$$
+
+Cuando $n \to \infty$, se tiene $\rho^{1/n} \to 1$ para cualquier valor finito de $\rho$. Por tanto:
+$$
+\boxed{T \xrightarrow{n \to \infty} \frac{K\mu m}{k_B} = \text{constante}}
+$$
+
+La implicación es que el límite $n \to \infty$ corresponde a una \textbf{atmósfera isotérmica}, es decir, un perfil de temperatura uniforme e independiente de la altura.
+
+\subsubsection{(b) Demostración del perfil de presión}
+
+Para una atmósfera plana con gravedad constante $\vec{g} = -g\,\hat{e}_z$ (dirigida hacia abajo) y temperatura constante $T$, la ecuación de equilibrio hidrostático es:
+$$
+\frac{dp}{dz} = -\rho\, g
+$$
+
+Usando la ley del gas ideal $\rho = p\mu m/(k_B T)$:
+$$
+\frac{dp}{dz} = -\frac{p\,\mu m\, g}{k_B T}
+$$
+
+Esta es una ecuación diferencial de primer orden separable:
+$$
+\frac{dp}{p} = -\frac{\mu m\, g}{k_B T}\, dz
+$$
+
+Integrando desde $z_0$ (donde $p = p_0$) hasta una altura $z$ arbitraria:
+$$
+\int_{p_0}^{p} \frac{dp'}{p'} = -\frac{\mu m\, g}{k_B T}\int_{z_0}^{z} dz'
+$$
+
+$$
+\ln\frac{p}{p_0} = -\frac{\mu m\, g}{k_B T}(z - z_0)
+$$
+
+Por tanto:
+$$
+\boxed{p(z) = p_0\,\exp\!\left[-\frac{\mu m\, g}{k_B T}(z - z_0)\right]}
+$$
+
+La densidad tiene el mismo perfil exponencial:
+$$
+\rho(z) = \rho_0\,\exp\!\left[-\frac{\mu m\, g}{k_B T}(z - z_0)\right]
+$$
+
+\subsubsection{(c) Escala de altura}
+
+De la expresión del perfil de presión se identifica la \textbf{escala de altura}:
+$$
+\boxed{H = \frac{k_B T}{\mu m\, g}}
+$$
+
+\textbf{Interpretación:} La escala de altura $H$ representa la distancia vertical a la cual la presión (y la densidad) caen por un factor de $e \approx 2{,}718$. Es decir, a una altura $z_0 + H$, la presión es $p_0/e$. Físicamente, $H$ es la altura a la cual la energía potencial gravitacional de una molécula $\mu m g H$ es comparable a su energía térmica $k_B T$. Cuando $H$ es grande (alta temperatura, baja gravedad, moléculas ligeras), la atmósfera se extiende mucho; cuando $H$ es pequeña, la atmósfera es compacta.
+
+\subsubsection{(d) Cálculo numérico}
+
+\textbf{Fotósfera solar:} Con $\mu = 0{,}6$, $T_\odot = 5770$ K y la gravedad solar:
+$$
+g_\odot = \frac{GM_\odot}{R_\odot^2} = \frac{6{,}674 \times 10^{-11} \times 1{,}989 \times 10^{30}}{(6{,}96 \times 10^8)^2} \approx 274 \text{ m/s}^2
+$$
+
+La escala de altura es:
+$$
+H_\odot = \frac{k_B T_\odot}{\mu m\, g_\odot} = \frac{1{,}381 \times 10^{-23} \times 5770}{0{,}6 \times 1{,}66 \times 10^{-27} \times 274}
+$$
+
+$$
+H_\odot = \frac{7{,}97 \times 10^{-20}}{2{,}73 \times 10^{-25}} \approx 2{,}9 \times 10^5 \text{ m}
+$$
+
+$$
+\boxed{H_\odot \approx 2{,}9 \times 10^7 \text{ cm} \approx 290 \text{ km}}
+$$
+
+\textbf{Atmósfera terrestre:} Con $\mu = 28$, $T_\oplus = 300$ K y $g_\oplus = 9{,}81$ m/s$^2$:
+$$
+H_\oplus = \frac{k_B T_\oplus}{\mu m\, g_\oplus} = \frac{1{,}381 \times 10^{-23} \times 300}{28 \times 1{,}66 \times 10^{-27} \times 9{,}81}
+$$
+
+$$
+H_\oplus = \frac{4{,}14 \times 10^{-21}}{4{,}56 \times 10^{-25}} \approx 9{,}0 \times 10^3 \text{ m}
+$$
+
+$$
+\boxed{H_\oplus \approx 9{,}0 \times 10^5 \text{ cm} \approx 9{,}0 \text{ km}}
+$$
+
+\subsubsection{Comparación y discusión}
+
+La escala de altura solar ($\sim 290$ km) es aproximadamente 32 veces mayor que la terrestre ($\sim 9$ km). Esto se debe a que, aunque la gravedad solar es $\sim 28$ veces mayor que la terrestre, la temperatura de la fotósfera es $\sim 19$ veces mayor y el peso molecular medio es $\sim 47$ veces menor (debido a la ionización del plasma solar). La combinación de estos factores produce una atmósfera solar mucho más extendida que la terrestre.
+
+\end{document}
