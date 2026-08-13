@@ -232,19 +232,76 @@ $$
 \int_{\mathbb{R}^3}p(\vec{v})\,d^3v=1.
 $$
 
-Cada componente tiene una distribución gaussiana con varianza
-$k_BT/m$. En particular,
+Al sustituir la expresión de $p(\vec{v})$ y escribir
+$d^3v=dv_x\,dv_y\,dv_z$, se obtiene
+
+$$
+\begin{aligned}
+1
+&=A\int_{-\infty}^{\infty}
+\int_{-\infty}^{\infty}
+\int_{-\infty}^{\infty}
+\exp\left[-\frac{m(v_x^2+v_y^2+v_z^2)}{2k_BT}\right]
+dv_x\,dv_y\,dv_z.
+\end{aligned}
+$$
+
+Como el exponente es una suma de tres términos independientes, la exponencial
+puede factorizarse:
+
+$$
+\exp\left[-\frac{m(v_x^2+v_y^2+v_z^2)}{2k_BT}\right]
+=\exp\left(-\frac{mv_x^2}{2k_BT}\right)
+ \exp\left(-\frac{mv_y^2}{2k_BT}\right)
+ \exp\left(-\frac{mv_z^2}{2k_BT}\right).
+$$
+
+Por tanto, la integral tridimensional se separa en el producto de tres
+integrales gaussianas idénticas:
+
+$$
+1
+=A\left[
+\int_{-\infty}^{\infty}
+\exp\left(-\frac{mv_i^2}{2k_BT}\right)dv_i
+\right]^3.
+$$
+
+Se utiliza la integral gaussiana
+
+$$
+\int_{-\infty}^{\infty}e^{-\alpha x^2}\,dx
+=\sqrt{\frac{\pi}{\alpha}},
+$$
+
+con
+
+$$
+\alpha=\frac{m}{2k_BT}.
+$$
+
+Así, para cualquiera de las tres componentes de la velocidad,
 
 $$
 \int_{-\infty}^{\infty}
-\exp\left(-\frac{mv_x^2}{2k_BT}\right)dv_x
+\exp\left(-\frac{mv_i^2}{2k_BT}\right)dv_i
 =\sqrt{\frac{2\pi k_BT}{m}}.
 $$
 
-Como las tres integrales son idénticas, la constante de normalización es
+La condición de normalización queda entonces
 
 $$
-A=\left(\frac{m}{2\pi k_BT}\right)^{3/2}.
+1
+=A\left(\sqrt{\frac{2\pi k_BT}{m}}\right)^3
+=A\left(\frac{2\pi k_BT}{m}\right)^{3/2}.
+$$
+
+Finalmente, al despejar $A$, se obtiene
+
+$$
+\boxed{
+A=\left(\frac{m}{2\pi k_BT}\right)^{3/2}
+}.
 $$
 
 La densidad de probabilidad del vector velocidad queda entonces
@@ -257,11 +314,53 @@ p(\vec{v})
 $$
 
 Para obtener la distribución de la rapidez se considera una cáscara esférica
-de radio $v$ y espesor $dv$ en el espacio de velocidades. Su volumen es
+de radio $v$ y espesor $dv$ en el espacio de velocidades. Se introducen
+coordenadas esféricas mediante
 
 $$
-d^3v=4\pi v^2\,dv.
+v_x=v\sin\theta\cos\phi,
+\qquad
+v_y=v\sin\theta\sin\phi,
+\qquad
+v_z=v\cos\theta.
 $$
+
+El jacobiano de esta transformación es
+
+$$
+\left|
+\frac{\partial(v_x,v_y,v_z)}
+{\partial(v,\theta,\phi)}
+\right|
+=v^2\sin\theta.
+$$
+
+Por tanto, el elemento de volumen en el espacio de velocidades es
+
+$$
+d^3v
+=dv_x\,dv_y\,dv_z
+=v^2\sin\theta\,dv\,d\theta\,d\phi.
+$$
+
+Como la distribución es isotrópica, no depende de los ángulos $\theta$ y
+$\phi$. El volumen de la cáscara se obtiene integrando sobre todas las
+direcciones:
+
+$$
+\begin{aligned}
+dV_v
+&=v^2\,dv
+\int_0^{2\pi}d\phi
+\int_0^{\pi}\sin\theta\,d\theta\\
+&=v^2\,dv\,(2\pi)(2)\\
+&=4\pi v^2\,dv.
+\end{aligned}
+$$
+
+Así, el factor $4\pi v^2$ corresponde al área de la esfera de radio $v$ en
+el espacio de velocidades, y $4\pi v^2\,dv$ es el volumen de una cáscara
+esférica infinitesimal.
 
 La probabilidad de encontrar una molécula con rapidez entre $v$ y $v+dv$ es
 $f(v)\,dv$. Por tanto,
