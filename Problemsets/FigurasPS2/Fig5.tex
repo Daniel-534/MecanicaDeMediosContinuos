@@ -1,0 +1,40 @@
+\begin{figure}[htbp]
+    \centering
+    \definecolor{waterblue}{RGB}{65,190,225}
+    \begin{tikzpicture}[x=1cm,y=1cm,line cap=round,line join=round]
+        \coordinate (O) at (4.15,1.55);
+        \def\R{1.25}
+
+        % Agua y contorno del depósito
+        \fill[waterblue] (0.65,0.30) rectangle (4.15,2.80);
+        \draw[line width=0.8pt] (0.65,0.30) -- (0.65,2.80);
+        \draw[line width=0.5pt] (0.65,2.80) -- (4.15,2.80);
+
+        % Cilindro, que oculta el agua detrás de él
+        \fill[white] (O) circle (\R);
+        \draw[line width=0.9pt] (O) circle (\R);
+
+        % Suelo
+        \draw[line width=0.8pt] (0.65,0.30) -- (5.65,0.30);
+        \foreach \x in {0.72,0.94,...,5.58} {
+            \draw[line width=0.35pt] (\x,0.28) -- ++(-0.28,-0.28);
+        }
+
+        % Pared izquierda achurada
+        \foreach \y in {0.38,0.60,...,2.78} {
+            \draw[line width=0.35pt] (0.63,\y) -- ++(-0.28,0.28);
+        }
+
+        % Radio del cilindro
+        \draw[latex-latex,line width=0.6pt] (4.15,1.55) -- (4.15,2.80);
+        \draw[line width=0.45pt] (3.95,1.55) -- (4.35,1.55);
+        \draw[line width=0.45pt] (3.95,2.80) -- (4.35,2.80);
+        \node[right] at (4.18,2.17) {$R$};
+
+        % Fuerza aplicada para impedir el rodamiento
+        \draw[red,line width=1.0pt,-latex] (6.05,1.55) -- (5.40,1.55);
+        \node[red,above] at (5.72,1.60) {$F$};
+    \end{tikzpicture}
+    \par\smallskip
+    {\small Figura 5: Problema 6.}
+\end{figure}

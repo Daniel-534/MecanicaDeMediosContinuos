@@ -194,7 +194,7 @@ $$
 Esto significa que para experimentar la misma presión que en el fondo del antiguo océano marciano de 500 m de profundidad, bastaría con sumergirse a unos 189 m en agua dulce en la Tierra, debido a que la gravedad terrestre es aproximadamente 2{,}64 veces mayor que la marciana.
 
 \section{Problema 5}
-En la figura se muestra una compuerta rectangular de ancho $w$ que puede rotar en torno al punto $C$ y hace un ángulo $\alpha$ con el suelo. Calcule la fuerza $P$ necesaria para mantener la compuerta en posición. Ignore la presión atmosférica.
+En la figura se muestra una compuerta rectangular de ancho $w$ que puede rotar en torno al punto $C$ y hace un ángulo $\alpha$ con el suelo. Calcule la fuerza $\mathcal{F}$ necesaria para mantener la compuerta en posición. Ignore la presión atmosférica.
 
 \input{FigurasPS2/Fig4.tex}
 
@@ -205,75 +205,125 @@ $$
 L = \frac{H}{\sin\alpha}
 $$
 
-Se elige una coordenada $s$ medida desde $C$ a lo largo de la compuerta. La profundidad hidrostática a una distancia $s$ desde $C$ es:
+Se elige una coordenada $\ell$ medida a lo largo de la compuerta, comenzando en la superficie libre y aumentando hacia la articulación $C$. Por tanto, $\ell=0$ en la superficie y $\ell=L$ en $C$. La profundidad vertical de un punto situado a una distancia $\ell$ es
 $$
-h(s) = s\sin\alpha
+h(\ell)=\ell\sin\alpha.
 $$
+
+En efecto, $h(0)=0$ en la superficie libre y $h(L)=L\sin\alpha=H$ en la articulación.
 
 La presión hidrostática (ignorando la presión atmosférica) es:
 $$
-p(s) = \rho g\, s\sin\alpha
+p(\ell)=\rho g\,\ell\sin\alpha.
 $$
 
-La fuerza diferencial sobre un elemento de ancho $w$ y longitud $ds$ de la compuerta es:
+La fuerza diferencial sobre un elemento de ancho $w$ y longitud $d\ell$ de la compuerta es:
 $$
-dF = p(s)\, w\, ds = \rho g \sin\alpha\, s\, w\, ds
+dF = p(\ell)\, w\, d\ell
+=\rho g\sin\alpha\,\ell w\,d\ell.
 $$
 
 La fuerza total del agua sobre la compuerta es:
 $$
-F_{\text{agua}} = \int_0^L \rho g \sin\alpha\, s\, w\, ds = \rho g \sin\alpha\, w\, \frac{L^2}{2}
+F_{\text{agua}}
+=\int_0^L \rho g\sin\alpha\,\ell w\,d\ell
+=\frac{\rho g w \sin\alpha L^2}{2} = \frac{\rho g\,wH^2}{2\sin\alpha}.
 $$
 
-El momento de la fuerza del agua respecto al punto $C$ es:
+\subsubsection{Equilibrio de torques respecto a \texorpdfstring{$C$}{C}}
+
+Se calculan los torques alrededor de la articulación $C$. Las reacciones ejercidas por la articulación actúan directamente en $C$, por lo que su torque respecto a este punto es cero y no aparecen en la ecuación de equilibrio.
+
+Cada fuerza diferencial $dF$ actúa perpendicularmente a la compuerta. Como $\ell$ se mide desde la parte superior, la distancia entre el punto de aplicación de $dF$ y la articulación $C$ es
 $$
-M_{\text{agua}} = \int_0^L \rho g \sin\alpha\, s^2\, w\, ds = \rho g \sin\alpha\, w\, \frac{L^3}{3}
+L-\ell.
+$$
+Como $dF$ es perpendicular a dicha distancia, la magnitud del torque diferencial respecto a $C$ es
+$$
+d\tau_C=(L-\ell)dF.
 $$
 
-La fuerza $P$ se aplica perpendicularmente a la compuerta en su extremo superior, a una distancia $L$ del punto $C$. El equilibrio de momentos respecto a $C$ exige:
+La fuerza hidrostática tiende a hacer girar la compuerta en sentido horario. Por consiguiente, la magnitud del torque hidrostático total respecto a $C$ es
 $$
-P \cdot L = \rho g \sin\alpha\, w\, \frac{L^3}{3}
-$$
-
-Despejando $P$ y sustituyendo $L = H/\sin\alpha$:
-$$
-P = \frac{\rho g \sin\alpha\, w\, L^2}{3} = \frac{\rho g \sin\alpha\, w}{3}\cdot\frac{H^2}{\sin^2\alpha}
+\tau_{C,\text{agua}}
+=\int_0^L (L-\ell)dF
+=\rho g w\sin\alpha\int_0^L
+(L-\ell)\ell\,d\ell.
 $$
 
+Evaluando la integral:
 $$
-\boxed{P = \frac{\rho g\, w\, H^2}{3\sin\alpha}}
+\begin{aligned}
+\tau_{C,\text{agua}}
+&=\rho g w\sin\alpha
+\left(L\frac{L^2}{2}-\frac{L^3}{3}\right)\\
+&=\rho g w\sin\alpha\,L^3
+\left(\frac{1}{2}-\frac{1}{3}\right)\\
+&=\frac{\rho g w\sin\alpha\,L^3}{6}.
+\end{aligned}
+$$
+
+La fuerza $\mathcal{F}$ se aplica perpendicularmente a la compuerta en su extremo superior, situado a una distancia $L$ de $C$. Por ello, genera un torque de magnitud $\mathcal{F}L$ en sentido antihorario. Al adoptar el sentido antihorario como positivo, el equilibrio rotacional se escribe
+$$
+\sum \tau_C=0
+\quad\Longrightarrow\quad
+\mathcal{F}L-\tau_{C,\text{agua}}=0.
+$$
+
+Por tanto,
+$$
+\mathcal{F}=\frac{\tau_{C,\text{agua}}}{L}
+=\frac{\rho g w\sin\alpha\,L^2}{6}.
+$$
+
+Finalmente, sustituyendo $L=H/\sin\alpha$:
+$$
+\boxed{\mathcal{F} = \frac{\rho g\, w\, H^2}{6\sin\alpha}}
 $$
 
 %==============================================================
 \section{Problema 6}
 Calcule la fuerza por unidad de longitud requerida para evitar que el cilindro de la figura ruede bajo la acción del agua a su izquierda.
 
-%\input{FigurasPS2/Fig5.tex}
+\input{FigurasPS2/Fig5.tex}
 
 \subsection{Solución}
 
-El cilindro de radio $R$ tiene agua a su izquierda hasta la parte superior del cilindro (altura $2R$). Se calculan las componentes de la fuerza hidrostática por unidad de longitud.
+El cilindro de radio $R$ tiene agua a su izquierda hasta la parte superior del cilindro (altura $2R$). Se adopta un marco de referencia cartesiano fijo al suelo, con el eje $x$ horizontal y positivo hacia la derecha, y el eje $y$ vertical y positivo hacia abajo, medido desde la superficie libre. Esta elección hace que la profundidad coincida directamente con la coordenada $y$ y que la presión manométrica sea $p(y)=\rho g y$.
 
 \subsubsection{Fuerza horizontal}
 
-La fuerza horizontal sobre una superficie curva se calcula como la fuerza sobre su proyección vertical. La proyección vertical del semicírculo izquierdo es un rectángulo de altura $2R$ y ancho unitario. La presión varía linealmente desde $0$ (superficie libre) hasta $\rho g(2R)$ en el fondo. La fuerza horizontal es:
+La componente horizontal de la fuerza hidrostática sobre una superficie curva es igual a la fuerza ejercida sobre su proyección vertical. Como no se conoce la longitud axial del cilindro, se considera una porción arbitraria de longitud $\ell$. Su proyección vertical es entonces un rectángulo de altura $2R$ y ancho $\ell$, cuyo elemento de área es $dA=\ell\,dy$. La presión varía linealmente desde cero en la superficie libre ($y=0$) hasta $2\rho gR$ en el fondo ($y=2R$).
+
+Sobre la mitad izquierda del cilindro, la presión del agua empuja en dirección positiva del eje $x$. Por esta razón, la componente horizontal de la fuerza del agua sobre la porción de longitud $\ell$ se toma positiva:
 $$
-F_h = \int_0^{2R} \rho g\, y\, dy = \rho g\, \frac{(2R)^2}{2} = 2\rho g R^2
+F_{h,x}=\int_A p(y)\,dA
+=\ell\int_0^{2R}\rho gy\,dy
+=2\rho gR^2\ell.
 $$
 
-\subsubsection{Fuerza vertical}
-
-La fuerza vertical es el peso del agua situada encima del semicírculo superior del cilindro. Por unidad de longitud, el volumen de agua encima del semicírculo es $\pi R^2/2$, así que:
+Al dividir entre la longitud axial considerada, se obtiene la fuerza horizontal por unidad de longitud:
 $$
-F_v = \rho g\, \frac{\pi R^2}{2}
+\frac{F_{h,x}}{\ell}=2\rho gR^2>0.
 $$
 
 \subsubsection{Fuerza para evitar el rodamiento}
 
-Para evitar que el cilindro ruede hacia la derecha, se debe aplicar una fuerza horizontal $F$ hacia la izquierda que equilibre la componente horizontal de la fuerza del agua. La componente vertical es equilibrada por la reacción normal del suelo. La fuerza por unidad de longitud requerida es:
+La componente vertical de la fuerza hidrostática queda compensada por la reacción normal del suelo, por lo que no es necesario calcularla para determinar la fuerza horizontal requerida. Para evitar el movimiento hacia la derecha, la fuerza externa debe apuntar hacia la izquierda, es decir, en la dirección negativa del eje $x$.
+
+El equilibrio horizontal exige:
 $$
-\boxed{F = 2\rho g R^2}
+\sum F_x=0
+\quad\Longrightarrow\quad
+\frac{F_x}{\ell}+\frac{F_{h,x}}{\ell}=0.
 $$
+
+Por tanto, la fuerza externa por unidad de longitud es:
+$$
+\boxed{\frac{F_x}{\ell}=-2\rho gR^2}
+$$
+
+El signo negativo indica que la fuerza está dirigida hacia la izquierda. Su magnitud por unidad de longitud es $\boxed{F/\ell=2\rho gR^2}$.
 
 %==============================================================
 \section{Problema 7}
