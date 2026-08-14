@@ -9,11 +9,11 @@
 \usepackage[shortlabels]{enumitem}
 \usepackage{parskip}
 \usepackage[most]{tcolorbox}
-\usepackage[hidelinks]{hyperref}
 \usepackage{float}
 \usepackage{booktabs}
 \usepackage{mathrsfs}
 \usepackage{tikz}
+\usepackage[hidelinks]{hyperref}
 
 
 % cabecera
@@ -223,16 +223,20 @@ dF = p(\ell)\, w\, d\ell
 =\rho g\sin\alpha\,\ell w\,d\ell.
 $$
 
+\input{FigurasPS2/Fig5.tex}
+
 La fuerza total del agua sobre la compuerta es:
 $$
 F_{\text{agua}}
 =\int_0^L \rho g\sin\alpha\,\ell w\,d\ell
-=\frac{\rho g w \sin\alpha L^2}{2} = \frac{\rho g\,wH^2}{2\sin\alpha}.
+=\frac{\rho g\,wH^2}{2\sin\alpha}.
 $$
 
 \subsubsection{Equilibrio de torques respecto a \texorpdfstring{$C$}{C}}
 
 Se calculan los torques alrededor de la articulación $C$. Las reacciones ejercidas por la articulación actúan directamente en $C$, por lo que su torque respecto a este punto es cero y no aparecen en la ecuación de equilibrio.
+
+\input{FigurasPS2/Fig6.tex}
 
 Cada fuerza diferencial $dF$ actúa perpendicularmente a la compuerta. Como $\ell$ se mide desde la parte superior, la distancia entre el punto de aplicación de $dF$ y la articulación $C$ es
 $$
@@ -285,7 +289,7 @@ $$
 \section{Problema 6}
 Calcule la fuerza por unidad de longitud requerida para evitar que el cilindro de la figura ruede bajo la acción del agua a su izquierda.
 
-\input{FigurasPS2/Fig5.tex}
+\input{FigurasPS2/Fig7.tex}
 
 \subsection{Solución}
 
@@ -294,6 +298,8 @@ El cilindro de radio $R$ tiene agua a su izquierda hasta la parte superior del c
 \subsubsection{Fuerza horizontal}
 
 La componente horizontal de la fuerza hidrostática sobre una superficie curva es igual a la fuerza ejercida sobre su proyección vertical. Como no se conoce la longitud axial del cilindro, se considera una porción arbitraria de longitud $\ell$. Su proyección vertical es entonces un rectángulo de altura $2R$ y ancho $\ell$, cuyo elemento de área es $dA=\ell\,dy$. La presión varía linealmente desde cero en la superficie libre ($y=0$) hasta $2\rho gR$ en el fondo ($y=2R$).
+
+\input{FigurasPS2/Fig8.tex}
 
 Sobre la mitad izquierda del cilindro, la presión del agua empuja en dirección positiva del eje $x$. Por esta razón, la componente horizontal de la fuerza del agua sobre la porción de longitud $\ell$ se toma positiva:
 $$
@@ -332,6 +338,8 @@ La presión en la superficie de Venus es de 92 atm, y la aceleración gravitacio
     \item Calcule la fuerza total ejercida sobre la superficie interior del fondo del tanque.
     \item Calcule la fuerza total que ejerce la atmósfera sobre las paredes verticales del cilindro.
 \end{enumerate}
+
+\input{FigurasPS2/Fig9.tex}
 
 \subsection{Solución}
 
@@ -569,6 +577,8 @@ Atmósferas hidrostáticas. En este problema, usted hará una caracterización s
 
     \item Calcule la altura característica para la fotósfera del Sol a $T_\odot = 5770$ K y para la Tierra a $T_\oplus = 300$ K. La fotósfera solar está altamente ionizada, de modo que tiene un peso molecular medio de $\mu = 0{,}6$, mientras que la atmósfera terrestre se compone principalmente de nitrógeno molecular con $\mu = 28$.
 \end{enumerate}
+
+\input{FigurasPS2/Fig10.tex}
 
 \subsection{Solución}
 

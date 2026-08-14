@@ -1,40 +1,34 @@
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
-    \definecolor{waterblue}{RGB}{65,190,225}
+    \definecolor{waterblue}{RGB}{92,185,220}
+    \definecolor{pressureblue}{RGB}{30,95,175}
     \begin{tikzpicture}[x=1cm,y=1cm,line cap=round,line join=round]
-        \coordinate (O) at (4.15,1.55);
-        \def\R{1.25}
+        \coordinate (C) at (4.10,0.35);
+        \coordinate (S) at (5.90,3.05);
 
-        % Agua y contorno del depósito
-        \fill[waterblue] (0.65,0.30) rectangle (4.15,2.80);
-        \draw[line width=0.8pt] (0.65,0.30) -- (0.65,2.80);
-        \draw[line width=0.5pt] (0.65,2.80) -- (4.15,2.80);
+        % Agua y compuerta
+        \fill[waterblue!75] (0.65,0.35) -- (C) -- (S) -- (0.65,3.05) -- cycle;
+        \draw[line width=0.7pt] (0.65,0.35) -- (0.65,3.05) -- (S);
+        \draw[line width=1.1pt] (C) -- (S);
+        \fill (C) circle (0.07);
+        \node[below right] at (C) {$C$};
+        \node[above right] at (S) {$\ell=0$};
+        \node at (2.15,1.65) {Agua};
 
-        % Cilindro, que oculta el agua detrás de él
-        \fill[white] (O) circle (\R);
-        \draw[line width=0.9pt] (O) circle (\R);
+        % Coordenada a lo largo de la compuerta
+        \draw[black!70,-latex,line width=0.65pt]
+            (6.15,2.88) -- (4.37,0.22);
+        \node[right] at (5.50,1.95) {$\ell$};
+        \node[right] at (4.35,0.20) {$\ell=L$};
 
-        % Suelo
-        \draw[line width=0.8pt] (0.65,0.30) -- (5.65,0.30);
-        \foreach \x in {0.72,0.94,...,5.58} {
-            \draw[line width=0.35pt] (\x,0.28) -- ++(-0.28,-0.28);
-        }
+        % Fuerzas diferenciales: magnitud creciente con la profundidad
+        \draw[pressureblue,-latex,line width=0.75pt] (5.42,2.67) -- (5.58,2.57);
+        \draw[pressureblue,-latex,line width=0.75pt] (4.83,2.30) -- (5.18,2.07);
+        \draw[pressureblue,-latex,line width=0.75pt] (4.22,1.93) -- (4.78,1.56);
+        \draw[pressureblue,-latex,line width=0.75pt] (3.60,1.56) -- (4.38,1.04);
+        \draw[pressureblue,-latex,line width=0.75pt] (2.98,1.18) -- (3.98,0.52);
+        \node[pressureblue,above] at (4.50,1.82) {$dF$};
 
-        % Pared izquierda achurada
-        \foreach \y in {0.38,0.60,...,2.78} {
-            \draw[line width=0.35pt] (0.63,\y) -- ++(-0.28,0.28);
-        }
-
-        % Radio del cilindro
-        \draw[latex-latex,line width=0.6pt] (4.15,1.55) -- (4.15,2.80);
-        \draw[line width=0.45pt] (3.95,1.55) -- (4.35,1.55);
-        \draw[line width=0.45pt] (3.95,2.80) -- (4.35,2.80);
-        \node[right] at (4.18,2.17) {$R$};
-
-        % Fuerza aplicada para impedir el rodamiento
-        \draw[red,line width=1.0pt,-latex] (6.05,1.55) -- (5.40,1.55);
-        \node[red,above] at (5.72,1.60) {$F$};
     \end{tikzpicture}
-    \par\smallskip
-    {\small Figura 5: Problema 6.}
+    \caption{Distribución hidrostática sobre la compuerta, usando $\ell$ desde la superficie libre.}
 \end{figure}
