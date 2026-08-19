@@ -1,0 +1,435 @@
+\shorthandoff{<>}
+\input{Clases/FigurasClase6/Fig1}
+\input{Clases/FigurasClase6/Fig2}
+\input{Clases/FigurasClase6/Fig3}
+\input{Clases/FigurasClase6/Fig4}
+\shorthandon{<>}
+
+\chapter{Clase 6}
+
+\section{Medios continuos autogravitantes}
+
+\subsection{Gravitación newtoniana}
+
+De acuerdo con la ley de Newton, la fuerza gravitacional que una masa puntual $M$ ejerce sobre otra masa puntual $m$ está dada por:
+$$ \vec{F}_{M \to m} = - \frac{GMm(\vec{r} - \vec{r}')}{|\vec{r} - \vec{r}'|^3} $$
+
+La fuerza gravitacional que una distribución de masa con densidad $\rho(\vec{r}')$ ejerce sobre una masa puntual $m$ ubicada en $\vec{r}$ se calcula como la fuerza producida por la colección de masas puntuales que conforman la distribución:
+$$ \vec{F}(\vec{r}) = -Gm \int \frac{\rho(\vec{r}')(\vec{r} - \vec{r}')}{|\vec{r} - \vec{r}'|^3} d^3\vec{r}' $$
+
+Los campos gravitacionales correspondientes son:
+$$ \vec{g} = \frac{\vec{F}_{M \to m}}{m} = - \frac{GM(\vec{r} - \vec{r}')}{|\vec{r} - \vec{r}'|^3} $$
+$$ \vec{g}(\vec{r}) = \frac{\vec{F}(\vec{r})}{m} = -G \int \frac{\rho(\vec{r}')(\vec{r} - \vec{r}')}{|\vec{r} - \vec{r}'|^3} d^3\vec{r}' $$
+
+Y los potenciales gravitacionales correspondientes son:
+$$ \Phi = - \frac{GM}{|\vec{r} - \vec{r}'|} $$
+$$ \Phi(\vec{r}) = -G \int \frac{\rho(\vec{r}')}{|\vec{r} - \vec{r}'|} d^3\vec{r}' $$
+
+El potencial gravitacional satisface la ecuación de Poisson:
+$$ \nabla^2 \Phi(\vec{r}) = 4\pi G \rho(\vec{r}) $$
+mientras que el campo gravitacional es irrotacional, $\nabla \times \vec{g} = 0$. La ecuación de Poisson describe el impacto local de un sistema autogravitante sobre su potencial gravitacional.
+
+\figuraGravitacionContinua
+
+\section{Ejercicios resueltos}
+
+\medskip
+{\large\bfseries 1. Losa autogravitante uniforme\par}
+\smallskip
+
+\textbf{Enunciado.} Una losa estática infinita de fluido incompresible autogravitante de densidad $\rho$ ocupa la región $|z| < a$.
+\begin{enumerate}[a)]
+    \item Encuentre el campo gravitacional en todas partes y la distribución de presión dentro de la losa.
+    \item Si un disco galáctico se aproxima mediante una losa de densidad uniforme con densidad $10^{-18} \text{ kg m}^{-3}$ y $a = 10^{18} \text{ m}$, determine la velocidad de una estrella en el plano medio si parte del reposo en $z = a$, y el período de su oscilación.
+\end{enumerate}
+
+\textbf{Solución.}
+\begin{enumerate}[a)]
+    \item Para una losa infinita con simetría planar, el campo gravitacional solo depende de $z$ y apunta en la dirección $\hat{k}$. Usando la ley de Gauss para la gravedad, $\nabla \cdot \vec{g} = -4\pi G \rho$:
+    
+    Dentro de la losa ($|z| < a$):
+    $$ \frac{dg}{dz} = -4\pi G \rho \implies g(z) = -4\pi G \rho z \implies \vec{g} = -4\pi G \rho z \hat{k} $$
+    
+    Fuera de la losa ($|z| > a$):
+    $$ \nabla \cdot \vec{g} = 0 \implies g(z) = \text{const} $$
+    Evaluando en la frontera $z=a$, obtenemos $\vec{g} = -2\pi G \rho a \text{sgn}(z) \hat{k}$.
+    
+    La distribución de presión se obtiene del equilibrio hidrostático $\nabla p = \rho \vec{g}$:
+    $$ \frac{dp}{dz} = -4\pi G \rho^2 z \implies p(z) = p(0) - 2\pi G \rho^2 z^2 \quad \text{para } |z| < a $$
+
+    \item El campo gravitacional dentro de la losa actúa como un oscilador armónico para una estrella de masa $m$: $F = m g(z) = -m(4\pi G \rho)z$. La frecuencia angular es $\omega = \sqrt{4\pi G \rho}$.
+    
+    La velocidad en el plano medio ($z=0$) partiendo del reposo en $z=a$ es la velocidad máxima del oscilador:
+    $$ v = \omega a = a\sqrt{4\pi G \rho} $$
+    
+    El período de oscilación es:
+    $$ T = \frac{2\pi}{\omega} = \sqrt{\frac{\pi}{G \rho}} $$
+\end{enumerate}
+
+\medskip
+{\large\bfseries 2. Caída gravitacional y cúmulo uniforme\par}
+\smallskip
+
+\textbf{Enunciado.} Una partícula se libera desde el reposo a un radio $R_0$ desde el centro de un cuerpo de masa $M$. Calcule:
+\begin{enumerate}[a)]
+    \item Su aceleración inicial.
+    \item El tiempo que tarda en llegar al centro del cuerpo para los dos casos: (i) que el cuerpo sea una masa puntual, (ii) que el cuerpo sea una esfera uniforme de radio $R_0$.
+\end{enumerate}
+Un cúmulo consiste inicialmente en estrellas en reposo, distribuidas en una esfera uniforme. Encuentre cuánto tiempo tarda una estrella en llegar al centro en función de su radio inicial en el cúmulo y comente sus resultados.
+
+\textbf{Solución.}
+\begin{enumerate}[a)]
+    \item La aceleración inicial está dada por la ley de gravitación universal evaluada en $R_0$:
+    $$ a_0 = \frac{GM}{R_0^2} $$
+
+    \item Para calcular el tiempo de caída, usamos conservación de energía o integración directa de la ecuación de movimiento.
+    
+    (i) \textbf{Masa puntual:} La energía total es $E = -GMm/R_0$. Igualando a $E = \frac{1}{2}mv^2 - GMm/r$, obtenemos $v = -dr/dt = \sqrt{2GM}\sqrt{1/r - 1/R_0}$. Integrando desde $R_0$ hasta $0$ con el cambio de variable $r = R_0 \sin^2\theta$:
+    $$ t = \int_0^{R_0} \frac{dr}{\sqrt{2GM}\sqrt{\frac{1}{r} - \frac{1}{R_0}}} = \frac{\pi}{2} \sqrt{\frac{R_0^3}{2GM}} $$
+    
+    (ii) \textbf{Esfera uniforme de radio $R_0$:} La masa encerrada es $M(r) = M(r^3/R_0^3)$. La fuerza es $F = -\frac{GMm}{R_0^3}r$, lo que describe un oscilador armónico con $\omega^2 = GM/R_0^3$. El tiempo al centro es un cuarto del período:
+    $$ t = \frac{T}{4} = \frac{\pi}{2} \sqrt{\frac{R_0^3}{GM}} $$
+    
+    \textbf{Cúmulo de estrellas:} Para una estrella a una distancia $r_0$ del centro en un cúmulo uniforme de densidad $\rho$, la masa encerrada es $M(r_0) = \frac{4}{3}\pi \rho r_0^3$. El tiempo de caída es:
+    $$ t = \frac{\pi}{2} \sqrt{\frac{r_0^3}{G \frac{4}{3}\pi \rho r_0^3}} = \sqrt{\frac{3\pi}{32 G \rho}} $$
+    \textbf{Comentario:} El tiempo es independiente del radio inicial $r_0$. Todas las estrellas del cúmulo llegan al centro exactamente al mismo tiempo.
+\end{enumerate}
+
+\medskip
+{\large\bfseries 3. Planeta de dos capas\par}
+\smallskip
+
+\textbf{Enunciado.} Un planeta consta de dos capas con densidad de masa constante:
+$$
+\rho(r) = \begin{cases}
+\rho_1 & r \le a_1 \\
+\rho_2 & a_1 < r \le a \\
+0 & r > a
+\end{cases}
+$$
+\begin{enumerate}[a)]
+    \item Calcule la intensidad de la gravedad y el potencial.
+    \item Demuestre que la intensidad de la gravedad en la frontera entre las capas es mayor que en la superficie cuando:
+    $$
+    \frac{\rho_1 - \rho_2}{\rho_2} > \frac{a^2}{a_1(a + a_1)}.
+    $$
+    Verifique que esto se cumple para la Tierra.
+\end{enumerate}
+
+\textbf{Solución.}
+\begin{enumerate}[a)]
+    \item La masa encerrada $M(r)$ y el campo gravitacional $g(r) = GM(r)/r^2$ son:
+    $$ g(r) = \begin{cases} \frac{4}{3}\pi G \rho_1 r & r \le a_1 \\ \frac{4}{3}\pi G \left[ \rho_2 r + (\rho_1 - \rho_2)\frac{a_1^3}{r^2} \right] & a_1 < r \le a \end{cases} $$
+    
+    El potencial $\Phi(r) = -\int_{\infty}^r g(r') dr'$ (exigiendo continuidad en $r=a_1$ y $r=a$):
+    $$ \Phi(r) = \begin{cases} -\frac{GM}{a} + \frac{2}{3}\pi G \rho_2 (a^2 - a_1^2) + \frac{4}{3}\pi G (\rho_1 - \rho_2) a_1^3 \left(\frac{1}{a_1} - \frac{1}{a}\right) + \frac{2}{3}\pi G \rho_1 (a_1^2 - r^2) & r \le a_1 \\ -\frac{GM}{a} + \frac{2}{3}\pi G \rho_2 (a^2 - r^2) + \frac{4}{3}\pi G (\rho_1 - \rho_2) a_1^3 \left(\frac{1}{r} - \frac{1}{a}\right) & a_1 < r \le a \\ -\frac{GM}{r} & r > a \end{cases} $$
+    donde $M = \frac{4}{3}\pi [\rho_1 a_1^3 + \rho_2(a^3 - a_1^3)]$.
+
+    \item Evaluamos la gravedad en la frontera $r=a_1$ y en la superficie $r=a$:
+    $$ g(a_1) = \frac{4}{3}\pi G \rho_1 a_1 $$
+    $$ g(a) = \frac{GM}{a^2} = \frac{4}{3}\pi G \frac{\rho_1 a_1^3 + \rho_2(a^3 - a_1^3)}{a^2} $$
+    
+    Imponemos $g(a_1) > g(a)$:
+    $$ \rho_1 a_1 > \rho_1 \frac{a_1^3}{a^2} + \rho_2 \frac{a^3 - a_1^3}{a^2} $$
+    $$ \rho_1 a_1 \left(1 - \frac{a_1^2}{a^2}\right) > \rho_2 a \left(1 - \frac{a_1^3}{a^3}\right) $$
+    Factorizando las diferencias de cuadrados y cubos, y dividiendo por $(a-a_1)$:
+    $$ \rho_1 a_1 \frac{a+a_1}{a} > \rho_2 \frac{a^2+aa_1+a_1^2}{a} $$
+    Reorganizando para aislar las densidades:
+    $$ \frac{\rho_1}{\rho_2} > \frac{a^2+aa_1+a_1^2}{a_1(a+a_1)} = \frac{a^2}{a_1(a+a_1)} + 1 \implies \frac{\rho_1 - \rho_2}{\rho_2} > \frac{a^2}{a_1(a+a_1)} $$
+    
+    \textbf{Verificación para la Tierra:} Con $a \approx 6371$ km, $a_1 \approx 3480$ km, $\rho_1 \approx 11$ g/cm$^3$ (núcleo) y $\rho_2 \approx 4.5$ g/cm$^3$ (manto):
+    $$ \text{LHS} = \frac{11 - 4.5}{4.5} \approx 1.44 $$
+    $$ \text{RHS} = \frac{6371^2}{3480(6371+3480)} \approx 1.18 $$
+    Como $1.44 > 1.18$, la condición se cumple y la gravedad es mayor en la frontera núcleo-manto que en la superficie.
+\end{enumerate}
+
+\medskip
+{\large\bfseries 4. Planeta con densidad potencial\par}
+\smallskip
+
+\textbf{Enunciado.} Un planeta esférico tiene una distribución de masa de la forma $\rho(r) = Ar^\alpha$, para $r \le a$.
+\begin{enumerate}[a)]
+    \item Calcule la intensidad del campo gravitacional y el potencial dentro del planeta para esta distribución.
+    \item ¿Para qué valores de $\alpha$ es el ejercicio resoluble con una masa planetaria finita?
+    \item ¿Para qué valor de $\alpha$ la gravedad se hace más fuerte hacia el centro?
+\end{enumerate}
+
+\textbf{Solución.}
+\begin{enumerate}[a)]
+    \item La masa encerrada es $M(r) = \int_0^r 4\pi r'^2 A r'^\alpha dr' = \frac{4\pi A}{\alpha+3} r^{\alpha+3}$.
+    
+    El campo gravitacional es:
+    $$ g(r) = \frac{GM(r)}{r^2} = \frac{4\pi G A}{\alpha+3} r^{\alpha+1} \quad \text{para } r \le a $$
+    
+    El potencial $\Phi(r) = -\int_{\infty}^r g(r') dr'$ se calcula por partes. Para $r > a$, $\Phi(r) = -GM/a$. Para $r \le a$:
+    $$ \Phi(r) = -\frac{GM}{a} - \int_a^r \frac{4\pi G A}{\alpha+3} r'^{\alpha+1} dr' = -\frac{4\pi G A a^{\alpha+2}}{\alpha+3} - \frac{4\pi G A}{(\alpha+3)(\alpha+2)} \left(r^{\alpha+2} - a^{\alpha+2}\right) $$
+
+    \item La masa total del planeta es $M = \frac{4\pi A}{\alpha+3} a^{\alpha+3}$. Para que la integral de masa no diverja en el origen ($r=0$), el exponente de la densidad debe cumplir $\alpha > -3$.
+
+    \item La gravedad crece hacia el centro si $dg/dr < 0$. Dado que $g(r) \propto r^{\alpha+1}$, esto requiere $\alpha + 1 < 0$, es decir, $\alpha < -1$. Combinado con el resultado anterior, la gravedad crece hacia el centro para $-3 < \alpha < -1$.
+\end{enumerate}
+
+\medskip
+{\large\bfseries 5. Estrella exponencial\par}
+\smallskip
+
+\textbf{Enunciado.} Una ``estrella exponencial'' tiene una densidad de masa $\rho = \rho_0 e^{-r/a}$, donde $\rho_0$ es la densidad de masa central y $a$ es el ``radio''. Calcule el campo gravitacional y el potencial.
+
+\textbf{Solución.}
+La densidad es $\rho(r) = \rho_0 e^{-r/a}$. La masa encerrada es:
+$$ M(r) = \int_0^r 4\pi r'^2 \rho_0 e^{-r'/a} dr' = 4\pi \rho_0 a^3 \left[ 2 - e^{-r/a} \left( \frac{r^2}{a^2} + \frac{2r}{a} + 2 \right) \right] $$
+
+El campo gravitacional es:
+$$ g(r) = \frac{GM(r)}{r^2} = \frac{4\pi G \rho_0 a^3}{r^2} \left[ 2 - e^{-r/a} \left( \frac{r^2}{a^2} + \frac{2r}{a} + 2 \right) \right] $$
+
+El potencial gravitacional se obtiene integrando el campo desde el infinito:
+$$ \Phi(r) = -\int_{\infty}^r g(r') dr' $$
+
+\medskip
+{\large\bfseries 6. Segmento lineal de masa\par}
+\smallskip
+
+\textbf{Enunciado.}
+\begin{enumerate}[a)]
+    \item Calcule el potencial gravitacional y el campo de una distribución de masa con forma de una línea muy delgada (un modelo de cuerda cósmica) de longitud $2a$ con masa uniforme $\lambda$ por unidad de longitud.
+    \item Calcule el comportamiento del potencial en el infinito ortogonalmente a la línea.
+    \item Discuta qué sucede en el límite $a \to \infty$.
+\end{enumerate}
+
+\textbf{Solución.}
+\begin{enumerate}[a)]
+    \item Consideramos la línea de masa a lo largo del eje $z$ desde $z'=-a$ hasta $z'=a$. El potencial en un punto $(r, z)$ en coordenadas cilíndricas es:
+    $$ \Phi(r, z) = -G\lambda \int_{-a}^a \frac{dz'}{\sqrt{r^2 + (z-z')^2}} = -G\lambda \ln \left( \frac{z+a + \sqrt{r^2+(z+a)^2}}{z-a + \sqrt{r^2+(z-a)^2}} \right) $$
+    El campo gravitacional se obtiene mediante $\vec{g} = -\nabla \Phi$.
+
+    \item En el plano ortogonal a la línea ($z=0$) y a gran distancia ($r \to \infty$):
+    $$ \Phi(r, 0) = -G\lambda \ln \left( \frac{a + \sqrt{r^2+a^2}}{-a + \sqrt{r^2+a^2}} \right) \approx -G\lambda \ln \left( \frac{r+a}{r-a} \right) \approx -G\lambda \frac{2a}{r} $$
+    Esto coincide con el potencial de una masa puntual $M = 2a\lambda$ ubicada en el origen.
+
+    \item En el límite $a \to \infty$ (línea infinita), el potencial diverge logarítmicamente, pero el campo gravitacional converge a un valor finito:
+    $$ \vec{g} = -\frac{2G\lambda}{r} \hat{r} $$
+\end{enumerate}
+
+\medskip
+{\large\bfseries 7. Disco delgado uniforme\par}
+\smallskip
+
+\textbf{Enunciado.}
+\begin{enumerate}[a)]
+    \item Escriba una expresión para el potencial gravitacional de una distribución de masa con forma de una placa circular muy delgada de radio $a$ con masa uniforme $\sigma$ por unidad de área (un modelo de la materia luminosa de una galaxia).
+    \item Calcule el valor del potencial a lo largo de la normal central de la placa.
+    \item Calcule su forma lejos del disco.
+    \item ¿Qué sucede cuando $a \to \infty$?
+\end{enumerate}
+
+\textbf{Solución.}
+\begin{enumerate}[a)]
+    \item Para un plato circular de radio $a$ y densidad superficial $\sigma$ en el plano $z=0$, el potencial en coordenadas cilíndricas $(r, \phi, z)$ es:
+    $$ \Phi(r, z) = -G\sigma \int_0^a \int_0^{2\pi} \frac{r' dr' d\phi'}{\sqrt{r^2 + r'^2 - 2rr'\cos\phi' + z^2}} $$
+    Esta integral elíptica no tiene una forma cerrada simple para $r \neq 0$.
+
+    \item Sobre la normal central ($r=0$), la integral se simplifica drásticamente:
+    $$ \Phi(0, z) = -2\pi G \sigma \int_0^a \frac{r' dr'}{\sqrt{r'^2 + z^2}} = -2\pi G \sigma \left( \sqrt{a^2 + z^2} - |z| \right) $$
+
+    \item Lejos del disco ($r^2 + z^2 \gg a^2$), el disco se comporta como una masa puntual $M = \pi a^2 \sigma$:
+    $$ \Phi \approx -\frac{GM}{\sqrt{r^2 + z^2}} $$
+
+    \item Si $a \to \infty$, el potencial $\Phi(0, z)$ diverge. Sin embargo, el campo gravitacional (la fuerza) permanece finito y recupera el resultado de un plano infinito:
+    $$ g_z = -\frac{\partial \Phi}{\partial z} = 2\pi G \sigma \text{sgn}(z) $$
+\end{enumerate}
+
+\section{Masa autogravitante}
+
+En este caso, la gravitación es la de un cuerpo actuando sobre sí mismo (como la Tierra, las estrellas o las galaxias). A partir de la condición de equilibrio hidrostático y tomando la divergencia, se obtiene:
+$$ \nabla \cdot \left( \frac{\nabla p}{\rho} \right) + \nabla^2 \Phi = 0 $$
+
+Usando la ecuación de Poisson, esto se convierte en:
+$$ \nabla \cdot \left( \frac{\nabla p}{\rho} \right) + 4\pi G \rho = 0 $$
+
+Esta ecuación es válida en general, incluso para fluidos compresibles donde $\rho = \rho(\vec{r})$ y $p = p(\vec{r})$. Junto con una ecuación de estado, permite construir modelos simples de planetas, estrellas o galaxias.
+
+\figuraCierreAutogravitante
+
+\subsection{Un modelo de losa isotérmica}
+
+Se considera una losa infinita, estática e isotérmica, simétrica respecto a $z=0$, sostenida por la presión del gas y bajo su propia autogravedad. Para un gas ideal isotérmico, la ecuación de estado es $p = A\rho$, donde $A$ es una constante. La geometría es plano-paralela, por lo que todas las cantidades dependen solo de $z$. El equilibrio hidrostático requiere:
+$$ A \frac{1}{\rho} \nabla \rho = -\nabla \Phi $$
+
+Dado que la variación es solo con respecto a $z$:
+$$ A \frac{d}{dz} \ln \rho = -\frac{d\Phi}{dz} \implies \Phi = -A \ln\left(\frac{\rho}{\rho_0}\right) + \Phi_0 $$
+de donde se obtiene el perfil de densidad en función del potencial:
+$$ \rho(z) = \rho_0 \exp\left[-\frac{\Phi - \Phi_0}{A}\right] $$
+
+Sustituyendo esta expresión en la ecuación de Poisson, se obtiene una ecuación diferencial para el potencial:
+$$ \frac{d^2\Phi}{dz^2} = 4\pi G \rho_0 \exp\left[-\frac{\Phi - \Phi_0}{A}\right] $$
+
+Se introducen las variables adimensionales:
+$$ \chi \equiv -\frac{\Phi - \Phi_0}{A}, \quad Z \equiv \left(\frac{2\pi G \rho_0}{A}\right)^{1/2} z $$
+para obtener la ecuación diferencial ordinaria:
+$$ \frac{d^2\chi}{dZ^2} = -2e^\chi $$
+con las condiciones de frontera $\chi(0) = 0$ y, por simetría, $\left.\frac{d\chi}{dZ}\right|_0 = 0$.
+
+Multiplicando por $\frac{d\chi}{dZ}$ e integrando:
+$$ \frac{1}{2} \frac{d}{dZ} \left(\frac{d\chi}{dZ}\right)^2 = -2 \frac{d}{dZ} [e^\chi] \implies \left(\frac{d\chi}{dZ}\right)^2 = c_1 - 4e^\chi $$
+Las condiciones de frontera en $Z=0$ dictan que $c_1 = 4$, por lo que:
+$$ \frac{d\chi}{dZ} = 2\sqrt{1 - e^\chi} $$
+
+Para integrar, se realiza la sustitución $s^2 = e^\chi$:
+$$ \int \frac{d\chi}{\sqrt{1 - e^\chi}} = \int \frac{2 ds}{s\sqrt{1 - s^2}} = 2\int \frac{d\theta}{\sin \theta} = 2\int \frac{dt}{t} $$
+donde $s = \sin \theta$ y $t = \tan(\theta/2)$. Esto conduce a:
+$$ 2 \ln t = 2Z + c_2 $$
+Dado que $\chi(0) = 0 \implies s(0) = 1 \implies \theta(0) = \pi/2 \implies t(0) = 1$, se obtiene $c_2 = 0$ y por tanto $t = e^Z$.
+
+Sustituyendo hacia atrás:
+$$ s = \frac{2t}{1 + t^2} = \frac{1}{\cosh Z} \implies e^{\chi/2} = \frac{1}{\cosh Z} \implies \chi = -2 \ln(\cosh Z) $$
+
+Retornando a las variables originales:
+$$ \Phi - \Phi_0 = 2A \ln\left[\cosh\left(\sqrt{\frac{2\pi G \rho_0}{A}} z\right)\right] $$
+
+Finalmente, el perfil de densidad de la losa isotérmica es:
+$$ \rho(z) = \frac{\rho_0}{\cosh^2\left(\sqrt{\frac{2\pi G \rho_0}{A}} z\right)} $$
+
+\figuraPerfilLosaIsotermica
+
+\subsection{Perfiles de densidad generales de losas isotérmicas}
+
+La solución general a la ecuación diferencial planteada anteriormente es:
+$$ \chi = -2 \ln\left[c_1 \cosh\left(\frac{Z}{c_1} + c_2\right)\right] $$
+con el perfil de densidad correspondiente:
+$$
+\rho(z)
+=\frac{\rho_0}{c_1^2
+\cosh^2\left(
+\dfrac{1}{c_1}\sqrt{\frac{2\pi G\rho_0}{A}}\,z+c_2
+\right)}.
+$$
+
+\textbf{Ejercicio.} Demuestre la expresión anterior.
+
+\textbf{Solución.}
+
+Partimos de la ecuación diferencial para el potencial adimensional:
+$$ \frac{d^2\chi}{dZ^2} = -2e^\chi $$
+
+Multiplicando por $d\chi/dZ$, ambos lados pueden escribirse como derivadas respecto a $Z$:
+$$ \frac{d\chi}{dZ} \frac{d^2\chi}{dZ^2} = -2e^\chi \frac{d\chi}{dZ} $$
+$$ \frac{1}{2} \frac{d}{dZ} \left( \frac{d\chi}{dZ} \right)^2 = -2 \frac{d}{dZ} (e^\chi) $$
+
+Una primera integración proporciona
+$$ \left( \frac{d\chi}{dZ} \right)^2 = C_1 - 4e^\chi $$
+
+Escribimos la constante positiva como $C_1=4/c_1^2$, con $c_1>0$:
+$$ \left( \frac{d\chi}{dZ} \right)^2 = \frac{4}{c_1^2} \left( 1 - c_1^2 e^\chi \right) $$
+
+Para la rama decreciente de la solución,
+$$ \frac{d\chi}{dZ} = -\frac{2}{c_1} \sqrt{1 - c_1^2 e^\chi} $$
+
+Separando variables,
+$$ \int \frac{d\chi}{\sqrt{1 - c_1^2 e^\chi}} = -\frac{2}{c_1} \int dZ $$
+
+introducimos $u=c_1e^{\chi/2}$. Como $d\chi=2\,du/u$, resulta
+$$
+\int\frac{2\,du}{u\sqrt{1-u^2}}
+=-\frac{2}{c_1}\int dZ.
+$$
+La integral del lado izquierdo se evalúa como
+$-2\operatorname{arctanh}(\sqrt{1-u^2})$. Por tanto, incorporando la constante de integración en $c_2$,
+$$
+\operatorname{arctanh}\left(\sqrt{1-c_1^2e^\chi}\right)
+=\frac{Z}{c_1}+c_2.
+$$
+
+Aplicando la tangente hiperbólica,
+$$
+\sqrt{1-c_1^2e^\chi}
+=\tanh\left(\frac{Z}{c_1}+c_2\right).
+$$
+
+Al elevar al cuadrado y utilizar $1-\tanh^2 y=\operatorname{sech}^2y$, obtenemos
+$$
+c_1^2e^\chi
+=\operatorname{sech}^2\left(\frac{Z}{c_1}+c_2\right).
+$$
+
+Despejando $\chi$ se encuentra la solución general
+$$ \chi(Z) = -2 \ln\left[ c_1 \cosh\left( \frac{Z}{c_1} + c_2 \right) \right] $$
+
+Finalmente, como $\rho=\rho_0e^\chi$ y
+$Z=\sqrt{2\pi G\rho_0/A}\,z$, se recupera
+$$
+\boxed{
+\rho(z)
+=\frac{\rho_0}{c_1^2
+\cosh^2\left(
+\dfrac{1}{c_1}\sqrt{\frac{2\pi G\rho_0}{A}}\,z+c_2
+\right)}
+}.
+$$
+
+Las constantes $c_1$ y $c_2$ se determinan mediante las condiciones de frontera de cada configuración física.
+
+\subsection{Un plano completamente autogravitante}
+
+Para un plano completamente autogravitante que no descansa sobre una base masiva, se elige $z=0$ como el plano de simetría y se iguala el potencial a $\Phi_0$. Esto implica $\chi(0) = 0$. Por simetría, el potencial tiene un extremo en $z=0$, por lo que $\left.\frac{d\chi}{dZ}\right|_0 = 0$. Al aplicar estas condiciones de frontera, se obtiene que $c_1 = 1$ y $c_2 = 0$, recuperando la solución del modelo de losa isotérmica derivada en la sección 3.3.
+
+\subsection{Una atmósfera planetaria}
+
+En el caso de una atmósfera planetaria, el potencial externo es $\Phi(z) = gz$, de modo que $\Phi(0) = 0$ y $\chi_0 = 0$. El campo gravitacional en la superficie es $g = GM/R^2$. La condición de la derivada en $z=0$ es:
+$$ \left.\frac{d\chi}{dZ}\right|_0 = -\left(\frac{2\pi G \rho_0}{A}\right)^{-1/2} \frac{GM}{R^2} $$
+
+Las expresiones generales para las constantes son $c_1 = (x^2 + 1)^{-1/2}$ y $c_2 = \ln[x + \sqrt{x^2 + 1}]$, donde se ha definido la variable adimensional:
+$$ x \equiv \frac{1}{\sqrt{2\pi G \rho_0 A}} \frac{MG}{R^2} $$
+
+Comportamiento límite:
+La variable $x$ escala linealmente con la masa del planeta $M$. Para el caso de un disco galáctico donde esta masa es despreciable, se toma el límite $M \to 0$, lo que resulta en $c_1 = 1$, $c_2 = 0$ y $x = 0$, recuperando el perfil de la losa autogravitante.
+
+Para una masa $M$ muy grande, se tiene $c_1 \approx x^{-1}$ y $c_2 \approx \ln(2x)$. Sustituyendo estos valores y usando la aproximación $\cosh y \approx e^y/2$ para $y$ grande, el perfil de densidad se reduce a:
+$$ \rho \approx \rho_0 \exp\left(-\frac{zMg}{AR^2}\right) $$
+En este límite, se recupera el resultado de la atmósfera isotérmica estándar donde la autogravedad de la atmósfera es despreciable frente a la gravedad del planeta.
+
+\figuraFamiliaPerfilesLosa
+
+\subsection{Una atmósfera isotérmica curva sin autogravedad}
+
+En esta sección estudiamos lo que sucede si ya no despreciamos la curvatura esférica, pero retenemos las suposiciones de una atmósfera isotérmica y sin autogravedad.
+
+\begin{enumerate}
+    \item Asuma una aceleración gravitacional de magnitud $g = GM/r^2$ y una atmósfera isotérmica con $p = A\rho$. Desprecie la autogravedad (es decir, trate $M$ como una constante en toda la atmósfera). Muestre que el perfil de densidad obedece
+    $$ \rho = \rho_0 \exp\left(\frac{MG}{Ar} - \frac{MG}{Ar_0}\right) $$
+    donde $\rho_0$ es la densidad de masa en un radio de referencia $r_0$.
+
+    \item Muestre cómo una aproximación en serie del resultado anterior reduce (al orden más bajo) al caso de una atmósfera isotérmica plano-paralela sin autogravedad cuando se considera solo a pequeñas distancias más allá del radio de referencia $r_0$.
+\end{enumerate}
+
+\subsubsection{Solución}
+
+\textbf{1. Derivación del perfil de densidad esférico}
+
+Partimos de la ecuación de equilibrio hidrostático en coordenadas esféricas para una atmósfera puramente radial:
+$$ \frac{dp}{dr} = -\rho g $$
+Sustituimos la aceleración gravitacional $g = \frac{GM}{r^2}$ y la ecuación de estado para un gas ideal isotérmico $p = A\rho$, lo que implica que $dp = A d\rho$:
+$$ A \frac{d\rho}{dr} = -\rho \frac{GM}{r^2} $$
+Separamos las variables para integrar:
+$$ \frac{d\rho}{\rho} = -\frac{GM}{A} \frac{dr}{r^2} $$
+Integramos ambos lados desde el radio de referencia $r_0$ (donde la densidad es $\rho_0$) hasta un radio arbitrario $r$:
+$$ \int_{\rho_0}^{\rho} \frac{d\rho'}{\rho'} = -\frac{GM}{A} \int_{r_0}^{r} \frac{dr'}{r'^2} $$
+Evaluando las integrales:
+$$ \ln\left(\frac{\rho}{\rho_0}\right) = -\frac{GM}{A} \left[ -\frac{1}{r'} \right]_{r_0}^{r} = -\frac{GM}{A} \left( -\frac{1}{r} - \left(-\frac{1}{r_0}\right) \right) $$
+$$ \ln\left(\frac{\rho}{\rho_0}\right) = \frac{MG}{Ar} - \frac{MG}{Ar_0} $$
+Tomando la exponencial a ambos lados, obtenemos el perfil de densidad solicitado:
+$$ \rho(r) = \rho_0 \exp\left(\frac{MG}{Ar} - \frac{MG}{Ar_0}\right) $$
+
+\textbf{2. Aproximación para pequeñas distancias (Límite plano-paralelo)}
+
+Para demostrar que esto se reduce al caso plano-paralelo, consideramos un punto a una pequeña distancia $z$ por encima del radio de referencia, de modo que $r = r_0 + z$, con $z \ll r_0$.
+Reescribimos el exponente de la ecuación de densidad:
+$$ \frac{MG}{Ar} - \frac{MG}{Ar_0} = \frac{MG}{A} \left( \frac{1}{r_0 + z} - \frac{1}{r_0} \right) $$
+Expandimos el término $\frac{1}{r_0 + z}$ en serie de Taylor para $z \ll r_0$:
+$$ \frac{1}{r_0 + z} = \frac{1}{r_0\left(1 + \frac{z}{r_0}\right)} \approx \frac{1}{r_0} \left( 1 - \frac{z}{r_0} \right) = \frac{1}{r_0} - \frac{z}{r_0^2} $$
+Sustituimos esta aproximación de primer orden en el exponente:
+$$ \frac{MG}{A} \left( \left(\frac{1}{r_0} - \frac{z}{r_0^2}\right) - \frac{1}{r_0} \right) = \frac{MG}{A} \left( - \frac{z}{r_0^2} \right) = - \frac{z}{A} \left( \frac{GM}{r_0^2} \right) $$
+Reconocemos que el término entre paréntesis es exactamente la magnitud de la aceleración gravitacional evaluada en la superficie de referencia, es decir, $g_0 = \frac{GM}{r_0^2}$. Por lo tanto, el exponente se simplifica a:
+$$ - \frac{g_0 z}{A} $$
+Sustituyendo esto en la expresión original para la densidad, obtenemos:
+$$ \rho(z) \approx \rho_0 \exp\left(-\frac{g_0 z}{A}\right) $$
+Este resultado es exactamente el perfil de densidad de una atmósfera isotérmica plano-paralela bajo un campo gravitacional constante $g_0$, demostrando que la geometría esférica se reduce a la geometría plana cuando la escala vertical de la atmósfera es mucho menor que el radio del planeta.

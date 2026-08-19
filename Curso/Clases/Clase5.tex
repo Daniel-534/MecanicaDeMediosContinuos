@@ -56,7 +56,51 @@ $$ \frac{dp}{dz} = -\rho g_0 = -\frac{g_0}{RT_0}\,p. $$
 Esta es una ecuación diferencial ordinaria para la presión que, con la condición inicial $p = p_0$ en $z = 0$, tiene por solución
 $$ p = p_0 e^{-z/h_0}, \qquad h_0 = \frac{RT_0}{g_0} = \frac{p_0}{\rho_0 g_0}. $$
 En el último paso se usó de nuevo la ley del gas ideal en $z=0$, mostrando que $h_0$ coincide con la altura de escala de la atmósfera incompresible. En la atmósfera isotérmica la presión decrece así exponencialmente con la altura, con una escala característica $h_0 \approx 8728\ \mathrm{m}$ calculada para 1 atm y $25^\circ\mathrm{C}$; la presión en la cima del Everest ($z = 8848\ \mathrm{m}$) resulta finita y predicha en $368\ \mathrm{hPa}$. El perfil de densidad queda
-$$ \rho = \rho_0 e^{-z/h_0} = \rho_0 e^{-z g_0/(p_0/\rho_0)}. $$
+
+Para obtener explícitamente el perfil de densidad se usa nuevamente la ley del gas ideal. Como la temperatura es constante,
+$$
+\rho(z)=\frac{p(z)}{RT_0}.
+$$
+En el nivel de referencia $z=0$ se cumple, de manera análoga,
+$$
+\rho_0=\frac{p_0}{RT_0}.
+$$
+Al dividir ambas expresiones se eliminan las constantes $R$ y $T_0$:
+$$
+\frac{\rho(z)}{\rho_0}
+=\frac{p(z)}{p_0}.
+$$
+Sustituyendo el perfil exponencial de presión,
+$$
+\frac{p(z)}{p_0}=e^{-z/h_0},
+$$
+se obtiene
+$$
+\boxed{\rho(z)=\rho_0e^{-z/h_0}}.
+$$
+
+Además, a partir de
+$$
+h_0=\frac{RT_0}{g_0}
+\qquad\text{y}\qquad
+p_0=\rho_0RT_0,
+$$
+se encuentra
+$$
+h_0=\frac{p_0}{\rho_0g_0},
+\qquad
+\frac{1}{h_0}=\frac{\rho_0g_0}{p_0}
+=\frac{g_0}{p_0/\rho_0}.
+$$
+Por tanto, el mismo perfil puede escribirse en las formas equivalentes
+$$
+\boxed{
+\rho(z)
+=\rho_0e^{-z/h_0}
+=\rho_0\exp\!\left(-\frac{\rho_0g_0}{p_0}z\right)
+=\rho_0\exp\!\left(-\frac{zg_0}{p_0/\rho_0}\right)
+}.
+$$
 
 \figuraAtmosferaIsotermica
 

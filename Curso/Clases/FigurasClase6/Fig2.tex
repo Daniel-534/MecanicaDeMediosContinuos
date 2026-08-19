@@ -1,0 +1,41 @@
+\newcommand{\figuraCierreAutogravitante}{%
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small]
+        \node[font=\bfseries] at (6.25,5.45)
+            {Acoplamiento de un medio continuo autogravitante};
+
+        \node[draw=blue!65!black,very thick,rounded corners=3pt,
+              fill=blue!7,minimum width=3.0cm,minimum height=1.05cm,
+              align=center] (rho) at (1.85,3.55)
+            {distribución\\de densidad};
+        \node[draw=orange!75!black,very thick,rounded corners=3pt,
+              fill=orange!8,minimum width=3.4cm,minimum height=1.05cm,
+              align=center] (phi) at (6.20,3.55)
+            {potencial\\gravitacional};
+        \node[draw=green!45!black,very thick,rounded corners=3pt,
+              fill=green!8,minimum width=3.3cm,minimum height=1.05cm,
+              align=center] (press) at (10.65,3.55)
+            {equilibrio\\hidrostático};
+        \node[draw=red!70!black,very thick,rounded corners=3pt,
+              fill=red!6,minimum width=3.5cm,minimum height=1.05cm,
+              align=center] (eos) at (6.20,1.15)
+            {ecuación\\de estado};
+
+        \draw[->,ultra thick,blue!60!black]
+            (rho)--(phi)
+            node[midway,above] {fuente};
+        \draw[->,ultra thick,orange!75!black]
+            (phi)--(press);
+        \draw[->,ultra thick,green!45!black]
+            (press) to[out=-120,in=15] (eos);
+        \draw[->,ultra thick,red!70!black]
+            (eos) to[out=165,in=-60] (rho);
+    \end{tikzpicture}
+    \caption{La densidad genera el potencial gravitacional mediante la
+    ecuación de Poisson; el potencial determina el equilibrio de presión, y
+    la ecuación de estado cierra el sistema relacionando nuevamente presión y
+    densidad.}
+    \label{fig:cierre-autogravitante}
+\end{figure}%
+}

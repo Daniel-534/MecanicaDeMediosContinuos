@@ -1,0 +1,48 @@
+\newcommand{\figuraFamiliaPerfilesLosa}{%
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small]
+        \begin{axis}[
+            width=11.8cm,
+            height=7.4cm,
+            xmin=0,xmax=4.5,
+            ymin=0,ymax=1.08,
+            axis lines=left,
+            xlabel={$Z$},
+            ylabel={$\rho(Z)/\rho(0)$},
+            xtick={0,1,2,3,4},
+            ytick={0,0.2,0.4,0.6,0.8,1},
+            grid=major,
+            grid style={gray!18},
+            title={Transición entre autogravedad y gravedad externa},
+            legend style={draw=none,fill=white,at={(0.98,0.98)},anchor=north east},
+            samples=180]
+
+            \addplot[very thick,blue!70!black,domain=0:4.5]
+                {1/(cosh(x)^2)};
+            \addlegendentry{$x=0$: losa autogravitante}
+
+            \addplot[very thick,orange!85!black,dashed,domain=0:4.5]
+                {1/(0.64*cosh(x/0.8+0.693147)^2)};
+            \addlegendentry{$x=0.75$: régimen mixto}
+
+            \addplot[very thick,red!75!black,dash dot,domain=0:4.5]
+                {1/(0.2*cosh(x/0.447214+1.44364)^2)};
+            \addlegendentry{$x=2$: gravedad externa dominante}
+
+            \addplot[thick,green!45!black,densely dotted,domain=0:4.5]
+                {exp(-4*x)};
+            \addlegendentry{límite exponencial}
+
+            \node[align=center,anchor=south east,text=black!70]
+                at (axis cs:4.35,0.12)
+                {mayor masa externa:\\perfil más concentrado};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Familia de perfiles normalizados para una atmósfera sostenida
+    por autogravedad y por la gravedad de una masa externa. Al aumentar el
+    parámetro $x$, la gravedad planetaria domina y el perfil se aproxima a un
+    decaimiento exponencial plano-paralelo.}
+    \label{fig:familia-perfiles-losa}
+\end{figure}%
+}
