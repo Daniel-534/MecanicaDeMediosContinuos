@@ -1,0 +1,338 @@
+\chapter{Clase Taller 2}
+
+%==============================================================================
+\section{Conceptos clave}
+%==============================================================================
+
+Antes de abordar la hidrostática, recordamos los conceptos fundamentales que sustentan la descripción de fluidos en reposo.
+
+\subsection{Equilibrio estático}
+
+Si un fluido está en reposo, la suma de fuerzas sobre cualquier elemento de volumen debe ser cero:
+\begin{equation}
+    \sum \vec{F} = 0
+\end{equation}
+Esto implica que la fuerza de presión y la fuerza externa (por ejemplo, gravedad) se equilibran en cada punto del fluido.
+
+\subsection{Densidad}
+
+La densidad de masa se define como el límite:
+\begin{equation}
+    \rho \equiv \lim_{\Delta V \to 0} \frac{\Delta m}{\Delta V}
+\end{equation}
+En física de medios continuos, la densidad se entiende como un promedio macroscópico sobre un número suficientemente grande de constituyentes microscópicos. Esto requiere una separación de escalas: la escala microscópica (espaciamiento molecular o camino libre medio) debe ser mucho menor que la escala macroscópica sobre la cual la densidad varía apreciablemente.
+
+La densidad es un campo escalar $\rho = \rho(\vec{r}, t)$. Para un fluido en reposo en un campo gravitatorio constante, la densidad puede depender únicamente de la coordenada vertical: $\rho = \rho(z)$.
+
+\subsection{Presión}
+
+La presión se define como fuerza normal por unidad de área:
+\begin{equation}
+    p = \frac{dF}{dA}
+\end{equation}
+La fuerza de presión sobre un elemento de superficie orientado $d\vec{S} = \hat{n}\,dS$ es:
+\begin{equation}
+    d\vec{F}_p = -p\,d\vec{S}
+\end{equation}
+El signo negativo indica que la presión actúa hacia el interior del volumen (contra la normal exterior). En un fluido en reposo, la presión es un \textbf{escalar}: actúa igualmente en todas las direcciones (principio de Pascal).
+
+\subsection{Ecuación de estado}
+
+La ecuación de estado relaciona las variables termodinámicas del fluido:
+\begin{equation}
+    F(\rho,\, p,\, T) = 0
+\end{equation}
+Para un gas ideal:
+\begin{equation}
+    pV = nR_{\text{mol}}T \quad \Longrightarrow \quad p = R\rho T, \qquad R = \frac{R_{\text{mol}}}{M_{\text{mol}}}
+\end{equation}
+donde $R_{\text{mol}} = 8{,}31447\;\text{J}\,\text{K}^{-1}\text{mol}^{-1}$ es la constante universal de los gases y $M_{\text{mol}}$ es la masa molar.
+
+Para condiciones de equilibrio estático, la ecuación de estado se aplica localmente:
+\begin{equation}
+    F(\rho(\vec{x}),\, p(\vec{x}),\, T(\vec{x})) = 0
+\end{equation}
+
+%==============================================================================
+\section{Equilibrio hidrostático}
+%==============================================================================
+
+Un fluido está en equilibrio hidrostático cuando está en reposo: $\vec{v} = 0$. La aceleración de cada elemento de fluido se anula y las fuerzas que actúan sobre él deben equilibrarse.
+
+\subsection{La fuerza de gradiente de presión}
+
+Consideremos un elemento de fluido en forma de caja rectangular con lados $dx$, $dy$, $dz$. La presión es ligeramente diferente en caras opuestas. La componente $z$ de la fuerza de presión total es:
+\begin{equation}
+    dF_z = [p(x,y,z) - p(x,y,z+dz)]\,dx\,dy \approx -\frac{\partial p}{\partial z}\,dx\,dy\,dz
+\end{equation}
+Haciendo lo mismo para las otras direcciones coordenadas, obtenemos la fuerza de presión total sobre el elemento:
+\begin{equation}
+    d\vec{F}_p = -\left(\hat{i}\frac{\partial p}{\partial x} + \hat{j}\frac{\partial p}{\partial y} + \hat{k}\frac{\partial p}{\partial z}\right)dV = -\nabla p\, dV
+\end{equation}
+Es decir, la fuerza neta de presión por unidad de volumen es $-\nabla p$. Una presión espacialmente uniforme no produce fuerza neta; es el \textbf{gradiente de presión} el que acelera el fluido.
+
+\subsection{Ecuación local del equilibrio hidrostático}
+
+La ecuación de momento para un fluido es:
+\begin{equation}
+    \rho\frac{D\vec{v}}{Dt} = -\nabla p + \vec{f}_e
+\end{equation}
+donde $\vec{f}_e$ es la densidad de fuerza de cuerpo (fuerza por unidad de volumen). En equilibrio hidrostático, $\vec{v} = 0$, por lo que:
+\begin{equation}
+    \boxed{\nabla p = \vec{f}_e}
+\end{equation}
+
+Si la única fuerza de cuerpo es la gravedad, $\vec{f}_e = \rho\vec{g}$, y la ecuación de equilibrio hidrostático se escribe:
+\begin{equation}
+    \boxed{\nabla p = \rho\vec{g}}
+\end{equation}
+
+Dado que $\nabla \times \nabla p = 0$, se tiene que $\nabla \times \vec{f}_e = 0$, lo cual implica que $\vec{f}_e$ deriva de un potencial: $\vec{f}_e = -\nabla\Phi$. Por tanto, el equilibrio hidrostático solo existe cuando las fuerzas de volumen son conservativas (gravitatorias, electrostáticas, inerciales).
+
+\subsection{Equilibrio hidrostático global}
+
+Integrando sobre un volumen $V$ delimitado por una superficie cerrada $S$:
+\begin{equation}
+    \vec{F}_e + \vec{F}_p = \int_V \vec{f}_e\,dV - \oint_S p\,d\vec{S} = 0
+\end{equation}
+Cuando $\vec{f}_e$ es la gravedad, la integral de volumen corresponde al peso del fluido, y la fuerza de presión se denomina fuerza de flotación.
+
+\textbf{Aplicación: El mar incompresible.} En gravedad constante con coordenadas de Tierra plana, $\vec{g} = (0,0,-g_0)$. Por simetría, la presión solo depende de $z$. Tomando una caja rectangular vertical de altura $h$ y área transversal $A$:
+\begin{equation}
+    \vec{F}_G = -\rho_0 g_0 A h\,\hat{e}_z, \qquad \vec{F}_B = [-p(0)A + p(-h)A]\,\hat{e}_z
+\end{equation}
+Las contribuciones de presión de los lados se cancelan. El equilibrio hidrostático global conduce a:
+\begin{equation}
+    p = p_0 + \rho_0 g_0 h
+\end{equation}
+
+\subsection{Equilibrio hidrostático en gravedad constante}
+
+Con $\vec{g} = (0,0,-g_0)$ constante, las componentes de $\nabla p = \rho\vec{g}$ son:
+\begin{equation}
+    \frac{\partial p}{\partial x} = 0, \qquad \frac{\partial p}{\partial y} = 0, \qquad \frac{\partial p}{\partial z} = -\rho g_0
+\end{equation}
+Las dos primeras ecuaciones expresan que la presión no depende de $x$ ni $y$, sino solo de $z$. Esto muestra que, independientemente de la forma del recipiente, la presión será siempre la misma a una profundidad dada (en gravedad constante).
+
+Para el caso especial de densidad constante, $\rho(z) = \rho_0$, la última ecuación se integra directamente:
+\begin{equation}
+    p_2 - p_1 = -\rho_0 g_0(z_2 - z_1) = -\rho_0 g_0 h
+\end{equation}
+Por tanto, la presión dentro de un líquido aumenta con la profundidad:
+\begin{equation}
+    \boxed{p_1 = p_2 + \rho_0 g_0 h}
+\end{equation}
+Esta ecuación muestra que si se aplica una fuerza a la superficie libre de un líquido (por ejemplo, con un pistón), la presión aumenta igualmente en cada punto del fluido. La diferencia de presión entre dos puntos depende solo de su separación vertical.
+
+\subsection{Vasos comunicantes}
+
+De $\partial p/\partial z = -\rho g_0$ se obtiene $p = -\rho g_0 z + C$. En la superficie libre del líquido ($z = h$) la presión es la atmosférica $p_0$, así que $C = p_0 + \rho g_0 h$. Por tanto:
+\begin{equation}
+    p = p_0 + \rho g_0(h - z)
+\end{equation}
+Puntos a la misma profundidad tienen la misma presión, independientemente de la forma del recipiente. Esto valida el \textbf{principio de vasos comunicantes} y resuelve la llamada \textbf{paradoja hidrostática}: la presión en el interior de un fluido no depende de la forma del recipiente.
+
+%==============================================================================
+\section{Principio de Pascal}
+%==============================================================================
+
+Integrando $\nabla p = \vec{f}_e$ a lo largo de un camino del punto 1 al punto 2 dentro del fluido:
+\begin{equation}
+    \int_1^2 \vec{f}_e \cdot d\vec{r} = \int_1^2 \nabla p \cdot d\vec{r} = \int_1^2 dp = p_2 - p_1
+\end{equation}
+La diferencia de presión entre dos puntos depende solo de las fuerzas externas. Si no hay fuerzas externas, $p_2 = p_1$. Además:
+\begin{equation}
+    p_2 - p_1 = (p_2 + C) - (p_1 + C)
+\end{equation}
+Esto demuestra que añadir una constante $C$ a la presión en todos los puntos no altera la diferencia $p_2 - p_1$. Cualquier cambio de presión aplicado en un punto se acompaña del mismo cambio en todos los demás puntos.
+
+\begin{quote}
+\textbf{Principio de Pascal:} La presión aplicada a un fluido encerrado se transmite sin disminución a cada porción del fluido y a las paredes del recipiente que lo contiene.
+\end{quote}
+
+\subsection{Prensa hidráulica}
+
+Una aplicación importante del principio de Pascal es la prensa hidráulica. Una fuerza $F_1$ se aplica a un pistón pequeño de área $A_1$. La presión se transmite a través de un líquido incompresible a un pistón mayor de área $A_2$. Dado que la presión debe ser igual en ambos pistones:
+\begin{equation}
+    \frac{F_1}{A_1} = \frac{F_2}{A_2}
+\end{equation}
+La fuerza de salida se amplifica por el factor $A_2/A_1$. Como el líquido es incompresible, los volúmenes desplazados satisfacen $A_1\Delta x_1 = A_2\Delta x_2$, de modo que:
+\begin{equation}
+    \frac{F_2}{F_1} = \frac{\Delta x_1}{\Delta x_2}
+\end{equation}
+Multiplicando ambos lados por los desplazamientos se comprueba que el trabajo se conserva:
+\begin{equation}
+    F_1\Delta x_1 = F_2\Delta x_2
+\end{equation}
+
+%==============================================================================
+\section{Presión absoluta y presión manométrica}
+%==============================================================================
+
+La \textbf{presión absoluta} es la presión total medida respecto al vacío. La \textbf{presión manométrica} (o presión de calibre) es la diferencia entre la presión absoluta y la presión atmosférica:
+\begin{equation}
+    p_{\text{man}} = p_{\text{abs}} - p_{\text{atm}}
+\end{equation}
+
+En un manómetro de tubo abierto en forma de U con un líquido de densidad $\rho$: el extremo izquierdo está conectado al recipiente donde se mide la presión $p$, y el extremo derecho está abierto a la atmósfera con presión $p_0 = p_{\text{atm}}$. La presión en el fondo del tubo debida al fluido en la columna izquierda es $p + \rho g y_1$, y la presión en el fondo debida al fluido en la columna derecha es $p_{\text{atm}} + \rho g y_2$. Como estas presiones se miden al mismo nivel, deben ser iguales:
+\begin{equation}
+    p + \rho g y_1 = p_{\text{atm}} + \rho g y_2
+\end{equation}
+\begin{equation}
+    p - p_{\text{atm}} = \rho g(y_2 - y_1) = \rho g h
+\end{equation}
+La presión manométrica es proporcional a la diferencia de altura $h = y_2 - y_1$ de las columnas de líquido.
+
+%==============================================================================
+\section{Módulo de compresibilidad (Bulk modulus)}
+%==============================================================================
+
+Todos los fluidos se comprimen cuando la presión aumenta, resultando en una disminución de volumen o un aumento de densidad. El \textbf{módulo de compresibilidad} (o módulo de elasticidad volumétrica) se define como:
+\begin{equation}
+    K \equiv -\frac{dp}{dV/V} = \frac{dp}{d\rho/\rho} = \rho\frac{dp}{d\rho}
+\end{equation}
+En el segundo paso se ha usado la constancia de la masa $M = \rho V$ para obtener $dM = \rho\,dV + V\,d\rho = 0$, de donde $-dV/V = d\rho/\rho$.
+
+Para un fluido barotrópico donde $p = p(\rho)$, esta definición tiene sentido directo. Para estados generales del fluido, es necesario especificar las condiciones (isoterma o isentrópica).
+
+Para un gas ideal:
+\begin{itemize}
+    \item Módulo de compresibilidad isotérmico:
+    \begin{equation}
+        K_T = \left(\rho\frac{\partial p}{\partial\rho}\right)_T = p
+    \end{equation}
+    \item Módulo de compresibilidad isentrópico:
+    \begin{equation}
+        K_S = \left(\rho\frac{dp}{d\rho}\right)_S = \gamma p
+    \end{equation}
+\end{itemize}
+El módulo isentrópico es mayor que el isotérmico por un factor $\gamma > 1$, porque la compresión adiabática también aumenta la temperatura del gas.
+
+El módulo de compresibilidad del agua en condiciones estándar es aproximadamente $2100\;\text{MPa}$, es decir, unas $21\,000$ veces la presión atmosférica. Para el aire en condiciones estándar, $K \approx 1\;\text{atm}$.
+
+La velocidad del sonido en un líquido puede calcularse como:
+\begin{equation}
+    c = \sqrt{\frac{dp}{d\rho}} = \sqrt{\frac{K_T}{\rho}}
+\end{equation}
+
+%==============================================================================
+\section{Ejemplo: Fuerza sobre una compuerta}
+%==============================================================================
+
+Consideremos una compuerta rectangular articulada en un punto $C$ con un líquido incompresible de densidad $\rho$ a un lado. La compuerta tiene altura $h$ y ancho $L$ (perpendicular al plano del dibujo). La presión en un fluido incompresible es $p = p_0 + \rho g(h - y)$, donde $y$ se mide desde el fondo.
+
+La presión ejercida por el líquido sobre la compuerta a una altura $y$ es:
+\begin{equation}
+    p(y) = \rho g(h - y)
+\end{equation}
+(se desprecia la presión atmosférica pues actúa en ambos lados).
+
+La fuerza sobre un elemento diferencial de área $dA = L\,dy$ es:
+\begin{equation}
+    dF = p(y)\,dA = \rho g(h-y)\,L\,dy
+\end{equation}
+La fuerza horizontal total ejercida por el agua sobre la compuerta es:
+\begin{equation}
+    F = \rho g L \int_0^h (h-y)\,dy = \frac{1}{2}\rho g L h^2
+\end{equation}
+
+Si la compuerta puede rotar alrededor de $C$, la fuerza $P$ necesaria para evitar la rotación se determina igualando el torque producido por $P$ al torque producido por la distribución de presión del agua.
+
+El torque de la presión respecto al punto $C$ (situado en el fondo, $y = 0$) es:
+\begin{equation}
+    \tau = \int_0^h \rho g(h-y)\,L\,y\,dy = \rho g L\left[h\frac{y^2}{2} - \frac{y^3}{3}\right]_0^h = \rho g L\frac{h^3}{6}
+\end{equation}
+Si la fuerza $P$ se aplica a una distancia $h$ del pivote:
+\begin{equation}
+    P \cdot h = \rho g L \frac{h^3}{6} \quad \Longrightarrow \quad P = \frac{\rho g L h^2}{6}
+\end{equation}
+
+%==============================================================================
+\section{Ejemplo: Presión en un recipiente con geometría particular}
+%==============================================================================
+
+Consideremos un recipiente con una sección vertical de área $A_1$ conectada a una sección horizontal de área $A_2$, con un líquido de densidad $\rho$. Si la altura del líquido en la sección vertical es $h$, la presión en el punto de unión (fondo de la sección vertical) es:
+\begin{equation}
+    p = p_0 + \rho g h
+\end{equation}
+Por el principio de Pascal, esta presión se transmite uniformemente. En una sección horizontal a profundidad $h$:
+\begin{equation}
+    p - p_0 = \rho g h
+\end{equation}
+La fuerza sobre una superficie de área $A$ a esa profundidad es:
+\begin{equation}
+    F = (p - p_0)A = \rho g h\, A
+\end{equation}
+
+%==============================================================================
+\section{Ejemplo: Manómetro con dos fluidos}
+%==============================================================================
+
+Un tubo manométrico está parcialmente lleno con agua. Se vierte aceite (que no se mezcla con agua) en el brazo izquierdo del tubo hasta que la interfaz aceite-agua está en el punto medio del tubo. Ambos brazos están abiertos al aire.
+
+En la interfaz, la presión debe ser la misma calculada desde ambos brazos. Desde el brazo izquierdo (aceite):
+\begin{equation}
+    p_{\text{atm}} + \rho_{\text{aceite}}\,g\,h_{\text{aceite}}
+\end{equation}
+Desde el brazo derecho (agua):
+\begin{equation}
+    p_{\text{atm}} + \rho_{\text{agua}}\,g\,h_{\text{agua}}
+\end{equation}
+Igualando:
+\begin{equation}
+    \rho_{\text{aceite}}\,h_{\text{aceite}} = \rho_{\text{agua}}\,h_{\text{agua}}
+\end{equation}
+\begin{equation}
+    h_{\text{aceite}} = \frac{\rho_{\text{agua}}}{\rho_{\text{aceite}}}\,h_{\text{agua}}
+\end{equation}
+Como $\rho_{\text{aceite}} < \rho_{\text{agua}}$, se tiene $h_{\text{aceite}} > h_{\text{agua}}$.
+
+%==============================================================================
+\section{Resumen de ecuaciones fundamentales}
+%==============================================================================
+
+\begin{center}
+\renewcommand{\arraystretch}{1.8}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Concepto} & \textbf{Expresión} \\
+\hline
+Densidad & $\rho = \lim_{\Delta V\to 0}\frac{\Delta m}{\Delta V}$ \\
+\hline
+Ecuación de estado (gas ideal) & $p = R\rho T$ \\
+\hline
+Equilibrio hidrostático & $\nabla p = \rho\vec{g}$ \\
+\hline
+Presión en gravedad constante & $p = p_0 + \rho g_0 h$ \\
+\hline
+Principio de Pascal & $\frac{F_1}{A_1} = \frac{F_2}{A_2}$ \\
+\hline
+Presión manométrica & $p_{\text{man}} = p_{\text{abs}} - p_{\text{atm}}$ \\
+\hline
+Módulo de compresibilidad & $K = \rho\frac{dp}{d\rho}$ \\
+\hline
+Fuerza sobre superficie sumergida & $F = \int p\,dA$ \\
+\hline
+\end{tabular}
+\end{center}
+
+%==============================================================================
+\section{Observaciones finales}
+%==============================================================================
+
+\begin{itemize}
+    \item La presión es un campo escalar: en un fluido en reposo, actúa igualmente en todas las direcciones en cada punto.
+    
+    \item La ecuación de equilibrio hidrostático $\nabla p = \rho\vec{g}$ es una ecuación diferencial que, junto con la ecuación de estado y las condiciones de frontera, determina completamente el campo de presión.
+    
+    \item La incompresibilidad ($\rho = \text{const}$) es una aproximación válida cuando las variaciones de presión son pequeñas comparadas con el módulo de compresibilidad: $\Delta p \ll K$.
+    
+    \item Para un fluido incompresible en gravedad constante, la ecuación de equilibrio se reduce a:
+    \begin{equation}
+        \frac{dp}{dz} = -\rho g_0 \quad \Longrightarrow \quad p = p_0 + \rho g_0 h
+    \end{equation}
+    
+    \item El módulo de compresibilidad cuantifica la resistencia de un fluido a la compresión. Un valor grande de $K$ indica un fluido casi incompresible (como el agua); un valor pequeño indica alta compresibilidad (como los gases).
+    
+    \item La relación entre presión y densidad para procesos isotérmicos en un gas ideal es $p/\rho = \text{const}$, mientras que para procesos adiabáticos es $p/\rho^\gamma = \text{const}$.
+\end{itemize}

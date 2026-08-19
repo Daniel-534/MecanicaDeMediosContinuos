@@ -1,0 +1,53 @@
+\newcommand{\figuraMedidoresPresion}{%
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small]
+        \node[font=\bfseries] at (3.1,5.85)
+            {Manómetro de tubo abierto};
+        \draw[very thick]
+            (0.8,5.1)--(0.8,1.0)
+            arc[start angle=180,end angle=360,radius=1.55]
+            --(3.9,5.1);
+        \draw[very thick]
+            (1.35,5.1)--(1.35,1.25)
+            arc[start angle=180,end angle=360,radius=1.0]
+            --(3.35,5.1);
+        \fill[cyan!28]
+            (0.83,1.0)--(0.83,3.10)--(1.32,3.10)--(1.32,1.25)
+            arc[start angle=180,end angle=360,radius=1.0]
+            --(3.38,4.15)--(3.87,4.15)--(3.87,1.0)
+            arc[start angle=0,end angle=-180,radius=1.52]--cycle;
+        \draw[very thick,blue!65!black] (0.83,3.10)--(1.32,3.10);
+        \draw[very thick,blue!65!black] (3.38,4.15)--(3.87,4.15);
+        \node at (1.08,5.38) {$p$};
+        \node at (3.62,5.38) {$p_{\mathrm{atm}}$};
+        \draw[<->,thick,red!75!black]
+            (4.30,3.10)--node[right]{$h$}(4.30,4.15);
+        \node[align=center] at (2.35,0.10)
+            {$p-p_{\mathrm{atm}}=\rho g_0h$};
+
+        \draw[gray!45,thick] (6.0,0.2)--(6.0,5.75);
+
+        \node[font=\bfseries] at (9.45,5.85)
+            {Barómetro de mercurio};
+        \fill[gray!25] (7.2,0.65) rectangle (11.8,1.45);
+        \draw[very thick] (7.2,0.65) rectangle (11.8,1.45);
+        \fill[gray!45] (7.35,0.82) rectangle (11.65,1.32);
+
+        \draw[very thick,rounded corners=3pt]
+            (8.55,1.1)--(8.55,5.25)--(10.25,5.25)--(10.25,1.1);
+        \fill[gray!45] (8.58,1.1) rectangle (10.22,4.55);
+        \draw[very thick,gray!70!black] (8.58,4.55)--(10.22,4.55);
+        \node at (9.40,4.92) {$p\approx0$};
+        \node at (10.95,1.80) {$p_{\mathrm{atm}}$};
+        \draw[<->,thick,red!75!black]
+            (10.72,1.32)--node[right]{$h$}(10.72,4.55);
+        \node[align=center] at (9.50,0.10)
+            {$p_{\mathrm{atm}}=\rho_{\mathrm{Hg}}g_0h$};
+    \end{tikzpicture}
+    \caption{El manómetro mide una diferencia de presión mediante el desnivel
+    de un líquido. El barómetro mide la presión atmosférica mediante la altura
+    de una columna de mercurio.}
+    \label{fig:medidores-presion}
+\end{figure}%
+}

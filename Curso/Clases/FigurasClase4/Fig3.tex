@@ -1,0 +1,36 @@
+\newcommand{\figuraPresionProfundidad}{%
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small]
+        \draw[very thick] (1.0,5.0)--(1.0,0.6)--(8.0,0.6)--(8.0,5.0);
+        \fill[cyan!20] (1.03,0.63) rectangle (7.97,4.25);
+        \draw[very thick,blue!65!black] (1.0,4.25)--(8.0,4.25);
+
+        \fill[red!75] (4.5,1.35) circle (0.10);
+        \node[red!75!black,anchor=west] at (4.68,1.35)
+            {punto 1: $p_1$};
+        \fill[blue!75] (4.5,3.55) circle (0.10);
+        \node[blue!70!black,anchor=west] at (4.68,3.55)
+            {punto 2: $p_2$};
+
+        \draw[dashed,gray!70] (2.2,1.35)--(4.5,1.35);
+        \draw[dashed,gray!70] (2.2,3.55)--(4.5,3.55);
+        \draw[decorate,decoration={brace,amplitude=6pt},thick]
+            (2.0,1.35)--node[left=6pt]{$h$}(2.0,3.55);
+
+        \draw[ultra thick,green!45!black,-{Latex[length=4mm]}]
+            (9.2,4.25)--(9.2,2.95);
+        \node[green!40!black,anchor=west] at (9.38,3.55)
+            {$\vec{g}=-g_0\vec{e}_z$};
+
+        \node[font=\bfseries] at (4.5,5.35)
+            {Presión y profundidad};
+        \node[align=center] at (5.0,0.02)
+            {$p_1=p_2+\rho g_0h$ \qquad $p_1>p_2$};
+    \end{tikzpicture}
+    \caption{La diferencia de presión entre dos puntos de un líquido depende
+    únicamente de su separación vertical. El punto más profundo tiene mayor
+    presión.}
+    \label{fig:presion-profundidad}
+\end{figure}%
+}

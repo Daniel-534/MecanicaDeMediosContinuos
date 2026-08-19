@@ -1,0 +1,54 @@
+\newcommand{\figuraGradientePresionClaseCuatro}{%
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small]
+        \coordinate (A) at (2.0,0.8);
+        \coordinate (B) at (7.0,0.8);
+        \coordinate (C) at (7.0,4.2);
+        \coordinate (D) at (2.0,4.2);
+        \coordinate (E) at (3.0,1.55);
+        \coordinate (F) at (8.0,1.55);
+        \coordinate (G) at (8.0,4.95);
+        \coordinate (H) at (3.0,4.95);
+
+        \fill[blue!5] (A)--(B)--(C)--(D)--cycle;
+        \fill[blue!11] (B)--(F)--(G)--(C)--cycle;
+        \fill[blue!17] (D)--(C)--(G)--(H)--cycle;
+        \draw[very thick] (A)--(B)--(C)--(D)--cycle;
+        \draw[very thick] (B)--(F)--(G)--(C);
+        \draw[very thick] (C)--(G)--(H)--(D);
+        \draw[very thick,dashed] (A)--(E)--(F);
+        \draw[very thick,dashed] (E)--(H);
+
+        \node[font=\bfseries] at (5.0,6.15)
+            {Fuerzas de presión en la dirección $z$};
+
+        \draw[ultra thick,red!75!black,-{Latex[length=4mm]}]
+            (4.72,5.78)--(4.72,4.48);
+        \node[red!75!black,anchor=east] at (4.52,5.42)
+            {$p(x,y,z+dz)\,dx\,dy$};
+
+        \draw[ultra thick,blue!70!black,-{Latex[length=4mm]}]
+            (4.72,0.40)--(4.72,1.42);
+        \node[blue!70!black,anchor=west] at (4.95,1.48)
+            {$p(x,y,z)\,dx\,dy$};
+
+        \draw[<->,thick] (1.62,0.8)--node[left]{$dz$}(1.62,4.2);
+        \draw[<->,thick] (2.0,0.42)--node[below]{$dx$}(7.0,0.42);
+        \draw[<->,thick] (7.18,0.58)--node[below,sloped]{$dy$}(8.18,1.33);
+
+        \node[align=left,anchor=west] at (8.75,3.70)
+            {$p(x,y,z)>p(x,y,z+dz)$\\[5pt]
+             $\displaystyle
+             dF_z\approx-\frac{\partial p}{\partial z}dV$};
+        \draw[very thick,green!45!black,-{Latex[length=3mm]}]
+            (9.45,2.15)--(9.45,2.90);
+        \node[green!40!black,anchor=west] at (9.62,2.52)
+            {fuerza neta};
+    \end{tikzpicture}
+    \caption{Diferencia de las fuerzas de presión sobre las caras horizontal
+    inferior y superior de una partícula material. Si la presión disminuye al
+    aumentar $z$, la fuerza neta apunta hacia arriba.}
+    \label{fig:gradiente-presion-clase-cuatro}
+\end{figure}%
+}

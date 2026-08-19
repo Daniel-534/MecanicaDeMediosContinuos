@@ -1,0 +1,40 @@
+\newcommand{\figuraFuerzaPresa}{%
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small]
+        \fill[cyan!22] (0.8,0.7) rectangle (6.0,5.0);
+        \draw[very thick,blue!65!black] (0.8,5.0)--(6.0,5.0);
+        \draw[very thick] (0.8,0.7)--(6.0,0.7);
+        \draw[very thick,fill=gray!20] (6.0,0.45) rectangle (6.45,5.45);
+
+        \draw[<->,thick] (0.42,0.7)--node[left]{$H$}(0.42,5.0);
+        \draw[<->,thick,red!75!black]
+            (6.52,2.65)--node[right]{$dy$}(6.52,3.05);
+        \fill[red!12] (6.0,2.65) rectangle (6.45,3.05);
+
+        \foreach \y/\l in {4.55/0.45,3.85/0.85,3.15/1.25,2.45/1.65,1.75/2.05,1.05/2.45}
+        {
+            \draw[very thick,red!75!black,-{Latex[length=3mm]}]
+                (6.45,\y)--(6.45+\l,\y);
+        }
+
+        \draw[ultra thick,blue!70!black,-{Latex[length=4mm]}]
+            (6.45,2.13)--(9.35,2.13);
+        \node[blue!70!black,anchor=west] at (9.50,2.13)
+            {$\vec{F}$};
+
+        \draw[dashed,gray!70] (6.45,2.13)--(4.85,2.13);
+        \draw[<->,thick] (4.62,0.7)--node[left]{$H/3$}(4.62,2.13);
+
+        \node[font=\bfseries] at (4.8,5.82)
+            {Distribución hidrostática sobre una presa};
+        \node[align=left,anchor=west] at (8.45,4.35)
+            {$p(y)=\rho g_0(H-y)$\\[5pt]
+             $dF=p(y)L\,dy$};
+    \end{tikzpicture}
+    \caption{La presión sobre una pared vertical aumenta linealmente con la
+    profundidad. La distribución triangular produce una fuerza resultante a
+    una altura $H/3$ sobre el fondo.}
+    \label{fig:fuerza-presa}
+\end{figure}%
+}

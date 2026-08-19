@@ -1,0 +1,224 @@
+\shorthandoff{<>}
+\input{Clases/FigurasClase5/Fig1}
+\input{Clases/FigurasClase5/Fig2}
+\input{Clases/FigurasClase5/Fig3}
+\input{Clases/FigurasClase5/Fig4}
+\input{Clases/FigurasClase5/Fig5}
+\shorthandon{<>}
+
+\chapter{Clase 5}
+
+\section{Ecuación de estado}
+
+La ecuación local de equilibrio hidrostático, con un campo gravitacional dado externamente, no es suficiente por sí misma: se requiere una relación entre la presión y la densidad. La termodinámica proporciona esta relación mediante la \emph{ecuación de estado}, que relaciona la densidad $\rho$, la presión $p$ y la temperatura absoluta $T$:
+$$ F(\rho, p, T) = 0. $$
+Esta relación es válida para cualquier cantidad macroscópica de fluido homogéneo e isótropo en equilibrio termodinámico. En la física del continuo, donde las condiciones varían de punto a punto, se supone que cada partícula material se encuentra en equilibrio termodinámico con su entorno, de modo que la ecuación de estado se cumple localmente:
+$$ F(\rho(\vec{x}), p(\vec{x}), T(\vec{x})) = 0. $$
+
+\subsection{La ley del gas ideal}
+
+La ley del gas ideal es la ecuación de estado más famosa, atribuida con frecuencia a Clapeyron (1834). En términos del volumen $V$ de una masa $M$ de gas y del número de moles $n = M/M_{\mathrm{mol}}$, se escribe como
+$$ pV = nR_{\mathrm{mol}}T, $$
+donde $R_{\mathrm{mol}} = 8.31447\ \mathrm{J\,K^{-1}\,mol^{-1}}$ es la constante universal de los gases. Dado que $\rho = M/V = nM_{\mathrm{mol}}/V$, la ley del gas ideal puede expresarse en forma local:
+$$ p = R\rho T, \qquad R = \frac{R_{\mathrm{mol}}}{M_{\mathrm{mol}}}, $$
+donde $R$ es la constante específica del gas, que varía de un gas a otro (Tabla 3). Las extensiones de la ley del gas ideal incluyen correcciones por el volumen molecular excluido y por las fuerzas intermoleculares; además, la ley también se aplica a mezclas de gases si se emplea la masa molar promedio.
+
+\begin{center}
+\textbf{Tabla 3.} Masa molar $M_{\mathrm{mol}}$ y constante específica $R = R_{\mathrm{mol}}/M_{\mathrm{mol}}$ para algunos gases (valores en $\mathrm{kg\,mol^{-1}}$ y $\mathrm{J\,K^{-1}\,kg^{-1}}$, con los factores $10^{3}$ y $10^{-3}$ indicados).
+\begin{tabular}{ccc}
+\hline
+Gas & $10^{3}M_{\mathrm{mol}}$ & $10^{-3}R$ \\
+\hline
+H$_2$ & 2.0 & 4.157 \\
+He & 4.0 & 2.079 \\
+Ne & 20.2 & 0.412 \\
+N$_2$ & 28.0 & 0.297 \\
+O$_2$ & 32.0 & 0.260 \\
+Ar & 39.9 & 0.208 \\
+CO$_2$ & 44.0 & 0.189 \\
+Aire & 29.0 & 0.287 \\
+\hline
+\end{tabular}
+\end{center}
+
+El origen microscópico de la ley del gas ideal es el siguiente. El teorema de equipartición establece que la energía cinética promedio de una molécula de masa $m$ es
+$$ \frac{1}{2}m\langle v_x^2\rangle + \frac{1}{2}m\langle v_y^2\rangle + \frac{1}{2}m\langle v_z^2\rangle = \frac{3}{2}k_B T, $$
+a partir de lo cual se obtiene
+$$ p = \frac{1}{3}\rho\langle v^2\rangle = \rho\,\frac{k_B T}{m} = \rho\,\frac{N_A k_B T}{N_A m} = \rho\,\frac{R_{\mathrm{mol}}T}{M_{\mathrm{mol}}}, $$
+recuperando la ley del gas ideal con $R_{\mathrm{mol}} = N_A k_B$.
+
+\figuraGasIdealMicroscopico
+
+\subsection{Aplicación: atmósfera isotérmica}
+
+Supóngase temperatura constante, $T(\vec{x}) = T_0$, y combínese la ecuación de equilibrio hidrostático con la ley del gas ideal. Entonces
+$$ \frac{dp}{dz} = -\rho g_0 = -\frac{g_0}{RT_0}\,p. $$
+Esta es una ecuación diferencial ordinaria para la presión que, con la condición inicial $p = p_0$ en $z = 0$, tiene por solución
+$$ p = p_0 e^{-z/h_0}, \qquad h_0 = \frac{RT_0}{g_0} = \frac{p_0}{\rho_0 g_0}. $$
+En el último paso se usó de nuevo la ley del gas ideal en $z=0$, mostrando que $h_0$ coincide con la altura de escala de la atmósfera incompresible. En la atmósfera isotérmica la presión decrece así exponencialmente con la altura, con una escala característica $h_0 \approx 8728\ \mathrm{m}$ calculada para 1 atm y $25^\circ\mathrm{C}$; la presión en la cima del Everest ($z = 8848\ \mathrm{m}$) resulta finita y predicha en $368\ \mathrm{hPa}$. El perfil de densidad queda
+$$ \rho = \rho_0 e^{-z/h_0} = \rho_0 e^{-z g_0/(p_0/\rho_0)}. $$
+
+\figuraAtmosferaIsotermica
+
+\subsection{Ecuación de estado barotrópica}
+
+En ocasiones existe una relación llamada \emph{barotrópica} entre densidad y presión,
+$$ F(\rho(\vec{x}), p(\vec{x})) = 0, $$
+que no depende de la temperatura local $T(\vec{x})$.
+
+\subsubsection*{Relación politrópica}
+La primera ley de la termodinámica en forma diferencial dice
+$$ T\,dS = dE + p\,dV. $$
+Dividiendo por la masa total $m$ e introduciendo cantidades específicas (por unidad de masa),
+$$ s = \frac{S}{m}, \qquad e = \frac{E}{m}, \qquad v = \frac{V}{m} = \frac{1}{\rho}, $$
+donde $s$ es la entropía específica y $e$ la energía interna específica, se obtiene la forma específica de la primera ley:
+$$ T\,ds = de + p\,d\!\left(\frac{1}{\rho}\right). $$
+Para un proceso isentrópico, $ds = 0$, de modo que
+$$ de = -p\,d\!\left(\frac{1}{\rho}\right) = \frac{p}{\rho^2}\,d\rho. $$
+Para un gas ideal, $e = c_v T$ y $p = \rho R T$; por tanto $c_v\,dT = \frac{p}{\rho^2}d\rho$ con $T = p/(\rho R)$. Eliminando $T$:
+$$ c_v\, d\!\left(\frac{p}{\rho R}\right) = \frac{p}{\rho^2}\,d\rho, $$
+o equivalentemente
+$$ \frac{c_v}{R}\left(\frac{dp}{\rho} - \frac{p}{\rho^2}\,d\rho\right) = \frac{p}{\rho^2}\,d\rho. $$
+Recordando ahora que
+$$ \gamma \equiv \frac{c_p}{c_v} = 1 + \frac{R}{c_v}, $$
+la relación se simplifica a
+$$ \frac{dp}{p} = \gamma\,\frac{d\rho}{\rho}. $$
+Integrando ambos lados,
+$$ \ln p = \gamma \ln \rho + \mathrm{const}, $$
+lo que conduce a la relación politrópica
+$$ p = C\rho^{\gamma}, $$
+donde $C$ es la constante politrópica y $\gamma$ el índice politrópico (Tabla 4). Esta relación surge naturalmente en un gas ideal cuando la conducción de calor puede despreciarse por completo, de modo que todos los procesos ocurren sin transferencia de calor (procesos adiabáticos); en tal caso el índice politrópico se llama índice adiabático. Los gases diatómicos (nitrógeno, oxígeno) tienen $\gamma \approx 7/5$; los nobles monoatómicos, $\gamma \approx 5/3$; y los poliatómicos (vapor de agua, dióxido de carbono), $\gamma \approx 4/3$. Como la entropía local permanece constante en procesos adiabáticos reversibles, éstos también se denominan isentrópicos.
+
+\begin{center}
+\textbf{Tabla 4.} Índice adiabático $\gamma$ y calor específico a presión constante $c_p = \gamma R/(\gamma - 1)$ para algunos gases casi ideales (unidades $\mathrm{J\,K^{-1}\,kg^{-1}}$; $10^{3}c_p$ indicado).
+\begin{tabular}{ccc}
+\hline
+Gas & $\gamma$ & $10^{3}c_p$ \\
+\hline
+H$_2$ & 1.41 & 14.30 \\
+He & 1.63 & 5.38 \\
+Ne & 1.64 & 1.05 \\
+N$_2$ & 1.40 & 1.04 \\
+O$_2$ & 1.40 & 0.91 \\
+Ar & 1.67 & 0.52 \\
+CO$_2$ & 1.30 & 0.82 \\
+Aire & 1.40 & 1.00 \\
+\hline
+\end{tabular}
+\end{center}
+
+\section{Isobaras, isoclinas y potenciales}
+
+Para un fluido de densidad $\rho$ (en general dependiente de la posición) en un campo gravitacional $\vec{g}$:
+$$ -\rho\vec{g} + \vec{\nabla}p = 0 \qquad \text{o bien} \qquad \rho\vec{\nabla}\Phi + \vec{\nabla}p = 0. $$
+Tomando el rotacional de la segunda ecuación,
+$$ \rho\,\vec{\nabla}\times\vec{\nabla}\Phi + \vec{\nabla}\rho\times\vec{\nabla}\Phi + \vec{\nabla}\times\vec{\nabla}p = 0. $$
+Puesto que $\vec{\nabla}\times\vec{\nabla}\Phi \equiv 0$ y $\vec{\nabla}\times\vec{\nabla}p \equiv 0$, se sigue que en un fluido de densidad variable se cumple
+$$ \vec{\nabla}\rho\times\vec{\nabla}\Phi = 0 \qquad \text{o bien} \qquad \vec{\nabla}\rho\times\vec{g} = 0. $$
+Esto significa que, punto a punto, la dirección de las líneas del campo gravitacional coincide con la del gradiente de densidad; equivalentemente, las superficies de igual densidad (isoclinas) y las equipotenciales gravitacionales coinciden.
+
+Considerando ahora
+$$ \vec{\nabla}\Phi + \frac{\vec{\nabla}p}{\rho} = 0 $$
+y tomando su rotacional, se sigue que para un fluido compresible
+$$ \vec{\nabla}\rho\times\vec{\nabla}p = 0, $$
+de donde se concluye que las superficies de presión constante (isobaras) y las de densidad constante coinciden. De esta ecuación se deduce que la presión es un funcional exclusivo de la densidad, $p = p(\rho)$; en efecto,
+$$ \vec{\nabla}\rho\times\vec{\nabla}p = \vec{\nabla}\rho\times\left(\frac{dp}{d\rho}\vec{\nabla}\rho\right) = \frac{dp}{d\rho}\,\vec{\nabla}\rho\times\vec{\nabla}\rho = 0. $$
+Los fluidos para los que $p = p(\rho)$ se conocen como \emph{barótropos}. De manera análoga puede mostrarse que $\Phi$ es un funcional de $\rho$, $\Phi = \Phi(\rho)$; así, las superficies de $\Phi$, $\rho$ y $p$ constantes son las mismas. Este resultado vale independientemente de la forma del campo gravitacional. En particular, si $\vec{g} = -\hat{k}g$, las superficies de $\Phi$, $\rho$ y $p$ son planos horizontales; fuera de la masa terrestre, supuesta esférica, con $g = -GM\hat{r}/r^2$ y $\Phi = -GM/r$, las tres superficies son esféricas y concéntricas.
+
+\figuraSuperficiesHidrostaticas
+
+\section{Potencial de presión}
+
+Dado que el campo gravitacional es conservativo y se obtiene del gradiente del potencial gravitacional $\Phi(\vec{x})$,
+$$ \vec{g}(\vec{x}) = -\vec{\nabla}\Phi(\vec{x}). $$
+En términos del potencial, la ecuación de equilibrio hidrostático ($\vec{\nabla}p = \rho\vec{g}$) puede escribirse como
+$$ \vec{\nabla}\Phi + \frac{\vec{\nabla}p}{\rho} = 0. $$
+En el caso de densidad constante, $\rho(\vec{x}) = \rho_0$, se obtiene que
+$$ \Phi^{*} \equiv \Phi + \frac{p}{\rho_0} $$
+satisface
+$$ \vec{\nabla}\Phi^{*} = 0, $$
+es decir, $\Phi^{*}$ es constante e independiente de $\vec{x}$; $\Phi^{*}$ recibe el nombre de \emph{potencial efectivo}. En la gravedad de Tierra plana, con $\Phi = g_0 z$, la constancia de $\Phi^{*} = g_0 z + p/\rho_0$ conduce directamente al campo lineal de presión del mar incompresible.
+
+Para cualquier fluido barotrópico con $\rho = \rho(p)$ siempre es posible integrar la ecuación hidrostática. Introduciendo el \emph{potencial de presión},
+$$ w(p) = \int \frac{dp}{\rho(p)}, $$
+el equilibrio hidrostático queda
+$$ \Phi^{*} = \Phi + w(p). $$
+La condición $\Phi^{*}(\vec{x}) = \mathrm{const}$ es completamente equivalente a la ecuación de equilibrio hidrostático para fluidos barotrópicos.
+
+\subsection{Gas isotérmico}
+
+Bajo condiciones isotérmicas, el potencial de presión de un gas ideal se calcula mediante la ley del gas ideal:
+$$ w = \int \frac{RT_0}{p}\,dp = RT_0 \log p. $$
+
+\subsection{Fluido politrópico}
+
+Para fluidos que obedecen una relación politrópica, el potencial de presión resulta
+$$ w = \int \frac{C\gamma\rho^{\gamma-1}\,d\rho}{\rho} = C\,\frac{\gamma}{\gamma-1}\rho^{\gamma-1} = \frac{\gamma}{\gamma-1}\,\frac{p}{\rho}. $$
+Cuando el fluido es un gas ideal con $p = R\rho T$, esto adopta la forma más simple
+$$ w = \frac{\gamma}{\gamma-1}RT = c_p T, \qquad c_p = \frac{\gamma}{\gamma-1}R, $$
+donde $c_p$ es el calor específico a presión constante.
+
+\section{Módulo de compresibilidad}
+
+Todos los fluidos se comprimen al aumentar la presión, con la consiguiente disminución de volumen o aumento de densidad. La manera usual de describir la compresibilidad es el \emph{módulo de compresibilidad} (o de elasticidad volumétrica), definido como el incremento de presión $dp$ por disminución fraccional de volumen, $-dV/V$:
+$$ K = \frac{dp}{-dV/V} = \frac{dp}{d\rho/\rho} = \rho\,\frac{dp}{d\rho}. $$
+En el segundo paso se usó la constancia de la masa $M = \rho V$ del fluido en el volumen, $dM = \rho\,dV + V\,d\rho = 0$, de donde $-dV/V = d\rho/\rho$.
+
+La definición tiene sentido inmediato para un fluido barotrópico, donde $p = p(\rho)$. Para estados generales es necesario especificar las condiciones: temperatura constante (isotérmico) o sin transferencia de calor (adiabático o isentrópico). Así, la ecuación de estado del gas ideal implica que el módulo isotérmico es
+$$ K_T = \left(\rho\,\frac{\partial p}{\partial \rho}\right)_T = p, $$
+mientras que para un gas ideal isentrópico que obedece la relación politrópica, el módulo isentrópico es
+$$ K_S = \left(\rho\,\frac{dp}{d\rho}\right)_S = \gamma p, $$
+mayor que el isotérmico por un factor $\gamma > 1$, porque la compresión adiabática eleva también la temperatura y con ello la presión. El módulo se mide en las mismas unidades que la presión (pascales, bares, atmósferas) y constituye una medida de la \emph{incompresibilidad}: cuanto mayor es $K$, mayor aumento de presión se necesita para una dada aumento fraccional de densidad; el inverso $\beta = 1/K$ mide la compresibilidad.
+
+El módulo del agua en condiciones estándar es aproximadamente $2100\ \mathrm{MPa}$, unas 21\,000 veces la presión atmosférica; para el aire en condiciones estándar, $K$ vale 1 atm y, en general, $K$ de un gas iguala su presión. Producir un cambio del 1\,\% en la densidad del agua requiere 21 MPa (210 atm), presión enorme para un cambio tan pequeño: por ello los líquidos suelen tratarse como incompresibles. En gases, cambios de densidad significativos (digamos 4\,\%) obligan a considerarlos compresibles, mientras que cambios menores del 3\,\% permiten tratarlos como incompresibles; esto ocurre para velocidades del aire por debajo de unos 100 m/s, lo que cubre muchos flujos de interés ingenieril (aire alrededor de automóviles, despegue y aterrizaje de aviones, flujo en edificios).
+
+El módulo de compresibilidad también permite calcular la velocidad del sonido en un líquido:
+$$ c = \sqrt{\left(\frac{dp}{d\rho}\right)_T} = \sqrt{\frac{K_T}{\rho}}, $$
+lo que da aproximadamente $1450\ \mathrm{m/s}$ para el agua en condiciones estándar.
+
+\figuraCompresibilidadFluidos
+
+\section{Atmósfera homentrópica de la Tierra}
+
+Un proceso que ocurre sin intercambio de calor entre el sistema y su entorno se dice \emph{adiabático}; si además es reversible, conserva la entropía y se llama \emph{isentrópico}.
+
+\subsection{Ecuación de estado homentrópica}
+
+Partiendo de la primera ley,
+$$ dU = dQ - p\,dV, $$
+la adiabaticidad implica $dQ = 0$, y para un gas ideal $U = nC_V T$:
+$$ nC_V\,dT = -p\,dV. $$
+Usando la ley del gas ideal $pV = nRT \Rightarrow dT = \frac{1}{nR}(p\,dV + V\,dp)$, se sigue que
+$$ \frac{C_V}{R}(p\,dV + V\,dp) = -p\,dV. $$
+Reordenando y usando $C_P = C_V + R$:
+$$ \frac{C_V}{R}V\,dp + \frac{C_P}{R}p\,dV = 0. $$
+Dividiendo por $pV$ y usando $\gamma \equiv C_P/C_V$:
+$$ \frac{dp}{p} + \gamma\,\frac{dV}{V} = 0. $$
+Finalmente,
+$$ \ln p + \gamma \ln V = \mathrm{const} \quad\Rightarrow\quad pV^{\gamma} = \mathrm{const}, $$
+es decir,
+$$ pV^{\gamma} = p_0 V_0^{\gamma}. $$
+Expresado en términos de la densidad $\rho = M/V$, un proceso isentrópico que cambia localmente la densidad $\rho_0$ y la presión $p_0$ a $\rho$ y $p$ debe obedecer la relación politrópica local:
+$$ p\,\rho^{-\gamma} = p_0\,\rho_0^{-\gamma}. $$
+
+\subsection{Solución homentrópica}
+
+El equilibrio hidrostático implica
+$$ \Phi^{*} = \Phi + w(p) = g_0 z + c_p T = \mathrm{const}. $$
+Definiendo esta constante como $\Phi^{*} = c_p T_0$ (con $T_0$ la temperatura a nivel del mar), el perfil de temperatura es
+$$ T(z) = T_0 - \frac{g_0}{c_p}\,z. $$
+Introduciendo la altura de escala de la atmósfera isotérmica, $h_0 = p_0/(\rho_0 g_0)$, esta expresión toma la forma
+$$ T = T_0\left(1 - \frac{z}{h_2}\right), \qquad h_2 = \frac{c_p T_0}{g_0} = \frac{\gamma}{\gamma-1}h_0. $$
+Para $\gamma = 7/5$ y $T_0 = 25^\circ\mathrm{C}$, la altura de escala isentrópica es $h_2 \approx 31\ \mathrm{km}$. Combinando la ley del gas ideal con la relación homentrópica (isentrópica), $T\rho^{1-\gamma}$ y $p^{1-\gamma}T^{\gamma}$ son constantes, de modo que la densidad y la presión resultan
+$$ \rho = \rho_0\left(1 - \frac{z}{h_2}\right)^{1/(\gamma-1)}, \qquad p = p_0\left(1 - \frac{z}{h_2}\right)^{\gamma/(\gamma-1)}, $$
+donde $\rho_0$ y $p_0$ son la densidad y presión a nivel del mar. Nótese que $T$, $\rho$ y $p$ se anulan formalmente en $z = h_2$, lo cual no es físico: la atmósfera real es más complicada que este modelo simple.
+
+\subsection{Gradiente térmico atmosférico}
+
+El gradiente vertical negativo de temperatura, llamado \emph{gradiente térmico atmosférico} (lapse rate), es
+$$ -\frac{dT}{dz} = \frac{g_0}{c_p}. $$
+Su valor es $9.8\ \mathrm{K\,km^{-1}}$ para aire seco. En la cima del Everest ($z = 8.848\ \mathrm{km}$), el modelo con $T_0 = 25^\circ\mathrm{C}$ predice una temperatura de $-61^\circ\mathrm{C}$, una densidad de $0.50\ \mathrm{kg\,m^{-3}}$ y una presión de $306\ \mathrm{hPa}$.
+
+El vapor de agua está siempre presente en la atmósfera y condensa en el aire ascendente. El calor latente liberado durante la condensación calienta el aire, haciendo el gradiente menor que en aire seco, típicamente $6$--$7\ \mathrm{K\,km^{-1}}$, lo que corresponde a un índice adiabático efectivo $\gamma \approx 1.23$. Usando este valor con $T_0 = 25^\circ\mathrm{C}$, la altura de escala aumenta a $46\ \mathrm{km}$, y las condiciones predichas en la cima del Everest son $p \approx 329\ \mathrm{hPa}$ y $T \approx -33^\circ\mathrm{C}$, cercanas al promedio medido de unos $-25^\circ\mathrm{C}$.
+
+\figuraModelosAtmosfericos

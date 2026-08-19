@@ -1,0 +1,48 @@
+\newcommand{\figuraManometroAceiteAgua}{%
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small]
+        \draw[very thick]
+            (2.0,5.4)--(2.0,1.15)
+            arc[start angle=180,end angle=360,radius=2.0]
+            --(6.0,5.4);
+        \draw[very thick]
+            (2.65,5.4)--(2.65,1.45)
+            arc[start angle=180,end angle=360,radius=1.35]
+            --(5.35,5.4);
+
+        \fill[cyan!30]
+            (2.03,1.15)--(2.03,2.90)--(2.62,2.90)--(2.62,1.45)
+            arc[start angle=180,end angle=360,radius=1.35]
+            --(5.38,4.05)--(5.97,4.05)--(5.97,1.15)
+            arc[start angle=0,end angle=-180,radius=1.97]--cycle;
+        \fill[orange!42] (2.03,2.90) rectangle (2.62,4.85);
+
+        \draw[very thick,orange!80!black] (2.03,4.85)--(2.62,4.85);
+        \draw[very thick,red!75!black] (2.03,2.90)--(2.62,2.90);
+        \draw[very thick,blue!65!black] (5.38,4.05)--(5.97,4.05);
+        \draw[dashed,gray!70] (1.45,2.90)--(6.55,2.90);
+
+        \node[orange!80!black,anchor=east] at (1.82,3.95) {aceite};
+        \node[blue!70!black,anchor=west] at (6.15,2.05) {agua};
+        \node[red!75!black,anchor=east] at (1.82,2.90) {interfaz};
+        \node at (2.32,5.68) {$p_{\mathrm{atm}}$};
+        \node at (5.68,5.68) {$p_{\mathrm{atm}}$};
+
+        \draw[<->,thick,orange!80!black]
+            (1.25,2.90)--node[left]{$h_{\mathrm{aceite}}$}(1.25,4.85);
+        \draw[<->,thick,blue!70!black]
+            (6.75,2.90)--node[right]{$h_{\mathrm{agua}}$}(6.75,4.05);
+
+        \node[font=\bfseries] at (4.0,6.12)
+            {Manómetro con dos líquidos inmiscibles};
+        \node[align=center] at (4.0,0.15)
+            {$\rho_{\mathrm{aceite}}h_{\mathrm{aceite}}
+             =\rho_{\mathrm{agua}}h_{\mathrm{agua}}$};
+    \end{tikzpicture}
+    \caption{La presión en la interfaz debe ser la misma al calcularla desde
+    cualquiera de las dos superficies libres. Como el aceite es menos denso,
+    su columna debe ser más alta.}
+    \label{fig:manometro-aceite-agua}
+\end{figure}%
+}

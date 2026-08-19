@@ -1,0 +1,1228 @@
+\documentclass[a4paper]{article}
+
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb}
+\usepackage[margin=2cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{parskip}
+\usepackage[most]{tcolorbox}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usepackage[hidelinks]{hyperref}
+
+
+% cabecera
+\pagestyle{fancy}
+\fancyhead[l]{Mecánica de Medios Continuos}
+\fancyhead[c]{Taller 3}
+\fancyhead[r]{\today}
+\fancyfoot[c]{\thepage}
+\renewcommand{\headrulewidth}{0.2pt} % linea horizontal
+
+\begin{document}
+\tableofcontents
+
+\section{Problema 1}
+
+A partir de la primera ley de la termodinámica $T dS = dE + p dV$ deduzca la relación politrópica en términos de (a) densidad y presión, (b) presión y volumen.
+
+\subsection{Solución}
+
+Para un proceso isentrópico (adiabático reversible), no hay intercambio de calor, por lo que el cambio de entropía es nulo: $dS = 0$. La primera ley de la termodinámica se reduce a:
+$$ dE = -p dV $$
+Para un gas ideal, la energía interna depende solo de la temperatura, $dE = n C_v dT$. Además, la ecuación de estado es $pV = nRT$, de donde podemos diferenciar para obtener:
+$$ dT = \frac{1}{nR} (p dV + V dp) $$
+Sustituyendo $dE$ y $dT$ en la ecuación de energía:
+$$ n C_v \left[ \frac{1}{nR} (p dV + V dp) \right] = -p dV $$
+$$ \frac{C_v}{R} (p dV + V dp) = -p dV $$
+Dividimos toda la ecuación entre $pV$:
+$$ \frac{C_v}{R} \frac{dV}{V} + \frac{C_v}{R} \frac{dp}{p} = -\frac{dV}{V} $$
+Reagrupando los términos con $dV$:
+$$ \frac{C_v}{R} \frac{dp}{p} + \left( \frac{C_v}{R} + 1 \right) \frac{dV}{V} = 0 $$
+Recordando la relación de Mayer para gases ideales, $C_p - C_v = R$, podemos escribir $\frac{C_v}{R} + 1 = \frac{C_v + R}{R} = \frac{C_p}{R}$. Sustituyendo esto en la ecuación:
+$$ \frac{C_v}{R} \frac{dp}{p} + \frac{C_p}{R} \frac{dV}{V} = 0 $$
+Dividiendo entre $\frac{C_v}{R}$ y sabiendo que el índice adiabático es $\gamma = \frac{C_p}{C_v}$:
+$$ \frac{dp}{p} + \gamma \frac{dV}{V} = 0 $$
+Integrando ambos lados:
+$$ \ln p + \gamma \ln V = \text{constante} \implies \ln(p V^\gamma) = \text{constante} $$
+Esto nos da la relación politrópica para la \textbf{parte (b)}:
+$$ p V^\gamma = \text{constante} $$
+
+Para la \textbf{parte (a)}, expresamos el volumen en términos de la densidad. Sabemos que $V = \frac{M}{\rho}$, por lo que un cambio diferencial es $dV = -\frac{M}{\rho^2} d\rho$. Dividiendo por $V$:
+$$ \frac{dV}{V} = \frac{-\frac{M}{\rho^2} d\rho}{\frac{M}{\rho}} = -\frac{d\rho}{\rho} $$
+Sustituimos esto en nuestra ecuación diferencial integrada $\frac{dp}{p} + \gamma \frac{dV}{V} = 0$:
+$$ \frac{dp}{p} - \gamma \frac{d\rho}{\rho} = 0 \implies \frac{dp}{p} = \gamma \frac{d\rho}{\rho} $$
+Integrando ambos lados:
+$$ \ln p = \gamma \ln \rho + \text{constante} \implies \ln(p \rho^{-\gamma}) = \text{constante} $$
+Esto nos da la relación politrópica en términos de densidad y presión:
+$$ p \rho^{-\gamma} = \text{constante} \quad \text{o} \quad p = K \rho^\gamma $$
+
+
+\section{Problema 2}
+
+Defina los conceptos de isobara, isoclina y superficie equipotencial y establezca la relación entre ellas.
+
+\input{FigurasPS3/Fig1.tex}
+
+\subsection{Solución}
+
+\textbf{Definiciones:}
+\begin{itemize}
+    \item \textbf{Isobara:} Es una superficie imaginaria dentro del fluido donde la presión es constante en todos sus puntos ($p = \text{cte}$). Matemáticamente, el diferencial de presión es nulo sobre la superficie: $dp = \nabla p \cdot d\vec{r} = 0$, lo que significa que el gradiente de presión $\nabla p$ es ortogonal a la superficie.
+    \item \textbf{Isoclina (o isopicna):} Es una superficie donde la densidad del fluido es constante ($\rho = \text{cte}$). De manera similar, $\nabla \rho \cdot d\vec{r} = 0$, por lo que el gradiente de densidad $\nabla \rho$ es ortogonal a esta superficie.
+    \item \textbf{Superficie equipotencial:} Es una superficie donde el potencial de las fuerzas de cuerpo conservativas (como el potencial gravitacional $\Phi$) es constante ($\Phi = \text{cte}$). Se cumple que $\nabla \Phi \cdot d\vec{r} = 0$, haciendo que el campo gravitacional $\vec{g} = -\nabla \Phi$ sea ortogonal a la superficie.
+\end{itemize}
+
+\textbf{Relación entre ellas:} \\
+En un fluido en equilibrio hidrostático, la ecuación fundamental que rige el sistema es:
+$$ \nabla p = \rho \vec{g} = -\rho \nabla \Phi $$
+Para encontrar la relación entre las superficies, tomamos el rotacional ($\nabla \times$) a ambos lados de la ecuación de equilibrio hidrostático:
+$$ \nabla \times (\nabla p) = \nabla \times (-\rho \nabla \Phi) $$
+Sabemos que el rotacional de un gradiente siempre es cero ($\nabla \times (\nabla p) = 0$). Aplicando la identidad vectorial para el rotacional de un producto de un escalar por un vector en el lado derecho:
+$$ 0 = -\nabla \rho \times \nabla \Phi - \rho \nabla \times (\nabla \Phi) $$
+Como $\nabla \times (\nabla \Phi) = 0$, la ecuación se simplifica a:
+$$ \nabla \rho \times \nabla \Phi = 0 $$
+El producto cruz de dos vectores es cero si y solo si son paralelos. Esto significa que $\nabla \rho$ es paralelo a $\nabla \Phi$. Dado que ambos gradientes son ortogonales a sus respectivas superficies, concluimos que \textbf{las superficies isoclinas y equipotenciales son coincidentes}.
+
+Además, podemos reescribir la ecuación de equilibrio hidrostático dividiendo por la densidad:
+$$ \nabla \Phi + \frac{\nabla p}{\rho} = 0 $$
+Tomando el rotacional a esta nueva expresión:
+$$ \nabla \times (\nabla \Phi) + \nabla \left( \frac{1}{\rho} \right) \times \nabla p + \frac{1}{\rho} \nabla \times (\nabla p) = 0 $$
+Sabiendo que $\nabla \times (\nabla \Phi) = 0$ y $\nabla \times (\nabla p) = 0$, y evaluando el gradiente $\nabla \left( \frac{1}{\rho} \right) = -\frac{1}{\rho^2} \nabla \rho$, obtenemos:
+$$ -\frac{1}{\rho^2} \nabla \rho \times \nabla p = 0 \implies \nabla \rho \times \nabla p = 0 $$
+Esto indica que $\nabla \rho$ es paralelo a $\nabla p$, lo que demuestra que \textbf{las superficies isobaras e isoclinas también son coincidentes}.
+
+\textbf{Conclusión:} En un fluido en equilibrio hidrostático, las superficies isobaras, isoclinas y equipotenciales son todas mutuamente coincidentes.
+
+
+\section{Problema 3}
+
+Atmósfera estándar. Considere una atmósfera compuesta de un gas ideal con ecuación de estado $p= \rho R T_M$. Supóngase que en general en cualquiera de las capas de la atmósfera el perfil de temperatura es $T(z)= T_0 - \alpha z$, (a) calcule los perfiles de presión y densidad para cualquier capa y (b) calcule el valor de la presión, la densidad y la temperatura en la tropopausa, a una altura de 17 km si $\alpha= 0.0065$ K/m y $T_0= 288$ K para la tropósfera.
+
+\input{FigurasPS3/Fig2.tex}
+
+\subsection{Solución}
+
+\textbf{Parte (a): Perfiles de presión y densidad} \\
+Partimos de la ecuación de equilibrio hidrostático:
+$$ dp = -\rho g dz $$
+Usamos la ecuación de estado del gas ideal para despejar la densidad: $\rho = \frac{p}{R T_M}$. Sustituyendo esto en la ecuación hidrostática:
+$$ dp = -\frac{p}{R T_M} g dz \implies \frac{dp}{p} = -\frac{g}{R T_M} \frac{dz}{T(z)} $$
+Sustituimos el perfil de temperatura dado, $T(z) = T_0 - \alpha z$:
+$$ \frac{dp}{p} = -\frac{g}{R T_M} \frac{dz}{T_0 - \alpha z} $$
+Integramos ambos lados desde la superficie ($z = 0$, donde $p = p_0$) hasta una altura arbitraria $z$:
+$$ \int_{p_0}^{p} \frac{dp'}{p'} = -\frac{g}{R T_M} \int_{0}^{z} \frac{dz'}{T_0 - \alpha z'} $$
+$$ \ln\left(\frac{p}{p_0}\right) = -\frac{g}{R T_M} \left[ -\frac{1}{\alpha} \ln(T_0 - \alpha z') \right]_0^z = \frac{g}{\alpha R T_M} \ln\left(\frac{T_0 - \alpha z}{T_0}\right) $$
+Aplicando la propiedad de los logaritmos $a \ln x = \ln(x^a)$ y exponenciando, obtenemos el \textbf{perfil de presión}:
+$$ p(z) = p_0 \left( \frac{T_0 - \alpha z}{T_0} \right)^{\frac{g}{\alpha R T_M}} $$
+Para el \textbf{perfil de densidad}, usamos nuevamente la ecuación de estado $\rho(z) = \frac{p(z)}{R T(z)}$:
+$$ \rho(z) = \frac{p_0}{R (T_0 - \alpha z)} \left( \frac{T_0 - \alpha z}{T_0} \right)^{\frac{g}{\alpha R T_M}} $$
+Sabemos que la densidad en la superficie es $\rho_0 = \frac{p_0}{R T_0}$. Reescribiendo la expresión:
+$$ \rho(z) = \rho_0 \frac{T_0}{T_0 - \alpha z} \left( \frac{T_0 - \alpha z}{T_0} \right)^{\frac{g}{\alpha R T_M}} = \rho_0 \left( \frac{T_0 - \alpha z}{T_0} \right)^{\frac{g}{\alpha R T_M} - 1} $$
+
+\textbf{Parte (b): Evaluación en la tropopausa ($z = 17000$ m)} \\
+Datos proporcionados: $z = 17000$ m, $\alpha = 0.0065$ K/m, $T_0 = 288$ K. \\
+Asumiremos los valores estándar para la gravedad y la constante específica del aire: $g \approx 9.8$ m/s$^2$, $R \approx 287$ J/(kg K), $p_0 = 101325$ Pa, $\rho_0 = 1.225$ kg/m$^3$.
+
+\textit{Temperatura:}
+$$ T(17000) = 288 - 0.0065 \times 17000 = 288 - 110.5 = 177.5 \text{ K} $$
+
+\textit{Presión:} \\
+Calculamos el exponente: $\frac{g}{\alpha R T_M} = \frac{9.8}{0.0065 \times 287} \approx 5.253$.
+$$ p(17000) = 101325 \left( \frac{177.5}{288} \right)^{5.253} \approx 101325 \times (0.6163)^{5.253} \approx 101325 \times 0.0804 \approx 8148 \text{ Pa} $$
+
+\textit{Densidad:} \\
+El exponente para la densidad es $5.253 - 1 = 4.253$.
+$$ \rho(17000) = 1.225 \left( \frac{177.5}{288} \right)^{4.253} \approx 1.225 \times (0.6163)^{4.253} \approx 1.225 \times 0.1305 \approx 0.160 \text{ kg/m}^3 $$
+
+
+\section{Problema 4}
+
+Envolvente convectiva del Sol. Sea el potencial en la zona convectiva del Sol aproximado por $\Phi= -\frac{GM}{r}$ y el potencial de presión para un fluido homentrópico $w= \frac{\gamma}{\gamma-1} R T_M = c_p T_M$, determine los perfiles de presión y densidad de la envolvente convectiva del Sol.
+
+\subsection{Solución}
+
+Para un fluido barotrópico (en este caso, homentrópico o isentrópico), la ecuación de equilibrio hidrostático puede expresarse en términos del potencial de presión $w$ y el potencial gravitacional $\Phi$:
+$$ \nabla w + \nabla \Phi = 0 \implies \nabla (w + \Phi) = 0 $$
+Esto implica que la suma de ambos potenciales es una constante en todo el fluido:
+$$ w(r) + \Phi(r) = \text{constante} $$
+Evaluamos esta constante en la superficie del Sol, donde el radio es $r = a$ (o $R_\odot$), la temperatura es $T_0$ y el potencial gravitacional es $\Phi_0 = -\frac{GM}{a}$:
+$$ w(r) - \frac{GM}{r} = w_0 - \frac{GM}{a} $$
+Sustituimos el potencial de presión $w = c_p T_M$:
+$$ c_p T_M(r) - \frac{GM}{r} = c_p T_0 - \frac{GM}{a} $$
+Despejamos el perfil de temperatura $T_M(r)$:
+$$ c_p T_M(r) = c_p T_0 + GM \left( \frac{1}{r} - \frac{1}{a} \right) \implies T_M(r) = T_0 \left[ 1 + \frac{GM}{c_p T_0} \left( \frac{1}{r} - \frac{1}{a} \right) \right] $$
+Para un gas ideal en un proceso isentrópico, las relaciones entre presión, densidad y temperatura están dadas por:
+$$ \frac{p(r)}{p_0} = \left( \frac{T_M(r)}{T_0} \right)^{\frac{\gamma}{\gamma-1}} \quad \text{y} \quad \frac{\rho(r)}{\rho_0} = \left( \frac{T_M(r)}{T_0} \right)^{\frac{1}{\gamma-1}} $$
+Sustituyendo nuestra expresión para la razón de temperaturas $\frac{T_M(r)}{T_0}$, obtenemos directamente los perfiles solicitados.
+
+\textbf{Perfil de Presión:}
+$$ p(r) = p_0 \left[ 1 + \frac{GM}{c_p T_0} \left( \frac{1}{r} - \frac{1}{a} \right) \right]^{\frac{\gamma}{\gamma-1}} $$
+
+\textbf{Perfil de Densidad:}
+$$ \rho(r) = \rho_0 \left[ 1 + \frac{GM}{c_p T_0} \left( \frac{1}{r} - \frac{1}{a} \right) \right]^{\frac{1}{\gamma-1}} $$
+Estas ecuaciones describen cómo decaen la presión y la densidad a medida que nos movemos desde el interior hacia la superficie de la envolvente convectiva del Sol.
+
+\section{Problema 5}
+
+Una placa infinita y estática de fluido incompresible autogravitante de densidad $\rho$ ocupa la región $|z|<a$.
+(a) Encuentre el campo gravitacional en todas partes y la distribución de presión dentro de la placa.
+(b) Si un disco galáctico es aproximado por una placa de densidad uniforme $10^{-18}\,\mathrm{kg/m^3}$ y $a=10^{18}\,\mathrm{m}$, determine la velocidad y el período de oscilación de una estrella en el plano galáctico si parte del reposo en $z=a$.
+
+\input{FigurasPS3/Fig3.tex}
+
+\subsection{Solución}
+
+Por simetría plana, el campo gravitacional sólo puede depender de $z$ y apuntar en la dirección $\hat z$. Sea $\vec g(z)=g(z)\,\hat z$. Como $\vec g=-\nabla\Phi$ y $\nabla^2\Phi=4\pi G\rho$, se tiene
+$$
+\nabla\cdot\vec g=-4\pi G\rho.
+$$
+Dentro de la placa, $|z|<a$, la densidad es constante, de modo que
+$$
+\frac{dg}{dz}=-4\pi G\rho.
+$$
+Por simetría respecto al plano medio, $g(0)=0$. Integrando,
+$$
+g(z)=-4\pi G\rho\,z, \qquad |z|<a.
+$$
+Por tanto, dentro de la placa,
+$$
+\vec g(z)=-4\pi G\rho\,z\,\hat z.
+$$
+Fuera de la placa, $|z|>a$, no hay masa y el campo debe ser constante, porque $dg/dz=0$. La continuidad del campo en $z=\pm a$ exige
+$$
+\vec g(z)=-4\pi G\rho\,a\,\operatorname{sgn}(z)\,\hat z, \qquad |z|>a.
+$$
+Así, el campo completo es
+$$
+\vec g(z)=
+-4\pi G\rho\,z\,\hat z \quad (|z|<a),
+$$
+$$
+\vec g(z)=
+-4\pi G\rho\,a\,\operatorname{sgn}(z)\,\hat z \quad (|z|>a).
+$$
+
+Para la presión, la condición de equilibrio hidrostático es
+$$
+\nabla p=\rho\,\vec g.
+$$
+Dentro de la placa,
+$$
+\frac{dp}{dz}=\rho g(z)=-4\pi G\rho^2 z.
+$$
+Integrando,
+$$
+p(z)=-2\pi G\rho^2 z^2+C.
+$$
+Si la placa está rodeada de vacío, la presión se anula en las superficies $z=\pm a$, es decir, $p(a)=0$. Entonces
+$$
+0=-2\pi G\rho^2 a^2+C,
+$$
+de donde
+$$
+C=2\pi G\rho^2 a^2.
+$$
+Por tanto,
+$$
+p(z)=2\pi G\rho^2\left(a^2-z^2\right), \qquad |z|\le a.
+$$
+La presión es máxima en el plano medio:
+$$
+p(0)=2\pi G\rho^2 a^2.
+$$
+
+En la parte (b), una estrella de prueba que se mueve perpendicularmente al plano galáctico siente, dentro de la placa,
+$$
+\ddot z=-4\pi G\rho\,z.
+$$
+Esta es la ecuación de un oscilador armónico simple con frecuencia angular
+$$
+\omega=\sqrt{4\pi G\rho}.
+$$
+Si la estrella parte del reposo en $z=a$, la solución es
+$$
+z(t)=a\cos(\omega t).
+$$
+La velocidad es
+$$
+v_z(t)=-a\omega\sin(\omega t).
+$$
+La velocidad máxima ocurre al cruzar el plano galáctico, $z=0$, y vale
+$$
+v_{\max}=a\omega=a\sqrt{4\pi G\rho}.
+$$
+El período completo de oscilación es
+$$
+T=\frac{2\pi}{\omega}=\sqrt{\frac{\pi}{G\rho}}.
+$$
+
+Con los valores numéricos
+$$
+\rho=10^{-18}\,\mathrm{kg/m^3}, \qquad a=10^{18}\,\mathrm{m},
+$$
+y $G\simeq 6.67\times 10^{-11}\,\mathrm{N\,m^2/kg^2}$, se obtiene
+$$
+\omega=\sqrt{4\pi G\rho}\simeq 2.9\times 10^{-14}\,\mathrm{s^{-1}}.
+$$
+Por tanto,
+$$
+v_{\max}=a\omega\simeq 2.9\times 10^{4}\,\mathrm{m/s}\simeq 29\,\mathrm{km/s}.
+$$
+El período es
+$$
+T=\frac{2\pi}{\omega}\simeq 2.2\times 10^{14}\,\mathrm{s}.
+$$
+En años,
+$$
+T\simeq 6.9\times 10^6\ \text{años}.
+$$
+El tiempo que tarda en ir desde $z=a$ hasta el plano $z=0$ es un cuarto de período:
+$$
+t_{a\to 0}=\frac{T}{4}\simeq 1.7\times 10^6\ \text{años}.
+$$
+
+
+\section{Problema 6}
+
+Una partícula es soltada desde el reposo a una distancia $R_0$ del centro de un cuerpo de masa $M$. Calcule
+(a) su aceleración inicial y
+(b) el tiempo que le toma alcanzar el centro del cuerpo si este es
+(i) una masa puntual y
+(ii) una esfera uniforme de radio $R_0$.
+
+\input{FigurasPS3/Fig4.tex}
+
+\subsection{Solución}
+
+En ambos casos, si la partícula está inicialmente en $r=R_0$, la aceleración gravitacional inicial tiene magnitud
+$$
+g_0=\frac{GM}{R_0^2},
+$$
+y apunta hacia el centro del cuerpo. Así,
+$$
+\vec a_0=-\frac{GM}{R_0^2}\,\hat r.
+$$
+Para una esfera uniforme de radio $R_0$, esto también es cierto en la superficie, pues por el teorema de capas la masa interior actúa como si estuviera concentrada en el centro.
+
+\subsubsection{(i) Masa puntual}
+
+Para una masa puntual, la energía mecánica se conserva. Como la partícula parte del reposo en $r=R_0$,
+$$
+E=-\frac{GM}{R_0}.
+$$
+En un punto $r$,
+$$
+\frac12 \dot r^2-\frac{GM}{r}=-\frac{GM}{R_0}.
+$$
+Como la partícula cae, $\dot r<0$, luego
+$$
+\dot r=-\sqrt{2GM\left(\frac1r-\frac1{R_0}\right)}.
+$$
+El tiempo de caída es
+$$
+t=\int_0^{R_0}\frac{dr}{\sqrt{2GM\left(\frac1r-\frac1{R_0}\right)}}.
+$$
+Con el cambio
+$$
+r=R_0\cos^2\theta,
+$$
+se tiene
+$$
+dr=-2R_0\cos\theta\sin\theta\,d\theta,
+$$
+y
+$$
+\frac1r-\frac1{R_0}=\frac{\tan^2\theta}{R_0}.
+$$
+Cuando $r=R_0$, $\theta=0$; cuando $r=0$, $\theta=\pi/2$. Entonces
+$$
+t=2R_0\sqrt{\frac{R_0}{2GM}}\int_0^{\pi/2}\cos^2\theta\,d\theta.
+$$
+Como
+$$
+\int_0^{\pi/2}\cos^2\theta\,d\theta=\frac{\pi}{4},
+$$
+se obtiene
+$$
+t_{\text{puntual}}=\frac{\pi}{2}\sqrt{\frac{R_0^3}{2GM}}.
+$$
+Equivalentemente,
+$$
+t_{\text{puntual}}=\frac{\pi}{2\sqrt2}\sqrt{\frac{R_0^3}{GM}}.
+$$
+
+\subsubsection{(ii) Esfera uniforme de radio \texorpdfstring{$R_0$}{R0}}
+
+Dentro de una esfera uniforme, la masa encerrada en un radio $r$ es
+$$
+M(r)=M\left(\frac{r}{R_0}\right)^3.
+$$
+La aceleración gravitacional a distancia $r$ es
+$$
+\ddot r=-\frac{G M(r)}{r^2}=-\frac{GM}{R_0^3}\,r.
+$$
+Definiendo
+$$
+\omega=\sqrt{\frac{GM}{R_0^3}},
+$$
+la ecuación es
+$$
+\ddot r=-\omega^2 r.
+$$
+Con condiciones iniciales
+$$
+r(0)=R_0, \qquad \dot r(0)=0,
+$$
+la solución es
+$$
+r(t)=R_0\cos(\omega t).
+$$
+La partícula llega al centro cuando $r=0$, es decir, cuando
+$$
+\cos(\omega t)=0.
+$$
+La primera vez ocurre en
+$$
+\omega t=\frac{\pi}{2}.
+$$
+Por tanto,
+$$
+t_{\text{esfera}}=\frac{\pi}{2\omega}=\frac{\pi}{2}\sqrt{\frac{R_0^3}{GM}}.
+$$
+Comparando ambos resultados,
+$$
+t_{\text{esfera}}=\sqrt2\,t_{\text{puntual}}.
+$$
+La caída hacia una masa puntual es más rápida porque la aceleración crece más fuertemente al disminuir $r$.
+
+
+\section{Problema 7}
+
+Un planeta esférico tiene una distribución de masa de la forma
+$$
+\rho(r)=A r^\alpha, \qquad r\le a.
+$$
+(a) Calcule el campo gravitacional y el potencial dentro del planeta para esta distribución.
+(b) ¿Para qué valores de $\alpha$ es este problema soluble con la masa del planeta finita?
+(c) ¿Para qué valores de $\alpha$ la gravedad crece hacia el centro?
+
+\subsection{Solución}
+
+La masa encerrada dentro de un radio $r$ es
+$$
+M(r)=4\pi\int_0^r \rho(s)s^2\,ds.
+$$
+Sustituyendo $\rho(s)=A s^\alpha$,
+$$
+M(r)=4\pi A\int_0^r s^{\alpha+2}\,ds.
+$$
+Si $\alpha\neq -3$,
+$$
+M(r)=\frac{4\pi A}{\alpha+3}\,r^{\alpha+3}.
+$$
+Para que esta masa sea finita cerca del origen se requiere
+$$
+\alpha+3>0,
+$$
+es decir,
+$$
+\alpha>-3.
+$$
+
+El campo gravitacional dentro del planeta es radial y, por el teorema de capas,
+$$
+\vec g(r)=-\frac{G M(r)}{r^2}\,\hat r.
+$$
+Por tanto,
+$$
+\vec g(r)=-\frac{4\pi G A}{\alpha+3}\,r^{\alpha+1}\,\hat r,
+\qquad 0<r\le a.
+$$
+La magnitud del campo es
+$$
+g(r)=\frac{4\pi G A}{\alpha+3}\,r^{\alpha+1}.
+$$
+
+Para el potencial gravitacional, elegido de modo que $\Phi(\infty)=0$, primero se calcula la masa total del planeta:
+$$
+M(a)=\frac{4\pi A}{\alpha+3}\,a^{\alpha+3}.
+$$
+El potencial exterior es
+$$
+\Phi_{\text{ext}}(r)=-\frac{G M(a)}{r}, \qquad r\ge a.
+$$
+Dentro del planeta, se cumple
+$$
+\frac{d\Phi}{dr}=-g_r=\frac{G M(r)}{r^2}.
+$$
+Como $g_r$ es la componente radial negativa del campo,
+$$
+\frac{d\Phi}{dr}=\frac{4\pi G A}{\alpha+3}\,r^{\alpha+1}.
+$$
+
+Para $\alpha\neq -2$, integrando,
+$$
+\Phi_{\text{int}}(r)=\frac{4\pi G A}{(\alpha+3)(\alpha+2)}\,r^{\alpha+2}+C.
+$$
+La constante $C$ se determina exigiendo continuidad en $r=a$:
+$$
+\Phi_{\text{int}}(a)=\Phi_{\text{ext}}(a)=-\frac{G M(a)}{a}.
+$$
+Como
+$$
+-\frac{G M(a)}{a}=-\frac{4\pi G A}{\alpha+3}\,a^{\alpha+2},
+$$
+se obtiene
+$$
+C=-\frac{4\pi G A}{\alpha+2}\,a^{\alpha+2}.
+$$
+Por tanto, para $\alpha\neq -2$,
+$$
+\Phi_{\text{int}}(r)=
+\frac{4\pi G A}{\alpha+2}
+\left[
+\frac{r^{\alpha+2}}{\alpha+3}-a^{\alpha+2}
+\right],
+\qquad 0<r\le a.
+$$
+
+El caso $\alpha=-2$ debe tratarse por separado. Entonces
+$$
+\rho(r)=\frac{A}{r^2},
+$$
+y
+$$
+M(r)=4\pi A r.
+$$
+El campo es
+$$
+\vec g(r)=-\frac{4\pi G A}{r}\,\hat r.
+$$
+La ecuación para el potencial es
+$$
+\frac{d\Phi}{dr}=\frac{4\pi G A}{r}.
+$$
+Integrando,
+$$
+\Phi_{\text{int}}(r)=4\pi G A\ln r+C.
+$$
+La continuidad en $r=a$ exige
+$$
+\Phi_{\text{int}}(a)=-4\pi G A.
+$$
+Por tanto,
+$$
+C=-4\pi G A\left(1+\ln a\right),
+$$
+y
+$$
+\Phi_{\text{int}}(r)=4\pi G A\left[\ln\left(\frac{r}{a}\right)-1\right],
+\qquad \alpha=-2.
+$$
+
+En la parte (b), la masa total es finita si la integral
+$$
+\int_0^a r^{\alpha+2}\,dr
+$$
+converge en el origen. Esto ocurre si
+$$
+\alpha+3>0,
+$$
+es decir,
+$$
+\boxed{\alpha>-3.}
+$$
+
+En la parte (c), la magnitud del campo dentro del planeta es
+$$
+g(r)\propto r^{\alpha+1}.
+$$
+Para que la gravedad crezca hacia el centro, es decir, para que aumente cuando $r$ disminuye, se necesita que el exponente sea negativo:
+$$
+\alpha+1<0,
+$$
+es decir,
+$$
+\alpha<-1.
+$$
+Junto con la condición de masa finita, se obtiene
+$$
+\boxed{-3<\alpha<-1.}
+$$
+El caso límite $\alpha=-1$ da una gravedad constante hacia el interior, no creciente en sentido estricto.
+
+
+\section{Problema 8}
+
+(a) Escriba una expresión para el campo gravitacional de una distribución de masa en forma de disco delgado de radio $a$ con densidad superficial de masa uniforme $\sigma$ (este es un modelo para la materia luminosa de la galaxia).
+(b) Calcule el valor del potencial sobre el eje del disco.
+(c) Calcule su forma lejos del disco.
+(d) ¿Qué ocurre para $a\to\infty$?
+
+\subsection{Solución}
+
+Se coloca el disco en el plano $z=0$, centrado en el origen, con radio $a$ y densidad superficial $\sigma$. En coordenadas cilíndricas, un punto del disco se escribe como
+$$
+\vec r\,'=(s\cos\varphi,\;s\sin\varphi,\;0),
+$$
+con $0\le s\le a$ y $0\le\varphi<2\pi$. El potencial gravitacional en un punto $\vec r$ es
+$$
+\Phi(\vec r)=-G\sigma\int_0^a\int_0^{2\pi}
+\frac{s\,ds\,d\varphi}{|\vec r-\vec r\,'|}.
+$$
+El campo gravitacional es
+$$
+\vec g(\vec r)=-\nabla\Phi(\vec r),
+$$
+o explícitamente,
+$$
+\vec g(\vec r)=
+-G\sigma\int_0^a\int_0^{2\pi}
+\frac{\vec r-\vec r\,'}{|\vec r-\vec r\,'|^3}\,s\,ds\,d\varphi.
+$$
+
+Sobre el eje del disco, por simetría, las componentes horizontales del campo se cancelan y sólo queda la componente vertical. Sea el punto de observación $\vec r=(0,0,z)$. Entonces
+$$
+|\vec r-\vec r\,'|=\sqrt{s^2+z^2}.
+$$
+El potencial sobre el eje es
+$$
+\Phi(0,z)=-G\sigma\int_0^a\int_0^{2\pi}
+\frac{s\,ds\,d\varphi}{\sqrt{s^2+z^2}}.
+$$
+La integral angular da $2\pi$, luego
+$$
+\Phi(0,z)=-2\pi G\sigma\int_0^a \frac{s\,ds}{\sqrt{s^2+z^2}}.
+$$
+Usando
+$$
+\int \frac{s\,ds}{\sqrt{s^2+z^2}}=\sqrt{s^2+z^2},
+$$
+se obtiene
+$$
+\Phi(0,z)=-2\pi G\sigma\left(\sqrt{a^2+z^2}-|z|\right).
+$$
+Esta expresión está normalizada de modo que $\Phi\to 0$ cuando $|z|\to\infty$ para $a$ finito.
+
+El campo sobre el eje se calcula mediante
+$$
+g_z(0,z)=-\frac{d\Phi}{dz}.
+$$
+Para $z\neq 0$,
+$$
+g_z(0,z)=
+-2\pi G\sigma\,\operatorname{sgn}(z)
+\left(
+1-\frac{|z|}{\sqrt{a^2+z^2}}
+\right).
+$$
+Para $z>0$,
+$$
+g_z(0,z)=
+-2\pi G\sigma
+\left(
+1-\frac{z}{\sqrt{a^2+z^2}}
+\right),
+$$
+y para $z<0$,
+$$
+g_z(0,z)=
++2\pi G\sigma
+\left(
+1-\frac{|z|}{\sqrt{a^2+z^2}}
+\right).
+$$
+El campo apunta siempre hacia el disco. En el propio plano $z=0$, el campo exacto es discontinuo en el modelo de disco infinitesimalmente delgado; los límites al acercarse por encima y por debajo son $\mp 2\pi G\sigma$.
+
+Lejos del disco, cuando la distancia $r$ al centro satisface $r\gg a$, el disco se ve aproximadamente como una masa puntual. La masa total del disco es
+$$
+M=\sigma\pi a^2.
+$$
+Por tanto, el potencial tiene la forma monopolar
+$$
+\Phi(\vec r)\simeq -\frac{GM}{r}
+=-\frac{G\pi\sigma a^2}{r}.
+$$
+En el eje, $r=|z|$, la expansión directa de la expresión exacta da
+$$
+\Phi(0,z)=
+-2\pi G\sigma
+\left[
+|z|\left(1+\frac{a^2}{2z^2}-\frac{a^4}{8z^4}+\cdots\right)-|z|
+\right].
+$$
+Por tanto,
+$$
+\Phi(0,z)\simeq
+-\frac{\pi G\sigma a^2}{|z|}
++\frac{\pi G\sigma a^4}{4|z|^3}
++\cdots.
+$$
+El término dominante es el de una masa puntual $M=\pi a^2\sigma$.
+
+Más generalmente, lejos del disco y en coordenadas esféricas $(r,\theta)$, con $\theta$ medido desde el eje perpendicular al disco, la expansión multipolar comienza como
+$$
+\Phi(r,\theta)\simeq
+-\frac{G\pi\sigma a^2}{r}
++
+\frac{G\pi\sigma a^4}{8r^3}
+\left(3\cos^2\theta-1\right)
++\cdots.
+$$
+El campo lejano dominante es
+$$
+\vec g\simeq -\frac{GM}{r^2}\,\hat r.
+$$
+
+En el límite $a\to\infty$, el disco se convierte en un plano infinito de densidad superficial $\sigma$. La masa total diverge, por lo que no puede mantenerse la normalización $\Phi(\infty)=0$. En el eje,
+$$
+\Phi(0,z)=-2\pi G\sigma\left(\sqrt{a^2+z^2}-|z|\right).
+$$
+Para $a\gg |z|$,
+$$
+\sqrt{a^2+z^2}=a+\frac{z^2}{2a}+\cdots,
+$$
+de modo que
+$$
+\Phi(0,z)=
+-2\pi G\sigma a
++2\pi G\sigma |z|
++O(a^{-1}).
+$$
+El primer término es una constante divergente que no tiene significado físico directo, pues el potencial gravitacional se define sólo hasta una constante. Eliminando esa constante infinita, queda
+$$
+\Phi_{\text{plano}}(z)=2\pi G\sigma |z|.
+$$
+El campo correspondiente es
+$$
+g_z=-\frac{d\Phi_{\text{plano}}}{dz}
+=-2\pi G\sigma\,\operatorname{sgn}(z).
+$$
+Así, cuando $a\to\infty$, el campo gravitacional se vuelve constante en magnitud y perpendicular al plano:
+$$
+|\vec g|=2\pi G\sigma.
+$$
+Este es el campo de una lámina infinita. El límite $a\to\infty$ no conmuta con el límite de campo lejano $r\gg a$: si primero se toma $a$ finito y $r\gg a$, el disco parece una masa puntual; si primero se toma $a\to\infty$, se obtiene una lámina infinita con campo constante.
+
+\section{Problema 9}
+
+Un planeta consta de dos capas de densidad de masa constante
+$$
+\rho(r)=
+\left\{
+\begin{array}{ll}
+\rho_1, & 0\le r\le a_1,\\[2mm]
+\rho_2, & a_1<r\le a,\\[2mm]
+0, & r>a.
+\end{array}
+\right.
+$$
+(a) Calcule el campo gravitacional y el potencial. \\
+(b) Muestre que el campo gravitacional en la frontera entre las dos capas es más grande que en la superficie cuando
+$$
+\frac{\rho_1-\rho_2}{\rho_2}>\frac{a^2}{a_1(a+a_1)}.
+$$
+(c) Verifique que esto se cumple para la Tierra.
+
+\input{FigurasPS3/Fig5.tex}
+
+\subsection{Solución}
+
+\subsubsection{(a) Campo gravitacional y potencial}
+
+Por simetría esférica, el campo gravitacional es radial. Con la convención habitual
+$$
+\vec g=-\nabla\Phi,
+$$
+el campo puede escribirse como
+$$
+\vec g(r)=-g(r)\,\hat r,
+$$
+donde $g(r)$ es la magnitud positiva del campo. La masa encerrada dentro de un radio $r$ es
+$$
+M(r)=4\pi\int_0^r \rho(s)s^2\,ds.
+$$
+
+Para $0\le r\le a_1$, toda la masa encerrada pertenece a la capa interna:
+$$
+M(r)=\frac{4\pi}{3}\rho_1 r^3.
+$$
+Por tanto,
+$$
+g(r)=\frac{G M(r)}{r^2}=\frac{4\pi G}{3}\rho_1 r.
+$$
+
+Para $a_1<r\le a$, la masa encerrada incluye la capa interna completa más la parte de la capa externa hasta $r$:
+$$
+M(r)=\frac{4\pi}{3}\rho_1 a_1^3+\frac{4\pi}{3}\rho_2\left(r^3-a_1^3\right).
+$$
+Esto puede escribirse como
+$$
+M(r)=\frac{4\pi}{3}\left[\rho_2 r^3+(\rho_1-\rho_2)a_1^3\right].
+$$
+Entonces,
+$$
+g(r)=\frac{G M(r)}{r^2}
+=\frac{4\pi G}{3}\left[\rho_2 r+(\rho_1-\rho_2)\frac{a_1^3}{r^2}\right].
+$$
+
+Para $r>a$, la masa encerrada es la masa total del planeta:
+$$
+M=\frac{4\pi}{3}\left[\rho_1 a_1^3+\rho_2(a^3-a_1^3)\right].
+$$
+Por tanto,
+$$
+g(r)=\frac{GM}{r^2}.
+$$
+
+Así, el campo gravitacional es
+$$
+\vec g(r)=
+\left\{
+\begin{array}{ll}
+-\dfrac{4\pi G}{3}\rho_1 r\,\hat r, & 0\le r\le a_1,\\[3mm]
+-\dfrac{4\pi G}{3}\left[\rho_2 r+(\rho_1-\rho_2)\dfrac{a_1^3}{r^2}\right]\hat r, & a_1<r\le a,\\[4mm]
+-\dfrac{GM}{r^2}\,\hat r, & r>a.
+\end{array}
+\right.
+$$
+
+Para el potencial gravitacional, tomamos la condición $\Phi(\infty)=0$. Como
+$$
+\vec g=-\nabla\Phi,
+$$
+en simetría esférica se tiene
+$$
+\frac{d\Phi}{dr}=g(r).
+$$
+
+Para $r>a$,
+$$
+\Phi(r)=-\frac{GM}{r}.
+$$
+En particular, en la superficie $r=a$,
+$$
+\Phi(a)=-\frac{GM}{a}.
+$$
+
+Para $a_1<r\le a$, integramos
+$$
+\frac{d\Phi}{dr}
+=\frac{4\pi G}{3}\left[\rho_2 r+(\rho_1-\rho_2)\frac{a_1^3}{r^2}\right].
+$$
+Entonces,
+$$
+\Phi(r)-\Phi(a)
+=
+\frac{4\pi G}{3}
+\int_a^r
+\left[
+\rho_2 r'
++(\rho_1-\rho_2)\frac{a_1^3}{r'^2}
+\right]dr'.
+$$
+Realizando la integral,
+$$
+\Phi(r)=
+-\frac{GM}{a}
++\frac{2\pi G\rho_2}{3}(r^2-a^2)
++\frac{4\pi G}{3}(\rho_1-\rho_2)a_1^3
+\left(\frac{1}{a}-\frac{1}{r}\right).
+$$
+
+Para $0\le r\le a_1$, se integra
+$$
+\frac{d\Phi}{dr}=\frac{4\pi G}{3}\rho_1 r.
+$$
+Usando continuidad del potencial en $r=a_1$, se obtiene
+$$
+\Phi(r)=\Phi(a_1)+\frac{2\pi G\rho_1}{3}(r^2-a_1^2).
+$$
+Explícitamente,
+$$
+\Phi(r)=
+-\frac{GM}{a}
++\frac{2\pi G\rho_2}{3}(a_1^2-a^2)
++\frac{4\pi G}{3}(\rho_1-\rho_2)a_1^3
+\left(\frac{1}{a}-\frac{1}{a_1}\right)
++\frac{2\pi G\rho_1}{3}(r^2-a_1^2).
+$$
+
+En resumen, con $\Phi(\infty)=0$,
+$$
+\Phi(r)=
+\left\{
+\begin{array}{ll}
+-\dfrac{GM}{a}
++\dfrac{2\pi G\rho_2}{3}(a_1^2-a^2)
++\dfrac{4\pi G}{3}(\rho_1-\rho_2)a_1^3
+\left(\dfrac{1}{a}-\dfrac{1}{a_1}\right)
++\dfrac{2\pi G\rho_1}{3}(r^2-a_1^2),
+& 0\le r\le a_1,\\[5mm]
+-\dfrac{GM}{a}
++\dfrac{2\pi G\rho_2}{3}(r^2-a^2)
++\dfrac{4\pi G}{3}(\rho_1-\rho_2)a_1^3
+\left(\dfrac{1}{a}-\dfrac{1}{r}\right),
+& a_1<r\le a,\\[5mm]
+-\dfrac{GM}{r}, & r>a.
+\end{array}
+\right.
+$$
+
+\subsubsection{(b) Condición para que el campo en la frontera sea mayor que en la superficie}
+
+El campo en la frontera entre las dos capas, $r=a_1$, es
+$$
+g(a_1)=\frac{4\pi G}{3}\rho_1 a_1.
+$$
+El campo en la superficie, $r=a$, es
+$$
+g(a)=\frac{GM}{a^2}
+=
+\frac{4\pi G}{3a^2}
+\left[
+\rho_1 a_1^3+\rho_2(a^3-a_1^3)
+\right].
+$$
+Queremos imponer
+$$
+g(a_1)>g(a).
+$$
+Sustituyendo las expresiones anteriores,
+$$
+\frac{4\pi G}{3}\rho_1 a_1
+>
+\frac{4\pi G}{3a^2}
+\left[
+\rho_1 a_1^3+\rho_2(a^3-a_1^3)
+\right].
+$$
+Cancelando el factor común $4\pi G/3$,
+$$
+\rho_1 a_1
+>
+\frac{\rho_1 a_1^3+\rho_2(a^3-a_1^3)}{a^2}.
+$$
+Multiplicando por $a^2$,
+$$
+\rho_1 a_1 a^2
+>
+\rho_1 a_1^3+\rho_2(a^3-a_1^3).
+$$
+Reorganizando,
+$$
+\rho_1 a_1(a^2-a_1^2)
+>
+\rho_2(a^3-a_1^3).
+$$
+Usando las factorizaciones
+$$
+a^2-a_1^2=(a-a_1)(a+a_1),
+$$
+$$
+a^3-a_1^3=(a-a_1)(a^2+aa_1+a_1^2),
+$$
+y cancelando $a-a_1>0$, se obtiene
+$$
+\rho_1 a_1(a+a_1)
+>
+\rho_2(a^2+aa_1+a_1^2).
+$$
+Pero
+$$
+a^2+aa_1+a_1^2=a_1(a+a_1)+a^2.
+$$
+Por tanto,
+$$
+\rho_1 a_1(a+a_1)
+>
+\rho_2\left[a_1(a+a_1)+a^2\right].
+$$
+Dividiendo por $\rho_2 a_1(a+a_1)$,
+$$
+\frac{\rho_1}{\rho_2}
+>
+1+\frac{a^2}{a_1(a+a_1)}.
+$$
+Restando $1$ en ambos lados,
+$$
+\frac{\rho_1-\rho_2}{\rho_2}
+>
+\frac{a^2}{a_1(a+a_1)}.
+$$
+Esto es precisamente la condición pedida.
+
+\subsubsection{(c) Verificación para la Tierra}
+
+Para la Tierra, se pueden usar los valores aproximados
+$$
+a\simeq 6371\ \mathrm{km},
+\qquad
+a_1\simeq 3480\ \mathrm{km}.
+$$
+Entonces,
+$$
+\frac{a^2}{a_1(a+a_1)}
+\simeq
+\frac{(6371)^2}{3480(6371+3480)}
+\simeq 1.18.
+$$
+Para densidades representativas del núcleo y del manto, por ejemplo
+$$
+\rho_1\simeq 12\ \mathrm{g\,cm^{-3}},
+\qquad
+\rho_2\simeq 5\ \mathrm{g\,cm^{-3}},
+$$
+se tiene
+$$
+\frac{\rho_1-\rho_2}{\rho_2}
+\simeq
+\frac{12-5}{5}=1.4.
+$$
+Como
+$$
+1.4>1.18,
+$$
+la condición se cumple. Por tanto, en este modelo de dos capas, el campo gravitacional en la frontera núcleo-manto es mayor que el campo en la superficie. Esto es consistente con modelos terrestres más realistas, donde el campo cerca del límite núcleo-manto es del orden de $10.7\ \mathrm{m\,s^{-2}}$, mientras que en la superficie es aproximadamente $9.8\ \mathrm{m\,s^{-2}}$.
+
+
+\section{Problema 10}
+
+Encuentre los perfiles de densidad y presión para el modelo de placas isotérmicas sujeto a $\Phi(0)=\Phi_0$ y $g(0)=0$.
+
+\input{FigurasPS3/Fig6.tex}
+
+\subsection{Solución}
+
+Consideramos una distribución plana, infinita en las direcciones horizontales, de modo que todas las cantidades dependen solamente de la coordenada vertical $z$. El potencial gravitacional es $\Phi(z)$ y el campo gravitacional es
+$$
+\vec g(z)=-\frac{d\Phi}{dz}\,\hat z.
+$$
+La condición $g(0)=0$ implica
+$$
+\left.\frac{d\Phi}{dz}\right|_{z=0}=0.
+$$
+
+Para un gas isotérmico, la ecuación de estado puede escribirse como
+$$
+p=A\rho,
+$$
+donde $A$ es constante. Para un gas ideal isotérmico, $A$ puede identificarse con $k_B T/m$ o, en general, con $p/\rho$.
+
+La condición de equilibrio hidrostático es
+$$
+\frac{dp}{dz}=-\rho\frac{d\Phi}{dz}.
+$$
+Usando $p=A\rho$, se tiene
+$$
+A\frac{d\rho}{dz}=-\rho\frac{d\Phi}{dz}.
+$$
+Dividiendo por $\rho$,
+$$
+A\frac{d}{dz}\ln\rho=-\frac{d\Phi}{dz}.
+$$
+Integrando desde $z=0$ hasta $z$, y usando $\Phi(0)=\Phi_0$, obtenemos
+$$
+A\ln\left(\frac{\rho}{\rho_0}\right)=-(\Phi-\Phi_0),
+$$
+donde $\rho_0=\rho(0)$ es la densidad en el plano medio. Por tanto,
+$$
+\rho(z)=\rho_0\exp\left[-\frac{\Phi(z)-\Phi_0}{A}\right].
+$$
+
+El potencial gravitacional satisface la ecuación de Poisson. En simetría plana,
+$$
+\frac{d^2\Phi}{dz^2}=4\pi G\rho.
+$$
+Sustituyendo la expresión de $\rho$,
+$$
+\frac{d^2\Phi}{dz^2}
+=
+4\pi G\rho_0
+\exp\left[-\frac{\Phi-\Phi_0}{A}\right].
+$$
+
+Definimos la variable adimensional
+$$
+\chi(z)=-\frac{\Phi(z)-\Phi_0}{A}.
+$$
+Entonces,
+$$
+\rho(z)=\rho_0 e^{\chi(z)}.
+$$
+Además,
+$$
+\Phi=\Phi_0-A\chi.
+$$
+Por tanto,
+$$
+\frac{d^2\Phi}{dz^2}=-A\frac{d^2\chi}{dz^2}.
+$$
+La ecuación de Poisson se convierte en
+$$
+-A\frac{d^2\chi}{dz^2}=4\pi G\rho_0 e^\chi.
+$$
+Definimos la longitud característica
+$$
+H=\sqrt{\frac{A}{2\pi G\rho_0}},
+$$
+y la coordenada adimensional
+$$
+Z=\frac{z}{H}.
+$$
+Como
+$$
+\frac{d^2}{dz^2}=\frac{1}{H^2}\frac{d^2}{dZ^2},
+$$
+la ecuación queda
+$$
+-\frac{A}{H^2}\frac{d^2\chi}{dZ^2}=4\pi G\rho_0 e^\chi.
+$$
+Dado que $A/H^2=2\pi G\rho_0$, se obtiene
+$$
+\frac{d^2\chi}{dZ^2}=-2e^\chi.
+$$
+
+Las condiciones iniciales son
+$$
+\chi(0)=0,
+$$
+porque $\Phi(0)=\Phi_0$, y
+$$
+\chi'(0)=0,
+$$
+porque $g(0)=0$.
+
+Multiplicamos la ecuación diferencial por $\chi'$:
+$$
+\chi'\chi''=-2e^\chi\chi'.
+$$
+Esto puede escribirse como
+$$
+\frac{1}{2}\frac{d}{dZ}(\chi')^2
+=
+-2\frac{d}{dZ}(e^\chi).
+$$
+Integrando,
+$$
+\frac{1}{2}(\chi')^2=-2e^\chi+C.
+$$
+Usando $\chi(0)=0$ y $\chi'(0)=0$,
+$$
+0=-2+C,
+$$
+de modo que $C=2$. Por tanto,
+$$
+(\chi')^2=4(1-e^\chi).
+$$
+Para $z>0$, la densidad disminuye al alejarse del plano medio, por lo que $\chi$ decrece y elegimos la rama negativa:
+$$
+\frac{d\chi}{dZ}=-2\sqrt{1-e^\chi}.
+$$
+
+Para resolver, hacemos la sustitución
+$$
+s=e^{\chi/2}.
+$$
+Entonces,
+$$
+d\chi=\frac{2}{s}\,ds,
+$$
+y
+$$
+\sqrt{1-e^\chi}=\sqrt{1-s^2}.
+$$
+La ecuación se convierte en
+$$
+\frac{2}{s}\frac{ds}{dZ}=-2\sqrt{1-s^2}.
+$$
+Simplificando,
+$$
+\frac{ds}{s\sqrt{1-s^2}}=-dZ.
+$$
+La solución que cumple $s(0)=1$ es
+$$
+s=\operatorname{sech}Z.
+$$
+Por tanto,
+$$
+e^{\chi/2}=\operatorname{sech}Z.
+$$
+Elevando al cuadrado,
+$$
+e^\chi=\operatorname{sech}^2 Z.
+$$
+Así,
+$$
+\chi(z)=-2\ln[\cosh Z].
+$$
+
+La densidad es entonces
+$$
+\rho(z)=\rho_0 e^\chi
+=
+\rho_0\operatorname{sech}^2\left(\frac{z}{H}\right).
+$$
+Equivalentemente,
+$$
+\rho(z)=\frac{\rho_0}{\cosh^2\left(\dfrac{z}{H}\right)}.
+$$
+
+Como $p=A\rho$, la presión es
+$$
+p(z)=p_0\operatorname{sech}^2\left(\frac{z}{H}\right),
+$$
+donde
+$$
+p_0=A\rho_0.
+$$
+Equivalentemente,
+$$
+p(z)=\frac{p_0}{\cosh^2\left(\dfrac{z}{H}\right)}.
+$$
+
+La longitud característica es
+$$
+H=\sqrt{\frac{A}{2\pi G\rho_0}}
+=
+\sqrt{\frac{p_0}{2\pi G\rho_0^2}}.
+$$
+
+El potencial gravitacional correspondiente es
+$$
+\Phi(z)=\Phi_0+2A\ln\left[\cosh\left(\frac{z}{H}\right)\right].
+$$
+El campo gravitacional es
+$$
+g_z(z)=-\frac{d\Phi}{dz}
+=
+-\frac{2A}{H}\tanh\left(\frac{z}{H}\right).
+$$
+Usando $2A/H=4\pi G\rho_0 H$, también puede escribirse como
+$$
+g_z(z)=
+-4\pi G\rho_0 H
+\tanh\left(\frac{z}{H}\right).
+$$
+Esta expresión satisface $g_z(0)=0$, como se exigió en el enunciado.
+
+Por tanto, los perfiles pedidos son
+$$
+\rho(z)=\rho_0\operatorname{sech}^2\left(\frac{z}{H}\right),
+$$
+$$
+p(z)=p_0\operatorname{sech}^2\left(\frac{z}{H}\right),
+$$
+con
+$$
+H=\sqrt{\frac{A}{2\pi G\rho_0}}
+=
+\sqrt{\frac{p_0}{2\pi G\rho_0^2}}.
+$$
+\end{document}

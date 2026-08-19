@@ -1,0 +1,40 @@
+\newcommand{\figuraPrensaHidraulica}{%
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small]
+        \fill[cyan!18]
+            (1.0,0.8)--(1.0,3.2)--(3.0,3.2)--(3.0,1.5)--
+            (8.7,1.5)--(8.7,3.2)--(12.2,3.2)--(12.2,0.8)--cycle;
+        \draw[very thick]
+            (1.0,4.6)--(1.0,0.8)--(12.2,0.8)--(12.2,4.6);
+        \draw[very thick]
+            (3.0,4.6)--(3.0,1.5)--(8.7,1.5)--(8.7,4.6);
+
+        \draw[very thick,fill=gray!25] (1.0,3.2) rectangle (3.0,3.55);
+        \draw[very thick,fill=gray!25] (8.7,3.2) rectangle (12.2,3.55);
+        \draw[very thick] (2.0,3.55)--(2.0,4.35);
+        \draw[very thick] (10.45,3.55)--(10.45,4.35);
+
+        \draw[ultra thick,red!75!black,-{Latex[length=4mm]}]
+            (2.0,5.25)--(2.0,4.38);
+        \node[red!75!black,anchor=east] at (1.85,4.92) {$\vec{F}_1$};
+        \draw[ultra thick,blue!70!black,-{Latex[length=4mm]}]
+            (10.45,4.38)--(10.45,5.25);
+        \node[blue!70!black,anchor=west] at (10.60,4.92) {$\vec{F}_2$};
+
+        \draw[<->,thick] (1.0,2.83)--node[below]{$A_1$}(3.0,2.83);
+        \draw[<->,thick] (8.7,2.83)--node[below]{$A_2$}(12.2,2.83);
+
+        \node[font=\bfseries] at (6.6,5.45) {Prensa hidráulica};
+        \node[blue!60!black] at (6.0,1.05) {líquido incompresible};
+        \node[align=center] at (6.6,0.12)
+            {$\displaystyle\frac{F_1}{A_1}=\frac{F_2}{A_2}$
+             \qquad
+             $A_1\Delta x_1=A_2\Delta x_2$};
+    \end{tikzpicture}
+    \caption{La presión aplicada al pistón pequeño se transmite al pistón
+    grande. La fuerza aumenta en la proporción de las áreas, mientras que el
+    desplazamiento disminuye en la misma proporción.}
+    \label{fig:prensa-hidraulica}
+\end{figure}%
+}

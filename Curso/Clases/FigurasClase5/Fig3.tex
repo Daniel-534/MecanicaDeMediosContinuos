@@ -1,0 +1,48 @@
+\newcommand{\figuraSuperficiesHidrostaticas}{%
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small]
+        \node[font=\bfseries] at (6.45,6.05)
+            {Superficies de equilibrio hidrostático};
+
+        \draw[very thick,rounded corners=3pt,fill=cyan!4]
+            (0.45,0.55) rectangle (6.00,5.45);
+        \node[font=\bfseries] at (3.22,5.15) {gravedad uniforme};
+        \foreach \y/\tono in {1.25/35,2.05/28,2.85/21,3.65/14,4.45/7}
+        {
+            \fill[blue!\tono] (0.48,\y-0.38) rectangle (5.97,\y+0.38);
+            \draw[blue!60!black,thick] (0.48,\y)--(5.97,\y);
+        }
+        \draw[ultra thick,green!45!black,-{Latex[length=4mm]}]
+            (5.40,4.55)--(5.40,3.45);
+        \node[green!40!black,anchor=west] at (5.48,4.02) {$\vec{g}$};
+        \node[align=center] at (3.22,0.10)
+            {isobaras, isoclinas y equipotenciales\\son planos horizontales};
+
+        \draw[very thick,rounded corners=3pt,fill=orange!3]
+            (6.85,0.55) rectangle (12.45,5.45);
+        \node[font=\bfseries] at (9.65,5.15) {gravedad central};
+        \fill[orange!55] (9.65,2.95) circle (0.28);
+        \foreach \r/\tono in {0.85/38,1.40/27,2.00/16}
+        {
+            \draw[red!70!black,thick,fill=red!\tono,fill opacity=0.20]
+                (9.65,2.95) circle (\r);
+        }
+        \draw[ultra thick,green!45!black,-{Latex[length=3mm]}]
+            (11.90,2.95)--(10.75,2.95);
+        \node[green!40!black,anchor=south] at (11.35,3.10) {$\vec{g}$};
+        \node[align=center] at (9.65,0.10)
+            {isobaras, isoclinas y equipotenciales\\son superficies concéntricas};
+
+        \node[align=center,fill=white,rounded corners=2pt,
+              draw=gray!35,inner sep=4pt] at (6.45,-0.72)
+            {$\vec{\nabla}\rho\times\vec{\nabla}p=\vec{0}$
+             \qquad
+             $\vec{\nabla}\rho\times\vec{\nabla}\Phi=\vec{0}$};
+    \end{tikzpicture}
+    \caption{En un fluido barotrópico en equilibrio, las superficies de
+    presión, densidad y potencial gravitacional constantes coinciden. Su
+    geometría está determinada por el campo gravitacional.}
+    \label{fig:superficies-hidrostaticas}
+\end{figure}%
+}

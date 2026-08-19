@@ -1,0 +1,488 @@
+\shorthandoff{<>}
+\input{Clases/FigurasClase4/Fig1}
+\input{Clases/FigurasClase4/Fig2}
+\input{Clases/FigurasClase4/Fig3}
+\input{Clases/FigurasClase4/Fig4}
+\input{Clases/FigurasClase4/Fig5}
+\input{Clases/FigurasClase4/Fig6}
+\input{Clases/FigurasClase4/Fig7}
+\shorthandon{<>}
+
+\chapter{Clase 4}
+
+\section{Equilibrio hidrostático}
+
+Un fluido se encuentra en equilibrio hidrostático cuando está en reposo,
+
+$$
+\vec{v}=\vec{0},
+$$
+
+y, por tanto, la aceleración de cada elemento material se anula. En estas
+condiciones, la fuerza total que actúa sobre cualquier porción del fluido debe
+ser cero.
+
+\subsection{Fuerzas de cuerpo y fuerzas de superficie}
+
+Las fuerzas que actúan sobre un elemento de fluido se clasifican en dos tipos:
+
+\begin{itemize}
+    \item \textbf{Fuerzas de cuerpo:} actúan sobre todo el volumen del
+    elemento. Si $\vec{f}_e$ es la densidad volumétrica de fuerza externa,
+    entonces
+    $$
+    d\vec{F}_e=\vec{f}_e\,dV.
+    $$
+    Para la gravedad, $\vec{f}_e=\rho\vec{g}$.
+
+    \item \textbf{Fuerzas de superficie:} actúan a través de la frontera del
+    elemento. En un fluido estático solo existen esfuerzos normales, por lo
+    que la presión produce sobre un elemento orientado $d\vec{S}$ la fuerza
+    $$
+    d\vec{F}_p=-p\,d\vec{S}.
+    $$
+\end{itemize}
+
+Las fuerzas de cuerpo escalan con el volumen del elemento, mientras que las
+fuerzas de superficie escalan con su área.
+
+\subsection{Fuerza de gradiente de presión}
+
+Sea $S$ una superficie cerrada con vector de área
+$d\vec{S}=\vec{n}\,dS$, donde $\vec{n}$ apunta hacia afuera. La fuerza total
+de presión es
+
+$$
+\vec{F}_p=-\oint_S p\,d\vec{S}.
+$$
+
+Para obtener una expresión local, considérese una caja rectangular
+infinitesimal con lados $dx$, $dy$ y $dz$. Su volumen es
+
+$$
+dV=dx\,dy\,dz.
+$$
+
+En la dirección $z$, la presión en la cara inferior es $p(x,y,z)$ y en la
+cara superior es $p(x,y,z+dz)$. La fuerza resultante en esta dirección es
+
+$$
+dF_z
+=\left[p(x,y,z)-p(x,y,z+dz)\right]dx\,dy.
+$$
+
+Al expandir la presión de la cara superior hasta primer orden,
+
+$$
+p(x,y,z+dz)
+\approx p(x,y,z)+\frac{\partial p}{\partial z}dz,
+$$
+
+se obtiene
+
+$$
+dF_z
+\approx-\frac{\partial p}{\partial z}dV.
+$$
+
+\figuraGradientePresionClaseCuatro
+
+Repitiendo el procedimiento en las otras dos direcciones,
+
+$$
+\boxed{
+d\vec{F}_p=-\vec{\nabla}p\,dV
+}.
+$$
+
+Por tanto, $-\vec{\nabla}p$ es la densidad volumétrica de la fuerza asociada
+a la presión.
+
+\subsection{Ecuación de equilibrio hidrostático}
+
+La ecuación de momento para un fluido sin esfuerzos viscosos es
+
+$$
+\rho\frac{D\vec{v}}{Dt}
+=-\vec{\nabla}p+\vec{f}_e.
+$$
+
+En equilibrio hidrostático, $D\vec{v}/Dt=\vec{0}$, de modo que
+
+$$
+\boxed{
+\vec{\nabla}p=\vec{f}_e
+}.
+$$
+
+Si la única fuerza de cuerpo es la gravedad,
+
+$$
+\boxed{
+\vec{\nabla}p=\rho\vec{g}
+}.
+$$
+
+\subsubsection{Formulación local}
+
+El balance de fuerzas sobre un elemento diferencial puede escribirse como
+
+$$
+d\vec{F}_e+d\vec{F}_p
+=\left(\vec{f}_e-\vec{\nabla}p\right)dV
+=\vec{0}.
+$$
+
+La densidad de fuerza efectiva es, por tanto,
+
+$$
+\vec{f}^{\,*}=\vec{f}_e-\vec{\nabla}p,
+$$
+
+y el equilibrio exige $\vec{f}^{\,*}=\vec{0}$.
+
+Como $\vec{\nabla}\times\vec{\nabla}p=\vec{0}$, una condición necesaria para
+el equilibrio es
+
+$$
+\vec{\nabla}\times\vec{f}_e=\vec{0}.
+$$
+
+En una región simplemente conexa, esto implica que la fuerza externa deriva
+de un potencial $H$,
+
+$$
+\vec{f}_e=-\vec{\nabla}H.
+$$
+
+La ecuación hidrostática toma entonces la forma
+
+$$
+\vec{\nabla}(p+H)=\vec{0},
+$$
+
+por lo que $p+H$ permanece constante dentro de cada región conectada del
+fluido.
+
+\subsubsection{Formulación global}
+
+Al integrar el balance local sobre un volumen $V$ limitado por una superficie
+$S$, se obtiene
+
+$$
+\boxed{
+\vec{F}_e+\vec{F}_p
+=\int_V\vec{f}_e\,dV
+-\oint_Sp\,d\vec{S}
+=\vec{0}
+}.
+$$
+
+Cuando $\vec{f}_e=\rho\vec{g}$, la primera integral es el peso del fluido y la
+integral de presión representa la fuerza de empuje ejercida por el medio
+exterior.
+
+\subsubsection{Aplicación: mar incompresible}
+
+Considérese un fluido de densidad constante $\rho_0$ sometido a gravedad
+uniforme,
+
+$$
+\vec{g}=-g_0\vec{e}_z.
+$$
+
+Por simetría, la presión solo depende de $z$. La ecuación hidrostática se
+reduce a
+
+$$
+\frac{dp}{dz}=-\rho_0g_0.
+$$
+
+Si la superficie libre se encuentra en $z=0$ y tiene presión $p_0$, entonces
+
+$$
+\boxed{
+p(z)=p_0-\rho_0g_0z
+}.
+$$
+
+Para un punto situado a una profundidad $h$, es decir, en $z=-h$,
+
+$$
+\boxed{
+p(-h)=p_0+\rho_0g_0h
+}.
+$$
+
+\subsubsection{Fuerza de presión y teorema de Gauss}
+
+La fuerza de presión puede calcularse integrando sobre la superficie del
+cuerpo o sumando las fuerzas sobre sus elementos de volumen:
+
+$$
+-\oint_Sp\,d\vec{S}
+=-\int_V\vec{\nabla}p\,dV.
+$$
+
+Por tanto,
+
+$$
+\boxed{
+\oint_Sp\,d\vec{S}
+=\int_V\vec{\nabla}p\,dV
+}.
+$$
+
+Esta identidad es la aplicación del teorema de Gauss al campo escalar de
+presión y establece la equivalencia entre las formulaciones local y global.
+
+\section{Principio de Pascal}
+
+Al integrar la ecuación de equilibrio entre dos puntos del fluido,
+
+$$
+\begin{aligned}
+p_2-p_1
+&=\int_1^2\vec{\nabla}p\cdot d\vec{r}\\
+&=\int_1^2\vec{f}_e\cdot d\vec{r}.
+\end{aligned}
+$$
+
+Si no existen fuerzas externas, $\vec{f}_e=\vec{0}$ y la presión es uniforme.
+Además, sumar una constante $C$ a la presión no modifica el equilibrio,
+
+$$
+\vec{\nabla}(p+C)=\vec{\nabla}p.
+$$
+
+Por consiguiente, una variación de presión aplicada a un fluido encerrado se
+transmite sin disminución a todos sus puntos y a las paredes del recipiente.
+Este resultado se conoce como \textbf{principio de Pascal}.
+
+\subsection{Prensa hidráulica}
+
+Una prensa hidráulica contiene dos pistones de áreas $A_1$ y $A_2$ conectados
+por un líquido incompresible. Si las caras de los pistones están a la misma
+altura, la presión transmitida satisface
+
+$$
+\frac{F_1}{A_1}=\frac{F_2}{A_2}.
+$$
+
+De aquí,
+
+$$
+\boxed{
+F_2=F_1\frac{A_2}{A_1}
+}.
+$$
+
+\figuraPrensaHidraulica
+
+La incompresibilidad exige que los volúmenes desplazados sean iguales:
+
+$$
+A_1\Delta x_1=A_2\Delta x_2.
+$$
+
+Por tanto,
+
+$$
+\frac{F_2}{F_1}
+=\frac{A_2}{A_1}
+=\frac{\Delta x_1}{\Delta x_2}.
+$$
+
+La ganancia de fuerza se compensa con un menor desplazamiento del pistón
+grande. En ausencia de pérdidas,
+
+$$
+F_1\Delta x_1=F_2\Delta x_2,
+$$
+
+de modo que el trabajo mecánico se conserva.
+
+\section{Hidrostática en gravedad constante}
+
+Para un campo gravitacional uniforme,
+
+$$
+\vec{g}=-g_0\vec{e}_z,
+$$
+
+la ecuación $\vec{\nabla}p=\rho\vec{g}$ implica
+
+$$
+\frac{\partial p}{\partial x}=0,
+\qquad
+\frac{\partial p}{\partial y}=0,
+\qquad
+\frac{\partial p}{\partial z}=-\rho g_0.
+$$
+
+La presión depende únicamente de la coordenada vertical. Para densidad
+constante, la diferencia entre dos puntos es
+
+$$
+\begin{aligned}
+p_2-p_1
+&=\int_{z_1}^{z_2}-\rho g_0\,dz\\
+&=-\rho g_0(z_2-z_1).
+\end{aligned}
+$$
+
+Si el punto 1 se encuentra una distancia $h$ por debajo del punto 2,
+$z_2-z_1=h$, entonces
+
+$$
+\boxed{
+p_1=p_2+\rho g_0h
+}.
+$$
+
+\figuraPresionProfundidad
+
+La presión aumenta linealmente con la profundidad y tiene el mismo valor en
+todos los puntos que se encuentran a una misma altura dentro de un mismo
+fluido conectado.
+
+\subsection{Vasos comunicantes}
+
+Sea $z=h$ la superficie libre de un líquido de densidad constante, sometida a
+la presión atmosférica $p_0$. La distribución de presión es
+
+$$
+\boxed{
+p(z)=p_0+\rho g_0(h-z)
+}.
+$$
+
+En recipientes conectados que contienen el mismo líquido y están sometidos a
+la misma presión exterior, todas las superficies libres alcanzan la misma
+altura.
+
+\figuraVasosComunicantes
+
+Los puntos $A$, $B$ y $C$ de la figura están a la misma altura y pertenecen al
+mismo líquido conectado; por tanto,
+
+$$
+\boxed{
+p_A=p_B=p_C
+}.
+$$
+
+Este resultado no depende de la forma de los recipientes y resuelve la llamada
+paradoja hidrostática.
+
+\subsection{Fuerza sobre una presa}
+
+Considérese una presa vertical de ancho $L$ que contiene agua hasta una altura
+$H$. Sea $y$ la altura medida desde el fondo. La profundidad de una franja
+horizontal es $H-y$, por lo que su presión manométrica es
+
+$$
+p(y)=\rho g_0(H-y).
+$$
+
+Una franja de altura $dy$ tiene área
+
+$$
+dA=L\,dy,
+$$
+
+y recibe la fuerza
+
+$$
+dF=p(y)dA
+=\rho g_0L(H-y)\,dy.
+$$
+
+\figuraFuerzaPresa
+
+La fuerza horizontal total es
+
+$$
+\begin{aligned}
+F
+&=\rho g_0L\int_0^H(H-y)\,dy\\
+&=\boxed{\frac{1}{2}\rho g_0LH^2}.
+\end{aligned}
+$$
+
+La resultante actúa a una altura $H/3$ sobre el fondo, correspondiente al
+centro de presión de la distribución triangular.
+
+\section{Medición de la presión}
+
+\subsection{Manómetro de tubo abierto}
+
+Un manómetro de tubo abierto contiene un líquido de densidad $\rho$. Un brazo
+está conectado a un sistema con presión $p$ y el otro se encuentra abierto a
+la atmósfera, a presión $p_{\mathrm{atm}}$.
+
+Al comparar las presiones en un mismo nivel del líquido,
+
+$$
+p+\rho g_0y_1
+=p_{\mathrm{atm}}+\rho g_0y_2.
+$$
+
+Por consiguiente,
+
+$$
+\boxed{
+p-p_{\mathrm{atm}}=\rho g_0h
+},
+\qquad
+h=y_2-y_1.
+$$
+
+La diferencia $p-p_{\mathrm{atm}}$ es la \textbf{presión manométrica}.
+
+\subsection{Barómetro de mercurio}
+
+En un barómetro, la presión en la parte superior de la columna de mercurio es
+prácticamente nula. El equilibrio entre la columna y la atmósfera produce
+
+$$
+\boxed{
+p_{\mathrm{atm}}=\rho_{\mathrm{Hg}}g_0h
+}.
+$$
+
+\figuraMedidoresPresion
+
+La altura de la columna permite medir la presión atmosférica. Una presión
+equivalente a $1\,\mathrm{mm}$ de mercurio se denomina $1\,\mathrm{torr}$.
+
+\subsection{Ejercicio: manómetro con agua y aceite}
+
+Considérese un tubo en U abierto a la atmósfera que contiene agua y una columna
+de aceite inmiscible en el brazo izquierdo. La interfaz aceite--agua se toma
+como nivel de referencia.
+
+\figuraManometroAceiteAgua
+
+La presión calculada desde la superficie libre del aceite hasta la interfaz es
+
+$$
+p_{\mathrm{atm}}+\rho_{\mathrm{aceite}}g_0h_{\mathrm{aceite}}.
+$$
+
+Desde la superficie libre del agua hasta el mismo nivel,
+
+$$
+p_{\mathrm{atm}}+\rho_{\mathrm{agua}}g_0h_{\mathrm{agua}}.
+$$
+
+Como ambas expresiones representan la presión en el mismo punto,
+
+$$
+\boxed{
+\rho_{\mathrm{aceite}}h_{\mathrm{aceite}}
+=\rho_{\mathrm{agua}}h_{\mathrm{agua}}
+}.
+$$
+
+Por tanto, el líquido menos denso debe formar una columna de mayor altura.
