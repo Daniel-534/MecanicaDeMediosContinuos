@@ -1,0 +1,309 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{titlesec}
+
+\title{\textbf{Cuestionario de Gravitación en Medios Continuos}}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, itemsep=1.5em]
+
+% Pregunta 1
+\item \textbf{¿Cuál es la ecuación fundamental que relaciona el potencial gravitacional $\Phi$ con la densidad de masa $\rho$ en un medio continuo autogravitante?} \\
+\textit{Pista: Recuerde la ley de Gauss en su forma diferencial aplicada al campo gravitatorio.}
+\begin{enumerate}[label=\alph*), leftmargin=*]
+    \item $\nabla \cdot \vec{v} = 0$
+    \item $\nabla^2 \Phi = 4\pi G \rho$
+    \item $\nabla p = \rho \vec{g}$
+    \item $\frac{D\vec{v}}{Dt} = 0$
+\end{enumerate}
+
+% Pregunta 2
+\item \textbf{En el modelo de una losa isotérmica autogravitante infinita en el plano $xy$, ¿de qué coordenada(s) depende la densidad $\rho$ por simetría?} \\
+\textit{Pista: Considere qué direcciones son indistinguibles en una geometría de plano infinito.}
+\begin{enumerate}[label=\alph*), leftmargin=*]
+    \item De las coordenadas polares $r$ y $\theta$
+    \item De $x, y, z$ simultáneamente
+    \item Únicamente de $z$
+    \item Únicamente de la distancia radial al origen
+\end{enumerate}
+
+% Pregunta 3
+\item \textbf{Para un gas ideal isotérmico, ¿cuál es la relación correcta entre la presión $p$ y la densidad $\rho$?} \\
+\textit{Pista: Piense en la ley de los gases ideales cuando la temperatura se mantiene constante.}
+\begin{enumerate}[label=\alph*), leftmargin=*]
+    \item $p = \rho^\gamma$
+    \item $\nabla p = 0$
+    \item $p = \frac{1}{2} \rho v^2$
+    \item $p = c_s^2 \rho$
+\end{enumerate}
+
+% Pregunta 4
+\item \textbf{¿Qué condición física define el equilibrio hidrostático en la Clase 6?} \\
+\textit{Pista: Considere las fuerzas que actúan sobre un elemento de masa que no se mueve.}
+\begin{enumerate}[label=\alph*), leftmargin=*]
+    \item El balance entre la fuerza del gradiente de presión y la fuerza gravitacional
+    \item La conservación de la energía cinética del fluido
+    \item Que la divergencia de la velocidad sea siempre positiva
+    \item Que la viscosidad anule los gradientes de densidad
+\end{enumerate}
+
+% Pregunta 5
+\item \textbf{Al estudiar una atmósfera planetaria sin autogravedad, ¿qué suposición se hace sobre el campo gravitatorio $\vec{g}$?} \\
+\textit{Pista: Piense en cómo tratamos la gravedad terrestre al analizar fenómenos cerca de la superficie.}
+\begin{enumerate}[label=\alph*), leftmargin=*]
+    \item Se calcula mediante la ecuación de Poisson usando la densidad de la atmósfera
+    \item Se considera un campo externo constante
+    \item Se asume que $\vec{g} = 0$ en toda la atmósfera
+    \item Se considera que varía linealmente con la densidad local
+\end{enumerate}
+
+% Pregunta 6
+\item \textbf{En el modelo de losa isotérmica autogravitante, la ecuación combinada de equilibrio y Poisson conduce a una solución para la densidad de la forma:} \\
+\textit{Pista: Busque la función que describe una estructura achatada con simetría respecto al plano central.}
+\begin{enumerate}[label=\alph*), leftmargin=*]
+    \item $\rho(z) = \rho_0 e^{-z/H}$
+    \item $\rho(z) = \rho_0 \left(1 - \frac{z^2}{R^2}\right)$
+    \item $\rho(z) = \rho_0 \text{sech}^2\left(\frac{z}{H}\right)$
+    \item $\rho(z) = \text{constante}$
+\end{enumerate}
+
+% Pregunta 7
+\item \textbf{Si se tiene una línea de masa de longitud $2a$ y densidad lineal $\lambda$, ¿cómo se comporta el potencial gravitacional $\Phi$ a grandes distancias ($r \gg a$)?} \\
+\textit{Pista: Considere el principio de aproximación de multipolos para objetos distantes.}
+\begin{enumerate}[label=\alph*), leftmargin=*]
+    \item De forma logarítmica respecto a la distancia
+    \item Se vuelve constante e igual a cero en todo el espacio
+    \item Aumenta linealmente con la distancia $r$
+    \item Como el potencial de una masa puntual $M = 2a\lambda$
+\end{enumerate}
+
+% Pregunta 8
+\item \textbf{¿Qué sucede con el campo gravitatorio de una línea de masa cuando la longitud $a$ tiende a infinito?} \\
+\textit{Pista: Piense en la analogía con el campo eléctrico de un hilo infinito cargado.}
+\begin{enumerate}[label=\alph*), leftmargin=*]
+    \item El campo se vuelve puramente radial (en coordenadas cilíndricas) y escala como $1/r$
+    \item El campo desaparece debido a la dilución de la masa
+    \item El campo se vuelve uniforme y constante en todas las direcciones
+    \item El potencial diverge positivamente en el infinito
+\end{enumerate}
+
+% Pregunta 9
+\item \textbf{¿Cuál es la expresión para la aceleración de la gravedad $g(z)$ dentro de una losa plana infinita de densidad constante $\rho_0$?} \\
+\textit{Pista: Aplique la ley de Gauss usando una 'caja' que cruce el plano central.}
+\begin{enumerate}[label=\alph*), leftmargin=*]
+    \item $g(z) = -g_0$ (constante)
+    \item $g(z) = -4\pi G \rho_0 z$
+    \item $g(z) = -\frac{GM}{z^2}$
+    \item $g(z) = 0$
+\end{enumerate}
+
+% Pregunta 10
+\item \textbf{En el contexto de la Clase 6, ¿qué representa la escala de altura $H$ en una atmósfera isotérmica curva?} \\
+\textit{Pista: Piense en el argumento de la función exponencial de caída.}
+\begin{enumerate}[label=\alph*), leftmargin=*]
+    \item El radio total del planeta incluyendo su atmósfera
+    \item La velocidad máxima de las partículas del gas
+    \item La distancia vertical sobre la cual la densidad disminuye por un factor de $e$
+    \item El punto donde la presión del gas se iguala a la presión del vacío
+\end{enumerate}
+
+% Pregunta 11
+\item \textbf{En la derivación del perfil de una losa autogravitante, ¿por qué se utiliza la condición $\frac{d\Phi}{dz} = 0$ en $z=0$?} \\
+\textit{Pista: Imagine la dirección de la fuerza de gravedad justo en el medio de la losa.}
+\begin{enumerate}[label=\alph*), leftmargin=*]
+    \item Porque la presión es mínima en el centro
+    \item Debido a que el potencial debe ser infinito en el origen
+    \item Para asegurar que el fluido sea incompresible
+    \item Por la simetría del problema respecto al plano central
+\end{enumerate}
+
+% Pregunta 12
+\item \textbf{Si una atmósfera planetaria es 'delgada', ¿qué simplificación es válida para el potencial gravitacional externo $\Phi_{ext}$?} \\
+\textit{Pista: Piense en la expansión de Taylor de la energía potencial cerca de la superficie.}
+\begin{enumerate}[label=\alph*), leftmargin=*]
+    \item Se puede aproximar como $\Phi_{ext} \approx g_0 z$
+    \item Debe mantenerse estrictamente como $-GM/r$
+    \item Se ignora por completo
+    \item Se reemplaza por una fuerza centrífuga
+\end{enumerate}
+
+% Pregunta 13
+\item \textbf{¿Cuál es la relación entre el campo gravitatorio $\vec{g}$ y el potencial $\Phi$?} \\
+\textit{Pista: Considere cómo se obtiene una fuerza a partir de una energía potencial.}
+\begin{enumerate}[label=\alph*), leftmargin=*]
+    \item $\vec{g} = \nabla \times \vec{A}$
+    \item $\vec{g} = -\nabla \Phi$
+    \item $\vec{g} = \Phi^2$
+    \item $\vec{g} = \frac{\partial \Phi}{\partial t}$
+\end{enumerate}
+
+% Pregunta 14
+\item \textbf{En un sistema autogravitante, ¿por qué la densidad no puede ser uniforme en todo el espacio infinito?} \\
+\textit{Pista: Piense en lo que sucedería con la fuerza total si hubiera masa en todas partes.}
+\begin{enumerate}[label=\alph*), leftmargin=*]
+    \item Debido al principio de exclusión de Pauli
+    \item Porque violaría la conservación de la masa
+    \item Porque el potencial gravitatorio divergiría y no habría equilibrio con la presión
+    \item Porque el gas ideal siempre debe expandirse
+\end{enumerate}
+
+% Pregunta 15
+\item \textbf{¿Cómo se define la masa por unidad de área $\Sigma$ para una losa infinita en el eje $z$?} \\
+\textit{Pista: Piense en sumar todas las contribuciones de masa en una columna vertical.}
+\begin{enumerate}[label=\alph*), leftmargin=*]
+    \item $\Sigma = \rho \times \text{Volumen}$
+    \item $\Sigma = \frac{d\rho}{dz}$
+    \item $\Sigma = 2\pi r \rho$
+    \item $\Sigma = \int_{-\infty}^{\infty} \rho(z) dz$
+\end{enumerate}
+
+% Pregunta 16
+\item \textbf{Para el modelo de losa isotérmica, ¿qué ocurre con el ancho efectivo de la distribución si la temperatura aumenta (mayor $c_s$)?} \\
+\textit{Pista: Considere la competencia entre la presión (térmica) y la gravedad.}
+\begin{enumerate}[label=\alph*), leftmargin=*]
+    \item La losa se vuelve más gruesa (aumenta $H$)
+    \item La losa colapsa hacia un plano de grosor nulo
+    \item La densidad central $\rho_0$ aumenta indefinidamente
+    \item No hay ningún cambio por ser un sistema infinito
+\end{enumerate}
+
+% Pregunta 17
+\item \textbf{¿Qué tipo de coordenadas son más apropiadas para resolver el potencial de una 'cuerda cósmica' o línea de masa infinita?} \\
+\textit{Pista: Piense en la forma geométrica del objeto descrito.}
+\begin{enumerate}[label=\alph*), leftmargin=*]
+    \item Coordenadas esféricas
+    \item Coordenadas cilíndricas
+    \item Coordenadas cartesianas con dependencia en $x, y, z$
+    \item Coordenadas intrínsecas de trayectoria
+\end{enumerate}
+
+% Pregunta 18
+\item \textbf{En la Clase 6, al analizar una atmósfera curva sin autogravedad, ¿cómo varía la gravedad con la altura $z$ si el radio del planeta es $R$?} \\
+\textit{Pista: Aplique la ley de Newton para la fuerza gravitatoria de un cuerpo esférico.}
+\begin{enumerate}[label=\alph*), leftmargin=*]
+    \item $g(z) = g_0 (1 + z/R)$
+    \item $g(z) = g_0 e^{-z/R}$
+    \item $g(z) = g_0 \frac{R^2}{(R+z)^2}$
+    \item $g(z) = \text{constante}$
+\end{enumerate}
+
+% Pregunta 19
+\item \textbf{En un medio autogravitante, ¿qué sucede si se duplica la constante de gravitación $G$ manteniendo la temperatura igual?} \\
+\textit{Pista: Considere cómo afecta la fuerza de gravedad a la estructura del medio.}
+\begin{enumerate}[label=\alph*), leftmargin=*]
+    \item La presión central disminuye a la mitad
+    \item La densidad se vuelve uniforme en todo el espacio
+    \item El sistema se expande indefinidamente
+    \item La distribución de masa se vuelve más compacta
+\end{enumerate}
+
+% Pregunta 20
+\item \textbf{¿Cuál es la unidad de medida de la densidad de fuerza de cuerpo $f_e$ utilizada en la ecuación $\nabla p = f_e$?} \\
+\textit{Pista: Recuerde que el gradiente de presión tiene unidades de fuerza sobre volumen.}
+\begin{enumerate}[label=\alph*), leftmargin=*]
+    \item $N/m^3$ (Fuerza por unidad de volumen)
+    \item $kg/m^3$
+    \item Pascal ($Pa$)
+    \item $m/s^2$
+\end{enumerate}
+
+% Pregunta 21
+\item \textbf{En el estudio de una losa isotérmica, la integración de $\frac{d^2\Phi}{dz^2}$ asumiendo equilibrio requiere conocer:} \\
+\textit{Pista: Identifique las variables presentes en la ecuación de estado y la condición central.}
+\begin{enumerate}[label=\alph*), leftmargin=*]
+    \item La masa total del universo
+    \item La densidad en el plano central y la velocidad del sonido
+    \item La viscosidad cinemática del gas
+    \item El color de las partículas del medio
+\end{enumerate}
+
+% Pregunta 22
+\item \textbf{Verdadero o Falso: En una losa infinita autogravitante, el campo gravitatorio en el exterior de la losa ($|z| > \text{espesor}$) es constante.} \\
+\textit{Pista: Compare este caso con el campo eléctrico generado por un plano infinito de carga.}
+\begin{enumerate}[label=\alph*), leftmargin=*]
+    \item Falso
+    \item Depende de la densidad central
+    \item Verdadero
+    \item No se puede determinar sin conocer la temperatura
+\end{enumerate}
+
+% Pregunta 23
+\item \textbf{¿Qué representa el término $\nabla \Phi$ en la física de medios continuos de la Clase 6?} \\
+\textit{Pista: Relacione el operador nabla con la obtención de fuerzas a partir de energías escalares.}
+\begin{enumerate}[label=\alph*), leftmargin=*]
+    \item La tasa de flujo de masa
+    \item El cambio de presión por unidad de temperatura
+    \item La curvatura del espacio-tiempo
+    \item El negativo de la aceleración de la gravedad
+\end{enumerate}
+
+% Pregunta 24
+\item \textbf{¿Cuál es el valor del campo gravitatorio neto exactamente en el centro ($r=0$) de un planeta esféricamente simétrico?} \\
+\textit{Pista: Considere la simetría de las fuerzas gravitatorias en el punto central.}
+\begin{enumerate}[label=\alph*), leftmargin=*]
+    \item Cero
+    \item Infinito
+    \item $g_0$
+    \item Depende de la presión atmosférica
+\end{enumerate}
+
+% Pregunta 25
+\item \textbf{¿Qué forma tiene la superficie de igual presión (isobara) en un fluido en equilibrio bajo un campo gravitatorio central esférico?} \\
+\textit{Pista: Recuerde que en equilibrio, las isobaras coinciden con las equipotenciales.}
+\begin{enumerate}[label=\alph*), leftmargin=*]
+    \item Planos horizontales paralelos
+    \item Esferas concéntricas
+    \item Cilindros alineados con el eje de rotación
+    \item Superficies irregulares dependientes de la temperatura
+\end{enumerate}
+
+% Pregunta 26
+\item \textbf{En la Clase 6, el modelo de una atmósfera isotérmica plana sin autogravedad predice una densidad que decae:} \\
+\textit{Pista: Recuerde la solución de la ecuación diferencial $y' = -ky$.}
+\begin{enumerate}[label=\alph*), leftmargin=*]
+    \item Linealmente con la altura
+    \item Según el inverso del cuadrado de la distancia
+    \item Exponencialmente con la altura
+    \item Logarítmicamente
+\end{enumerate}
+
+\end{enumerate}
+
+\newpage
+\section*{Respuestas}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\textbf{Preg.} & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\ \hline
+\textbf{Resp.} & B & C & D & A & B & C & D & A & B & C \\ \hline
+\end{tabular}
+\vspace{0.4cm}
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\textbf{Preg.} & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 & 19 & 20 \\ \hline
+\textbf{Resp.} & D & A & B & C & D & A & B & C & D & A \\ \hline
+\end{tabular}
+\vspace{0.4cm}
+
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\textbf{Preg.} & 21 & 22 & 23 & 24 & 25 & 26 \\ \hline
+\textbf{Resp.} & B & C & D & A & B & C \\ \hline
+\end{tabular}
+\end{center}
+
+\end{document}
