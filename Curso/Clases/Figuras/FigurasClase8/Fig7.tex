@@ -1,0 +1,26 @@
+\newcommand{\figuraRecipienteRotante}{%
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small,x=1.15cm,y=0.95cm,
+                        line cap=round,line join=round]
+        \draw[very thick] (-4,4.8)--(-4,0)--(4,0)--(4,4.8);
+        \fill[gray!28] (-3.92,0.08)--(3.92,0.08)--
+            plot[domain=3.92:-3.92,samples=120] (\x,{2.15+0.13*\x*\x})--cycle;
+        \draw[very thick,blue!70!black,domain=-3.92:3.92,samples=120]
+            plot (\x,{2.15+0.13*\x*\x});
+        \draw[densely dashed] (0,0)--(0,5.45);
+        \draw[->,ultra thick,purple!75!black] (0,5.05)
+            arc[start angle=90,end angle=-235,radius=0.62];
+        \node at (0.95,5.05) {$\Omega$};
+        \draw[<->] (-0.45,0)--(-0.45,2.15) node[midway,left] {$z_0$};
+        \fill (2.35,3.0) circle (0.10)
+            node[above right] {$(r,z)$};
+        \draw[->,thin] (0,0.35)--(2.35,0.35) node[midway,below] {$r$};
+        \draw[->,thin] (0.35,0)--(0.35,3.0) node[midway,right] {$z$};
+    \end{tikzpicture}
+    \caption{Corte meridional de un líquido en rotación de cuerpo rígido.
+    La superficie libre es parabólica, con altura mínima $z_0$ sobre el eje
+    y altura creciente con el radio cilíndrico $r$.}
+    \label{fig:recipiente-rotante}
+\end{figure}%
+}

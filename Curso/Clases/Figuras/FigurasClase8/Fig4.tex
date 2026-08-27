@@ -1,0 +1,35 @@
+\newcommand{\figuraAceleracionPlano}{%
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small,line cap=round,line join=round]
+        \begin{scope}[rotate=8]
+            \draw[very thick,fill=gray!8,rounded corners=8pt]
+                (0.5,0.5)--(0.5,3.6)--(7.2,3.6)--(7.2,0.5)--cycle;
+            \fill[cyan!22] (0.62,0.62)--(7.08,0.62)--(7.08,1.45)--(0.62,2.55)--cycle;
+            \draw[very thick,blue!65!black] (0.62,2.55)--(7.08,1.45);
+            \fill[blue!70!black] (1.55,2.39) circle (0.08) node[above] {1};
+            \fill[blue!70!black] (5.65,1.69) circle (0.08) node[above] {2};
+            \draw[densely dashed] (1.55,2.39)--(5.65,2.39);
+            \draw[densely dashed] (1.55,2.32)--(1.55,1.18);
+            \draw[densely dashed] (5.65,1.62)--(5.65,1.18);
+            \draw[<->] (1.55,1.08)--(5.65,1.08)
+                node[midway,below] {$y_2-y_1$};
+            \draw[<->] (1.25,1.69)--(1.25,2.39) node[midway,left] {$z_1-z_2$};
+            \draw[densely dashed] (5.65,1.69)--(6.65,1.69);
+            \draw (6.35,1.69) arc[start angle=0,end angle=-10,radius=0.7];
+            \node at (6.08,1.48) {$\alpha$};
+            \draw[fill=gray!45] (1.4,0.3) circle (0.23);
+            \draw[fill=gray!45] (6.3,0.3) circle (0.23);
+        \end{scope}
+        \draw[thick] (0.5,0.15)--(8.2,1.25);
+        \draw[->,ultra thick,red!75!black] (9.0,2.8)--(11.1,2.8) node[above] {$a_y$};
+        \draw[->,ultra thick,red!75!black] (9.0,2.8)--(9.0,4.05) node[left] {$a_z$};
+        \draw[->,ultra thick,blue!70!black] (9.0,2.8)--(11.1,4.05) node[above right] {$\vec a$};
+        \draw[dashed] (9.0,4.05)--(11.1,4.05)--(11.1,2.8);
+    \end{tikzpicture}
+    \caption{Geometría para una aceleración con componentes horizontal y
+    vertical. La diferencia de altura entre dos puntos de una isobara
+    determina la inclinación $\alpha$ de la superficie libre.}
+    \label{fig:aceleracion-plano}
+\end{figure}%
+}

@@ -1,0 +1,42 @@
+\newcommand{\figuraPasajeroAutomovil}{%
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small,line cap=round,line join=round]
+        \fill[green!8,rounded corners=4pt] (-0.5,-0.5) rectangle (10.5,5.2);
+
+        \draw[line width=15mm,gray!38]
+            (0.2,0.15) .. controls (0.0,2.7) and (2.4,4.7) .. (6.2,4.75);
+        \draw[white,line width=1pt,dashed]
+            (0.2,0.15) .. controls (0.0,2.7) and (2.4,4.7) .. (6.2,4.75);
+
+        \coordinate (P) at (2.25,3.72);
+        \fill[red!75!black] (P) circle (0.14);
+        \node[anchor=north west] at ($(P)+(0.10,-0.12)$) {automóvil};
+
+        \draw[->,very thick,dashed,black!65]
+            (P)--++(2.65,0.74);
+        \draw[->,ultra thick,green!45!black]
+            (P)--++(-1.25,0.95);
+        \draw[->,ultra thick,red!75!black]
+            (P)--++(1.15,-1.05);
+
+        \fill[blue!70!black] (0.45,4.85) circle (0.11);
+        \node[anchor=south] at (0.45,5.0) {centro de curvatura};
+        \draw[densely dashed,blue!60!black] (0.45,4.85)--(P);
+
+        \draw[->,ultra thick,green!45!black] (6.7,4.0)--(7.6,4.0);
+        \node[anchor=west] at (7.75,4.0) {fuerza real hacia el centro};
+        \draw[->,very thick,dashed,black!65] (6.7,3.0)--(7.6,3.0);
+        \node[anchor=west] at (7.75,3.0) {dirección tangente};
+        \draw[->,ultra thick,red!75!black] (6.7,2.0)--(7.6,2.0);
+        \node[anchor=west] at (7.75,2.0) {fuerza ficticia hacia afuera};
+        \node[align=left,anchor=west,text=black!70] at (6.7,0.85)
+            {La flecha roja solo se usa\\en el marco del automóvil.};
+    \end{tikzpicture}
+    \caption{Representación simplificada del automóvil como un punto sobre
+    una trayectoria curva. En el marco inercial, la fuerza real modifica la
+    dirección del movimiento; en el marco del automóvil aparece una fuerza
+    ficticia en sentido opuesto.}
+    \label{fig:pasajero-automovil}
+\end{figure}%
+}

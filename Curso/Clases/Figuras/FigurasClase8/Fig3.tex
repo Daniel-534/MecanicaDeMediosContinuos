@@ -1,0 +1,23 @@
+\newcommand{\figuraRecipienteAcelerado}{%
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small,x=1.25cm,y=1.05cm,
+                        line cap=round,line join=round]
+        \draw[very thick] (1,4)--(1,0)--(7,0)--(7,4);
+        \fill[gray!28] (1.08,0.08)--(6.92,0.08)--(6.92,2.15)--(1.08,3.25)--cycle;
+        \draw[very thick] (1.08,3.25)--(6.92,2.15);
+        \draw[->,ultra thick,blue!70!black] (7.55,3.15)--(9.05,3.15)
+            node[midway,above] {$\vec a$};
+        \draw[->,thick] (0.25,0.15)--(0.25,1.35) node[left] {$z$};
+        \draw[->,thick] (0.25,0.15)--(1.25,0.15) node[below] {$y$};
+        \draw[<->] (1.45,0.08)--(1.45,3.18) node[midway,right] {$h$};
+        \draw[densely dashed] (1.08,2.7)--(6.92,1.6);
+        \node[anchor=south,rotate=-10,fill=white,inner sep=1.5pt]
+            at (5.7,2.42) {superficie libre};
+    \end{tikzpicture}
+    \caption{Recipiente abierto sometido a aceleración horizontal. La
+    superficie libre es plana, asciende en el lado opuesto a $\vec a$ y es
+    perpendicular a la aceleración efectiva.}
+    \label{fig:recipiente-acelerado}
+\end{figure}%
+}

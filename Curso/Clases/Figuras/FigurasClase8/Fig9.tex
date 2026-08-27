@@ -1,0 +1,34 @@
+\newcommand{\figuraCafeRotante}{%
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small,x=1.05cm,y=0.75cm,
+                        line cap=round,line join=round]
+        \draw[very thick,rounded corners=7pt] (0,10)--(0,0)--(6,0)--(6,10);
+        \draw[very thick,rounded corners=8pt] (6,8.9)--(8.1,8.9)--(8.1,5.5)--(6,3.6);
+        \draw[very thick,rounded corners=5pt] (6.35,8.25)--(7.45,8.25)--(7.45,5.85)--(6.35,4.85);
+        \fill[pink!35] (0.08,0.08)--(5.92,0.08)--
+            plot[domain=5.92:0.08,samples=120] (\x,{7+0.33*(\x-3)*(\x-3)})--cycle;
+        \draw[very thick,magenta!75!black,domain=0.08:5.92,samples=120]
+            plot (\x,{7+0.33*(\x-3)*(\x-3)});
+        \node[magenta!75!black,anchor=south]
+            at (1.25,8.2) {superficie libre};
+        \draw[densely dashed] (3,0)--(3,10.9);
+        \draw[densely dashed] (0.08,7)--(5.92,7);
+        \draw[->,ultra thick,purple!75!black] (3,2.0)
+            arc[start angle=90,end angle=-235,radius=0.55];
+        \node at (3.85,2.0) {$\Omega$};
+        \fill[magenta!75!black] (0.45,0.45) circle (0.10) node[right] {$A$};
+        \node[below right] at (3,7) {$0$};
+        \draw[->,thin] (3,7)--(4.2,7) node[below] {$r$};
+        \draw[->,thin] (3,7)--(3,10.7) node[left] {$z$};
+        \draw[<->] (-0.45,0)--(-0.45,7) node[midway,left] {$7\,\mathrm{cm}$};
+        \draw[<->] (-0.45,7)--(-0.45,10) node[midway,left] {$3\,\mathrm{cm}$};
+        \draw[<->] (0,-0.6)--(3,-0.6) node[midway,below] {$3\,\mathrm{cm}$};
+        \draw[<->] (3,-0.6)--(6,-0.6) node[midway,below] {$3\,\mathrm{cm}$};
+    \end{tikzpicture}
+    \caption{Taza en rotación alrededor de su eje. La conservación del
+    volumen mantiene el vértice del paraboloide en el nivel de referencia,
+    mientras los bordes ascienden hasta la condición de derrame.}
+    \label{fig:cafe-rotante}
+\end{figure}%
+}

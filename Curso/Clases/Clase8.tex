@@ -1,0 +1,336 @@
+\shorthandoff{<>}
+\input{Clases/Figuras/FigurasClase8/Fig1}
+\input{Clases/Figuras/FigurasClase8/Fig2}
+\input{Clases/Figuras/FigurasClase8/Fig3}
+\input{Clases/Figuras/FigurasClase8/Fig4}
+\input{Clases/Figuras/FigurasClase8/Fig5}
+\input{Clases/Figuras/FigurasClase8/Fig6}
+\input{Clases/Figuras/FigurasClase8/Fig7}
+\input{Clases/Figuras/FigurasClase8/Fig8}
+\input{Clases/Figuras/FigurasClase8/Fig9}
+\shorthandon{<>}
+
+\chapter{Clase 8}
+
+\section{Interfaces de fluidos en equilibrio hidrostático}
+
+Despreciando la tensión superficial, en el equilibrio hidrostático bajo la acción de la gravedad, una interfaz entre dos fluidos de densidades diferentes, por ejemplo el mar y la atmósfera, debe coincidir con una superficie de potencial constante, una \emph{superficie equipotencial}. De lo contrario, si una interfaz corta una superficie equipotencial, surgirá una componente tangencial de la gravedad que solo puede ser equilibrada por fuerzas de contacto de cizalla que un fluido en reposo es incapaz de suministrar.
+
+Para un fluido de densidad $\rho$ —en general dependiente de la posición— en un campo gravitacional $\vec{g}$:
+$$ -\rho\vec{g} + \vec{\nabla}p = 0 \qquad \text{o bien} \qquad \rho\vec{\nabla}\Phi + \vec{\nabla}p = 0. $$
+
+Tomando el rotacional de la segunda ecuación,
+$$ \rho\,\vec{\nabla}\times\vec{\nabla}\Phi + \vec{\nabla}\rho\times\vec{\nabla}\Phi + \vec{\nabla}\times\vec{\nabla}p = 0. $$
+
+Puesto que $\vec{\nabla}\times\vec{\nabla}\Phi \equiv 0$ y $\vec{\nabla}\times\vec{\nabla}p \equiv 0$, se sigue que, en un fluido de densidad variable, se cumple la condición:
+$$ \vec{\nabla}\rho\times\vec{\nabla}\Phi = 0 \qquad \text{o bien} \qquad \vec{\nabla}\rho\times\vec{g} = 0. $$
+
+Esto significa que, punto a punto, la dirección de las líneas del campo gravitacional coincide con la del gradiente de densidad, o equivalentemente, que las superficies de igual densidad (isopicnas) y las equipotenciales gravitacionales coinciden.
+
+Considerando $\vec{\nabla}\Phi + \vec{\nabla}p/\rho = 0$, y tomando su rotacional, se sigue que para un fluido compresible
+$$ \vec{\nabla}\rho\times\vec{\nabla}p = 0, $$
+de donde se concluye que las superficies de presión constante (isobaras) y las de densidad constante coinciden. Nótese que la coincidencia de isobaras e isopicnas en el equilibrio hidrostático es válida en general, no solo para fluidos barotrópicos donde presión y densidad están simplemente relacionadas.
+
+Por tanto, las superficies de $\Phi$, $\rho$ y $p$ constantes son las mismas. Este resultado es válido independientemente de la forma del campo gravitacional. En particular, si $\vec{g} = -\hat{k}g$, las superficies de $\Phi$, $\rho$ y $p$ serán planos horizontales. Fuera de la masa terrestre, supuesta esférica, se cumple que
+$$ \vec{g} = -\frac{GM\hat{r}}{r^2}, \qquad \Phi = -\frac{GM}{r}, $$
+de modo que las tres superficies son esféricas y concéntricas.
+
+\section{Movimiento en marcos acelerados: fuerzas inerciales (ficticias)}
+
+La segunda ley de Newton del movimiento solo es válida en marcos de referencia inerciales, donde las partículas libres se mueven en línea recta con velocidad constante. En mecánica clásica se dice usualmente que una partícula es libre si no está sujeta a fuerzas causadas por fuentes identificables, por ejemplo la masa o la carga eléctrica de un cuerpo material. En marcos de referencia acelerados o rotantes respecto de marcos inerciales, puede escribirse formalmente la segunda ley en su forma usual, pero el precio a pagar es la inclusión de ciertos términos con apariencia de fuerza que no tienen ninguna fuente obvia, sino que dependen únicamente del movimiento del marco de referencia. Tales términos se denominan \emph{fuerzas ficticias}, aunque no son en absoluto pura ficción, como uno se da cuenta dolorosamente al estar de pie en un autobús que frena de golpe.
+
+Un nombre más razonable podría ser \emph{fuerzas inerciales}, puesto que surgen como consecuencia de la inercia de los cuerpos materiales.
+
+\subsection{Preguntas de repaso}
+
+\textbf{Pregunta de repaso.} Considere el pasajero de un automóvil que toma una curva hacia la izquierda en la Figura~\ref{fig:pasajero-automovil}. ¿Cuál de las siguientes afirmaciones es correcta respecto a las fuerzas en la dirección horizontal si él está en contacto con la puerta derecha?
+
+\begin{enumerate}[a)]
+\item El pasajero está en equilibrio entre fuerzas reales que actúan hacia la derecha y fuerzas reales que actúan hacia la izquierda.
+\item El pasajero está sujeto únicamente a fuerzas reales que actúan hacia la derecha.
+\item El pasajero está sujeto únicamente a fuerzas reales que actúan hacia la izquierda.
+\item Ninguna de estas afirmaciones es verdadera.
+\end{enumerate}
+
+\figuraPasajeroAutomovil
+
+\textbf{Respuesta.} La opción correcta es la \textbf{c)}. En el marco inercial de la Tierra, la puerta derecha ejerce sobre el pasajero una fuerza real dirigida hacia la izquierda, es decir, hacia el centro de curvatura. No existe una fuerza real horizontal hacia la derecha. En el marco no inercial del automóvil se introduce, además, una fuerza ficticia hacia la derecha para describir al pasajero en reposo relativo al vehículo.
+
+\textbf{Pregunta de repaso.} Una pequeña esfera de masa $m$ cuelga de una cuerda desde el techo de un vagón que acelera hacia la derecha, como se muestra en la Figura~\ref{fig:pendulo-vagon}. El observador no inercial sostiene que una fuerza ficticia causa la desviación observada de la cuerda respecto de la vertical. ¿Cómo se relaciona la magnitud de esta fuerza con la aceleración del vagón medida por el observador inercial?
+
+\figuraPenduloVagon
+
+\textbf{Respuesta.} La fuerza ficticia tiene magnitud
+$$ F_{\mathrm{fict}} = ma $$
+y está dirigida en sentido opuesto a la aceleración del vagón. En el marco del vagón, el equilibrio de la esfera exige
+$$ T\sin\theta = ma, \qquad T\cos\theta = mg, $$
+por lo que
+$$ \tan\theta = \frac{a}{g}. $$
+
+\subsection{Resumen conceptual}
+
+Los puntos esenciales de esta discusión son los siguientes:
+
+\begin{itemize}
+\item \textbf{Marcos inerciales frente a no inerciales.} Las leyes de Newton se aplican en marcos inerciales (sin aceleración). En marcos no inerciales (acelerados o rotantes), los objetos parecen tener aceleraciones inexplicadas que son opuestas a la aceleración del marco.
+
+\item \textbf{Fuerzas ficticias (inerciales).} Para usar la segunda ley de Newton en un marco no inercial, se introducen fuerzas ``ficticias'' que no surgen de interacciones con otros cuerpos sino de la aceleración o rotación del marco. Actúan como si fueran reales en ese marco, pero no pueden atribuirse a un segundo objeto que interactúa.
+
+\item \textbf{Ejemplo de aceleración lineal (tren).} En un tren que acelera, un disco en reposo (relativo al vagón) parece acelerar hacia la parte trasera sin fuerza aplicada; esto se modela mediante una fuerza ficticia opuesta a la aceleración del tren.
+
+\item \textbf{Ejemplo de automóvil en curva (centrípeta frente a ``centrífuga'').} Al entrar en una rampa de salida curva, el pasajero tiende a mantener una trayectoria rectilínea (inercia) y se desliza hacia la puerta porque la fricción con el asiento es insuficiente para suministrar la fuerza centrípeta requerida. La comúnmente citada ``fuerza centrífuga'' es la fuerza ficticia usada en el marco no inercial del automóvil.
+
+\item \textbf{Papel de la fricción.} Si la fricción es suficientemente grande, suministra la fuerza hacia adentro (hacia el centro de curvatura) que curva la trayectoria del pasajero para que coincida con la curva del automóvil; de lo contrario, el pasajero continúa en línea recta y golpea la puerta.
+
+\item \textbf{Fuerza de Coriolis (rotación).} En marcos rotantes, el movimiento relativo al marco experimenta una deflexión lateral aparente (fuerza de Coriolis). Por ejemplo, una pelota lanzada a través de una plataforma giratoria parece curvarse para un observador que viaja en la plataforma, a pesar de ser una línea recta en un marco inercial.
+
+\item \textbf{Efectos reales de las fuerzas ficticias.} Aunque no son fuerzas de interacción, las fuerzas ficticias tienen consecuencias observables en marcos acelerados o rotantes: los objetos se deslizan sobre los tableros cuando un automóvil acelera; los jinetes en un carrusel se sienten empujados hacia afuera; en el marco rotante de la Tierra, la fuerza de Coriolis ayuda a organizar los huracanes e influye en las corrientes oceánicas a gran escala.
+\end{itemize}
+
+\section{Recipientes acelerados linealmente}
+
+Cerca de la superficie terrestre, un recipiente con líquido es sometido a una aceleración horizontal constante en la dirección $y$, $\vec{a} = a\hat{\jmath}$ (véase la Figura~\ref{fig:recipiente-acelerado}). La densidad de fuerza externa resultante es
+$$ \vec{f}_e = \rho\vec{g} + \vec{f}_{\mathrm{fict}} = \rho\vec{g} - \rho\vec{a} = \rho\vec{\nabla}(-gz - ay) = -\rho\vec{\nabla}\Phi_{\mathrm{eff}} = -\rho\vec{\nabla}(gz + ay), $$
+donde $\Phi_{\mathrm{eff}} = gz + ay$ es el \emph{potencial efectivo}. Así, el balance hidrostático en el marco acelerado se convierte en
+$$ \vec{\nabla}p + \rho\vec{\nabla}\Phi_{\mathrm{eff}} = \vec{0}. $$
+
+\figuraRecipienteAcelerado
+
+\subsection{Caso de densidad constante}
+
+Si la densidad es constante, la integración de la ecuación de balance hidrostático da
+$$ p + \rho(gz + ay) = C. $$
+Si en el punto $(y,z) = (0,h)$ la presión es igual a $p_0$, entonces
+$$ p = p_0 + \rho g(h - z) - \rho a y. $$
+La superficie libre $p = p_0$ es por tanto un plano inclinado,
+$$ z = h - \frac{a}{g}\,y. $$
+
+\subsection{Aceleración en un plano}
+
+Si, en lugar de una aceleración pura en $y$, el marco acelerado tiene componentes $\vec{a} = \hat{\jmath}a_y + \hat{k}a_z$, entonces
+$$ \Phi_{\mathrm{eff}} = \vec{a}\cdot\vec{r} + gz. $$
+
+Teniendo en cuenta la identidad vectorial
+$$ \vec{\nabla}(\vec{A}\cdot\vec{B}) = (\vec{A}\cdot\vec{\nabla})\vec{B} + (\vec{B}\cdot\vec{\nabla})\vec{A} + \vec{A}\times(\vec{\nabla}\times\vec{B}) + \vec{B}\times(\vec{\nabla}\times\vec{A}). $$
+se sigue que
+$$ \vec{\nabla}(\vec{a}\cdot\vec{r}) = (\vec{a}\cdot\vec{\nabla})\vec{r} = \left(a_y\frac{\partial}{\partial y} + a_z\frac{\partial}{\partial z}\right)(\hat{\jmath}y + \hat{k}z) = \hat{\jmath}a_y + \hat{k}a_z. $$
+Entonces
+$$ \vec{\nabla}\Phi_{\mathrm{eff}} = \hat{\jmath}a_y + \hat{k}(a_z + g). $$
+
+La condición de equilibrio hidrostático se escribe ahora
+$$ \vec{\nabla}p + \rho\vec{\nabla}\Phi_{\mathrm{eff}} = \vec{\nabla}p + \rho\left(\hat{\jmath}a_y + \hat{k}(a_z + g)\right) = 0. $$
+En componentes,
+$$ -\rho\left[\hat{k}(g + a_z) + \hat{\jmath}a_y\right] = \hat{\imath}\frac{\partial p}{\partial x} + \hat{\jmath}\frac{\partial p}{\partial y} + \hat{k}\frac{\partial p}{\partial z}, $$
+$$ \therefore \qquad \frac{\partial p}{\partial x} = 0, \qquad \frac{\partial p}{\partial y} = -\rho a_y, \qquad \frac{\partial p}{\partial z} = -\rho(g + a_z). $$
+
+Usando el diferencial total se obtiene entonces
+$$ dp = \frac{\partial p}{\partial x}dx + \frac{\partial p}{\partial y}dy + \frac{\partial p}{\partial z}dz = -\rho a_y\,dy - \rho(g + a_z)\,dz. $$
+
+Integrando entre dos puntos arbitrarios 1 y 2 resulta
+$$ p_2 - p_1 = -\rho a_y(y_2 - y_1) - \rho(g + a_z)(z_2 - z_1). $$
+
+Si los puntos 1 y 2 yacen sobre una línea de presión constante (por ejemplo, la superficie libre en la Figura~\ref{fig:aceleracion-plano}), entonces $p_2 - p_1 = 0$ y
+$$ \frac{z_1 - z_2}{y_2 - y_1} = \tan\alpha = \frac{a_y}{g + a_z}, $$
+donde $\alpha$ es el ángulo que la línea de presión constante forma con la horizontal.
+
+\figuraAceleracionPlano
+
+Al resolver problemas que involucran líquidos, a menudo se usa la conservación de la masa y se igualan los volúmenes antes y después de aplicada la aceleración. Cuando la aceleración se aplica por primera vez, puede producirse un bamboleo (\emph{sloshing}) del líquido. Nuestro análisis supondrá que no hay bamboleo: o bien ha transcurrido tiempo suficiente para que los movimientos dependientes del tiempo se amortigüen, o la aceleración se aplica de tal manera que tales movimientos son mínimos.
+
+\subsection{Ejemplo: tanque rectangular acelerado}
+
+\figuraTanqueAcelerado
+
+\textbf{Enunciado.} El tanque rectangular abierto de la Figura~\ref{fig:tanque-acelerado} (longitud 2 m, profundidad inicial del agua de 1 m y cámara de aire de 0.2 m) es acelerado hacia la derecha con aceleración horizontal $a_x$ mientras $a_z = 0$. Determine: 1. La aceleración $a_x$ requerida para que la superficie libre pase por el punto A, situado en la esquina inferior derecha. 2. La presión manométrica $p_B$ en la esquina inferior izquierda B. 3. La fuerza hidrostática total sobre el fondo del tanque si su ancho es 1 m.
+
+\textbf{Solución.}
+
+\textbf{1) Ángulo de la superficie libre y aceleración requerida.} En un recipiente uniformemente acelerado, las líneas de presión constante son ortogonales a la aceleración efectiva $\vec{g}_{\mathrm{eff}} = (g + a_z)\hat{k} - a_x\hat{\imath}$, de modo que la superficie libre (isobara) satisface
+$$ \tan\alpha = \frac{a_x}{g + a_z} \quad\Rightarrow\quad \tan\alpha = \frac{a_x}{g}. $$
+La superficie libre final debe rotar alrededor del volumen de fluido de tal manera que el área de aire (puesto que el ancho es constante) se conserve. Antes de la aceleración, el área de aire es $A_{\mathrm{aire,ini}} = 0.2 \times 2 = 0.4\ \mathrm{m}^2$.
+
+Después de la inclinación, el área de aire se convierte en un triángulo rectángulo de base 1.2 y altura $x$:
+$$ A_{\mathrm{aire,fin}} = \frac{1}{2}(1.2)x. $$
+La conservación $A_{\mathrm{aire,ini}} = A_{\mathrm{aire,fin}}$ da $0.2 \times 2 = \frac{1}{2}(1.2)x \Rightarrow x = 0.667\ \mathrm{m}$.
+
+Por tanto, la pendiente de la superficie libre es $\tan\alpha = 1.2/0.667 = 1.8$, y por lo tanto $a_x = g\tan\alpha = (9.81)(1.8) = 1.766\times 10^1\ \mathrm{m\,s^{-2}} \approx 17.66\ \mathrm{m\,s^{-2}}$.
+
+\textbf{2) Presión en B.} Para la hidrostática en el marco acelerado (con $a_z = 0$), el gradiente de presión es
+$$ \vec{\nabla}p = -\rho a_x\hat{\imath} - \rho g\hat{k}. $$
+
+A lo largo del fondo ($z = \mathrm{const}$) solo importa la variación en $x$, de modo que entre el punto A (abajo a la derecha) y B (abajo a la izquierda), separados por $\Delta x = x_B - x_A = -2\ \mathrm{m}$,
+$$ p_B - p_A = -\rho a_x(x_B - x_A), $$
+La superficie libre pasa por A, de modo que la presión manométrica en ese punto es $p_A=0$. Por tanto, con $\rho = 1000\ \mathrm{kg\,m^{-3}}$,
+$$ p_B = -\rho a_x(x_B - x_A) = -1000(17.66)(-2) = 3.53\times 10^4\ \mathrm{Pa} = 35.3\ \mathrm{kPa}. $$
+
+\textbf{3) Fuerza resultante sobre el fondo (ancho = 1 m).} La presión varía linealmente desde $p_B = 35.3\ \mathrm{kPa}$ hasta $p_A = 0$. La presión promedio sobre el fondo es
+$$ \bar{p} = \frac{p_B + p_A}{2} = \frac{35.3\ \mathrm{kPa} + 0}{2} = 17.65\ \mathrm{kPa}. $$
+Con área del fondo $A_{\mathrm{fondo}} = 2 \times 1 = 2\ \mathrm{m}^2$, la fuerza total es
+$$ F = \bar{p}\,A_{\mathrm{fondo}} = (17.65\times 10^3)(2) = 3.53\times 10^4\ \mathrm{N} \approx 35\,300\ \mathrm{N}. $$
+
+\subsection{Pregunta de repaso: taza acelerada}
+
+\textbf{Enunciado.} Una corredora de arrancadas (\emph{drag racer}) coloca su taza de café sobre una bandeja horizontal mientras acelera a $7\ \mathrm{m/s^2}$. La taza tiene 10 cm de profundidad, 6 cm de diámetro, y contiene café hasta una profundidad de 7 cm en reposo (véase la Figura~\ref{fig:cafe-acelerado}). Suponiendo aceleración de cuerpo rígido del café, determine si el café se derramará de la taza.
+
+\figuraCafeAcelerado
+
+\textbf{Solución.} La superficie libre satisface
+$$ \tan\theta = \frac{a}{g} = \frac{7}{9.81} \approx 0.714. $$
+La diferencia de altura entre los extremos de la taza, cuyo diámetro es $D=0.06\ \mathrm{m}$, es
+$$ \Delta h = D\tan\theta = 0.06\left(\frac{7}{9.81}\right) \approx 0.0428\ \mathrm{m} = 4.28\ \mathrm{cm}. $$
+Por conservación del volumen, un extremo asciende y el otro desciende la mitad de esta diferencia. El ascenso máximo es entonces
+$$ \frac{\Delta h}{2} \approx 2.14\ \mathrm{cm}. $$
+El nivel más alto del café será
+$$ h_{\max}=7\ \mathrm{cm}+2.14\ \mathrm{cm}=9.14\ \mathrm{cm}. $$
+Como la taza tiene 10 cm de profundidad, el café \textbf{no se derrama}. El nivel mínimo en el extremo opuesto es aproximadamente $4.86\ \mathrm{cm}$.
+
+\section{Recipientes rotantes}
+
+Para estudiar la estática de un fluido que rota uniformemente, se considera la ecuación hidrostática fundamental en un marco rotante. Además de la gravedad (cuando está presente), deben incluirse las fuerzas ficticias. En coordenadas cilíndricas, la densidad de fuerza de cuerpo centrífuga es
+$$ \vec{f} = \frac{d\vec{F}}{dV} = \frac{dm}{dV}\Omega^2 r\,\hat{e}_r = \rho\Omega^2 r\,\hat{e}_r, $$
+de modo que la densidad de fuerza efectiva es
+$$ \vec{f}_e = \rho\vec{g} + \rho\Omega^2 r\,\hat{e}_r = \rho\vec{\nabla}\left[-\Phi + \frac{\Omega^2 r^2}{2}\right] = \vec{\nabla}p, $$
+y por tanto el balance hidrostático puede escribirse como
+$$ \frac{\vec{\nabla}p}{\rho} + \vec{\nabla}\left(\Phi - \frac{\Omega^2 r^2}{2}\right) = 0. $$
+La cantidad $\Phi - \Omega^2 r^2/2$ se denomina \emph{potencial efectivo} $\Phi_{\mathrm{eff}}$. Equivalentemente, $-\rho\vec{\nabla}\Phi_{\mathrm{eff}} = \vec{\nabla}p$.
+
+\figuraRecipienteRotante
+
+\subsection{Líquido de densidad constante}
+
+En este caso, de la relación anterior,
+$$ \vec{\nabla}\left[\frac{p}{\rho} + \Phi - \frac{\Omega^2 r^2}{2}\right] = \vec{0}, \qquad\Rightarrow\qquad p + \rho gz - \frac{\Omega^2}{2}\rho r^2 = C, $$
+donde se usó $\Phi = gz$. Tomando $p = p_0$ en $z = z_0$ y $r = 0$, se encuentra $p_0 + \rho g z_0 = C$, y por tanto
+$$ p = p_0 + \rho g(z_0 - z) + \frac{\Omega^2}{2}\rho r^2 = p_0 + \rho g(z_0 - z) + \frac{\Omega^2}{2}\rho(x^2 + y^2). $$
+Las isobaras son por tanto paraboloides de revolución. En particular, la superficie libre (donde $p = p_0$, presión atmosférica) satisface
+$$ \Omega^2 r^2 = 2g(z - z_0). $$
+
+Nótese que la forma de la superficie no depende de $\rho$, siempre que sea constante. En un cubo de 20 cm de diámetro que rota una vez por segundo, el agua se eleva 2 cm más en el borde que en el centro.
+
+Como en el ejemplo anterior de aceleración lineal, la posición de la superficie libre se encuentra conservando el volumen de fluido. Para un recipiente no circular con el eje de rotación fuera del centro, se requiere una integración geométrica de la región ocupada. Sin embargo, el cálculo es directo para un cilindro que rota alrededor de su eje central, como en la Figura~\ref{fig:volumen-rotante}. Puesto que el volumen de un paraboloide es la mitad del área de la base por su altura, el nivel del agua en reposo está exactamente a mitad de camino entre los puntos alto y bajo de la superficie libre. El centro del fluido desciende una cantidad $h/2 = \Omega^2 R^2/(4g)$, y los bordes ascienden la misma cantidad.
+
+\figuraConservacionVolumenRotante
+
+\subsubsection*{Ejemplo: taza de café en rotación}
+
+\textbf{Enunciado.} La taza de café del ejemplo anterior es retirada del automóvil de arrancadas, colocada sobre una plataforma giratoria, y rotada alrededor de su eje central hasta que se alcanza el régimen de cuerpo rígido (véase la Figura~\ref{fig:cafe-rotante}). Determine (a) la velocidad angular que hará que el café alcance justo el borde de la taza y (b) la presión manométrica en el punto A para esta condición.
+
+\figuraCafeRotante
+
+\textbf{Solución.} La taza tiene radio $R=0.03\ \mathrm{m}$, profundidad total de 10 cm y nivel inicial de 7 cm. Cuando el líquido alcanza justo el borde, la conservación del volumen implica que el nivel central desciende hasta 4 cm. Por tanto, la diferencia entre el borde y el centro es
+$$ h=10\ \mathrm{cm}-4\ \mathrm{cm}=6\ \mathrm{cm}=0.06\ \mathrm{m}. $$
+Como la superficie libre satisface $h=\Omega^2R^2/(2g)$,
+$$ \Omega=\sqrt{\frac{2gh}{R^2}}
+=\sqrt{\frac{2(9.81)(0.06)}{(0.03)^2}}
+\approx 36.2\ \mathrm{rad\,s^{-1}}. $$
+En revoluciones por minuto,
+$$ N=\frac{60\Omega}{2\pi}\approx 345\ \mathrm{rpm}. $$
+
+El punto A se encuentra en el fondo, junto a la pared, a una profundidad vertical de 0.10 m bajo la superficie libre del borde. Como ambos puntos tienen el mismo radio, el término centrífugo no cambia entre ellos. La presión manométrica es entonces
+$$ p_A-p_{\mathrm{atm}}=\rho g(0.10)
+=(1000)(9.81)(0.10)
+=981\ \mathrm{Pa}\approx 0.981\ \mathrm{kPa}. $$
+
+\pagebreak[3]
+\subsubsection*{Ejemplo: ultracentrífuga}
+
+\textbf{Enunciado.} Una ultracentrífuga de radio 10 cm contiene agua, sin superficie libre, y rota a $\Omega = 60\,000\ \mathrm{rpm} \approx 6300\ \mathrm{s^{-1}}$. Determine la aceleración centrífuga en el borde y la diferencia de presión entre el eje y el borde, suponiendo inicialmente densidad constante.
+
+\textbf{Solución.} La aceleración centrífuga en el borde es
+$$ a_c=\Omega^2R=(6300)^2(0.10)\approx 3.97\times10^6\ \mathrm{m\,s^{-2}}, $$
+por lo que
+$$ \frac{a_c}{g}\approx \frac{3.97\times10^6}{9.81}\approx 4.0\times10^5. $$
+La diferencia de presión radial se obtiene de $dp/dr=\rho\Omega^2r$:
+$$ \Delta p=\int_0^R\rho\Omega^2r\,dr
+=\frac{1}{2}\rho\Omega^2R^2. $$
+Para agua con $\rho\approx1000\ \mathrm{kg\,m^{-3}}$,
+$$ \Delta p\approx\frac{1}{2}(1000)(6300)^2(0.10)^2
+\approx1.98\times10^8\ \mathrm{Pa}
+\approx 1960\ \mathrm{atm}. $$
+Este valor justifica la estimación de unas 2000 atm. A presiones tan altas, la variación de densidad del agua deja de ser despreciable, por lo que el resultado debe interpretarse como una aproximación inicial.
+
+\subsection{Gas ideal en un recipiente cerrado}
+
+Para un gas ideal con temperatura constante $T$ y peso molecular medio $\mu$,
+$$ \frac{\vec{\nabla}p}{\rho} + \vec{\nabla}\left(\Phi - \frac{\Omega^2 r^2}{2}\right) = \vec{0} \quad\Longleftrightarrow\quad \frac{\vec{\nabla}p}{kTp/\mu} + \vec{\nabla}\left(\Phi - \frac{\Omega^2 r^2}{2}\right) = \vec{0}. $$
+Por tanto,
+$$ \vec{\nabla}\left[\frac{kT}{\mu}\ln p + gz - \frac{\Omega^2 r^2}{2}\right] = \vec{0} \quad\Rightarrow\quad \frac{kT}{\mu}\ln p + gz - \frac{\Omega^2 r^2}{2} = C. $$
+Con $p = p_0$ en $r = 0$, $z = 0$, obtenemos
+$$ \frac{kT}{\mu}\ln\left(\frac{p}{p_0}\right) + gz - \frac{\Omega^2 r^2}{2} = 0, \qquad \text{o bien} \qquad p = p_0\exp\left[\frac{\mu}{kT}\left(\frac{\Omega^2 r^2}{2} - gz\right)\right]. $$
+Las isobaras $z = \Omega^2 r^2/(2g)$ son, de nuevo, paraboloides de revolución.
+
+\subsubsection*{Problema: fluido politrópico en rotación}
+
+\textbf{Enunciado.} Considere un fluido politrópico $p = \alpha\rho^n$, en reposo en un sistema rotante y en presencia de un campo gravitacional uniforme $\vec{g} = -\hat{k}g$. Evalúe $\rho(r,z)$ si $\rho = \rho_0$ en $r = z = 0$.
+
+\textbf{Solución.} El equilibrio en el marco rotante exige
+$$ \frac{\vec{\nabla}p}{\rho}
++\vec{\nabla}\left(gz-\frac{\Omega^2r^2}{2}\right)=\vec{0}. $$
+Para $p=\alpha\rho^n$,
+$$ \frac{dp}{\rho}=\alpha n\rho^{n-2}\,d\rho. $$
+Si $n\neq1$, la integración da
+$$ \frac{\alpha n}{n-1}\rho^{n-1}
++gz-\frac{\Omega^2r^2}{2}=C. $$
+La condición $\rho(0,0)=\rho_0$ determina
+$$ C=\frac{\alpha n}{n-1}\rho_0^{n-1}. $$
+Por consiguiente,
+$$ \boxed{
+\rho(r,z)=
+\left[
+\rho_0^{n-1}
++\frac{n-1}{\alpha n}
+\left(\frac{\Omega^2r^2}{2}-gz\right)
+\right]^{1/(n-1)}
+}, \qquad n\neq1, $$
+en la región donde la cantidad entre corchetes sea positiva.
+
+Para el caso especial $n=1$, se obtiene
+$$ \alpha\ln\left(\frac{\rho}{\rho_0}\right)
++gz-\frac{\Omega^2r^2}{2}=0, $$
+y por tanto
+$$ \boxed{
+\rho(r,z)=\rho_0
+\exp\left[
+\frac{1}{\alpha}
+\left(\frac{\Omega^2r^2}{2}-gz\right)
+\right]
+}. $$
+
+\subsection{La figura de la Tierra}
+
+En un planeta o estrella que rota, las fuerzas centrífugas añaden una componente cilíndrica de ``anti-gravedad'' al campo de aceleración gravitacional. Una medida conveniente de su importancia es la razón entre la aceleración centrífuga y la gravedad superficial en el ecuador. Con gravedad superficial $g_0 \approx GM/a^2$ (donde $M$ es la masa del planeta y $a$ su radio ecuatorial), definimos
+$$ q = \frac{\Omega^2 a}{g_0} \approx \frac{\Omega^2 a^3}{GM}. $$
+
+Para la Tierra ($a \approx 6371\ \mathrm{km}$, $g_0 \approx 9.8\ \mathrm{m\,s^{-2}}$, $\Omega \approx 73\times 10^{-6}\ \mathrm{s^{-1}}$), se encuentra $q \approx 3.5\times 10^{-3} = 0.35\%$, confirmando que los efectos centrífugos son pequeños. Si la Tierra rotara como una esfera rígida con un periodo de 85 min, se tendría $q = 1$: los objetos en el ecuador levitarían (y podrían hacerlo).
+
+\textbf{Ejemplo. Estrella de neutrones rotante (púlsar).} Las estrellas de neutrones están entre los objetos más extremos del Universo. Una estrella de neutrones típica puede tener radio $a = 10\ \mathrm{km}$ y masa $M \simeq 4\times 10^{30}\ \mathrm{kg}$ (aproximadamente el doble de la del Sol), y puede rotar con periodos tan cortos como 1.4 ms (es decir, $\Omega \simeq 4500\ \mathrm{s^{-1}}$). Entonces la gravedad superficial es $g_0 \simeq 2.7\times 10^{12}\ \mathrm{m\,s^{-2}}$ y la aceleración centrífuga ecuatorial es $\Omega^2 a \simeq 2\times 10^{11}\ \mathrm{m\,s^{-2}}$. El ``parámetro de levitación'' es por tanto $q = \Omega^2 a/g_0 \simeq 0.076$: aproximadamente 22 veces el valor terrestre, pero aún muy por debajo de la unidad.
+
+Incluso en una Tierra perfectamente esférica, esta diminuta ``anti-gravedad'' centrífuga hace que el camino del polo al ecuador sea ligeramente cuesta abajo, creando un ``valle'' centrífugo poco profundo centrado en el ecuador. Una estimación ingenua de la profundidad del valle es $q$ veces el radio terrestre, es decir, 0.35\% de $a$, que es aproximadamente 22 km.
+
+Si tal valle fuera súbitamente tallado en una Tierra esférica, el agua fluiría hacia el ecuador (ignorando la fuerza de Coriolis). Puesto que hay tierra en el ecuador, la forma verdadera es un compromiso entre el flujo de masa y el nivelado centrífugo. La diferencia observada entre los radios ecuatorial y polar es de hecho 21.4 km, cercana a la estimación anterior — aproximadamente lo mismo que la diferencia entre la montaña más alta y la fosa oceánica más profunda.
+
+Una teoría completa de la ``figura'' de la Tierra es sutil, y la Tierra real se aparta del modelo más simple de esferoide oblato. No obstante, el parámetro $q$ proporciona una primera aproximación útil a la forma de un planeta que rota lentamente.
+
+\subsection{Deformación centrífuga de un planeta esférico}
+
+La deformación centrífuga de un planeta originalmente esférico de radio $a$ depende solo de la distancia $s = a\sin\theta$ al eje de rotación, donde $\theta$ es el ángulo polar. Si $h(\theta)$ denota el desplazamiento radial de la superficie causado por la rotación, el potencial total (a primer orden) evaluado en la superficie puede escribirse como
+$$ \Phi = g_0 h(\theta) - \frac{1}{2}\Omega^2 a^2\sin^2\theta + \Delta\Phi(\theta). $$
+El primer término es el potencial gravitacional, el segundo término es el potencial centrífugo en la superficie, y $\Delta\Phi(\theta)$ es la contribución del potencial gravitacional de la masa que es redistribuida por la deformación misma (el ``auto-potencial''). Aunque la masa desplazada es pequeña comparada con la masa total del planeta, está situada cerca de la superficie, de modo que su efecto sobre el potencial superficial puede ser significativo y no debe ser ignorado.
+
+Para una deformación de la forma apropiada, el auto-potencial a orden más bajo es
+$$ \Delta\Phi = -\frac{3}{5}\frac{\rho_1}{\rho_0}g_0 h(\theta), $$
+donde $\rho_1$ es la densidad del material que es desplazado y $\rho_0 = M/\left(\frac{4}{3}\pi a^3\right)$ es la densidad media del planeta. Sustituyendo esta expresión en el potencial superficial anterior se obtiene el rango de alturas polo-a-ecuador (de la deformación)
+$$ h_0 = \frac{1}{2}aq\left(1 - \frac{3}{5}\frac{\rho_1}{\rho_0}\right)^{-1}, $$
+donde $q \equiv \Omega^2 a/g_0$ es el usual parámetro de ``levitación'' (rotacional). Para la Tierra, tomando valores representativos $\rho_1 \approx 4.5\ \mathrm{g\,cm^{-3}}$ para el manto y $\rho_0 \approx 5.5\ \mathrm{g\,cm^{-3}}$, el factor entre paréntesis es $\approx 0.51$, dando $h_0 \approx 21.9\ \mathrm{km}$, en buen acuerdo con la diferencia observada entre los radios ecuatorial y polar de aproximadamente 21.4 km. Advertencia: un tratamiento completamente autoconsistente debería calcular el auto-potencial a partir de la redistribución real de masa a través de todo el planeta, incluyendo las variaciones de compresibilidad, no solo a partir de las densidades medias.
+
+\subsection{Otras aplicaciones}
+
+Este formalismo es esencial para describir la estructura de sistemas astrofísicos rotantes. Por ejemplo, en estrellas y planetas rotantes, la configuración de equilibrio está determinada por superficies de potencial efectivo constante, conduciendo a una forma oblata debida al soporte centrífugo. Esto es directamente análogo a la superficie parabólica formada por un líquido en un recipiente rotante.
+
+En discos de acreción alrededor de objetos compactos, el equilibrio hidrostático vertical en el marco rotante resulta del balance entre la gravedad y los gradientes de presión. Esto conduce a una estratificación de densidad gaussiana,
+$$ \rho(z) \propto \exp\left(-\frac{z^2}{2H^2}\right), \qquad H \sim \frac{c_s}{\Omega}, $$
+donde $H$ es la altura de escala del disco y $c_s$ la velocidad del sonido.
+
+La hidrostática en marcos no inerciales es también central en sistemas binarios. En un marco co-rotante, el potencial efectivo define la geometría de Roche, y las superficies equipotenciales determinan las regiones gravitacionalmente ligadas a cada componente. La transferencia de masa ocurre cuando una estrella llena su lóbulo de Roche, permitiendo al material fluir a través del punto de Lagrange interno.
+
+Finalmente, la rotación juega un papel importante en atmósferas planetarias y planetas gigantes, donde modifica la estructura a gran escala e induce un abultamiento ecuatorial. Más generalmente, el concepto de potencial efectivo proporciona una descripción unificadora de las configuraciones de equilibrio en fluidos astrofísicos rotantes.

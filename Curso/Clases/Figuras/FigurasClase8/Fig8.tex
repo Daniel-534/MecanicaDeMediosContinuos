@@ -1,0 +1,51 @@
+\newcommand{\figuraConservacionVolumenRotante}{%
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small,x=1.15cm,y=1.0cm,
+                        line cap=round,line join=round]
+        \draw[very thick] (-4,4.55)--(-4,0)--(4,0)--(4,4.55);
+
+        \fill[pink!22] (-3.92,0.08)--(3.92,0.08)--
+            plot[domain=3.92:-3.92,samples=120]
+                (\x,{2.0+0.125*\x*\x})--cycle;
+
+        \fill[pink!55,opacity=0.75]
+            (2.83,3.0)--plot[domain=2.83:3.92,samples=50]
+                (\x,{2.0+0.125*\x*\x})--(3.92,3.0)--cycle;
+        \fill[pink!55,opacity=0.75]
+            (-3.92,3.0)--plot[domain=-3.92:-2.83,samples=50]
+                (\x,{2.0+0.125*\x*\x})--(-2.83,3.0)--cycle;
+
+        \draw[very thick,magenta!70!black,domain=-3.92:3.92,samples=120]
+            plot (\x,{2.0+0.125*\x*\x});
+        \draw[densely dashed,black!65] (-3.92,3.0)--(3.92,3.0);
+        \node[anchor=south,fill=white,inner sep=1pt] at (-1.45,3.02)
+            {nivel inicial};
+        \draw[densely dashed] (0,0)--(0,5.0);
+
+        \draw[<->] (0.45,2.0)--(0.45,3.0)
+            node[midway,right] {$h/2$};
+        \draw[<->] (3.62,3.0)--(3.62,4.0)
+            node[midway,left] {$h/2$};
+        \draw[<->] (4.35,2.0)--(4.35,4.0)
+            node[midway,right] {$h$};
+        \draw[<->] (-4,-0.42)--(0,-0.42)
+            node[midway,below] {$R$};
+        \draw[<->] (0,-0.42)--(4,-0.42)
+            node[midway,below] {$R$};
+
+        \node[magenta!70!black] at (-3.25,3.62) {$V_{\uparrow}$};
+        \node[magenta!70!black] at (2.75,3.62) {$V_{\uparrow}$};
+        \node at (-0.45,2.48) {$V_{\downarrow}$};
+
+        \draw[->,ultra thick,purple!75!black] (0,4.7)
+            arc[start angle=90,end angle=-235,radius=0.55];
+        \node at (0.85,4.72) {$\Omega$};
+    \end{tikzpicture}
+    \caption{Conservación del volumen en un cilindro que rota alrededor de
+    su eje. El volumen que desciende en la zona central es igual al volumen
+    que asciende junto a las paredes; por ello el centro baja $h/2$ y los
+    bordes suben $h/2$ respecto del nivel inicial.}
+    \label{fig:volumen-rotante}
+\end{figure}%
+}

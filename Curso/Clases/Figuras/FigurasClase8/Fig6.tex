@@ -1,0 +1,34 @@
+\newcommand{\figuraCafeAcelerado}{%
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small,x=1.05cm,y=0.75cm,
+                        line cap=round,line join=round]
+        \draw[very thick,rounded corners=7pt] (0,10)--(0,0)--(6,0)--(6,10);
+        \draw[very thick,rounded corners=8pt] (6,8.9)--(8.1,8.9)--(8.1,5.5)--(6,3.6);
+        \draw[very thick,rounded corners=5pt] (6.35,8.25)--(7.45,8.25)--(7.45,5.85)--(6.35,4.85);
+        \fill[pink!35] (0.08,0.08)--(5.92,0.08)--(5.92,5.75)--(0.08,7.9)--cycle;
+        \draw[very thick,magenta!75!black] (0.08,7.9)--(5.92,5.75);
+        \node[magenta!75!black,anchor=south,fill=white,inner sep=1.5pt]
+            at (3.25,7.38) {superficie libre};
+        \draw[dashed] (0.08,7)--(5.92,7);
+        \draw[dashed] (3,0)--(3,10.6);
+        \fill[magenta!75!black] (0.45,0.45) circle (0.10) node[right] {$A$};
+        \fill[magenta!75!black] (0.1,7.9) circle (0.10)
+            node[above left] {$B$};
+        \draw[<->] (-0.45,0)--(-0.45,7) node[midway,left] {$7\,\mathrm{cm}$};
+        \draw[<->] (-0.45,7)--(-0.45,10) node[midway,left] {$3\,\mathrm{cm}$};
+        \draw[<->] (0,-0.6)--(3,-0.6) node[midway,below] {$3\,\mathrm{cm}$};
+        \draw[<->] (0.72,7)--(0.72,7.9)
+            node[midway,left,fill=pink!35,inner sep=1pt] {$\Delta z$};
+        \draw[densely dashed] (4.05,6.18)--(5.85,6.18);
+        \draw (5.52,6.18) arc[start angle=0,end angle=-20,radius=0.72];
+        \node at (5.23,5.94) {$\theta$};
+        \draw[->,ultra thick,red!75!black] (6.4,3.1)--(8.15,3.1)
+            node[midway,above] {$a_x=7\,\mathrm{m/s^2}$};
+    \end{tikzpicture}
+    \caption{La taza acelerada conserva el nivel medio, pero la superficie
+    libre se inclina. Las cotas permiten comparar la elevación $\Delta z$
+    con los $3\,\mathrm{cm}$ disponibles antes del derrame.}
+    \label{fig:cafe-acelerado}
+\end{figure}%
+}

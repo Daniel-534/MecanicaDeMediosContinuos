@@ -1,0 +1,590 @@
+\shorthandoff{<>}
+\input{Clases/Figuras/FigurasClaseTaller3/Fig1}
+\input{Clases/Figuras/FigurasClaseTaller3/Fig2}
+\input{Clases/Figuras/FigurasClaseTaller3/Fig3}
+\shorthandon{<>}
+
+\chapter{Clase Taller 3}
+
+%==============================================================================
+\section{Relación politrópica a partir de la primera ley de la termodinámica}
+%==============================================================================
+
+\subsection{Planteamiento}
+
+A partir de la primera ley de la termodinámica
+$$
+T\,dS = dE + p\,dV,
+$$
+se deduce la relación politrópica en términos de (a) densidad y presión, y (b) presión y volumen.
+
+\subsection{Convenciones y cantidades termodinámicas}
+
+En la primera ley de la termodinámica se identifican las siguientes cantidades:
+
+\begin{itemize}
+    \item $T$: temperatura (variable intensiva).
+    \item $S$: entropía (variable extensiva).
+    \item $E$: energía interna (variable extensiva).
+    \item $p$: presión (variable intensiva).
+    \item $V$: volumen (variable extensiva).
+\end{itemize}
+
+Para trabajar con cantidades específicas (por unidad de masa), se define la masa total $M$ del sistema y se introducen:
+$$
+s = \frac{S}{M}, \qquad e = \frac{E}{M}, \qquad v = \frac{V}{M} = \frac{1}{\rho},
+$$
+donde $\rho$ es la densidad de masa. Dividiendo la primera ley por $M$:
+$$
+T\,ds = de + p\,d\!\left(\frac{1}{\rho}\right).
+$$
+
+\subsection{Proceso isentrópico}
+
+Para un proceso isentrópico (adiabático reversible), $ds = 0$, de modo que:
+$$
+de = -p\,d\!\left(\frac{1}{\rho}\right) = \frac{p}{\rho^2}\,d\rho.
+$$
+
+Para un gas ideal, la energía interna específica es $e = c_v T$ y la ecuación de estado es $p = \rho R T$, donde $R = R_{\text{mol}}/M_{\text{mol}}$ es la constante específica del gas. Entonces:
+$$
+c_v\,dT = \frac{p}{\rho^2}\,d\rho.
+$$
+Usando $T = p/(\rho R)$:
+$$
+c_v\,d\!\left(\frac{p}{\rho R}\right) = \frac{p}{\rho^2}\,d\rho.
+$$
+Desarrollando el diferencial:
+$$
+\frac{c_v}{R}\left(\frac{dp}{\rho} - \frac{p}{\rho^2}\,d\rho\right) = \frac{p}{\rho^2}\,d\rho.
+$$
+Reordenando:
+$$
+\frac{c_v}{R}\,\frac{dp}{p} - \frac{c_v}{R}\,\frac{d\rho}{\rho} = \frac{d\rho}{\rho}.
+$$
+$$
+\frac{c_v}{R}\,\frac{dp}{p} = \left(1 + \frac{c_v}{R}\right)\frac{d\rho}{\rho}.
+$$
+Recordando que $\gamma \equiv c_p/c_v = 1 + R/c_v$, se tiene $1 + c_v/R = c_v/R \cdot \gamma$, y por tanto:
+$$
+\frac{dp}{p} = \gamma\,\frac{d\rho}{\rho}.
+$$
+
+\subsection{Relación politrópica en términos de densidad y presión}
+
+Integrando la expresión anterior:
+$$
+\ln p = \gamma \ln \rho + \text{const},
+$$
+de donde se obtiene la \textbf{relación politrópica}:
+$$
+\boxed{p = C\,\rho^{\gamma},}
+$$
+donde $C$ es una constante (constante politrópica) y $\gamma$ es el índice politrópico (o índice adiabático para procesos isentrópicos).
+
+\subsection{Relación politrópica en términos de presión y volumen}
+
+Puesto que $\rho = M/V$, se tiene:
+$$
+p = C\left(\frac{M}{V}\right)^{\gamma},
+$$
+y para masa constante:
+$$
+p\,V^{\gamma} = \text{const}.
+$$
+Equivalentemente, entre dos estados $(p_0, V_0)$ y $(p, V)$:
+$$
+\boxed{p\,V^{\gamma} = p_0\,V_0^{\gamma}.}
+$$
+
+\figuraProcesoPolitropico
+
+\subsection{Valores típicos del índice adiabático}
+
+Para gases ideales:
+\begin{itemize}
+    \item Gases monoatómicos (He, Ar, Ne): $\gamma = 5/3$.
+    \item Gases diatómicos (N$_2$, O$_2$, aire): $\gamma = 7/5$.
+    \item Gases multiatómicos (CO$_2$, H$_2$O): $\gamma = 4/3$.
+\end{itemize}
+
+%==============================================================================
+\section{Envolvente convectiva del Sol}
+%==============================================================================
+
+\subsection{Planteamiento}
+
+Sea el potencial gravitacional en la zona convectiva del Sol aproximado por
+$$
+\Phi(r) = -\frac{GM_0}{r},
+$$
+y el potencial de presión para un fluido homentrópico
+$$
+w = \frac{\gamma}{\gamma - 1}\,R\,T = c_p\,T,
+$$
+donde $M_0$ es la masa del Sol, $R$ es la constante específica del gas y $c_p = \gamma R/(\gamma-1)$ es el calor específico a presión constante. Se pide determinar los perfiles de temperatura, presión y densidad de la envolvente convectiva del Sol.
+
+\subsection{Condición de equilibrio hidrostático}
+
+La ecuación de equilibrio hidrostático para un fluido barotrópico puede escribirse en términos del potencial efectivo:
+$$
+\nabla\Phi^* = 0, \qquad \Phi^* \equiv \Phi + w(p).
+$$
+Esto implica que $\Phi^* = \text{const}$ en todo el fluido en equilibrio. Para el Sol, la densidad en la zona convectiva es suficientemente baja como para que la autogravedad de la envoltura sea despreciable frente a la masa total del Sol, y el potencial gravitacional está dominado por la masa central:
+$$
+\Phi(r) = -\frac{GM_0}{r}.
+$$
+
+La condición de equilibrio se escribe:
+$$
+\Phi^* = -\frac{GM_0}{r} + c_p\,T = \text{const}.
+$$
+
+\subsection{Perfil de temperatura}
+
+Fijando la constante mediante la temperatura en la superficie solar $r = a$ (donde $a$ es el radio solar), $T(a) = T_0$:
+$$
+-\frac{GM_0}{a} + c_p T_0 = -\frac{GM_0}{r} + c_p\,T(r).
+$$
+Despejando $T(r)$:
+$$
+c_p\,T(r) = c_p T_0 + GM_0\left(\frac{1}{r} - \frac{1}{a}\right),
+$$
+$$
+\boxed{T(r) = T_0 + T_1\left(\frac{a}{r} - 1\right),}
+$$
+donde se ha definido la \textbf{temperatura característica}:
+$$
+T_1 \equiv \frac{GM_0}{c_p\,a}.
+$$
+
+Con los parámetros solares: $M_0 = 2\times 10^{30}$ kg, $a = 7\times 10^8$ m, $G = 6{,}674\times 10^{-11}$ N m$^2$ kg$^{-2}$, y para el plasma solar $\gamma = 5/3$ (gas monoatómico), $M_{\text{mol}} = 0{,}59$ g/mol, se obtiene $R = R_{\text{mol}}/M_{\text{mol}} \approx 14{,}1\times10^3$ J K$^{-1}$ kg$^{-1}$ y $c_p = \frac{5}{2}R \approx 35{,}2\times10^3$ J K$^{-1}$ kg$^{-1}$. Entonces:
+$$
+T_1 = \frac{GM_0}{c_p\,a} \approx 5{,}4\times 10^6 \text{ K}.
+$$
+La temperatura superficial es $T_0 \approx 6000$ K, que es aproximadamente 1000 veces menor que $T_1$ y puede despreciarse en primera aproximación.
+
+\subsection{Perfiles de densidad y presión}
+
+Para un gas ideal con relación politrópica $p = C\rho^{\gamma}$, se tiene:
+$$
+T \propto \rho^{\gamma - 1}, \qquad p \propto T^{\gamma/(\gamma-1)}.
+$$
+Más precisamente, de $p = \rho R T$ y $p = C\rho^{\gamma}$:
+$$
+\rho = \rho_0\left(\frac{T}{T_0}\right)^{1/(\gamma-1)}, \qquad p = p_0\left(\frac{T}{T_0}\right)^{\gamma/(\gamma-1)},
+$$
+donde $\rho_0$ y $p_0$ son los valores en la superficie.
+
+Sustituyendo el perfil de temperatura:
+$$
+\boxed{\rho(r) = \rho_0\left(1 + \frac{T_1}{T_0}\left(\frac{a}{r}-1\right)\right)^{1/(\gamma-1)},}
+$$
+$$
+\boxed{p(r) = p_0\left(1 + \frac{T_1}{T_0}\left(\frac{a}{r}-1\right)\right)^{\gamma/(\gamma-1)}.}
+$$
+
+Para el plasma solar con $\gamma = 5/3$:
+$$
+\rho(r) = \rho_0\left(1 + \frac{T_1}{T_0}\left(\frac{a}{r}-1\right)\right)^{3/2}, \qquad p(r) = p_0\left(1 + \frac{T_1}{T_0}\left(\frac{a}{r}-1\right)\right)^{5/2}.
+$$
+
+\subsection{Tasa de decrecimiento de la temperatura}
+
+La tasa de variación de la temperatura en la superficie solar es:
+$$
+-\frac{dT}{dr}\bigg|_{r=a} = \frac{T_1}{a} = \frac{GM_0}{c_p\,a^2} \approx 7{,}8 \text{ K/km},
+$$
+que es comparable a la tasa de lapse de la troposfera terrestre ($\approx 9{,}8$ K/km).
+
+\figuraEnvolventeSolar
+
+%==============================================================================
+\section{Placa infinita autogravitante de fluido incompresible}
+%==============================================================================
+
+\subsection{Planteamiento}
+
+Una placa infinita y estática de fluido incompresible de densidad $\rho_0$ ocupa la región $|z| < a$. Se pide:
+\begin{enumerate}[(a)]
+    \item Encontrar el campo gravitacional en todas partes y la distribución de presión dentro de la placa.
+    \item Si un disco galáctico se aproxima por una placa de densidad uniforme $\rho_0 = 10^{-18}$ kg/m$^3$ y semiespesor $a = 10^{18}$ m, determinar la velocidad en el plano medio y el período de oscilación de una estrella que parte del reposo en $z = a$.
+\end{enumerate}
+
+\subsection{Campo gravitacional}
+
+Por simetría, el campo gravitacional apunta en la dirección $z$: $\vec{g} = g(z)\,\hat{e}_z$. La ecuación de Poisson para el potencial gravitacional es:
+$$
+\nabla^2\Phi = 4\pi G\rho.
+$$
+Dado que $\vec{g} = -\nabla\Phi$ y por simetría plana $\Phi = \Phi(z)$:
+$$
+\frac{d^2\Phi}{dz^2} = 4\pi G\rho(z).
+$$
+
+\textbf{Dentro de la placa} ($|z| < a$): $\rho = \rho_0 = \text{const}$.
+$$
+\frac{d^2\Phi}{dz^2} = 4\pi G\rho_0.
+$$
+Integrando una vez:
+$$
+\frac{d\Phi}{dz} = 4\pi G\rho_0\,z + C_1.
+$$
+Por simetría respecto al plano $z = 0$, se exige $g(0) = 0$, es decir, $\left.\frac{d\Phi}{dz}\right|_{z=0} = 0$, lo cual da $C_1 = 0$. Por tanto:
+$$
+g(z) = -\frac{d\Phi}{dz} = -4\pi G\rho_0\,z, \qquad |z| < a.
+$$
+
+\textbf{Fuera de la placa} ($|z| > a$): $\rho = 0$, y el campo debe ser constante (no hay fuentes). Por continuidad en $z = a$:
+$$
+g(z) = -4\pi G\rho_0\,a\,\text{sgn}(z), \qquad |z| > a.
+$$
+
+En resumen:
+$$
+\boxed{g(z) = \begin{cases} -4\pi G\rho_0\,z & |z| < a, \\[6pt] -4\pi G\rho_0\,a\,\text{sgn}(z) & |z| > a. \end{cases}}
+$$
+
+\subsection{Distribución de presión}
+
+La ecuación de equilibrio hidrostático es:
+$$
+\frac{dp}{dz} = \rho_0\,g(z) = -4\pi G\rho_0^2\,z, \qquad |z| < a.
+$$
+Integrando:
+$$
+p(z) = -2\pi G\rho_0^2\,z^2 + C_2.
+$$
+La condición de frontera es $p(\pm a) = 0$ (presión nula en la superficie de la placa). Entonces:
+$$
+0 = -2\pi G\rho_0^2\,a^2 + C_2 \quad \Longrightarrow \quad C_2 = 2\pi G\rho_0^2\,a^2.
+$$
+Por tanto:
+$$
+\boxed{p(z) = 2\pi G\rho_0^2\left(a^2 - z^2\right), \qquad |z| < a.}
+$$
+La presión es máxima en el plano medio ($z = 0$):
+$$
+p_{\text{max}} = 2\pi G\rho_0^2\,a^2.
+$$
+
+\subsection{Oscilación de una estrella en el disco galáctico}
+
+Una estrella de masa $m$ en el plano galáctico experimenta la aceleración gravitacional:
+$$
+\ddot{z} = g(z) = -4\pi G\rho_0\,z, \qquad |z| < a.
+$$
+Esta es la ecuación de un oscilador armónico simple:
+$$
+\ddot{z} + \omega^2 z = 0, \qquad \omega = \sqrt{4\pi G\rho_0}.
+$$
+La solución general es:
+$$
+z(t) = A\cos(\omega t + \varphi).
+$$
+
+\textbf{Velocidad en el plano medio:} Si la estrella parte del reposo en $z = a$, las condiciones iniciales son $z(0) = a$, $\dot{z}(0) = 0$, de modo que $A = a$ y $\varphi = 0$:
+$$
+z(t) = a\cos(\omega t), \qquad \dot{z}(t) = -a\omega\sin(\omega t).
+$$
+La velocidad en el plano medio ($z = 0$) ocurre cuando $\omega t = \pi/2$:
+$$
+v_{\text{max}} = a\omega = a\sqrt{4\pi G\rho_0}.
+$$
+Con los valores $\rho_0 = 10^{-18}$ kg/m$^3$ y $a = 10^{18}$ m:
+$$
+\omega = \sqrt{4\pi \times 6{,}674\times 10^{-11}\times 10^{-18}} = \sqrt{8{,}39\times 10^{-28}} \approx 2{,}90\times 10^{-14} \text{ s}^{-1}.
+$$
+$$
+\boxed{v_{\text{max}} = a\omega = 10^{18}\times 2{,}90\times 10^{-14} \approx 2{,}9\times 10^4 \text{ m/s} \approx 29 \text{ km/s}.}
+$$
+
+\textbf{Período de oscilación:}
+$$
+T = \frac{2\pi}{\omega} = \frac{2\pi}{\sqrt{4\pi G\rho_0}} = \sqrt{\frac{\pi}{G\rho_0}}.
+$$
+Numéricamente:
+$$
+T = \frac{2\pi}{2{,}90\times 10^{-14}} \approx 2{,}17\times 10^{14} \text{ s} \approx 6{,}9\times 10^6 \text{ años}.
+$$
+$$
+\boxed{T \approx 7\times 10^6 \text{ años}.}
+$$
+
+%==============================================================================
+\section{Planeta esférico con densidad potencial}
+%==============================================================================
+
+\subsection{Planteamiento}
+
+Un planeta esférico tiene una distribución de masa de la forma $\rho(r) = Ar^{\alpha}$, $r \leq a$. Se pide:
+\begin{enumerate}[(a)]
+    \item Calcular el campo gravitacional y el potencial dentro del planeta.
+    \item ¿Para qué valores de $\alpha$ es el problema soluble con masa finita?
+    \item ¿Para qué valores de $\alpha$ la gravedad crece hacia el centro?
+\end{enumerate}
+
+\subsection{Campo gravitacional}
+
+Por simetría esférica, el campo gravitacional es radial: $\vec{g}(r) = g(r)\,\hat{e}_r$. Usando la ley de Gauss gravitacional, la masa encerrada dentro de un radio $r$ es:
+$$
+M(r) = 4\pi\int_0^r \rho(r')\,r'^2\,dr' = 4\pi A\int_0^r r'^{\alpha+2}\,dr'.
+$$
+Esta integral converge en el origen si $\alpha + 2 > -1$, es decir, $\alpha > -3$. Bajo esta condición:
+$$
+M(r) = \frac{4\pi A}{\alpha + 3}\,r^{\alpha+3}.
+$$
+El campo gravitacional dentro del planeta ($r \leq a$) es:
+$$
+g(r) = -\frac{GM(r)}{r^2} = -\frac{4\pi GA}{\alpha + 3}\,r^{\alpha+1}.
+$$
+En forma vectorial:
+$$
+\boxed{\vec{g}(r) = -\frac{4\pi GA}{\alpha + 3}\,r^{\alpha+1}\,\hat{e}_r, \qquad r \leq a.}
+$$
+
+\subsection{Potencial gravitacional}
+
+El potencial satisface $g(r) = -d\Phi/dr$. Integrando:
+$$
+\Phi(r) = \frac{4\pi GA}{\alpha + 3}\int r^{\alpha+1}\,dr = \frac{4\pi GA}{(\alpha+3)(\alpha+2)}\,r^{\alpha+2} + C,
+$$
+para $\alpha \neq -2$. La constante $C$ se fija exigiendo continuidad del potencial en $r = a$ con el potencial exterior $\Phi_{\text{ext}} = -GM_{\text{tot}}/r$, donde $M_{\text{tot}} = 4\pi A a^{\alpha+3}/(\alpha+3)$.
+
+Para $\alpha \neq -2$:
+$$
+\boxed{\Phi(r) = -\frac{4\pi GA}{(\alpha+3)(\alpha+2)}\left(a^{\alpha+2} - r^{\alpha+2}\right) - \frac{GM_{\text{tot}}}{a}, \qquad r \leq a.}
+$$
+
+Para el caso especial $\alpha = -2$:
+$$
+M(r) = 4\pi A\,r, \qquad g(r) = -\frac{4\pi GA}{r},
+$$
+$$
+\Phi(r) = 4\pi GA\ln r + C.
+$$
+
+\subsection{Condición de masa finita}
+
+La masa total del planeta es:
+$$
+M_{\text{tot}} = 4\pi A\int_0^a r^{\alpha+2}\,dr.
+$$
+La integral converge en el límite inferior ($r \to 0$) si y solo si:
+$$
+\alpha + 2 > -1 \quad \Longleftrightarrow \quad \boxed{\alpha > -3.}
+$$
+Para $\alpha \leq -3$, la integral diverge en el origen y la masa total es infinita, por lo que el problema no tiene solución física con masa finita.
+
+\subsection{Condición para que la gravedad crezca hacia el centro}
+
+La magnitud del campo gravitacional es:
+$$
+|g(r)| = \frac{4\pi GA}{\alpha + 3}\,r^{\alpha+1}.
+$$
+Para que la gravedad \textbf{crezca} hacia el centro (es decir, $|g|$ aumenta al disminuir $r$), se necesita que $|g(r)|$ sea una función decreciente de $r$:
+$$
+\frac{d|g|}{dr} < 0 \quad \Longleftrightarrow \quad \frac{4\pi GA}{\alpha+3}\,(\alpha+1)\,r^{\alpha} < 0.
+$$
+Puesto que $4\pi GA/(\alpha+3) > 0$ (para $\alpha > -3$) y $r^{\alpha} > 0$, la condición se reduce a:
+$$
+\alpha + 1 < 0 \quad \Longleftrightarrow \quad \boxed{\alpha < -1.}
+$$
+Combinando con la condición de masa finita:
+$$
+\boxed{-3 < \alpha < -1.}
+$$
+
+En este intervalo, la gravedad se hace más intensa al acercarse al centro del planeta.
+
+%==============================================================================
+\section{Modelo de placa isotérmica autogravitante}
+%==============================================================================
+
+\subsection{Planteamiento}
+
+Se busca encontrar los perfiles de densidad y presión para una placa isotérmica infinita autogravitante, sujeta a las condiciones $\rho(0) = \rho_0$ y $g(0) = 0$.
+
+\subsection{Hipótesis del modelo}
+
+La placa isotérmica se modela bajo las siguientes suposiciones:
+\begin{enumerate}
+    \item Geometría plana: todas las cantidades dependen solo de $z$.
+    \item El gas es isotérmico: $T = T_0 = \text{const}$.
+    \item La gravedad propia de la placa no es despreciable (autogravitante).
+    \item La ecuación de estado es la de un gas ideal isotérmico: $p = A\rho$, donde $A = RT_0$ es una constante.
+\end{enumerate}
+
+\subsection{Ecuaciones fundamentales}
+
+La ecuación de equilibrio hidrostático es:
+$$
+\frac{dp}{dz} = \rho\,g(z), \qquad g(z) = -\frac{d\Phi}{dz}.
+$$
+Con $p = A\rho$:
+$$
+A\,\frac{d\rho}{dz} = \rho\,g \quad \Longrightarrow \quad A\,\frac{d}{dz}\ln\rho = g = -\frac{d\Phi}{dz}.
+$$
+Integrando:
+$$
+\Phi(z) = -A\ln\rho(z) + \Phi_0,
+$$
+donde $\Phi_0 = \Phi(0)$ y se ha usado $\rho(0) = \rho_0$. Por tanto:
+$$
+\rho(z) = \rho_0\exp\!\left(-\frac{\Phi(z) - \Phi_0}{A}\right).
+$$
+
+La ecuación de Poisson en geometría plana es:
+$$
+\frac{d^2\Phi}{dz^2} = 4\pi G\rho = 4\pi G\rho_0\exp\!\left(-\frac{\Phi - \Phi_0}{A}\right).
+$$
+
+\subsection{Adimensionalización}
+
+Se introducen las variables adimensionales:
+$$
+\chi \equiv -\frac{\Phi - \Phi_0}{A}, \qquad Z \equiv \left(\frac{2\pi G\rho_0}{A}\right)^{1/2}z.
+$$
+La ecuación de Poisson se transforma en:
+$$
+\frac{d^2\chi}{dZ^2} = -2\,e^{\chi},
+$$
+con condiciones de borde:
+$$
+\chi(0) = 0, \qquad \left.\frac{d\chi}{dZ}\right|_{Z=0} = 0
+$$
+(la segunda condición proviene de la simetría $g(0) = 0$).
+
+La densidad se expresa como:
+$$
+\rho(z) = \rho_0\,e^{\chi}.
+$$
+
+\subsection{Integración de la ecuación}
+
+Se multiplica la ecuación por $d\chi/dZ$:
+$$
+\frac{d\chi}{dZ}\,\frac{d^2\chi}{dZ^2} = -2\,e^{\chi}\,\frac{d\chi}{dZ}.
+$$
+Esto puede escribirse como:
+$$
+\frac{1}{2}\frac{d}{dZ}\left(\frac{d\chi}{dZ}\right)^2 = -2\,\frac{d}{dZ}\left(e^{\chi}\right).
+$$
+Integrando:
+$$
+\frac{1}{2}\left(\frac{d\chi}{dZ}\right)^2 = -2\,e^{\chi} + C_1.
+$$
+Aplicando la condición $\chi(0) = 0$ y $\chi'(0) = 0$:
+$$
+0 = -2 + C_1 \quad \Longrightarrow \quad C_1 = 2.
+$$
+Por tanto:
+$$
+\left(\frac{d\chi}{dZ}\right)^2 = 4\left(1 - e^{\chi}\right).
+$$
+Puesto que $\chi \leq 0$ y la densidad decrece para $Z>0$, se toma la raíz negativa:
+$$
+\frac{d\chi}{dZ} = -2\sqrt{1 - e^{\chi}}.
+$$
+
+\subsection{Segunda integración}
+
+Se hace la sustitución $s^2 = e^{\chi}$, de modo que $2s\,ds = e^{\chi}\,d\chi = s^2\,d\chi$, es decir, $d\chi = 2\,ds/s$. Entonces:
+$$
+\frac{2\,ds/s}{dZ} = -2\sqrt{1 - s^2} \quad \Longrightarrow \quad \frac{ds}{s\sqrt{1-s^2}} = -dZ.
+$$
+Se hace $s = \sin\theta$, $ds = \cos\theta\,d\theta$:
+$$
+\frac{\cos\theta\,d\theta}{\sin\theta\cos\theta} = \frac{d\theta}{\sin\theta} = -dZ.
+$$
+Luego, con $t = \tan(\theta/2)$, $d\theta = 2\,dt/(1+t^2)$ y $\sin\theta = 2t/(1+t^2)$:
+$$
+\frac{d\theta}{\sin\theta} = \frac{2\,dt}{(1+t^2)}\cdot\frac{1+t^2}{2t} = \frac{dt}{t}.
+$$
+Por tanto:
+$$
+\frac{dt}{t} = -dZ \quad \Longrightarrow \quad \ln t = -Z + C_2.
+$$
+La condición inicial es: para $Z = 0$, $\chi = 0$, $s = e^{\chi/2} = 1$, $\theta = \pi/2$, $t = \tan(\pi/4) = 1$. Entonces $C_2 = 0$ y:
+$$
+t = e^{-Z}.
+$$
+Deshaciendo las sustituciones:
+$$
+\tan(\theta/2) = e^{-Z} \quad \Longrightarrow \quad \sin\theta = \frac{2e^{-Z}}{1 + e^{-2Z}} = \frac{1}{\cosh Z}.
+$$
+Puesto que $s = \sin\theta$ y $s^2 = e^{\chi}$:
+$$
+e^{\chi} = s^2 = \sin^2\theta = \frac{1}{\cosh^2 Z}.
+$$
+Por tanto:
+$$
+\chi = -2\ln(\cosh Z).
+$$
+
+\subsection{Perfiles de densidad y presión}
+
+Volviendo a las variables originales:
+$$
+\boxed{\rho(z) = \rho_0\,\text{sech}^2\!\left[\left(\frac{2\pi G\rho_0}{A}\right)^{1/2}z\right].}
+$$
+
+El potencial gravitacional es:
+$$
+\Phi(z) - \Phi_0 = 2A\ln\!\left[\cosh\!\left(\left(\frac{2\pi G\rho_0}{A}\right)^{1/2}z\right)\right].
+$$
+
+La presión, usando $p = A\rho$:
+$$
+\boxed{p(z) = A\rho_0\,\text{sech}^2\!\left[\left(\frac{2\pi G\rho_0}{A}\right)^{1/2}z\right].}
+$$
+
+\subsection{Propiedades del perfil}
+
+\begin{itemize}
+    \item La densidad es máxima en el plano medio: $\rho(0) = \rho_0$.
+    \item El perfil decae como $\sim 4\rho_0\,e^{-2|z|/z_s}$ para $|z| \gg z_s$, donde la escala de altura es:
+    $$
+    z_s = \left(\frac{A}{2\pi G\rho_0}\right)^{1/2}.
+    $$
+    \item La masa superficial (columna de densidad) es:
+    $$
+    \Sigma = \int_{-\infty}^{\infty}\rho(z)\,dz = 2\rho_0 z_s\tanh\!\left(\frac{z}{z_s}\right)\bigg|_0^{\infty} = 2\rho_0 z_s = \left(\frac{2A\rho_0}{\pi G}\right)^{1/2}.
+    $$
+    \item El campo gravitacional dentro de la placa es:
+    $$
+    g(z) = -\frac{d\Phi}{dz} = -2A\left(\frac{2\pi G\rho_0}{A}\right)^{1/2}\tanh\!\left[\left(\frac{2\pi G\rho_0}{A}\right)^{1/2}z\right].
+    $$
+    Para $|z| \gg z_s$: $g \to \mp 2A/z_s = \mp\sqrt{8\pi G A\rho_0}$, que es constante, como corresponde a una placa infinita.
+\end{itemize}
+
+\subsection{Comparación con la placa incompresible}
+
+A diferencia de la placa incompresible estudiada anteriormente, donde la densidad es uniforme y el perfil de presión es parabólico, en la placa isotérmica la densidad decae suavemente con la distancia al plano medio. El perfil $\operatorname{sech}^2$ es la solución exacta de la ecuación de Poisson--Boltzmann en geometría plana y constituye un modelo fundamental para discos galácticos y atmósferas autogravitantes.
+
+\figuraComparacionPlacas
+
+%==============================================================================
+\section{Resumen de resultados}
+%==============================================================================
+
+\begin{center}
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Sistema} & \textbf{Resultado principal} \\
+\hline
+Relación politrópica & $p = C\rho^{\gamma}$, \ $pV^{\gamma} = \text{const}$ \\
+\hline
+Envolvente solar & $T(r) = T_0 + \frac{GM_0}{c_p a}\left(\frac{a}{r}-1\right)$ \\
+\hline
+Placa incompresible & $p(z) = 2\pi G\rho_0^2(a^2 - z^2)$ \\
+\hline
+Oscilación galáctica & $\omega = \sqrt{4\pi G\rho_0}$, \ $T_{\text{osc}} \approx 7\times 10^6$ años \\
+\hline
+Planeta $\rho = Ar^{\alpha}$ & $g(r) = -\frac{4\pi GA}{\alpha+3}r^{\alpha+1}$, masa finita: $\alpha > -3$ \\
+\hline
+Placa isotérmica & $\rho(z) = \rho_0\,\text{sech}^2(z/z_s)$ \\
+\hline
+\end{tabular}
+\end{center}

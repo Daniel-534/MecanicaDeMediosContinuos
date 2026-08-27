@@ -1,0 +1,41 @@
+\newcommand{\figuraTanqueAcelerado}{%
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small,x=3.1cm,y=2.25cm,
+                        line cap=round,line join=round]
+        \node[font=\bfseries] at (1,1.65) {(a) Estado inicial};
+        \draw[very thick] (0,1.2)--(0,0)--(2,0)--(2,1.2);
+        \fill[blue!20] (0.02,0.02) rectangle (1.98,1.0);
+        \draw[very thick,blue!65!black] (0.02,1.0)--(1.98,1.0);
+        \node at (1,0.55) {agua};
+        \node at (1,1.1) {aire};
+        \fill (0,0) circle (0.025) node[below left] {$B$};
+        \fill (2,0) circle (0.025) node[below right] {$A$};
+        \draw[<->] (0,-0.16)--(2,-0.16) node[midway,below] {$2\,\mathrm{m}$};
+        \draw[<->] (-0.12,0)--(-0.12,1.0) node[midway,left] {$1\,\mathrm{m}$};
+        \draw[<->] (-0.12,1.0)--(-0.12,1.2) node[midway,left] {$0.2\,\mathrm{m}$};
+
+        \begin{scope}[xshift=7.5cm]
+            \node[font=\bfseries] at (1,1.65) {(b) Estado acelerado};
+            \draw[very thick] (0,1.2)--(0,0)--(2,0)--(2,1.2);
+            \fill[blue!20] (0.02,0.02)--(1.98,0.02)--(0.72,1.18)--(0.02,1.18)--cycle;
+            \fill[gray!15] (0.72,1.18)--(1.98,0.02)--(1.98,1.18)--cycle;
+            \draw[very thick,blue!65!black] (0.72,1.18)--(1.98,0.02);
+            \node at (0.75,0.55) {agua};
+            \node at (1.55,0.9) {aire};
+            \fill (0,0) circle (0.025) node[below left] {$B$};
+            \fill (2,0) circle (0.025) node[below right] {$A$};
+            \draw[<->] (0.72,1.34)--(2,1.34) node[midway,above] {$x$};
+            \draw[densely dashed] (1.25,0.02)--(1.98,0.02);
+            \draw (1.55,0.02) arc[start angle=180,end angle=137,radius=0.43];
+            \node at (1.55,0.31) {$\alpha$};
+            \draw[->,ultra thick,red!75!black] (2.05,0.72)--(2.45,0.72)
+                node[midway,above] {$a_x$};
+        \end{scope}
+    \end{tikzpicture}
+    \caption{El área de aire se conserva al acelerar el tanque. Inicialmente
+    es rectangular; en la condición crítica se convierte en un triángulo y
+    la superficie libre pasa por el punto inferior derecho $A$.}
+    \label{fig:tanque-acelerado}
+\end{figure}%
+}

@@ -1,0 +1,33 @@
+\newcommand{\figuraPenduloVagon}{%
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small,line cap=round,line join=round]
+        \foreach \y/\titulo in {4.2/{(a) Marco inercial},0/{(b) Marco del vagón}} {
+            \draw[very thick,fill=orange!5] (0.4,\y+0.45) rectangle (11.6,\y+3.55);
+            \draw[very thick] (0.4,\y+0.45)--(11.6,\y+0.45);
+            \foreach \x in {1.5,10.5} {
+                \draw[fill=gray!40] (\x,\y+0.25) circle (0.28);
+                \draw[fill=white] (\x,\y+0.25) circle (0.10);
+            }
+            \node[font=\bfseries] at (2.2,\y+3.22) {\titulo};
+            \draw[very thick] (6,\y+3.55)--(5.25,\y+1.35);
+            \draw[densely dashed] (6,\y+3.55)--(6,\y+1.0);
+            \fill[blue!65] (5.25,\y+1.35) circle (0.20);
+            \draw[->,ultra thick,blue!70!black] (5.25,\y+1.35)--(5.92,\y+3.3)
+                node[midway,left] {$\vec T$};
+            \draw[->,ultra thick] (5.25,\y+1.35)--(5.25,\y+0.62)
+                node[right] {$m\vec g$};
+            \draw (6,\y+2.82) arc[start angle=-90,end angle=-109,radius=0.65];
+            \node[fill=orange!5,inner sep=1pt] at (5.73,\y+2.72) {$\theta$};
+        }
+        \draw[->,ultra thick,green!45!black] (8.2,7.15)--(10.4,7.15)
+            node[midway,above] {$\vec a$};
+        \draw[->,ultra thick,red!75!black] (5.25,1.35)--(4.0,1.35)
+            node[midway,above] {$-m\vec a$};
+    \end{tikzpicture}
+    \caption{La inclinación del péndulo tiene dos interpretaciones
+    equivalentes. En el marco inercial, la tensión produce la aceleración
+    horizontal; en el vagón se introduce la fuerza ficticia $-m\vec a$.}
+    \label{fig:pendulo-vagon}
+\end{figure}%
+}
