@@ -1,0 +1,31 @@
+\begin{figure}[H]
+    \centering
+    \definecolor{densityblue}{RGB}{35,105,180}
+    \begin{tikzpicture}[x=1.45cm,y=3.7cm,line cap=round,line join=round]
+        \draw[-latex,line width=0.8pt] (0,0) -- (4.45,0);
+        \draw[-latex,line width=0.8pt] (0,0) -- (0,1.12);
+        \draw[black!18] (1,0) -- (1,1.03);
+        \draw[black!18] (0,0.5) -- (4.30,0.5);
+
+        \draw[densityblue,line width=1.25pt,smooth]
+            plot coordinates {
+                (0,1) (0.25,0.86) (0.5,0.573) (0.75,0.328)
+                (1,0.177) (1.5,0.0525) (2,0.0179)
+                (2.5,0.0071) (3,0.0032) (3.5,0.0016) (4,0.00084)
+            };
+
+        \node[below] at (4.40,0) {$r/r_0$};
+        \node[left] at (0,1.08) {$\rho/\rho_0$};
+        \node[densityblue,align=left] at (2.55,0.68)
+            {$\displaystyle \frac{\rho(r)}{\rho_0}
+            =\left[1+\left(\frac{r}{r_0}\right)^2\right]^{-5/2}$};
+
+        \foreach \x in {1,2,3,4} {
+            \draw (\x,0.012) -- (\x,-0.012);
+            \node[below] at (\x,-0.01) {$\x$};
+        }
+        \node[left] at (0,0.5) {$0{,}5$};
+        \node[left] at (0,1) {$1$};
+    \end{tikzpicture}
+    \caption{Distribución normalizada de densidad obtenida en la parte (a) del problema 6.}
+\end{figure}
