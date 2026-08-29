@@ -1,56 +1,61 @@
 \newcommand{\figuraGravitacionContinua}{%
 \begin{figure}[H]
     \centering
-    \begin{tikzpicture}[>=Latex,font=\small]
-        \node[font=\bfseries] at (6.1,5.55)
-            {Campo gravitacional de una distribución continua};
+    \begin{tikzpicture}[>=Latex,font=\small,line cap=round,line join=round]
+        \coordinate (O) at (0.65,0.55);
+        \coordinate (S) at (4.25,3.55);
+        \coordinate (P) at (10.15,4.75);
 
         \draw[very thick,fill=blue!8]
             plot[smooth cycle,tension=0.75] coordinates {
-                (0.65,1.05) (1.25,3.80) (3.20,4.70)
-                (5.15,3.85) (5.55,1.55) (3.75,0.55)};
-        \node[blue!65!black] at (2.95,4.10) {$\rho(\vec{r}\,')$};
+                (1.55,1.15) (1.85,3.60) (3.45,4.65)
+                (5.35,4.15) (5.85,2.20) (4.70,0.90)
+                (2.65,0.65)};
+        \node[blue!65!black] at (3.45,4.15)
+            {$\rho(\vec r^{\,\prime})$};
 
         \foreach \x/\y in {
-            1.25/1.45,1.55/2.55,1.90/3.45,2.35/1.10,
-            2.55/2.30,2.90/3.20,3.30/1.55,3.65/2.65,
-            4.10/3.55,4.55/1.70,4.75/2.70}
+            2.05/1.45,2.20/2.65,2.70/3.55,2.85/1.05,
+            3.25/2.25,3.55/3.25,3.85/1.35,4.25/3.55,
+            4.55/2.35,5.05/3.35,5.20/1.65}
         {
             \shade[ball color=blue!60] (\x,\y) circle (0.075);
         }
 
-        \coordinate (S) at (3.65,2.65);
-        \coordinate (P) at (9.45,3.55);
-        \fill[red!75!black] (S) circle (0.10);
-        \fill[black] (P) circle (0.08);
-        \node[anchor=north,fill=blue!4,inner sep=2pt]
-            (dm) at (3.10,1.25)
-            {$dm=\rho(\vec{r}\,')\,d^3\vec{r}\,'$};
-        \draw[gray!70,thin] (dm.north east)--(S);
-        \node[anchor=south west] at ($(P)+(0.08,0.08)$)
-            {punto de campo $\vec{r}$};
+        \fill[black] (O) circle (0.07);
+        \node[anchor=north east] at (O) {$O$};
+        \fill[red!75!black] (S) circle (0.11);
+        \fill[black] (P) circle (0.09);
+        \node[anchor=south west] at ($(P)+(0.08,0.05)$)
+            {punto de campo};
 
-        \draw[->,very thick,red!75!black]
+        \draw[->,ultra thick,blue!65!black]
+            (O)--(S)
+            node[pos=0.52,above left] {$\vec r^{\,\prime}$};
+        \draw[->,ultra thick,black!75]
+            (O)--(P)
+            node[pos=0.66,below] {$\vec r$};
+        \draw[->,ultra thick,red!75!black]
             (S)--(P)
             node[midway,above,sloped]
-            {$\vec{r}-\vec{r}\,'$};
+            {$\vec r-\vec r^{\,\prime}$};
+
         \draw[->,ultra thick,green!45!black]
-            (P)--++(-1.55,-0.25)
-            node[midway,below] {$d\vec{g}$};
+            ($(P)+(0,-0.28)$)--++(-1.45,-0.30)
+            node[midway,below] {$d\vec g$};
 
-        \draw[->,thick] (0.20,0.25)--(1.25,0.25)
-            node[below] {$x$};
-        \draw[->,thick] (0.20,0.25)--(0.20,1.30)
-            node[left] {$y$};
+        \node[anchor=north,align=center] (dm) at (3.10,0.50)
+            {$dm=\rho(\vec r^{\,\prime})\,d^3\vec r^{\,\prime}$};
+        \draw[gray!70,thin] (dm.north east)--(S);
 
-        \node[align=center,text=black!70] at (8.85,2.15)
-            {superposición de las contribuciones\\
-             de todos los elementos de masa};
+        \node[align=center,text=black!70] at (8.40,1.30)
+            {El campo total se obtiene al sumar\\
+             las contribuciones de todos los $dm$.};
     \end{tikzpicture}
-    \caption{Cada elemento de masa de la distribución produce una
-    contribución diferencial al campo gravitacional. El campo total se
-    obtiene por superposición, integrando sobre todas las posiciones fuente
-    $\vec{r}\,'$.}
+    \caption{El vector $\vec r^{\,\prime}$ localiza el elemento de masa,
+    $\vec r$ localiza el punto de campo y su diferencia
+    $\vec r-\vec r^{\,\prime}$ une la
+    fuente con el punto donde se calcula la contribución $d\vec g$.}
     \label{fig:gravitacion-continua}
 \end{figure}%
 }

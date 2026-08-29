@@ -3,6 +3,8 @@
 \input{Clases/Figuras/FigurasClase6/Fig2}
 \input{Clases/Figuras/FigurasClase6/Fig3}
 \input{Clases/Figuras/FigurasClase6/Fig4}
+\input{Clases/Figuras/FigurasClase6/Fig5}
+\input{Clases/Figuras/FigurasClase6/Fig6}
 \shorthandon{<>}
 
 \chapter{Clase 6}
@@ -21,13 +23,79 @@ Los campos gravitacionales correspondientes son:
 $$ \vec{g} = \frac{\vec{F}_{M \to m}}{m} = - \frac{GM(\vec{r} - \vec{r}')}{|\vec{r} - \vec{r}'|^3} $$
 $$ \vec{g}(\vec{r}) = \frac{\vec{F}(\vec{r})}{m} = -G \int \frac{\rho(\vec{r}')(\vec{r} - \vec{r}')}{|\vec{r} - \vec{r}'|^3} d^3\vec{r}' $$
 
-Y los potenciales gravitacionales correspondientes son:
-$$ \Phi = - \frac{GM}{|\vec{r} - \vec{r}'|} $$
-$$ \Phi(\vec{r}) = -G \int \frac{\rho(\vec{r}')}{|\vec{r} - \vec{r}'|} d^3\vec{r}' $$
+Para obtener el potencial de forma explícita, definimos el vector de separación
+$$
+\vec{R}\equiv\vec{r}-\vec{r}',
+\qquad R=|\vec{R}|.
+$$
+El gradiente se toma respecto a la posición del punto de campo $\vec{r}$, mientras que $\vec{r}'$ permanece fija. Se cumple entonces
+$$
+\begin{aligned}
+\vec{\nabla}_{\!r}\left(\frac{1}{R}\right)
+&=\frac{d}{dR}\left(\frac{1}{R}\right)
+\vec{\nabla}_{\!r}R\\
+&=-\frac{1}{R^2}\frac{\vec R}{R}
+=-\frac{\vec{R}}{R^3}\\
+&=-\frac{\vec{r}-\vec{r}'}{|\vec{r}-\vec{r}'|^3}.
+\end{aligned}
+$$
+Por tanto, el campo de una masa puntual puede escribirse como el gradiente de una función escalar:
+$$
+\vec{g}(\vec{r})
+=-GM\frac{\vec{R}}{R^3}
+=GM\vec{\nabla}_{\!r}\left(\frac{1}{R}\right)
+=-\vec{\nabla}_{\!r}\left(-\frac{GM}{R}\right).
+$$
+Al comparar con la definición $\vec{g}=-\vec{\nabla}\Phi$, aparece naturalmente el potencial gravitacional
+$$
+\Phi(\vec{r})=-\frac{GM}{|\vec{r}-\vec{r}'|},
+$$
+donde se escogió $\Phi\to0$ cuando $|\vec{r}|\to\infty$. Aplicando el mismo procedimiento a todos los elementos de masa $dm=\rho(\vec{r}')\,d^3\vec{r}'$, se obtiene
+$$
+\vec{g}(\vec{r})
+=G\vec{\nabla}_{\!r}
+\int\frac{\rho(\vec{r}')}{|\vec{r}-\vec{r}'|}\,d^3\vec{r}'
+=-\vec{\nabla}_{\!r}\Phi(\vec{r}),
+$$
+con
+$$
+\Phi(\vec{r})
+=-G\int\frac{\rho(\vec{r}')}{|\vec{r}-\vec{r}'|}\,d^3\vec{r}'.
+$$
 
-El potencial gravitacional satisface la ecuación de Poisson:
-$$ \nabla^2 \Phi(\vec{r}) = 4\pi G \rho(\vec{r}) $$
-mientras que el campo gravitacional es irrotacional, $\nabla \times \vec{g} = 0$. La ecuación de Poisson describe el impacto local de un sistema autogravitante sobre su potencial gravitacional.
+Ahora aplicamos el laplaciano respecto a $\vec{r}$:
+$$
+\nabla_r^2\Phi(\vec{r})
+=-G\int \rho(\vec{r}')
+\nabla_r^2\left(\frac{1}{|\vec{r}-\vec{r}'|}\right)d^3\vec{r}'.
+$$
+Para $\vec{r}\neq\vec{r}'$, el laplaciano de $1/R$ se calcula en coordenadas esféricas centradas en $\vec r'$:
+$$
+\nabla_r^2\left(\frac{1}{R}\right)
+=\frac{1}{R^2}\frac{d}{dR}
+\left[R^2\frac{d}{dR}\left(\frac{1}{R}\right)\right]
+=\frac{1}{R^2}\frac{d}{dR}(-1)=0,
+\qquad R\neq0.
+$$
+Sin embargo, la función es singular en $R=0$. En el sentido de distribuciones, esta contribución se expresa mediante
+$$
+\nabla_r^2\left(\frac{1}{|\vec{r}-\vec{r}'|}\right)
+=-4\pi\delta^{(3)}(\vec{r}-\vec{r}').
+$$
+Esta identidad puede entenderse observando que el flujo de $\vec{\nabla}(1/R)$ a través de una esfera pequeña centrada en la singularidad es $-4\pi$. Al sustituirla en la integral,
+$$
+\begin{aligned}
+\nabla_r^2\Phi(\vec{r})
+&=4\pi G\int\rho(\vec{r}')
+\delta^{(3)}(\vec{r}-\vec{r}')\,d^3\vec{r}'\\
+&=4\pi G\rho(\vec{r}).
+\end{aligned}
+$$
+Así se obtiene la ecuación de Poisson:
+$$
+\boxed{\nabla^2\Phi(\vec{r})=4\pi G\rho(\vec{r})}.
+$$
+Esta ecuación afirma que la densidad de masa presente en cada punto actúa como fuente local de la curvatura del potencial gravitacional. En una región sin masa, $\rho=0$ y el potencial satisface la ecuación de Laplace, $\nabla^2\Phi=0$; donde sí hay materia, el potencial deja de ser armónico y su curvatura queda fijada por la densidad local. La forma completa de $\Phi$ depende además de la distribución global de masa y de las condiciones de frontera. Como $\vec{g}=-\vec{\nabla}\Phi$, el campo es automáticamente irrotacional: $\vec{\nabla}\times\vec{g}=0$.
 
 \figuraGravitacionContinua
 
@@ -52,7 +120,8 @@ mientras que el campo gravitacional es irrotacional, $\nabla \times \vec{g} = 0$
     
     Fuera de la losa ($|z| > a$):
     $$ \nabla \cdot \vec{g} = 0 \implies g(z) = \text{const} $$
-    Evaluando en la frontera $z=a$, obtenemos $\vec{g} = -2\pi G \rho a \text{sgn}(z) \hat{k}$.
+    La continuidad del campo en $z=\pm a$ fija esa constante. Evaluando la solución interior en la frontera, obtenemos
+    $$ \vec{g}(z) = -4\pi G \rho a\,\operatorname{sgn}(z)\,\hat{k}, \qquad |z|>a. $$
     
     La distribución de presión se obtiene del equilibrio hidrostático $\nabla p = \rho \vec{g}$:
     $$ \frac{dp}{dz} = -4\pi G \rho^2 z \implies p(z) = p(0) - 2\pi G \rho^2 z^2 \quad \text{para } |z| < a $$
@@ -64,6 +133,21 @@ mientras que el campo gravitacional es irrotacional, $\nabla \times \vec{g} = 0$
     
     El período de oscilación es:
     $$ T = \frac{2\pi}{\omega} = \sqrt{\frac{\pi}{G \rho}} $$
+
+    Para $\rho=10^{-18}\ \mathrm{kg\,m^{-3}}$ y $a=10^{18}\ \mathrm{m}$,
+    $$
+    \begin{aligned}
+    \omega&=\sqrt{4\pi G\rho}
+    \approx2.90\times10^{-14}\ \mathrm{s^{-1}},\\
+    v_{\max}&=a\omega
+    \approx2.90\times10^4\ \mathrm{m\,s^{-1}}
+    \approx29\ \mathrm{km\,s^{-1}},\\
+    T&\approx2.17\times10^{14}\ \mathrm{s}
+    \approx6.9\times10^6\ \text{años}.
+    \end{aligned}
+    $$
+
+    \figuraOsciladorLosa
 \end{enumerate}
 
 \medskip
@@ -87,12 +171,59 @@ Un cúmulo consiste inicialmente en estrellas en reposo, distribuidas en una esf
     (i) \textbf{Masa puntual:} La energía total es $E = -GMm/R_0$. Igualando a $E = \frac{1}{2}mv^2 - GMm/r$, obtenemos $v = -dr/dt = \sqrt{2GM}\sqrt{1/r - 1/R_0}$. Integrando desde $R_0$ hasta $0$ con el cambio de variable $r = R_0 \sin^2\theta$:
     $$ t = \int_0^{R_0} \frac{dr}{\sqrt{2GM}\sqrt{\frac{1}{r} - \frac{1}{R_0}}} = \frac{\pi}{2} \sqrt{\frac{R_0^3}{2GM}} $$
     
-    (ii) \textbf{Esfera uniforme de radio $R_0$:} La masa encerrada es $M(r) = M(r^3/R_0^3)$. La fuerza es $F = -\frac{GMm}{R_0^3}r$, lo que describe un oscilador armónico con $\omega^2 = GM/R_0^3$. El tiempo al centro es un cuarto del período:
-    $$ t = \frac{T}{4} = \frac{\pi}{2} \sqrt{\frac{R_0^3}{GM}} $$
-    
-    \textbf{Cúmulo de estrellas:} Para una estrella a una distancia $r_0$ del centro en un cúmulo uniforme de densidad $\rho$, la masa encerrada es $M(r_0) = \frac{4}{3}\pi \rho r_0^3$. El tiempo de caída es:
-    $$ t = \frac{\pi}{2} \sqrt{\frac{r_0^3}{G \frac{4}{3}\pi \rho r_0^3}} = \sqrt{\frac{3\pi}{32 G \rho}} $$
-    \textbf{Comentario:} El tiempo es independiente del radio inicial $r_0$. Todas las estrellas del cúmulo llegan al centro exactamente al mismo tiempo.
+    (ii) \textbf{Esfera uniforme de radio $R_0$:} Suponemos que la distribución uniforme permanece fija mientras cae la partícula. La densidad constante de la esfera es
+    $$
+    \rho=\frac{M}{\frac{4}{3}\pi R_0^3}.
+    $$
+    La masa encerrada dentro de un radio $r<R_0$ es entonces
+    $$
+    M(r)=\frac{4}{3}\pi r^3\rho
+    =M\frac{r^3}{R_0^3}.
+    $$
+    Por el teorema de las capas esféricas, solo esta masa encerrada contribuye a la fuerza sobre la partícula:
+    $$
+    m\frac{d^2r}{dt^2}
+    =-\frac{GmM(r)}{r^2}
+    =-\frac{GMm}{R_0^3}r.
+    $$
+    Al cancelar $m$ y definir
+    $$
+    \omega^2\equiv\frac{GM}{R_0^3},
+    $$
+    se obtiene la ecuación de un oscilador armónico simple,
+    $$
+    \frac{d^2r}{dt^2}+\omega^2r=0.
+    $$
+    Con las condiciones iniciales $r(0)=R_0$ y $\dot r(0)=0$, la solución es
+    $$
+    r(t)=R_0\cos(\omega t).
+    $$
+    La partícula llega al centro cuando $r=0$, es decir, cuando $\omega t=\pi/2$. Por tanto,
+    $$
+    t_{\mathrm{centro}}
+    =\frac{\pi}{2\omega}
+    =\frac{\pi}{2}\sqrt{\frac{R_0^3}{GM}}.
+    $$
+
+    \textbf{Cúmulo de estrellas:} En un cúmulo que colapsa, la distribución no permanece fija. Consideremos una capa estelar cuyo radio inicial es $r_0$. Mientras no se crucen las capas, la masa interior a esa capa permanece constante:
+    $$
+    M(r_0)=\frac{4}{3}\pi\rho r_0^3.
+    $$
+    Durante la caída, la capa obedece
+    $$
+    \frac{d^2r}{dt^2}=-\frac{GM(r_0)}{r^2},
+    $$
+    que tiene la misma forma que la caída hacia una masa puntual fija $M(r_0)$. Por ello se usa el resultado del caso (i), reemplazando $R_0$ por $r_0$ y $M$ por $M(r_0)$:
+    $$
+    \begin{aligned}
+    t_{\text{caída}}
+    &=\frac{\pi}{2}\sqrt{\frac{r_0^3}{2GM(r_0)}}\\
+    &=\frac{\pi}{2}\sqrt{
+    \frac{r_0^3}{2G\left(\frac{4}{3}\pi\rho r_0^3\right)}}\\
+    &=\sqrt{\frac{3\pi}{32G\rho}}.
+    \end{aligned}
+    $$
+    \textbf{Comentario:} El factor $r_0^3$ se cancela, por lo que el tiempo de caída es independiente del radio inicial. En el modelo ideal, todas las capas llegan simultáneamente al centro. Este resultado difiere del caso de la esfera rígida porque, durante el colapso del cúmulo, la densidad y la masa encerrada dentro del radio instantáneo $r$ no permanecen fijas.
 \end{enumerate}
 
 \medskip
@@ -118,24 +249,174 @@ $$
 
 \textbf{Solución.}
 \begin{enumerate}[a)]
-    \item La masa encerrada $M(r)$ y el campo gravitacional $g(r) = GM(r)/r^2$ son:
+    \item Para calcular el campo gravitacional se necesita la masa encerrada por una esfera de radio $r$. Cuando el punto se encuentra en la segunda capa, $a_1<r\leq a$, esa masa contiene dos contribuciones: todo el núcleo de densidad $\rho_1$ y únicamente la porción de la capa de densidad $\rho_2$ comprendida entre $a_1$ y $r$.
+
+    \figuraMasaPlanetaDosCapas
+
+    Por tanto, para $a_1<r\leq a$ se separa la integral en el cambio de densidad:
+    $$
+    \begin{aligned}
+    M(r)
+    &=\int_0^r4\pi r'^2\rho(r')\,dr'\\
+    &=\underbrace{\int_0^{a_1}4\pi r'^2\rho_1\,dr'}_{
+    \text{núcleo completo}}
+    +\underbrace{\int_{a_1}^{r}4\pi r'^2\rho_2\,dr'}_{
+    \text{parte encerrada de la segunda capa}}\\
+    &=\frac{4\pi}{3}\rho_1a_1^3
+    +\frac{4\pi}{3}\rho_2\left(r^3-a_1^3\right)\\
+    &=\frac{4\pi}{3}
+    \left[\rho_2r^3+(\rho_1-\rho_2)a_1^3\right].
+    \end{aligned}
+    $$
+    El término $r^3-a_1^3$ aparece porque el volumen de la porción utilizada de la segunda capa es la diferencia entre una esfera de radio $r$ y la esfera interior de radio $a_1$:
+    $$
+    V_{a_1<r'<r}=\frac{4\pi}{3}\left(r^3-a_1^3\right).
+    $$
+    La materia situada entre $r$ y $a$ no se incluye en $M(r)$ y, por el teorema de las capas esféricas, no produce campo neto en el punto de radio $r$.
+
+    En resumen, la masa encerrada es
+    $$
+    M(r)=\frac{4\pi}{3}
+    \begin{cases}
+    \rho_1r^3, & 0\leq r\leq a_1,\\[2mm]
+    \rho_1a_1^3+\rho_2\left(r^3-a_1^3\right),
+    & a_1<r\leq a.
+    \end{cases}
+    $$
+    Al sustituir esta expresión en $g(r)=GM(r)/r^2$, se obtiene
     $$ g(r) = \begin{cases} \frac{4}{3}\pi G \rho_1 r & r \le a_1 \\ \frac{4}{3}\pi G \left[ \rho_2 r + (\rho_1 - \rho_2)\frac{a_1^3}{r^2} \right] & a_1 < r \le a \end{cases} $$
     
-    El potencial $\Phi(r) = -\int_{\infty}^r g(r') dr'$ (exigiendo continuidad en $r=a_1$ y $r=a$):
-    $$ \Phi(r) = \begin{cases} -\frac{GM}{a} + \frac{2}{3}\pi G \rho_2 (a^2 - a_1^2) + \frac{4}{3}\pi G (\rho_1 - \rho_2) a_1^3 \left(\frac{1}{a_1} - \frac{1}{a}\right) + \frac{2}{3}\pi G \rho_1 (a_1^2 - r^2) & r \le a_1 \\ -\frac{GM}{a} + \frac{2}{3}\pi G \rho_2 (a^2 - r^2) + \frac{4}{3}\pi G (\rho_1 - \rho_2) a_1^3 \left(\frac{1}{r} - \frac{1}{a}\right) & a_1 < r \le a \\ -\frac{GM}{r} & r > a \end{cases} $$
+    Para evitar una ambigüedad de signos, denotemos por $g_{\mathrm{mag}}(r)>0$ la \emph{magnitud} del campo. Como el campo apunta hacia el centro,
+    $$
+    \vec g(r)=-g_{\mathrm{mag}}(r)\hat e_r.
+    $$
+    Por otra parte, $\vec g=-\vec\nabla\Phi=-(d\Phi/dr)\hat e_r$. Al comparar ambas expresiones se obtiene
+    $$
+    \frac{d\Phi}{dr}=g_{\mathrm{mag}}(r)>0.
+    $$
+    Integrando desde $r$ hasta el infinito y usando $\Phi(\infty)=0$,
+    $$
+    \Phi(\infty)-\Phi(r)
+    =\int_r^\infty g_{\mathrm{mag}}(s)\,ds,
+    \qquad\Longrightarrow\qquad
+    \Phi(r)=-\int_r^\infty g_{\mathrm{mag}}(s)\,ds.
+    $$
+    El signo negativo aparece porque $g_{\mathrm{mag}}$ es una magnitud positiva, no la componente radial del vector. Si se utilizara la componente radial $g_r=\vec g\cdot\hat e_r=-g_{\mathrm{mag}}<0$, la misma relación se escribiría de forma equivalente como
+    $$
+    \Phi(r)=\int_r^\infty g_r(s)\,ds,
+    $$
+    y el resultado seguiría siendo negativo.
+
+    Es importante distinguir entre la densidad local y el campo gravitacional. Para $s>a$ se cumple $\rho(s)=0$, lo cual significa que en esa región no hay masa que actúe como fuente local del campo. Sin embargo, toda la masa $M$ situada dentro del planeta continúa produciendo gravedad en los puntos exteriores. Por simetría esférica y por el teorema de las capas, desde el exterior el planeta actúa como una masa puntual concentrada en el centro; por eso,
+    $$
+    g_{\mathrm{mag}}(s)=\frac{GM}{s^2}, \qquad s>a.
+    $$
+    La integral que define $\Phi$ es una integral de la magnitud del campo $g_{\mathrm{mag}}(s)$, no de la densidad $\rho(s)$. Por esta razón, el tramo exterior no es cero, sino que aporta
+    $$
+    -\int_a^\infty\frac{GM}{s^2}\,ds
+    =-GM\left[-\frac{1}{s}\right]_a^\infty
+    =-\frac{GM}{a}.
+    $$
+    Que $\rho=0$ fuera del planeta implica $\nabla^2\Phi=0$ en esa región, pero no implica que $\Phi$ ni $\vec g$ sean nulos.
+
+    En particular, si $r<a_1$, la trayectoria de integración atraviesa las tres regiones y la integral se separa en sus fronteras:
+    $$
+    \begin{aligned}
+    \Phi(r)
+    &=-\left[
+    \int_r^{a_1}\frac{4\pi G}{3}\rho_1s\,ds
+    +\int_{a_1}^{a}\frac{4\pi G}{3}
+    \left(\rho_2s+(\rho_1-\rho_2)\frac{a_1^3}{s^2}\right)ds
+    +\int_a^\infty\frac{GM}{s^2}\,ds
+    \right]\\
+    &=-\frac{GM}{a}
+    -\frac{2\pi G}{3}\rho_2(a^2-a_1^2)
+    -\frac{4\pi G}{3}(\rho_1-\rho_2)a_1^3
+    \left(\frac{1}{a_1}-\frac{1}{a}\right)
+    -\frac{2\pi G}{3}\rho_1(a_1^2-r^2).
+    \end{aligned}
+    $$
+    Los demás intervalos se calculan de manera análoga, omitiendo las regiones que no atraviesa la integral. El resultado completo es
+    $$
+    \Phi(r)=
+    \begin{cases}
+    \begin{aligned}
+    -\dfrac{GM}{a}
+    &-\dfrac{2\pi G}{3}\rho_2(a^2-a_1^2)\\
+    &-\dfrac{4\pi G}{3}(\rho_1-\rho_2)a_1^3
+    \left(\dfrac{1}{a_1}-\dfrac{1}{a}\right)
+    -\dfrac{2\pi G}{3}\rho_1(a_1^2-r^2)
+    \end{aligned}
+    & r\leq a_1,\\[3mm]
+    \begin{aligned}
+    -\dfrac{GM}{a}
+    &-\dfrac{2\pi G}{3}\rho_2(a^2-r^2)\\
+    &-\dfrac{4\pi G}{3}(\rho_1-\rho_2)a_1^3
+    \left(\dfrac{1}{r}-\dfrac{1}{a}\right)
+    \end{aligned}
+    & a_1<r\leq a,\\[3mm]
+    -\dfrac{GM}{r}, & r>a.
+    \end{cases}
+    $$
     donde $M = \frac{4}{3}\pi [\rho_1 a_1^3 + \rho_2(a^3 - a_1^3)]$.
 
-    \item Evaluamos la gravedad en la frontera $r=a_1$ y en la superficie $r=a$:
-    $$ g(a_1) = \frac{4}{3}\pi G \rho_1 a_1 $$
-    $$ g(a) = \frac{GM}{a^2} = \frac{4}{3}\pi G \frac{\rho_1 a_1^3 + \rho_2(a^3 - a_1^3)}{a^2} $$
-    
-    Imponemos $g(a_1) > g(a)$:
-    $$ \rho_1 a_1 > \rho_1 \frac{a_1^3}{a^2} + \rho_2 \frac{a^3 - a_1^3}{a^2} $$
-    $$ \rho_1 a_1 \left(1 - \frac{a_1^2}{a^2}\right) > \rho_2 a \left(1 - \frac{a_1^3}{a^3}\right) $$
-    Factorizando las diferencias de cuadrados y cubos, y dividiendo por $(a-a_1)$:
-    $$ \rho_1 a_1 \frac{a+a_1}{a} > \rho_2 \frac{a^2+aa_1+a_1^2}{a} $$
-    Reorganizando para aislar las densidades:
-    $$ \frac{\rho_1}{\rho_2} > \frac{a^2+aa_1+a_1^2}{a_1(a+a_1)} = \frac{a^2}{a_1(a+a_1)} + 1 \implies \frac{\rho_1 - \rho_2}{\rho_2} > \frac{a^2}{a_1(a+a_1)} $$
+    \item Evaluamos la gravedad en la frontera $r=a_1$ y en la superficie
+    $r=a$ sustituyendo directamente en las expresiones correspondientes de
+    $g(r)$. Para la frontera se usa la expresión del núcleo:
+    $$
+    g(a_1)=\frac{4\pi G}{3}\rho_1a_1.
+    $$
+    Para la superficie se sustituye $r=a$ en la expresión válida en la segunda
+    capa:
+    $$
+    \begin{aligned}
+    g(a)
+    &=\frac{4\pi G}{3}
+    \left[\rho_2a+(\rho_1-\rho_2)\frac{a_1^3}{a^2}\right].
+    \end{aligned}
+    $$
+
+    Imponiendo $g(a_1)>g(a)$ y cancelando el factor positivo $4\pi G/3$,
+    $$
+    \rho_1a_1>
+    \rho_2a+(\rho_1-\rho_2)\frac{a_1^3}{a^2}.
+    $$
+    Multiplicando por $a^2$ y reuniendo por separado los términos que contienen
+    $\rho_1$ y $\rho_2$,
+    $$
+    \rho_1a_1(a^2-a_1^2)>
+    \rho_2(a^3-a_1^3).
+    $$
+    Factorizando ambas diferencias y cancelando $a-a_1>0$,
+    $$
+    \rho_1a_1(a+a_1)>
+    \rho_2(a^2+aa_1+a_1^2).
+    $$
+    Finalmente,
+    $$
+    \frac{\rho_1}{\rho_2}>
+    \frac{a^2+aa_1+a_1^2}{a_1(a+a_1)}
+    =1+\frac{a^2}{a_1(a+a_1)},
+    $$
+    donde se utilizó que el numerador puede escribirse como
+    $$
+    a^2+aa_1+a_1^2
+    =a^2+a_1(a+a_1).
+    $$
+    Por tanto, al separar la fracción,
+    $$
+    \frac{a^2+a_1(a+a_1)}{a_1(a+a_1)}
+    =\frac{a^2}{a_1(a+a_1)}
+    +\frac{a_1(a+a_1)}{a_1(a+a_1)}
+    =\frac{a^2}{a_1(a+a_1)}+1.
+    $$
+    de donde se obtiene
+    $$
+    \boxed{
+    \frac{\rho_1-\rho_2}{\rho_2}>
+    \frac{a^2}{a_1(a+a_1)}
+    }.
+    $$
     
     \textbf{Verificación para la Tierra:} Con $a \approx 6371$ km, $a_1 \approx 3480$ km, $\rho_1 \approx 11$ g/cm$^3$ (núcleo) y $\rho_2 \approx 4.5$ g/cm$^3$ (manto):
     $$ \text{LHS} = \frac{11 - 4.5}{4.5} \approx 1.44 $$

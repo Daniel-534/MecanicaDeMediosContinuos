@@ -1,0 +1,55 @@
+\newcommand{\figuraOsciladorLosa}{%
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small,line cap=round,line join=round]
+        \node[font=\bfseries\small] at (2.75,5.15)
+            {(a) Movimiento en la losa};
+
+        \fill[blue!10] (0.75,1.20) rectangle (5.20,4.40);
+        \draw[very thick] (0.75,1.20)--(5.20,1.20);
+        \draw[very thick] (0.75,4.40)--(5.20,4.40);
+        \draw[dashed,thick] (0.75,2.80)--(5.20,2.80);
+        \node[anchor=east] at (0.68,4.40) {$z=a$};
+        \node[anchor=east] at (0.68,2.80) {$z=0$};
+        \node[anchor=east] at (0.68,1.20) {$z=-a$};
+        \node[blue!65!black] at (1.35,3.95) {$\rho$};
+
+        \draw[->,thick] (0.38,0.90)--(0.38,4.75) node[above] {$z$};
+        \draw[densely dashed,very thick,red!70!black]
+            (3.05,4.20)--(3.05,1.40);
+        \fill[red!75!black] (3.05,4.20) circle (0.13);
+        \fill[red!75!black] (3.05,2.80) circle (0.13);
+        \fill[red!75!black] (3.05,1.40) circle (0.13);
+        \node[anchor=west] at (3.25,4.20) {parte del reposo};
+        \node[anchor=north west] at (3.25,2.72) {velocidad máxima};
+
+        \draw[->,ultra thick,green!45!black]
+            (2.55,3.95)--(2.55,3.25) node[midway,left] {$\vec g$};
+        \draw[->,ultra thick,green!45!black]
+            (2.55,1.65)--(2.55,2.35) node[midway,left] {$\vec g$};
+        \node[align=center] at (2.95,0.55)
+            {$\ddot z+\omega^2z=0$,\qquad
+             $\omega=\sqrt{4\pi G\rho}$};
+
+        \node[font=\bfseries\small] at (9.35,5.15)
+            {(b) Evolución temporal};
+        \draw[->,thick] (6.45,2.80)--(11.85,2.80) node[right] {$t$};
+        \draw[->,thick] (6.70,1.05)--(6.70,4.75) node[above left] {$z$};
+        \draw[red!75!black,very thick,domain=0:6.28,samples=120]
+            plot ({6.70+0.76*\x},{2.80+1.30*cos(\x r)});
+        \draw[dashed] (7.89,1.20)--(7.89,4.18);
+        \node[anchor=north] at (7.89,2.66) {$T/4$};
+        \node[anchor=east] at (6.62,4.10) {$a$};
+        \node[anchor=east] at (6.62,1.50) {$-a$};
+        \node[red!70!black] at (9.55,4.35)
+            {$z(t)=a\cos(\omega t)$};
+        \node[align=center] at (9.20,0.55)
+            {La estrella cruza el plano medio\\
+             después de un cuarto de período.};
+    \end{tikzpicture}
+    \caption{Dentro de la losa, el campo gravitacional es proporcional a
+    $-z$ y siempre apunta hacia el plano medio. La estrella realiza un
+    movimiento armónico simple entre $z=a$ y $z=-a$.}
+    \label{fig:oscilador-losa}
+\end{figure}%
+}
