@@ -1,0 +1,290 @@
+\shorthandoff{<>}
+\input{Clases/Figuras/FigurasClase9/Fig1}
+\input{Clases/Figuras/FigurasClase9/Fig2}
+\input{Clases/Figuras/FigurasClase9/Fig3}
+\input{Clases/Figuras/FigurasClase9/Fig4}
+\input{Clases/Figuras/FigurasClase9/Fig5}
+\input{Clases/Figuras/FigurasClase9/Fig6}
+\input{Clases/Figuras/FigurasClase9/Fig7}
+\input{Clases/Figuras/FigurasClase9/Fig8}
+\input{Clases/Figuras/FigurasClase9/Fig9}
+\input{Clases/Figuras/FigurasClase9/Fig10}
+\input{Clases/Figuras/FigurasClase9/Fig11}
+\input{Clases/Figuras/FigurasClase9/Fig12}
+\input{Clases/Figuras/FigurasClase9/Fig13}
+\shorthandon{<>}
+
+\chapter{Clase 9}
+
+\section{El sistema Tierra--Luna y el origen de las mareas}
+
+Después de Newton sabemos que la gravedad lunar actúa sobre todo lo que hay en la Tierra, incluido el agua de los océanos, y tiende a deformarla, creando así las mareas. Sin embargo, las mareas altas ocurren aproximadamente al mismo tiempo en puntos antipodales de la Tierra y, por tanto, dos veces al día. Por esta razón, la explicación no puede ser simplemente que la Luna “jala” el mar hacia sí misma.
+
+La rotación de la Tierra, junto con el movimiento orbital de la Tierra y de la Luna alrededor de su centro de masa común, hace que las mareas sean un fenómeno esencialmente dinámico que no puede tratarse con exactitud mediante los métodos puramente hidrostáticos usados en capítulos anteriores. No obstante, varias características básicas pueden comprenderse mediante aproximaciones simples y con una formulación cuidadosa.
+
+La Tierra y la Luna orbitan alrededor de su centro de masa común $C$, situado dentro de la Tierra. El origen del sistema de coordenadas que se empleará a continuación se coloca en el centro terrestre $O$, mientras que el eje principal apunta hacia el centro lunar.
+
+\figuraGeometriaTierraLuna
+
+\section{El campo de marea}
+
+La Luna no es exactamente esférica, pero es lo suficientemente pequeña y lejana como para que su potencial gravitacional sobre la Tierra pueda aproximarse mediante el potencial de una masa puntual $m$ situada en la posición lunar $\vec{x}_0$:
+$$ \Phi(\vec{x}) = -\frac{Gm}{|\vec{x}-\vec{x}_0|}. $$
+
+Se elige un sistema de coordenadas con origen en el centro de la Tierra y eje $z$ apuntando hacia la Luna. Entonces
+$$ \vec{x}_0 = (0,0,D), $$
+donde $D = |\vec{x}_0|$ es la distancia Tierra-Luna.
+
+Para puntos con $r = |\vec{x}| \ll D$, el potencial puede expandirse en potencias de $r/D$. Usando
+$$ |\vec{x}-\vec{x}_0| = \sqrt{x^2 + y^2 + (z-D)^2} = D\sqrt{1 - \frac{2z}{D} + \frac{r^2}{D^2}}, $$
+y expandiendo mediante la serie binomial hasta segundo orden,
+$$ \frac{1}{|\vec{x}-\vec{x}_0|} = \frac{1}{D}\left(1 - \frac{2z}{D} + \frac{r^2}{D^2}\right)^{-1/2} \approx \frac{1}{D}\left[1 + \frac{z}{D} + \frac{3z^2 - r^2}{2D^2}\right]. $$
+
+El primer término da una constante $-Gm/D$, que puede omitirse porque no produce fuerzas. El segundo término corresponde a un campo uniforme que mantiene a la Tierra en órbita, con $g_z = Gm/D^2 \approx 33\ \mu\mathrm{m/s^2}$, y también se descarta cuando se consideran únicamente los efectos diferenciales, es decir, los efectos de marea. El término no trivial dominante es la contribución cuadrupolar, que define el potencial de marea:
+$$ \Phi_{\mathrm{tidal}} = -\frac{Gm}{D^3}\frac{1}{2}(3z^2 - r^2). $$
+
+En coordenadas esféricas $(r,\theta,\phi)$, con $\theta$ medido desde el eje que apunta hacia la Luna, $z = r\cos\theta$, por lo que
+$$ \Phi_{\mathrm{tidal}} = -\frac{1}{2}(3\cos^2\theta - 1)\frac{Gm}{D^3}r^2. $$
+
+La aceleración de marea es el gradiente del potencial de marea. En coordenadas esféricas,
+$$ g_r = -\frac{\partial \Phi_{\mathrm{tidal}}}{\partial r} = (3\cos^2\theta - 1)\frac{Gm}{D^3}r, $$
+$$ g_\theta = -\frac{1}{r}\frac{\partial \Phi_{\mathrm{tidal}}}{\partial \theta} = -\frac{3}{2}\sin 2\theta\,\frac{Gm}{D^3}r, $$
+$$ g_\phi = 0. $$
+
+La componente radial es máxima en $\theta = 0^\circ$ y $\theta = 180^\circ$, es decir, en el punto sublunar y en el punto antilunar, y es mínima en $\theta = 90^\circ$, donde es negativa y tiene la mitad de magnitud. La componente tangencial es máxima en magnitud en $\theta = 45^\circ$ y $\theta = 135^\circ$. En la superficie terrestre, la aceleración radial máxima de marea tiene magnitud
+$$ 2a\frac{Gm}{D^3} \approx 1.1\ \mu\mathrm{m/s^2}, $$
+donde $a$ es el radio terrestre.
+
+La diferencia esencial entre la gravedad lunar y el campo de marea se aprecia al restar, en todos los puntos de la Tierra, la aceleración lunar que experimenta su centro. La parte uniforme desaparece y queda únicamente la variación espacial del campo.
+
+\figuraCampoMarea
+
+\section{Respuesta hidrostática idealizada}
+
+\subsection{Superficie equipotencial y altura de marea}
+
+Si la Tierra no rotara y la Luna estuviera fija sobre un punto dado, el agua fluiría hasta llenar los “valles” efectivos creados por el potencial de marea, y el mar alcanzaría un equilibrio con su superficie libre situada a potencial gravitacional total constante. El potencial total cerca de la superficie terrestre puede escribirse como
+$$ \Phi = \Phi_{\oplus} + \Phi_{\mathrm{Moon}} = g_0 h - \frac{1}{2}(3\cos^2\theta - 1)\left(\frac{a}{D}\right)^2\frac{Gm}{D}, $$
+donde $g_0$ es la gravedad superficial terrestre y $h$ representa una pequeña altura, con signo, respecto a la superficie esférica media.
+
+Imponiendo que este potencial sea constante se obtiene la altura de marea
+$$ h = h_0 + \frac{1}{2}(3\cos^2\theta - 1)\left(\frac{a}{D}\right)^2\frac{Gm}{g_0D}, $$
+donde $h_0$ es una constante. Como el promedio sobre la esfera del término angular se anula, $h_0$ corresponde a la profundidad media del agua.
+
+En efecto, el promedio del término angular es cero:
+$$ \frac{1}{4\pi}\int_0^\pi d\theta \int_0^{2\pi} d\phi\,\sin\theta\,(3\cos^2\theta - 1) = \frac{1}{2}\int_{-1}^{1}(3u^2 - 1)\,du = 0. $$
+
+Por tanto, la forma de la superficie equipotencial correspondiente puede escribirse, respecto al nivel medio, como
+$$ h(\theta) = \frac{1}{2}(3\cos^2\theta - 1)\left(\frac{a}{D}\right)^2\frac{Gm}{g_0D}. $$
+
+Esta expresión muestra que hay dos protuberancias de marea: una en el punto sublunar, $\theta = 0$, y otra en el punto antilunar, $\theta = \pi$. En el ecuador respecto al eje Tierra-Luna, $\theta = 90^\circ$, la altura de marea es negativa.
+
+\figuraProtuberanciasMarea
+
+\subsection{Rango de marea}
+
+La diferencia máxima entre marea alta y marea baja, llamada rango de marea, ocurre entre las posiciones extremas $\theta = 0^\circ$ y $\theta = 90^\circ$. Usando la expresión anterior,
+$$ H_0 = \frac{3}{2}\left(\frac{a}{D}\right)^2\frac{Gm}{g_0D}. $$
+
+Empleando $g_0 = GM/a^2$, donde $M$ es la masa de la Tierra y $m$ la masa de la Luna, también puede escribirse como
+$$ H_0 = \frac{3}{2}\frac{m}{M}\left(\frac{a}{D}\right)^3 a. $$
+
+Insertando los valores correspondientes a la Luna se obtiene
+$$ H_0 \approx 54\ \mathrm{cm}. $$
+
+El rango de marea producido por el Sol resulta ser aproximadamente la mitad, cerca de $25\ \mathrm{cm}$.
+
+\subsection{Mareas vivas y mareas muertas}
+
+Cuando el Sol, la Tierra y la Luna están aproximadamente alineados, durante la Luna nueva o la Luna llena, las contribuciones solar y lunar se refuerzan y producen \emph{mareas vivas}. En los cuartos creciente y menguante, las direcciones Tierra--Sol y Tierra--Luna son aproximadamente perpendiculares; las contribuciones se compensan parcialmente y producen \emph{mareas muertas}. Con los valores ideales anteriores, el rango de las mareas vivas es casi tres veces el de las mareas muertas.
+
+\figuraMareasVivasMuertas
+
+Para que las mareas alcancen su altura completa, el agua debe desplazarse desde regiones muy extensas de la Tierra, como se aprecia en la forma poco profunda del potencial de marea. Donde esto no es posible, por ejemplo en lagos y mares cerrados, el rango de marea observado es mucho menor que en océanos abiertos. La geografía local también puede influir notablemente. En bahías y desembocaduras de ríos, el efecto de embudo puede amplificar las mareas hasta valores grandes; se han medido mareas vivas de hasta $15\ \mathrm{m}$ en la bahía de Fundy, en Canadá.
+
+\section{Ejercicios resueltos sobre mareas}
+
+\subsection{Ejercicio 1: efecto de la presión atmosférica}
+
+\textbf{Enunciado.} Estime el cambio del nivel del mar si la presión atmosférica local aumenta en $\Delta p = 20\ \mathrm{hPa}$ y permanece así, despreciando la tensión superficial.
+
+\textbf{Solución breve.} En equilibrio hidrostático, la presión justo debajo de la superficie libre debe coincidir con la presión atmosférica local. Si la presión atmosférica aumenta localmente en $\Delta p$, la superficie libre debe bajar para compensar ese exceso de presión. La compensación hidrostática es
+$$ \rho g\,\Delta h = -\Delta p, $$
+de modo que
+$$ \Delta h = -\frac{\Delta p}{\rho g}. $$
+
+Tomando $\rho \approx 1025\ \mathrm{kg/m^3}$ para agua de mar y $g \approx 9.81\ \mathrm{m/s^2}$, con $\Delta p = 20\ \mathrm{hPa} = 2.0\times 10^3\ \mathrm{Pa}$,
+$$ \Delta h \approx -\frac{2.0\times 10^3}{1025 \times 9.81}\ \mathrm{m} \approx -0.20\ \mathrm{m}. $$
+
+Por tanto, un aumento local de $20\ \mathrm{hPa}$ en la presión atmosférica deprime el nivel del mar aproximadamente $20\ \mathrm{cm}$. Si solo se pide la magnitud del cambio, este es de cerca de $20\ \mathrm{cm}$.
+
+\subsection{Ejercicio 2: masa de las protuberancias de marea}
+
+\textbf{Enunciado.} Las mareas elevan el agua por encima del nivel medio en las posiciones de la Luna y de la anti-Luna. ¿Cuánta agua se encuentra en cada una de estas protuberancias de marea?
+
+\textbf{Solución breve.} La altura de marea de equilibrio respecto al nivel medio puede escribirse como
+$$ h(\theta) = \frac{H}{2}(3\cos^2\theta - 1), $$
+donde
+$$ H = \left(\frac{a}{D}\right)^2\frac{Gm}{g_0D}. $$
+
+El rango de marea dado en el texto es
+$$ H_0 = \frac{3}{2}H, $$
+por lo que
+$$ H = \frac{2}{3}H_0. $$
+
+La protuberancia existe donde $h(\theta) > 0$, es decir, donde
+$$ 3\cos^2\theta - 1 > 0, $$
+o sea
+$$ |\cos\theta| > \frac{1}{\sqrt{3}}. $$
+
+Para una de las protuberancias, por ejemplo la centrada en $\theta = 0$, el volumen de agua por encima del nivel medio es
+$$ V_{\mathrm{bulge}} = a^2 \int_0^{\theta_0} h(\theta)\,2\pi\sin\theta\,d\theta, $$
+donde
+$$ \theta_0 = \arccos\left(\frac{1}{\sqrt{3}}\right). $$
+
+Haciendo $\mu = \cos\theta$, $d\mu = -\sin\theta\,d\theta$, se obtiene
+$$ V_{\mathrm{bulge}} = \pi a^2 H \int_{1/\sqrt{3}}^1 (3\mu^2 - 1)\,d\mu. $$
+
+La integral es
+$$ \int (3\mu^2 - 1)\,d\mu = \mu^3 - \mu. $$
+
+Evaluando entre $\mu = 1/\sqrt{3}$ y $\mu = 1$,
+$$ \left[\mu^3 - \mu\right]_{1/\sqrt{3}}^1 = 0 - \left(\frac{1}{3\sqrt{3}} - \frac{1}{\sqrt{3}}\right) = \frac{2}{3\sqrt{3}}. $$
+
+Por tanto,
+$$ V_{\mathrm{bulge}} = \frac{2\pi}{3\sqrt{3}}a^2H. $$
+
+Usando $H = \frac{2}{3}H_0$,
+$$ V_{\mathrm{bulge}} = \frac{4\pi}{9\sqrt{3}}a^2H_0. $$
+
+Con $a \approx 6.37\times 10^6\ \mathrm{m}$ y $H_0 \approx 0.54\ \mathrm{m}$,
+$$ V_{\mathrm{bulge}} \approx 1.8\times 10^{13}\ \mathrm{m^3}. $$
+
+La masa correspondiente es aproximadamente
+$$ M_{\mathrm{bulge}} \approx \rho V_{\mathrm{bulge}} \approx 1.8\times 10^{16}\ \mathrm{kg}, $$
+tomando $\rho \approx 1000\ \mathrm{kg/m^3}$. Así, cada protuberancia de marea contiene, en este modelo de equilibrio, del orden de $10^{16}\ \mathrm{kg}$ de agua. Las dos protuberancias juntas contienen aproximadamente $3.5\times 10^{16}\ \mathrm{kg}$.
+
+Este valor es una estimación de equilibrio para un océano global idealizado; en la Tierra real, la presencia de continentes, la rotación terrestre y la dinámica oceánica reducen y modifican notablemente las protuberancias reales.
+
+\section{Flotación y principio de Arquímedes}
+
+\subsection{Fuerza de flotación}
+
+La fuerza externa sobre un elemento de volumen dentro de un fluido es
+$$ \vec{F}_e = \int_V \vec{f}_e\,dV, $$
+y la fuerza de flotación debida a la presión que actúa sobre su superficie es
+$$ \vec{F}_p = -\oint_S p\,d\vec{S} = -\oint_S p\,\hat{n}\,dS. $$
+Si la fuerza total $\vec{F} = \vec{F}_e + \vec{F}_p$ no se anula, un cuerpo no restringido acelerará en la dirección de $\vec{F}$ de acuerdo con la segunda ley de Newton. Por lo tanto, en equilibrio mecánico, el peso y la flotación deben cancelarse precisamente en todo instante para garantizar que el cuerpo permanezca en su lugar.
+
+Esta ecuación para la fuerza neta de presión se cumple tanto si la región está ocupada por un fluido como si está ocupada por algún otro cuerpo. En equilibrio, el volumen de fluido está en reposo, de modo que $\vec{F}_p + \vec{F}_e = \vec{0}$.
+
+Si la fuerza externa es la gravedad, $\vec{F}_e = \int_V \rho\,\vec{g}\,dV$, entonces se sigue el principio de Arquímedes (véase la Figura~\ref{fig:principio-arquimedes}): la fuerza de flotación es igual y opuesta al peso del fluido desplazado. Es decir,
+$$ \vec{F}_B = -\int_V \rho_{\mathrm{fluid}}\,\vec{g}\,dV. $$
+
+Si un cuerpo sumergido en el fluido tiene un peso mayor que el peso del fluido desplazado, se hunde; en caso contrario, flota. La fuerza total sobre el cuerpo puede escribirse ahora como
+$$ \vec{F} = \vec{F}_G + \vec{F}_B = \int_V \left(\rho_{\mathrm{body}} - \rho_{\mathrm{fluid}}\right)\vec{g}\,dV, $$
+lo cual confirma explícitamente que cuando el cuerpo está hecho del mismo fluido que el entorno —es decir, $\rho_{\mathrm{body}} = \rho_{\mathrm{fluid}}$— la fuerza resultante se anula automáticamente. En general, sin embargo, las distribuciones de masa en el cuerpo y en el fluido desplazado son diferentes.
+
+\figuraPrincipioArquimedes
+
+\subsection{Derivación mediante un elemento cilíndrico}
+
+Una derivación equivalente del principio de Arquímedes se sigue de considerar un pequeño cilindro vertical de altura $L$ y área de base $A$ dentro de un fluido. La presión sobre la cara inferior ($p_2$) es mayor que la presión sobre la cara superior ($p_1$), lo cual produce una fuerza neta ascendente $F = (p_2 - p_1)A$. Usando la relación hidrostática $p_2 - p_1 = \rho g L$, se obtiene
+$$ F = \rho g(AL) = \rho g V = mg, $$
+que es el peso del líquido desplazado (puesto que $\rho$ es la densidad del fluido y $V = AL$ es el volumen desplazado).
+
+\figuraCilindroArquimedes
+
+\subsection{Aplicaciones astrofísicas}
+
+Una de las aplicaciones más importantes del principio de Arquímedes es la convección estelar. En los interiores estelares, si un elemento de fluido es desplazado hacia arriba y es menos denso que el entorno, experimenta una fuerza de flotación que lo acelera aún más hacia arriba. Este mecanismo impulsa el transporte convectivo de energía en las regiones donde el gradiente de temperatura excede el gradiente adiabático.
+
+Una aplicación relacionada es el estudio de la estabilidad de atmósferas estratificadas, tanto en estrellas como en atmósferas planetarias. Pequeños desplazamientos verticales de elementos de fluido conducen a fuerzas restauradoras o amplificadoras dependiendo de la estratificación de densidad. En la aproximación incompresible y tomando $z$ positivo hacia arriba, esto se cuantifica mediante la frecuencia de Brunt--Väisälä,
+$$ N^2 = -\frac{g}{\rho}\frac{d\rho}{dz}, $$
+que determina si el medio es estable ($N^2 > 0$) o inestable ($N^2 < 0$) frente a perturbaciones de flotación.
+
+El principio de Arquímedes también es central para comprender las burbujas y cavidades en plasmas astrofísicos, como las observadas en cúmulos de galaxias. En estos sistemas, las regiones llenas de plasma relativista (por ejemplo, provenientes de núcleos galácticos activos) son menos densas que el medio intracluster circundante y ascienden por flotación, transportando energía y redistribuyendo material.
+
+Otra aplicación aparece en los discos protoplanetarios y de acreción, donde la estratificación vertical conduce a fuerzas de flotación que influyen en la turbulencia y la mezcla. Las fuerzas de flotación también pueden desempeñar un papel en la sedimentación del polvo y en la estructura vertical del disco.
+
+Finalmente, la flotación es importante en las supernovas de colapso de núcleo y en las estrellas de neutrones, donde la convección impulsada por gradientes de entropía y de composición afecta la dinámica, el transporte de neutrinos y la evolución global del sistema.
+
+En todos estos contextos, el principio de Arquímedes proporciona la base física para entender cómo las diferencias de densidad en un campo gravitacional conducen a movimiento, inestabilidad y transporte de energía en fluidos astrofísicos.
+
+\subsection{Hidrómetro}
+
+Un hidrómetro es un instrumento utilizado para medir la gravedad específica $S=\rho/\rho_{\mathrm{water}}$ de los líquidos y opera según el principio de flotación. El peso específico se denota por $\gamma=\rho g$. En la Figura~\ref{fig:hidrometro-comparacion} se muestra un esquema. La parte superior (el vástago) tiene un diámetro constante. Cuando se coloca en agua pura, la escala está marcada para indicar $S=1.0$. El balance de fuerzas es
+$$ W = \gamma_{\mathrm{water}} V, $$
+donde $W$ es el peso del hidrómetro y $V$ es el volumen sumergido por debajo de la línea $S = 1.0$.
+
+\figuraHidrometroComparacion
+
+En un líquido desconocido de peso específico $\gamma_x$, un balance de fuerzas da
+$$ W = \gamma_x (V - A\,\Delta h), $$
+donde $A$ es el área de la sección transversal del vástago. Igualando estas expresiones se obtiene
+$$ \Delta h = \frac{V}{A}\left(1 - \frac{1}{S_x}\right), $$
+donde $S_x = \gamma_x/\gamma_{\mathrm{water}}$ es la gravedad específica del líquido desconocido relativa al agua. Para un hidrómetro dado, $V$ y $A$ son fijos, por lo que $\Delta h$ depende solo de $S_x$; así, el vástago puede calibrarse para leer directamente $S_x$. Los hidrómetros se utilizan, por ejemplo, para medir la cantidad de anticongelante en el radiador de un automóvil o la carga de una batería de plomo-ácido, ya que la densidad del fluido cambia conforme el $\mathrm{H_2SO_4}$ es consumido o producido.
+
+\subsection{Preguntas conceptuales resueltas}
+
+\begin{enumerate}
+\item \textbf{Globo aerostático.} El aire se calienta para reducir su densidad. Como el globo está abierto en la parte inferior, la presión dentro y fuera es prácticamente la misma, pero el aire caliente es menos denso que el aire circundante, de modo que el peso del aire desplazado excede el peso total del globo y su contenido, produciendo una fuerza neta ascendente. El aeronauta controla el ascenso y el descenso variando el calor del quemador (que cambia la temperatura y, por tanto, la densidad del aire interior) y también puede liberar aire caliente o abrir una válvula para descender.
+
+\item \textbf{Esfera de aluminio en un ascensor.} No, la esfera no flotará. En el marco del ascensor, que acelera hacia arriba con aceleración $a$, la gravedad efectiva tiene magnitud $g_{\mathrm{eff}}=g+a$. La flotación es $\rho_{\mathrm{water}}Vg_{\mathrm{eff}}$ y el peso efectivo es $\rho_{\mathrm{Al}}Vg_{\mathrm{eff}}$. Ambas fuerzas se multiplican por el mismo factor, por lo que su razón no cambia. Como $\rho_{\mathrm{Al}}>\rho_{\mathrm{water}}$, la esfera continúa hundiéndose.
+
+\item \textbf{Dirigible de helio.} Un dirigible rígido lleno de helio no puede ascender indefinidamente porque, a medida que asciende, la densidad del aire circundante disminuye. La fuerza de flotación es $\rho_{\mathrm{air}} V g$, y como $V$ es fijo (dirigible rígido), la flotación disminuye con la altitud. El dirigible alcanza su altura máxima cuando la flotación se iguala exactamente con su peso, momento en el cual la fuerza neta es cero y el dirigible deja de ascender.
+
+\item \textbf{Madera flotante frente a hierro sumergido.} La pieza de hierro experimenta una mayor fuerza de flotación. La flotación es igual al peso del fluido desplazado. La pieza de madera de $25\ \mathrm{cm^3}$ flota parcialmente sumergida, por lo que desplaza menos de $25\ \mathrm{cm^3}$ de agua. La pieza de hierro de $25\ \mathrm{cm^3}$ está completamente sumergida, por lo que desplaza exactamente $25\ \mathrm{cm^3}$ de agua. Por lo tanto, el hierro desplaza más agua y experimenta una mayor fuerza de flotación.
+
+\item \textbf{Barco de carga del océano al lago.} La fuerza de flotación debe igualar el peso del barco, que es constante. Como el agua dulce tiene menor densidad que el agua salada, el barco debe desplazar un volumen mayor de agua dulce para obtener la misma fuerza de flotación. En consecuencia, el barco se hunde varios centímetros más en el agua dulce del lago Ontario.
+
+\item \textbf{Madera empujada bajo el agua.} Una vez que la pieza de madera está completamente sumergida, el volumen de agua desplazado es constante (igual al volumen de la madera). Puesto que el agua es prácticamente incompresible, la fuerza de flotación $\rho_{\mathrm{water}} V g$ permanece constante sin importar la profundidad. Por lo tanto, al empujar la madera más profundamente, la fuerza de flotación sobre ella permanece igual.
+
+\item \textbf{Hierro pegado a la madera.} El bloque sigue flotando y el nivel del agua permanece igual. El peso total del sistema (madera más hierro) no cambia, por lo que el volumen total de agua desplazado también es el mismo. Al dar vuelta el bloque, el hierro queda sumergido y desplaza algo de agua, pero la madera desplaza menos, de modo que el volumen total desplazado es el mismo. Así, el nivel del agua en el cubo no cambia.
+
+\item \textbf{Frasco de vidrio boca abajo.} Al empujar el frasco más profundamente, el aire atrapado en su interior se comprime porque la presión aumenta con la profundidad. Esto reduce el volumen del aire atrapado y, por lo tanto, reduce el volumen de agua desplazado. Como la fuerza de flotación es proporcional al volumen desplazado, la fuerza de flotación sobre el frasco disminuye a medida que se empuja más profundamente.
+
+\item \textbf{Cubo de hielo que se derrite.} El nivel del agua permanece sin cambios. El cubo de hielo flota desplazando un volumen de agua cuyo peso es igual al peso del hielo. Cuando el hielo se derrite, el agua resultante tiene exactamente la misma masa que el hielo y la misma densidad que el agua circundante, por lo que ocupa exactamente el volumen que el hielo desplazaba. En consecuencia, el nivel del agua en el vaso no cambia.
+\end{enumerate}
+
+\subsection{Problemas propuestos}
+
+\begin{enumerate}
+\item Se está preparando un aparato para una visita a un planeta recién descubierto, Caasi, que tiene océanos de glicerina y una aceleración superficial debida a la gravedad de $5.40\ \mathrm{m/s^2}$. Si el aparato flota en los océanos de la Tierra con el $25.0\%$ de su volumen sumergido, ¿qué porcentaje estará sumergido en los océanos de glicerina de Caasi?
+
+\item Una roca de densidad $1200\ \mathrm{kg/m^3}$ está suspendida del extremo inferior de una cuerda ligera. Cuando la roca está en el aire, la tensión en la cuerda es $28.0\ \mathrm{N}$. ¿Cuál es la tensión en la cuerda cuando la roca está totalmente sumergida en un líquido de densidad $750\ \mathrm{kg/m^3}$?
+
+\item Un bloque cúbico de madera, de $10.0\ \mathrm{cm}$ de lado, flota en la interfaz entre aceite y agua, con su superficie inferior $1.50\ \mathrm{cm}$ por debajo de la interfaz (Figura~\ref{fig:bloque-aceite-agua}). La densidad del aceite es $790\ \mathrm{kg/m^3}$. (a) ¿Cuál es la presión manométrica en la cara superior del bloque? (b) ¿Cuál es la presión manométrica en la cara inferior del bloque? (c) ¿Cuáles son la masa y la densidad del bloque?
+
+\figuraBloqueAceiteAgua
+
+\item Una roca está suspendida por una cuerda ligera. Cuando la roca está en el aire, la tensión en la cuerda es $39.2\ \mathrm{N}$. Cuando la roca está totalmente sumergida en agua, la tensión es $28.4\ \mathrm{N}$. Cuando la roca está totalmente sumergida en un líquido desconocido, la tensión es $21.5\ \mathrm{N}$. ¿Cuál es la densidad del líquido desconocido?
+
+\item Un bloque compuesto por dos materiales de densidades $\rho_1$ y $\rho_2$ (ambas menores que la del agua) y alturas $h_1$ y $h_2$ se coloca en un recipiente con líquido (véase el panel izquierdo de la Figura~\ref{fig:bloque-tronco-flotantes}). ¿A qué distancia $a$ queda sumergido el bloque?
+
+\item Un tronco cilíndrico uniforme de longitud $L$ y radio $R$ flota en agua (véase el panel derecho de la Figura~\ref{fig:bloque-tronco-flotantes}; el tronco se ve a lo largo de su eje). La densidad del tronco es $0.509\ \mathrm{g\,cm^{-3}}$. Determine $h$.
+
+\figuraBloqueTroncoFlotantes
+
+\item Un trozo de madera tiene $0.600\ \mathrm{m}$ de largo, $0.250\ \mathrm{m}$ de ancho y $0.080\ \mathrm{m}$ de espesor. Su densidad es $700\ \mathrm{kg/m^3}$. ¿Qué volumen de plomo debe sujetarse debajo de él para hundir la madera en agua tranquila de modo que su parte superior quede justo al nivel del agua? ¿Cuál es la masa de este volumen de plomo?
+
+\item Un tanque cilíndrico vertical cerrado y elevado, de $2.00\ \mathrm{m}$ de diámetro, contiene agua hasta una profundidad de $0.800\ \mathrm{m}$. Un trabajador accidentalmente hace un agujero circular de $0.0200\ \mathrm{m}$ de diámetro en el fondo del tanque. Mientras el agua drena del tanque, el aire comprimido sobre el agua en el tanque mantiene una presión manométrica de $5.00\times 10^3\ \mathrm{Pa}$ en la superficie del agua. Ignore cualquier efecto de viscosidad. (a) Justo después de hacer el agujero, ¿cuál es la velocidad del agua cuando emerge del agujero? ¿Cuál es la razón de esta velocidad respecto a la velocidad de salida si la parte superior del tanque está abierta al aire? (b) ¿Cuánto tiempo tarda toda el agua en drenar del tanque? ¿Cuál es la razón de este tiempo respecto al tiempo que tarda el tanque en drenar si la parte superior del tanque está abierta al aire?
+
+\item Un bloque cúbico de densidad $\rho_B$ y lados de longitud $L$ flota en un líquido de mayor densidad $\rho_L$. (a) ¿Qué fracción del volumen del bloque está por encima de la superficie del líquido? (b) El líquido es más denso que el agua (densidad $\rho_W$) y no se mezcla con ella. Si se vierte agua sobre la superficie de ese líquido, ¿qué profundidad debe tener la capa de agua para que la superficie del agua llegue justo a la parte superior del bloque? Exprese su respuesta en términos de $L$, $\rho_B$, $\rho_L$ y $\rho_W$. (c) Encuentre la profundidad de la capa de agua de la parte (b) si el líquido es mercurio, el bloque está hecho de hierro y $L = 10.0\ \mathrm{cm}$.
+
+\item El hidrómetro mostrado en la Figura~\ref{fig:hidrometro-problema}, sin mercurio, tiene una masa de $0.01\ \mathrm{kg}$. Está diseñado para flotar en el punto medio del vástago de $12\ \mathrm{cm}$ de largo en agua pura. (a) Calcule la masa de mercurio necesaria. (b) ¿Cuál es la gravedad específica del líquido si el hidrómetro está justo sumergido? (c) ¿Cuál es la gravedad específica del líquido si el vástago del hidrómetro está completamente expuesto?
+
+\figuraHidrometroProblema
+
+\item La varilla de madera redonda uniforme de $5\ \mathrm{m}$ de largo de la Figura~\ref{fig:varilla-atada} está atada al fondo por una cuerda. Determine (a) la tensión en la cuerda y (b) la gravedad específica de la madera. ¿Es posible, con la información dada, determinar el ángulo de inclinación $\theta$? Explique.
+
+\figuraVarillaAtada
+
+\item La varilla uniforme de la Figura~\ref{fig:varilla-articulada-plomo} está articulada en el punto $B$ sobre la línea de flotación y está en equilibrio estático como se muestra cuando $2\ \mathrm{kg}$ de plomo ($\mathrm{SG} = 11.4$) están sujetos a su extremo. ¿Cuál es la gravedad específica del material de la varilla? ¿Qué tiene de peculiar el ángulo de reposo $\theta = 30^\circ$?
+
+\figuraVarillaArticuladaPlomo
+
+\item Una viga de madera uniforme ($\mathrm{SG} = 0.65$) de $10\ \mathrm{cm} \times 10\ \mathrm{cm} \times 3\ \mathrm{m}$ está articulada en $A$, como en la Figura~\ref{fig:viga-articulada}. ¿A qué ángulo $\theta$ flotará la viga en agua a $20^\circ\mathrm{C}$?
+
+\figuraVigaArticulada
+\end{enumerate}

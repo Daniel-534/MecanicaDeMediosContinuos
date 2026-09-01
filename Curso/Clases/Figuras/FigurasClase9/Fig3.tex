@@ -1,0 +1,47 @@
+\newcommand{\figuraProtuberanciasMarea}{%
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small,line cap=round,line join=round]
+        \coordinate (O) at (5.0,3.0);
+        \coordinate (L) at (10.4,3.0);
+
+        \fill[blue!20] (O) ellipse (2.35 and 1.42);
+        \draw[very thick,blue!65!black] (O) ellipse (2.35 and 1.42);
+        \fill[cyan!12] (O) circle (1.55);
+        \draw[thick,blue!45!black] (O) circle (1.55);
+        \draw[thick,densely dashed,black!60] (O) circle (1.72);
+        \fill[black] (O) circle (0.055);
+        \node[anchor=north east] at ($(O)+(-0.05,-0.05)$) {$O$};
+
+        \draw[->,thick] (O)--(8.05,3.0)
+            node[below] {eje Tierra--Luna};
+        \fill[gray!40] (L) circle (0.42);
+        \draw[very thick,black!65] (L) circle (0.42);
+        \node at (10.4,2.30) {Luna};
+
+        \draw[thick] (O)--($(O)+(48:1.72)$);
+        \draw[->,thick] ($(O)+(0:0.72)$)
+            arc[start angle=0,end angle=48,radius=0.72];
+        \node at ($(O)+(24:1.02)$) {$\theta$};
+
+        \draw[<->,red!75!black,thick] (6.72,3.42)--(7.32,3.42)
+            node[midway,above] {$h>0$};
+        \draw[<->,red!75!black,thick] (3.28,2.58)--(2.68,2.58)
+            node[midway,below] {$h>0$};
+        \draw[<->,purple!75!black,thick] (4.58,4.42)--(4.58,4.72)
+            node[midway,left] {$h<0$};
+
+        \node[red!75!black,align=center] at (7.55,1.55)
+            {protuberancia\\sublunar};
+        \node[red!75!black,align=center] at (2.40,1.55)
+            {protuberancia\\antilunar};
+        \node[text=black!65] at (5.0,0.82)
+            {contorno discontinuo: nivel medio};
+    \end{tikzpicture}
+    \caption{Superficie de marea de equilibrio, exagerada para hacer visible
+    la deformación. Respecto al nivel esférico medio aparecen dos máximos en
+    $\theta=0$ y $\theta=\pi$, y un descenso en la dirección transversal
+    $\theta=\pi/2$.}
+    \label{fig:protuberancias-marea}
+\end{figure}%
+}

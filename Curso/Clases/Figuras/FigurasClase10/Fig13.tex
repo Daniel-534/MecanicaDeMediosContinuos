@@ -1,0 +1,33 @@
+\newcommand{\figuraAscensoCapilar}{%
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[>=Latex,font=\small,line cap=round,line join=round]
+  \draw[very thick] (0.8,4.8)--(0.8,0.5)--(11.2,0.5)--(11.2,4.8);
+  \fill[blue!12] (0.88,0.58) rectangle (11.12,2.15);
+  \draw[very thick,blue!65!black] (0.8,2.15)--(11.2,2.15);
+  \draw[very thick] (5.2,5.35)--(5.2,0.55) (6.8,5.35)--(6.8,0.55);
+  \fill[blue!18] (5.28,0.58)--(6.72,0.58)--(6.72,4.05)
+    .. controls (6.3,3.7) and (5.7,3.7) .. (5.28,4.05)--cycle;
+  \draw[very thick,blue!70!black] (5.28,4.05)
+    .. controls (5.7,3.7) and (6.3,3.7) .. (6.72,4.05);
+  \draw[<->,red!75!black,thick] (7.95,2.15)--(7.95,3.88)
+    node[midway,right] {$h$};
+  \draw[<->,thick] (5.2,5.65)--(6.8,5.65) node[midway,above] {$D$};
+  \draw[->,red!75!black] (5.28,4.05) arc[start angle=90,end angle=30,radius=0.55];
+  \node[red!75!black] at (5.72,4.48) {$\beta$};
+  \draw[->,ultra thick,purple!75!black] (5.28,4.05)--++(120:1.0)
+    node[above left] {$\alpha$};
+  \draw[->,ultra thick,purple!75!black] (6.72,4.05)--++(60:1.0)
+    node[above right] {$\alpha$};
+  \draw[densely dashed,red!75!black] (6.72,4.05)--(7.18,4.05);
+  \draw[->,thick,dashed,red!75!black] (7.18,4.05)--(7.18,4.90)
+    node[midway,right] {$\alpha\cos\beta$};
+  \draw[->,thick,orange!85!black] (9.3,3.75)--(9.3,2.35)
+    node[midway,right] {$\rho gAh$};
+\end{tikzpicture}
+\caption{Ascenso capilar en un tubo estrecho. La componente vertical de la
+tensión superficial a lo largo de la circunferencia sostiene el peso de la
+columna elevada.}
+\label{fig:ascenso-capilar}
+\end{figure}%
+}

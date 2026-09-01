@@ -1,0 +1,46 @@
+\newcommand{\figuraPrincipioArquimedes}{%
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small,line cap=round,line join=round]
+        \draw[very thick] (0.7,5.2)--(0.7,0.4)--(6.2,0.4)--(6.2,5.2);
+        \fill[blue!12] (0.78,0.48) rectangle (6.12,4.15);
+        \draw[very thick,blue!60!black] (0.72,4.15)--(6.18,4.15);
+        \node[blue!60!black] at (1.55,4.45) {fluido, $\rho_f$};
+
+        \fill[orange!35] (3.45,2.55)
+            .. controls (2.55,2.75) and (2.55,1.65) .. (3.35,1.35)
+            .. controls (4.35,1.20) and (4.65,2.10) .. (4.20,2.75)
+            .. controls (3.95,3.10) and (3.65,2.85) .. cycle;
+        \draw[very thick,orange!80!black] (3.45,2.55)
+            .. controls (2.55,2.75) and (2.55,1.65) .. (3.35,1.35)
+            .. controls (4.35,1.20) and (4.65,2.10) .. (4.20,2.75)
+            .. controls (3.95,3.10) and (3.65,2.85) .. cycle;
+        \node at (3.62,2.08) {cuerpo};
+
+        \draw[->,ultra thick,red!75!black] (3.62,2.78)--(3.62,4.65)
+            node[above] {$\vec F_B$};
+        \draw[->,ultra thick,purple!75!black] (3.62,1.35)--(3.62,0.05)
+            node[below] {$\vec W$};
+
+        \draw[->,thick] (6.75,2.25)--(7.75,2.25);
+        \node[align=center] at (9.65,4.65)
+            {volumen de fluido\\desplazado};
+        \fill[blue!28] (9.45,2.55)
+            .. controls (8.55,2.75) and (8.55,1.65) .. (9.35,1.35)
+            .. controls (10.35,1.20) and (10.65,2.10) .. (10.20,2.75)
+            .. controls (9.95,3.10) and (9.65,2.85) .. cycle;
+        \draw[very thick,dashed,blue!65!black] (9.45,2.55)
+            .. controls (8.55,2.75) and (8.55,1.65) .. (9.35,1.35)
+            .. controls (10.35,1.20) and (10.65,2.10) .. (10.20,2.75)
+            .. controls (9.95,3.10) and (9.65,2.85) .. cycle;
+        \draw[->,ultra thick,red!75!black] (9.62,2.85)--(9.62,4.05)
+            node[above] {$\rho_f gV_{\mathrm{des}}$};
+        \node[align=center,text=black!70] at (9.62,0.65)
+            {$F_B=$ peso del\\fluido desplazado};
+    \end{tikzpicture}
+    \caption{Principio de Arquímedes. La resultante de las presiones sobre el
+    cuerpo es una fuerza ascendente igual al peso del volumen de fluido que el
+    cuerpo desplaza.}
+    \label{fig:principio-arquimedes}
+\end{figure}%
+}

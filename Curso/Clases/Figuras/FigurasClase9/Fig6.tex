@@ -1,0 +1,36 @@
+\newcommand{\figuraCilindroArquimedes}{%
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small,line cap=round,line join=round]
+        \draw[very thick] (1.0,5.0)--(1.0,0.4)--(10.8,0.4)--(10.8,5.0);
+        \fill[blue!12] (1.08,0.48) rectangle (10.72,4.35);
+        \draw[very thick,blue!60!black] (1.0,4.35)--(10.8,4.35);
+
+        \fill[orange!25] (4.4,1.45) rectangle (7.0,3.65);
+        \draw[very thick,orange!80!black] (4.4,1.45) rectangle (7.0,3.65);
+        \draw[densely dashed] (4.4,3.65)--(7.0,3.65);
+        \draw[densely dashed] (4.4,1.45)--(7.0,1.45);
+
+        \draw[->,ultra thick,red!75!black] (5.7,3.68)--(5.7,2.82)
+            node[midway,right] {$p_1A$};
+        \draw[->,ultra thick,red!75!black] (5.7,1.42)--(5.7,2.28)
+            node[midway,right] {$p_2A$};
+        \node[anchor=east] at (4.25,3.65) {cara superior, $p_1$};
+        \node[anchor=east] at (4.25,1.45) {cara inferior, $p_2$};
+
+        \draw[<->,thick] (7.45,1.45)--(7.45,3.65)
+            node[midway,right] {$L$};
+        \draw[<->,thick] (4.4,1.05)--(7.0,1.05)
+            node[midway,below] {área $A$};
+
+        \node[align=left] at (9.15,2.65)
+            {$\displaystyle F_B=(p_2-p_1)A$\\[2mm]
+             $\displaystyle =\rho_f gLA$\\[2mm]
+             $\displaystyle =\rho_f gV$};
+    \end{tikzpicture}
+    \caption{Derivación del empuje mediante un elemento cilíndrico. Como la
+    presión aumenta con la profundidad, la fuerza sobre la cara inferior
+    supera a la fuerza sobre la cara superior.}
+    \label{fig:cilindro-arquimedes}
+\end{figure}%
+}

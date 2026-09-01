@@ -1,0 +1,24 @@
+\newcommand{\figuraMeniscoPared}{%
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[>=Latex,font=\small,line cap=round,line join=round]
+  \fill[blue!10] (1.4,0.6) rectangle (11.3,2.25);
+  \draw[very thick] (1.4,0.6)--(1.4,5.2);
+  \draw[very thick,blue!70!black,domain=1.4:11.3,samples=120]
+    plot (\x,{2.25+2.1*exp(-0.72*(\x-1.4))});
+  \draw[densely dashed] (1.4,2.25)--(11.3,2.25)
+    node[right] {$\eta=0$};
+  \draw[<->,red!75!black,thick] (0.95,2.25)--(0.95,4.35)
+    node[midway,left] {$h$};
+  \draw[->,red!75!black] (1.4,4.35) arc[start angle=270,end angle=320,radius=0.65];
+  \node[red!75!black] at (1.95,3.85) {$\theta$};
+  \draw[<->,thick] (4.2,2.25)--(4.2,2.53)
+    node[above right] {$\eta(x)$};
+  \draw[densely dashed,red!75!black] (1.4,4.35)--(2.35,3.30);
+  \draw[->] (1.4,1.65)--(11.0,1.65) node[right] {$x$};
+\end{tikzpicture}
+\caption{Menisco junto a una pared vertical. La elevación $\eta(x)$ alcanza
+un máximo $h$ en la pared y decae hacia el nivel horizontal lejos de ella.}
+\label{fig:menisco-pared}
+\end{figure}%
+}

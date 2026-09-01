@@ -1,0 +1,39 @@
+\newcommand{\figuraHidrometroComparacion}{%
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small,line cap=round,line join=round]
+        \foreach \x/\nivel/\titulo/\liq in {
+            3.0/3.05/{(a) Agua, $S=1$}/{agua},
+            9.0/3.05/{(b) Líquido más denso, $S_x>1$}/{líquido $x$}} {
+            \draw[very thick] (\x-2.1,4.7)--(\x-2.1,0.35)--(\x+2.1,0.35)--(\x+2.1,4.7);
+            \fill[blue!12] (\x-2.02,0.43) rectangle (\x+2.02,\nivel);
+            \draw[very thick,blue!60!black] (\x-2.1,\nivel)--(\x+2.1,\nivel);
+            \node[font=\bfseries] at (\x,5.05) {\titulo};
+            \node[blue!60!black] at (\x-1.25,0.78) {\liq};
+        }
+
+        \foreach \x/\shift in {3.0/0,9.0/0.40} {
+            \begin{scope}[shift={(0,\shift)}]
+                \fill[gray!30] (\x,1.38) ellipse (0.58 and 0.88);
+                \draw[very thick] (\x,1.38) ellipse (0.58 and 0.88);
+                \fill[gray!55] (\x-0.38,0.88) rectangle (\x+0.38,1.18);
+                \draw[very thick] (\x-0.13,2.08)--(\x-0.13,4.45)--(\x+0.13,4.45)--(\x+0.13,2.08);
+                \foreach \y in {2.25,2.55,2.85,3.15,3.45,3.75,4.05}
+                    \draw (\x+0.13,\y)--(\x+0.29,\y);
+            \end{scope}
+        }
+
+        \draw[densely dashed,red!75!black] (2.55,3.05)--(3.62,3.05);
+        \node[red!75!black,anchor=west] at (3.65,3.05) {$S=1.0$};
+        \draw[densely dashed,red!75!black] (8.45,3.05)--(9.68,3.05);
+        \node[red!75!black,anchor=west,font=\scriptsize] at (9.72,1.18)
+            {menor inmersión};
+        \node[align=center,text=black!70] at (6.0,0.15)
+            {mayor densidad $\Rightarrow$ menor volumen sumergido};
+    \end{tikzpicture}
+    \caption{Comparación de un mismo hidrómetro en agua y en un líquido más
+    denso. El equilibrio exige el mismo empuje en ambos casos; por ello el
+    instrumento desplaza menos volumen y flota más alto en el líquido denso.}
+    \label{fig:hidrometro-comparacion}
+\end{figure}%
+}

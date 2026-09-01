@@ -1,0 +1,45 @@
+\newcommand{\figuraBloqueTroncoFlotantes}{%
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small,line cap=round,line join=round]
+        \node[font=\bfseries] at (3.0,5.35) {(a) Bloque compuesto};
+        \draw[very thick] (0.5,4.8)--(0.5,0.45)--(5.5,0.45)--(5.5,4.8);
+        \fill[blue!12] (0.58,0.53) rectangle (5.42,2.75);
+        \draw[very thick,blue!65!black] (0.5,2.75)--(5.5,2.75);
+        \fill[orange!25] (2.15,2.05) rectangle (3.85,4.35);
+        \fill[green!25] (2.15,0.95) rectangle (3.85,2.05);
+        \draw[very thick] (2.15,0.95) rectangle (3.85,4.35);
+        \draw[thick] (2.15,2.05)--(3.85,2.05);
+        \node at (3.0,3.20) {$\rho_1$};
+        \node at (3.0,1.50) {$\rho_2$};
+        \draw[<->,thick] (4.18,2.05)--(4.18,4.35)
+            node[midway,right] {$h_1$};
+        \draw[<->,thick] (4.18,0.95)--(4.18,2.05)
+            node[midway,right] {$h_2$};
+        \draw[<->,red!75!black,thick] (1.75,0.95)--(1.75,2.75)
+            node[midway,left] {$a$};
+
+        \node[font=\bfseries] at (9.0,5.35) {(b) Tronco cilíndrico};
+        \draw[very thick] (6.3,4.8)--(6.3,0.45)--(11.7,0.45)--(11.7,4.8);
+        \fill[blue!12] (6.38,0.53) rectangle (11.62,2.55);
+        \draw[very thick,blue!65!black] (6.3,2.55)--(11.7,2.55);
+        \fill[brown!30] (9.0,2.75) circle (1.48);
+        \draw[very thick,brown!75!black] (9.0,2.75) circle (1.48);
+        \begin{scope}
+            \clip (9.0,2.75) circle (1.48);
+            \fill[blue!35,opacity=0.45] (7.4,0.55) rectangle (10.6,2.55);
+        \end{scope}
+        \draw[very thick,brown!75!black] (9.0,2.75) circle (1.48);
+        \draw[->,thick] (9.0,2.75)--(10.05,3.80)
+            node[midway,above left] {$R$};
+        \draw[densely dashed] (7.15,2.55)--(10.85,2.55);
+        \draw[<->,red!75!black,thick] (10.85,1.27)--(10.85,2.55)
+            node[midway,right] {$h$};
+        \node at (9.0,4.55) {vista transversal};
+    \end{tikzpicture}
+    \caption{Dos configuraciones de flotación. En (a), $a$ es la altura total
+    sumergida del bloque compuesto. En (b), $h$ mide la profundidad del punto
+    más bajo del tronco respecto de la superficie del agua.}
+    \label{fig:bloque-tronco-flotantes}
+\end{figure}%
+}

@@ -1,0 +1,21 @@
+\newcommand{\figuraMarcoPeliculaMovil}{%
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[>=Latex,font=\small,line cap=round,line join=round]
+  \fill[cyan!12] (2,1) rectangle (8,4.8);
+  \draw[very thick] (2,5.2)--(2,0.6)--(9.4,0.6)--(9.4,5.2);
+  \draw[very thick,red!75!black] (8,0.65)--(8,5.15);
+  \draw[densely dashed] (9.0,0.65)--(9.0,5.15);
+  \draw[->,ultra thick,purple!75!black] (8,2.9)--(10.4,2.9)
+    node[right] {$F=\alpha L$};
+  \draw[<->,thick] (8,5.55)--(9,5.55) node[midway,above] {$ds$};
+  \draw[<->,thick] (7.55,0.65)--(7.55,5.15) node[midway,left] {$L$};
+  \node[cyan!50!black] at (4.8,2.9) {una interfaz líquida};
+  \node at (5.4,0.15) {$dA=L\,ds,\qquad dW=F\,ds=\alpha\,dA$};
+\end{tikzpicture}
+\caption{Interfaz con un lado móvil. Al desplazar la barra una distancia $ds$,
+el área aumenta en $Lds$ y la tensión superficial de una interfaz ejerce una fuerza
+$F=\alpha L$.}
+\label{fig:marco-pelicula-movil}
+\end{figure}%
+}

@@ -1,0 +1,31 @@
+\newcommand{\figuraEnlacesSuperficie}{%
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[>=Latex,font=\small,line cap=round,line join=round]
+  \fill[blue!8] (0.8,0.5) rectangle (11.2,4.2);
+  \draw[very thick,blue!65!black] (0.8,4.2)--(11.2,4.2);
+  \node at (9.9,4.75) {vacío};
+  \foreach \x in {1.6,2.8,...,10.0}
+    \foreach \y in {1.0,2.0,3.0,4.0}
+      \fill[orange!75] (\x,\y) circle (0.14);
+  \foreach \x in {1.6,2.8,...,8.8}
+    \foreach \y in {1.0,2.0,3.0,4.0}
+      \draw[orange!45!black] (\x+0.14,\y)--(\x+1.06,\y);
+  \foreach \x in {1.6,2.8,...,10.0}
+    \foreach \y in {1.0,2.0,3.0}
+      \draw[orange!45!black] (\x,\y+0.14)--(\x,\y+0.86);
+  \draw[very thick,red!75!black,dashed] (4.0,4.15)--(4.0,5.15)
+    node[above] {enlace faltante};
+  \draw[very thick,red!75!black] (4.0,4.0) circle (0.27);
+  \draw[very thick,green!45!black] (8.8,2.0) circle (0.27);
+  \node[red!75!black,anchor=west] at (4.35,3.72) {molécula superficial};
+  \node[green!45!black,anchor=west] at (9.15,2.0) {molécula interior};
+  \node[align=center] at (4.0,0.05) {superficie:\\[1mm]cinco enlaces};
+  \node[align=center] at (8.8,0.05) {interior:\\[1mm]seis enlaces};
+\end{tikzpicture}
+\caption{Modelo de red para la energía superficial. Una molécula superficial
+carece de un enlace respecto de una molécula interior, por lo que posee una
+energía positiva adicional por unidad de área.}
+\label{fig:enlaces-superficie}
+\end{figure}%
+}

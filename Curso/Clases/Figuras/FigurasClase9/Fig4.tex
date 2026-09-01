@@ -1,0 +1,62 @@
+\newcommand{\figuraMareasVivasMuertas}{%
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small,line cap=round,line join=round]
+        \coordinate (S1) at (1.2,4.8);
+        \coordinate (T1) at (7.0,4.8);
+        \coordinate (S2) at (1.2,1.7);
+        \coordinate (T2) at (7.0,1.7);
+
+        \node[font=\bfseries] at (6.2,6.15)
+            {(a) Mareas vivas: alineación};
+        \node[font=\bfseries] at (6.2,3.22)
+            {(b) Mareas muertas: cuadratura};
+
+        \foreach \S in {S1,S2} {
+            \fill[yellow!65] (\S) circle (0.60);
+            \draw[very thick,orange!85!black] (\S) circle (0.60);
+        }
+        \foreach \T in {T1,T2} {
+            \fill[blue!25] (\T) circle (0.48);
+            \draw[very thick,blue!70!black] (\T) circle (0.48);
+        }
+
+        \draw[very thick,red!70!black] (T1) ellipse (1.12 and 0.66);
+        \draw[very thick,red!70!black] (T2) ellipse (0.83 and 0.65);
+
+        \node at (1.2,3.95) {Sol};
+        \node at (1.2,0.85) {Sol};
+        \node at (7.0,3.88) {Tierra};
+        \node[anchor=east] at (6.35,1.25) {Tierra};
+
+        \draw[very thick,orange!70!black] (1.85,4.8)--(10.65,4.8);
+        \fill[gray!45] (5.65,4.8) circle (0.20);
+        \draw[thick] (5.65,4.8) circle (0.20);
+        \node[anchor=south] at (5.65,5.10) {Luna nueva};
+        \fill[gray!45] (8.35,4.8) circle (0.20);
+        \draw[thick] (8.35,4.8) circle (0.20);
+        \node[anchor=south] at (8.35,5.10) {Luna llena};
+        \draw[<->,red!75!black,ultra thick] (6.08,4.8)--(7.92,4.8);
+        \node[red!75!black,anchor=west] at (8.55,4.35)
+            {rango máximo};
+
+        \draw[very thick,orange!70!black] (1.85,1.7)--(10.65,1.7);
+        \draw[very thick,purple!70!black] (7.0,0.35)--(7.0,2.85);
+        \fill[gray!45] (7.0,2.55) circle (0.20);
+        \draw[thick] (7.0,2.55) circle (0.20);
+        \fill[gray!45] (7.0,0.85) circle (0.20);
+        \draw[thick] (7.0,0.85) circle (0.20);
+        \node[anchor=west] at (7.75,2.62) {cuarto creciente};
+        \node[anchor=west] at (7.75,0.72) {cuarto menguante};
+        \draw[<->,red!75!black,thick] (6.20,1.7)--(7.80,1.7);
+        \draw[<->,purple!70!black,thick] (7.0,1.02)--(7.0,2.38);
+        \node[align=center,text=black!65] at (3.75,0.55)
+            {los efectos solar y lunar\\se compensan parcialmente};
+    \end{tikzpicture}
+    \caption{Superposición idealizada de las mareas lunar y solar. En la
+    alineación, ambas deformaciones tienen el mismo eje y se refuerzan; en la
+    cuadratura, sus ejes son perpendiculares y el rango de marea disminuye.
+    Las distancias y los tamaños no están a escala.}
+    \label{fig:mareas-vivas-muertas}
+\end{figure}%
+}

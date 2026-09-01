@@ -1,0 +1,36 @@
+\newcommand{\figuraBloqueAceiteAgua}{%
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small,line cap=round,line join=round]
+        \draw[very thick] (1.0,5.3)--(1.0,0.4)--(10.8,0.4)--(10.8,5.3);
+        \fill[cyan!14] (1.08,0.48) rectangle (10.72,2.25);
+        \fill[yellow!18] (1.08,2.25) rectangle (10.72,4.02);
+        \draw[very thick,blue!65!black] (1.0,2.25)--(10.8,2.25);
+        \draw[very thick,orange!75!black] (1.0,4.02)--(10.8,4.02);
+        \node[orange!75!black] at (2.0,3.55) {aceite, $\rho_o$};
+        \node[blue!65!black] at (2.0,1.25) {agua, $\rho_w$};
+
+        \fill[brown!35] (4.9,1.82) rectangle (7.1,4.02);
+        \draw[very thick,brown!75!black] (4.9,1.82) rectangle (7.1,4.02);
+        \node at (6.0,3.15) {madera};
+
+        \draw[<->,thick] (7.55,1.82)--(7.55,4.02)
+            node[midway,right] {$10.0\ \mathrm{cm}$};
+        \draw[<->,thick,blue!70!black] (4.55,1.82)--(4.55,2.25)
+            node[midway,left] {$1.50\ \mathrm{cm}$};
+        \draw[<->,thick,orange!80!black] (4.55,2.25)--(4.55,4.02)
+            node[midway,left] {$8.50\ \mathrm{cm}$};
+        \draw[densely dashed] (4.65,2.25)--(7.35,2.25);
+
+        \draw[->,red!75!black,thick] (6.0,4.72)--(6.0,4.10)
+            node[pos=0,above] {$p_{\mathrm{sup}}=p_{\mathrm{atm}}$};
+        \draw[->,red!75!black,thick] (6.0,1.15)--(6.0,1.75)
+            node[pos=0,below] {$p_{\mathrm{inf}}$};
+        \node[text=black!65,anchor=south] at (8.9,4.08) {superficie libre};
+    \end{tikzpicture}
+    \caption{Bloque cúbico flotando en la interfaz entre aceite y agua. La
+    cara inferior se encuentra $1.50\,\mathrm{cm}$ por debajo de la interfaz;
+    el resto del bloque está rodeado por aceite.}
+    \label{fig:bloque-aceite-agua}
+\end{figure}%
+}

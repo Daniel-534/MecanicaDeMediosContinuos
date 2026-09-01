@@ -1,0 +1,36 @@
+\newcommand{\figuraGotasLongitudCapilar}{%
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[>=Latex,font=\small,line cap=round,line join=round]
+  \node[font=\bfseries] at (6,6.0) {Exceso de presión en una gota};
+  \fill[blue!18] (6,4.55) circle (1.05);
+  \draw[very thick,blue!70!black] (6,4.55) circle (1.05);
+  \foreach \a in {0,45,...,315}
+    \draw[->,red!75!black,thick] (6,4.55)--++(\a:0.72);
+  \draw[->,thick] (6,4.55)--++(35:1.05) node[midway,above left] {$a$};
+  \node at (8.4,4.55) {$\Delta p=2\alpha/a$};
+
+  \node[font=\bfseries] at (3,2.65) {gota pequeña};
+  \fill[blue!22] (3,1.35) ellipse (1.05 and 1.15);
+  \draw[very thick,blue!70!black] (3,1.35) ellipse (1.05 and 1.15);
+  \node[align=center] at (3,-0.15) {$a\ll R_c$\\[1mm]casi esférica};
+
+  \node[font=\bfseries] at (9,2.65) {gota grande};
+  \fill[blue!22] (9,1.25)
+    .. controls (7.6,1.2) and (7.7,2.15) .. (8.4,2.35)
+    .. controls (9.0,2.55) and (9.8,2.4) .. (10.45,1.95)
+    .. controls (10.8,1.65) and (10.4,0.65) .. (9,0.62)
+    .. controls (7.7,0.65) and (7.55,1.1) .. cycle;
+  \draw[very thick,blue!70!black] (9,1.25)
+    .. controls (7.6,1.2) and (7.7,2.15) .. (8.4,2.35)
+    .. controls (9.0,2.55) and (9.8,2.4) .. (10.45,1.95)
+    .. controls (10.8,1.65) and (10.4,0.65) .. (9,0.62)
+    .. controls (7.7,0.65) and (7.55,1.1) .. cycle;
+  \node[align=center] at (9,-0.15) {$a\gg R_c$\\[1mm]aplanada por gravedad};
+\end{tikzpicture}
+\caption{Competencia entre tensión superficial y gravedad. Las gotas pequeñas
+son casi esféricas; al superar la longitud capilar, la gravedad produce una
+forma progresivamente aplanada.}
+\label{fig:gotas-longitud-capilar}
+\end{figure}%
+}

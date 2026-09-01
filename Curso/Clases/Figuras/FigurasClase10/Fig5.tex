@@ -1,0 +1,42 @@
+\newcommand{\figuraSaltoPresionCurvatura}{%
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[>=Latex,font=\scriptsize,line cap=round,line join=round]
+  \node[font=\bfseries] at (2.0,4.9) {(a) Cilindro};
+  \fill[blue!18] (0.7,2.0) rectangle (3.3,3.5);
+  \draw[very thick,blue!70!black] (0.7,2.0) arc[start angle=270,end angle=90,x radius=0.35,y radius=0.75];
+  \draw[very thick,blue!70!black] (3.3,2.0) arc[start angle=270,end angle=90,x radius=0.35,y radius=0.75];
+  \draw[very thick,blue!70!black] (0.7,2.0)--(3.3,2.0) (0.7,3.5)--(3.3,3.5);
+  \draw[<->] (0.7,1.55)--(3.3,1.55) node[midway,below] {$L$};
+  \draw[<->] (3.75,2.0)--(3.75,3.5) node[midway,right] {$2R$};
+  \node at (2.0,2.75) {$p_{\mathrm{in}}$};
+  \node[anchor=south] at (2.0,3.72) {$p_{\mathrm{out}}$};
+  \draw[->,red!75!black,thick] (2.0,2.72)--(2.0,3.42)
+    node[midway,right] {$\Delta p$};
+  \node at (2.0,0.85) {$\Delta p=\alpha/R$};
+
+  \node[font=\bfseries] at (6.0,4.9) {(b) Gota};
+  \fill[blue!18] (6.0,2.75) circle (1.15);
+  \draw[very thick,blue!70!black] (6.0,2.75) circle (1.15);
+  \draw[->,thick] (6.0,2.75)--(6.82,3.57) node[midway,above left] {$R$};
+  \foreach \a in {0,45,...,315}
+    \draw[->,red!75!black] (6.0,2.75)--++(\a:0.75);
+  \node at (6.0,2.75) {$p_{\mathrm{in}}$};
+  \node at (7.55,4.05) {$p_{\mathrm{out}}$};
+  \node at (6.0,0.85) {$\Delta p=2\alpha/R$};
+
+  \node[font=\bfseries] at (10.0,4.9) {(c) Interfaz general};
+  \draw[very thick,blue!70!black] (8.6,2.0)
+    .. controls (9.0,4.2) and (10.8,4.0) .. (11.4,2.0);
+  \coordinate (P) at (10.0,3.45);
+  \fill (P) circle (0.05);
+  \draw[->,thick] (P)--++(110:1.15) node[above] {$R_1$};
+  \draw[->,thick] (P)--++(25:1.15) node[right] {$R_2$};
+  \node[align=center] at (10.0,0.85)
+    {$\displaystyle\Delta p=\alpha\left(\frac1{R_1}+\frac1{R_2}\right)$};
+\end{tikzpicture}
+\caption{Salto de presión producido por una interfaz curva. La presión es
+mayor en el lado cóncavo; el valor depende de las dos curvaturas principales.}
+\label{fig:salto-presion-curvatura}
+\end{figure}%
+}

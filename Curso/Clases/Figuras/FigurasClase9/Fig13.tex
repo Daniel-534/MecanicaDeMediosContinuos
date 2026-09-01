@@ -1,0 +1,39 @@
+\newcommand{\figuraVigaArticulada}{%
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small,line cap=round,line join=round]
+        \fill[blue!12] (0.7,0.55) rectangle (11.4,3.25);
+        \draw[very thick,blue!65!black] (0.7,3.25)--(11.4,3.25);
+        \draw[very thick] (0.7,0.55)--(11.4,0.55);
+        \draw[very thick] (1.45,0.55)--(1.45,5.15);
+
+        \coordinate (A) at (1.45,4.25);
+        \coordinate (E) at (9.55,1.65);
+        \draw[very thick,brown!80!black,line width=9pt] (A)--(E);
+        \fill[white] (A) circle (0.13);
+        \draw[very thick] (A) circle (0.13);
+        \node[anchor=south east] at (A) {$A$};
+
+        \draw[->,ultra thick,orange!85!black] (5.50,2.95)--(5.50,1.65)
+            node[below] {$\vec W$};
+        \draw[->,ultra thick,red!75!black] (7.05,2.45)--(7.05,3.78)
+            node[above] {$\vec F_B$};
+
+        \draw[<->,thick] (1.72,4.65)--(9.82,2.05)
+            node[midway,above] {$3\ \mathrm{m}$};
+        \draw[densely dashed] (A)--(4.0,4.25);
+        \draw[->,thick] ($(A)+(0:0.82)$)
+            arc[start angle=0,end angle=-17.8,radius=0.82];
+        \node at (2.55,4.02) {$\theta$};
+
+        \node[align=center] at (7.5,4.65)
+            {$10\ \mathrm{cm}\times10\ \mathrm{cm}$\\
+             $\mathrm{SG}=0.65$};
+        \node[blue!65!black] at (10.45,2.55) {agua a $20^\circ\mathrm{C}$};
+    \end{tikzpicture}
+    \caption{Viga uniforme articulada en $A$ y parcialmente sumergida. El
+    ángulo de equilibrio resulta del balance de momentos entre el peso, el
+    empuje y la reacción de la articulación.}
+    \label{fig:viga-articulada}
+\end{figure}%
+}

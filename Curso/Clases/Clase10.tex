@@ -1,0 +1,249 @@
+\shorthandoff{<>}
+\input{Clases/Figuras/FigurasClase10/Fig1}
+\input{Clases/Figuras/FigurasClase10/Fig2}
+\input{Clases/Figuras/FigurasClase10/Fig3}
+\input{Clases/Figuras/FigurasClase10/Fig4}
+\input{Clases/Figuras/FigurasClase10/Fig5}
+\input{Clases/Figuras/FigurasClase10/Fig6}
+\input{Clases/Figuras/FigurasClase10/Fig7}
+\input{Clases/Figuras/FigurasClase10/Fig8}
+\input{Clases/Figuras/FigurasClase10/Fig9}
+\input{Clases/Figuras/FigurasClase10/Fig10}
+\input{Clases/Figuras/FigurasClase10/Fig11}
+\input{Clases/Figuras/FigurasClase10/Fig12}
+\input{Clases/Figuras/FigurasClase10/Fig13}
+\input{Clases/Figuras/FigurasClase10/Fig14}
+\input{Clases/Figuras/FigurasClase10/Fig15}
+\input{Clases/Figuras/FigurasClase10/Fig16}
+\shorthandon{<>}
+
+\chapter{Clase 10}
+
+\section{Fundamentos de la tensión superficial}
+
+\subsection{Manifestaciones y origen físico}
+
+Del principio de Arquímedes sabemos que, si un objeto es menos denso que el agua, flotará parcialmente sumergido. Sin embargo, un clip de papel puede reposar sobre la superficie del agua aun cuando su densidad es varias veces la del agua. Este es un ejemplo de tensión superficial: la superficie del líquido se comporta como una membrana bajo tensión.
+
+\figuraInsectoTensionSuperficial
+
+Un líquido, al no poder expandirse libremente, forma una interfaz con un segundo líquido o con un gas. La tensión superficial surge porque las moléculas del líquido ejercen fuerzas atractivas entre sí. Sobre una molécula en el interior del líquido la fuerza neta es cero, pero una molécula superficial es jalada hacia el interior. Así, el líquido tiende a minimizar su área superficial, exactamente como una membrana estirada. Como tal, la tensión superficial se manifiesta solo en líquidos en una interfaz, usualmente una interfaz líquido--gas.
+
+\figuraFuerzasMolecularesSuperficie
+
+\begin{itemize}
+\item La tensión superficial explica por qué las gotas de lluvia son esféricas (y no en forma de lágrima): una esfera tiene menor área superficial para su volumen que cualquier otra forma. Esta fuerza sostiene una gota colgada de una varilla y limita el tamaño de la gota que puede sostenerse.
+\item También explica por qué se usa agua caliente con jabón para lavar: para lavar a fondo la ropa, el agua debe forzarse a pasar por los diminutos espacios entre las fibras, lo que exige aumentar su área superficial y es difícil de lograr por la tensión superficial. El trabajo se facilita aumentando la temperatura y añadiendo jabón, pues ambos disminuyen la tensión superficial.
+\item La tensión superficial es importante para una gota de tamaño milimétrico, que tiene un área superficial relativamente grande para su volumen (una esfera de radio $r$ tiene área $4\pi r^2$ y volumen $(4\pi/3)r^3$; la razón área/volumen es $3/r$, que crece al disminuir el radio). Pero para grandes cantidades de líquido la razón es relativamente pequeña y la tensión superficial es despreciable frente a las fuerzas de presión.
+\item También puede jugar un papel importante cuando dos líquidos inmiscibles (por ejemplo, aceite y agua) están en contacto.
+\item Aunque la tensión superficial está presente en todas las interfases, es más importante para cuerpos fluidos pequeños (a escala humana). En las escalas de longitud donde la tensión superficial entra en juego, la forma de la interfaz guarda poca relación con las superficies equipotenciales gravitacionales que dominan las formas estáticas de los sistemas grandes.
+\end{itemize}
+
+\subsection{Valores y dependencia con la temperatura}
+
+La tensión superficial tiene unidades de fuerza por longitud, $\mathrm{N/m}$ (nótese que $\mathrm{J\,m^{-2}} = \mathrm{kg\,s^{-2}}$). Las dos interfases más comunes son agua--aire y mercurio--aire. Para una superficie limpia a $20^\circ\mathrm{C}$, la tensión superficial medida es
+$$
+\alpha = \begin{cases}
+2.13\times10^{-2}\ \mathrm{N/m}, & \text{amoniaco},\\
+2.88\times10^{-2}\ \mathrm{N/m}, & \text{benceno},\\
+2.28\times10^{-2}\ \mathrm{N/m}, & \text{etanol},\\
+4.84\times10^{-2}\ \mathrm{N/m}, & \text{etilenglicol},\\
+2.16\times10^{-2}\ \mathrm{N/m}, & \text{gasolina},\\
+6.30\times10^{-2}\ \mathrm{N/m}, & \text{glicerina},\\
+4.84\times10^{-1}\ \mathrm{N/m}, & \text{mercurio},\\
+2.23\times10^{-2}\ \mathrm{N/m}, & \text{metanol},\\
+7.28\times10^{-2}\ \mathrm{N/m}, & \text{agua},\\
+7.28\times10^{-2}\ \mathrm{N/m}, & \text{agua de mar (30\%)}.
+\end{cases}
+$$
+Estos son valores de diseño y pueden cambiar considerablemente si la superficie contiene contaminantes como detergentes o películas. En general $\alpha$ disminuye con la temperatura del líquido y es cero en el punto crítico.
+
+\figuraTensionAguaTemperatura
+
+\subsection{Origen molecular de la energía superficial}
+
+Considérese un modelo tridimensional primitivo de un material en el que las moléculas se colocan en una red cúbica de paso $L_{\mathrm{mol}}$. Cada molécula del interior tiene seis enlaces con sus vecinas, con una energía de enlace total $-\epsilon$, pero una molécula superficial tendrá solo cinco enlaces cuando el material limita con el vacío. La energía de enlace (negativa) del enlace faltante equivale a una energía positiva extra $\epsilon/6$ para una molécula superficial relativa a una interior y, por tanto, a una densidad de energía superficial extra,
+$$ \alpha \approx \frac{1}{6}\frac{\epsilon}{L_{\mathrm{mol}}^2}. $$
+
+\figuraEnlacesSuperficie
+
+La energía de enlace puede estimarse a partir de la entalpía específica de evaporación $h$ del material como $\epsilon \approx h M_{\mathrm{mol}}/N_A$. Para el agua, la entalpía específica de evaporación es $h \approx 2.2\times10^6\ \mathrm{J\,kg^{-1}}$, lo que conduce a la estimación $\alpha \approx 0.12\ \mathrm{J\,m^{-2}}$. El valor medido de la energía superficial para la interfaz agua/aire es de hecho $\alpha \approx 0.073\ \mathrm{J\,m^{-2}}$ a temperatura ambiente.
+
+\section{Cambio de presión a través de una interfaz curva}
+
+La fuerza debida a la tensión superficial resulta de una longitud multiplicada por la tensión superficial; la longitud a usar es la longitud de fluido en contacto con un sólido. Por ejemplo, la circunferencia en el caso de una burbuja.
+
+\figuraSaltoPresionCurvatura
+
+Si la interfaz es curva, un balance mecánico muestra que hay una diferencia de presión a través de la interfaz, siendo la presión mayor en el lado cóncavo, como se ilustra en la Figura~\ref{fig:salto-presion-curvatura}. Para un cilindro líquido, el aumento de presión en el interior se equilibra con dos fuerzas de tensión superficial (no se considera el peso del líquido en este cálculo):
+$$ 2RL\,\Delta p = 2\alpha L $$
+o
+$$ \Delta p = \frac{\alpha}{R}. $$
+Para una gota esférica, el aumento de presión en el interior equilibra un anillo de fuerza de tensión superficial:
+$$ \pi R^2\,\Delta p = 2\pi R\,\alpha $$
+o
+$$ \Delta p = \frac{2\alpha}{R}. $$
+
+\textbf{Pregunta de repaso.} A partir del resultado para una gota esférica podemos predecir el aumento de presión dentro de una burbuja de jabón de radio $R$:
+
+a) $\Delta p_{\mathrm{burbuja}} \approx \Delta p_{\mathrm{gota}} = 2\alpha/R$.
+
+b) $\Delta p_{\mathrm{burbuja}} \approx 2\,\Delta p_{\mathrm{gota}} = 4\alpha/R$.
+
+c) $\Delta p_{\mathrm{burbuja}} \approx \tfrac{1}{2}\Delta p_{\mathrm{gota}} = \alpha/R$.
+
+d) $\Delta p_{\mathrm{burbuja}} \approx 4\,\Delta p_{\mathrm{gota}} = 8\alpha/R$.
+
+\textbf{Respuesta:} la opción correcta es la (b): una burbuja de jabón posee dos interfases líquido--gas (interna y externa), cada una aportando $2\alpha/R$, de modo que $\Delta p \approx 4\alpha/R$.
+
+El panel (c) de la Figura~\ref{fig:salto-presion-curvatura} muestra el caso general de una interfaz curvada arbitrariamente cuyos radios principales de curvatura son $R_1$ y $R_2$. Un balance de fuerzas normal a la superficie muestra que el aumento de presión en el lado cóncavo es
+$$ \Delta p = \alpha\left(\frac{1}{R_1} + \frac{1}{R_2}\right). $$
+Todos los resultados anteriores pueden derivarse de esta relación general; por ejemplo, en el caso del cilindro $R_1 = R$ y $R_2 = \infty$.
+
+\section{Trabajo y densidad de energía superficial}
+
+Aumentar el área de la interfaz en una cantidad diminuta $dA$ toma una cantidad de trabajo igual a la energía superficial contenida en el pedazo extra de superficie,
+$$ dW = \alpha\, dA. $$
+Esto es bastante análogo al trabajo mecánico $dW = -p\,dV$ realizado contra la presión cuando el volumen del sistema se expande en $dV$. Pero mientras una expansión de volumen bajo presión positiva toma trabajo negativo, aumentar el área superficial toma trabajo positivo. Esta resistencia contra la extensión de la superficie muestra que la interfaz tiene una tensión interna permanente, llamada \emph{tensión superficial}, que ahora veremos que es igual a la densidad de energía $\alpha$.
+
+Formalmente, la tensión superficial se define como la fuerza por unidad de longitud que actúa ortogonalmente a una línea imaginaria trazada sobre la interfaz. Supóngase que se desea estirar la interfaz a lo largo de una línea recta de longitud $L$ en una cantidad uniforme $ds$. Puesto que el área aumenta en $dA = L\,ds$, se requiere una cantidad de trabajo $dW = \alpha L\,ds$, lo que implica que la fuerza que actúa ortogonalmente a la línea es $F = \alpha L$, o $F/L = \alpha$. La tensión superficial es así idéntica a la densidad de energía superficial. Esto también se refleja en la igualdad de las unidades naturales de las dos cantidades, $\mathrm{N\,m^{-1}} = \mathrm{J\,m^{-2}}$.
+
+\figuraMarcoPeliculaMovil
+
+Formalmente, la tensión superficial se define de manera muy parecida a como se definió la presión. Sea una superficie abierta orientada dividida en dos partes por una curva orientada, de tal forma que la superficie tenga un lado izquierdo y derecho unívocamente definidos respecto de la curva. Si $\hat{n}$ denota la normal a la superficie, entonces
+$$ d\vec{F} = \alpha\, d\vec{\ell}\times\hat{n} $$
+es la fuerza que el lado derecho de la superficie ejerce sobre el lado izquierdo a través del elemento de curva $d\vec{\ell}$. La fuerza total se obtiene integrando esta expresión a lo largo de la curva. Se sigue inmediatamente que, para desplazar un pedazo de la curva de longitud $L$ en una cantidad $ds$ ortogonalmente a la curva, el trabajo está dado por $dW = \alpha\,dA$ con $dA = L\,ds$.
+
+\figuraFuerzaCurvaOrientada
+
+\begin{itemize}
+\item La densidad de energía superficial asociada con una interfaz líquida o sólida contra el vacío (o gas) es siempre positiva, debido a la energía de enlace negativa faltante de las moléculas superficiales.
+\item Las interfases entre sólidos y líquidos o entre líquidos y líquidos no están obligadas a tener densidad de energía interfacial positiva. El signo depende de la fuerza de las fuerzas cohesivas que mantienen unidas las moléculas de un material, comparada con la fuerza de las fuerzas adhesivas entre las moléculas opuestas de los materiales en contacto.
+\item La interfaz entre un sólido y un líquido normalmente no es deformable, y una densidad de energía interfacial negativa no tiene efecto dramático.
+\item Si, por el contrario, la densidad de energía interfacial entre dos líquidos es negativa, puede liberarse una gran cantidad de energía maximizando el área de la interfaz. Plegando la interfaz como papel arrugado, los dos fluidos se mezclan completamente en lugar de mantenerse separados.
+\item Los fluidos que se mezclan fácilmente entre sí, como el alcohol y el agua, pueden verse como teniendo densidad de energía interfacial negativa, aunque el concepto no está particularmente bien definido en este caso.
+\item Los fluidos inmiscibles como el aceite y el agua deben tener, por el contrario, densidad de energía interfacial positiva, lo que los hace buscar un área de interfaz mínima con la máxima suavidad.
+\item Puesto que una interfaz no tiene espesor macroscópico, puede verse como localmente plana en todas partes, lo que implica que la densidad de energía superficial no puede depender de la curvatura de la interfaz, sino solo de las propiedades de los materiales en contacto. Si estos son homogéneos e isótropos ---como a menudo lo son--- el valor de la densidad de energía será el mismo en toda la interfaz. Nos enfocamos en la hidrostática de materiales homogéneos y suponemos que la tensión superficial toma el mismo valor en todas partes de una interfaz estática (con la excepción de las películas de jabón).
+\item En una interfaz entre materiales homogéneos, la tensión superficial no depende de cuánto se haya estirado ya la interfaz, y esto hace a la interfaz bastante diferente de una membrana elástica que, como la piel de un globo, resiste el estiramiento con fuerza creciente porque la tensión elástica aumenta con la deformación. Las películas de jabón y las membranas biológicas son excepciones y se comportan como membranas elásticas debido a sus peculiares moléculas surfactantes; eso es de hecho lo que da cuenta de su gran estabilidad.
+\end{itemize}
+
+\subsection{Exceso de presión en una esfera}
+
+\figuraGotasLongitudCapilar
+
+Considérese una bola esférica de líquido de radio $a$, por ejemplo flotando sin peso en una nave espacial. La tensión superficial intentará contraer la bola, pero es detenida por la acumulación de una presión extra $\Delta p$ dentro del líquido. Si aumentamos el radio en una cantidad $da$, debemos realizar el trabajo $dW_1 = \alpha\, dA = \alpha\, d(4\pi a^2) = \alpha\, 8\pi a\, da$ contra la tensión superficial. Este trabajo es compensado por el trabajo termodinámico contra el exceso de presión, $dW_2 = -\Delta p\, dV = -\Delta p\, 4\pi a^2\, da$. En equilibrio no debería haber nada que ganar, $dW_1 + dW_2 = 0$, lo que conduce a
+$$ \Delta p = \frac{2\alpha}{a}. $$
+El exceso de presión es inversamente proporcional al radio de la esfera. Debe subrayarse que el exceso de presión es igualmente válido para una gota de lluvia esférica en el aire y para una burbuja esférica de aire en el agua.
+
+\textbf{Ejemplo: gotas de lluvia.} Una gota de lluvia esférica de diámetro $1\ \mathrm{mm}$ tiene un exceso de presión de solo unos $300\ \mathrm{Pa}$, que es diminuto comparado con la presión atmosférica ($10^5\ \mathrm{Pa}$). En las nubes, las gotas de lluvia son diminutas, con diámetro de alrededor de $1\ \mu\mathrm{m}$, lo que implica un exceso de presión mil veces mayor, unos 3 atm. Las gotas de lluvia que caen son deformadas por la interacción con el aire y nunca toman la forma familiar de lágrima con la punta arriba y redondeada abajo. Las gotas pequeñas con radio hasta unos $2\ \mathrm{mm}$ son esferas casi perfectas, pero para radios mayores se aplanan cada vez más. Eventualmente, cuando el radio excede $4.5\ \mathrm{mm}$, la gota se rompe en gotas más pequeñas debido a la interacción con el aire.
+
+\subsection{Longitud capilar}
+
+¿Cuándo podemos despreciar la influencia de la gravedad sobre la forma de una gota de lluvia? Para una burbuja de aire o gota de lluvia esférica de radio $a$, la condición es que el cambio de presión hidrostática a través de la gota sea despreciable comparado con el exceso de presión debido a la tensión superficial, es decir $\rho_0 g_0\, 2a \ll 2\alpha/a$, donde $\rho_0$ es la densidad del agua (menos la densidad despreciable del aire). Por consiguiente, requerimos
+$$ a \ll R_c = \sqrt{\frac{\alpha}{\rho_0 g_0}}. $$
+donde el radio crítico $R_c$ se llama \emph{longitud capilar}. Vale $2.7\ \mathrm{mm}$ para una interfaz aire--agua a $25^\circ\mathrm{C}$ y $1.9\ \mathrm{mm}$ para el mercurio.
+
+\section{Ley de Young--Laplace}
+
+Una superficie suave puede, en un punto dado, ser intersectada con un número infinito de planos que contienen la normal a la superficie. En cada plano normal la intersección es una curva plana suave que en el punto dado puede aproximarse por un círculo centrado en la normal. El centro de este círculo se llama centro de curvatura y su radio el radio de curvatura de la intersección. Usualmente al radio de curvatura se le da un signo dependiendo de en qué lado de la superficie se sitúa el centro de curvatura. Al rotar el plano de intersección, el centro de curvatura se mueve arriba y abajo de la normal entre valores extremos $R_1$ y $R_2$ del radio de curvatura con signo, llamados radios principales de curvatura. Los planos principales de intersección correspondientes son ortogonales y el radio de curvatura a lo largo de cualquier otra intersección normal puede calcularse a partir de los radios principales.
+
+\figuraCurvaturasPrincipales
+
+Considérese ahora un pequeño rectángulo con lados $d\ell_1$ y $d\ell_2$ alineado con las direcciones principales en un punto dado de la superficie, y supóngase para comenzar que los radios principales de curvatura, $R_1$ y $R_2$, son ambos positivos. La tensión superficial tira de este rectángulo desde los cuatro lados, pero la curvatura de la superficie hace que cada una de estas fuerzas no sea exactamente paralela al plano tangente. En la dirección 1, la tensión superficial actúa con dos fuerzas casi opuestas de magnitud $\alpha\, d\ell_2$, cada una formando un ángulo diminuto de magnitud $\tfrac{1}{2}d\ell_1/R_1$ con la tangente a la superficie en la dirección 1.
+
+\figuraElementoYoungLaplace
+
+Proyectando ambas fuerzas sobre la normal, calculamos la fuerza total en la dirección del centro de curvatura $C_1$ como $dF = 2\times\alpha\, d\ell_2 \times \tfrac{1}{2}d\ell_1/R_1 = \alpha\, dA/R_1$, donde $dA = d\ell_1 d\ell_2$ es el área del rectángulo. Dividiendo por $dA$ obtenemos el exceso de presión $\Delta p = \alpha/R_1$ en el lado de la superficie que contiene el centro de curvatura. Finalmente, sumando la contribución de la dirección 2 llegamos a la ley de Young--Laplace para la discontinuidad de presión debida a la tensión superficial:
+$$ \Delta p = \alpha\left(\frac{1}{R_1} + \frac{1}{R_2}\right). $$
+
+\textbf{Ejercicio.} Considérese una superficie cuadrática $z = ax^2 + by^2 + 2cxy$ con un extremo único en $x = y = 0$. Para una elección adecuada de coordenadas, una función suave siempre puede aproximarse con tal función en cualquier punto dado.
+
+a) Determine el radio de curvatura de la superficie a lo largo de una línea en el plano $xy$ que forma un ángulo $\phi$ con el eje $x$.
+
+b) Determine los extremos del radio de curvatura como función de $\phi$ y muestre que corresponden a direcciones ortogonales.
+
+\section{Ángulo de contacto y mojado}
+
+Un segundo efecto superficial importante es el ángulo de contacto $\theta$, que aparece cuando una interfaz líquida intersecta una superficie sólida, como en la Figura~\ref{fig:angulos-contacto}. El balance de fuerzas involucra entonces tanto $\alpha$ como $\theta$. Si el ángulo de contacto es menor que $90^\circ$, se dice que el líquido moja al sólido; si $\theta > 90^\circ$, el líquido se denomina no mojante.
+
+\figuraAngulosContacto
+
+\begin{itemize}
+\item El ángulo de contacto depende fuertemente de las propiedades de la superficie, la composición del fluido y los aditivos.
+\item Los surfactantes reducen tanto la tensión superficial como el ángulo de contacto, mejorando el mojado (por ejemplo, los líquidos lavaplatos).
+\item Las ceras aumentan el ángulo de contacto, haciendo que el agua forme gotas y reduciendo la corrosión (como en las superficies de los automóviles).
+\end{itemize}
+
+Por ejemplo, el agua moja al jabón pero no a la cera. El agua moja extremadamente bien una superficie de vidrio limpio, con $\theta \approx 0^\circ$. Como $\alpha$, el ángulo de contacto $\theta$ es sensible a las condiciones fisicoquímicas reales de la interfaz sólido--líquido. Para una interfaz limpia mercurio--aire--vidrio, $\theta \approx 140^\circ$.
+
+Según la ley de Young, el equilibrio en la línea de contacto (véase la Figura~\ref{fig:balance-young}) satisface:
+$$ \alpha_{sg} = \alpha_{sl} + \alpha\cos\chi. $$
+lo que conduce a
+$$ \cos\chi = \frac{\alpha_{sg} - \alpha_{sl}}{\alpha}. $$
+donde $\alpha_{sg}$ y $\alpha_{sl}$ son las tensiones superficiales sólido/gas y sólido/líquido, respectivamente.
+
+\figuraBalanceYoung
+
+Para ángulos de contacto de equilibrio:
+\begin{itemize}
+\item $0 < \alpha_{sg} - \alpha_{sl} < \alpha \Rightarrow$ mayormente mojante ($0 < \chi < 90^\circ$),
+\item $-\alpha < \alpha_{sg} - \alpha_{sl} < 0 \Rightarrow$ mayormente no mojante ($90^\circ < \chi \le 180^\circ$),
+\item $\alpha_{sg} - \alpha_{sl} > \alpha \Rightarrow$ completamente mojante,
+\item $\alpha_{sg} - \alpha_{sl} < -\alpha \Rightarrow$ completamente no mojante.
+\end{itemize}
+
+\subsection{Efecto capilar}
+
+\figuraAscensoCapilar
+
+La Figura~\ref{fig:ascenso-capilar} muestra el ascenso de un líquido en un tubo capilar de vidrio limpio debido a la tensión superficial. El líquido forma un ángulo de contacto $\beta$ con el tubo de vidrio. Los experimentos han mostrado que este ángulo para el agua y la mayoría de los líquidos en un tubo de vidrio limpio es cero. También hay casos para los cuales este ángulo es mayor que $90^\circ$ (por ejemplo, el mercurio); tales líquidos tienen un descenso capilar. Si $h$ es el ascenso capilar, $D$ el diámetro, $\rho$ la densidad y $\sigma$ la tensión superficial, $h$ puede determinarse igualando la componente vertical de la fuerza de tensión superficial al peso de la columna líquida.
+
+El agua tiene una tendencia bien conocida a subir por encima del nivel ambiente en un tubo de vidrio vertical y estrecho que se introduce en el líquido. Una inspección más cercana revela que la superficie dentro del tubo es cóncava. Esto se llama efecto capilar y es causado por el ángulo de contacto agudo del agua junto con su tensión superficial, que crea una presión negativa justo debajo de la superficie del líquido, equilibrando el peso de la columna de agua elevada. El mercurio, con su ángulo de contacto obtuso, muestra en cambio una forma de superficie convexa, creando una presión positiva justo debajo de la superficie que fuerza al líquido a bajar hasta un nivel donde la presión iguala a la del nivel ambiente.
+
+Calculemos primero el efecto para un ángulo de contacto agudo. En el centro del tubo los radios de curvatura son iguales y, puesto que el centro de curvatura yace fuera del líquido, también son negativos, $R_1 = R_2 = -R_0$ donde $R_0$ es positivo. El balance hidrostático en el centro del tubo toma entonces la forma $\rho_0 g_0 h = 2\alpha/R_0$, donde $h$ es la altura central, tal que
+$$ h = \frac{2\alpha}{\rho_0 g_0 R_0} = \frac{2R_c^2}{R_0}. $$
+Debe notarse que esta es una relación exacta que no depende de que la superficie sea esférica. También cubre el caso de un ángulo de contacto obtuso tomando $R_0$ negativo.
+
+Cuando el radio del tubo $a$ es pequeño comparado con $R_c$, la gravedad no tiene efecto sobre la forma y la superficie puede suponerse una esfera de radio $R_0$. Una construcción geométrica simple muestra que $a = R_0\cos\chi$ y, por tanto,
+$$ h = \frac{2R_c^2}{a}\cos\chi. $$
+Es, como se espera, positiva para ángulos agudos y negativa para ángulos obtusos. De la misma geometría se sigue también que la profundidad del punto central de la superficie es $d = R_0(1 - \sin\chi)$, o
+$$ d = a\,\frac{1 - \sin\chi}{\cos\chi}. $$
+Ambas expresiones se modifican para radios mayores, $a \gtrsim R_c$, donde la superficie se aplana.
+
+\textbf{Ejemplo.} Un tubo capilar tiene diámetro $2a = 1\ \mathrm{mm}$. El agua con $\chi \approx 0$ asciende $h = +30\ \mathrm{mm}$ con una profundidad de superficie $d = +0.5\ \mathrm{mm}$. El mercurio con ángulo de contacto $\chi \approx 140^\circ$ desciende, en cambio, a $h = -11\ \mathrm{mm}$ y $d = -0.2\ \mathrm{mm}$ bajo las mismas condiciones.
+
+\subsection{Acción capilar en microgravedad}
+
+En la Tierra, la gravedad domina sobre muchos efectos fluidos, pero en microgravedad emerge un panorama diferente. En una demostración (video de demostración de tensión superficial) se deja caer un aparato de dos canales parcialmente lleno de aceite de silicona. Mientras está en caída libre, el líquido experimenta condiciones de microgravedad y la altura del fluido en los dos canales conectados cambia. El menisco del aceite trepa por las paredes de los tubos gracias a la acción capilar. Esto es el resultado de las fuerzas intermoleculares entre el líquido y las paredes sólidas. La acción capilar es más efectiva en tubos estrechos donde la tensión superficial y la adhesión entre el líquido y el sólido pueden de hecho impulsar al líquido hacia arriba por las paredes, como se ve allí. En la Tierra casi siempre ignoramos la acción capilar, excepto en espacios muy pequeños, pero para los sistemas espaciales es una fuerza mayor con la que hay que contar en el diseño de flujos.
+
+\subsection{Problemas propuestos}
+
+\begin{enumerate}
+\item El sistema de la Figura~\ref{fig:tanque-tubo-capilar} se usa para calcular la presión $p_1$ en el tanque midiendo la altura de $15\ \mathrm{cm}$ de líquido en el tubo de $1\ \mathrm{mm}$ de diámetro. El fluido está a $60^\circ\mathrm{C}$. Calcule la altura verdadera del fluido en el tubo y el porcentaje de error debido a la capilaridad si el fluido es (a) agua o (b) mercurio.
+
+\figuraTanqueTuboCapilar
+
+\item Un anillo de alambre delgado, de $3\ \mathrm{cm}$ de diámetro, se levanta de una superficie de agua a $20^\circ\mathrm{C}$. Despreciando el peso del alambre, ¿qué fuerza se requiere para levantar el anillo? ¿Es esta una buena manera de medir la tensión superficial? ¿Debería el alambre ser de algún material en particular?
+
+\item Un anillo concéntrico vertical, con radio exterior $r_o$ y radio interior $r_i$, se introduce en un fluido de tensión superficial $\Upsilon$ y ángulo de contacto $\theta < 90^\circ$. Derive una expresión para el ascenso capilar $h$ en el espacio anular si el espacio es muy estrecho.
+
+\item Haga un análisis de la forma $\eta(x)$ de la interfaz agua--aire cerca de una pared plana, como en la Figura~\ref{fig:menisco-pared}, suponiendo que la pendiente es pequeña, $R^{-1} \approx d^2\eta/dx^2$. Suponga también que la diferencia de presión a través de la interfaz se equilibra con el peso específico y la altura de la interfaz, $\Delta p \approx \rho g \eta$. Las condiciones de frontera son un ángulo de contacto mojante $\theta$ en $x = 0$ y una superficie horizontal $\eta = 0$ cuando $x \to \infty$. ¿Cuál es la altura máxima $h$ en la pared?
+
+\figuraMeniscoPared
+
+\item Una aguja cilíndrica sólida de diámetro $d$, longitud $L$ y densidad $\rho_n$ puede flotar en un líquido de tensión superficial $\alpha$. Desprecie la flotabilidad y suponga un ángulo de contacto de $0^\circ$. Derive una fórmula para el diámetro máximo $d_{\mathrm{max}}$ capaz de flotar en el líquido. Calcule $d_{\mathrm{max}}$ para una aguja de acero ($\mathrm{SG} = 7.84$) en agua a $20^\circ\mathrm{C}$.
+
+\item Derive una expresión para el cambio de altura capilar $h$ para un fluido de tensión superficial $\alpha$ y ángulo de contacto $\theta$ entre dos placas verticales paralelas separadas una distancia $W$, como en la Figura~\ref{fig:capilar-placas}. ¿Cuánto valdrá $h$ para agua a $20^\circ\mathrm{C}$ si $W = 0.5\ \mathrm{mm}$?
+
+\figuraCapilarPlacas
+
+\item Una burbuja de jabón de diámetro $D_1$ coalesce con otra burbuja de diámetro $D_2$ para formar una sola burbuja $D_3$ con la misma cantidad de aire. Suponiendo un proceso isotérmico, derive una expresión para encontrar $D_3$ como función de $D_1$, $D_2$, $p_{\mathrm{atm}}$ y $\alpha$.
+
+\item Encuentre una expresión para el ascenso de líquido entre dos placas paralelas separadas una distancia $t$. Use un ángulo de contacto $\beta$ y tensión superficial $\alpha$.
+
+\item Escriba una expresión para el diámetro máximo $d$ de una aguja de longitud $L$ que puede flotar en un líquido con tensión superficial $\alpha$. La densidad de la aguja es $\rho$.
+
+\item ¿Podría una aguja de acero de $7\ \mathrm{cm}$ de largo y $4\ \mathrm{mm}$ de diámetro flotar en agua a $15^\circ\mathrm{C}$? Use $\rho_{\mathrm{acero}} = 7850\ \mathrm{kg/m^3}$.
+
+\item Encuentre una expresión para la fuerza vertical máxima $F$ necesaria para levantar lentamente un anillo de alambre delgado de diámetro $D$ de un líquido con tensión superficial $\alpha$.
+\end{enumerate}

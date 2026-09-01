@@ -1,0 +1,37 @@
+\newcommand{\figuraVarillaAtada}{%
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small,line cap=round,line join=round]
+        \fill[blue!12] (0.6,0.55) rectangle (11.5,3.15);
+        \draw[very thick,blue!65!black] (0.6,3.15)--(11.5,3.15);
+        \draw[very thick] (0.6,0.55)--(11.5,0.55);
+        \node[blue!65!black] at (10.6,2.55) {agua};
+
+        \draw[very thick,brown!80!black,line width=7pt]
+            (3.0,1.55)--(9.0,4.65);
+        \draw[<->,thick] (3.25,1.92)--(9.25,5.02)
+            node[pos=0.68,above left] {$L=5\ \mathrm{m}$};
+
+        \draw[very thick,black!70] (3.0,1.55)--(4.05,0.55);
+        \fill[black] (4.05,0.55) circle (0.07);
+        \node[anchor=north] at (4.05,0.45) {anclaje};
+        \node[anchor=east] at (3.05,1.35) {cuerda, $T$};
+
+        \draw[->,ultra thick,purple!75!black] (3.02,1.52)--(3.72,0.85)
+            node[midway,left] {$\vec T$};
+        \draw[->,ultra thick,red!75!black] (4.55,2.35)--(4.55,3.72)
+            node[above] {$\vec F_B$};
+        \draw[->,ultra thick,orange!85!black] (6.0,3.10)--(6.0,1.82)
+            node[below] {$\vec W$};
+
+        \draw[densely dashed] (6.10,3.15)--(8.45,3.15);
+        \draw[->,thick,red!75!black] (6.95,3.15)
+            arc[start angle=0,end angle=27.3,radius=0.65];
+        \node[red!75!black] at (7.60,3.48) {$\theta$};
+    \end{tikzpicture}
+    \caption{Varilla uniforme de madera atada al fondo mediante una cuerda.
+    La varilla atraviesa la superficie libre y forma un ángulo $\theta$ con la
+    horizontal.}
+    \label{fig:varilla-atada}
+\end{figure}%
+}

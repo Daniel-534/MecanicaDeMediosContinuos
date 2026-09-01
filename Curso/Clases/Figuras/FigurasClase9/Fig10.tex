@@ -1,0 +1,37 @@
+\newcommand{\figuraHidrometroProblema}{%
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small,line cap=round,line join=round]
+        \draw[very thick] (2.0,5.6)--(2.0,0.4)--(9.8,0.4)--(9.8,5.6);
+        \fill[blue!12] (2.08,0.48) rectangle (9.72,3.82);
+        \draw[very thick,blue!65!black] (2.0,3.82)--(9.8,3.82);
+        \node[blue!65!black] at (3.0,2.75) {agua};
+
+        \fill[gray!25] (5.9,1.55) ellipse (0.78 and 1.05);
+        \draw[very thick] (5.9,1.55) ellipse (0.78 and 1.05);
+        \draw[very thick] (5.68,2.40)--(5.68,5.25)--(6.12,5.25)--(6.12,2.40);
+        \begin{scope}
+            \clip (5.9,1.55) ellipse (0.78 and 1.05);
+            \fill[gray!65] (5.1,0.50) rectangle (6.7,1.30);
+        \end{scope}
+        \draw[very thick] (5.9,1.55) ellipse (0.78 and 1.05);
+        \node[white,font=\scriptsize] at (5.9,1.12) {Hg};
+        \foreach \y in {2.70,3.05,3.40,3.75,4.10,4.45,4.80}
+            \draw (6.12,\y)--(6.35,\y);
+
+        \draw[<->,thick] (6.95,2.40)--(6.95,5.25)
+            node[midway,right] {$12\ \mathrm{cm}$};
+        \draw[very thick,red!75!black] (5.52,3.82)--(6.28,3.82);
+        \fill[red!75!black] (5.90,3.82) circle (0.055);
+        \node[red!75!black,anchor=west] at (7.70,3.48)
+            {punto medio};
+        \node[align=left] at (3.75,4.62)
+            {$m_{\mathrm{vidrio}}=0.01\ \mathrm{kg}$\\
+             masa de Hg desconocida};
+    \end{tikzpicture}
+    \caption{Hidrómetro del problema. El lastre de mercurio se coloca en el
+    bulbo inferior y debe elegirse para que, en agua, la superficie corte el
+    punto medio del vástago de $12\,\mathrm{cm}$.}
+    \label{fig:hidrometro-problema}
+\end{figure}%
+}

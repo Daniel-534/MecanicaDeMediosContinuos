@@ -1,0 +1,30 @@
+\newcommand{\figuraBalanceYoung}{%
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[>=Latex,font=\small,line cap=round,line join=round]
+  \fill[gray!12] (0.7,0.7) rectangle (11.3,1.25);
+  \draw[very thick] (0.7,1.25)--(11.3,1.25);
+  \coordinate (P) at (5.8,1.25);
+  \draw[very thick,blue!70!black] (P)
+    .. controls (7.0,2.35) and (8.3,3.1) .. (10.8,3.2);
+  \draw[->,ultra thick,green!45!black] (P)--++(180:2.4)
+    node[left] {$\alpha_{sg}$};
+  \draw[->,ultra thick,orange!80!black] (P)--++(0:2.4)
+    node[right] {$\alpha_{sl}$};
+  \draw[->,ultra thick,blue!70!black] (P)--++(38:2.4)
+    node[above] {$\alpha$};
+  \draw[->,red!75!black] ($(P)+(0:0.8)$)
+    arc[start angle=0,end angle=38,radius=0.8];
+  \node[red!75!black] at ($(P)+(19:1.15)$) {$\theta$};
+  \draw[densely dashed] (P)--++(0,2.4);
+  \node[align=center] at (5.8,4.65)
+    {$\alpha_{sg}-\alpha_{sl}=\alpha\cos\theta$};
+  \node at (2.0,0.35) {sólido--gas};
+  \node at (9.7,0.35) {sólido--líquido};
+\end{tikzpicture}
+\caption{Balance de tensiones superficiales en la línea de contacto. La
+proyección horizontal de la tensión líquido--gas completa el equilibrio que
+conduce a la ley de Young.}
+\label{fig:balance-young}
+\end{figure}%
+}

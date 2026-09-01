@@ -1,0 +1,49 @@
+\newcommand{\figuraCampoMarea}{%
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small,line cap=round,line join=round]
+        \coordinate (A) at (3.0,3.0);
+        \coordinate (B) at (9.2,3.0);
+
+        \node[font=\bfseries] at (3.0,5.05)
+            {(a) Gravedad lunar};
+        \node[font=\bfseries] at (9.2,5.05)
+            {(b) Campo de marea};
+
+        \foreach \P in {A,B} {
+            \fill[blue!13] (\P) circle (1.35);
+            \draw[very thick,blue!65!black] (\P) circle (1.35);
+            \fill[black] (\P) circle (0.05);
+        }
+
+        \draw[->,thick] (0.8,4.55)--(5.2,4.55)
+            node[right] {hacia la Luna};
+
+        \draw[->,ultra thick,orange!80!black] (1.65,3.0)--(2.22,3.0);
+        \draw[->,ultra thick,orange!80!black] (3.0,3.0)--(3.92,3.0);
+        \draw[->,ultra thick,orange!80!black] (4.35,3.0)--(5.72,3.0);
+        \draw[->,ultra thick,orange!80!black] (3.0,4.35)--(4.02,4.14);
+        \draw[->,ultra thick,orange!80!black] (3.0,1.65)--(4.02,1.86);
+        \node[align=center,text=orange!80!black] at (3.0,0.92)
+            {todos los puntos aceleran\\hacia la Luna};
+
+        \draw[->,ultra thick,red!75!black] (10.55,3.0)--(11.72,3.0);
+        \draw[->,ultra thick,red!75!black] (7.85,3.0)--(6.68,3.0);
+        \draw[->,ultra thick,red!75!black] (9.2,4.35)--(9.2,3.68);
+        \draw[->,ultra thick,red!75!black] (9.2,1.65)--(9.2,2.32);
+        \node[align=center,text=red!75!black] at (9.2,0.92)
+            {estiramiento axial\\y compresión transversal};
+
+        \draw[densely dashed,black!45] (6.2,0.55)--(6.2,5.35);
+        \node[align=center,text=black!70] at (6.2,5.72)
+            {$\vec g_{\mathrm{tidal}}
+            =\vec g_{\mathrm{Luna}}-\vec g_{\mathrm{Luna}}(O)$};
+    \end{tikzpicture}
+    \caption{La gravedad lunar (a) apunta hacia la Luna en toda la Tierra,
+    pero su magnitud es mayor en el lado cercano. Al restar la aceleración del
+    centro terrestre se obtiene el campo de marea (b): los puntos sublunar y
+    antilunar se separan del centro, mientras que las regiones transversales
+    son aceleradas hacia el eje Tierra--Luna. Las flechas están exageradas.}
+    \label{fig:campo-marea}
+\end{figure}%
+}

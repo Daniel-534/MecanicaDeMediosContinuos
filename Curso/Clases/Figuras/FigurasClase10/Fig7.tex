@@ -1,0 +1,27 @@
+\newcommand{\figuraFuerzaCurvaOrientada}{%
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[>=Latex,font=\small,line cap=round,line join=round]
+  \fill[blue!8] (1,0.8)--(10.5,1.35)--(11.2,5.0)--(1.8,4.4)--cycle;
+  \draw[very thick,blue!60!black] (1,0.8)--(10.5,1.35)--(11.2,5.0)--(1.8,4.4)--cycle;
+  \draw[very thick,dashed,red!75!black] (5.6,1.05)
+    .. controls (5.0,2.3) and (6.7,3.6) .. (6.2,4.7);
+  \coordinate (P) at (5.75,2.75);
+  \draw[->,ultra thick,red!75!black] (P)--++(82:1.2)
+    node[above] {$d\vec\ell$};
+  \draw[->,ultra thick,purple!75!black] (P)--++(150:1.35)
+    node[left] {$d\vec F$};
+  \draw[very thick,green!45!black] (P) circle (0.20);
+  \node[green!45!black,font=\large] at (P) {$\times$};
+  \node[green!45!black,anchor=west] at ($(P)+(0.28,-0.25)$)
+    {$\hat n$ entra al plano};
+  \node at (3.25,2.6) {lado izquierdo};
+  \node at (8.7,2.8) {lado derecho};
+  \node at (6.0,0.25) {$d\vec F=\alpha\,d\vec\ell\times\hat n$};
+\end{tikzpicture}
+\caption{Fuerza transmitida a través de una curva orientada sobre una
+interfaz. La orientación de $d\vec\ell$ y de la normal $\hat n$ fija el sentido
+de la fuerza superficial.}
+\label{fig:fuerza-curva-orientada}
+\end{figure}%
+}
