@@ -1,0 +1,170 @@
+\documentclass[a4paper]{article}
+
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb}
+\usepackage[margin=2cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{parskip}
+\usepackage[most]{tcolorbox}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usepackage[hidelinks]{hyperref}
+
+
+% cabecera
+\pagestyle{fancy}
+\fancyhead[l]{Mecánica de Medios Continuos}
+\fancyhead[c]{Taller 4}
+\fancyhead[r]{\today}
+\fancyfoot[c]{\thepage}
+\renewcommand{\headrulewidth}{0.2pt} % linea horizontal
+
+\begin{document}
+\tableofcontents
+
+\section{Problema 1}
+
+\section{Corrección del Quiz}
+
+\section{Punto 1: Verdadero o Falso}
+
+\subsection{Literal (a)}
+
+\textbf{FALSO.} La distribución de velocidades moleculares en un gas clásico en equilibrio térmico es la distribución de Maxwell--Boltzmann:
+$$
+f(v)\,dv = 4\pi v^{2}\left(\frac{m}{2\pi k_{B}T}\right)^{3/2}\exp\!\left(-\frac{mv^{2}}{2k_{B}T}\right)dv,\qquad v\ge 0.
+$$
+La distribución de Poisson describe, en cambio, el número de moléculas contenidas en un volumen pequeño:
+$$
+\Pr(n\mid N)=\frac{N^{n}}{n!}\,e^{-N}.
+$$
+Son distribuciones con roles distintos: Maxwell--Boltzmann es una distribución continua de velocidades, mientras que Poisson es una distribución discreta de conteo.
+
+\subsection{Literal (b)}
+
+\textbf{VERDADERO.} La longitud de separación molecular es
+$$
+L_{\mathrm{mol}}=\left(\frac{V}{N}\right)^{1/3}=\left(\frac{M_{\mathrm{mol}}}{\rho N_{A}}\right)^{1/3}.
+$$
+En un líquido las moléculas están en contacto directo, de modo que $L_{\mathrm{mol}}$ es del orden del tamaño molecular; por ejemplo, para el agua líquida $L_{\mathrm{mol}}\approx 0{,}31\ \mathrm{nm}$. En un gas ideal, usando $pV=Nk_{B}T$,
+$$
+L_{\mathrm{mol}}=\left(\frac{k_{B}T}{p}\right)^{1/3},
+$$
+lo que a temperatura y presión ambiente da $L_{\mathrm{mol}}\approx 3{,}4\ \mathrm{nm}$, aproximadamente una décima parte mayor que en el líquido. Por tanto, en general $L_{\mathrm{mol}}^{\mathrm{gas}}>L_{\mathrm{mol}}^{\mathrm{líquido}}$.
+
+\subsection{Literal (c)}
+
+\textbf{FALSO.} La presión absoluta en un líquido incompresible rodeado de aire es
+$$
+p_{\mathrm{abs}}(z)=p_{\mathrm{atm}}+\rho g z.
+$$
+Si se duplica la profundidad $h$:
+$$
+p_{\mathrm{abs}}(2h)=p_{\mathrm{atm}}+2\rho g h.
+$$
+En cambio, el doble de la presión a profundidad $h$ sería
+$$
+2\,p_{\mathrm{abs}}(h)=2p_{\mathrm{atm}}+2\rho g h.
+$$
+Ambas expresiones difieren en $p_{\mathrm{atm}}$, por lo que $p_{\mathrm{abs}}(2h)\ne 2p_{\mathrm{abs}}(h)$. Lo que se duplica al duplicar la profundidad es la presión manométrica $\rho g h$, no la absoluta.
+
+\section{Punto 2: Ecuación de estado del agua}
+
+La ecuación de estado dada es
+$$
+p=p_{0}+B\left[\left(\frac{\rho}{\rho_{0}}\right)^{n}-1\right],
+$$
+con $B=3000\ \mathrm{atm}$, $n=7$, $p_{0}=1\ \mathrm{atm}$ y $\rho_{0}=1\ \mathrm{g/cm^{3}}$.
+
+\subsection{Literal (a): Módulo de compresibilidad}
+
+El módulo de compresibilidad se define como
+$$
+K=\rho\,\frac{dp}{d\rho}.
+$$
+Derivando la ecuación de estado:
+$$
+\frac{dp}{d\rho}=B\,n\left(\frac{\rho}{\rho_{0}}\right)^{n-1}\frac{1}{\rho_{0}}.
+$$
+Por tanto,
+$$
+K=nB\left(\frac{\rho}{\rho_{0}}\right)^{n}.
+$$
+En la superficie, donde $\rho=\rho_{0}$:
+$$
+K_{0}=nB=7\times 3000\ \mathrm{atm}=21\,000\ \mathrm{atm}\approx 2{,}1\times 10^{9}\ \mathrm{Pa}.
+$$
+Este valor es consistente con el módulo de compresibilidad conocido del agua ($\sim 2{,}1\ \mathrm{GPa}$).
+
+\subsection{Literal (b): Perfiles de densidad y presión}
+
+Se define la variable adimensional
+$$
+u(z)\equiv \frac{\rho(z)}{\rho_{0}},\qquad u(0)=1.
+$$
+La ecuación de estado se escribe
+$$
+p=p_{0}+B(u^{n}-1),
+$$
+de modo que
+$$
+\frac{dp}{dz}=Bn\,u^{\,n-1}\frac{du}{dz}.
+$$
+El equilibrio hidrostático exige
+$$
+\frac{dp}{dz}=-\rho g=-\rho_{0}g\,u.
+$$
+Igualando ambas expresiones:
+$$
+Bn\,u^{\,n-1}\frac{du}{dz}=-\rho_{0}g\,u
+\quad\Longrightarrow\quad
+u^{\,n-2}\,du=-\frac{\rho_{0}g}{Bn}\,dz.
+$$
+Para $n=7$ queda $u^{5}\,du=-\dfrac{\rho_{0}g}{7B}\,dz$. Integrando:
+$$
+\frac{u^{6}}{6}=-\frac{\rho_{0}g}{7B}\,z+C.
+$$
+Imponiendo $u(0)=1$ se obtiene $C=\tfrac{1}{6}$, y por tanto
+$$
+u^{6}=1-\frac{6\rho_{0}g}{7B}\,z.
+$$
+Los perfiles pedidos son entonces
+$$
+\rho(z)=\rho_{0}\left(1-\frac{6\rho_{0}g}{7B}\,z\right)^{1/6},
+$$
+$$
+p(z)=p_{0}+B\left[\left(1-\frac{6\rho_{0}g}{7B}\,z\right)^{7/6}-1\right].
+$$
+El perfil existe mientras el argumento sea positivo, es decir, para
+$$
+0\le z<\frac{7B}{6\rho_{0}g}.
+$$
+En el límite $z\to 7B/(6\rho_{0}g)$, tanto $\rho$ como $p$ tienden a $0$ y $p_{0}$ respectivamente de manera consistente con la ecuación de estado.
+
+\subsection{Literal (c): Bonificación --- Altura característica}
+
+Una altura característica natural del problema es
+$$
+h_{c}=\frac{7B}{6\rho_{0}g}.
+$$
+Verificación dimensional: $[B]=\mathrm{Pa}=\mathrm{kg\,m^{-1}\,s^{-2}}$ y $[\rho_{0}g]=\mathrm{kg\,m^{-3}\,m\,s^{-2}}=\mathrm{Pa/m}$, de modo que
+$$
+[h_{c}]=\frac{\mathrm{Pa}}{\mathrm{Pa/m}}=\mathrm{m}.
+$$
+La elección es dimensionalmente consistente. Numéricamente:
+$$
+h_{c}=\frac{7\times 3000\times 101\,325\ \mathrm{Pa}}{6\times 1000\ \mathrm{kg/m^{3}}\times 9{,}81\ \mathrm{m/s^{2}}}
+\approx 3{,}6\times 10^{4}\ \mathrm{m}\approx 36\ \mathrm{km}.
+$$
+Esta altura es mucho mayor que la profundidad real de los océanos ($\sim 11\ \mathrm{km}$), lo que justifica que el agua pueda tratarse como casi incompresible en la mayoría de aplicaciones oceánicas ordinarias. También puede compararse con la altura característica del caso estrictamente incompresible,
+$$
+h_{0}=\frac{p_{0}}{\rho_{0}g}\approx 10\ \mathrm{m},
+$$
+observando que $h_{c}=\dfrac{7B}{6p_{0}}\,h_{0}\approx 3500\,h_{0}$.
+
+\end{document}

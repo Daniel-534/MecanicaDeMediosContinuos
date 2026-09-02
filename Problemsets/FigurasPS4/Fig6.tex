@@ -1,7 +1,7 @@
 \begin{figure}[H]
     \centering
     \definecolor{polytropered}{RGB}{180,45,55}
-    \begin{tikzpicture}[x=6.2cm,y=4.6cm,line cap=round,line join=round]
+    \begin{tikzpicture}[x=11.5cm,y=4.8cm,line cap=round,line join=round]
         \foreach \x in {0.2,0.4,0.6,0.8,1.0} {
             \draw[black!15] (\x,0) -- (\x,1.03);
         }
@@ -18,18 +18,16 @@
                 (0.7,0.652) (0.8,0.765) (0.9,0.881) (1,1)
             };
 
-        \node[below] at (1.08,0) {$\rho/\rho_0$};
-        \node[left] at (0,1.08) {$p/p_c$};
-        \node[polytropered,align=left] at (0.68,0.35)
-            {$\displaystyle \frac{p}{p_c}
-             =\left(\frac{\rho}{\rho_0}\right)^{6/5}$\\[2pt]
-             $n=5$};
+        \node[anchor=north] at (0.52,-0.14) {$\rho/\rho_0$};
+        \node[rotate=90] at (-0.10,0.52) {$p/p_c$};
 
         \foreach \x/\lab in {0.2/{0{,}2},0.4/{0{,}4},0.6/{0{,}6},0.8/{0{,}8},1/{1}} {
-            \node[below] at (\x,-0.01) {$\lab$};
+            \draw (\x,0.012) -- (\x,-0.012);
+            \node[anchor=north] at (\x,-0.018) {$\lab$};
         }
         \foreach \y/\lab in {0.2/{0{,}2},0.4/{0{,}4},0.6/{0{,}6},0.8/{0{,}8},1/{1}} {
-            \node[left] at (-0.005,\y) {$\lab$};
+            \draw (0.008,\y) -- (-0.008,\y);
+            \node[anchor=east] at (-0.014,\y) {$\lab$};
         }
     \end{tikzpicture}
     \caption{Relación barotrópica entre presión y densidad para la politropa de índice $n=5$.}
