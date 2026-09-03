@@ -1,34 +1,96 @@
 \newcommand{\figuraCafeRotante}{%
 \begin{figure}[H]
     \centering
-    \begin{tikzpicture}[>=Latex,font=\small,x=1.05cm,y=0.75cm,
+    \begin{tikzpicture}[>=Latex,font=\small,x=1.15cm,y=1.0cm,
                         line cap=round,line join=round]
-        \draw[very thick,rounded corners=7pt] (0,10)--(0,0)--(6,0)--(6,10);
-        \draw[very thick,rounded corners=8pt] (6,8.9)--(8.1,8.9)--(8.1,5.5)--(6,3.6);
-        \draw[very thick,rounded corners=5pt] (6.35,8.25)--(7.45,8.25)--(7.45,5.85)--(6.35,4.85);
-        \fill[pink!35] (0.08,0.08)--(5.92,0.08)--
-            plot[domain=5.92:0.08,samples=120] (\x,{7+0.33*(\x-3)*(\x-3)})--cycle;
-        \draw[very thick,magenta!75!black,domain=0.08:5.92,samples=120]
-            plot (\x,{7+0.33*(\x-3)*(\x-3)});
-        \node[magenta!75!black,anchor=south]
-            at (1.25,8.2) {superficie libre};
-        \draw[densely dashed] (3,0)--(3,10.9);
-        \draw[densely dashed] (0.08,7)--(5.92,7);
-        \draw[->,ultra thick,purple!75!black] (3,2.0)
-            arc[start angle=90,end angle=-235,radius=0.55];
-        \node at (3.85,2.0) {$\Omega$};
-        \fill[magenta!75!black] (0.45,0.45) circle (0.10) node[right] {$A$};
-        \node[below right] at (3,7) {$0$};
-        \draw[->,thin] (3,7)--(4.2,7) node[below] {$r$};
-        \draw[->,thin] (3,7)--(3,10.7) node[left] {$z$};
-        \draw[<->] (-0.45,0)--(-0.45,7) node[midway,left] {$7\,\mathrm{cm}$};
-        \draw[<->] (-0.45,7)--(-0.45,10) node[midway,left] {$3\,\mathrm{cm}$};
-        \draw[<->] (0,-0.6)--(3,-0.6) node[midway,below] {$3\,\mathrm{cm}$};
-        \draw[<->] (3,-0.6)--(6,-0.6) node[midway,below] {$3\,\mathrm{cm}$};
+        \draw[very thick,rounded corners=6pt]
+            (0.8,6.6)--(0.8,0.6)--(6.8,0.6)--(6.8,6.6);
+
+        \fill[pink!28] (0.88,0.68) rectangle (6.72,4.80);
+        \draw[very thick,magenta!75!black] (0.88,4.80)--(6.72,4.80);
+        \node[magenta!75!black,anchor=south] at (3.8,4.86)
+            {superficie libre inicial};
+
+        \draw[densely dashed] (3.8,0.6)--(3.8,6.9);
+        \node[anchor=south] at (3.8,6.64) {eje de rotación};
+
+        \draw[<->,thick] (0.18,0.6)--(0.18,4.80)
+            node[midway,left] {$7\,\mathrm{cm}$};
+        \draw[<->,thick] (0.18,4.80)--(0.18,6.6)
+            node[midway,left] {$3\,\mathrm{cm}$};
+        \draw[densely dashed] (0.3,4.80)--(0.88,4.80);
+        \draw[densely dashed] (0.3,6.60)--(0.88,6.60);
+
+        \draw[<->,thick] (3.8,0.05)--(6.8,0.05)
+            node[midway,below] {$R=3\,\mathrm{cm}$};
+        \draw[densely dashed] (3.8,0.2)--(3.8,0.6);
+        \draw[densely dashed] (6.8,0.2)--(6.8,0.6);
+
+        \node[align=center,text=black!65] at (3.8,-0.85)
+            {profundidad inicial del café: $7\,\mathrm{cm}$\\
+             espacio libre hasta el borde: $3\,\mathrm{cm}$};
     \end{tikzpicture}
-    \caption{Taza en rotación alrededor de su eje. La conservación del
-    volumen mantiene el vértice del paraboloide en el nivel de referencia,
-    mientras los bordes ascienden hasta la condición de derrame.}
+    \caption{Estado inicial de la taza. La superficie del café es horizontal
+    y se encuentra a $7\,\mathrm{cm}$ sobre el fondo. Como la taza tiene
+    $10\,\mathrm{cm}$ de profundidad, quedan $3\,\mathrm{cm}$ hasta el borde.}
+    \label{fig:cafe-inicial}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small,x=1.15cm,y=1.0cm,
+                        line cap=round,line join=round]
+        \draw[very thick,rounded corners=6pt]
+            (0.8,6.6)--(0.8,0.6)--(6.8,0.6)--(6.8,6.6);
+
+        \fill[pink!32] (0.88,0.68)--(6.72,0.68)--
+            plot[domain=6.72:0.88,samples=140]
+                (\x,{3.0+0.40*(\x-3.8)*(\x-3.8)})--cycle;
+        \draw[very thick,magenta!75!black,domain=0.88:6.72,samples=140]
+            plot (\x,{3.0+0.40*(\x-3.8)*(\x-3.8)});
+
+        \draw[densely dashed,black!65] (0.88,4.80)--(6.72,4.80);
+        \node[anchor=south,text=black!65] at (3.8,4.84)
+            {nivel inicial: $7\,\mathrm{cm}$};
+        \draw[densely dashed] (3.8,0.6)--(3.8,6.95);
+        \node[anchor=south] at (3.8,6.68) {eje de rotación};
+
+        \draw[<->,red!75!black,thick] (3.15,3.0)--(3.15,4.80)
+            node[midway,left] {descenso: $3\,\mathrm{cm}$};
+        \node[red!75!black,anchor=east] at (3.08,3.0)
+            {$z_c=4\,\mathrm{cm}$};
+        \draw[densely dashed,red!75!black] (3.15,3.0)--(3.8,3.0);
+
+        \draw[<->,blue!70!black,thick] (1.30,4.80)--(1.30,6.41)
+            node[midway,left] {ascenso: $3\,\mathrm{cm}$};
+        \node[blue!70!black,anchor=south west] at (1.36,6.41)
+            {$z_b=10\,\mathrm{cm}$};
+
+        \draw[<->,thick] (7.28,3.0)--(7.28,6.41)
+            node[midway,right] {$h=6\,\mathrm{cm}$};
+        \draw[densely dashed] (6.72,3.0)--(7.4,3.0);
+        \draw[densely dashed] (6.72,6.41)--(7.4,6.41);
+
+        \draw[<->,thick] (3.8,0.05)--(6.8,0.05)
+            node[midway,below] {$R=3\,\mathrm{cm}$};
+        \draw[densely dashed] (3.8,0.2)--(3.8,0.6);
+        \draw[densely dashed] (6.8,0.2)--(6.8,0.6);
+
+        \draw[->,ultra thick,purple!75!black] (3.8,1.25)
+            arc[start angle=90,end angle=-235,radius=0.50];
+        \node[purple!75!black] at (4.58,1.25) {$\Omega$};
+
+        \fill[magenta!75!black] (1.15,0.95) circle (0.09);
+        \node[magenta!75!black,anchor=west] at (1.28,0.95) {$A$};
+
+        \node[align=center,text=black!65] at (3.8,-0.90)
+            {el borde sube $3\,\mathrm{cm}$ y el centro baja $3\,\mathrm{cm}$;\\
+             la altura media permanece en $7\,\mathrm{cm}$};
+    \end{tikzpicture}
+    \caption{Taza en la condición de derrame. La conservación del volumen
+    exige que el borde ascienda desde $7$ hasta $10\,\mathrm{cm}$ y que el
+    centro descienda desde $7$ hasta $4\,\mathrm{cm}$. La diferencia entre
+    ambos niveles es $h=6\,\mathrm{cm}$.}
     \label{fig:cafe-rotante}
 \end{figure}%
 }

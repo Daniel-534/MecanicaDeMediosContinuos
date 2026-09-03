@@ -8,6 +8,8 @@
 \input{Clases/Figuras/FigurasClase8/Fig7}
 \input{Clases/Figuras/FigurasClase8/Fig8}
 \input{Clases/Figuras/FigurasClase8/Fig9}
+\input{Clases/Figuras/FigurasClase8/Fig10}
+\input{Clases/Figuras/FigurasClase8/Fig11}
 \shorthandon{<>}
 
 \chapter{Clase 8}
@@ -91,6 +93,8 @@ Los puntos esenciales de esta discusión son los siguientes:
 
 Cerca de la superficie terrestre, un recipiente con líquido es sometido a una aceleración horizontal constante en la dirección $y$, $\vec{a} = a\hat{\jmath}$ (véase la Figura~\ref{fig:recipiente-acelerado}). La densidad de fuerza externa resultante es
 $$ \vec{f}_e = \rho\vec{g} + \vec{f}_{\mathrm{fict}} = \rho\vec{g} - \rho\vec{a} = \rho\vec{\nabla}(-gz - ay) = -\rho\vec{\nabla}\Phi_{\mathrm{eff}} = -\rho\vec{\nabla}(gz + ay), $$
+\textit{Nota.} Los signos dependen de la orientación elegida para los ejes. Aquí $z$ es positivo hacia arriba, por lo que $\vec g=-g\hat{k}$, mientras que el recipiente acelera en la dirección positiva de $y$, de modo que $\vec a=a\hat{\jmath}$. En el marco unido al recipiente, la fuerza ficticia apunta en sentido contrario a su aceleración y vale $-\rho\vec a=-\rho a\hat{\jmath}$. Por eso ambas contribuciones aparecen con signo negativo: $\vec f_e=-\rho g\hat{k}-\rho a\hat{\jmath}=-\rho\vec\nabla(gz+ay)$. Si se invierte alguno de los ejes o el sentido de la aceleración, debe cambiarse coherentemente el signo de la componente correspondiente.
+
 donde $\Phi_{\mathrm{eff}} = gz + ay$ es el \emph{potencial efectivo}. Así, el balance hidrostático en el marco acelerado se convierte en
 $$ \vec{\nabla}p + \rho\vec{\nabla}\Phi_{\mathrm{eff}} = \vec{0}. $$
 
@@ -100,9 +104,37 @@ $$ \vec{\nabla}p + \rho\vec{\nabla}\Phi_{\mathrm{eff}} = \vec{0}. $$
 
 Si la densidad es constante, la integración de la ecuación de balance hidrostático da
 $$ p + \rho(gz + ay) = C. $$
-Si en el punto $(y,z) = (0,h)$ la presión es igual a $p_0$, entonces
-$$ p = p_0 + \rho g(h - z) - \rho a y. $$
-La superficie libre $p = p_0$ es por tanto un plano inclinado,
+Para determinar la constante de integración, usamos el punto de referencia $(y,z)=(0,h)$, donde la presión es $p_0$. Al sustituir estas coordenadas en la expresión anterior se obtiene
+$$
+p_0+\rho\bigl(gh+a\cdot0\bigr)=C,
+$$
+de modo que
+$$
+C=p_0+\rho gh.
+$$
+En un punto arbitrario $(y,z)$ se tiene, por otra parte,
+$$
+p+\rho(gz+ay)=C=p_0+\rho gh.
+$$
+Despejando la presión y agrupando los términos verticales,
+$$
+\begin{aligned}
+p(y,z)
+&=p_0+\rho gh-\rho gz-\rho ay\\
+&=p_0+\rho g(h-z)-\rho ay.
+\end{aligned}
+$$
+El término $\rho g(h-z)$ representa el aumento hidrostático de presión al descender desde la altura de referencia $h$, mientras que $-\rho ay$ describe la disminución de presión al avanzar en la dirección de la aceleración del recipiente.
+
+Sobre la superficie libre se cumple $p=p_0$. Al imponer esta condición en la expresión de la presión,
+$$
+p_0=p_0+\rho g(h-z)-\rho ay,
+$$
+y cancelar $p_0$ y $\rho$, resulta
+$$
+g(h-z)=ay.
+$$
+Despejando $z$, la superficie libre es el plano inclinado
 $$ z = h - \frac{a}{g}\,y. $$
 
 \subsection{Aceleración en un plano}
@@ -186,13 +218,53 @@ Como la taza tiene 10 cm de profundidad, el café \textbf{no se derrama}. El niv
 
 \section{Recipientes rotantes}
 
-Para estudiar la estática de un fluido que rota uniformemente, se considera la ecuación hidrostática fundamental en un marco rotante. Además de la gravedad (cuando está presente), deben incluirse las fuerzas ficticias. En coordenadas cilíndricas, la densidad de fuerza de cuerpo centrífuga es
-$$ \vec{f} = \frac{d\vec{F}}{dV} = \frac{dm}{dV}\Omega^2 r\,\hat{e}_r = \rho\Omega^2 r\,\hat{e}_r, $$
+Para estudiar la estática de un fluido que rota uniformemente, se considera la ecuación hidrostática fundamental en el marco que gira junto con el recipiente. En este marco el fluido está en reposo, por lo que no aparece la fuerza de Coriolis, y como $\Omega$ es constante tampoco aparece una fuerza de Euler. Además de la gravedad, la única fuerza ficticia relevante es entonces la fuerza centrífuga.
+
+Consideremos un elemento de fluido de volumen $dV$, masa $dm=\rho\,dV$ y situado a una distancia cilíndrica $r$ del eje de rotación. Su aceleración centrífuga apunta radialmente hacia afuera y está dada por
+$$
+\vec a_{\mathrm{cf}}
+=-\vec\Omega\times(\vec\Omega\times\vec r)
+=\Omega^2r\,\hat e_r.
+$$
+
+\figuraAceleracionCentrifuga
+
+\figuraAceleracionCentrifugaRecipiente
+
+La fuerza centrífuga sobre el elemento es, por tanto,
+$$
+d\vec F_{\mathrm{cf}}
+=dm\,\vec a_{\mathrm{cf}}
+=\rho\,dV\,\Omega^2r\,\hat e_r.
+$$
+Al dividir por el volumen del elemento se obtiene la densidad de fuerza de cuerpo centrífuga,
+$$
+\vec{f}
+=\frac{d\vec F_{\mathrm{cf}}}{dV}
+=\frac{dm}{dV}\Omega^2r\,\hat e_r
+=\rho\Omega^2r\,\hat e_r.
+$$
 de modo que la densidad de fuerza efectiva es
 $$ \vec{f}_e = \rho\vec{g} + \rho\Omega^2 r\,\hat{e}_r = \rho\vec{\nabla}\left[-\Phi + \frac{\Omega^2 r^2}{2}\right] = \vec{\nabla}p, $$
 y por tanto el balance hidrostático puede escribirse como
 $$ \frac{\vec{\nabla}p}{\rho} + \vec{\nabla}\left(\Phi - \frac{\Omega^2 r^2}{2}\right) = 0. $$
 La cantidad $\Phi - \Omega^2 r^2/2$ se denomina \emph{potencial efectivo} $\Phi_{\mathrm{eff}}$. Equivalentemente, $-\rho\vec{\nabla}\Phi_{\mathrm{eff}} = \vec{\nabla}p$.
+En efecto, como $\vec g=-\vec\nabla\Phi$ y
+$$
+\vec\nabla\left(\frac{\Omega^2r^2}{2}\right)
+=\Omega^2r\,\hat e_r,
+$$
+se tiene,
+$$
+\begin{aligned}
+-\rho\vec\nabla\Phi_{\mathrm{eff}}
+&=-\rho\vec\nabla\left(\Phi-\frac{\Omega^2r^2}{2}\right)\\
+&=-\rho\vec\nabla\Phi+\rho\Omega^2r\,\hat e_r\\
+&=\rho\vec g+\rho\Omega^2r\,\hat e_r
+=\vec f_e
+=\vec\nabla p.
+\end{aligned}
+$$
 
 \figuraRecipienteRotante
 
@@ -207,7 +279,37 @@ $$ \Omega^2 r^2 = 2g(z - z_0). $$
 
 Nótese que la forma de la superficie no depende de $\rho$, siempre que sea constante. En un cubo de 20 cm de diámetro que rota una vez por segundo, el agua se eleva 2 cm más en el borde que en el centro.
 
-Como en el ejemplo anterior de aceleración lineal, la posición de la superficie libre se encuentra conservando el volumen de fluido. Para un recipiente no circular con el eje de rotación fuera del centro, se requiere una integración geométrica de la región ocupada. Sin embargo, el cálculo es directo para un cilindro que rota alrededor de su eje central, como en la Figura~\ref{fig:volumen-rotante}. Puesto que el volumen de un paraboloide es la mitad del área de la base por su altura, el nivel del agua en reposo está exactamente a mitad de camino entre los puntos alto y bajo de la superficie libre. El centro del fluido desciende una cantidad $h/2 = \Omega^2 R^2/(4g)$, y los bordes ascienden la misma cantidad.
+Como en el ejemplo anterior de aceleración lineal, la posición de la superficie libre se encuentra conservando el volumen de fluido. Para un recipiente no circular con el eje de rotación fuera del centro, se requiere una integración geométrica de la región ocupada. Sin embargo, el cálculo es directo para un cilindro que rota alrededor de su eje central, como en la Figura~\ref{fig:volumen-rotante}. Si $h$ es la diferencia de altura entre el centro y el borde, la superficie parabólica medida desde su punto más bajo es
+$$
+z(r)=h\frac{r^2}{R^2}.
+$$
+El volumen situado bajo esta superficie es
+$$
+\begin{aligned}
+V
+&=\int_0^R z(r)\,2\pi r\,dr
+=\frac{2\pi h}{R^2}\int_0^R r^3\,dr\\
+&=\frac{2\pi h}{R^2}\frac{R^4}{4}
+=\frac{1}{2}\pi R^2h.
+\end{aligned}
+$$
+Por tanto, el volumen de un paraboloide es la mitad del volumen del cilindro de igual base y altura. Su altura media es $V/(\pi R^2)=h/2$; por conservación del volumen, el nivel original queda exactamente a mitad de camino entre el centro y el borde de la superficie libre. Además, evaluando la ecuación de la superficie libre
+$$
+\Omega^2r^2=2g(z-z_0)
+$$
+en el borde, donde $r=R$ y $z-z_0=h$, se obtiene
+$$
+\Omega^2R^2=2gh
+\qquad\Longrightarrow\qquad
+h=\frac{\Omega^2R^2}{2g}.
+$$
+Como el ascenso del borde y el descenso del centro son cada uno la mitad de la diferencia total $h$,
+$$
+\frac{h}{2}
+=\frac{1}{2}\left(\frac{\Omega^2R^2}{2g}\right)
+=\frac{\Omega^2R^2}{4g}.
+$$
+Así, el centro desciende esta cantidad y los bordes ascienden la misma cantidad.
 
 \figuraConservacionVolumenRotante
 
@@ -217,7 +319,15 @@ Como en el ejemplo anterior de aceleración lineal, la posición de la superfici
 
 \figuraCafeRotante
 
-\textbf{Solución.} La taza tiene radio $R=0.03\ \mathrm{m}$, profundidad total de 10 cm y nivel inicial de 7 cm. Cuando el líquido alcanza justo el borde, la conservación del volumen implica que el nivel central desciende hasta 4 cm. Por tanto, la diferencia entre el borde y el centro es
+\textbf{Solución.} La taza tiene radio $R=0.03\ \mathrm{m}$, profundidad total de 10 cm y nivel inicial de 7 cm. Cuando el líquido alcanza justo el borde, la altura en el borde es $10\ \mathrm{cm}$. Como el nivel inicial debe quedar a mitad de camino entre la altura del centro y la del borde,
+$$
+7\ \mathrm{cm}=\frac{z_{\mathrm{centro}}+10\ \mathrm{cm}}{2},
+$$
+de donde
+$$
+z_{\mathrm{centro}}=4\ \mathrm{cm}.
+$$
+Esto significa que el nivel central no desciende $4\ \mathrm{cm}$, sino que desciende $3\ \mathrm{cm}$: pasa de $7\ \mathrm{cm}$ a $4\ \mathrm{cm}$. El borde, a su vez, asciende $3\ \mathrm{cm}$, desde $7\ \mathrm{cm}$ hasta $10\ \mathrm{cm}$, tal como muestra la figura. Por tanto, la diferencia entre el borde y el centro es
 $$ h=10\ \mathrm{cm}-4\ \mathrm{cm}=6\ \mathrm{cm}=0.06\ \mathrm{m}. $$
 Como la superficie libre satisface $h=\Omega^2R^2/(2g)$,
 $$ \Omega=\sqrt{\frac{2gh}{R^2}}

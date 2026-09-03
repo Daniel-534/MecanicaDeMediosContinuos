@@ -1,0 +1,58 @@
+\newcommand{\figuraAceleracionCentrifuga}{%
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small,line cap=round,line join=round,
+                        scale=0.98,transform shape]
+        \node[font=\bfseries] at (7.0,6.55)
+            {\texthalo{Construcción vectorial en vista superior}};
+
+        \coordinate (O) at (4.15,2.45);
+        \coordinate (P) at ($(O)+(30:3.85)$);
+        \draw[thick,densely dashed,black!45] (O) circle (2.70);
+
+        \draw[very thick,purple!75!black] (O) circle (0.22);
+        \fill[purple!75!black] (O) circle (0.055);
+        \node[purple!75!black,anchor=east] at ($(O)+(-0.28,-0.42)$)
+            {\texthalo{$O$: $\vec\Omega$ sale del plano}};
+
+        \fill[orange!80!black] (P) circle (0.10);
+        \node[anchor=north west] at ($(P)+(0.18,-0.18)$)
+            {\texthalo{elemento de fluido}};
+
+        \draw[->,ultra thick,black] (O)--(P)
+            node[midway,above left] {\texthalo{$\vec r=r\hat e_r$}};
+
+        \draw[thin,densely dashed,black!55] (O)--++(0:1.55);
+        \draw[->,thin,black!70] ($(O)+(0:0.78)$)
+            arc[start angle=0,end angle=30,radius=0.78];
+
+        \draw[->,ultra thick,green!45!black] (P)--++(120:1.90);
+        \node[green!45!black,anchor=east] at ($(P)+(120:1.45)$)
+            {\texthalo{$\vec\Omega\times\vec r$}};
+
+        \draw[->,ultra thick,blue!70!black] (P)--++(210:2.25);
+        \node[blue!70!black,align=center,anchor=north] at (7.25,2.05)
+            {\texthalo{$\vec\Omega\times(\vec\Omega\times\vec r)$}\\
+             \texthalo{hacia el eje}};
+
+        \draw[->,ultra thick,red!75!black] (P)--++(30:2.75);
+        \node[red!75!black,anchor=south] at ($(P)+(30:1.45)+(0,0.55)$)
+            {\texthalo{$\vec a_{\mathrm{cf}}=\Omega^2r\,\hat e_r$}};
+
+        \draw[->,very thick,purple!75!black]
+            ($(O)+(20:2.70)$) arc[start angle=20,end angle=145,radius=2.70];
+        \node[purple!75!black,anchor=south] at (3.05,5.72)
+            {\texthalo{sentido positivo de rotación}};
+
+        \node[align=center,text=black!65] at (8.75,0.42)
+            {\texthalo{El doble producto vectorial apunta hacia el eje;}\\
+             \texthalo{el signo menos invierte su dirección y lo hace centrífugo.}};
+    \end{tikzpicture}
+    \caption{Construcción vectorial de la aceleración centrífuga. Para
+    $\vec\Omega$ perpendicular al plano, $\vec\Omega\times\vec r$ es
+    tangencial y $\vec\Omega\times(\vec\Omega\times\vec r)$ apunta hacia el
+    eje. El signo negativo invierte esa dirección y produce
+    $\vec a_{\mathrm{cf}}=\Omega^2r\,\hat e_r$.}
+    \label{fig:aceleracion-centrifuga-vectores}
+\end{figure}%
+}

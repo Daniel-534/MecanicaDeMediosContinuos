@@ -1,0 +1,49 @@
+\newcommand{\figuraAceleracionCentrifugaRecipiente}{%
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=Latex,font=\small,line cap=round,line join=round]
+        \node[font=\bfseries] at (7.0,6.25)
+            {\texthalo{Interpretación física en el recipiente rotante}};
+
+        \draw[very thick] (2.25,5.45)--(2.25,0.65)--(11.75,0.65)--(11.75,5.45);
+        \fill[blue!12] (2.33,0.73) rectangle (11.67,4.35);
+        \draw[very thick,blue!65!black] (2.25,4.35)--(11.75,4.35);
+
+        \draw[densely dashed,black!65] (7.0,0.65)--(7.0,5.75);
+        \node[anchor=south east] at (6.88,5.42)
+            {\texthalo{eje de rotación}};
+
+        \fill[orange!80!black] (9.45,3.05) circle (0.14);
+        \node[anchor=south] at (9.45,3.55)
+            {\texthalo{elemento de fluido}};
+        \draw[->,thick] (7.0,3.05)--(9.45,3.05)
+            node[midway,below] {\texthalo{$\vec r=r\hat e_r$}};
+        \draw[->,ultra thick,red!75!black] (9.45,3.05)--(11.25,3.05)
+            node[midway,above] {\texthalo{$\vec a_{\mathrm{cf}}$}};
+        \node[red!75!black,anchor=west] at (9.55,2.15)
+            {\texthalo{$|\vec a_{\mathrm{cf}}|=\Omega^2r$}};
+
+        \draw[->,ultra thick,purple!75!black] (7.0,1.55)
+            arc[start angle=90,end angle=-235,radius=0.58];
+        \node[purple!75!black,anchor=west] at (7.78,1.55)
+            {\texthalo{$\vec\Omega$}};
+
+        \draw[->,very thick,red!75!black] (3.25,2.15)--(4.05,2.15);
+        \draw[->,very thick,red!75!black] (4.55,2.15)--(5.75,2.15);
+        \node[align=center] at (4.50,1.45)
+            {\texthalo{la magnitud aumenta}\\
+             \texthalo{linealmente con $r$}};
+
+        \fill[orange!80!black] (7.0,4.35) circle (0.10);
+        \node[anchor=south west] at (7.10,4.43)
+            {\texthalo{$r=0\Rightarrow\vec a_{\mathrm{cf}}=\vec 0$}};
+        \node[align=center,text=black!65] at (7.0,0.12)
+            {\texthalo{La aceleración es radial y apunta siempre hacia afuera del eje.}};
+    \end{tikzpicture}
+    \caption{Aceleración centrífuga dentro de un recipiente que gira con
+    velocidad angular constante. Se anula sobre el eje de rotación y crece
+    linealmente con la distancia radial: su magnitud es $\Omega^2r$ y su
+    dirección es $\hat e_r$.}
+    \label{fig:aceleracion-centrifuga-recipiente}
+\end{figure}%
+}
