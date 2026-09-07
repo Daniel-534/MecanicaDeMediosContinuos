@@ -1,0 +1,198 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Solución al Primer Parcial \\ Mecánica de Medios Continuos}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Pregunta 1}
+
+Para resolver este problema, partimos de la ecuación de equilibrio hidrostático y la ecuación de estado del gas ideal. La ecuación de equilibrio hidrostático en una dimensión (eje $z$) es:
+
+$$ \frac{dp}{dz} = -\rho g_0 $$
+
+La ecuación de estado del gas ideal se puede escribir como $p = \rho R T$, de donde la densidad es $\rho = \frac{p}{RT}$. Sustituyendo esto en la ecuación hidrostática:
+
+$$ \frac{dp}{dz} = -\frac{p}{RT} g_0 \implies \frac{dp}{p} = -\frac{g_0}{RT} dz $$
+
+\subsection{Inciso (a): Presión $p(z)$ en cada región}
+
+\textbf{Región 1 ($0 \le z \le z_0$):}
+En esta capa la temperatura es constante $T = T_1$. Integrando la ecuación diferencial desde $z=0$ hasta $z$:
+
+$$ \int_{p(0)}^{p(z)} \frac{dp'}{p'} = -\frac{g_0}{R T_1} \int_0^z dz' $$
+
+$$ \ln\left(\frac{p(z)}{p(0)}\right) = -\frac{g_0}{R T_1} z \implies p(z) = p(0) e^{-z/H_1} $$
+
+donde hemos definido la altura de escala $H_1 = \frac{R T_1}{g_0}$.
+
+\textbf{Región 2 ($z > z_0$):}
+En esta capa la temperatura es $T = T_2$. Integrando desde $z_0$ hasta $z$:
+
+$$ \int_{p(z_0)}^{p(z)} \frac{dp'}{p'} = -\frac{g_0}{R T_2} \int_{z_0}^z dz' $$
+
+$$ p(z) = p(z_0) e^{-(z-z_0)/H_2} $$
+
+donde $H_2 = \frac{R T_2}{g_0}$. Dado que la presión es continua en la interfaz $z=z_0$, tenemos $p(z_0) = p(0) e^{-z_0/H_1}$. Por lo tanto, la presión en la segunda región es:
+
+$$ p(z) = p(0) e^{-z_0/H_1} e^{-(z-z_0)/H_2} $$
+
+\subsection{Inciso (b): Densidad $\rho(z)$ en cada región}
+
+Usando la ecuación de estado $\rho(z) = \frac{p(z)}{RT(z)}$:
+
+\textbf{Región 1 ($0 \le z \le z_0$):}
+$$ \rho(z) = \frac{p(0)}{R T_1} e^{-z/H_1} = \rho(0) e^{-z/H_1} $$
+
+\textbf{Región 2 ($z > z_0$):}
+$$ \rho(z) = \frac{p(z_0)}{R T_2} e^{-(z-z_0)/H_2} = \rho(z_0^+) e^{-(z-z_0)/H_2} $$
+
+\subsection{Inciso (c): Altura de escala e interpretación física}
+
+La altura de escala en cada capa se define como:
+
+$$ H_i = \frac{R T_i}{g_0} \quad \text{para } i=1,2 $$
+
+\textbf{Interpretación física:} La altura de escala $H_i$ representa la distancia vertical característica sobre la cual la presión y la densidad del gas disminuyen por un factor de $e$ (el número de Euler). Físicamente, indica el "espesor" efectivo de la capa atmosférica; una mayor temperatura $T_i$ resulta en una mayor altura de escala, lo que significa que la atmósfera es más extendida verticalmente en esa capa debido a la mayor agitación térmica de las moléculas que contrarresta la gravedad.
+
+\subsection{Inciso (d): Cociente de densidades en la interfaz}
+
+Evaluamos la densidad justo por debajo y justo por encima de la interfaz $z=z_0$. Dado que la presión es continua, $p(z_0^-) = p(z_0^+) = p(z_0)$:
+
+$$ \rho(z_0^-) = \frac{p(z_0)}{R T_1}, \quad \rho(z_0^+) = \frac{p(z_0)}{R T_2} $$
+
+El cociente es:
+
+$$ \frac{\rho(z_0^+)}{\rho(z_0^-)} = \frac{T_1}{T_2} $$
+
+\textbf{Significado físico:} Este resultado indica que, para mantener el equilibrio mecánico (presión continua), un cambio abrupto en la temperatura debe ser compensado por un cambio abrupto en la densidad. Si la capa superior es más caliente ($T_2 > T_1$), el gas se expande térmicamente, lo que resulta en una discontinuidad donde la densidad cae abruptamente al cruzar la interfaz hacia arriba.
+
+\section{Pregunta 2}
+
+El problema describe una losa infinita de fluido incompresible de densidad constante $\rho$ que ocupa la región $|z| < a$. La presencia de la constante gravitacional $G$ en la expresión a demostrar indica que el fluido es \textbf{autogravitante} (su propia gravedad genera el campo gravitacional).
+
+\subsection{Campo gravitacional}
+
+Debido a la simetría planar, el campo gravitacional depende únicamente de $z$ y tiene la forma $\vec{g}(z) = g(z) \hat{k}$. Partimos de la forma diferencial de la Ley de Gauss para la gravitación:
+
+$$ \vec{\nabla} \cdot \vec{g} = -4\pi G \rho $$
+
+Calculando la divergencia en coordenadas cartesianas:
+
+$$ \frac{\partial g_x}{\partial x} + \frac{\partial g_y}{\partial y} + \frac{\partial g_z}{\partial z} = \frac{d g(z)}{dz} = -4\pi G \rho $$
+
+Integrando respecto a $z$ y aplicando la condición de frontera $g(0)=0$ (por simetría):
+
+$$ g(z) = \int_0^z -4\pi G \rho \, dz' = -4\pi G \rho z $$
+
+Por lo tanto, el campo gravitacional es:
+
+$$ \vec{g}(z) = -4\pi G \rho z \, \hat{k} $$
+\subsection{Distribución de presión}
+
+La ecuación de equilibrio hidrostático es $\nabla p = \rho \vec{g}$. En la dirección $z$:
+
+$$ \frac{dp}{dz} = \rho g(z) = -4\pi G \rho^2 z $$
+
+Integramos esta ecuación diferencial para encontrar $p(z)$:
+
+$$ p(z) = \int -4\pi G \rho^2 z \, dz = -2\pi G \rho^2 z^2 + C $$
+
+Para encontrar la constante de integración $C$, aplicamos la condición de frontera física: en la superficie de la losa ($z = a$), el fluido está en contacto con el vacío, por lo que la presión debe ser nula, $p(a) = 0$:
+
+$$ 0 = -2\pi G \rho^2 a^2 + C \implies C = 2\pi G \rho^2 a^2 $$
+
+Sustituyendo $C$ en la expresión de la presión, obtenemos la distribución de presión en el interior del fluido:
+
+$$ p(z) = 2\pi G \rho^2 (a^2 - z^2) $$
+
+\subsection{Presión central}
+
+Evaluamos la distribución de presión en el centro de la losa, es decir, en $z=0$:
+
+$$ p(0) = 2\pi G \rho^2 (a^2 - 0^2) = 2\pi G \rho^2 a^2 $$
+
+Con esto queda demostrada la expresión solicitada.
+
+\section{Pregunta 3}
+
+Tenemos un fluido politrópico con ecuación de estado $p = \alpha \rho^n$ en un sistema de referencia que rota con velocidad angular constante $\vec{\Omega} = \Omega \hat{k}$, sujeto a un campo gravitacional uniforme $\vec{g} = -g_0 \hat{k}$.
+
+\subsection{Ecuación diferencial y distribución de densidad}
+
+En el marco de referencia rotante, la ecuación de equilibrio hidrostático incluye la fuerza centrífuga. La aceleración efectiva por unidad de masa es:
+
+$$ \vec{g}_{\text{eff}} = \vec{g} + \vec{a}_{\text{centrífuga}} = -g_0 \hat{k} + \Omega^2 r \hat{r} $$
+
+La ecuación de equilibrio es $\nabla p = \rho \vec{g}_{\text{eff}}$. En coordenadas cilíndricas $(r, \phi, z)$, esto se descompone en:
+
+$$ dp = \rho \Omega^2 r \, dr - \rho g_0 \, dz $$
+
+Para un fluido politrópico con ecuación de estado $p = \alpha \rho^n$, el diferencial de presión es $dp = \alpha n \rho^{n-1} d\rho$. Sustituyendo esto en la ecuación de equilibrio y dividiendo por $\rho$, obtenemos una relación diferencial exacta para la densidad:
+
+$$ \alpha n \rho^{n-2} d\rho = \Omega^2 r \, dr - g_0 \, dz $$
+
+Dado que el lado derecho es un diferencial exacto de coordenadas independientes, integramos directamente ambos lados desde el origen $(0,0)$ donde $\rho=\rho_0$:
+
+$$ \int_{\rho_0}^{\rho} \alpha n (\rho')^{n-2} \, d\rho' = \int_0^r \Omega^2 r' \, dr' - \int_0^z g_0 \, dz' $$
+
+Resolviendo las integrales (asumiendo $n \neq 1$):
+
+$$ \frac{\alpha n}{n-1} \left( \rho^{n-1} - \rho_0^{n-1} \right) = \frac{1}{2} \Omega^2 r^2 - g_0 z $$
+
+Despejando la densidad, obtenemos la distribución final:
+
+$$ \rho(r,z) = \left[ \rho_0^{n-1} + \frac{n-1}{\alpha n} \left( \frac{1}{2} \Omega^2 r^2 - g_0 z \right) \right]^{\frac{1}{n-1}} $$
+Aplicamos la condición inicial $\rho(0,0) = \rho_0$ para encontrar la constante $C$:
+
+$$ \frac{\alpha n}{n-1} \rho_0^{n-1} = 0 - 0 + C \implies C = \frac{\alpha n}{n-1} \rho_0^{n-1} $$
+
+Sustituyendo $C$ y despejando $\rho(r,z)$ (asumiendo $n \neq 1$):
+
+$$ \rho(r,z) = \left[ \rho_0^{n-1} + \frac{n-1}{\alpha n} \left( \frac{1}{2} \Omega^2 r^2 - g_0 z \right) \right]^{\frac{1}{n-1}} $$
+
+\subsection{Región físicamente aceptable y dependencia de los parámetros}
+
+Para que la solución sea físicamente aceptable, la densidad debe ser un número real y no negativo ($\rho \ge 0$). 
+
+\textbf{Caso $n > 1$:}
+El término dentro del corchete debe ser mayor o igual a cero:
+
+$$ \rho_0^{n-1} + \frac{n-1}{\alpha n} \left( \frac{1}{2} \Omega^2 r^2 - g_0 z \right) \ge 0 $$
+
+Despejando $z$, obtenemos la condición:
+
+$$ z \le \frac{\Omega^2}{2g_0} r^2 + \frac{\alpha n}{g_0(n-1)} \rho_0^{n-1} $$
+
+Esta desigualdad define un \textbf{paraboloide} que abre hacia arriba. El fluido está confinado físicamente dentro de esta región en forma de paraboloide; fuera de ella, la densidad sería imaginaria o negativa, lo que significa que el fluido no existe (es vacío). 
+
+\textbf{Dependencia de los parámetros:}
+\begin{itemize}
+    \item \textbf{Velocidad angular ($\Omega$):} Un mayor $\Omega$ incrementa la fuerza centrífuga, lo que "aplasta" el fluido y lo expande radialmente, haciendo el paraboloide más ancho.
+    \item \textbf{Gravedad ($g_0$):} Una mayor gravedad comprime el fluido verticalmente, haciendo el paraboloide más "chato" y limitando su extensión vertical.
+    \item \textbf{Parámetros politrópicos ($\alpha, n, \rho_0$):} Determinan la presión central y la altura máxima del fluido en el eje $r=0$.
+\end{itemize}
+
+\textbf{Caso $n = 1$:}
+
+Para un fluido con ecuación de estado $p = \alpha \rho$ (donde $n=1$), el diferencial de la presión es $dp = \alpha d\rho$. La condición de equilibrio hidrostático en el sistema rotante, $\frac{dp}{\rho} = \Omega^2 r \, dr - g_0 \, dz$, se convierte en:
+
+$$ \alpha \frac{d\rho}{\rho} = \Omega^2 r \, dr - g_0 \, dz $$
+
+Integrando ambos lados desde el origen $(0,0)$, donde $\rho(0,0) = \rho_0$, hasta un punto arbitrario $(r,z)$:
+
+$$ \alpha \int_{\rho_0}^{\rho} \frac{d\rho'}{\rho'} = \int_0^r \Omega^2 r' \, dr' - \int_0^z g_0 \, dz' $$
+
+$$ \alpha \ln\left(\frac{\rho}{\rho_0}\right) = \frac{1}{2} \Omega^2 r^2 - g_0 z $$
+
+Despejando la densidad $\rho(r,z)$, obtenemos la solución exponencial:
+
+$$ \rho(r,z) = \rho_0 \exp\left( \frac{\Omega^2 r^2 - 2g_0 z}{2\alpha} \right) $$
+
+Dado que la función exponencial es siempre positiva, la densidad no se anula en ninguna región finita, lo que implica que el fluido se extiende por todo el espacio, decayendo exponencialmente a medida que $z \to \infty$ o $r \to \infty$ (dependiendo de los signos relativos).
+\end{document}
