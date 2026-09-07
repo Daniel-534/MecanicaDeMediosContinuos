@@ -142,9 +142,220 @@ $$ p_c = \frac{2\pi G}{3}\left[\rho_1^2 a_1^2 + \rho_2^2\left(a^2 - a_1^2\right)
 
 \begin{enumerate}
 \item Muestre que, para un planeta con densidad constante y masa fija, la presión central cae como $a^{-4}$.
+
+\textbf{Solución.} La densidad es uniforme dentro de cada planeta, pero cambia al comparar planetas de distinto radio y la misma masa $M_0$. Deducimos primero la densidad y la presión central en lugar de dar por conocidas sus expresiones.
+
+\textit{1. Densidad a partir de la masa total.} Una capa esférica de radio $r$ y espesor $dr$ tiene volumen $dV=4\pi r^2\,dr$ y masa $dM=\rho_0\,dV$. Sumando las capas desde el centro hasta la superficie,
+$$
+\begin{aligned}
+M_0
+&=\int_0^a 4\pi\rho_0 r^2\,dr
+=4\pi\rho_0\left[\frac{r^3}{3}\right]_0^a\\
+&=\frac{4\pi}{3}\rho_0a^3.
+\end{aligned}
+$$
+Al despejar la densidad, resulta
+$$
+\boxed{\rho_0=\frac{M_0}{\frac{4\pi}{3}a^3}
+=\frac{3M_0}{4\pi a^3}}.
+$$
+Esta es simplemente la masa dividida por el volumen de la esfera.
+
+\textit{2. Presión central a partir del equilibrio hidrostático.} La misma integración, ahora hasta un radio interior $r$, proporciona la masa encerrada:
+$$
+M(r)=4\pi\rho_0\int_0^r r'^2\,dr'
+=\frac{4\pi}{3}\rho_0r^3.
+$$
+Sustituyendo esta masa en la ecuación de equilibrio hidrostático,
+$$
+\frac{dp}{dr}
+=-\rho_0\frac{GM(r)}{r^2}
+=-\rho_0\frac{G}{r^2}\left(\frac{4\pi}{3}\rho_0r^3\right)
+=-\frac{4\pi G}{3}\rho_0^2r.
+$$
+El resultado se extiende continuamente al centro, donde $dp/dr=0$. Definiendo $p_c=p(0)$ e integrando entre $0$ y $r$,
+$$
+\begin{aligned}
+p(r)-p_c
+&=-\frac{4\pi G}{3}\rho_0^2\int_0^r r'\,dr'\\
+&=-\frac{4\pi G}{3}\rho_0^2\frac{r^2}{2}
+=-\frac{2\pi G}{3}\rho_0^2r^2.
+\end{aligned}
+$$
+Por tanto, $p(r)=p_c-\frac{2\pi G}{3}\rho_0^2r^2$. Para una superficie libre con presión exterior nula, imponemos $p(a)=0$:
+$$
+0=p_c-\frac{2\pi G}{3}\rho_0^2a^2
+\quad\Longrightarrow\quad
+\boxed{p_c=\frac{2\pi G}{3}\rho_0^2a^2}.
+$$
+La presión central es la necesaria para que el gradiente de presión sostenga el peso de las capas y la presión llegue a cero en la superficie.
+
+\textit{3. Dependencia con el radio a masa fija.} Sustituyendo la densidad deducida en la expresión de la presión central,
+$$
+\begin{aligned}
+p_c
+&=\frac{2\pi G}{3}\rho_0^2a^2\\
+&=\frac{2\pi G}{3}\left(\frac{3M_0}{4\pi a^3}\right)^2a^2
+=\boxed{\frac{3GM_0^2}{8\pi a^4}}.
+\end{aligned}
+$$
+Por tanto, a masa fija, $p_c\propto a^{-4}$. Por ejemplo, reducir el radio a la mitad multiplica la presión central por $16$. No se pueden mantener simultáneamente fijas la masa y la densidad al variar el radio.
+
 \item Considere un objeto astrofísico autogravitante y esféricamente simétrico —por ejemplo, una galaxia— con densidad $\rho(r) = \rho_0\left(1 - \frac{r^2}{a^2}\right)$ para $0 \le r \le a$, donde $a$ es el radio de la esfera. Calcule $dp/dr$ y $p(r)$ imponiendo $p = 0$ en $r = a$ y regularidad (sin divergencias). ¿Cuál es la masa total?
+
+\textbf{Solución.} Primero calculamos la masa encerrada, sin introducir una masa puntual en el origen:
+$$
+\begin{aligned}
+M(r)
+&=4\pi\int_0^r\rho(r')\,r'^2\,dr'\\
+&=4\pi\rho_0\int_0^r\left(r'^2-\frac{r'^4}{a^2}\right)dr'\\
+&=4\pi\rho_0\left(\frac{r^3}{3}-\frac{r^5}{5a^2}\right).
+\end{aligned}
+$$
+La ecuación de equilibrio hidrostático da entonces
+$$
+\boxed{
+\frac{dp}{dr}
+=-4\pi G\rho_0^2
+\left(1-\frac{r^2}{a^2}\right)
+\left(\frac{r}{3}-\frac{r^3}{5a^2}\right)
+}.
+$$
+Para integrar conviene expandir el producto:
+$$
+\frac{dp}{dr}
+=-4\pi G\rho_0^2
+\left(\frac{r}{3}-\frac{8r^3}{15a^2}+\frac{r^5}{5a^4}\right).
+$$
+Usando $p(a)=0$, la presión a una profundidad cualquiera es
+$$
+\begin{aligned}
+p(r)
+&=4\pi G\rho_0^2\int_r^a
+\left(\frac{r'}{3}-\frac{8r'^3}{15a^2}+\frac{r'^5}{5a^4}\right)dr'\\
+&=4\pi G\rho_0^2\left[
+\frac{a^2-r^2}{6}
+-\frac{2(a^4-r^4)}{15a^2}
++\frac{a^6-r^6}{30a^4}\right].
+\end{aligned}
+$$
+Factorizando se obtiene una expresión que hace evidentes la positividad y la condición de superficie:
+$$
+\boxed{
+p(r)=\frac{2\pi G\rho_0^2a^2}{15}
+\left(1-\frac{r^2}{a^2}\right)^2
+\left(2-\frac{r^2}{a^2}\right)
+},\qquad 0\le r\le a.
+$$
+En particular,
+$$
+p_c=p(0)=\frac{4\pi G\rho_0^2a^2}{15},
+\qquad \left.\frac{dp}{dr}\right|_{r=0}=0.
+$$
+La solución es regular: $M(r)\propto r^3$ cerca del centro, por lo que $GM(r)/r^2\propto r$ y no hay divergencia del campo ni de la presión. Finalmente, la masa total es
+$$
+\boxed{M=M(a)=\frac{8\pi}{15}\rho_0a^3}.
+$$
+
 \item Evalúe la distribución de presión $p(r)$ al interior de un fluido esférico autogravitante uniforme de densidad constante $\rho$, radio $R$ y masa $M$.
+
+\textbf{Solución.} Para una densidad uniforme,
+$$
+M(r)=\frac{4\pi}{3}\rho r^3
+=M\left(\frac{r}{R}\right)^3,
+\qquad M=\frac{4\pi}{3}\rho R^3.
+$$
+Por tanto, el gradiente de presión es lineal en el radio:
+$$
+\frac{dp}{dr}=-\rho\frac{GM(r)}{r^2}
+=-\frac{4\pi G}{3}\rho^2r.
+$$
+Si la presión exterior es $p_{\mathrm{ext}}$, la condición de frontera es $p(R)=p_{\mathrm{ext}}$. Integrando desde $r$ hasta $R$,
+$$
+p(r)-p_{\mathrm{ext}}
+=\frac{4\pi G\rho^2}{3}\int_r^R r'\,dr'
+=\frac{2\pi G\rho^2}{3}(R^2-r^2).
+$$
+Para una esfera con superficie libre en el vacío, $p_{\mathrm{ext}}=0$, y las formas equivalentes del resultado son
+$$
+\boxed{
+p(r)=\frac{2\pi G\rho^2}{3}(R^2-r^2)
+=\frac{3GM^2}{8\pi R^4}\left(1-\frac{r^2}{R^2}\right)
+}.
+$$
+La presión es máxima en el centro, $p_c=3GM^2/(8\pi R^4)$, tiene pendiente nula allí y disminuye hasta cero en la superficie. El problema 1 es precisamente el escalamiento de este valor central.
+
 \item Evalúe $p(r)$ para una esfera de gas autogravitante de radio $R$ y masa $M$ (por ejemplo, una estrella) si su ecuación de estado es $p(r) = \alpha\,\rho(r)$.
+
+\textbf{Solución.} Suponemos $\alpha>0$ constante y un centro regular, con densidad central finita $\rho_c$. A diferencia del problema anterior, la densidad no es uniforme: debe determinarse junto con la presión. Las ecuaciones que gobiernan el equilibrio son
+$$
+\alpha\frac{d\rho}{dr}=-\rho\frac{GM(r)}{r^2},
+\qquad \frac{dM}{dr}=4\pi r^2\rho.
+$$
+Dividiendo la primera por $\rho$, multiplicando por $r^2$ y derivando,
+$$
+\frac{d}{dr}\left(r^2\frac{d\ln\rho}{dr}\right)
+=-\frac{G}{\alpha}\frac{dM}{dr}
+=-\frac{4\pi G}{\alpha}r^2\rho.
+$$
+Introducimos una longitud de escala $\ell$ y dos variables adimensionales:
+$$
+\ell=\sqrt{\frac{\alpha}{4\pi G\rho_c}},
+\qquad \xi=\frac{r}{\ell},
+\qquad \rho(r)=\rho_c e^{-\psi(\xi)}.
+$$
+Así obtenemos la ecuación de la esfera isotérmica,
+$$
+\boxed{
+\frac{1}{\xi^2}\frac{d}{d\xi}
+\left(\xi^2\frac{d\psi}{d\xi}\right)=e^{-\psi}
+},\qquad \psi(0)=0,\quad \psi'(0)=0,
+$$
+donde la prima indica derivada respecto de $\xi$. La primera condición fija $\rho(0)=\rho_c$ y la segunda garantiza simetría y regularidad en el centro. La distribución de presión queda expresada como
+$$
+\boxed{p(r)=\alpha\rho_c e^{-\psi(r/\ell)}}.
+$$
+La solución regular se obtiene, en general, por integración numérica. Para iniciar esa integración sin dividir por cero en el origen, puede usarse la expansión central
+$$
+\psi(\xi)=\frac{\xi^2}{6}+O(\xi^4),
+\qquad
+p(r)=\alpha\rho_c\left[1-\frac{r^2}{6\ell^2}
++O\!\left(\frac{r^4}{\ell^4}\right)\right].
+$$
+
+\textit{¿Cómo se incorporan $M$ y $R$?} Integrando una vez la ecuación adimensional,
+$$
+\xi^2\psi'(\xi)=\int_0^\xi e^{-\psi(\eta)}\eta^2\,d\eta,
+\qquad
+M(r)=4\pi\rho_c\ell^3\xi^2\psi'(\xi).
+$$
+Si se trunca la esfera en $R=\ell\xi_b$, la condición $M(R)=M$ exige
+$$
+\boxed{\frac{GM}{\alpha R}=\xi_b\psi'(\xi_b)}.
+$$
+Para cada raíz admisible $\xi_b$ de esta relación se tiene
+$$
+\rho_c=\frac{\alpha\xi_b^2}{4\pi GR^2},
+\qquad
+\boxed{
+p(r)=\frac{\alpha^2\xi_b^2}{4\pi GR^2}
+\exp\!\left[-\psi\!\left(\xi_b\frac{r}{R}\right)\right]
+}.
+$$
+La existencia y la unicidad de una raíz no están garantizadas para valores arbitrarios de $M$, $R$ y $\alpha$; no toda combinación de estos datos representa un equilibrio regular.
+
+\textit{Salvedad sobre la superficie.} Este gas no puede tener una superficie de presión nula a un radio finito. En efecto, la ecuación hidrostática también implica
+$$
+\frac{d\ln p}{dr}=-\frac{GM(r)}{\alpha r^2}
+\quad\Longrightarrow\quad
+p(R)=p(0)\exp\!\left[-\int_0^R
+\frac{GM(r')}{\alpha r'^2}\,dr'\right]>0.
+$$
+La integral es finita para un centro regular y un radio finito: cerca del origen, $M(r')/r'^2\propto r'$. Por ello, una presión central positiva no puede convertirse en cero en $R$. Si el enunciado pretende una esfera aislada con $p(R)=0$, \emph{no existe una solución no trivial de radio finito} bajo estas hipótesis. Para interpretar $R$ como una frontera física hay que confinar el gas mediante una presión exterior
+$$
+p_{\mathrm{ext}}=p(R)=\alpha\rho_c e^{-\psi(\xi_b)}>0.
+$$
+No es válido restar una constante al perfil calculado para forzar $p(R)=0$: ello rompería la ecuación de estado $p=\alpha\rho$. Este modelo se retomará en la subsección sobre la esfera isotérmica autogravitante.
 \end{enumerate}
 
 \section{Modelos idealizados de estructura estelar}
