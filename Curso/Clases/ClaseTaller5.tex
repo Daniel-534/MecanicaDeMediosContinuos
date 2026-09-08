@@ -1,0 +1,174 @@
+\chapter{Clase Taller 5}
+Un volumen de fluido. Un elemento de volumen $dV$.
+
+Sobre el elemento de volumen $dV$ hay dos tipos de fuerzas:
+
+\begin{enumerate}
+    \item Fuerzas de superficie: $\vec{F}_p$ actúa sobre la superficie.
+    \item Fuerzas de volumen: $\vec{F}_e$ actúa sobre todo el volumen.
+\end{enumerate}
+
+Si el sistema está en equilibrio:
+$$
+d\vec{F}_e + d\vec{F}_p = 0
+$$
+con
+$$
+d\vec{F}_p = -p\,d\vec{S}
+$$
+
+De la integral:
+$$
+-\oint p\,d\vec{S} + \int \vec{f}_e\,dV = 0
+$$
+
+Por Gauss:
+$$
+\oint p\,d\vec{S} = \int \nabla p\,dV
+$$
+
+Entonces:
+$$
+\boxed{\nabla p = \vec{f}_e}
+$$
+Ec.\ de equilibrio (en general).
+
+Para el caso gravitacional:
+$$
+\nabla p = \rho\,\vec{g}
+$$
+(en coordenadas).
+
+De sig.\ que $\nabla \times \vec{f} = 0$ $\Rightarrow$ fuerzas conservativas.
+
+\vspace{1em}
+
+\noindent\textbf{Principio de Pascal:} la presión aplicada sobre un fluido en un contenedor se transmite por igual a cada porción del fluido y a las paredes del recipiente.
+
+\vspace{1em}
+
+\noindent\textbf{Ecuación de estado:} relación entre las variables termodinámicas.
+$$
+F(p,\rho,T) = 0
+$$
+Para un gas ideal:
+$$
+pV = nRT \quad \Longrightarrow \quad p = \rho R T
+$$
+(con $R$ la constante específica del gas).
+
+La ec.\ de equilibrio también se puede escribir como:
+$$
+\nabla\Phi + \frac{\nabla p}{\rho} = 0
+\quad\Longrightarrow\quad
+\Phi^* = \Phi + w = \text{const}
+$$
+
+Definiendo el potencial de presión y el potencial efectivo:
+$$
+\Phi^* = \Phi + w = \text{const}
+$$
+con
+$$
+w = \int \frac{dp}{\rho}
+$$
+
+Para un fluido politrópico:
+$$
+p = C\,\rho^{\gamma}
+$$
+
+Módulo de compresibilidad:
+$$
+K = \rho\,\frac{dp}{d\rho}
+$$
+
+\vspace{1em}
+
+\noindent\rule{\textwidth}{0.4pt}
+
+\vspace{1em}
+
+\noindent{\Large\bfseries Medios continuos autogravitantes}
+
+\vspace{1em}
+
+En general, el campo gravitacional de una distribución de masa:
+$$
+\Phi(\vec{r}) = -G\int \frac{\rho(\vec{r}\,')}{|\vec{r}-\vec{r}\,'|}\,d^3\vec{r}\,'
+$$
+
+Por Gauss:
+$$
+\oint \vec{g}\cdot d\vec{S} = -4\pi G M
+$$
+
+En coordenadas:
+$$
+\vec{g} = -\nabla\Phi
+$$
+
+Por tanto:
+$$
+\boxed{\nabla^2\Phi = 4\pi G\rho}
+\qquad \text{(Poisson)}
+$$
+
+De la ec.\ de equilibrio se sigue que $\nabla p = -\rho\,\nabla\Phi$.
+
+\vspace{1em}
+
+\noindent\textbf{Modelo de la estructura estelar.}
+
+La ec.\ de equilibrio:
+$$
+\nabla p = -\rho\,\nabla\Phi
+$$
+
+Ec.\ barotrópica. Una ecuación de estado conveniente para la politropa:
+$$
+p = K\,\rho^{1+\frac{1}{n}}
+$$
+
+Combinando con Poisson:
+$$
+\nabla^2\Phi = 4\pi G\rho
+$$
+
+Haciendo $\rho = \rho_c\,\theta^n$, $\xi = \left(\dfrac{4\pi G\rho_c}{\Phi_T - \Phi_c}\right)^{1/2}r$, se obtiene la ec.\ de Lane--Emden:
+$$
+\boxed{\frac{1}{\xi^2}\frac{d}{d\xi}\!\left(\xi^2\frac{d\theta}{d\xi}\right) = -\theta^n}
+$$
+
+\vspace{1em}
+
+\noindent\textbf{Condiciones de frontera:}
+
+\begin{itemize}
+    \item $\theta(0) = 1$: por definición.
+    \item $\theta'(0) = 0$: fuerza nula en $r = 0$.
+\end{itemize}
+
+\vspace{1em}
+
+\noindent\textbf{Soluciones:}
+
+\begin{itemize}
+    \item $n = 0$: solución directa
+    $$
+    \theta(\xi) = 1 - \frac{\xi^2}{6}
+    $$
+    Superficie del astro: $\theta = 0$, es decir $\xi_1 = \sqrt{6}$.
+
+    \item $n = 1$:
+    $$
+    \theta(\xi) = \frac{\sin\xi}{\xi}
+    $$
+    Superficie del astro: $\theta = 0$, es decir $\xi_1 = \pi$.
+
+    \item $n = 5$:
+    $$
+    \theta(\xi) = \left(1 + \frac{\xi^2}{3}\right)^{-1/2}
+    $$
+    Superficie: $\theta \to 0$ cuando $\xi \to \infty$.
+\end{itemize}
