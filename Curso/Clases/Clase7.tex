@@ -20,13 +20,40 @@ de donde la ecuación de equilibrio hidrostático toma la forma
 
 $$ \frac{dp(r)}{dr} = -\rho(r)\,g(r) = -\rho(r)\,\frac{G M(r)}{r^2}. $$
 
-Multiplicando por $r^2/\rho$ y diferenciando después con respecto a $r$, se llega a
-
-$$ \frac{1}{r^2}\frac{d}{dr}\left(\frac{r^2}{\rho}\frac{dp}{dr}\right) + 4\pi G\rho = 0. $$
+Para eliminar la masa encerrada $M(r)$, multiplicamos primero la ecuación de equilibrio por $r^2/\rho(r)$, en el interior donde $\rho(r)>0$ y para $r>0$:
+$$
+\frac{r^2}{\rho(r)}\frac{dp}{dr}
+=\frac{r^2}{\rho(r)}\left[-\rho(r)\frac{GM(r)}{r^2}\right]
+=-GM(r).
+$$
+Ahora derivamos ambos miembros respecto de $r$. Como $G$ es constante,
+$$
+\frac{d}{dr}\left(\frac{r^2}{\rho(r)}\frac{dp}{dr}\right)
+=-G\frac{dM}{dr}.
+$$
+La derivada de la masa encerrada se obtiene de su definición:
+$$
+M(r)=4\pi\int_0^r\rho(r')\,r'^2\,dr'
+\quad\Longrightarrow\quad
+\frac{dM}{dr}=4\pi r^2\rho(r).
+$$
+Esta última igualdad expresa que una capa esférica de espesor $dr$ contiene una masa $dM=4\pi r^2\rho(r)\,dr$. Sustituyendo en la ecuación anterior,
+$$
+\frac{d}{dr}\left(\frac{r^2}{\rho(r)}\frac{dp}{dr}\right)
+=-4\pi G r^2\rho(r).
+$$
+Finalmente, dividimos entre $r^2$ y pasamos el término de densidad al miembro izquierdo:
+$$
+\boxed{
+\frac{1}{r^2}\frac{d}{dr}\left(\frac{r^2}{\rho}\frac{dp}{dr}\right)
++4\pi G\rho=0
+}.
+$$
+No hemos supuesto densidad constante: $\rho(r)$ permanece dentro de la derivada. En el centro, donde no se puede dividir directamente entre $r^2$, la ecuación se interpreta mediante el límite de una solución regular, como se discute a continuación.
 
 \subsection{Condiciones de frontera}
 
-En principio, una ecuación diferencial de segundo orden requiere dos valores de frontera (o constantes de integración), por ejemplo la presión central $p_c = p(0)$ y su primera derivada $dp/dr$ en $r = 0$. Se hará la suposición razonable de que la densidad $\rho_c$ en el centro del cuerpo es finita. Entonces, para $r$ ``pequeño'', se tiene $M(r) \approx \frac{4}{3}\pi r^3 \rho_c$ y la ecuación (189) se convierte, para $r \to 0$, en
+En principio, una ecuación diferencial de segundo orden requiere dos valores de frontera (o constantes de integración), por ejemplo la presión central $p_c = p(0)$ y su primera derivada $dp/dr$ en $r = 0$. Se hará la suposición razonable de que la densidad $\rho_c$ en el centro del cuerpo es finita. Entonces, para $r$ ``pequeño'', se tiene $M(r) \approx \frac{4}{3}\pi r^3 \rho_c$ y la ecuación de equilibrio hidrostático se convierte, para $r \to 0$, en
 
 $$ \frac{dp}{dr} \approx -\frac{4}{3}\pi G \rho_c^2\, r. $$
 
@@ -57,6 +84,15 @@ $$ M_0 = \frac{4}{3}\pi a^3 \rho_0. $$
 \subsection{La Luna con densidad constante}
 
 Considérese la Luna. La masa de la Luna es $7.3 \times 10^{22}$ kg y su radio es 1738 km, lo que da una densidad promedio $\rho_0^{\mathrm{Luna}} = 3.34$ g/cm$^3$. A partir de esto, la presión central se predice en 46\,500 atm.
+
+\textbf{Problema de práctica: el interior de una Luna idealizada.} Modele la Luna como una esfera autogravitante de densidad uniforme, sin rotación y en equilibrio hidrostático. Use la masa y el radio indicados arriba, desprecie la presión exterior e imponga $p(a)=0$. Tome $G=6.67\times10^{-11}\ \mathrm{m^3\,kg^{-1}\,s^{-2}}$ y $1\ \mathrm{atm}=1.013\times10^5\ \mathrm{Pa}$.
+
+\begin{enumerate}[(a)]
+\item Calcule la densidad $\rho_0$ en unidades del SI y deduzca la masa encerrada $M(r)$. ¿Qué fracción de la masa total queda dentro de $r=a/2$?
+\item Obtenga la magnitud $g(r)$ del campo gravitacional en el interior. Calcule $g(0)$ y $g(a)$ e indique dónde es máxima. ¿Por qué no diverge el campo en el centro, aunque su expresión contiene $1/r^2$?
+\item Integre la ecuación de equilibrio hidrostático para obtener $p(r)$ y calcule $p_c$ en pascales y atmósferas. ¿A qué radio la presión vale $p_c/2$? Esboce los perfiles de $g(r)$ y $p(r)$, indicando sus valores en el centro y en la superficie.
+\item Imagine otra esfera de la misma masa, pero de radio $a/2$, también de densidad uniforme y en equilibrio hidrostático. ¿Por qué factores cambian su densidad, su gravedad superficial y su presión central? Justifique sin repetir los cálculos numéricos.
+\end{enumerate}
 
 \section{Distribución de presión en la Tierra}
 
@@ -270,12 +306,76 @@ $$
 \frac{dp}{dr}=-\rho\frac{GM(r)}{r^2}
 =-\frac{4\pi G}{3}\rho^2r.
 $$
-Si la presión exterior es $p_{\mathrm{ext}}$, la condición de frontera es $p(R)=p_{\mathrm{ext}}$. Integrando desde $r$ hasta $R$,
+Si la presión exterior es $p_{\mathrm{ext}}$, la condición de frontera es $p(R)=p_{\mathrm{ext}}$. Queremos encontrar la presión en un radio interior arbitrario $r$, no solamente en el centro. Por eso conviene relacionar ese punto con la superficie, donde ya conocemos la presión.
+
+\textit{Integración entre el punto interior y la superficie.} Usamos $r'$ como variable de integración para distinguirla del radio fijo $r$ donde queremos evaluar la presión. La ecuación diferencial se escribe
+$$
+\frac{dp(r')}{dr'}=-\frac{4\pi G\rho^2}{3}r'.
+$$
+Integramos \emph{ambos miembros con los mismos límites}, desde $r'=r$ hasta $r'=R$:
+$$
+\int_r^R\frac{dp(r')}{dr'}\,dr'
+=-\frac{4\pi G\rho^2}{3}\int_r^R r'\,dr'.
+$$
+Por el teorema fundamental del cálculo, el miembro izquierdo es el valor final de la presión menos el inicial:
+$$
+\int_r^R\frac{dp(r')}{dr'}\,dr'
+=p(R)-p(r)=p_{\mathrm{ext}}-p(r).
+$$
+En el miembro derecho,
+$$
+\int_r^R r'\,dr'
+=\left[\frac{r'^2}{2}\right]_r^R
+=\frac{R^2-r^2}{2}.
+$$
+Reuniendo los resultados,
+$$
+p_{\mathrm{ext}}-p(r)
+=-\frac{2\pi G\rho^2}{3}(R^2-r^2).
+$$
+Multiplicamos por $-1$ y despejamos:
 $$
 p(r)-p_{\mathrm{ext}}
-=\frac{4\pi G\rho^2}{3}\int_r^R r'\,dr'
-=\frac{2\pi G\rho^2}{3}(R^2-r^2).
+=\frac{2\pi G\rho^2}{3}(R^2-r^2)
+\quad\Longrightarrow\quad
+\boxed{p(r)=p_{\mathrm{ext}}+\frac{2\pi G\rho^2}{3}(R^2-r^2)}.
 $$
+El signo es coherente: para $r<R$, la presión interior es mayor que la exterior. La diferencia representa el aumento de presión necesario para sostener las capas situadas entre ese radio y la superficie.
+
+\textit{¿Se puede integrar desde cero hasta $R$?} Sí. No hay ningún inconveniente, pero esa integral relaciona únicamente la presión central $p_c=p(0)$ con la superficial:
+$$
+\begin{aligned}
+\int_0^R\frac{dp(r')}{dr'}\,dr'
+&=-\frac{4\pi G\rho^2}{3}\int_0^R r'\,dr',\\
+p_{\mathrm{ext}}-p_c
+&=-\frac{2\pi G\rho^2}{3}R^2.
+\end{aligned}
+$$
+Así se obtiene
+$$
+\boxed{p_c=p_{\mathrm{ext}}+\frac{2\pi G\rho^2}{3}R^2}.
+$$
+Esto determina $p_c$, pero todavía no expresa la presión en un radio arbitrario. Para obtener el perfil por este camino, integramos también desde el centro hasta $r$:
+$$
+\begin{aligned}
+\int_0^r\frac{dp(r')}{dr'}\,dr'
+&=-\frac{4\pi G\rho^2}{3}\int_0^r r'\,dr',\\
+p(r)-p_c
+&=-\frac{2\pi G\rho^2}{3}r^2.
+\end{aligned}
+$$
+Sustituyendo la presión central que acabamos de calcular,
+$$
+\begin{aligned}
+p(r)
+&=p_c-\frac{2\pi G\rho^2}{3}r^2\\
+&=p_{\mathrm{ext}}+\frac{2\pi G\rho^2}{3}R^2
+-\frac{2\pi G\rho^2}{3}r^2\\
+&=p_{\mathrm{ext}}+\frac{2\pi G\rho^2}{3}(R^2-r^2).
+\end{aligned}
+$$
+Ambos procedimientos dan exactamente lo mismo. Integrar entre $r$ y $R$ es simplemente más directo porque utiliza la condición conocida en la superficie sin introducir primero la incógnita $p_c$.
+
 Para una esfera con superficie libre en el vacío, $p_{\mathrm{ext}}=0$, y las formas equivalentes del resultado son
 $$
 \boxed{
@@ -287,75 +387,76 @@ La presión es máxima en el centro, $p_c=3GM^2/(8\pi R^4)$, tiene pendiente nul
 
 \item Evalúe $p(r)$ para una esfera de gas autogravitante de radio $R$ y masa $M$ (por ejemplo, una estrella) si su ecuación de estado es $p(r) = \alpha\,\rho(r)$.
 
-\textbf{Solución.} Suponemos $\alpha>0$ constante y un centro regular, con densidad central finita $\rho_c$. A diferencia del problema anterior, la densidad no es uniforme: debe determinarse junto con la presión. Las ecuaciones que gobiernan el equilibrio son
+\textbf{Solución.} Suponemos $\alpha>0$ constante y una densidad central finita $\rho_c\equiv\rho(0)>0$. Como $p=\alpha\rho$, el equilibrio hidrostático y la variación de masa encerrada dan
 $$
 \alpha\frac{d\rho}{dr}=-\rho\frac{GM(r)}{r^2},
 \qquad \frac{dM}{dr}=4\pi r^2\rho.
 $$
-Dividiendo la primera por $\rho$, multiplicando por $r^2$ y derivando,
+Trabajamos directamente con $\rho(r)$. Dividiendo la primera ecuación por $\alpha\rho$ y multiplicando por $r^2$,
 $$
-\frac{d}{dr}\left(r^2\frac{d\ln\rho}{dr}\right)
+\frac{1}{\rho}\frac{d\rho}{dr}=-\frac{GM(r)}{\alpha r^2}
+\quad\Longrightarrow\quad
+\frac{r^2}{\rho}\frac{d\rho}{dr}=-\frac{G}{\alpha}M(r).
+$$
+Derivando ambos miembros y sustituyendo $dM/dr$,
+$$
+\frac{d}{dr}\left(\frac{r^2}{\rho}\frac{d\rho}{dr}\right)
 =-\frac{G}{\alpha}\frac{dM}{dr}
 =-\frac{4\pi G}{\alpha}r^2\rho.
 $$
-Introducimos una longitud de escala $\ell$ y dos variables adimensionales:
-$$
-\ell=\sqrt{\frac{\alpha}{4\pi G\rho_c}},
-\qquad \xi=\frac{r}{\ell},
-\qquad \rho(r)=\rho_c e^{-\psi(\xi)}.
-$$
-Así obtenemos la ecuación de la esfera isotérmica,
+Al dividir entre $r^2$, obtenemos la ecuación para la densidad:
 $$
 \boxed{
-\frac{1}{\xi^2}\frac{d}{d\xi}
-\left(\xi^2\frac{d\psi}{d\xi}\right)=e^{-\psi}
-},\qquad \psi(0)=0,\quad \psi'(0)=0,
+\frac{1}{r^2}\frac{d}{dr}\left(\frac{r^2}{\rho}\frac{d\rho}{dr}\right)
+=-\frac{4\pi G}{\alpha}\rho
+}.
 $$
-donde la prima indica derivada respecto de $\xi$. La primera condición fija $\rho(0)=\rho_c$ y la segunda garantiza simetría y regularidad en el centro. La distribución de presión queda expresada como
+Si se expanden las derivadas y se multiplica por $\rho$, esta misma ecuación se escribe, sin logaritmos,
+$$
+\frac{d^2\rho}{dr^2}+\frac{2}{r}\frac{d\rho}{dr}
+-\frac{1}{\rho}\left(\frac{d\rho}{dr}\right)^2
++\frac{4\pi G}{\alpha}\rho^2=0.
+$$
+Las condiciones centrales son $\rho(0)=\rho_c$ y $\rho'(0)=0$; en el origen se toma el límite regular. Una vez determinada la densidad, la presión es simplemente $p(r)=\alpha\rho(r)$.
+
+\textit{Cambio final de variables.} Solo ahora introducimos el logaritmo para simplificar la estructura matemática:
+$$
+\psi=-\ln\!\left(\frac{\rho}{\rho_c}\right)
+\quad\Longleftrightarrow\quad
+\rho=\rho_c e^{-\psi},
+\qquad
+\frac{1}{\rho}\frac{d\rho}{dr}=-\frac{d\psi}{dr}.
+$$
+La densidad central $\rho_c$ sirve únicamente como referencia constante en este cociente adimensional. Al sustituir en la ecuación para $\rho$, los signos negativos se cancelan:
+$$
+\frac{1}{r^2}\frac{d}{dr}\left(r^2\frac{d\psi}{dr}\right)
+=\frac{4\pi G\rho_c}{\alpha}e^{-\psi}.
+$$
+Con $r=\ell\xi$, donde $\ell=\sqrt{\alpha/(4\pi G\rho_c)}$, se tiene $d/dr=\ell^{-1}d/d\xi$, y resulta
+$$
+\boxed{
+\frac{1}{\xi^2}\frac{d}{d\xi}\left(\xi^2\frac{d\psi}{d\xi}\right)
+=e^{-\psi}
+},\qquad \psi(0)=0,\quad \psi'(0)=0.
+$$
+Esta es la ecuación de la esfera isotérmica. Su solución regular se obtiene, en general, numéricamente, y determina
 $$
 \boxed{p(r)=\alpha\rho_c e^{-\psi(r/\ell)}}.
 $$
-La solución regular se obtiene, en general, por integración numérica. Para iniciar esa integración sin dividir por cero en el origen, puede usarse la expansión central
-$$
-\psi(\xi)=\frac{\xi^2}{6}+O(\xi^4),
-\qquad
-p(r)=\alpha\rho_c\left[1-\frac{r^2}{6\ell^2}
-+O\!\left(\frac{r^4}{\ell^4}\right)\right].
-$$
 
-\textit{¿Cómo se incorporan $M$ y $R$?} Integrando una vez la ecuación adimensional,
+\textit{Condiciones en $R$.} De $r^2\rho'/\rho=-GM(r)/\alpha$ y del cambio de variables anterior se deduce $M(r)=(\alpha\ell/G)\xi^2\psi'(\xi)$. Por tanto, si $\xi_b=R/\ell$,
 $$
-\xi^2\psi'(\xi)=\int_0^\xi e^{-\psi(\eta)}\eta^2\,d\eta,
+\frac{GM}{\alpha R}=\xi_b\psi'(\xi_b),
 \qquad
-M(r)=4\pi\rho_c\ell^3\xi^2\psi'(\xi).
-$$
-Si se trunca la esfera en $R=\ell\xi_b$, la condición $M(R)=M$ exige
-$$
-\boxed{\frac{GM}{\alpha R}=\xi_b\psi'(\xi_b)}.
-$$
-Para cada raíz admisible $\xi_b$ de esta relación se tiene
-$$
 \rho_c=\frac{\alpha\xi_b^2}{4\pi GR^2},
-\qquad
-\boxed{
-p(r)=\frac{\alpha^2\xi_b^2}{4\pi GR^2}
-\exp\!\left[-\psi\!\left(\xi_b\frac{r}{R}\right)\right]
-}.
 $$
-La existencia y la unicidad de una raíz no están garantizadas para valores arbitrarios de $M$, $R$ y $\alpha$; no toda combinación de estos datos representa un equilibrio regular.
+donde las primas sobre $\psi$ indican derivadas respecto de $\xi$. Estas relaciones permiten ajustar el perfil a la masa y al radio dados, cuando existe una solución compatible; no garantizan una solución única para cualquier elección de los datos.
 
-\textit{Salvedad sobre la superficie.} Este gas no puede tener una superficie de presión nula a un radio finito. En efecto, la ecuación hidrostática también implica
+Es importante notar que el perfil regular tiene $p(R)>0$ para un radio finito. En efecto, la ecuación $dp/dr=-[GM(r)/(\alpha r^2)]p$ implica
 $$
-\frac{d\ln p}{dr}=-\frac{GM(r)}{\alpha r^2}
-\quad\Longrightarrow\quad
-p(R)=p(0)\exp\!\left[-\int_0^R
-\frac{GM(r')}{\alpha r'^2}\,dr'\right]>0.
+p(R)=p(0)\exp\!\left[-\int_0^R\frac{GM(r')}{\alpha r'^2}\,dr'\right]>0,
 $$
-La integral es finita para un centro regular y un radio finito: cerca del origen, $M(r')/r'^2\propto r'$. Por ello, una presión central positiva no puede convertirse en cero en $R$. Si el enunciado pretende una esfera aislada con $p(R)=0$, \emph{no existe una solución no trivial de radio finito} bajo estas hipótesis. Para interpretar $R$ como una frontera física hay que confinar el gas mediante una presión exterior
-$$
-p_{\mathrm{ext}}=p(R)=\alpha\rho_c e^{-\psi(\xi_b)}>0.
-$$
-No es válido restar una constante al perfil calculado para forzar $p(R)=0$: ello rompería la ecuación de estado $p=\alpha\rho$. Este modelo se retomará en la subsección sobre la esfera isotérmica autogravitante.
+pues la integral es finita para un centro regular. Por ello, una esfera de radio finito requiere una presión exterior $p_{\mathrm{ext}}=p(R)$: si se exige una superficie en el vacío con $p(R)=0$, no existe una solución no trivial de radio finito bajo estas hipótesis.
 \end{enumerate}
 
 \section{Modelos idealizados de estructura estelar}
@@ -382,23 +483,109 @@ Una ecuación de estado barotrópica conveniente es el politropo
 
 $$ p = K\rho^{1 + \frac{1}{n}}, $$
 
-donde $n$ es el índice politrópico. Sustituyendo esta ecuación de estado en el equilibrio hidrostático se obtiene
+donde $n$ es el índice politrópico. En este desarrollo tomamos $K$ y $n$ constantes, con $n>0$, y trabajamos en el interior, donde $\rho>0$. Partimos del equilibrio hidrostático y dividimos entre la densidad:
+$$
+\nabla p=-\rho\nabla\Phi
+\quad\Longrightarrow\quad
+-\nabla\Phi=\frac{1}{\rho}\nabla p
+=\frac{1}{\rho}\nabla\left(K\rho^{1+\frac{1}{n}}\right).
+$$
+Como $K$ no depende de la posición, sale del gradiente. Para derivar la potencia de $\rho$, usamos la regla de la cadena: $\nabla(\rho^m)=m\rho^{m-1}\nabla\rho$. Así,
+$$
+\begin{aligned}
+\frac{1}{\rho}\nabla\left(K\rho^{1+\frac{1}{n}}\right)
+&=\frac{K}{\rho}\left(1+\frac{1}{n}\right)
+\rho^{\left(1+\frac{1}{n}\right)-1}\nabla\rho\\
+&=\frac{K}{\rho}\frac{n+1}{n}\rho^{\frac{1}{n}}\nabla\rho\\
+&=\frac{K(n+1)}{n}\rho^{\frac{1}{n}-1}\nabla\rho.
+\end{aligned}
+$$
+En el último paso usamos $\rho^{1/n}/\rho=\rho^{1/n-1}$. Por otra parte, aplicando la misma regla a una potencia más sencilla,
+$$
+\nabla\left(K\rho^{\frac{1}{n}}\right)
+=\frac{K}{n}\rho^{\frac{1}{n}-1}\nabla\rho.
+$$
+Esta expresión coincide con la anterior salvo por el factor $n+1$. Por eso,
+$$
+\boxed{
+-\nabla\Phi
+=\frac{K(n+1)}{n}\rho^{\frac{1}{n}-1}\nabla\rho
+=(n+1)\nabla\left(K\rho^{\frac{1}{n}}\right)
+}.
+$$
 
-$$ -\nabla\Phi = \frac{1}{\rho}\nabla\left(K\rho^{1+\frac{1}{n}}\right) = (n+1)\nabla\left(K\rho^{\frac{1}{n}}\right). $$
-
-Por tanto,
-
-$$ \rho = \left(\frac{\Phi_T - \Phi}{(n+1)K}\right)^n, $$
-
-donde $\Phi_T$ es el valor del potencial en la superficie estelar ($\rho = 0$).
+Para despejar la densidad, primero debemos pasar de la igualdad entre gradientes a una igualdad entre las funciones. Como $K$ y $n$ son constantes,
+$$
+-\nabla\Phi=(n+1)\nabla\left(K\rho^{1/n}\right)
+\quad\Longrightarrow\quad
+\nabla\left[\Phi+(n+1)K\rho^{1/n}\right]=0.
+$$
+Una función cuyo gradiente es nulo es constante en una región conectada. Así,
+$$
+\Phi+(n+1)K\rho^{1/n}=C.
+$$
+Determinamos $C$ evaluando en la superficie estelar, donde $\rho=0$ y $\Phi=\Phi_T$. Puesto que $n>0$,
+$$
+C=\Phi_T+(n+1)K\,0^{1/n}=\Phi_T.
+$$
+Por tanto, en cualquier punto del interior,
+$$
+\Phi+(n+1)K\rho^{1/n}=\Phi_T.
+$$
+Ahora el despeje es puramente algebraico. Restamos $\Phi$ en ambos miembros y dividimos entre $(n+1)K$:
+$$
+(n+1)K\rho^{1/n}=\Phi_T-\Phi
+\quad\Longrightarrow\quad
+\rho^{1/n}=\frac{\Phi_T-\Phi}{(n+1)K}.
+$$
+Finalmente, elevamos ambos miembros a la potencia $n$:
+$$
+\left(\rho^{1/n}\right)^n
+=\left(\frac{\Phi_T-\Phi}{(n+1)K}\right)^n
+\quad\Longrightarrow\quad
+\boxed{\rho=\left(\frac{\Phi_T-\Phi}{(n+1)K}\right)^n}.
+$$
+Para $K>0$ y $n>0$, la solución física de densidad positiva corresponde a $\Phi<\Phi_T$; al llegar a la superficie, $\Phi=\Phi_T$ y la densidad se anula.
 
 Usando la ecuación de Poisson,
 
 $$ \nabla^2\Phi = 4\pi G\rho = 4\pi G\left(\frac{\Phi_T - \Phi}{(n+1)K}\right)^n. $$
 
-Sean $\rho_c$ y $\Phi_c$ la densidad y el potencial en el centro. Entonces
+Sean $\rho_c\equiv\rho(0)$ y $\Phi_c\equiv\Phi(0)$ la densidad y el potencial en el centro. Podemos expresar la densidad en términos de estos valores centrales sin introducir una nueva ley física: basta con evaluar la fórmula anterior en el centro y formar un cociente.
 
-$$ \rho = \rho_c\left(\frac{\Phi_T - \Phi}{\Phi_T - \Phi_c}\right)^n, \qquad \nabla^2\Phi = 4\pi G\rho_c\left(\frac{\Phi_T - \Phi}{\Phi_T - \Phi_c}\right)^n. $$
+En un punto cualquiera de radio $r$ tenemos
+$$
+\rho(r)=\left(\frac{\Phi_T-\Phi(r)}{(n+1)K}\right)^n.
+$$
+La misma expresión, evaluada en $r=0$, da
+$$
+\rho_c=\left(\frac{\Phi_T-\Phi_c}{(n+1)K}\right)^n.
+$$
+Dividimos la primera igualdad entre la segunda. Como $K$ y $n$ son los mismos en toda la estrella, el factor $(n+1)K$ se cancela:
+$$
+\begin{aligned}
+\frac{\rho(r)}{\rho_c}
+&=\frac{\left[\dfrac{\Phi_T-\Phi(r)}{(n+1)K}\right]^n}
+{\left[\dfrac{\Phi_T-\Phi_c}{(n+1)K}\right]^n}\\
+&=\left[
+\frac{\Phi_T-\Phi(r)}{(n+1)K}
+\frac{(n+1)K}{\Phi_T-\Phi_c}
+\right]^n\\
+&=\left(\frac{\Phi_T-\Phi(r)}{\Phi_T-\Phi_c}\right)^n.
+\end{aligned}
+$$
+Finalmente, multiplicamos ambos miembros por $\rho_c$:
+$$
+\boxed{\rho(r)=\rho_c
+\left(\frac{\Phi_T-\Phi(r)}{\Phi_T-\Phi_c}\right)^n}.
+$$
+El cociente de potenciales es adimensional y mide la diferencia de potencial respecto de la superficie en unidades de su valor central. En el centro vale $1$, por lo que recuperamos $\rho(0)=\rho_c$; en la superficie vale $0$, y obtenemos $\rho=0$. Los parámetros $K$ y $n$ no se han vuelto irrelevantes: la relación entre $\rho_c$ y $\Phi_T-\Phi_c$ ya los incorpora.
+
+Al sustituir esta misma densidad en la ecuación de Poisson, $\nabla^2\Phi=4\pi G\rho$, resulta
+$$
+\nabla^2\Phi=4\pi G\rho_c
+\left(\frac{\Phi_T-\Phi}{\Phi_T-\Phi_c}\right)^n.
+$$
 
 Defínase la función adimensional
 
@@ -408,13 +595,74 @@ Entonces
 
 $$ \nabla^2\theta = -\frac{4\pi G\rho_c}{\Phi_T - \Phi_c}\,\theta^n. $$
 
-En coordenadas esféricas, $\nabla^2\theta = \dfrac{1}{r^2}\dfrac{d}{dr}\left(r^2\dfrac{d\theta}{dr}\right)$. Introduciendo el radio adimensional
+Por simetría esférica, $\theta$ depende únicamente de $r$, y la ecuación anterior se escribe
+$$
+\frac{1}{r^2}\frac{d}{dr}\left(r^2\frac{d\theta}{dr}\right)
+=-\frac{4\pi G\rho_c}{\Phi_T-\Phi_c}\,\theta^n.
+$$
+Podemos hacer el cambio directamente, sin introducir una longitud auxiliar. Definimos
+$$
+\xi=\left(\frac{4\pi G\rho_c}{\Phi_T-\Phi_c}\right)^{1/2}r,
+\qquad
+r=\left(\frac{\Phi_T-\Phi_c}{4\pi G\rho_c}\right)^{1/2}\xi.
+$$
+El factor que multiplica a $r$ tiene unidades de longitud inversa, de modo que $\xi$ es adimensional. Elegimos precisamente este factor para cancelar el coeficiente del miembro derecho. Conservamos el nombre $\theta$ para la función expresada en la nueva variable.
 
-$$ \xi = \left(\frac{4\pi G\rho_c}{\Phi_T - \Phi_c}\right)^{1/2} r, $$
-
-se obtiene la \textbf{ecuación de Lane--Emden} de índice $n$:
-
-$$ \frac{1}{\xi^2}\frac{d}{d\xi}\left(\xi^2\frac{d\theta}{d\xi}\right) = -\theta^n. $$
+No basta con cambiar la letra $r$ por $\xi$: también debemos transformar las derivadas. Por la regla de la cadena,
+$$
+\frac{d\theta}{dr}
+=\frac{d\theta}{d\xi}\frac{d\xi}{dr}
+=\left(\frac{4\pi G\rho_c}{\Phi_T-\Phi_c}\right)^{1/2}
+\frac{d\theta}{d\xi},
+\qquad
+\frac{d}{dr}
+=\left(\frac{4\pi G\rho_c}{\Phi_T-\Phi_c}\right)^{1/2}\frac{d}{d\xi}.
+$$
+Sustituimos primero dentro de la derivada del laplaciano:
+$$
+\begin{aligned}
+r^2\frac{d\theta}{dr}
+&=\frac{\Phi_T-\Phi_c}{4\pi G\rho_c}\xi^2
+\left(\frac{4\pi G\rho_c}{\Phi_T-\Phi_c}\right)^{1/2}
+\frac{d\theta}{d\xi}\\
+&=\left(\frac{\Phi_T-\Phi_c}{4\pi G\rho_c}\right)^{1/2}
+\xi^2\frac{d\theta}{d\xi}.
+\end{aligned}
+$$
+Al aplicar la derivada exterior, los factores constantes se cancelan:
+$$
+\begin{aligned}
+\frac{d}{dr}\left(r^2\frac{d\theta}{dr}\right)
+&=\left(\frac{4\pi G\rho_c}{\Phi_T-\Phi_c}\right)^{1/2}
+\frac{d}{d\xi}\left[
+\left(\frac{\Phi_T-\Phi_c}{4\pi G\rho_c}\right)^{1/2}
+\xi^2\frac{d\theta}{d\xi}\right]\\
+&=\frac{d}{d\xi}\left(\xi^2\frac{d\theta}{d\xi}\right).
+\end{aligned}
+$$
+Todavía debemos sustituir el factor exterior $1/r^2$:
+$$
+\frac{1}{r^2}=\frac{4\pi G\rho_c}{\Phi_T-\Phi_c}\frac{1}{\xi^2}.
+$$
+Por tanto, el laplaciano completo queda
+$$
+\nabla^2\theta
+=\frac{4\pi G\rho_c}{\Phi_T-\Phi_c}
+\frac{1}{\xi^2}\frac{d}{d\xi}
+\left(\xi^2\frac{d\theta}{d\xi}\right).
+$$
+Reemplazando en la ecuación original,
+$$
+\frac{4\pi G\rho_c}{\Phi_T-\Phi_c}
+\frac{1}{\xi^2}\frac{d}{d\xi}\left(\xi^2\frac{d\theta}{d\xi}\right)
+=-\frac{4\pi G\rho_c}{\Phi_T-\Phi_c}\theta^n.
+$$
+Dividimos ambos miembros entre el mismo coeficiente constante, que es positivo, y obtenemos la \textbf{ecuación de Lane--Emden} de índice $n$:
+$$
+\boxed{\frac{1}{\xi^2}\frac{d}{d\xi}
+\left(\xi^2\frac{d\theta}{d\xi}\right)=-\theta^n}.
+$$
+Así, no hace falta introducir $\ell$: el cambio directo produce la misma ecuación. Además, $r=0$ corresponde a $\xi=0$ y, como las derivadas respecto de ambas variables solo difieren por un factor constante no nulo, la condición de derivada nula en el centro se conserva.
 
 Condiciones de frontera en el centro:
 
