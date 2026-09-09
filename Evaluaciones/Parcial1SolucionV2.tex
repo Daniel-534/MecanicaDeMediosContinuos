@@ -1,628 +1,750 @@
-\documentclass[12pt]{article}
+\documentclass[11pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage[spanish]{babel}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage[margin=2cm]{geometry}
-\geometry{a4paper, margin=1in}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=2.4cm,headheight=14pt]{geometry}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{needspace}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt plus 1pt minus 1pt}
+\setlist{topsep=4pt, itemsep=3pt, parsep=0pt}
+\setlist[itemize]{leftmargin=1.5em}
+\renewcommand{\thesubsection}{\alph{subsection})}
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.6em}{}
+\titleformat{\subsubsection}{\normalsize\itshape}{}{0pt}{}
+\titlespacing*{\section}{0pt}{16pt}{7pt}
+\titlespacing*{\subsection}{0pt}{12pt}{5pt}
+\titlespacing*{\subsubsection}{0pt}{10pt}{4pt}
+\allowdisplaybreaks[1]
+\clubpenalty=10000
+\widowpenalty=10000
+\raggedbottom
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small Mecánica de Medios Continuos}
+\fancyhead[R]{\small Parcial 1 · \nouppercase{\leftmark}}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\sectionmark}[1]{}
 
 \begin{document}
 
 \begin{center}
-    Universidad de Antioquia - Instituto de Física\\
-    Mecánica de Medios Continuos\\
-    Segundo examen -- 08/09/2026
+    {\small Universidad de Antioquia · Instituto de Física\par}
+    \vspace{4pt}
+    {\large Mecánica de Medios Continuos\par}
+    \vspace{6pt}
+    {\LARGE\bfseries Parcial 1\par}
+    \vspace{4pt}
+    {8 de septiembre de 2026\par}
 \end{center}
 
-\textbf{NOTA:} es necesario hacer todos los procedimientos matemáticos y las respuestas deben ser simplificadas y justificadas.
+\markboth{Enunciados}{Enunciados}
+\section*{Enunciados}
 
-\begin{enumerate}
-    \item (40\%) \textbf{Atmósfera de dos capas.} Considere una atmósfera en equilibrio hidrostático sometida a un campo gravitacional constante $\vec{g} = -g_0 \hat{k}$. El aire satisface la ecuación de estado del gas ideal
+\textbf{Indicaciones.} Presente todos los procedimientos matemáticos y exprese
+las respuestas de forma simplificada y justificada. Los tres problemas tienen
+ponderaciones de 40\%, 30\% y 30\%, respectivamente.
+
+\section{Atmósfera de dos capas\hfill 40\%}
+
+Considere una atmósfera en equilibrio hidrostático sometida a un campo gravitacional constante $\vec{g} = -g_0 \hat{k}$. El aire satisface la ecuación de estado del gas ideal
+\[
+p = \rho R_s T,
+\]
+donde $R_s$ es la constante específica del gas, igual en ambas capas. La atmósfera está compuesta por dos regiones:
+\begin{itemize}
+    \item para $0 \le z \le z_t$, el aire satisface la relación politrópica $p = K\rho^\gamma$, con $K > 0$ y $\gamma > 1$ constantes;
+    \item para $z > z_t$, la atmósfera es isotérmica, con temperatura $T_t = T(z_t)$.
+\end{itemize}
+En la superficie, $p(0) = p_0$ y $T(0) = T_0$. En la tropopausa, situada en $z = z_t$, la presión, la densidad y la temperatura son continuas.
+\begin{enumerate}[label=\alph*), leftmargin=*]
+    \item Obtenga los perfiles de presión $p(z)$ y temperatura $T(z)$ en la capa inferior en términos de $p_0$, $T_0$, $R_s$, $g_0$ y $\gamma$. Determine sus valores en la tropopausa, $p_t = p(z_t)$ y $T_t = T(z_t)$.
+    \item Obtenga el perfil de presión $p(z)$ en la región isotérmica, imponiendo la continuidad en $z = z_t$.
+    \item Sustituya los valores de $T_0$, $p_0$, $z_t$, $R_s$, $\gamma$ y $g_0$ en los resultados anteriores y evalúe la presión a una altura $z = 20\,\mathrm{km}$.
+\end{enumerate}
+
+\clearpage
+
+\section{Esfera autogravitante\hfill 30\%}
+
+Considere una esfera de fluido en equilibrio hidrostático bajo su propia gravedad, con radio $R$ y distribución de densidad
+\[
+\rho(r) =
+\begin{cases}
+    \rho_c\left(1 - \dfrac{r}{R}\right), & 0 \le r \le R,\\
+    0, & r > R,
+\end{cases}
+\]
+donde $\rho_c$ es la densidad central. Suponga que la presión exterior es nula.
+\begin{enumerate}[label=\alph*), leftmargin=*]
+    \item Determine la distribución de presión $p(r)$ en el interior de la esfera, imponiendo la condición de frontera $p(R) = 0$.
+    \item Calcule la presión central $p_c = p(0)$.
+\end{enumerate}
+
+\section{Esfera politrópica\hfill 30\%}
+
+Considere una esfera de fluido autogravitante en equilibrio hidrostático, descrita por la ecuación de estado
+\[
+p = K\rho^2,
+\]
+con $K > 0$ constante. Introduzca las variables
+\[
+\rho(r) = \rho_c\theta(\xi),
+\qquad r = a\xi,
+\qquad a = \left(\frac{K}{2\pi G}\right)^{1/2},
+\]
+donde $\rho_c$ es la densidad central y $G$ es la constante de gravitación universal.
+\begin{enumerate}[label=\alph*), leftmargin=*]
+    \item A partir de las ecuaciones de equilibrio hidrostático y de conservación de masa, demuestre que
     \[
-    p = \rho R_s T,
+    \frac{1}{\xi^2}\frac{d}{d\xi}
+    \left(\xi^2\frac{d\theta}{d\xi}\right) = -\theta.
     \]
-    donde $R_s$ es la constante específica del gas, igual en ambas capas. La atmósfera está compuesta por dos regiones:
-    \begin{itemize}
-        \item para $0 \le z \le z_t$, el aire satisface la relación politrópica $p = K\rho^\gamma$, con $K > 0$ y $\gamma > 1$ constantes;
-        \item para $z > z_t$, la atmósfera es isotérmica, con temperatura $T_t = T(z_t)$.
-    \end{itemize}
-    En la superficie, $p(0) = p_0$ y $T(0) = T_0$. En la tropopausa, situada en $z = z_t$, la presión, la densidad y la temperatura son continuas.
-    \begin{itemize}
-        \item[a)] Obtenga los perfiles de presión $p(z)$ y temperatura $T(z)$ en la capa inferior en términos de $p_0$, $T_0$, $R_s$, $g_0$ y $\gamma$. Determine sus valores en la tropopausa, $p_t = p(z_t)$ y $T_t = T(z_t)$.
-        \item[b)] Obtenga el perfil de presión $p(z)$ en la región isotérmica, imponiendo la continuidad en $z = z_t$.
-        \item[c)] Sustituya los valores de $T_0$, $p_0$, $z_t$, $R_s$, $\gamma$ y $g_0$ en los resultados anteriores y evalúe la presión a una altura $z = 20\,\mathrm{km}$.
-    \end{itemize}
+    \item Resuelva esta ecuación suponiendo una solución regular en el centro y normalizada mediante $\theta(0) = 1$.
+    \item Determine el radio de la esfera, definido por el primer cero positivo de $\theta$, el perfil de densidad $\rho(r)$ y la masa total.
+\end{enumerate}
 
-\section{Solución al punto 1 del Parcial 2: Atmósfera de dos capas}
+\clearpage
+\setcounter{section}{0}
+\markboth{Soluciones}{Soluciones}
+\begin{center}
+    {\LARGE\bfseries Soluciones\par}
+    \vspace{3pt}
+    {\small Desarrollo por problema e inciso\par}
+\end{center}
+
+\section{Atmósfera de dos capas}
 
 Se considera una atmósfera en equilibrio hidrostático bajo el campo gravitacional
 $\vec{g}=-g_{0}\hat{k}$, con ecuación de estado del gas ideal $p=\rho R_{s}T$
 y $R_{s}$ igual en ambas capas. La ecuación de equilibrio hidrostático es
-$$\frac{dp}{dz}=-\rho g_{0}.$$
+\[
+\frac{dp}{dz}=-\rho g_{0}.
+\]
 
-\subsection{Ítem a: perfiles en la capa inferior $(0\le z\le z_{t})$}
+\Needspace{7\baselineskip}
+\subsection{Perfiles en la capa inferior y valores en la tropopausa}
 
 En la capa inferior la relación es politrópica, $p=K\rho^{\gamma}$ con $K>0$ y $\gamma>1$.
 De aquí se despeja la densidad:
-$$\rho=\left(\frac{p}{K}\right)^{1/\gamma}.$$
+\[
+\rho=\left(\frac{p}{K}\right)^{1/\gamma}.
+\]
 
 Sustituyendo en la ecuación hidrostática:
-$$\frac{dp}{dz}=-g_{0}\left(\frac{p}{K}\right)^{1/\gamma}
-=-\frac{g_{0}}{K^{1/\gamma}}\,p^{1/\gamma}.$$
+\[
+\frac{dp}{dz}=-g_{0}\left(\frac{p}{K}\right)^{1/\gamma}
+=-\frac{g_{0}}{K^{1/\gamma}}\,p^{1/\gamma}.
+\]
 
 Separando variables,
-$$p^{-1/\gamma}\,dp=-\frac{g_{0}}{K^{1/\gamma}}\,dz.$$
+\[
+p^{-1/\gamma}\,dp=-\frac{g_{0}}{K^{1/\gamma}}\,dz.
+\]
 
 Integrando, usando $\displaystyle \int p^{-1/\gamma}dp=\frac{\gamma}{\gamma-1}p^{(\gamma-1)/\gamma}$:
-$$\frac{\gamma}{\gamma-1}p^{(\gamma-1)/\gamma}
-=-\frac{g_{0}}{K^{1/\gamma}}z+C.$$
+\[
+\frac{\gamma}{\gamma-1}p^{(\gamma-1)/\gamma}
+=-\frac{g_{0}}{K^{1/\gamma}}z+C.
+\]
 
 La condición de frontera en la superficie es $p(0)=p_{0}$, de modo que
-$$C=\frac{\gamma}{\gamma-1}p_{0}^{(\gamma-1)/\gamma}.$$
+\[
+C=\frac{\gamma}{\gamma-1}p_{0}^{(\gamma-1)/\gamma}.
+\]
 
 Por tanto,
-$$p^{(\gamma-1)/\gamma}
-=p_{0}^{(\gamma-1)/\gamma}-\frac{\gamma-1}{\gamma}\frac{g_{0}}{K^{1/\gamma}}z.$$
+\[
+p^{(\gamma-1)/\gamma}
+=p_{0}^{(\gamma-1)/\gamma}-\frac{\gamma-1}{\gamma}\frac{g_{0}}{K^{1/\gamma}}z.
+\]
 
 Para expresar el resultado en términos de $p_{0},T_{0},R_{s},g_{0},\gamma$, se usa que en la superficie
 $p_{0}=K\rho_{0}^{\gamma}$ con $\rho_{0}=p_{0}/(R_{s}T_{0})$. Entonces
-$$K^{1/\gamma}=\frac{p_{0}^{1/\gamma}}{\rho_{0}}
+\[
+K^{1/\gamma}=\frac{p_{0}^{1/\gamma}}{\rho_{0}}
 =\frac{p_{0}^{1/\gamma}R_{s}T_{0}}{p_{0}}
-=\frac{R_{s}T_{0}}{p_{0}^{(\gamma-1)/\gamma}},$$
+=\frac{R_{s}T_{0}}{p_{0}^{(\gamma-1)/\gamma}},
+\]
 y así
-$$\frac{1}{K^{1/\gamma}}=\frac{p_{0}^{(\gamma-1)/\gamma}}{R_{s}T_{0}}.$$
+\[
+\frac{1}{K^{1/\gamma}}=\frac{p_{0}^{(\gamma-1)/\gamma}}{R_{s}T_{0}}.
+\]
 
 Sustituyendo:
-$$p^{(\gamma-1)/\gamma}
-=p_{0}^{(\gamma-1)/\gamma}\left[1-\frac{\gamma-1}{\gamma}\frac{g_{0}z}{R_{s}T_{0}}\right].$$
+\[
+p^{(\gamma-1)/\gamma}
+=p_{0}^{(\gamma-1)/\gamma}\left[1-\frac{\gamma-1}{\gamma}\frac{g_{0}z}{R_{s}T_{0}}\right].
+\]
 
 Elevando a la potencia $\gamma/(\gamma-1)$, el perfil de presión queda
-$$\boxed{\,p(z)=p_{0}\left[1-\frac{\gamma-1}{\gamma}\frac{g_{0}z}{R_{s}T_{0}}\right]^{\gamma/(\gamma-1)},\qquad 0\le z\le z_{t}.\,}$$
+\[
+\boxed{\,p(z)=p_{0}\left[1-\frac{\gamma-1}{\gamma}\frac{g_{0}z}{R_{s}T_{0}}\right]^{\gamma/(\gamma-1)},\qquad 0\le z\le z_{t}.\,}
+\]
 
 Es útil definir la escala de altura politrópica
-$$h_{2}=\frac{\gamma}{\gamma-1}\frac{R_{s}T_{0}}{g_{0}},$$
+\[
+h_{2}=\frac{\gamma}{\gamma-1}\frac{R_{s}T_{0}}{g_{0}},
+\]
 de modo que $p(z)=p_{0}(1-z/h_{2})^{\gamma/(\gamma-1)}$.
 
 Para la temperatura, se usa $T=p/(\rho R_{s})$. Como $\rho=(p/K)^{1/\gamma}$,
-$$T=\frac{p}{R_{s}}\left(\frac{K}{p}\right)^{1/\gamma}
-=\frac{K^{1/\gamma}}{R_{s}}p^{(\gamma-1)/\gamma}.$$
+\[
+T=\frac{p}{R_{s}}\left(\frac{K}{p}\right)^{1/\gamma}
+=\frac{K^{1/\gamma}}{R_{s}}p^{(\gamma-1)/\gamma}.
+\]
 
 Dividiendo entre el valor superficial $T_{0}=K^{1/\gamma}p_{0}^{(\gamma-1)/\gamma}/R_{s}$:
-$$\frac{T(z)}{T_{0}}=\frac{p(z)^{(\gamma-1)/\gamma}}{p_{0}^{(\gamma-1)/\gamma}}
-=1-\frac{\gamma-1}{\gamma}\frac{g_{0}z}{R_{s}T_{0}}.$$
+\[
+\frac{T(z)}{T_{0}}=\frac{p(z)^{(\gamma-1)/\gamma}}{p_{0}^{(\gamma-1)/\gamma}}
+=1-\frac{\gamma-1}{\gamma}\frac{g_{0}z}{R_{s}T_{0}}.
+\]
 
 Por tanto, el perfil de temperatura es lineal:
-$$\boxed{\,T(z)=T_{0}\left[1-\frac{\gamma-1}{\gamma}\frac{g_{0}z}{R_{s}T_{0}}\right]
-=T_{0}-\frac{\gamma-1}{\gamma}\frac{g_{0}}{R_{s}}z,\qquad 0\le z\le z_{t}.\,}$$
+\[
+\boxed{\,T(z)=T_{0}\left[1-\frac{\gamma-1}{\gamma}\frac{g_{0}z}{R_{s}T_{0}}\right]
+=T_{0}-\frac{\gamma-1}{\gamma}\frac{g_{0}}{R_{s}}z,\qquad 0\le z\le z_{t}.\,}
+\]
 
 El gradiente térmico es constante:
-$$\frac{dT}{dz}=-\frac{\gamma-1}{\gamma}\frac{g_{0}}{R_{s}}=-\frac{g_{0}}{c_{p}},
-\qquad c_{p}=\frac{\gamma R_{s}}{\gamma-1},$$
+\[
+\frac{dT}{dz}=-\frac{\gamma-1}{\gamma}\frac{g_{0}}{R_{s}}=-\frac{g_{0}}{c_{p}},
+\qquad c_{p}=\frac{\gamma R_{s}}{\gamma-1},
+\]
 que corresponde al lapse rate adiabático seco.
 
 Valores en la tropopausa $z=z_{t}$:
-$$\boxed{\,T_{t}=T(z_{t})=T_{0}\left[1-\frac{\gamma-1}{\gamma}\frac{g_{0}z_{t}}{R_{s}T_{0}}\right]\,}$$
+\[
+\boxed{\,T_{t}=T(z_{t})=T_{0}\left[1-\frac{\gamma-1}{\gamma}\frac{g_{0}z_{t}}{R_{s}T_{0}}\right]\,}
+\]
 y
-$$\boxed{\,p_{t}=p(z_{t})
+\[
+\boxed{\,p_{t}=p(z_{t})
 =p_{0}\left[1-\frac{\gamma-1}{\gamma}\frac{g_{0}z_{t}}{R_{s}T_{0}}\right]^{\gamma/(\gamma-1)}
-=p_{0}\left(\frac{T_{t}}{T_{0}}\right)^{\gamma/(\gamma-1)}.\,}$$
+=p_{0}\left(\frac{T_{t}}{T_{0}}\right)^{\gamma/(\gamma-1)}.\,}
+\]
 
 La densidad en la tropopausa, por continuidad y gas ideal, es
-$$\rho_{t}=\frac{p_{t}}{R_{s}T_{t}}=\rho_{0}\left(\frac{T_{t}}{T_{0}}\right)^{1/(\gamma-1)}.$$
+\[
+\rho_{t}=\frac{p_{t}}{R_{s}T_{t}}=\rho_{0}\left(\frac{T_{t}}{T_{0}}\right)^{1/(\gamma-1)}.
+\]
 
-\subsection{Ítem b: perfil en la región isotérmica $(z>z_{t})$}
+\Needspace{7\baselineskip}
+\subsection{Perfil en la región isotérmica}
 
 Para $z>z_{t}$ la atmósfera es isotérmica con $T=T_{t}=T(z_{t})$ constante.
 Con el gas ideal, $\rho=p/(R_{s}T_{t})$. La ecuación hidrostática queda
-$$\frac{dp}{dz}=-\frac{p}{R_{s}T_{t}}g_{0}.$$
+\[
+\frac{dp}{dz}=-\frac{p}{R_{s}T_{t}}g_{0}.
+\]
 
 Separando variables:
-$$\frac{dp}{p}=-\frac{g_{0}}{R_{s}T_{t}}\,dz.$$
+\[
+\frac{dp}{p}=-\frac{g_{0}}{R_{s}T_{t}}\,dz.
+\]
 
 Integrando desde la tropopausa $z=z_{t}$, donde por continuidad $p(z_{t})=p_{t}$, hasta una altura $z>z_{t}$:
-$$\int_{p_{t}}^{p(z)}\frac{dp'}{p'}
-=-\frac{g_{0}}{R_{s}T_{t}}\int_{z_{t}}^{z}dz',$$
-$$\ln\frac{p(z)}{p_{t}}=-\frac{g_{0}(z-z_{t})}{R_{s}T_{t}}.$$
+\[
+\int_{p_{t}}^{p(z)}\frac{dp'}{p'}
+=-\frac{g_{0}}{R_{s}T_{t}}\int_{z_{t}}^{z}dz',
+\]
+\[
+\ln\frac{p(z)}{p_{t}}=-\frac{g_{0}(z-z_{t})}{R_{s}T_{t}}.
+\]
 
 Por tanto, el perfil de presión en la capa isotérmica es
-$$\boxed{\,p(z)=p_{t}\exp\left[-\frac{g_{0}(z-z_{t})}{R_{s}T_{t}}\right],
-\qquad z\ge z_{t},\,}$$
+\[
+\boxed{\,p(z)=p_{t}\exp\left[-\frac{g_{0}(z-z_{t})}{R_{s}T_{t}}\right],
+\qquad z\ge z_{t},\,}
+\]
 con escala de altura isotérmica
-$$H_{t}=\frac{R_{s}T_{t}}{g_{0}}.$$
+\[
+H_{t}=\frac{R_{s}T_{t}}{g_{0}}.
+\]
 
 Sustituyendo $p_{t}$ del ítem a, el perfil completo queda expresado en términos de los datos:
-$$p(z)=p_{0}\left[1-\frac{\gamma-1}{\gamma}\frac{g_{0}z_{t}}{R_{s}T_{0}}\right]^{\gamma/(\gamma-1)}
-\exp\left[-\frac{g_{0}(z-z_{t})}{R_{s}T_{0}\left(1-\dfrac{\gamma-1}{\gamma}\dfrac{g_{0}z_{t}}{R_{s}T_{0}}\right)}\right].$$
+\[
+p(z)=p_{0}\left[1-\frac{\gamma-1}{\gamma}\frac{g_{0}z_{t}}{R_{s}T_{0}}\right]^{\gamma/(\gamma-1)}
+\exp\left[-\frac{g_{0}(z-z_{t})}{R_{s}T_{0}\left(1-\dfrac{\gamma-1}{\gamma}\dfrac{g_{0}z_{t}}{R_{s}T_{0}}\right)}\right].
+\]
 
 En esta capa la densidad y la temperatura satisfacen
-$$\rho(z)=\frac{p(z)}{R_{s}T_{t}}
+\[
+\rho(z)=\frac{p(z)}{R_{s}T_{t}}
 =\rho_{t}\exp\left[-\frac{g_{0}(z-z_{t})}{R_{s}T_{t}}\right],
-\qquad T(z)=T_{t},\qquad z\ge z_{t}.$$
+\qquad T(z)=T_{t},\qquad z\ge z_{t}.
+\]
 
 La continuidad de presión, densidad y temperatura en $z=z_{t}$ queda garantizada:
-$$p(z_{t}^{-})=p(z_{t}^{+})=p_{t},\qquad
+\[
+p(z_{t}^{-})=p(z_{t}^{+})=p_{t},\qquad
 \rho(z_{t}^{-})=\rho(z_{t}^{+})=\rho_{t},\qquad
-T(z_{t}^{-})=T(z_{t}^{+})=T_{t}.$$
+T(z_{t}^{-})=T(z_{t}^{+})=T_{t}.
+\]
+
+\Needspace{7\baselineskip}
+\subsection{Evaluación a una altura de 20 km}
+
+\textit{Pendiente de datos:} el enunciado no especifica los valores numéricos de
+$T_0$, $p_0$, $z_t$, $R_s$, $\gamma$ y $g_0$. La evaluación numérica requiere
+completar estos datos y utilizar el perfil correspondiente a la altura indicada.
 
 
+\clearpage
 
-    \item (30\%) \textbf{Esfera autogravitante.} Considere una esfera de fluido en equilibrio hidrostático bajo su propia gravedad, con radio $R$ y distribución de densidad
-    \[
-    \rho(r) =
-    \begin{cases}
-        \rho_c\left(1 - \dfrac{r}{R}\right), & 0 \le r \le R,\\
-        0, & r > R,
-    \end{cases}
-    \]
-    donde $\rho_c$ es la densidad central. Suponga que la presión exterior es nula.
-    \begin{itemize}
-        \item[a)] Determine la distribución de presión $p(r)$ en el interior de la esfera, imponiendo la condición de frontera $p(R) = 0$.
-        \item[b)] Calcule la presión central $p_c = p(0)$.
-    \end{itemize}
+\section{Esfera autogravitante}
 
-\section{Solución al punto 2 del Parcial 2: Esfera autogravitante}
-
-\subsection{Ítem a: Distribución de presión $p(r)$ en el interior de la esfera}
+\Needspace{7\baselineskip}
+\subsection{Distribución de presión en el interior}
 
 La condición de equilibrio hidrostático para un fluido bajo su propia gravedad está dada por la ecuación:
-$$
+\[
 \frac{dp}{dr} = -\rho(r) g(r)
-$$
+\]
 donde $g(r)$ es la magnitud de la aceleración gravitacional a una distancia $r$ del centro. Por el teorema de la cáscara (o ley de Gauss para la gravedad), $g(r)$ depende únicamente de la masa encerrada dentro de la esfera de radio $r$, denotada como $M(r)$:
-$$
+\[
 g(r) = \frac{G M(r)}{r^2}
-$$
+\]
 
 Primero, calculamos la masa encerrada $M(r)$ integrando la distribución de densidad $\rho(r') = \rho_c \left(1 - \frac{r'}{R}\right)$ desde el centro hasta un radio $r$:
-$$
+\[
 M(r) = \int_0^r 4\pi r'^2 \rho(r') \, dr' = 4\pi \rho_c \int_0^r \left(r'^2 - \frac{r'^3}{R}\right) dr'
-$$
-$$
+\]
+\[
 M(r) = 4\pi \rho_c \left[ \frac{r'^3}{3} - \frac{r'^4}{4R} \right]_0^r = 4\pi \rho_c \left( \frac{r^3}{3} - \frac{r^4}{4R} \right)
-$$
+\]
 
 Sustituyendo $M(r)$ en la expresión para el campo gravitacional $g(r)$:
-$$
+\[
 g(r) = \frac{G}{r^2} \cdot 4\pi \rho_c \left( \frac{r^3}{3} - \frac{r^4}{4R} \right) = 4\pi G \rho_c \left( \frac{r}{3} - \frac{r^2}{4R} \right)
-$$
+\]
 
 Ahora, reemplazamos $\rho(r)$ y $g(r)$ en la ecuación de equilibrio hidrostático:
-$$
+\[
 \frac{dp}{dr} = -\rho_c \left(1 - \frac{r}{R}\right) \cdot 4\pi G \rho_c \left( \frac{r}{3} - \frac{r^2}{4R} \right)
-$$
-$$
+\]
+\[
 \frac{dp}{dr} = -4\pi G \rho_c^2 \left(1 - \frac{r}{R}\right) \left( \frac{r}{3} - \frac{r^2}{4R} \right)
-$$
+\]
 
 Expandiendo el producto de los polinomios:
-$$
+\[
 \left(1 - \frac{r}{R}\right) \left( \frac{r}{3} - \frac{r^2}{4R} \right) = \frac{r}{3} - \frac{r^2}{4R} - \frac{r^2}{3R} + \frac{r^3}{4R^2} = \frac{r}{3} - \frac{7r^2}{12R} + \frac{r^3}{4R^2}
-$$
+\]
 
 Por lo tanto, la ecuación diferencial para la presión es:
-$$
+\[
 \frac{dp}{dr} = -4\pi G \rho_c^2 \left( \frac{r}{3} - \frac{7r^2}{12R} + \frac{r^3}{4R^2} \right)
-$$
+\]
 
 Integramos respecto a $r$ para obtener $p(r)$:
-$$
+\[
 p(r) = -4\pi G \rho_c^2 \int \left( \frac{r}{3} - \frac{7r^2}{12R} + \frac{r^3}{4R^2} \right) dr
-$$
-$$
+\]
+\[
 p(r) = -4\pi G \rho_c^2 \left( \frac{r^2}{6} - \frac{7r^3}{36R} + \frac{r^4}{16R^2} \right) + C
-$$
+\]
 
 Para determinar la constante de integración $C$, imponemos la condición de frontera de que la presión exterior es nula, es decir, $p(R) = 0$:
-$$
+\[
 p(R) = -4\pi G \rho_c^2 R^2 \left( \frac{1}{6} - \frac{7}{36} + \frac{1}{16} \right) + C = 0
-$$
+\]
 
 Calculamos la suma de las fracciones buscando un denominador común, que es 144:
-$$
+\[
 \frac{1}{6} - \frac{7}{36} + \frac{1}{16} = \frac{24}{144} - \frac{28}{144} + \frac{9}{144} = \frac{5}{144}
-$$
+\]
 
 Despejando $C$:
-$$
+\[
 C = 4\pi G \rho_c^2 R^2 \left( \frac{5}{144} \right) = \frac{5\pi G \rho_c^2 R^2}{36}
-$$
+\]
 
 Sustituyendo $C$ en la expresión general y factorizando $\frac{\pi G \rho_c^2 R^2}{36}$, obtenemos la distribución de presión final:
-$$
+\[
+\boxed{
 p(r) = \frac{\pi G \rho_c^2 R^2}{36} \left[ 5 - 24\left(\frac{r}{R}\right)^2 + 28\left(\frac{r}{R}\right)^3 - 9\left(\frac{r}{R}\right)^4 \right]
-$$
+}.
+\]
 
-\subsection{Ítem b: Presión central $p_c$}
+\Needspace{7\baselineskip}
+\subsection{Presión central}
 
 La presión central $p_c$ corresponde a la evaluación de la distribución de presión en el origen, es decir, cuando $r = 0$. 
 
 Sustituyendo $r = 0$ en la expresión derivada en el ítem anterior:
-$$
+\[
 p_c = p(0) = \frac{\pi G \rho_c^2 R^2}{36} \left[ 5 - 24(0)^2 + 28(0)^3 - 9(0)^4 \right]
-$$
+\]
 
 Por lo tanto, la presión en el centro de la esfera autogravitante es:
-$$
-p_c = \frac{5\pi G \rho_c^2 R^2}{36}
-$$
+\[
+\boxed{p_c = \frac{5\pi G \rho_c^2 R^2}{36}}.
+\]
 
+\clearpage
 
-    \item (30\%) \textbf{Esfera politrópica.} Considere una esfera de fluido autogravitante en equilibrio hidrostático, descrita por la ecuación de estado
-    \[
-    p = K\rho^2,
-    \]
-    con $K > 0$ constante. Introduzca las variables
-    \[
-    \rho(r) = \rho_c\theta(\xi),
-    \qquad r = a\xi,
-    \qquad a = \left(\frac{K}{2\pi G}\right)^{1/2},
-    \]
-    donde $\rho_c$ es la densidad central y $G$ es la constante de gravitación universal.
-    \begin{itemize}
-        \item[a)] A partir de las ecuaciones de equilibrio hidrostático y de conservación de masa, demuestre que
-        \[
-        \frac{1}{\xi^2}\frac{d}{d\xi}
-        \left(\xi^2\frac{d\theta}{d\xi}\right) = -\theta.
-        \]
-        \item[b)] Resuelva esta ecuación suponiendo una solución regular en el centro y normalizada mediante $\theta(0) = 1$.
-        \item[c)] Determine el radio de la esfera, definido por el primer cero positivo de $\theta$, el perfil de densidad $\rho(r)$ y la masa total.
-    \end{itemize}
-\end{enumerate}
-
-\section{Punto 3: Esfera politrópica}
+\section{Esfera politrópica}
 
 Se considera una esfera de fluido autogravitante en equilibrio hidrostático, con ecuación de estado
-$$
+\[
 p=K\rho^{2}, \qquad K>0,
-$$
+\]
 y se introducen las variables
-$$
+\[
 \rho(r)=\rho_c\,\theta(\xi), \qquad r=a\xi, \qquad 
 a=\left(\frac{K}{2\pi G}\right)^{1/2},
-$$
+\]
 donde $\rho_c$ es la densidad central.
 
-\subsection{Ítem a: Obtención de la ecuación adimensional}
+\Needspace{7\baselineskip}
+\subsection{Ecuación adimensional}
 
 Las ecuaciones de equilibrio hidrostático y de conservación de masa para una esfera simétrica son
-$$
+\[
 \frac{dp}{dr}=-\rho\,\frac{Gm(r)}{r^{2}},
-$$
-$$
+\]
+\[
 \frac{dm}{dr}=4\pi r^{2}\rho .
-$$
+\]
 
 De la ecuación hidrostática,
-$$
+\[
 \frac{r^{2}}{\rho}\frac{dp}{dr}=-Gm(r).
-$$
+\]
 Derivando respecto de $r$,
-$$
+\[
 \frac{d}{dr}\left(\frac{r^{2}}{\rho}\frac{dp}{dr}\right)
 =-G\frac{dm}{dr}.
-$$
+\]
 Usando la conservación de masa,
-$$
+\[
 \frac{d}{dr}\left(\frac{r^{2}}{\rho}\frac{dp}{dr}\right)
 =-4\pi G r^{2}\rho .
-$$
+\]
 
 Como $p=K\rho^{2}$, se tiene
-$$
+\[
 \frac{dp}{dr}=2K\rho\frac{d\rho}{dr},
-$$
+\]
 y por tanto
-$$
+\[
 \frac{1}{\rho}\frac{dp}{dr}=2K\frac{d\rho}{dr}.
-$$
+\]
 Entonces,
-$$
+\[
 \frac{d}{dr}\left(2K r^{2}\frac{d\rho}{dr}\right)
 =-4\pi G r^{2}\rho .
-$$
+\]
 Como $K$ es constante,
-$$
+\[
 \frac{1}{r^{2}}\frac{d}{dr}\left(r^{2}\frac{d\rho}{dr}\right)
 =-\frac{2\pi G}{K}\rho .
-$$
+\]
 
 Ahora se introducen las variables adimensionales
-$$
+\[
 \rho(r)=\rho_c\theta(\xi), \qquad r=a\xi .
-$$
+\]
 Se tiene
-$$
+\[
 \frac{d}{dr}=\frac{1}{a}\frac{d}{d\xi},
-$$
+\]
 y
-$$
+\[
 \frac{d\rho}{dr}=\frac{\rho_c}{a}\frac{d\theta}{d\xi}.
-$$
+\]
 Por tanto,
-$$
+\[
 r^{2}\frac{d\rho}{dr}
 =a^{2}\xi^{2}\frac{\rho_c}{a}\frac{d\theta}{d\xi}
 =a\rho_c\xi^{2}\theta',
-$$
+\]
 donde $\theta'=d\theta/d\xi$. Luego,
-$$
+\[
 \frac{d}{dr}\left(r^{2}\frac{d\rho}{dr}\right)
 =\frac{1}{a}\frac{d}{d\xi}
 \left(a\rho_c\xi^{2}\theta'\right)
 =\rho_c\frac{d}{d\xi}\left(\xi^{2}\theta'\right).
-$$
+\]
 Así,
-$$
+\[
 \frac{1}{r^{2}}\frac{d}{dr}\left(r^{2}\frac{d\rho}{dr}\right)
 =\frac{1}{a^{2}\xi^{2}}\rho_c
 \frac{d}{d\xi}\left(\xi^{2}\theta'\right).
-$$
+\]
 Reemplazando en la ecuación previa,
-$$
+\[
 \frac{\rho_c}{a^{2}\xi^{2}}
 \frac{d}{d\xi}\left(\xi^{2}\theta'\right)
 =-\frac{2\pi G}{K}\rho_c\theta .
-$$
+\]
 Cancelando $\rho_c$ y multiplicando por $a^{2}$,
-$$
+\[
 \frac{1}{\xi^{2}}
 \frac{d}{d\xi}\left(\xi^{2}\frac{d\theta}{d\xi}\right)
 =-\frac{2\pi G a^{2}}{K}\theta .
-$$
+\]
 Como
-$$
+\[
 a^{2}=\frac{K}{2\pi G},
-$$
+\]
 se obtiene finalmente
-$$
+\[
 \boxed{
 \frac{1}{\xi^{2}}
 \frac{d}{d\xi}\left(\xi^{2}\frac{d\theta}{d\xi}\right)
 =-\theta
 }.
-$$
+\]
 
-\subsection{Ítem b: Solución regular con $\theta(0)=1$}
+\Needspace{7\baselineskip}
+\subsection{Solución regular en el centro}
 
 La ecuación obtenida puede escribirse como
-$$
+\[
 \theta''+\frac{2}{\xi}\theta'+\theta=0,
-$$
+\]
 donde las primas indican derivadas respecto de $\xi$.
 
 Para resolverla, se introduce la variable auxiliar
-$$
+\[
 u(\xi)=\xi\theta(\xi).
-$$
+\]
 Entonces,
-$$
+\[
 \theta=\frac{u}{\xi}.
-$$
+\]
 Derivando,
-$$
+\[
 \theta'=\frac{u'}{\xi}-\frac{u}{\xi^{2}},
-$$
-$$
+\]
+\[
 \theta''=\frac{u''}{\xi}-\frac{2u'}{\xi^{2}}+\frac{2u}{\xi^{3}}.
-$$
+\]
 Sustituyendo en la ecuación,
-$$
+\[
 \left(\frac{u''}{\xi}-\frac{2u'}{\xi^{2}}+\frac{2u}{\xi^{3}}\right)
 +\frac{2}{\xi}
 \left(\frac{u'}{\xi}-\frac{u}{\xi^{2}}\right)
 +\frac{u}{\xi}=0.
-$$
+\]
 Los términos con $u'$ y $u/\xi^{3}$ se cancelan, quedando
-$$
+\[
 \frac{u''}{\xi}+\frac{u}{\xi}=0.
-$$
+\]
 Para $\xi\neq 0$,
-$$
+\[
 u''+u=0.
-$$
+\]
 La solución general es
-$$
+\[
 u(\xi)=A\sin\xi+B\cos\xi.
-$$
+\]
 Por tanto,
-$$
+\[
 \theta(\xi)=\frac{A\sin\xi+B\cos\xi}{\xi}.
-$$
+\]
 
 La solución debe ser regular en el centro, $\xi=0$. Como
-$$
+\[
 \frac{\cos\xi}{\xi}\sim \frac{1}{\xi}
 \qquad (\xi\to 0),
-$$
+\]
 el término con $B$ diverge. Para evitar la divergencia se debe tomar
-$$
+\[
 B=0.
-$$
+\]
 Así,
-$$
+\[
 \theta(\xi)=A\frac{\sin\xi}{\xi}.
-$$
+\]
 Usando el límite
-$$
+\[
 \lim_{\xi\to 0}\frac{\sin\xi}{\xi}=1,
-$$
+\]
 la condición de normalización $\theta(0)=1$ implica
-$$
+\[
 A=1.
-$$
+\]
 Por tanto, la solución regular es
-$$
+\[
 \boxed{
 \theta(\xi)=\frac{\sin\xi}{\xi}
 }.
-$$
+\]
 En el centro se entiende que
-$$
+\[
 \theta(0)=\lim_{\xi\to 0}\frac{\sin\xi}{\xi}=1.
-$$
+\]
 Además,
-$$
+\[
 \theta'(0)=0,
-$$
+\]
 como corresponde a una solución regular y simétrica en el centro de la esfera.
 
-\subsection{Ítem c: Radio, perfil de densidad y masa total}
+\Needspace{7\baselineskip}
+\subsection{Radio, densidad y masa total}
+
+\subsubsection*{Radio de la esfera}
 
 El radio de la esfera se define como el primer cero positivo de $\theta(\xi)$. Como
-$$
+\[
 \theta(\xi)=\frac{\sin\xi}{\xi},
-$$
+\]
 los ceros están determinados por
-$$
+\[
 \sin\xi=0.
-$$
+\]
 El primer cero positivo es
-$$
+\[
 \xi_1=\pi.
-$$
+\]
 Por tanto, el radio físico de la esfera es
-$$
+\[
 R=a\xi_1=a\pi.
-$$
+\]
 Usando
-$$
+\[
 a=\left(\frac{K}{2\pi G}\right)^{1/2},
-$$
+\]
 se obtiene
-$$
+\[
 \boxed{
 R=\pi\left(\frac{K}{2\pi G}\right)^{1/2}
 }.
-$$
+\]
 Equivalentemente,
-$$
+\[
 \boxed{
 R=\left(\frac{\pi K}{2G}\right)^{1/2}
 }.
-$$
+\]
+
+\subsubsection*{Perfil de densidad}
 
 El perfil de densidad está dado por
-$$
+\[
 \rho(r)=\rho_c\theta(\xi)
 =\rho_c\frac{\sin\xi}{\xi}.
-$$
+\]
 Como $\xi=r/a$ y $R=\pi a$, también se puede escribir
-$$
+\[
 \xi=\frac{r}{a}=\frac{\pi r}{R}.
-$$
+\]
 Por tanto,
-$$
+\[
 \boxed{
 \rho(r)=\rho_c\,
 \frac{\sin\left(\dfrac{\pi r}{R}\right)}
 {\dfrac{\pi r}{R}},
 \qquad 0\le r\le R
 }.
-$$
+\]
 En el centro se toma el límite
-$$
+\[
 \rho(0)=\rho_c.
-$$
+\]
 Fuera de la esfera, la densidad es nula:
-$$
+\[
 \boxed{
 \rho(r)=0,\qquad r>R
 }.
-$$
+\]
+
+\subsubsection*{Masa total}
 
 La masa total de la esfera es
-$$
+\[
 M=\int_0^R 4\pi r^{2}\rho(r)\,dr.
-$$
+\]
 Usando $r=a\xi$ y $dr=a\,d\xi$,
-$$
+\[
 M=4\pi a^{3}\rho_c\int_0^{\pi}\xi^{2}\theta(\xi)\,d\xi.
-$$
+\]
 Como $\theta(\xi)=\sin\xi/\xi$,
-$$
+\[
 M=4\pi a^{3}\rho_c\int_0^{\pi}\xi\sin\xi\,d\xi.
-$$
+\]
 La integral se calcula por partes:
-$$
+\[
 \int \xi\sin\xi\,d\xi
 =-\xi\cos\xi+\sin\xi.
-$$
+\]
 Entonces,
-$$
+\[
 \int_0^{\pi}\xi\sin\xi\,d\xi
 =\left[-\xi\cos\xi+\sin\xi\right]_0^{\pi}.
-$$
+\]
 Evaluando,
-$$
+\[
 \left[-\xi\cos\xi+\sin\xi\right]_0^{\pi}
 =-\pi\cos\pi+\sin\pi-0
 =\pi.
-$$
+\]
 Por tanto,
-$$
+\[
 M=4\pi a^{3}\rho_c\,\pi
 =4\pi^{2}a^{3}\rho_c.
-$$
+\]
 Así,
-$$
+\[
 \boxed{
 M=4\pi^{2}\rho_c a^{3}
 }.
-$$
+\]
 Sustituyendo
-$$
+\[
 a=\left(\frac{K}{2\pi G}\right)^{1/2},
-$$
+\]
 se obtiene
-$$
+\[
 M=4\pi^{2}\rho_c
 \left(\frac{K}{2\pi G}\right)^{3/2}.
-$$
+\]
 Equivalentemente,
-$$
+\[
 \boxed{
 M=\sqrt{2\pi}\,\rho_c\left(\frac{K}{G}\right)^{3/2}
 }.
-$$
+\]
 También puede escribirse en términos del radio $R$. Como $R=\pi a$, entonces $a=R/\pi$, y por tanto
-$$
+\[
 M=4\pi^{2}\rho_c\left(\frac{R}{\pi}\right)^{3}
 =\frac{4}{\pi}\rho_c R^{3}.
-$$
+\]
 Así,
-$$
+\[
 \boxed{
 M=\frac{4}{\pi}\rho_c R^{3}
 }.
-$$
+\]
 
-En resumen,
-$$
-\boxed{
-\theta(\xi)=\frac{\sin\xi}{\xi}
-},
-$$
-$$
-\boxed{
-R=\pi\left(\frac{K}{2\pi G}\right)^{1/2}
-},
-$$
-$$
-\boxed{
-\rho(r)=\rho_c
-\frac{\sin\left(\dfrac{\pi r}{R}\right)}
-{\dfrac{\pi r}{R}},
-\qquad 0\le r\le R
-},
-$$
-$$
-\boxed{
-M=4\pi^{2}\rho_c a^{3}
-=\sqrt{2\pi}\,\rho_c\left(\frac{K}{G}\right)^{3/2}
-=\frac{4}{\pi}\rho_c R^{3}
-}.
-$$
+\Needspace{12\baselineskip}
+\subsubsection*{Resumen de resultados}
 
+\[
+\boxed{
+\begin{aligned}
+    \theta(\xi) &= \frac{\sin\xi}{\xi}, \qquad \theta(0)=1,\\[4pt]
+    R &= \pi\left(\frac{K}{2\pi G}\right)^{1/2},\\[4pt]
+    \rho(r) &= \rho_c\frac{\sin(\pi r/R)}{\pi r/R},
+        \qquad 0<r\le R,\\[4pt]
+    \rho(0) &= \rho_c, \qquad \rho(r)=0 \quad (r>R),\\[4pt]
+    M &= 4\pi^{2}\rho_c a^{3}
+        =\sqrt{2\pi}\,\rho_c\left(\frac{K}{G}\right)^{3/2}
+        =\frac{4}{\pi}\rho_c R^{3}.
+\end{aligned}
+}
+\]
 
 \end{document}
