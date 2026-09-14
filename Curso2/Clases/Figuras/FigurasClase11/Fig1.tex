@@ -1,0 +1,16 @@
+\begin{tikzpicture}[>=Latex, line cap=round, font=\small]
+\filldraw[fill=blue!7, draw=blue!45!black] (-2.2,-0.55) -- (1.5,-0.55) -- (2.3,0.55) -- (-1.4,0.55) -- cycle;
+\node at (-1.35,-0.25) {$dS$};
+\draw[->, thick, gray] (0,0) -- (0,1.8) node[above] {$\hat n$};
+\draw[->, very thick, blue!70!black] (0,0) -- (0,-1.7) node[left] {$d\vec F_n=-p\,\hat n\,dS$};
+\draw[->, very thick, orange!85!black] (0,0) -- (2.6,0) node[right] {$d\vec F_t$};
+\draw[densely dashed, gray] (0,-1.7) -- (2.6,-1.7) -- (2.6,0);
+\draw[->, very thick, red!70!black] (0,0) -- (2.6,-1.7) node[right] {$d\vec F$};
+\fill (0,0) circle (1.8pt);
+\node[align=center] at (0.7,-2.35) {$d\vec F=d\vec F_n+d\vec F_t$\qquad (presión: $p>0$)};
+\begin{scope}[xshift=7.2cm]
+\filldraw[fill=blue!7, draw=blue!45!black] (-1.1,-0.4) -- (0.7,-0.4) -- (1.2,0.4) -- (-0.6,0.4) -- cycle;
+\draw[->, very thick, blue!70!black] (0,0) -- (0,1.7) node[above] {$d\vec F_n$};
+\node[align=center] at (0,-1.25) {Tensión\\$p<0$};
+\end{scope}
+\end{tikzpicture}

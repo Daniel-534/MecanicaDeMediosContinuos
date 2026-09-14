@@ -1,0 +1,72 @@
+\documentclass[12pt,letterpaper,oneside]{report}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb, mathrsfs}
+\usepackage[margin=2cm]{geometry}
+\usepackage{microtype}
+\usepackage{titlesec}
+\usepackage{enumerate}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage[outline]{contour}
+\contourlength{0.7pt}
+\newcommand{\texthalo}[1]{\contour{white}{#1}}
+\usepackage{tikz}
+\usetikzlibrary{babel,arrows.meta,calc,decorations.pathreplacing}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepgfplotslibrary{fillbetween}
+\usepackage[hidelinks,hypertexnames=false]{hyperref}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5\baselineskip plus 2pt}
+
+\renewcommand{\chaptername}{Clase}
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries}
+  {\chaptername\ \thechapter}
+  {0.5em}
+  {\Huge}
+\titlespacing*{\chapter}{0pt}{0pt}{2em}
+
+\setcounter{tocdepth}{2}
+
+\begin{document}
+
+\pagenumbering{gobble}
+\begin{titlepage}
+    \centering
+    {\Large Universidad de Antioquia\par}
+    \vspace{1cm}
+    {\large Curso de Mecánica de Medios Continuos\par}
+    {\large Semestre 2026-2\par}
+
+    \vfill
+
+    {\Huge\bfseries Mecánica de Medios Continuos\par}
+    \vspace{1.5cm}
+    {\Large Notas de clase parte 2\par}
+
+    \vfill
+
+    {\large Daniel Soto Villada\par}
+    \vspace{1cm}
+    {\large \today\par}
+\end{titlepage}
+
+\pagenumbering{roman}
+\begingroup
+\setlength{\parskip}{0pt}
+\tableofcontents
+\endgroup
+
+\pagenumbering{arabic}
+
+\input{Clases/Clase11}
+\input{Clases/ClaseTaller6}
+
+
+
+\end{document}

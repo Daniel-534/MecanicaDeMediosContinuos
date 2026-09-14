@@ -1,0 +1,151 @@
+\chapter{Clase 11}
+
+\section{Esfuerzo}
+
+En un fluido en reposo, la única fuerza de contacto es la presión. Sin embargo, en sólidos y en fluidos viscosos en movimiento aparecen también \emph{esfuerzos cortantes}: fuerzas que actúan tangencialmente a las superficies de contacto. El esfuerzo cortante es la fuerza cortante por unidad de área y desempeña un papel crucial en el mantenimiento de la integridad estructural de los sólidos. La fricción en la vida cotidiana es una manifestación del esfuerzo cortante en las superficies de contacto entre materiales.
+
+Los materiales se clasifican de manera amplia en:
+\begin{itemize}
+\item \emph{Fluidos}, que responden al esfuerzo fluyendo.
+\item \emph{Sólidos}, que responden deformándose.
+\end{itemize}
+
+La deformación elástica crece linealmente con el esfuerzo, aunque puede llevar a deformación plástica permanente o ruptura a niveles elevados de esfuerzo. El estudio del esfuerzo se aplica a todos los materiales —sólidos, fluidos y formas intermedias—, incluidos materiales artificiales y exóticos con usos tecnológicos especiales.
+
+Las fuerzas de contacto no solo dependen de la posición espacial, sino también de la orientación de la superficie. Por ello, se requiere una descripción más general mediante el \emph{tensor de esfuerzo}, que con sus nueve componentes describe la gama completa de fuerzas de contacto que pueden actuar dentro de un material. La comprensión del concepto y las propiedades del esfuerzo es fundamental para la mecánica del continuo y constituye el tema central de este capítulo.
+
+\begin{figure}[H]
+\centering
+\input{Clases/Figuras/FigurasClase11/Fig1.tex}
+\par\medskip
+\textbf{Figura 1.} La fuerza que actúa sobre un pequeño trozo de una superficie puede descomponerse en una fuerza de presión normal y una fuerza cortante tangencial. La presión es positiva si la fuerza está dirigida hacia el trozo de superficie, y negativa si está dirigida fuera de él (en cuyo caso se denomina tensión).
+\end{figure}
+
+% -----------------------------------------------------------
+\subsection{Fricción}
+
+La fricción entre cuerpos sólidos es un tipo de fuerza cortante que permite sostener, agarrar, arrastrar y frotar objetos sin que resbalen. La mayoría de las tareas cotidianas, desde revolver café hasta encender un fuego frotando dos trozos de madera, implican trabajo contra la fricción.
+
+\begin{figure}[H]
+\centering
+\input{Clases/Figuras/FigurasClase11/Fig2.tex}
+\par\medskip
+\textbf{Figura 2.} \emph{Izquierda}: balance de fuerzas sobre una caja en reposo sobre un suelo horizontal. La fuerza normal $N$ equilibra el peso $Mg_0$, y la tracción tangencial $T$ equilibra la fuerza aplicada $F$. \emph{Centro}: esquemático de la reacción tangencial (tracción) $T$ en función de la fuerza aplicada $F$. Hasta $F = \mu_0 N$, la tracción se ajusta a la fuerza aplicada, $T = F$. En $F = \mu_0 N$, la reacción tangencial cae abruptamente a un valor inferior $T = \mu N$ y permanece ahí independientemente de la fuerza aplicada. \emph{Derecha}: coeficientes de fricción típicos para diversas combinaciones de materiales.
+\end{figure}
+
+\textbf{Fricción estática.} Ocurre cuando un objeto está en reposo y resiste ser puesto en movimiento. La fuerza de fricción estática $T$ equilibra la fuerza aplicada $F$ hasta un valor máximo:
+$$ T \le \mu_0 N, $$
+donde $\mu_0$ es el coeficiente de fricción estática y $N$ la carga normal. El coeficiente $\mu_0$ es adimensional y típicamente vale 0.5 o más en materiales cotidianos. Su magnitud depende de los materiales en contacto y de la rugosidad de las superficies.
+
+\textbf{Fricción dinámica (cinética).} Una vez que el movimiento comienza, la fricción sigue actuando pero con magnitud menor que la fricción estática. La fuerza de fricción es proporcional a la carga normal:
+$$ T = \mu N, $$
+donde $\mu$ es el coeficiente de fricción dinámica, con $\mu < \mu_0$. Tras iniciarse el movimiento, una fuerza menor $F = \mu N$ mantiene la velocidad constante. El trabajo realizado contra la fricción dinámica se convierte en calor:
+$$ P = FU, $$
+donde $P$ es la potencia y $U$ la velocidad.
+
+Tanto la fricción estática como la dinámica son independientes del tamaño del área de contacto, de modo que una caja sobre patas es tan difícil de arrastrar como una sin patas. La mejor manera de reducir la fuerza necesaria para arrastrar la caja es colocarla sobre ruedas.
+
+La fricción estática previene el movimiento, mientras que la fricción dinámica se opone al movimiento una vez iniciado. La fricción estática no produce trabajo, mientras que la fricción dinámica disipa energía continuamente en forma de calor.
+
+La ley de la fricción estática se remonta a Amontons (1699), y la descripción de la fricción cinética a Coulomb (1779). A pesar de su aparente simplicidad y su presencia en fenómenos cotidianos, la fricción entre superficies sólidas sigue siendo un tema complejo sin una explicación microscópica universalmente aceptada.
+
+% -----------------------------------------------------------
+\subsection{Campos de esfuerzo}
+
+Los campos de esfuerzo describen la distribución local de fuerzas normales y tangenciales que actúan sobre una superficie. Se miden en pascales ($\mathrm{Pa} = \mathrm{N\,m^{-2}}$), al igual que la presión. Los tipos de esfuerzo son:
+
+\begin{itemize}
+\item \emph{Esfuerzo de tensión}: actúa a lo largo de la normal y tira hacia afuera.
+\item \emph{Esfuerzo de presión}: actúa a lo largo de la normal y empuja hacia adentro.
+\item \emph{Esfuerzo cortante}: actúa tangencialmente sobre la superficie.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\input{Clases/Figuras/FigurasClase11/Fig3.tex}
+\par\medskip
+\textbf{Figura 3.} (a) Un cilindro sometido a esfuerzo de tensión se estira una cantidad $\Delta L$. (b) Un cilindro sometido a esfuerzo cortante se deforma una cantidad $\Delta x$, de manera similar a una baraja de cartas. (c) Una esfera sólida sometida a esfuerzo hidráulico uniforme por parte de un fluido se contrae en volumen una cantidad $\Delta V$. Todas las deformaciones mostradas están muy exageradas.
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\input{Clases/Figuras/FigurasClase11/Fig4.tex}
+\par\medskip
+\textbf{Figura 4.} Curva esfuerzo–deformación ingenieril para una probeta de acero dúctil. La probeta se deforma permanentemente cuando el esfuerzo alcanza la resistencia de fluencia del material. La resistencia última corresponde al máximo esfuerzo ingenieril; después ocurre la estricción y, finalmente, la rotura.
+\end{figure}
+
+\subsubsection{Esfuerzos externos e internos}
+
+Los esfuerzos \emph{externos} actúan entre un cuerpo y su entorno. Los esfuerzos \emph{internos} actúan a través de superficies imaginarias dentro del cuerpo y existen incluso en ausencia de fuerzas externas. Dependen de la composición del material, la geometría, la temperatura y la carga externa. Cambios rápidos de temperatura (por ejemplo, un enfriamiento rápido) pueden ``congelar'' permanentemente esfuerzos internos, especialmente en materiales frágiles como el vidrio.
+
+\subsubsection{Resistencia a la tracción y esfuerzo de fluencia}
+
+Cuando las fuerzas externas crecen, un sólido puede deformarse plásticamente o fracturarse. La \emph{resistencia a la tracción} es el esfuerzo máximo que un material puede soportar antes de fallar. El \emph{esfuerzo de fluencia} es el esfuerzo a partir del cual comienza la deformación plástica.
+
+Los materiales dúctiles (por ejemplo, cobre) pueden estirarse sin romperse; los materiales frágiles (por ejemplo, hierro fundido) fallan súbitamente.
+
+Las resistencias a la tracción típicas son: metales, varios cientos de megapascales; fibras de carbono, varios gigapascales; nanotubos de carbono, hasta 50 GPa.
+
+% -----------------------------------------------------------
+\subsection{El tensor de esfuerzo}
+
+Los esfuerzos en un punto se describen mediante nueve componentes $\sigma_{ij}$ en coordenadas cartesianas:
+$$ \sigma_{ij} = \frac{dF_i}{dS_j}. $$
+
+Estos incluyen tres esfuerzos normales ($\sigma_{xx}$, $\sigma_{yy}$, $\sigma_{zz}$) y seis esfuerzos cortantes. Por convención, el signo se elige de modo que un valor positivo de $\sigma_{yy}$ corresponda a una tracción o tensión.
+
+\subsubsection{Hipótesis de esfuerzo de Cauchy}
+
+La hipótesis de esfuerzo de Cauchy establece que la fuerza $d\vec{F} = (dF_x, dF_y, dF_z)$ sobre un elemento de superficie arbitrario $d\vec{S} = (dS_x, dS_y, dS_z)$ es de la forma:
+$$ dF_x = \sigma_{xx}\,dS_x + \sigma_{xy}\,dS_y + \sigma_{xz}\,dS_z, $$
+$$ dF_y = \sigma_{yx}\,dS_x + \sigma_{yy}\,dS_y + \sigma_{yz}\,dS_z, $$
+$$ dF_z = \sigma_{zx}\,dS_x + \sigma_{zy}\,dS_y + \sigma_{zz}\,dS_z. $$
+
+En notación indicial:
+$$ dF_i = \sum_j \sigma_{ij}\,dS_j. $$
+
+\begin{figure}[H]
+\centering
+\input{Clases/Figuras/FigurasClase11/Fig5.tex}
+\par\medskip
+\textbf{Figura 5.} Componentes de esfuerzo que actúan sobre un elemento de superficie $dS_z$ en el plano $xy$. Se muestran los esfuerzos normales y cortantes actuando sobre dicho elemento.
+\end{figure}
+
+Los nueve componentes de esfuerzo forman el \emph{campo tensorial de esfuerzo} $\sigma_{ij}(\vec{x}, t)$. El tensor de esfuerzo se escribe como la matriz:
+$$ \vec{\sigma} = \begin{pmatrix} \sigma_{xx} & \sigma_{xy} & \sigma_{xz} \\ \sigma_{yx} & \sigma_{yy} & \sigma_{yz} \\ \sigma_{zx} & \sigma_{zy} & \sigma_{zz} \end{pmatrix}. $$
+
+El esfuerzo que actúa sobre un elemento de superficie $d\vec{S}$ viene dado por:
+$$ d\vec{F} = \vec{\sigma} \cdot d\vec{S}. $$
+
+Escribiendo $d\vec{S} = \hat{n}\,dS$, el esfuerzo por unidad de área resulta:
+$$ \frac{d\vec{F}}{dS} = \vec{\sigma} \cdot \hat{n}, $$
+denominado \emph{vector de esfuerzo}. Aunque $\vec{\sigma} \cdot \hat{n}$ se comporta como un vector, no es un campo vectorial propiamente dicho, puesto que depende de la orientación de la superficie.
+
+\begin{figure}[H]
+\centering
+\input{Clases/Figuras/FigurasClase11/Fig6.tex}
+\par\medskip
+\textbf{Figura 6.} El pequeño triángulo y sus proyecciones forman un tetraedro. La fuerza (vectorial) que actúa sobre el triángulo en el plano $xy$ se denomina $d\vec{F}_z$, y la fuerza que actúa sobre el triángulo en el plano $zx$ es $d\vec{F}_y$. La fuerza $d\vec{F}_x$ que actúa sobre el triángulo en el plano $yz$ queda oculta. La fuerza $d\vec{F}$ actúa sobre el triángulo inclinado.
+\end{figure}
+
+\subsubsection{Demostración de la hipótesis de esfuerzo de Cauchy}
+
+Considérese un elemento de superficie con forma de un pequeño triángulo con vector de área $d\vec{S} = (dS_x, dS_y, dS_z)$. Este triángulo y sus proyecciones sobre los planos coordenados forman un pequeño cuerpo con forma de tetraedro recto. Sean $d\vec{F}_x$, $d\vec{F}_y$ y $d\vec{F}_z$ las fuerzas (vectoriales) externas que actúan sobre las tres caras triangulares del tetraedro.
+
+Sumando la fuerza externa $d\vec{F}$ que actúa sobre la cara inclinada y una posible fuerza volumétrica $\vec{f}\,dV$, la segunda ley de Newton para el pequeño tetraedro es:
+$$ \vec{a}_{CM}\,dM = \vec{f}\,dV + d\vec{F}_x + d\vec{F}_y + d\vec{F}_z + d\vec{F}, $$
+donde $\vec{a}_{CM}$ es la aceleración del centro de masas del tetraedro y $dM = \rho\,dV$ su masa.
+
+El volumen del tetraedro escala como la tercera potencia de su tamaño lineal, mientras que el área superficial escala solo como la segunda potencia. Al hacer el tetraedro progresivamente más pequeño, el término de fuerza volumétrica y el término de aceleración se anulan más rápidamente que los términos de superficie. En el límite de un tetraedro verdaderamente infinitesimal, solo sobreviven los términos de superficie, de modo que:
+$$ d\vec{F}_x + d\vec{F}_y + d\vec{F}_z + d\vec{F} = 0. $$
+
+Teniendo en cuenta que las proyecciones de área $dS_x$, $dS_y$ y $dS_z$ apuntan hacia el interior del tetraedro, se definen los vectores de esfuerzo a lo largo de las direcciones coordenadas:
+$$ \vec{\sigma}_x = -\frac{d\vec{F}_x}{dS_x}, \qquad \vec{\sigma}_y = -\frac{d\vec{F}_y}{dS_y}, \qquad \vec{\sigma}_z = -\frac{d\vec{F}_z}{dS_z}. $$
+
+En consecuencia:
+$$ d\vec{F} = \vec{\sigma}_x\,dS_x + \vec{\sigma}_y\,dS_y + \vec{\sigma}_z\,dS_z. $$
+
+Esto demuestra que la fuerza sobre un elemento de superficie arbitrario puede escribirse como combinación lineal de tres vectores de esfuerzo básicos a lo largo de los ejes coordenados. Introduciendo las nueve coordenadas de los tres vectores de esfuerzo:
+$$ \vec{\sigma}_x = (\sigma_{xx},\, \sigma_{yx},\, \sigma_{zx}), \quad \vec{\sigma}_y = (\sigma_{xy},\, \sigma_{yy},\, \sigma_{zy}), \quad \vec{\sigma}_z = (\sigma_{xz},\, \sigma_{yz},\, \sigma_{zz}), $$
+se llega a la hipótesis de Cauchy.
+
