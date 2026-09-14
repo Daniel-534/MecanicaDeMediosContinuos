@@ -1,0 +1,46 @@
+\begin{tikzpicture}[>=Latex, line cap=round, line join=round, font=\small]
+\node[font=\small\bfseries] at (2.3,5.7) {(a) Elemento de línea};
+\coordinate (inicioOriginal) at (0.8,0.8);
+\coordinate (finOriginal) at (2.1,0.8);
+\coordinate (inicioActual) at (1.3,3.2);
+\coordinate (finActual) at (2.65,4.1);
+\draw[blue!55!black, thick] (-0.2,0.65) .. controls (0.2,1) and (0.4,0.8) .. (inicioOriginal) -- (finOriginal) .. controls (3,0.8) and (3.6,0.2) .. (4.8,0.6);
+\draw[orange!80!black, thick] (0,3.5) .. controls (0.4,2.6) and (0.8,2.8667) .. (inicioActual) -- (finActual) .. controls (3.4,4.6) and (4.3,4.9) .. (4.8,4.5);
+\node[blue!65!black, anchor=west] at (3.2,1.2) {$C_0$: original};
+\node[orange!85!black, anchor=west] at (3.2,5) {$C$: deformada};
+\draw[->, thick, gray!75!black, dashed, shorten <=3pt, shorten >=3pt] (inicioOriginal) -- (inicioActual) node[midway,left=5pt, fill=white, inner sep=2pt] {$\vec u_P$};
+\draw[->, thick, gray!75!black, dashed, shorten <=3pt, shorten >=3pt] (finOriginal) -- (finActual) node[midway,right=5pt, fill=white, inner sep=2pt] {$\vec u_Q$};
+\draw[->, line width=1.8pt, blue!70!black] (inicioOriginal) -- (finOriginal) node[midway,above=5pt] {$d\vec\ell_0$};
+\draw[->, line width=1.8pt, orange!85!black] (inicioActual) -- (finActual) node[midway,above left=4pt] {$d\vec\ell$};
+\fill[blue!70!black] (inicioOriginal) circle (2.2pt) node[below left=2pt] {$P_0$};
+\fill[blue!70!black] (finOriginal) circle (2.2pt) node[below right=2pt] {$Q_0$};
+\fill[orange!85!black] (inicioActual) circle (2.2pt) node[below left=3pt] {$P$};
+\fill[orange!85!black] (finActual) circle (2.2pt) node[above left=3pt] {$Q$};
+\node[align=center, text width=5.6cm, font=\footnotesize] at (2.4,-0.2) {Correspondencia entre partículas:\\$P_0\longrightarrow P$ y $Q_0\longrightarrow Q$.};
+\node at (2.4,-1.15) {$\delta(d\vec\ell)=d\vec\ell-d\vec\ell_0=\vec u_Q-\vec u_P$};
+\node[font=\footnotesize] at (2.4,-1.75) {Cambio de longitud y orientación.};
+\draw[gray!25] (6.1,-1.95) -- (6.1,5.95);
+\begin{scope}[xshift=7.4cm]
+\node[font=\small\bfseries] at (2.5,5.7) {(b) Elemento de volumen};
+\coordinate (origen) at (1.6,0.9);
+\coordinate (extremoA) at (4.6,0.9);
+\coordinate (extremoB) at (0.1,2.2);
+\coordinate (extremoC) at (2,3.6);
+\coordinate (extremoAB) at (3.1,2.2);
+\coordinate (extremoAC) at (5,3.6);
+\coordinate (extremoBC) at (0.5,4.9);
+\coordinate (extremoABC) at (3.5,4.9);
+\filldraw[fill=orange!8, draw=gray!60, thick] (origen) -- (extremoB) -- (extremoBC) -- (extremoC) -- cycle;
+\filldraw[fill=blue!7, draw=gray!60, thick] (origen) -- (extremoA) -- (extremoAC) -- (extremoC) -- cycle;
+\filldraw[fill=green!8, draw=gray!60, thick] (extremoC) -- (extremoAC) -- (extremoABC) -- (extremoBC) -- cycle;
+\draw[gray!65, densely dashed] (extremoB) -- (extremoAB) -- (extremoA) (extremoAB) -- (extremoABC);
+\draw[->, line width=1.8pt, blue!70!black] (origen) -- (extremoA) node[midway,below=5pt] {$\vec a$};
+\draw[->, line width=1.8pt, orange!85!black] (origen) -- (extremoB) node[midway,below left=3pt] {$\vec b$};
+\draw[->, line width=1.8pt, green!40!black] (origen) -- (extremoC) node[midway,left=5pt, fill=white, inner sep=1pt] {$\vec c$};
+\fill (origen) circle (2.5pt) node[below left=3pt] {$O$};
+\node[fill=blue!7, inner sep=4pt] at (3.65,2.85) {$dV$};
+\node[align=center, text width=5.6cm, font=\footnotesize] at (2.5,-0.2) {Los tres vectores parten de $O$.\\Líneas discontinuas: aristas ocultas.};
+\node at (2.5,-1.15) {$dV=(\vec a\times\vec b)\cdot\vec c$};
+\node[font=\footnotesize] at (2.5,-1.75) {Producto triple de los tres vectores.};
+\end{scope}
+\end{tikzpicture}

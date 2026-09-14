@@ -1,0 +1,22 @@
+\begin{tikzpicture}[>=Latex, line cap=round, font=\small]
+\coordinate (inicial) at (20:3.6);
+\coordinate (actual) at (65:3.6);
+\draw[->, gray] (-0.4,0) -- (4.4,0) node[right] {$x$};
+\draw[->, gray] (0,-0.4) -- (0,4.2) node[above] {$y$};
+\draw[densely dashed, blue!45] (inicial) -- ({3.6*cos(20)},0) node[below] {$X$};
+\draw[densely dashed, blue!45] (inicial) -- (0,{3.6*sin(20)}) node[left] {$Y$};
+\draw[densely dashed, orange!65] (actual) -- ({3.6*cos(65)},0) node[below] {$x$};
+\draw[densely dashed, orange!65] (actual) -- (0,{3.6*sin(65)}) node[left] {$y$};
+\draw[->, very thick, blue!65!black] (0,0) -- (inicial) node[pos=0.65,below right] {$\vec X$};
+\draw[->, very thick, orange!85!black] (0,0) -- (actual) node[pos=0.65,above left] {$\vec x$};
+\draw[->, dashed, gray] (20:3.6) arc[start angle=20,end angle=65,radius=3.6];
+\draw[->, thick] (20:1.1) arc[start angle=20,end angle=65,radius=1.1];
+\node at (42.5:1.4) {$\phi$};
+\draw[->, very thick, red!70!black] (inicial) -- (actual) node[midway,below left] {$\vec u$};
+\fill[blue!65!black] (inicial) circle (2pt) node[right] {$(X,Y)$};
+\fill[orange!85!black] (actual) circle (2pt) node[above right] {$(x,y)$};
+\node[below left] at (0,0) {$O$};
+\node[align=left, anchor=west] at (5,2.8) {$|\vec x|=|\vec X|$\\[6pt]$\vec u=\vec x-\vec X$\\[6pt]$z=Z$};
+\node[align=left, anchor=west, font=\footnotesize] at (5,0.8) {El arco indica la trayectoria.\\La cuerda indica el desplazamiento.};
+\node at (3.7,-1) {Rotación alrededor de $z$, perpendicular al plano del dibujo.};
+\end{tikzpicture}

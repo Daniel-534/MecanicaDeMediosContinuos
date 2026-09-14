@@ -1,0 +1,33 @@
+\begin{tikzpicture}[>=Latex, line cap=round, font=\small]
+\begin{scope}[scale=2.5]
+\filldraw[fill=blue!3, draw=gray!60, dashed] (-1,-1) rectangle (1,1);
+\draw[->, gray] (-1.3,0) -- (1.4,0) node[right] {$x$};
+\draw[->, gray] (0,-1.3) -- (0,1.4) node[above] {$y$};
+\draw[dashed, green!40!black, thick] (-1.2,-1.2) -- (1.2,1.2);
+\draw[dashed, orange!85!black, thick] (-1.2,1.2) -- (1.2,-1.2);
+\foreach \horizontal in {-0.8,-0.6,...,0.8} {
+  \foreach \vertical in {-0.8,-0.6,...,0.8} {
+    \pgfmathtruncatemacro{\esOrigen}{abs(\horizontal)+abs(\vertical)<0.01}
+    \ifnum\esOrigen=0
+      \draw[->, blue!65!black, thin] (\horizontal,\vertical) -- ({\horizontal+0.2*\vertical},{\vertical+0.2*\horizontal});
+    \fi
+  }
+}
+\draw[->, very thick, green!40!black] (0,0) -- (0.95,0.95) node[above left] {$\vec n_1$};
+\draw[->, very thick, orange!85!black] (0,0) -- (0.95,-0.95) node[below left] {$\vec n_2$};
+\node[below left] at (0,0) {$O$};
+\node[below] at (-1,0) {$-1$};
+\node[below] at (1,0) {$1$};
+\node[left] at (0,-1) {$-1$};
+\node[left] at (0,1) {$1$};
+\end{scope}
+\begin{scope}[xshift=4.3cm]
+\node[anchor=west, font=\small\bfseries] at (0,2.6) {Direcciones principales};
+\node[anchor=west, text=green!40!black] at (0,1.85) {$x=y$: dilatación};
+\node[anchor=west] at (0,1.2) {$\vec n_1=\frac{1}{\sqrt{2}}(1,1,0)$};
+\node[anchor=west, text=orange!85!black] at (0,0.3) {$x=-y$: compresión};
+\node[anchor=west] at (0,-0.35) {$\vec n_2=\frac{1}{\sqrt{2}}(1,-1,0)$};
+\node[anchor=west, align=left, font=\footnotesize] at (0,-1.6) {Para $\vec u=\alpha(y,x,0)$, con $\alpha\ll1$:\\[4pt]$\varepsilon_1=+\alpha$, $\varepsilon_2=-\alpha$, $\varepsilon_3=0$.};
+\end{scope}
+\node[font=\footnotesize] at (2.8,-4) {Flechas azules: $\vec u=(y,x,0)$ a escala $1/5$; vectores de color: direcciones principales.};
+\end{tikzpicture}

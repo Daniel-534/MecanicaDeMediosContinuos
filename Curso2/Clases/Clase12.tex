@@ -1,0 +1,242 @@
+\chapter{Clase 12}
+
+\section{Deformación (Strain)}
+
+Todos los materiales se deforman bajo fuerzas externas, pero responden de manera diferente:
+\begin{itemize}
+\item Los materiales \emph{elásticos} recuperan su forma original una vez que se retira la fuerza.
+\item Los materiales \emph{plásticos} retienen una deformación permanente.
+\item Los materiales \emph{viscoelásticos} se comportan elásticamente bajo deformación rápida, pero fluyen como fluidos viscosos a lo largo del tiempo.
+\end{itemize}
+
+La elasticidad es válida solo dentro de un rango limitado de fuerzas; más allá de ese rango, los materiales se vuelven plásticos o pueden fracturarse.
+
+La deformación desplaza el material desde su posición original. Las deformaciones pequeñas son matemáticamente más fáciles de analizar que las grandes. Las deformaciones grandes producen desplazamientos complejos y no uniformes (por ejemplo, una hoja de papel arrugada). Los sistemas de coordenadas se deforman junto con el cuerpo y se vuelven curvilíneos. La teoría de la deformación finita es matemáticamente compleja, de manera similar a los sistemas de coordenadas curvilíneas. En la mayoría de las aplicaciones de ingeniería, las deformaciones son pequeñas y pueden aproximarse como lineales.
+
+La descripción de la deformación introduce el \emph{tensor de deformación} (strain), que representa la deformación local del material.
+
+\subsection{Desplazamientos}
+
+\subsubsection{Escalado uniforme}
+
+\begin{figure}[H]
+\centering
+\input{Clases/Figuras/FigurasClas12/Fig9.tex}
+\par\medskip
+\textbf{Figura 9.} Escalado uniforme (dilatación uniforme). Las flechas indican cómo se desplazan las partículas materiales: todas se alejan radialmente del origen de manera proporcional a su distancia, de modo que la configuración se expande (o contrae) homotéticamente sin cambiar de forma.
+\end{figure}
+
+El ejemplo prototípico de deformación es un \emph{escalado uniforme}, en el cual las coordenadas de todas las partículas materiales de un cuerpo se multiplican por un factor de escala $\kappa$. Una partícula material situada originalmente en el punto $\vec{X}$ se desplaza al punto
+\[ \vec{x} = \kappa\,\vec{X}. \tag{66} \]
+Se enfatiza que tanto $\vec{X}$ como $\vec{x}$ se refieren al \emph{mismo} sistema de coordenadas. El escalado uniforme con $\kappa > 1$ se llama también \emph{dilatación uniforme}, mientras que el escalado con $0 < \kappa < 1$ se llama \emph{compresión uniforme}. El escalado negativo con $\kappa < 0$ es físicamente imposible.
+
+El único punto que no cambia de lugar durante el escalado uniforme es el origen del sistema de coordenadas. Aunque superficialmente parece que el origen desempeña un papel especial, esto no es realmente así. Todas las posiciones relativas de las partículas materiales se escalan de la misma manera, porque
+\[ \vec{x} - \vec{y} = \kappa\left(\vec{X} - \vec{Y}\right), \tag{67} \]
+independientemente del origen del sistema de coordenadas. No existe un centro especial del escalado uniforme, ni geométrica ni físicamente. El origen del sistema de coordenadas es simplemente un punto de anclaje para la descripción matemática del escalado.
+
+\subsubsection{Desplazamientos lineales}
+
+\begin{figure}[H]
+\centering
+\input{Clases/Figuras/FigurasClas12/Fig10.tex}
+\par\medskip
+\textbf{Figura 10.} Geometría del desplazamiento. La partícula que estaba originalmente localizada en $\vec{X}$ ha sido desplazada a $\vec{x}$ mediante el vector de desplazamiento $\vec{u}$, que une ambos puntos.
+\end{figure}
+
+Bajo un desplazamiento, el centro de masas de una partícula material se mueve desde su posición original $\vec{X}$ hasta su posición real $\vec{x}$. El vector de desplazamiento se define siempre como la diferencia entre las coordenadas real y original,
+\[ \vec{u} = \vec{x} - \vec{X}. \tag{68} \]
+Para el caso del escalado uniforme, el vector de desplazamiento se convierte en
+\[ \vec{u} = (\kappa - 1)\vec{X} = \left(1 - \frac{1}{\kappa}\right)\vec{x}. \tag{69} \]
+Matemáticamente somos completamente libres de expresar el desplazamiento como una función ya sea de la posición original $\vec{X}$ o de la posición real $\vec{x}$ de la partícula material. Para el escalado, el desplazamiento es en ambos casos una función lineal de las coordenadas.
+
+Más generalmente, un desplazamiento lineal (y su inverso) toma la forma
+\[ \vec{x} = \mathbf{A}\cdot\vec{X} + \vec{b}, \qquad \vec{X} = \mathbf{A}^{-1}\cdot\left(\vec{x} - \vec{b}\right), \tag{70} \]
+donde $\mathbf{A}$ es una matriz constante no singular y $\vec{b}$ es un vector constante. Como en el escalado, el vector de desplazamiento puede expresarse como función de las posiciones original o real:
+\[ \vec{u} = (\mathbf{A} - \mathbf{1})\cdot\vec{X} + \vec{b} = \left(\mathbf{1} - \mathbf{A}^{-1}\right)\cdot\vec{x} + \mathbf{A}^{-1}\cdot\vec{b}. \tag{71} \]
+El desplazamiento lineal general puede descomponerse en tipos más simples: traslación a lo largo de un eje coordenado, rotación por un ángulo fijo alrededor de un eje coordenado y escalado por un factor fijo a lo largo de un eje coordenado (véase la Figura 11). Se excluyen las reflexiones, que son físicamente imposibles. La matriz $\mathbf{A}$ no está restringida a ser ortogonal.
+
+\begin{figure}[H]
+\centering
+\input{Clases/Figuras/FigurasClas12/Fig11.tex}
+\par\medskip
+\textbf{Figura 11.} Diagramas de flechas de los campos de desplazamiento para traslación simple, rotación y dilatación. En la parte inferior se muestra que el cambio más general de un cuerpo deformable puede descomponerse en traslación, rotación y deformación.
+\end{figure}
+
+\subsubsection{Traslación simple}
+
+Una traslación de cuerpo rígido del material a través de una distancia $b$ a lo largo del eje $x$ se describe mediante
+\[ x = X + b, \qquad y = Y, \qquad z = Z. \tag{72} \]
+El vector de desplazamiento se convierte en
+\[ u_x = b, \qquad u_y = 0, \qquad u_z = 0. \tag{73} \]
+Puesto que las relaciones geométricas en el cuerpo permanecen inalteradas, esto \emph{no} es una deformación.
+
+\subsubsection{Rotación simple}
+
+\begin{figure}[H]
+\centering
+\input{Clases/Figuras/FigurasClas12/Fig12.tex}
+\par\medskip
+\textbf{Figura 12.} Una rotación de cuerpo rígido por un ángulo $\phi$ mueve la partícula material localizada en $(X, Y)$ hasta $(x, y)$, girando alrededor del eje $z$.
+\end{figure}
+
+Una rotación de cuerpo rígido por un ángulo $\phi$ alrededor del eje $z$ toma la forma
+\[ x = X\cos\phi - Y\sin\phi, \qquad X = x\cos\phi + y\sin\phi, \tag{74} \]
+\[ y = X\sin\phi + Y\cos\phi, \qquad Y = -x\sin\phi + y\cos\phi, \tag{75} \]
+\[ z = Z, \qquad Z = z. \tag{76} \]
+Las componentes del vector de desplazamiento son
+\[ u_x = -X(1 - \cos\phi) - Y\sin\phi = x(1 - \cos\phi) - y\sin\phi, \tag{77} \]
+\[ u_y = X\sin\phi - Y(1 - \cos\phi) = x\sin\phi - y(1 - \cos\phi), \tag{78} \]
+\[ u_z = 0. \tag{79} \]
+Puesto que todas las distancias en el cuerpo permanecen inalteradas, esto \emph{no} es una deformación.
+
+\subsubsection{Escalado simple a lo largo de $x$}
+
+Multiplicando todas las coordenadas $x$ por el factor $\kappa$, se obtiene
+\[ x = \kappa X, \qquad y = Y, \qquad z = Z. \tag{80} \]
+El vector de desplazamiento se convierte en
+\[ u_x = (\kappa - 1)X = kx, \tag{81} \]
+\[ u_y = 0, \tag{82} \]
+\[ u_z = 0, \tag{83} \]
+donde $k = 1 - 1/\kappa$. El escalado simple con dilatación corresponde a $k > 0$ y la compresión simple a $k < 0$. El escalado uniforme es una combinación de tres de estos escalados a lo largo de los ejes coordenados. El escalado es una deformación verdadera.
+
+\subsection{Campo de desplazamiento}
+
+\subsubsection{Representaciones del campo de desplazamiento}
+
+En mecánica del continuo, cada punto material inicialmente en $\vec{X}$ se mueve a una nueva posición $\vec{x}$ bajo la deformación. El campo de desplazamiento se define como
+\[ \vec{u}(\vec{x}) = \vec{x} - \vec{X}(\vec{x}), \tag{84} \]
+donde $\vec{X}(\vec{x})$ denota la posición original de la partícula que ahora está en $\vec{x}$. Esta es la llamada \emph{representación de Euler}. Alternativamente, en la \emph{representación de Lagrange}, la posición se escribe como $\vec{x} = \vec{x}(\vec{X})$, y
+\[ \vec{u} = \vec{x}(\vec{X}) - \vec{X}. \tag{85} \]
+Ambas representaciones son equivalentes para deformaciones pequeñas y lentamente variables.
+
+\subsubsection{Deformación local e infinitesimal}
+
+\begin{figure}[H]
+\centering
+\input{Clases/Figuras/FigurasClas12/Fig13.tex}
+\par\medskip
+\textbf{Figura 13.} Desplazamiento de una pequeña ``aguja'' material desde $\vec{a}_0$ hasta $\vec{a}$. La aguja puede ser trasladada, rotada y escalada. Solo este último cambio corresponde a una deformación verdadera.
+\end{figure}
+
+Una deformación verdadera involucra cambios locales en la longitud y en el ángulo entre puntos vecinos, no solo traslaciones o rotaciones rígidas.
+
+Para un pequeño elemento de línea o ``aguja'' $\vec{a}_0$ que conecta dos puntos materiales, la deformación lo cambia a $\vec{a}$. Usando $\vec{X}(\vec{x}) = \vec{x} - \vec{u}(\vec{x})$, se encuentra
+\[ \vec{a}_0 = \vec{X}(\vec{x} + \vec{a}) - \vec{X}(\vec{x}) = \vec{a} - \vec{u}(\vec{x} + \vec{a}) + \vec{u}(\vec{x}). \tag{86} \]
+Expandiendo $\vec{u}(\vec{x} + \vec{a})$ a primer orden en $\vec{a}$, se obtiene
+\[ \vec{u}(\vec{x} + \vec{a}) = \vec{u}(\vec{x}) + (\vec{a}\cdot\vec{\nabla})\vec{u}(\vec{x}) + \mathcal{O}(\vec{a}^{\,2}), \tag{87} \]
+de modo que el cambio infinitesimal del elemento de línea es
+\[ \delta\vec{a} \equiv \vec{a} - \vec{a}_0 = (\vec{a}\cdot\vec{\nabla})\vec{u}(\vec{x}). \tag{88} \]
+En notación de índices:
+\[ \delta a_i = \sum_j a_j \nabla_j u_i. \tag{89} \]
+Esto define los \emph{gradientes de desplazamiento} $\{\nabla_j u_i\}$, y en forma diádica:
+\[ \delta\vec{a} = (\vec{a}\cdot\vec{\nabla})\vec{u} = \vec{a}\cdot(\vec{\nabla}\vec{u}) = (\vec{\nabla}\vec{u})^{T}\cdot\vec{a}. \tag{90} \]
+
+\subsubsection{Campo de desplazamiento lentamente variable}
+
+El campo de desplazamiento se dice \emph{lentamente variable} cuando
+\[ |\nabla_j u_i(\vec{x})| \ll 1, \tag{91} \]
+y es pequeño respecto al tamaño $L$ del cuerpo,
+\[ |\vec{u}(\vec{x})| \ll L. \tag{92} \]
+Esto asegura que las deformaciones son infinitesimales, aunque no necesariamente rígidas.
+
+\textbf{Ejemplo (rotaciones pequeñas).} Para un ángulo de rotación pequeño $\phi \ll 1$, el campo de desplazamiento de una rotación simple se convierte en $\vec{u} = (-y, x, 0)\phi$, y la matriz de gradiente se convierte, a orden más bajo en $\phi$, en
+\[ \{\nabla_j u_i\} = \begin{pmatrix} 0 & -\phi & 0 \\ \phi & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}. \]
+El cambio en $\vec{a}$ se convierte en $\delta a_x = -\phi a_y$, $\delta a_y = \phi a_x$. Esto también puede escribirse como un producto vectorial, $\delta\vec{a} = \vec{\phi}\times\vec{a}$, donde $\vec{\phi} = \phi\,\vec{e}_z$.
+
+\subsubsection{Tensor de deformación de Cauchy}
+
+El tensor de deformación cuantifica los cambios geométricos locales debidos a la deformación. El cambio en el producto escalar de dos elementos de línea materiales $\vec{a}$ y $\vec{b}$ es
+\[ \delta(\vec{a}\cdot\vec{b}) = (\delta\vec{a})\cdot\vec{b} + \vec{a}\cdot(\delta\vec{b}) = (\vec{a}\cdot\vec{\nabla})\vec{u}\cdot\vec{b} + (\vec{b}\cdot\vec{\nabla})\vec{u}\cdot\vec{a} \tag{93} \]
+\[ = \sum_{ij}\left(\nabla_i u_j + \nabla_j u_i\right)a_i b_j \tag{94} \]
+\[ = 2\sum_{ij} U_{ij} a_i b_j = 2\,\vec{a}\cdot\mathbf{U}\cdot\vec{b}, \tag{95} \]
+donde el \emph{tensor de deformación (infinitesimal) de Cauchy} se define como
+\[ U_{ij} = \frac{1}{2}\left(\nabla_i u_j + \nabla_j u_i\right), \tag{96} \]
+o, en notación matricial,
+\[ \mathbf{U} = \frac{1}{2}\left(\vec{\nabla}\vec{u} + (\vec{\nabla}\vec{u})^{T}\right). \tag{97} \]
+Un tensor simétrico tiene seis componentes independientes, mientras que el campo de desplazamiento tiene solo tres componentes independientes. Todo tensor de deformación debe, en consecuencia, satisfacer condiciones de consistencia o compatibilidad que eliminan tres grados de libertad. Estas condiciones son
+\[ \nabla_i\nabla_j U_{kl} + \nabla_k\nabla_l U_{ij} = \nabla_i\nabla_l U_{kj} + \nabla_k\nabla_j U_{il}. \tag{98} \]
+El tensor de deformación contiene toda la información sobre los cambios geométricos locales causados por el desplazamiento y es, por tanto, una buena medida de la deformación local. Todas las traslaciones y rotaciones del cuerpo como un todo han sido eliminadas automáticamente, y cualquier desplazamiento que sea una combinación de traslaciones y rotaciones debe dar un tensor de deformación nulo. Debe enfatizarse, sin embargo, que la expresión de Cauchy es válida solo para gradientes de desplazamiento pequeños. Cuando esto no se cumple, debe usarse una expresión más complicada que involucra el cuadrado de los gradientes de desplazamiento.
+
+\subsubsection{Componentes del tensor de deformación}
+
+Para un campo de desplazamiento general:
+\[ U_{xx} = \nabla_x u_x, \qquad U_{yy} = \nabla_y u_y, \qquad U_{zz} = \nabla_z u_z, \tag{99} \]
+\[ U_{yz} = U_{zy} = \frac{1}{2}\left(\nabla_y u_z + \nabla_z u_y\right), \qquad U_{zx} = U_{xz} = \frac{1}{2}\left(\nabla_z u_x + \nabla_x u_z\right), \]
+\[ U_{xy} = U_{yx} = \frac{1}{2}\left(\nabla_x u_y + \nabla_y u_x\right). \tag{100} \]
+Para una deformación lineal simple $\vec{u} = k(x, 0, 0)$,
+\[ \{U_{ij}\} = \begin{pmatrix} k & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}, \tag{101} \]
+que representa una deformación verdadera (extensión a lo largo de $x$).
+
+\subsubsection{Ejes principales de deformación}
+
+El tensor de deformación es simétrico,
+\[ U_{ij} = U_{ji}, \tag{102} \]
+y puede, por tanto, ser diagonalizado. Sus vectores propios definen los \emph{ejes principales} de deformación, y los valores propios correspondientes miden la extensión o compresión local a lo largo de esas direcciones (véase la Figura 14).
+
+\textbf{Ejemplo.} Calculemos el tensor de deformación para $\vec{u} = \alpha(y, x, 0)$ con $0 < \alpha \ll 1$, y determinemos las direcciones principales de deformación y el cambio en las escalas de longitud a lo largo de esas direcciones.
+
+Para deformaciones pequeñas, el tensor de deformación (de Cauchy) es $U_{ij} = \frac{1}{2}(\partial_i u_j + \partial_j u_i)$. Con $u_x = \alpha y$, $u_y = \alpha x$, $u_z = 0$, el gradiente de desplazamiento es
+\[ \vec{\nabla}\vec{u} = \begin{pmatrix} 0 & \alpha & 0 \\ \alpha & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}. \]
+Por tanto,
+\[ \mathbf{U} = \frac{1}{2}\left(\vec{\nabla}\vec{u} + (\vec{\nabla}\vec{u})^{T}\right) = \begin{pmatrix} 0 & \alpha & 0 \\ \alpha & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}. \]
+En el subespacio $xy$, $\mathbf{U}_{2\times 2} = \begin{pmatrix} 0 & \alpha \\ \alpha & 0 \end{pmatrix}$ tiene valores propios y vectores propios unitarios
+\[ \varepsilon_1 = +\alpha, \qquad \vec{n}_1 = \frac{1}{\sqrt{2}}(1, 1, 0), \]
+\[ \varepsilon_2 = -\alpha, \qquad \vec{n}_2 = \frac{1}{\sqrt{2}}(1, -1, 0), \]
+y un tercer valor propio $\varepsilon_3 = 0$ con $\vec{n}_3 = (0, 0, 1)$.
+
+La deformación normal en la dirección de un vector unitario $\vec{n}$ es $\varepsilon_n = \vec{n}\cdot\mathbf{U}\,\vec{n}$. A lo largo de las direcciones principales,
+\[ \left.\frac{\Delta\ell}{\ell}\right|_{\vec{n}_1} = +\alpha \quad \text{(dilatación a lo largo de } x = y\text{)}, \]
+\[ \left.\frac{\Delta\ell}{\ell}\right|_{\vec{n}_2} = -\alpha \quad \text{(compresión a lo largo de } x = -y\text{)}, \]
+y $\Delta\ell/\ell = 0$ a lo largo de $\vec{n}_3 = \vec{e}_z$. Así, el material se estira a lo largo de la diagonal $x = y$ en una fracción $\alpha$ y se comprime en la misma cantidad a lo largo de la diagonal ortogonal $x = -y$; no hay deformación en la dirección $z$.
+
+\begin{figure}[H]
+\centering
+\input{Clases/Figuras/FigurasClas12/Fig14.tex}
+\par\medskip
+\textbf{Figura 14.} Diagrama de flechas del campo de desplazamiento lineal lagrangiano bidimensional $\vec{u} = (y, x, 0)$ en el cuadrado $-1 < x < 1$ y $-1 < y < 1$. El material se dilata a lo largo de una diagonal y se contrae a lo largo de la otra. Estas son las direcciones principales de deformación en todas partes.
+\end{figure}
+
+\subsection{Significado geométrico del tensor de deformación}
+
+El tensor de deformación contiene toda la información relevante sobre los cambios locales en las relaciones geométricas, tales como las longitudes de los elementos materiales y los ángulos entre ellos. Otras cantidades geométricas, como curvas, superficies y volúmenes, también se ven afectadas bajo la deformación.
+
+\subsubsection{Longitudes y ángulos}
+
+Para definir la proyección del tensor $u_{ij}$ a lo largo de dos direcciones $\vec{a}$ y $\vec{b}$, introducimos
+\[ U_{ab} = \hat{a}\cdot\mathbf{U}\cdot\hat{b} = \frac{\vec{a}\cdot\mathbf{U}\cdot\vec{b}}{|\vec{a}|\,|\vec{b}|}. \tag{103} \]
+El cambio en el producto escalar es
+\[ \delta(\vec{a}\cdot\vec{b}) = 2|\vec{a}|\,|\vec{b}|\,U_{ab}. \tag{104} \]
+Tomando $\vec{b} = \vec{a}$ se obtiene el cambio en la longitud:
+\[ \frac{\delta|\vec{a}|}{|\vec{a}|} = U_{aa}. \tag{105} \]
+Así, la proyección diagonal $U_{aa}$ representa el cambio fraccional de longitud en la dirección de $\vec{a}$.
+
+Para el ángulo $\phi$ entre $\vec{a}$ y $\vec{b}$, dado que $\vec{a}\cdot\vec{b} = |\vec{a}|\,|\vec{b}|\cos\phi$, se encuentra
+\[ \delta\phi = \phi - \phi_0 = \frac{(U_{aa} + U_{bb})\cos\phi - 2U_{ab}}{\sin\phi}. \tag{106} \]
+Para vectores ortogonales ($\phi = 90^\circ$),
+\[ \delta\phi = -2U_{ab}. \tag{107} \]
+Las proyecciones fuera de la diagonal del tensor de deformación determinan, por tanto, el cambio en el ángulo entre agujas que son efectivamente ortogonales.
+
+\subsubsection{Elementos infinitesimales}
+
+\begin{figure}[H]
+\centering
+\input{Clases/Figuras/FigurasClas12/Fig15.tex}
+\par\medskip
+\textbf{Figura 15.} (a) Las partículas $P_0$ y $Q_0$ de la curva original $C_0$ se desplazan hasta $P$ y $Q$ en la curva deformada $C$. El elemento $d\vec\ell_0$ se transforma en $d\vec\ell$: cambia tanto su longitud como su orientación. Los desplazamientos de sus extremos son $\vec u_P$ y $\vec u_Q$. (b) Tres vectores infinitesimales $\vec a$, $\vec b$ y $\vec c$, con origen común en $O$, generan un paralelepípedo de volumen $dV=(\vec a\times\vec b)\cdot\vec c$, para la orientación elegida. Los elementos se muestran ampliados para facilitar su lectura.
+\end{figure}
+
+\textbf{Elemento de curva.} Un elemento de curva se comporta como una pequeña aguja (véase la Figura 15). Bajo un desplazamiento, el cambio de $d\vec{\ell}_0$ a $d\vec{\ell}$ es
+\[ \delta(d\vec{\ell}) \equiv d\vec{\ell} - d\vec{\ell}_0 = d\vec{\ell}\cdot\vec{\nabla}\vec{u} = (\vec{\nabla}\vec{u})^{T}\cdot d\vec{\ell}. \tag{108} \]
+
+\textbf{Elemento de volumen.} Para un pequeño paralelepípedo spanned por tres vectores infinitesimales $\vec{a}$, $\vec{b}$ y $\vec{c}$, el elemento de volumen es $dV = \vec{a}\times\vec{b}\cdot\vec{c}$ (véase la Figura 15). Su variación bajo el desplazamiento es
+\[ \delta(dV) \equiv dV - dV_0 = \vec{\nabla}\cdot\vec{u}\; dV \tag{109} \]
+\[ = dV \sum_i \nabla_i u_i = dV\,U_{ii}. \tag{110} \]
+Por tanto, la divergencia del campo de desplazamiento, que corresponde a la traza de $\mathbf{U}$, $\vec{\nabla}\cdot\vec{u} = \mathrm{Tr}(\mathbf{U})$, da el cambio fraccional de volumen.
+
+El cambio en la densidad $\rho$ de una partícula material, con masa constante $dM$, satisface
+\[ \delta\rho = -\rho\,\vec{\nabla}\cdot\vec{u}. \tag{111} \]
+Así, cuando $\vec{\nabla}\cdot\vec{u} = \mathrm{Tr}(\mathbf{U}) = 0$, tanto el volumen como la densidad permanecen inalterados.
+
+\textbf{Elemento de superficie.} Para un elemento de superficie $d\vec{S} = \vec{a}\times\vec{b}$, se encuentra a partir de la relación del volumen que
+\[ \delta(d\vec{S}) = \left(\vec{\nabla}\cdot\vec{u}\;\mathbf{1} - \vec{\nabla}\vec{u}\right)\cdot d\vec{S}. \tag{112} \]
+Tanto la magnitud como la dirección de $d\vec{S}$ se modifican por la deformación, siguiendo una regla diferente de la del elemento de curva.

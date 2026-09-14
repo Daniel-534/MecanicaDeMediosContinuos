@@ -1,0 +1,47 @@
+\begin{tikzpicture}[>=Latex, line cap=round, line join=round, font=\small]
+\foreach \centro/\titulo in {0/Traslación,4.7/Rotación,9.4/Dilatación} {
+  \begin{scope}[xshift=\centro cm]
+  \node[font=\small\bfseries] at (0,2.15) {\titulo};
+  \draw[->, gray!65] (-1.65,0) -- (1.9,0);
+  \draw[->, gray!65] (0,-1.6) -- (0,1.65);
+  \end{scope}
+}
+\foreach \horizontal in {-1.2,-0.6,0,0.6,1.2} {
+  \foreach \vertical in {-1.2,-0.6,0,0.6,1.2} {
+    \draw[->, thick, blue!65!black] (\horizontal,\vertical) -- ({\horizontal+0.55},\vertical);
+    \pgfmathtruncatemacro{\esOrigen}{abs(\horizontal)+abs(\vertical)==0}
+    \ifnum\esOrigen=0
+      \draw[->, thick, orange!85!black] ({4.7+\horizontal},\vertical) -- ({4.7+cos(20)*\horizontal-sin(20)*\vertical},{sin(20)*\horizontal+cos(20)*\vertical});
+      \draw[->, thick, green!40!black] ({9.4+\horizontal},\vertical) -- ({9.4+1.35*\horizontal},{1.35*\vertical});
+    \fi
+  }
+}
+\node at (0,-2) {$\vec u=(b,0)$};
+\node at (4.7,-2) {$\vec u=(\mathbf R-\mathbf 1)\vec X$};
+\node at (9.4,-2) {$\vec u=(\kappa-1)\vec X$};
+\node[font=\footnotesize] at (4.7,-2.65) {Las flechas unen posiciones iniciales y finales; en la rotación son cuerdas, no trayectorias.};
+\node[font=\small\bfseries] at (4.7,-3.5) {Descomposición de un cambio afín};
+\begin{scope}[yshift=-5cm]
+\filldraw[fill=blue!10, draw=blue!65!black, thick] (-1.1,-0.6) rectangle (0.5,0.6);
+\fill[blue!65!black] (-0.8,0.3) circle (2pt);
+\node at (-0.3,-1.25) {Original};
+\draw[->, thick] (0.9,0) -- (2,0) node[midway,above, font=\footnotesize] {Trasladar};
+\begin{scope}[xshift=3.1cm]
+\filldraw[fill=blue!10, draw=blue!65!black, thick] (-0.8,-0.6) rectangle (0.8,0.6);
+\fill[blue!65!black] (-0.5,0.3) circle (2pt);
+\end{scope}
+\node at (3.1,-1.25) {Traslación};
+\draw[->, thick] (4.2,0) -- (5.4,0) node[midway,above, font=\footnotesize] {Rotar};
+\begin{scope}[xshift=6.5cm, rotate=25]
+\filldraw[fill=orange!10, draw=orange!85!black, thick] (-0.8,-0.6) rectangle (0.8,0.6);
+\fill[orange!85!black] (-0.5,0.3) circle (2pt);
+\end{scope}
+\node at (6.5,-1.25) {Rotación};
+\draw[->, thick] (7.7,0) -- (8.8,0) node[midway,above, font=\footnotesize] {Deformar};
+\begin{scope}[xshift=10.2cm, rotate=25, xscale=1.35, yscale=0.75]
+\filldraw[fill=green!10, draw=green!40!black, thick] (-0.8,-0.6) rectangle (0.8,0.6);
+\fill[green!40!black] (-0.5,0.3) circle (2pt);
+\end{scope}
+\node at (10.2,-1.25) {Deformación};
+\end{scope}
+\end{tikzpicture}

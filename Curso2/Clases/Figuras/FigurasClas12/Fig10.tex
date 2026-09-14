@@ -1,0 +1,15 @@
+\begin{tikzpicture}[>=Latex, line cap=round, font=\small]
+\coordinate (origen) at (0,0);
+\coordinate (inicial) at (4,0.9);
+\coordinate (actual) at (2.7,3.6);
+\draw[->, gray] (-0.3,0) -- (7,0) node[right] {$x$};
+\draw[->, gray] (0,-0.3) -- (0,4.3) node[above] {$y$};
+\draw[densely dashed, gray!65] (inicial) -- (4,0) (actual) -- (2.7,0);
+\draw[->, very thick, blue!65!black] (origen) -- (inicial) node[midway,below right] {$\vec X$};
+\draw[->, very thick, orange!85!black] (origen) -- (actual) node[pos=0.6,above left] {$\vec x$};
+\draw[->, very thick, red!70!black] (inicial) -- (actual) node[midway,below right] {$\vec u=\vec x-\vec X$};
+\fill[blue!65!black] (inicial) circle (2pt) node[below right] {Posición original};
+\fill[orange!85!black] (actual) circle (2pt) node[above right] {Posición actual};
+\node[below left] at (origen) {$O$};
+\node at (3.6,-0.85) {Una misma partícula, dos posiciones en el mismo sistema de coordenadas.};
+\end{tikzpicture}

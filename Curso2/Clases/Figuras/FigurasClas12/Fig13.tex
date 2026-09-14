@@ -1,0 +1,24 @@
+\begin{tikzpicture}[>=Latex, line cap=round, font=\small]
+\coordinate (inicioOriginal) at (0,0);
+\coordinate (finOriginal) at (2,0.4);
+\coordinate (inicioActual) at (2.3,1.8);
+\coordinate (finActual) at (5,3.5);
+\node[font=\small\bfseries] at (2.4,4.3) {Movimiento de una aguja material};
+\draw[->, very thick, blue!65!black] (inicioOriginal) -- (finOriginal) node[midway,below] {$\vec a_0$};
+\draw[->, very thick, orange!85!black] (inicioActual) -- (finActual) node[midway,above left] {$\vec a$};
+\draw[->, thick, gray] (inicioOriginal) -- (inicioActual) node[midway,above left] {$\vec u(\vec x)$};
+\draw[->, thick, gray] (finOriginal) -- (finActual) node[midway,below right] {$\vec u(\vec x+\vec a)$};
+\fill[blue!65!black] (inicioOriginal) circle (2pt) node[below left] {$\vec X$};
+\fill[blue!65!black] (finOriginal) circle (2pt) node[below right] {$\vec X+\vec a_0$};
+\fill[orange!85!black] (inicioActual) circle (2pt) node[above left] {$\vec x$};
+\fill[orange!85!black] (finActual) circle (2pt) node[above right] {$\vec x+\vec a$};
+\begin{scope}[xshift=8.5cm,yshift=0.5cm]
+\node[font=\small\bfseries] at (1.1,3.8) {Comparación de las agujas};
+\draw[->, very thick, blue!65!black, dashed] (0,0) -- (2,0.4) node[midway,below] {$\vec a_0$};
+\draw[->, very thick, orange!85!black] (0,0) -- (2.7,1.7) node[midway,above left] {$\vec a$};
+\draw[->, thick, red!70!black] (2,0.4) -- (2.7,1.7) node[midway,right] {$\delta\vec a$};
+\fill (0,0) circle (1.8pt);
+\node[align=center, font=\footnotesize] at (1.2,2.8) {Mismo origen para comparar\\orientación y longitud.};
+\end{scope}
+\node at (5.8,-1.1) {$\delta\vec a=\vec a-\vec a_0=\vec u(\vec x+\vec a)-\vec u(\vec x)$};
+\end{tikzpicture}

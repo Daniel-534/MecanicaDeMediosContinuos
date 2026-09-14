@@ -1,0 +1,31 @@
+\begin{tikzpicture}[>=Latex, line cap=round, font=\small]
+\begin{scope}[scale=1.6]
+\fill[orange!5] (-1.68,-1.68) rectangle (1.68,1.68);
+\draw[orange!80!black, thick] (-1.68,-1.68) rectangle (1.68,1.68);
+\draw[blue!65!black, thick, dashed] (-1.2,-1.2) rectangle (1.2,1.2);
+\draw[->, gray] (-2,0) -- (2.15,0) node[right] {$x$};
+\draw[->, gray] (0,-2) -- (0,2.1) node[above] {$y$};
+\foreach \horizontal in {-1.2,-0.6,0,0.6,1.2} {
+  \foreach \vertical in {-1.2,-0.6,0,0.6,1.2} {
+    \fill[blue!65!black] (\horizontal,\vertical) circle (0.8pt);
+    \pgfmathtruncatemacro{\esOrigen}{abs(\horizontal)+abs(\vertical)==0}
+    \ifnum\esOrigen=0
+      \draw[->, thick, blue!65!black] (\horizontal,\vertical) -- ({1.4*\horizontal},{1.4*\vertical});
+    \fi
+  }
+}
+\node[below left] at (0,0) {$O$};
+\end{scope}
+\begin{scope}[xshift=5cm]
+\node[anchor=west, font=\small\bfseries] at (0,2.2) {Dilatación uniforme};
+\node[anchor=west] at (0,1.5) {$\vec x=\kappa\vec X,\quad \kappa>1$};
+\node[anchor=west] at (0,0.8) {$\vec u=(\kappa-1)\vec X$};
+\draw[blue!65!black, thick, dashed] (0,-0.1) -- (0.8,-0.1);
+\node[anchor=west] at (0.95,-0.1) {Configuración original};
+\draw[orange!80!black, thick] (0,-0.8) -- (0.8,-0.8);
+\node[anchor=west] at (0.95,-0.8) {Configuración dilatada};
+\draw[->, blue!65!black, thick] (0,-1.5) -- (0.8,-1.5);
+\node[anchor=west] at (0.95,-1.5) {Desplazamiento $\vec u$};
+\node[anchor=west, font=\footnotesize] at (0,-2.3) {Ejemplo dibujado: $\kappa=1.4$.};
+\end{scope}
+\end{tikzpicture}
