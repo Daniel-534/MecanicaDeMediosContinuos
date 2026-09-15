@@ -16,16 +16,20 @@
 \node[below left] at (verticex) {$A$};
 \node[below] at (verticey) {$B$};
 \node[left] at (verticez) {$C$};
-\coordinate (caraxy) at (0.9,1.2,0);
-\coordinate (carazx) at (0.9,0,1.13);
-\coordinate (carainclinada) at (0.9,1.2,1.13);
-\draw[->, very thick, blue!70!black] (caraxy) -- (0.9,1.2,-1.45) node[below] {$d\vec F_z$};
-\draw[->, very thick, orange!85!black] (carazx) -- (0.9,-1.7,1.13) node[left] {$d\vec F_y$};
-\draw[->, very thick, red!70!black] (carainclinada) -- (0.9,2.9,2.9) node[right] {$d\vec F$};
-\node[green!30!black] at (0.4,2.45,0.6) {$dS$};
+\coordinate (caraxy) at (0.9,0.7,0);
+\coordinate (carazx) at (0.9,0,1.4);
+\coordinate (carainclinada) at (0.45,2.1,0.85);
+\draw[->, very thick, blue!70!black] (caraxy) -- (0.9,0.7,-1.45) node[below] {$d\vec F_z$};
+\draw[->, very thick, orange!85!black] (carazx) -- (0.9,-1.7,1.4) node[left] {$d\vec F_y$};
+\draw[->, very thick, red!70!black] (carainclinada) -- (0.45,3.55,2.25) node[right] {$d\vec F$};
+\draw[->, line width=1.3pt, green!40!black] (0.5,0.4,2.3926) -- (3.7,2.8,4.9338) node[above left] {$d\vec S$};
+\draw[->, line width=1.3pt, green!40!black, dashed] (0,1.3,1.45) -- (0.75,1.3,1.45) node[pos=0.1,above left=2pt] {\texthalo{$dS_x\,\hat e_x$}};
+\draw[->, line width=1.3pt, green!40!black] (1.6,0,0.8) -- (1.6,1.2,0.8) node[midway,below] {\texthalo{$dS_y\,\hat e_y$}};
+\draw[->, line width=1.3pt, green!40!black] (0.65,2.15,0) -- (0.65,2.15,0.8) node[pos=0,below right=3pt] {\texthalo{$dS_z\,\hat e_z$}};
 \fill (caraxy) circle (1.7pt);
 \fill (carazx) circle (1.7pt);
 \fill (carainclinada) circle (1.7pt);
-\node[align=left, anchor=west, font=\footnotesize] at (0,4.6,2) {$OAB$: plano $xy$, área $dS_z$\\$OAC$: plano $zx$, área $dS_y$\\$OBC$: plano $yz$, área $dS_x$\\$ABC$: cara inclinada, área $dS$};
+\node[align=left, anchor=north west, font=\footnotesize] at (0,5,3.4) {$OAB$: plano $xy$, área $dS_z$\\$OAC$: plano $zx$, área $dS_y$\\$OBC$: plano $yz$, área $dS_x$\\$ABC$: cara inclinada, área $dS$};
+\node[align=left, anchor=north west, text width=5cm, font=\footnotesize, text=green!40!black] at (0,5,1.6) {$dS_j\hat e_j$: proyecciones hacia el interior. Las normales exteriores de las caras coordenadas tienen el sentido opuesto.};
 \node[align=center, font=\footnotesize] at (0,0.7,-3) {$d\vec F_x$ actúa sobre la cara oculta $OBC$.\\Las fuerzas se dibujan esquemáticamente; no tienen que ser normales a las caras.};
 \end{tikzpicture}

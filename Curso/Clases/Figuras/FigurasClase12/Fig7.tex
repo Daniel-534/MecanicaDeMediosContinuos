@@ -1,0 +1,34 @@
+\begin{tikzpicture}[>=Latex, line cap=round, line join=round, font=\small,
+  x={(-0.9cm,-0.6cm)}, y={(1cm,0cm)}, z={(0cm,1cm)}]
+\coordinate (origen) at (0,0,0);
+\coordinate (frente) at (2,0,0);
+\coordinate (derecha) at (0,3.4,0);
+\coordinate (frentederecha) at (2,3.4,0);
+\coordinate (arriba) at (0,0,2.5);
+\coordinate (frentearriba) at (2,0,2.5);
+\coordinate (derechaarriba) at (0,3.4,2.5);
+\coordinate (frentederechaarriba) at (2,3.4,2.5);
+\filldraw[fill=blue!6, draw=blue!40!black, dashed] (origen) -- (derecha) -- (derechaarriba) -- (arriba) -- cycle;
+\filldraw[fill=gray!10, draw=gray!70, thick] (arriba) -- (derechaarriba) -- (frentederechaarriba) -- (frentearriba) -- cycle;
+\filldraw[fill=gray!16, draw=gray!70, thick] (derecha) -- (frentederecha) -- (frentederechaarriba) -- (derechaarriba) -- cycle;
+\filldraw[fill=orange!10, fill opacity=0.8, draw=orange!70!black, thick] (frente) -- (frentederecha) -- (frentederechaarriba) -- (frentearriba) -- cycle;
+\draw[dashed, gray] (origen) -- (frente) (origen) -- (arriba);
+\draw[->, very thick, blue!70!black] (0,1.15,1.1) -- (-1.5,1.15,2.1)
+  node[above, align=center] {$-\vec\sigma_x(x)\,dS_x$};
+\draw[->, very thick, orange!85!black] (2,1.15,1.1) -- (3.7,1.15,-0.03)
+  node[below, align=center] {$\vec\sigma_x(x+dx)\,dS_x$};
+\fill[blue!70!black] (0,1.15,1.1) circle (1.7pt);
+\fill[orange!85!black] (2,1.15,1.1) circle (1.7pt);
+\node[blue!70!black, above left] at (arriba) {$x$};
+\node[orange!85!black, left] at (frentearriba) {$x+dx$};
+\draw[<->, gray!80!black] (0,3.8,-0.3) -- (2,3.8,-0.3) node[midway,right] {$dx$};
+\draw[<->, gray!80!black] (2.15,0,-0.35) -- (2.15,3.4,-0.35) node[midway,below] {$dy$};
+\draw[<->, gray!80!black] (0,3.9,0) -- (0,3.9,2.5) node[midway,right] {$dz$};
+\begin{scope}[shift={(6cm,0.2cm)}]
+\draw[->, gray!80!black] (0,0,0) -- (1,0,0) node[below left] {$x$};
+\draw[->, gray!80!black] (0,0,0) -- (0,1,0) node[right] {$y$};
+\draw[->, gray!80!black] (0,0,0) -- (0,0,1) node[above] {$z$};
+\end{scope}
+\node[align=center, font=\footnotesize] at (1.7cm,-3.35cm)
+  {$dS_x=dy\,dz$,\quad $dV=dx\,dy\,dz$\\Fuerzas sobre las dos caras normales a $x$; las otras parejas se omiten.};
+\end{tikzpicture}

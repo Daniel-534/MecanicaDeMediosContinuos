@@ -1,0 +1,301 @@
+\chapter{Clase 13}
+
+\section{Campo de desplazamiento}
+
+\subsubsection{Representaciones del campo de desplazamiento}
+
+En mecánica del continuo, cada punto material inicialmente en $\vec{X}$ se mueve a una nueva posición $\vec{x}$ bajo la deformación. El campo de desplazamiento se define como
+\[ \vec{u}(\vec{x}) = \vec{x} - \vec{X}(\vec{x}), \]
+donde $\vec{X}(\vec{x})$ denota la posición original de la partícula que ahora está en $\vec{x}$. Esta es la llamada \emph{representación de Euler}. Alternativamente, en la \emph{representación de Lagrange}, la posición se escribe como $\vec{x} = \vec{x}(\vec{X})$, y
+\[ \vec{u} = \vec{x}(\vec{X}) - \vec{X}. \]
+Ambas representaciones describen el mismo movimiento cuando la transformación es invertible; en la aproximación de gradientes pequeños, sus diferencias en el cálculo de la deformación son de orden superior.
+
+\subsubsection{Deformación local e infinitesimal}
+
+Una deformación verdadera involucra cambios locales en la longitud y en el ángulo entre puntos vecinos, no solo traslaciones o rotaciones rígidas.
+
+Para un pequeño elemento de línea o ``aguja'' $\vec{a}_0$ que conecta dos puntos materiales, la deformación lo cambia a $\vec{a}$. Usando $\vec{X}(\vec{x}) = \vec{x} - \vec{u}(\vec{x})$, se encuentra
+\[ \vec{a}_0 = \vec{X}(\vec{x} + \vec{a}) - \vec{X}(\vec{x}) = \vec{a} - \vec{u}(\vec{x} + \vec{a}) + \vec{u}(\vec{x}). \]
+Expandiendo $\vec{u}(\vec{x} + \vec{a})$ a primer orden en $\vec{a}$, se obtiene
+\[ \vec{u}(\vec{x} + \vec{a}) = \vec{u}(\vec{x}) + (\vec{a}\cdot\vec{\nabla})\vec{u}(\vec{x}) + \mathcal{O}(\vec{a}^{\,2}), \]
+de modo que el cambio infinitesimal del elemento de línea es
+\[ \delta\vec{a} \equiv \vec{a} - \vec{a}_0 = (\vec{a}\cdot\vec{\nabla})\vec{u}(\vec{x}). \]
+En notación de índices:
+\[ \delta a_i = \sum_j a_j \nabla_j u_i. \]
+Esto define los \emph{gradientes de desplazamiento} $\{\nabla_j u_i\}$, y en forma diádica:
+\[ \delta\vec{a} = (\vec{a}\cdot\vec{\nabla})\vec{u} = \vec{a}\cdot(\vec{\nabla}\vec{u}) = (\vec{\nabla}\vec{u})^{T}\cdot\vec{a}. \]
+
+\begin{figure}[H]
+\centering
+\input{Clases/Figuras/FigurasClase13/Fig13.tex}
+\par\medskip
+\textbf{Figura 13.} Desplazamiento de una pequeña ``aguja'' material desde $\vec{a}_0$ hasta $\vec{a}$. La aguja puede ser trasladada, rotada y escalada. Solo este último cambio corresponde a una deformación verdadera.
+\end{figure}
+
+\subsubsection{Campo de desplazamiento lentamente variable}
+
+El campo de desplazamiento se dice \emph{lentamente variable} cuando
+\[ |\nabla_j u_i(\vec{x})| \ll 1, \]
+y es pequeño respecto al tamaño $L$ del cuerpo,
+\[ |\vec{u}(\vec{x})| \ll L. \]
+Esto asegura que las deformaciones son infinitesimales, aunque no necesariamente rígidas.
+
+\textbf{Ejemplo (rotaciones pequeñas).} Para un ángulo de rotación pequeño $\phi \ll 1$, el campo de desplazamiento de una rotación simple se convierte en $\vec{u} = (-y, x, 0)\phi$, y la matriz de gradiente se convierte, a orden más bajo en $\phi$, en
+\[ \{\nabla_j u_i\} = \begin{pmatrix} 0 & -\phi & 0 \\ \phi & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}. \]
+El cambio en $\vec{a}$ se convierte en $\delta a_x = -\phi a_y$, $\delta a_y = \phi a_x$. Esto también puede escribirse como un producto vectorial, $\delta\vec{a} = \vec{\phi}\times\vec{a}$, donde $\vec{\phi} = \phi\,\vec{e}_z$.
+
+\subsubsection{Tensor de deformación de Cauchy}
+
+El tensor de deformación cuantifica los cambios geométricos locales debidos a la deformación. El cambio en el producto escalar de dos elementos de línea materiales $\vec{a}$ y $\vec{b}$ es
+\[ \delta(\vec{a}\cdot\vec{b}) = (\delta\vec{a})\cdot\vec{b} + \vec{a}\cdot(\delta\vec{b}) = (\vec{a}\cdot\vec{\nabla})\vec{u}\cdot\vec{b} + (\vec{b}\cdot\vec{\nabla})\vec{u}\cdot\vec{a} \]
+\[ = \sum_{ij}\left(\nabla_i u_j + \nabla_j u_i\right)a_i b_j \]
+\[ = 2\sum_{ij} U_{ij} a_i b_j = 2\,\vec{a}\cdot\mathbf{U}\cdot\vec{b}, \]
+donde el \emph{tensor de deformación (infinitesimal) de Cauchy} se define como
+\[ U_{ij} = \frac{1}{2}\left(\nabla_i u_j + \nabla_j u_i\right), \]
+o, en notación matricial,
+\[ \mathbf{U} = \frac{1}{2}\left(\vec{\nabla}\vec{u} + (\vec{\nabla}\vec{u})^{T}\right). \]
+Un tensor simétrico tiene seis componentes independientes, mientras que el campo de desplazamiento tiene solo tres componentes independientes. Todo tensor de deformación debe, en consecuencia, satisfacer condiciones de consistencia o compatibilidad que eliminan tres grados de libertad. Estas condiciones son
+\[ \nabla_i\nabla_j U_{kl} + \nabla_k\nabla_l U_{ij} = \nabla_i\nabla_l U_{kj} + \nabla_k\nabla_j U_{il}. \]
+El tensor de deformación contiene toda la información sobre los cambios geométricos locales causados por el desplazamiento y es, por tanto, una buena medida de la deformación local. Todas las traslaciones y rotaciones del cuerpo como un todo han sido eliminadas automáticamente, y cualquier desplazamiento que sea una combinación de traslaciones y rotaciones debe dar un tensor de deformación nulo. Debe enfatizarse, sin embargo, que la expresión de Cauchy es válida solo para gradientes de desplazamiento pequeños. Cuando esto no se cumple, debe usarse una expresión más complicada que involucra el cuadrado de los gradientes de desplazamiento.
+
+\subsubsection{Componentes del tensor de deformación}
+
+Para un campo de desplazamiento general:
+\[ U_{xx} = \nabla_x u_x, \qquad U_{yy} = \nabla_y u_y, \qquad U_{zz} = \nabla_z u_z, \]
+\[ U_{yz} = U_{zy} = \frac{1}{2}\left(\nabla_y u_z + \nabla_z u_y\right), \qquad U_{zx} = U_{xz} = \frac{1}{2}\left(\nabla_z u_x + \nabla_x u_z\right), \]
+\[ U_{xy} = U_{yx} = \frac{1}{2}\left(\nabla_x u_y + \nabla_y u_x\right). \]
+Para una deformación lineal simple $\vec{u} = k(x, 0, 0)$,
+\[ \{U_{ij}\} = \begin{pmatrix} k & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}, \]
+que representa una deformación verdadera (extensión a lo largo de $x$).
+
+\subsubsection{Ejes principales de deformación}
+
+El tensor de deformación es simétrico,
+\[ U_{ij} = U_{ji}, \]
+y puede, por tanto, ser diagonalizado. Sus vectores propios definen los \emph{ejes principales} de deformación, y los valores propios correspondientes miden la extensión o compresión local a lo largo de esas direcciones (véase la Figura 14).
+
+\textbf{Ejemplo.} Calculemos el tensor de deformación para $\vec{u} = \alpha(y, x, 0)$ con $0 < \alpha \ll 1$, y determinemos las direcciones principales de deformación y el cambio en las escalas de longitud a lo largo de esas direcciones.
+
+Para deformaciones pequeñas, el tensor de deformación (de Cauchy) es $U_{ij} = \frac{1}{2}(\partial_i u_j + \partial_j u_i)$. Con $u_x = \alpha y$, $u_y = \alpha x$, $u_z = 0$, el gradiente de desplazamiento es
+\[ \vec{\nabla}\vec{u} = \begin{pmatrix} 0 & \alpha & 0 \\ \alpha & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}. \]
+Por tanto,
+\[ \mathbf{U} = \frac{1}{2}\left(\vec{\nabla}\vec{u} + (\vec{\nabla}\vec{u})^{T}\right) = \begin{pmatrix} 0 & \alpha & 0 \\ \alpha & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}. \]
+En el subespacio $xy$, $\mathbf{U}_{2\times 2} = \begin{pmatrix} 0 & \alpha \\ \alpha & 0 \end{pmatrix}$ tiene valores propios y vectores propios unitarios
+\[ \varepsilon_1 = +\alpha, \qquad \vec{n}_1 = \frac{1}{\sqrt{2}}(1, 1, 0), \]
+\[ \varepsilon_2 = -\alpha, \qquad \vec{n}_2 = \frac{1}{\sqrt{2}}(1, -1, 0), \]
+y un tercer valor propio $\varepsilon_3 = 0$ con $\vec{n}_3 = (0, 0, 1)$.
+
+La deformación normal en la dirección de un vector unitario $\vec{n}$ es $\varepsilon_n = \vec{n}\cdot\mathbf{U}\,\vec{n}$. A lo largo de las direcciones principales,
+\[ \left.\frac{\Delta\ell}{\ell}\right|_{\vec{n}_1} = +\alpha \quad \text{(dilatación a lo largo de } x = y\text{)}, \]
+\[ \left.\frac{\Delta\ell}{\ell}\right|_{\vec{n}_2} = -\alpha \quad \text{(compresión a lo largo de } x = -y\text{)}, \]
+y $\Delta\ell/\ell = 0$ a lo largo de $\vec{n}_3 = \vec{e}_z$. Así, el material se estira a lo largo de la diagonal $x = y$ en una fracción $\alpha$ y se comprime en la misma cantidad a lo largo de la diagonal ortogonal $x = -y$; no hay deformación en la dirección $z$.
+
+\begin{figure}[H]
+\centering
+\input{Clases/Figuras/FigurasClase13/Fig14.tex}
+\par\medskip
+\textbf{Figura 14.} Diagrama de flechas del campo de desplazamiento lineal lagrangiano bidimensional $\vec{u} = (y, x, 0)$ en el cuadrado $-1 < x < 1$ y $-1 < y < 1$. El material se dilata a lo largo de una diagonal y se contrae a lo largo de la otra. Estas son las direcciones principales de deformación en todas partes.
+\end{figure}
+
+\subsection{Significado geométrico del tensor de deformación}
+
+El tensor de deformación contiene toda la información relevante sobre los cambios locales en las relaciones geométricas, tales como las longitudes de los elementos materiales y los ángulos entre ellos. Otras cantidades geométricas, como curvas, superficies y volúmenes, también se ven afectadas bajo la deformación.
+
+\subsubsection{Longitudes y ángulos}
+
+Para definir la proyección del tensor $U_{ij}$ a lo largo de dos direcciones $\vec{a}$ y $\vec{b}$, introducimos
+\[ U_{ab} = \hat{a}\cdot\mathbf{U}\cdot\hat{b} = \frac{\vec{a}\cdot\mathbf{U}\cdot\vec{b}}{|\vec{a}|\,|\vec{b}|}. \]
+El cambio en el producto escalar es
+\[ \delta(\vec{a}\cdot\vec{b}) = 2|\vec{a}|\,|\vec{b}|\,U_{ab}. \]
+Tomando $\vec{b} = \vec{a}$ se obtiene el cambio en la longitud:
+\[ \frac{\delta|\vec{a}|}{|\vec{a}|} = U_{aa}. \]
+Así, la proyección diagonal $U_{aa}$ representa el cambio fraccional de longitud en la dirección de $\vec{a}$.
+
+Para el ángulo $\phi$ entre $\vec{a}$ y $\vec{b}$, dado que $\vec{a}\cdot\vec{b} = |\vec{a}|\,|\vec{b}|\cos\phi$, se encuentra
+\[ \delta\phi = \phi - \phi_0 = \frac{(U_{aa} + U_{bb})\cos\phi - 2U_{ab}}{\sin\phi}. \]
+Para vectores ortogonales ($\phi = \frac{\pi}{2}$),
+\[ \delta\phi = -2U_{ab}. \]
+Las proyecciones fuera de la diagonal del tensor de deformación determinan, por tanto, el cambio en el ángulo entre agujas que son efectivamente ortogonales.
+
+\subsubsection{Elementos infinitesimales}
+
+\begin{figure}[H]
+\centering
+\input{Clases/Figuras/FigurasClase13/Fig15.tex}
+\par\medskip
+\textbf{Figura 15.} (a) Las partículas $P_0$ y $Q_0$ de la curva original $C_0$ se desplazan hasta $P$ y $Q$ en la curva deformada $C$. El elemento $d\vec\ell_0$ se transforma en $d\vec\ell$: cambia tanto su longitud como su orientación. Los desplazamientos de sus extremos son $\vec u_P$ y $\vec u_Q$. (b) Tres vectores infinitesimales $\vec a$, $\vec b$ y $\vec c$, con origen común en $O$, generan un paralelepípedo de volumen $dV=(\vec a\times\vec b)\cdot\vec c$, para la orientación elegida. Los elementos se muestran ampliados para facilitar su lectura.
+\end{figure}
+
+\textbf{Elemento de curva.} Un elemento de curva se comporta como una pequeña aguja (véase la Figura 15). Bajo un desplazamiento, el cambio de $d\vec{\ell}_0$ a $d\vec{\ell}$ es
+\[ \delta(d\vec{\ell}) \equiv d\vec{\ell} - d\vec{\ell}_0 = d\vec{\ell}\cdot\vec{\nabla}\vec{u} = (\vec{\nabla}\vec{u})^{T}\cdot d\vec{\ell}. \]
+
+\textbf{Elemento de volumen.} Para un pequeño paralelepípedo generado por tres vectores infinitesimales $\vec{a}$, $\vec{b}$ y $\vec{c}$, el elemento de volumen es $dV = \vec{a}\times\vec{b}\cdot\vec{c}$ (véase la Figura 15). Su variación bajo el desplazamiento es
+\[ \delta(dV) \equiv dV - dV_0 = \vec{\nabla}\cdot\vec{u}\; dV \]
+\[ = dV \sum_i \nabla_i u_i = dV\,U_{ii}. \]
+Por tanto, la divergencia del campo de desplazamiento, que corresponde a la traza de $\mathbf{U}$, $\vec{\nabla}\cdot\vec{u} = \mathrm{Tr}(\mathbf{U})$, da el cambio fraccional de volumen.
+
+El cambio en la densidad $\rho$ de una partícula material, con masa constante $dM$, satisface
+\[ \delta\rho = -\rho\,\vec{\nabla}\cdot\vec{u}. \]
+Así, cuando $\vec{\nabla}\cdot\vec{u} = \mathrm{Tr}(\mathbf{U}) = 0$, tanto el volumen como la densidad permanecen inalterados.
+
+\textbf{Elemento de superficie.} Para un elemento de superficie $d\vec{S} = \vec{a}\times\vec{b}$, se encuentra a partir de la relación del volumen que
+\[ \delta(d\vec{S}) = \left(\vec{\nabla}\cdot\vec{u}\;\mathbf{1} - \vec{\nabla}\vec{u}\right)\cdot d\vec{S}. \]
+Tanto la magnitud como la dirección de $d\vec{S}$ se modifican por la deformación, siguiendo una regla diferente de la del elemento de curva.
+
+\subsection{Regímenes de deformación}
+
+Conviene distinguir la magnitud de la deformación de la respuesta del material. Para gradientes de desplazamiento pequeños se utiliza el tensor linealizado; las rotaciones o deformaciones finitas requieren una descripción cinemática no lineal. En cualquiera de estos regímenes, la respuesta puede ser reversible o presentar deformación permanente. La superposición requiere, además, una ley constitutiva lineal.
+
+La Figura 16 compara la recuperación completa al descargar con una recuperación parcial. En este último caso queda una deformación residual, por lo que no toda la energía suministrada se recupera como trabajo elástico.
+
+\begin{figure}[H]
+\centering
+\input{Clases/Figuras/FigurasClase13/Fig16.tex}
+\par\medskip
+\textbf{Figura 16.} Curvas esfuerzo--deformación esquemáticas. (a) Carga y descarga reversibles. (b) Descarga con recuperación parcial y deformación residual $\varepsilon_r$.
+\end{figure}
+
+\section{Trabajo de desplazamiento}
+
+Deformar un cuerpo requiere trabajo. Una parte de ese trabajo puede almacenarse como energía potencial elástica, mientras que otra parte puede disiparse como calor debido a la fricción interna. Ningún material real es perfectamente elástico.
+
+Considérese un volumen $V$ de material que no está en equilibrio mecánico. La fuerza efectiva que actúa sobre un elemento de volumen $dV$ es
+$$ d\vec{F} = \vec{f}^{\,*} dV. $$
+Para mantener todos los puntos materiales en posiciones fijas, aunque fuera del equilibrio, es necesario aplicar una distribución externa de fuerzas virtuales
+$$ \vec{f}^{\,\prime} = -\vec{f}^{\,*}. $$
+
+Si el cuerpo se desplaza infinitesimalmente según un campo $\delta\vec{u}(\vec{x})$, el trabajo realizado por las fuerzas virtuales es
+$$ \delta W = \int_V \vec{f}^{\,\prime}\cdot \delta\vec{u}\,dV = -\int_V \vec{f}^{\,*}\cdot\delta\vec{u}\,dV. $$
+Usando $\vec{f}^{\,*} = \vec{f} + \vec{\nabla}\cdot\vec{\sigma}^{\,T}$, se obtiene
+$$ \delta W = -\int_V \vec{f}\cdot\delta\vec{u}\,dV - \int_V \left(\vec{\nabla}\cdot\vec{\sigma}^{\,T}\right)\cdot\delta\vec{u}\,dV. $$
+
+El segundo término puede integrarse por partes. En notación de componentes,
+$$ \int_V \sum_{ij}(\nabla_j \sigma_{ij})\delta u_i\,dV = \int_V \sum_{ij}\nabla_j(\sigma_{ij}\delta u_i)\,dV - \int_V \sum_{ij}\sigma_{ij}\nabla_j\delta u_i\,dV. $$
+El primer término del lado derecho se convierte en una integral de superficie,
+$$ \int_V \sum_{ij}\nabla_j(\sigma_{ij}\delta u_i)\,dV = \int_V \vec{\nabla}\cdot(\vec{\sigma}^{\,T}\cdot\delta\vec{u})\,dV = \oint_S (\vec{\sigma}^{\,T}\cdot\delta\vec{u})\cdot d\vec{S}. $$
+Esta integral de superficie se anula porque el desplazamiento virtual se anula en la frontera, $\delta\vec{u}=0$ sobre $S$.
+
+Por tanto,
+$$ \delta W = -\int_V \vec{f}\cdot\delta\vec{u}\,dV + \int_V \sum_{ij}\sigma_{ij}\nabla_j\delta u_i\,dV. $$
+
+Si el tensor de esfuerzos es simétrico, $\sigma_{ij}=\sigma_{ji}$, puede simetrizarse el término de deformación:
+$$ \int_V \sum_{ij}\sigma_{ij}\nabla_j\delta u_i\,dV = \frac{1}{2}\int_V \sum_{ij}\sigma_{ij}(\nabla_j\delta u_i + \nabla_i\delta u_j)\,dV. $$
+Como
+$$ \delta U_{ij} = \frac{1}{2}(\nabla_i\delta u_j + \nabla_j\delta u_i), $$
+se tiene
+$$ \int_V \sum_{ij}\sigma_{ij}\nabla_j\delta u_i\,dV = \int_V \sum_{ij}\sigma_{ij}\delta U_{ij}\,dV. $$
+En notación de doble contracción,
+$$ \sum_{ij}\sigma_{ij}\delta U_{ij} = \mathrm{Tr}(\vec{\sigma}\cdot\delta\vec{U}) \equiv \vec{\sigma}:\delta\vec{U}. $$
+Así,
+$$ \delta W = -\int_V \vec{f}\cdot\delta\vec{u}\,dV + \int_V \vec{\sigma}:\delta\vec{U}\,dV. $$
+Equivalentemente,
+$$ \delta W = -\int_V \vec{f}\cdot\delta\vec{u}\,dV + \int_V \vec{\sigma}:\vec{\nabla}\delta\vec{u}\,dV. $$
+
+El primer término representa el trabajo contra las fuerzas de cuerpo. El segundo término corresponde al trabajo contra los esfuerzos internos. La parte del trabajo virtual asociada con los esfuerzos internos define el trabajo infinitesimal de deformación:
+$$ \delta W_{\mathrm{deform}} = \int_V \vec{\sigma}:\vec{\nabla}\delta\vec{u}\,dV = \int_V \vec{\sigma}:\delta\vec{U}\,dV. $$
+Por tanto, el trabajo de deformación representa la contribución a la energía de deformación del cuerpo.
+
+\section{Termodinámica de la deformación}
+
+\subsection{Conceptos de termodinámica}
+
+Para un sistema compresible simple de masa fija $m$, sean $\varepsilon$ la energía interna por unidad de masa, $s$ la entropía específica y $v=V/m$ el volumen específico. En un proceso reversible, la primera ley toma la forma
+\[
+d\varepsilon=T\,ds-p\,dv,
+\qquad \varepsilon=\varepsilon(s,v).
+\]
+Por tanto,
+\[
+T=\left(\frac{\partial\varepsilon}{\partial s}\right)_v,
+\qquad p=-\left(\frac{\partial\varepsilon}{\partial v}\right)_s,
+\qquad
+\left(\frac{\partial T}{\partial v}\right)_s
+=-\left(\frac{\partial p}{\partial s}\right)_v.
+\]
+Los procesos isotérmicos, isobáricos e isentrópicos satisfacen, respectivamente, $dT=0$, $dp=0$ y $ds=0$. Un proceso adiabático no intercambia calor; si además es reversible, es isentrópico. Un cambio isócoro mantiene $dv=0$.
+
+\subsubsection{Transformadas de Legendre}
+
+Los potenciales específicos de Helmholtz $f$, entalpía $h$ y Gibbs $g$ permiten cambiar las variables naturales:
+\[
+\begin{aligned}
+f(T,v)&=\varepsilon-Ts, & df&=-s\,dT-p\,dv,\\
+h(s,p)&=\varepsilon+pv, & dh&=T\,ds+v\,dp,\\
+g(T,p)&=\varepsilon-Ts+pv, & dg&=-s\,dT+v\,dp.
+\end{aligned}
+\]
+La igualdad de las derivadas cruzadas de estos diferenciales exactos da las relaciones de Maxwell
+\[
+\left(\frac{\partial s}{\partial v}\right)_T
+=\left(\frac{\partial p}{\partial T}\right)_v,
+\qquad
+\left(\frac{\partial T}{\partial p}\right)_s
+=\left(\frac{\partial v}{\partial s}\right)_p,
+\qquad
+\left(\frac{\partial s}{\partial p}\right)_T
+=-\left(\frac{\partial v}{\partial T}\right)_p.
+\]
+
+\subsection{Primera ley}
+
+En adelante consideramos deformaciones elásticas pequeñas y procesos cuasiestáticos sin disipación, de modo que el proceso sea reversible. A diferencia del repaso anterior, $E$ y $S$ denotan ahora energía interna y entropía por unidad de volumen de referencia, es decir, del cuerpo no deformado. Las cantidades totales se obtienen integrando sobre ese volumen.
+
+Un cambio infinitesimal de la energía interna está dado por la diferencia entre el calor adquirido por la unidad de volumen y el trabajo realizado por los esfuerzos internos:
+$$ \delta R = \frac{dW}{dV}. $$
+Para un proceso reversible, $T\,dS$ representa el calor, y $\delta R$ representa el trabajo. Así,
+$$ dE = T\,dS - \delta R. $$
+
+Usando
+$$ dW = -\sum_{ij}\sigma_{ij}\delta U_{ij}\,dV, $$
+se obtiene
+$$ dE = T\,dS + \sum_{ij}\sigma_{ij}\nabla_j\delta u_i. $$
+Puesto que
+$$ \delta U_{ij} = \frac{1}{2}(\nabla_i\delta u_j + \nabla_j\delta u_i), $$
+y el tensor de esfuerzos es simétrico, se tiene finalmente
+$$ dE = T\,dS + \sum_{ij}\sigma_{ij}\delta U_{ij}. $$
+Esta es la relación termodinámica fundamental para cuerpos deformados.
+
+En el caso de compresión hidrostática,
+$$ \sigma_{ij} = -p\delta_{ij}. $$
+Entonces,
+$$ \sum_{ij}\sigma_{ij}\nabla_j\delta u_i = -p\sum_i\nabla_i\delta u_i = -p\,\vec{\nabla}\cdot\delta\vec{u}. $$
+Pero
+$$ \vec{\nabla}\cdot\delta\vec{u} = \frac{\delta(dV)}{dV}, $$
+de modo que
+$$ dE = T\,dS - p\,\frac{\delta(dV)}{dV}. $$
+Así se recupera, a primer orden en la deformación, el trabajo de compresión por unidad de volumen de referencia.
+
+\subsection{Energías libres de Helmholtz y Gibbs}
+
+En la descripción termodinámica de cuerpos elásticos, es conveniente introducir potenciales termodinámicos cuyas variables naturales correspondan a las cantidades físicas que se mantienen fijas en una situación dada. Dos de estos potenciales son la energía libre de Helmholtz y la energía libre de Gibbs.
+
+\subsubsection{Energía libre de Helmholtz}
+
+La energía libre de Helmholtz se define como
+$$ F = E - TS, $$
+donde $E$ es la energía interna por unidad de volumen, $T$ la temperatura y $S$ la entropía por unidad de volumen. Su forma diferencial es
+$$ dF = -S\,dT + \sum_{ik}\sigma_{ik}\,dU_{ik}. $$
+
+Así, $F$ es naturalmente una función de la temperatura y del tensor de deformación:
+$$ F = F(T,U_{ik}). $$
+
+La diferenciación respecto de $U_{ik}$ da el tensor de esfuerzos:
+$$ \sigma_{ik} = \left(\frac{\partial E}{\partial U_{ik}}\right)_S = \left(\frac{\partial F}{\partial U_{ik}}\right)_T. $$
+
+Esto hace que $F$ sea particularmente útil en elasticidad, donde frecuentemente se especifica la deformación y se busca el esfuerzo correspondiente.
+
+\subsubsection{Energía libre de Gibbs}
+
+La energía libre de Gibbs se define como
+$$ \Phi = E - TS - \sum_{ik}\sigma_{ik}U_{ik} = F - \sum_{ik}\sigma_{ik}U_{ik}. $$
+
+Su diferencial es
+$$ d\Phi = -S\,dT - \sum_{ik}U_{ik}\,d\sigma_{ik}. $$
+
+Esto muestra que $\Phi$ es naturalmente una función de la temperatura y del esfuerzo:
+$$ \Phi = \Phi(T,\sigma_{ik}). $$
+
+Diferenciando respecto de $\sigma_{ik}$ se obtiene el tensor de deformación:
+$$ U_{ik} = -\left(\frac{\partial \Phi}{\partial \sigma_{ik}}\right)_T. $$
+
+La transformada de Legendre intercambia las variables conjugadas $(U_{ik},\sigma_{ik})$: $F$ resulta conveniente cuando se controlan la temperatura y la deformación, mientras que $\Phi$ corresponde al control de la temperatura y el esfuerzo. Sus derivadas proporcionan las relaciones constitutivas del material.

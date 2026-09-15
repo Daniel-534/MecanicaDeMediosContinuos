@@ -1,0 +1,178 @@
+\chapter{Clase Taller 6}
+
+\section{Notación escalar, vectorial y tensorial}
+
+Un escalar se representa mediante un símbolo como $\phi$. Un vector se expresa en términos de sus componentes y de los vectores de la base:
+\[
+\vec A=A_i\,\hat e_i,
+\qquad
+\{A_i\}=\begin{pmatrix}A_1\\A_2\\A_3\end{pmatrix}.
+\]
+Para un tensor de segundo orden, la representación correspondiente es
+\[
+\mathbb{T}=T_{ij}\,\hat e_i\otimes\hat e_j,
+\]
+donde $\otimes$ denota el producto tensorial y $T_{ij}$ son las componentes del tensor.
+
+\subsection{Convención de suma de Einstein}
+
+Un índice que aparece dos veces en un término se suma; un índice que aparece una sola vez es libre y debe coincidir en ambos miembros de la igualdad. Por ejemplo,
+\[
+A_iB_i=\sum_{i=1}^{3}A_iB_i,
+\qquad
+C_i=T_{ij}A_j.
+\]
+En la segunda expresión, $i$ es libre y $j$ es un índice de suma. Los índices de suma pueden renombrarse sin alterar el resultado, siempre que se eviten conflictos con otros índices del término.
+
+\section{Traza y contracciones}
+
+\subsection{Traza de un tensor}
+
+La traza es la suma de las componentes diagonales:
+\[
+\mathrm{Tr}\,\mathbb{S}=S_{11}+S_{22}+S_{33}=S_{ii}.
+\]
+
+\subsection{Contracciones dobles}
+
+Es importante distinguir las siguientes contracciones:
+\[
+\begin{aligned}
+S_{ij}S_{ij}
+&=S_{11}^2+S_{12}^2+S_{13}^2\\
+&\quad+S_{21}^2+S_{22}^2+S_{23}^2\\
+&\quad+S_{31}^2+S_{32}^2+S_{33}^2
+=\mathrm{Tr}(\mathbb{S}^T\mathbb{S}),
+\end{aligned}
+\]
+\[
+\begin{aligned}
+S_{ij}S_{ji}
+&=S_{11}^2+S_{12}S_{21}+S_{13}S_{31}\\
+&\quad+S_{21}S_{12}+S_{22}^2+S_{23}S_{32}\\
+&\quad+S_{31}S_{13}+S_{32}S_{23}+S_{33}^2
+=\mathrm{Tr}(\mathbb{S}^2).
+\end{aligned}
+\]
+El cambio de nombre de los índices da $S_{jk}S_{kj}=S_{ij}S_{ji}$. Las dos contracciones anteriores coinciden cuando $\mathbb{S}$ es simétrico.
+
+\subsection{Forma cuadrática}
+
+La contracción de un tensor con dos copias de un vector produce un escalar:
+\[
+\begin{aligned}
+\vec a\cdot\mathbb{S}\cdot\vec a=S_{mn}a_ma_n
+&=S_{11}a_1^2+S_{12}a_1a_2+S_{13}a_1a_3\\
+&\quad+S_{21}a_2a_1+S_{22}a_2^2+S_{23}a_2a_3\\
+&\quad+S_{31}a_3a_1+S_{32}a_3a_2+S_{33}a_3^2.
+\end{aligned}
+\]
+
+\section{Tensores simétricos y antisimétricos}
+
+Un tensor $\mathbb{S}$ es simétrico si $S_{ij}=S_{ji}$, mientras que un tensor $\mathbb{A}$ es antisimétrico si $A_{ij}=-A_{ji}$. En este último caso cada componente diagonal es nula:
+\[
+A_{11}=A_{22}=A_{33}=0.
+\]
+La contracción entre un tensor simétrico y uno antisimétrico se anula. Renombrando los índices de suma,
+\[
+S_{ij}A_{ij}=S_{ji}A_{ji}=-S_{ij}A_{ij}
+\quad\Longrightarrow\quad S_{ij}A_{ij}=0.
+\]
+
+\section{Producto vectorial y determinante}
+
+El símbolo de Levi-Civita $\varepsilon_{ijk}$ vale $+1$ para las permutaciones pares de $(1,2,3)$, $-1$ para las impares y cero si algún índice se repite.
+
+\subsection{Producto vectorial y producto mixto}
+
+En una base cartesiana de orientación positiva,
+\[
+(\vec A\times\vec B)_i=\varepsilon_{ijk}A_jB_k,
+\qquad
+(\vec A\times\vec B)\cdot\vec C=\varepsilon_{ijk}A_iB_jC_k.
+\]
+La magnitud del producto vectorial satisface
+\[
+(\vec A\times\vec B)\cdot(\vec A\times\vec B)
+=|\vec A|^2|\vec B|^2-(\vec A\cdot\vec B)^2.
+\]
+
+\subsection{Determinante de una matriz}
+
+Para una matriz $\mathbb{A}$ de dimensión $3\times3$,
+\[
+\begin{aligned}
+\det\mathbb{A}&=\varepsilon_{ijk}A_{1i}A_{2j}A_{3k}\\
+&=A_{11}(A_{22}A_{33}-A_{23}A_{32})\\
+&\quad-A_{12}(A_{21}A_{33}-A_{23}A_{31})\\
+&\quad+A_{13}(A_{21}A_{32}-A_{22}A_{31}).
+\end{aligned}
+\]
+
+\section{Derivación en notación indicial}
+
+La identidad $\partial x_i/\partial x_k=\delta_{ik}$ permite aplicar la regla del producto:
+\[
+\frac{\partial(x_ix_j)}{\partial x_k}
+=\delta_{ik}x_j+x_i\delta_{jk}.
+\]
+Para un campo tensorial,
+\[
+\frac{\partial(T_{ij}x_j)}{\partial x_k}
+=\frac{\partial T_{ij}}{\partial x_k}x_j+T_{ik}.
+\]
+Si $T_{ij}$ es constante, el primer término se anula y se recupera $\partial(T_{ij}x_j)/\partial x_k=T_{ik}$.
+
+Las segundas derivadas de un campo escalar definen una forma cuadrática en los incrementos cartesianos:
+\[
+d^2\phi=\frac{\partial^2\phi}{\partial x_i\,\partial x_j}\,dx_i\,dx_j.
+\]
+Cada índice de suma aparece exactamente dos veces en este término.
+
+\section{Coordenadas e invariantes}
+
+\subsection{Transformaciones entre bases cartesianas}
+
+Sea $\mathbb{Q}=\{q_{ij}\}$ una matriz ortogonal de cambio de base. Sus componentes satisfacen
+\[
+q_{ik}q_{jk}=\delta_{ij},
+\qquad q_{ki}q_{kj}=\delta_{ij},
+\qquad \det\mathbb{Q}=\pm1.
+\]
+Las componentes de un tensor se transforman según
+\[
+T'_{ij}=q_{ik}q_{jl}T_{kl},
+\qquad \mathbb{T}'=\mathbb{Q}\mathbb{T}\mathbb{Q}^T.
+\]
+La traza y el determinante son invariantes bajo este cambio de base:
+\[
+\begin{aligned}
+\mathrm{Tr}\,\mathbb{T}'
+&=q_{ik}q_{il}T_{kl}
+=\delta_{kl}T_{kl}=T_{kk}=\mathrm{Tr}\,\mathbb{T},\\
+\det\mathbb{T}'
+&=\det\mathbb{Q}\,\det\mathbb{T}\,\det\mathbb{Q}^T
+=(\det\mathbb{Q})^2\det\mathbb{T}=\det\mathbb{T}.
+\end{aligned}
+\]
+
+\subsection{Elemento de línea y coordenadas curvilíneas}
+
+En coordenadas cartesianas, la base es fija:
+\[
+\vec r=x_i\hat e_i,
+\qquad d\vec r=dx_i\hat e_i,
+\qquad ds^2=dx_i\,dx_i.
+\]
+Si se expresa un vector en una base variable como $\vec r=r_i\hat e_i$, su diferencial incluye la variación de la base:
+\[
+d\vec r=dr_i\,\hat e_i+r_i\,d\hat e_i.
+\]
+En coordenadas curvilíneas $\xi_i$, se escribe $\vec r=\vec r(\xi_1,\xi_2,\xi_3)$ y se define la base coordenada $\vec g_i=\partial\vec r/\partial\xi_i$. Entonces,
+\[
+d\vec r=\vec g_i\,d\xi_i,
+\qquad ds^2=g_{ij}\,d\xi_i\,d\xi_j,
+\qquad g_{ij}=\vec g_i\cdot\vec g_j.
+\]
+En el caso cartesiano ortonormal, $g_{ij}=\delta_{ij}$ y se recupera la expresión anterior del elemento de línea.

@@ -1,0 +1,15 @@
+\begin{tikzpicture}[>=Latex, line cap=round, font=\small,
+  x={(-0.65cm,-0.45cm)}, y={(1cm,0cm)}, z={(0cm,1cm)}]
+\filldraw[fill=blue!8, draw=blue!50!black, thick] (0,0,0) -- (3.5,0,0) -- (3.5,3.5,0) -- (0,3.5,0) -- cycle;
+\draw[->, thick, gray] (0,0,0) -- (4.4,0,0) node[below left] {$x$};
+\draw[->, thick, gray] (0,0,0) -- (0,4.2,0) node[right] {$y$};
+\draw[->, thick, gray] (0,0,0) -- (0,0,3.3) node[above] {$z$};
+\coordinate (superficie) at (1.5,1.5,0);
+\draw[->, very thick, orange!85!black] (superficie) -- (4,1.5,0) node[below left] {$\sigma_{xz}\,dS_z$};
+\draw[->, very thick, orange!85!black] (superficie) -- (1.5,4,0) node[right] {$\sigma_{yz}\,dS_z$};
+\draw[->, very thick, blue!70!black] (superficie) -- (1.5,1.5,2.7) node[above right] {$\sigma_{zz}\,dS_z$};
+\draw[->, thick, gray] (0.7,3,0) -- (0.7,3,1.9) node[right] {$\hat n=\hat e_z$};
+\fill (superficie) circle (1.7pt);
+\node at (2.6,2.8,0) {$dS_z$};
+\node[align=center] at (0.6cm,-2.7cm) {$d\vec F=(\sigma_{xz}\hat e_x+\sigma_{yz}\hat e_y+\sigma_{zz}\hat e_z)\,dS_z$};
+\end{tikzpicture}

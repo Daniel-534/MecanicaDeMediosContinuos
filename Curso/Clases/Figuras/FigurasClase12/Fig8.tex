@@ -1,0 +1,28 @@
+\begin{tikzpicture}[>=Latex, line cap=round, line join=round, font=\small]
+\filldraw[fill=gray!8, draw=gray!70, thick] (-2,-1.5) rectangle (2,1.5);
+\draw[densely dashed, gray!50] (-2.5,0) -- (2.5,0) (0,-2) -- (0,2);
+\draw[->, very thick, blue!70!black] (0,-1.5) -- (1.65,-1.5)
+  node[midway,below=5pt] {$\sigma_{yx}\,bc$};
+\draw[->, very thick, blue!70!black] (0,1.5) -- (-1.65,1.5)
+  node[midway,above=5pt] {$-\sigma_{yx}\,bc$};
+\draw[->, very thick, orange!85!black] (2,0) -- (2,-1.2)
+  node[midway,right=5pt] {$\sigma_{xy}\,ac$};
+\draw[->, very thick, orange!85!black] (-2,0) -- (-2,1.2)
+  node[midway,left=5pt] {$-\sigma_{xy}\,ac$};
+\fill (0,0) circle (1.5pt);
+\draw (0,0) circle (0.12);
+\node[below left=3pt] at (0,0) {$+z$};
+\draw[->, blue!70!black, thick] (0.75,0) arc[start angle=0,end angle=130,radius=0.75];
+\node[blue!70!black, below] at (0.65,-0.55) {$+M_z$};
+\draw[<->, gray!80!black] (-2,-2.5) -- (2,-2.5) node[midway,below] {$b$};
+\draw[gray!50] (-2,-1.65) -- (-2,-2.65) (2,-1.65) -- (2,-2.65);
+\draw[<->, gray!80!black] (-4,-1.5) -- (-4,1.5) node[midway,left] {$a$};
+\draw[gray!50] (-4.15,-1.5) -- (-2.15,-1.5) (-4.15,1.5) -- (-2.15,1.5);
+\begin{scope}[shift={(4.3,1.6)}]
+\draw[->, gray!80!black] (0,0) -- (0,-1) node[below] {$x$};
+\draw[->, gray!80!black] (0,0) -- (1.1,0) node[right] {$y$};
+\end{scope}
+\node[align=center, font=\footnotesize] at (0,2.5) {Vista desde $+z$; espesor $c$ perpendicular al plano.};
+\node at (0,-3.25) {$M_z=(\sigma_{yx}-\sigma_{xy})\,abc$};
+\node[align=center, font=\footnotesize] at (0,-3.85) {Fuerzas cortantes dibujadas para componentes positivas.\\Las caras opuestas ejercen fuerzas de signo contrario.};
+\end{tikzpicture}
