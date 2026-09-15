@@ -21,7 +21,7 @@ La descripción de la deformación introduce el \emph{tensor de deformación} (s
 
 \begin{figure}[H]
 \centering
-\input{Clases/Figuras/FigurasClas12/Fig9.tex}
+\input{Clases/Figuras/FigurasClase12/Fig9.tex}
 \par\medskip
 \textbf{Figura 9.} Escalado uniforme (dilatación uniforme). Las flechas indican cómo se desplazan las partículas materiales: todas se alejan radialmente del origen de manera proporcional a su distancia, de modo que la configuración se expande (o contrae) homotéticamente sin cambiar de forma.
 \end{figure}
@@ -38,7 +38,7 @@ independientemente del origen del sistema de coordenadas. No existe un centro es
 
 \begin{figure}[H]
 \centering
-\input{Clases/Figuras/FigurasClas12/Fig10.tex}
+\input{Clases/Figuras/FigurasClase12/Fig10.tex}
 \par\medskip
 \textbf{Figura 10.} Geometría del desplazamiento. La partícula que estaba originalmente localizada en $\vec{X}$ ha sido desplazada a $\vec{x}$ mediante el vector de desplazamiento $\vec{u}$, que une ambos puntos.
 \end{figure}
@@ -57,7 +57,7 @@ El desplazamiento lineal general puede descomponerse en tipos más simples: tras
 
 \begin{figure}[H]
 \centering
-\input{Clases/Figuras/FigurasClas12/Fig11.tex}
+\input{Clases/Figuras/FigurasClase12/Fig11.tex}
 \par\medskip
 \textbf{Figura 11.} Diagramas de flechas de los campos de desplazamiento para traslación simple, rotación y dilatación. En la parte inferior se muestra que el cambio más general de un cuerpo deformable puede descomponerse en traslación, rotación y deformación.
 \end{figure}
@@ -74,7 +74,7 @@ Puesto que las relaciones geométricas en el cuerpo permanecen inalteradas, esto
 
 \begin{figure}[H]
 \centering
-\input{Clases/Figuras/FigurasClas12/Fig12.tex}
+\input{Clases/Figuras/FigurasClase12/Fig12.tex}
 \par\medskip
 \textbf{Figura 12.} Una rotación de cuerpo rígido por un ángulo $\phi$ mueve la partícula material localizada en $(X, Y)$ hasta $(x, y)$, girando alrededor del eje $z$.
 \end{figure}
@@ -113,7 +113,7 @@ Ambas representaciones son equivalentes para deformaciones pequeñas y lentament
 
 \begin{figure}[H]
 \centering
-\input{Clases/Figuras/FigurasClas12/Fig13.tex}
+\input{Clases/Figuras/FigurasClase12/Fig13.tex}
 \par\medskip
 \textbf{Figura 13.} Desplazamiento de una pequeña ``aguja'' material desde $\vec{a}_0$ hasta $\vec{a}$. La aguja puede ser trasladada, rotada y escalada. Solo este último cambio corresponde a una deformación verdadera.
 \end{figure}
@@ -191,7 +191,7 @@ y $\Delta\ell/\ell = 0$ a lo largo de $\vec{n}_3 = \vec{e}_z$. Así, el material
 
 \begin{figure}[H]
 \centering
-\input{Clases/Figuras/FigurasClas12/Fig14.tex}
+\input{Clases/Figuras/FigurasClase12/Fig14.tex}
 \par\medskip
 \textbf{Figura 14.} Diagrama de flechas del campo de desplazamiento lineal lagrangiano bidimensional $\vec{u} = (y, x, 0)$ en el cuadrado $-1 < x < 1$ y $-1 < y < 1$. El material se dilata a lo largo de una diagonal y se contrae a lo largo de la otra. Estas son las direcciones principales de deformación en todas partes.
 \end{figure}
@@ -220,7 +220,7 @@ Las proyecciones fuera de la diagonal del tensor de deformación determinan, por
 
 \begin{figure}[H]
 \centering
-\input{Clases/Figuras/FigurasClas12/Fig15.tex}
+\input{Clases/Figuras/FigurasClase12/Fig15.tex}
 \par\medskip
 \textbf{Figura 15.} (a) Las partículas $P_0$ y $Q_0$ de la curva original $C_0$ se desplazan hasta $P$ y $Q$ en la curva deformada $C$. El elemento $d\vec\ell_0$ se transforma en $d\vec\ell$: cambia tanto su longitud como su orientación. Los desplazamientos de sus extremos son $\vec u_P$ y $\vec u_Q$. (b) Tres vectores infinitesimales $\vec a$, $\vec b$ y $\vec c$, con origen común en $O$, generan un paralelepípedo de volumen $dV=(\vec a\times\vec b)\cdot\vec c$, para la orientación elegida. Los elementos se muestran ampliados para facilitar su lectura.
 \end{figure}
@@ -240,3 +240,218 @@ Así, cuando $\vec{\nabla}\cdot\vec{u} = \mathrm{Tr}(\mathbf{U}) = 0$, tanto el 
 \textbf{Elemento de superficie.} Para un elemento de superficie $d\vec{S} = \vec{a}\times\vec{b}$, se encuentra a partir de la relación del volumen que
 \[ \delta(d\vec{S}) = \left(\vec{\nabla}\cdot\vec{u}\;\mathbf{1} - \vec{\nabla}\vec{u}\right)\cdot d\vec{S}. \tag{112} \]
 Tanto la magnitud como la dirección de $d\vec{S}$ se modifican por la deformación, siguiendo una regla diferente de la del elemento de curva.
+
+
+\section{Trabajo de desplazamiento}
+
+Deformar un cuerpo requiere trabajo. Una parte de ese trabajo puede almacenarse como energía potencial elástica, mientras que otra parte puede disiparse como calor debido a la fricción interna. Ningún material real es perfectamente elástico.
+
+Considérese un volumen $V$ de material que no está en equilibrio mecánico. La fuerza efectiva que actúa sobre un elemento de volumen $dV$ es
+$$ d\vec{F} = \vec{f}^{\,*} dV. $$
+Para mantener todos los puntos materiales en posiciones fijas, aunque fuera del equilibrio, es necesario aplicar una distribución externa de fuerzas virtuales
+$$ \vec{f}^{\,\prime} = -\vec{f}^{\,*}. $$
+
+Si el cuerpo se desplaza infinitesimalmente según un campo $\delta\vec{u}(\vec{x})$, el trabajo realizado por las fuerzas virtuales es
+$$ \delta W = \int_V \vec{f}^{\,\prime}\cdot \delta\vec{u}\,dV = -\int_V \vec{f}^{\,*}\cdot\delta\vec{u}\,dV. $$
+Usando $\vec{f}^{\,*} = \vec{f} + \vec{\nabla}\cdot\vec{\sigma}^{\,T}$, se obtiene
+$$ \delta W = -\int_V \vec{f}\cdot\delta\vec{u}\,dV - \int_V \left(\vec{\nabla}\cdot\vec{\sigma}^{\,T}\right)\cdot\delta\vec{u}\,dV. $$
+
+El segundo término puede integrarse por partes. En notación de componentes,
+$$ \int_V \sum_{ij}(\nabla_j \sigma_{ij})\delta u_i\,dV = \int_V \sum_{ij}\nabla_j(\sigma_{ij}\delta u_i)\,dV - \int_V \sum_{ij}\sigma_{ij}\nabla_j\delta u_i\,dV. $$
+El primer término del lado derecho se convierte en una integral de superficie,
+$$ \int_V \sum_{ij}\nabla_j(\sigma_{ij}\delta u_i)\,dV = \int_V \vec{\nabla}\cdot(\vec{\sigma}^{\,T}\cdot\delta\vec{u})\,dV = \oint_S (\vec{\sigma}^{\,T}\cdot\delta\vec{u})\cdot d\vec{S}. $$
+Esta integral de superficie se anula porque el desplazamiento virtual se anula en la frontera, $\delta\vec{u}=0$ sobre $S$.
+
+Por tanto,
+$$ \delta W = -\int_V \vec{f}\cdot\delta\vec{u}\,dV - \int_V \sum_{ij}\sigma_{ij}\nabla_j\delta u_i\,dV. $$
+
+Si el tensor de esfuerzos es simétrico, $\sigma_{ij}=\sigma_{ji}$, puede simetrizarse el término de deformación:
+$$ \int_V \sum_{ij}\sigma_{ij}\nabla_j\delta u_i\,dV = \frac{1}{2}\int_V \sum_{ij}\sigma_{ij}(\nabla_j\delta u_i + \nabla_i\delta u_j)\,dV. $$
+Como
+$$ \delta U_{ij} = \frac{1}{2}(\nabla_i\delta u_j + \nabla_j\delta u_i), $$
+se tiene
+$$ \int_V \sum_{ij}\sigma_{ij}\nabla_j\delta u_i\,dV = \int_V \sum_{ij}\sigma_{ij}\delta U_{ij}\,dV. $$
+En notación de doble contracción,
+$$ \sum_{ij}\sigma_{ij}\delta U_{ij} = \mathrm{Tr}(\vec{\sigma}\cdot\delta\vec{U}) \equiv \vec{\sigma}:\delta\vec{U}. $$
+Así,
+$$ \delta W = -\int_V \vec{f}\cdot\delta\vec{u}\,dV + \int_V \vec{\sigma}:\delta\vec{U}\,dV. $$
+Equivalentemente,
+$$ \delta W = -\int_V \vec{f}\cdot\delta\vec{u}\,dV + \int_V \vec{\sigma}:\vec{\nabla}\delta\vec{u}\,dV. $$
+
+El primer término representa el trabajo contra las fuerzas de cuerpo. El segundo término corresponde al trabajo contra los esfuerzos internos. La parte del trabajo virtual asociada con los esfuerzos internos define el trabajo infinitesimal de deformación:
+$$ \delta W_{\mathrm{deform}} = \int_V \vec{\sigma}:\vec{\nabla}\delta\vec{u}\,dV = \int_V \vec{\sigma}:\delta\vec{U}\,dV. $$
+Por tanto, el trabajo de deformación representa la contribución a la energía de deformación del cuerpo.
+
+En esta parte no aparece una figura específica; el desarrollo es principalmente analítico.
+
+\section{Termodinámica de la deformación}
+
+\subsection{Conceptos de termodinámica}
+
+La primera ley de la termodinámica expresa la conservación de la energía. En forma específica, es decir, por unidad de masa,
+$$ d\varepsilon = dq + dw. $$
+Si se considera únicamente trabajo mecánico debido a cambios de volumen,
+$$ dw = -p\,dV, $$
+de modo que
+$$ d\varepsilon = dq - p\,dV. $$
+
+Introduciendo la entropía $s$ y la temperatura $T$, la segunda ley implica
+$$ dq \leq T\,ds, $$
+con igualdad para procesos reversibles. Para transformaciones reversibles,
+$$ d\varepsilon = T\,ds - p\,dV. $$
+
+De esta expresión se identifican la temperatura y la presión como derivadas parciales de la energía interna específica:
+$$ T = \left(\frac{\partial \varepsilon}{\partial s}\right)_V, $$
+$$ p = -\left(\frac{\partial \varepsilon}{\partial V}\right)_s. $$
+
+Puesto que $d\varepsilon$ es un diferencial exacto, se obtiene la relación de Maxwell
+$$ \left(\frac{\partial T}{\partial V}\right)_s = -\left(\frac{\partial p}{\partial s}\right)_V. $$
+
+Además, existe una ecuación de estado
+$$ \varepsilon = \varepsilon(s,V), $$
+de modo que el estado termodinámico puede especificarse mediante dos variables independientes entre $\varepsilon$, $s$ y $V$.
+
+Las variables $\varepsilon$, $s$ y $V$ son cantidades extensivas específicas, obtenidas a partir de las variables extensivas $E_{\mathrm{int}}$, $S$ y $V$. Las cantidades extensivas escalan con el tamaño del sistema, mientras que las variables específicas eliminan esa dependencia y caracterizan propiedades intrínsecas del material. En cambio, la temperatura $T$ y la presión $p$ son variables intensivas.
+
+De la primera ley,
+$$ d\varepsilon = T\,ds - p\,dV, $$
+se identifican los pares conjugados
+$$ (T,s), \qquad (p,V). $$
+
+Los procesos termodinámicos usuales se definen mediante restricciones sobre estas variables:
+
+\begin{itemize}
+\item Adiabático: $dq=0$.
+\item Incompresible: $dV=0$.
+\item Isentrópico: $ds=0$.
+\item Isotérmico: $dT=0$.
+\item Isobárico: $dp=0$.
+\end{itemize}
+
+\subsubsection*{Transformadas de Legendre}
+
+En lugar de describir un sistema termodinámico mediante las variables $(s,V)$, también pueden usarse las variables intensivas $(T,p)$ mediante transformadas de Legendre. Partiendo de
+$$ d\varepsilon = T\,ds - p\,dV, $$
+se definen nuevos potenciales termodinámicos restando los pares conjugados correspondientes.
+
+La energía libre de Gibbs se define como
+$$ g = \varepsilon - Ts + pV, $$
+con diferencial
+$$ dg = -s\,dT + V\,dp. $$
+
+La entalpía se define como
+$$ h = \varepsilon + pV, $$
+con diferencial
+$$ dh = T\,ds + V\,dp. $$
+
+La energía libre de Helmholtz se define como
+$$ f = \varepsilon - Ts, $$
+con diferencial
+$$ df = -s\,dT - p\,dV. $$
+
+Estos potenciales corresponden a diferentes elecciones de variables independientes:
+$$ \varepsilon = \varepsilon(s,V), \qquad f = f(T,V), \qquad h = h(s,p), \qquad g = g(T,p). $$
+
+Como estos diferenciales son exactos, implican las siguientes relaciones de Maxwell:
+$$ \left(\frac{\partial s}{\partial p}\right)_T = -\left(\frac{\partial V}{\partial T}\right)_p, $$
+$$ \left(\frac{\partial T}{\partial p}\right)_s = -\left(\frac{\partial V}{\partial s}\right)_p, $$
+$$ \left(\frac{\partial s}{\partial V}\right)_T = -\left(\frac{\partial p}{\partial T}\right)_V. $$
+
+\subsection{Regímenes de deformación}
+
+En mecánica de medios continuos sólida, los regímenes de deformación se clasifican según la magnitud de la deformación y la respuesta del material.
+
+\begin{figure}[H]
+\centering
+\input{Clases/Figuras/FigurasClase12/Fig16.tex}
+\par\medskip
+\textbf{Figura 16.} Diagramas esfuerzo--deformación que ilustran: (a) comportamiento elástico; (b) comportamiento parcialmente elástico. En el primer caso, la respuesta del material es reversible y el cuerpo recupera su configuración original al retirar el esfuerzo. En el segundo caso, aunque existe una respuesta elástica, también aparece una componente de deformación que no se recupera completamente, lo que corresponde a un comportamiento parcialmente elástico.
+\end{figure}
+
+\begin{enumerate}
+\item \textbf{Deformaciones infinitesimales o pequeñas.}
+
+En este régimen, los desplazamientos y las deformaciones son muy pequeños comparados con la unidad. El tensor de deformación linealizado es válido, las no linealidades geométricas, como rotaciones grandes o gradientes de desplazamiento no lineales, se desprecian, y se aplica el principio de superposición. Esta aproximación es la base de la mayoría de los problemas de elasticidad clásica, como el análisis de esfuerzos en vigas y placas.
+
+\item \textbf{Deformaciones finitas o grandes.}
+
+Aquí los desplazamientos o deformaciones no son despreciables y debe emplearse cinemática no lineal. Se utilizan cantidades como el tensor gradiente de deformación y la deformación de Green--Lagrange. Las rotaciones grandes, el corte y las deformaciones finitas se incluyen completamente, y las ecuaciones gobernantes son no lineales. Las aplicaciones incluyen elasticidad del caucho, biomecánica de tejidos blandos y geomecánica.
+
+\item \textbf{Deformaciones extremas o altamente no lineales.}
+
+Este régimen involucra deformaciones muy grandes, frecuentemente acompañadas de no linealidades del material o inestabilidades. La respuesta puede ser anisótropa o dependiente de la tasa de deformación, y deben considerarse fenómenos como plasticidad, viscoelasticidad, viscoplasticidad, daño o fractura. Algunos ejemplos son simulaciones de colisiones, conformado de metales a grandes deformaciones y análisis de falla.
+\end{enumerate}
+
+En resumen: el régimen de deformación pequeña corresponde a elasticidad lineal; el régimen de deformación finita requiere cinemática no lineal, aunque todavía puede ser elástico o elasto--plástico; mientras que el régimen extremo involucra deformaciones muy grandes típicamente acopladas con efectos inelásticos como plasticidad, fractura o daño.
+
+\subsection{Primera ley}
+
+Además de las deformaciones elásticas, se supone que el proceso de deformación ocurre tan lentamente que el equilibrio termodinámico se establece en el cuerpo en cada instante, de acuerdo con las condiciones externas. Esta suposición es casi siempre justificada en la práctica. El proceso será entonces termodinámicamente reversible.
+
+Las cantidades termodinámicas, como la entropía $S$, la energía interna $E$, etc., se toman relativas a una unidad de volumen del cuerpo, y no relativas a una unidad de masa, como se hace usualmente en mecánica de fluidos.
+
+Deben distinguirse las unidades de volumen antes y después de la deformación, porque generalmente contienen cantidades diferentes de materia. Las cantidades termodinámicas se refieren, por tanto, a la unidad de volumen del cuerpo no deformado. La energía interna total del cuerpo se obtiene integrando $E$ sobre el volumen no deformado.
+
+Un cambio infinitesimal de la energía interna está dado por la diferencia entre el calor adquirido por la unidad de volumen y el trabajo realizado por los esfuerzos internos:
+$$ \delta R = \frac{dW}{dV}. $$
+Para un proceso reversible, $T\,dS$ representa el calor, y $\delta R$ representa el trabajo. Así,
+$$ dE = T\,dS - \delta R. $$
+
+Usando
+$$ dW = -\sum_{ij}\sigma_{ij}\delta U_{ij}\,dV, $$
+se obtiene
+$$ dE = T\,dS + \sum_{ij}\sigma_{ij}\nabla_j\delta u_i. $$
+Puesto que
+$$ \delta U_{ij} = \frac{1}{2}(\nabla_i\delta u_j + \nabla_j\delta u_i), $$
+y el tensor de esfuerzos es simétrico, se tiene finalmente
+$$ dE = T\,dS + \sum_{ij}\sigma_{ij}\delta U_{ij}. $$
+Esta es la relación termodinámica fundamental para cuerpos deformados.
+
+En el caso de compresión hidrostática,
+$$ \sigma_{ij} = -p\delta_{ij}. $$
+Entonces,
+$$ \sum_{ij}\sigma_{ij}\nabla_j\delta u_i = -p\sum_i\nabla_i\delta u_i = -p\,\vec{\nabla}\cdot\delta\vec{u}. $$
+Pero
+$$ \vec{\nabla}\cdot\delta\vec{u} = \frac{\delta(dV)}{dV}, $$
+de modo que
+$$ dE = T\,dS - p\,\delta(dV). $$
+Así se recupera la forma usual de la primera ley para compresión hidrostática.
+
+\section{Energías libres de Helmholtz y Gibbs}
+
+En la descripción termodinámica de cuerpos elásticos, es conveniente introducir potenciales termodinámicos cuyas variables naturales correspondan a las cantidades físicas que se mantienen fijas en una situación dada. Dos de estos potenciales son la energía libre de Helmholtz y la energía libre de Gibbs.
+
+\subsection{Energía libre de Helmholtz}
+
+La energía libre de Helmholtz se define como
+$$ F = E - TS, $$
+donde $E$ es la energía interna por unidad de volumen, $T$ la temperatura y $S$ la entropía por unidad de volumen. Su forma diferencial es
+$$ dF = -S\,dT + \sum_{ik}\sigma_{ik}\,dU_{ik}. $$
+
+Así, $F$ es naturalmente una función de la temperatura y del tensor de deformación:
+$$ F = F(T,U_{ik}). $$
+
+La diferenciación respecto de $U_{ik}$ da el tensor de esfuerzos:
+$$ \sigma_{ik} = \left(\frac{\partial E}{\partial U_{ik}}\right)_S = \left(\frac{\partial F}{\partial U_{ik}}\right)_T. $$
+
+Esto hace que $F$ sea particularmente útil en elasticidad, donde frecuentemente se especifica la deformación y se busca el esfuerzo correspondiente.
+
+\subsection{Energía libre de Gibbs}
+
+La energía libre de Gibbs se define como
+$$ \Phi = E - TS - \sum_{ik}\sigma_{ik}U_{ik} = F - \sum_{ik}\sigma_{ik}U_{ik}. $$
+
+Su diferencial es
+$$ d\Phi = -S\,dT - \sum_{ik}U_{ik}\,d\sigma_{ik}. $$
+
+Esto muestra que $\Phi$ es naturalmente una función de la temperatura y del esfuerzo:
+$$ \Phi = \Phi(T,\sigma_{ik}). $$
+
+Diferenciando respecto de $\sigma_{ik}$ se obtiene el tensor de deformación:
+$$ U_{ik} = -\left(\frac{\partial \Phi}{\partial \sigma_{ik}}\right)_T. $$
+
+Las energías libres de Helmholtz y Gibbs son potenciales termodinámicos fundamentales que cuantifican la cantidad de energía disponible en un sistema para realizar trabajo útil, pero se aplican bajo restricciones físicas diferentes. La energía libre de Helmholtz es el potencial apropiado para sistemas mantenidos a temperatura y volumen constantes, lo cual es útil en contextos como la elasticidad, donde la deformación, y por tanto el cambio de volumen, está controlado. La energía libre de Gibbs, en cambio, se aplica a sistemas a temperatura y presión constantes, y es particularmente relevante para procesos donde la presión externa está fija, como transiciones de fase o reacciones químicas.
+
+Ambos potenciales codifican el balance entre energía interna y entropía, pero sus variables naturales distintas determinan cuál de ellos es más conveniente para describir una situación física dada.
+
+Los dos potenciales están relacionados mediante una transformada de Legendre que intercambia las variables conjugadas $(U_{ik},\sigma_{ik})$. Ambos potenciales codifican la respuesta elástica del material y proporcionan una manera sistemática de derivar relaciones constitutivas, como la ley de Hooke, a partir de principios termodinámicos.

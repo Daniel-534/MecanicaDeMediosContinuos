@@ -1,0 +1,36 @@
+\begin{tikzpicture}[>=Latex, line cap=round, line join=round, font=\small]
+\begin{scope}
+\node[font=\small\bfseries] at (2.1,4.7) {(a) Elástico};
+\draw[->, gray!80!black] (0,0) -- (4.7,0) node[right] {$\varepsilon$};
+\draw[->, gray!80!black] (0,0) -- (0,4.1) node[left] {$\sigma$};
+\node[below left] at (0,0) {$O$};
+\draw[densely dashed, gray!60] (3.6,3.6) -- (3.6,0) node[below, text=black] {$\varepsilon_{\max}$};
+\draw[line width=1.2pt, blue!70!black] (0,0) -- (3.6,3.6);
+\draw[thick, orange!85!black, dashed] (3.6,3.6) -- (0,0);
+\draw[->, line width=1.8pt, blue!70!black] (0.7,0.7) -- (1.5,1.5) node[midway,below right=3pt] {Carga};
+\draw[->, line width=1.8pt, orange!85!black] (2.9,2.9) -- (2.1,2.1) node[midway,above left=3pt] {Descarga};
+\fill (3.6,3.6) circle (2pt) node[above right] {$A$};
+\draw[blue!70!black, thick, fill=white] (0,0) circle (2pt);
+\node[align=center, text width=5.5cm, font=\footnotesize] at (2.1,-1.1) {La carga y la descarga recorren\ la misma curva en sentidos opuestos.};
+\node at (2.1,-2) {Al descargar: $\varepsilon=0$.};
+\end{scope}
+\draw[gray!25] (6,-2.35) -- (6,4.95);
+\begin{scope}[xshift=7.4cm]
+\node[font=\small\bfseries] at (2.1,4.7) {(b) Parcialmente elástico};
+\draw[->, gray!80!black] (0,0) -- (4.7,0) node[right] {$\varepsilon$};
+\draw[->, gray!80!black] (0,0) -- (0,4.1) node[left] {$\sigma$};
+\node[below left] at (0,0) {$O$};
+\draw[densely dashed, gray!60] (4,3) -- (4,0) node[below, text=black] {$\varepsilon_{\max}$};
+\draw[line width=1.2pt, blue!70!black] (0,0) -- (1.2,1.5) .. controls (1.9,2.15) and (3,2.8) .. (4,3);
+\draw[->, line width=1.8pt, blue!70!black] (0.56,0.7) -- (0.96,1.2) node[midway,above left=3pt] {Carga};
+\draw[line width=1.2pt, orange!85!black] (4,3) -- (1.6,0);
+\draw[->, line width=1.8pt, orange!85!black] (3.44,2.3) -- (2.88,1.6) node[midway,right=5pt] {Descarga};
+\fill (4,3) circle (2pt) node[above right] {$A$};
+\fill[orange!85!black] (1.6,0) circle (2pt) node[below=3pt] {$\varepsilon_r$};
+\draw[gray!60, thin] (0,-0.5) -- (0,-1.15) (1.6,-0.5) -- (1.6,-1.15) (4,-0.5) -- (4,-1.15);
+\draw[<->, thick, orange!85!black] (0,-0.9) -- (1.6,-0.9) node[midway,below=3pt, font=\footnotesize] {Residual};
+\draw[<->, thick, blue!70!black] (1.6,-0.9) -- (4,-0.9) node[midway,below=3pt, font=\footnotesize] {Recuperada};
+\node at (2.1,-2) {Al descargar: $\varepsilon=\varepsilon_r>0$.};
+\end{scope}
+\node[font=\footnotesize] at (5.9,-2.9) {$\sigma$: esfuerzo; $\varepsilon$: deformación. Diagramas esquemáticos, sin escala.};
+\end{tikzpicture}
