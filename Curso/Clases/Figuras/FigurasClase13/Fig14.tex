@@ -1,33 +1,54 @@
-\begin{tikzpicture}[>=Latex, line cap=round, font=\small]
-\begin{scope}[scale=2.5]
-\filldraw[fill=blue!3, draw=gray!60, dashed] (-1,-1) rectangle (1,1);
-\draw[->, gray] (-1.3,0) -- (1.4,0) node[right] {$x$};
-\draw[->, gray] (0,-1.3) -- (0,1.4) node[above] {$y$};
-\draw[dashed, green!40!black, thick] (-1.2,-1.2) -- (1.2,1.2);
-\draw[dashed, orange!85!black, thick] (-1.2,1.2) -- (1.2,-1.2);
-\foreach \horizontal in {-0.8,-0.6,...,0.8} {
-  \foreach \vertical in {-0.8,-0.6,...,0.8} {
-    \pgfmathtruncatemacro{\esOrigen}{abs(\horizontal)+abs(\vertical)<0.01}
-    \ifnum\esOrigen=0
-      \draw[->, blue!65!black, thin] (\horizontal,\vertical) -- ({\horizontal+0.2*\vertical},{\vertical+0.2*\horizontal});
-    \fi
-  }
+\begin{tikzpicture}[>=Latex, line cap=round, line join=round, font=\small]
+\tikzset{
+  original/.style={draw=gray!65, dashed, thick},
+  general/.style={draw=blue!70!black, fill=blue!9, thick},
+  strain/.style={draw=green!45!black, fill=green!10, thick},
+  rotation/.style={draw=orange!85!black, fill=orange!10, thick}
 }
-\draw[->, very thick, green!40!black] (0,0) -- (0.95,0.95) node[above left] {$\vec n_1$};
-\draw[->, very thick, orange!85!black] (0,0) -- (0.95,-0.95) node[below left] {$\vec n_2$};
-\node[below left] at (0,0) {$O$};
-\node[below] at (-1,0) {$-1$};
-\node[below] at (1,0) {$1$};
-\node[left] at (0,-1) {$-1$};
-\node[left] at (0,1) {$1$};
+
+\begin{scope}
+\node[font=\small\bfseries] at (1.7,3.65) {(a) Gradiente local};
+\draw[original] (0,0) rectangle (2.5,2.5);
+\draw[general] (0.25,-0.1) -- (2.85,0.45) -- (2.35,3) -- (-0.25,2.45) -- cycle;
+\draw[->, blue!70!black] (0,0) -- (0.25,-0.1);
+\draw[->, blue!70!black] (2.5,0) -- (2.85,0.45);
+\draw[->, blue!70!black] (2.5,2.5) -- (2.35,3);
+\draw[->, blue!70!black] (0,2.5) -- (-0.25,2.45);
+\node[align=center, font=\footnotesize] at (1.3,-0.75)
+  {$\{\nabla_j u_i\}$ contiene\\deformación y rotación.};
 \end{scope}
-\begin{scope}[xshift=4.3cm]
-\node[anchor=west, font=\small\bfseries] at (0,2.6) {Direcciones principales};
-\node[anchor=west, text=green!40!black] at (0,1.85) {$x=y$: dilatación};
-\node[anchor=west] at (0,1.2) {$\vec n_1=\frac{1}{\sqrt{2}}(1,1,0)$};
-\node[anchor=west, text=orange!85!black] at (0,0.3) {$x=-y$: compresión};
-\node[anchor=west] at (0,-0.35) {$\vec n_2=\frac{1}{\sqrt{2}}(1,-1,0)$};
-\node[anchor=west, align=left, font=\footnotesize] at (0,-1.6) {Para $\vec u=\alpha(y,x,0)$, con $\alpha\ll1$:\\[4pt]$\varepsilon_1=+\alpha$, $\varepsilon_2=-\alpha$, $\varepsilon_3=0$.};
+
+\node[font=\Large] at (3.75,1.35) {$=$};
+
+\begin{scope}[xshift=4.65cm]
+\node[font=\small\bfseries] at (1.35,3.65) {(b) Parte simétrica};
+\draw[original] (0,0) rectangle (2.5,2.5);
+\draw[strain] (0,0) -- (2.75,0.35) -- (3.1,3.1) -- (0.35,2.75) -- cycle;
+\draw[<->, green!45!black, thick] (0.2,1.15) -- (2.9,1.95);
+\draw[<->, green!45!black, thick] (1.15,0.2) -- (1.95,2.9);
+\node[green!35!black, font=\large] at (1.55,1.5) {$\mathbf{U}$};
+\node[align=center, font=\footnotesize] at (1.5,-0.75)
+  {Cambia longitudes\\y ángulos.};
 \end{scope}
-\node[font=\footnotesize] at (2.8,-4) {Flechas azules: $\vec u=(y,x,0)$ a escala $1/5$; vectores de color: direcciones principales.};
+
+\node[font=\Large] at (8.45,1.35) {$+$};
+
+\begin{scope}[xshift=9.35cm]
+\node[font=\small\bfseries] at (1.25,3.65) {(c) Parte antisimétrica};
+\draw[original] (0,0) rectangle (2.5,2.5);
+\begin{scope}[rotate around={12:(1.25,1.25)}]
+\draw[rotation] (0,0) rectangle (2.5,2.5);
+\end{scope}
+\draw[->, orange!85!black, very thick] (1.9,1.25) arc[start angle=0,end angle=70,radius=0.65];
+\node[orange!85!black, font=\large] at (1.25,1.25) {$\boldsymbol{\Omega}$};
+\node[align=center, font=\footnotesize] at (1.25,-0.75)
+  {Rotación rígida local: no cambia\\longitudes ni ángulos a primer orden.};
+\end{scope}
+
+\node[align=center] at (6.4,-2)
+  {$\{\nabla_j u_i\}=\mathbf{U}+\boldsymbol{\Omega}$,\qquad
+   $U_{ij}=\dfrac{\nabla_j u_i+\nabla_i u_j}{2}$,\qquad
+   $\Omega_{ij}=\dfrac{\nabla_j u_i-\nabla_i u_j}{2}$.};
+\node[align=center, font=\footnotesize] at (6.4,-2.75)
+  {La parte simétrica $\mathbf{U}$ es el tensor de deformación infinitesimal de Cauchy.};
 \end{tikzpicture}

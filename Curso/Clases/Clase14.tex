@@ -1,0 +1,36 @@
+\chapter{Clase 14}
+
+\section{Energías libres de Helmholtz y Gibbs}
+
+En la descripción termodinámica de cuerpos elásticos, es conveniente introducir potenciales termodinámicos cuyas variables naturales correspondan a las cantidades físicas que se mantienen fijas en una situación dada. Dos de estos potenciales son la energía libre de Helmholtz y la energía libre de Gibbs.
+
+\subsubsection{Energía libre de Helmholtz}
+
+La energía libre de Helmholtz se define como
+$$ F = E - TS, $$
+donde $E$ es la energía interna por unidad de volumen, $T$ la temperatura y $S$ la entropía por unidad de volumen. Su forma diferencial es
+$$ dF = -S\,dT + \sum_{ik}\sigma_{ik}\,dU_{ik}. $$
+
+Así, $F$ es naturalmente una función de la temperatura y del tensor de deformación:
+$$ F = F(T,U_{ik}). $$
+
+La diferenciación respecto de $U_{ik}$ da el tensor de esfuerzos:
+$$ \sigma_{ik} = \left(\frac{\partial E}{\partial U_{ik}}\right)_S = \left(\frac{\partial F}{\partial U_{ik}}\right)_T. $$
+
+Esto hace que $F$ sea particularmente útil en elasticidad, donde frecuentemente se especifica la deformación y se busca el esfuerzo correspondiente.
+
+\subsubsection{Energía libre de Gibbs}
+
+La energía libre de Gibbs se define como
+$$ \Phi = E - TS - \sum_{ik}\sigma_{ik}U_{ik} = F - \sum_{ik}\sigma_{ik}U_{ik}. $$
+
+Su diferencial es
+$$ d\Phi = -S\,dT - \sum_{ik}U_{ik}\,d\sigma_{ik}. $$
+
+Esto muestra que $\Phi$ es naturalmente una función de la temperatura y del esfuerzo:
+$$ \Phi = \Phi(T,\sigma_{ik}). $$
+
+Diferenciando respecto de $\sigma_{ik}$ se obtiene el tensor de deformación:
+$$ U_{ik} = -\left(\frac{\partial \Phi}{\partial \sigma_{ik}}\right)_T. $$
+
+La transformada de Legendre intercambia las variables conjugadas $(U_{ik},\sigma_{ik})$: $F$ resulta conveniente cuando se controlan la temperatura y la deformación, mientras que $\Phi$ corresponde al control de la temperatura y el esfuerzo. Sus derivadas proporcionan las relaciones constitutivas del material.
