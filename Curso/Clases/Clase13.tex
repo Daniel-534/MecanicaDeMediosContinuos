@@ -278,49 +278,6 @@ La Figura 17 compara la recuperación completa al descargar con una recuperació
 \end{figure}
 \fi
 
-% Bloque oculto temporalmente: trabajo de desplazamiento.
-\iffalse
-\section{Trabajo de desplazamiento}
-
-Deformar un cuerpo requiere trabajo. Una parte de ese trabajo puede almacenarse como energía potencial elástica, mientras que otra parte puede disiparse como calor debido a la fricción interna. Ningún material real es perfectamente elástico.
-
-Considérese un volumen $V$ de material que no está en equilibrio mecánico. La fuerza efectiva que actúa sobre un elemento de volumen $dV$ es
-$$ d\vec{F} = \vec{f}^{\,*} dV. $$
-Para mantener todos los puntos materiales en posiciones fijas, aunque fuera del equilibrio, es necesario aplicar una distribución externa de fuerzas virtuales
-$$ \vec{f}^{\,\prime} = -\vec{f}^{\,*}. $$
-
-Si el cuerpo se desplaza infinitesimalmente según un campo $\delta\vec{u}(\vec{x})$, el trabajo realizado por las fuerzas virtuales es
-$$ \delta W = \int_V \vec{f}^{\,\prime}\cdot \delta\vec{u}\,dV = -\int_V \vec{f}^{\,*}\cdot\delta\vec{u}\,dV. $$
-Usando $\vec{f}^{\,*} = \vec{f} + \vec{\nabla}\cdot\vec{\sigma}^{\,T}$, se obtiene
-$$ \delta W = -\int_V \vec{f}\cdot\delta\vec{u}\,dV - \int_V \left(\vec{\nabla}\cdot\vec{\sigma}^{\,T}\right)\cdot\delta\vec{u}\,dV. $$
-
-El segundo término puede integrarse por partes. En notación de componentes,
-$$ \int_V \sum_{ij}(\nabla_j \sigma_{ij})\delta u_i\,dV = \int_V \sum_{ij}\nabla_j(\sigma_{ij}\delta u_i)\,dV - \int_V \sum_{ij}\sigma_{ij}\nabla_j\delta u_i\,dV. $$
-El primer término del lado derecho se convierte en una integral de superficie,
-$$ \int_V \sum_{ij}\nabla_j(\sigma_{ij}\delta u_i)\,dV = \int_V \vec{\nabla}\cdot(\vec{\sigma}^{\,T}\cdot\delta\vec{u})\,dV = \oint_S (\vec{\sigma}^{\,T}\cdot\delta\vec{u})\cdot d\vec{S}. $$
-Esta integral de superficie se anula porque el desplazamiento virtual se anula en la frontera, $\delta\vec{u}=0$ sobre $S$.
-
-Por tanto,
-$$ \delta W = -\int_V \vec{f}\cdot\delta\vec{u}\,dV + \int_V \sum_{ij}\sigma_{ij}\nabla_j\delta u_i\,dV. $$
-
-Si el tensor de esfuerzos es simétrico, $\sigma_{ij}=\sigma_{ji}$, puede simetrizarse el término de deformación:
-$$ \int_V \sum_{ij}\sigma_{ij}\nabla_j\delta u_i\,dV = \frac{1}{2}\int_V \sum_{ij}\sigma_{ij}(\nabla_j\delta u_i + \nabla_i\delta u_j)\,dV. $$
-Como
-$$ \delta U_{ij} = \frac{1}{2}(\nabla_i\delta u_j + \nabla_j\delta u_i), $$
-se tiene
-$$ \int_V \sum_{ij}\sigma_{ij}\nabla_j\delta u_i\,dV = \int_V \sum_{ij}\sigma_{ij}\delta U_{ij}\,dV. $$
-En notación de doble contracción,
-$$ \sum_{ij}\sigma_{ij}\delta U_{ij} = \mathrm{Tr}(\vec{\sigma}\cdot\delta\vec{U}) \equiv \vec{\sigma}:\delta\vec{U}. $$
-Así,
-$$ \delta W = -\int_V \vec{f}\cdot\delta\vec{u}\,dV + \int_V \vec{\sigma}:\delta\vec{U}\,dV. $$
-Equivalentemente,
-$$ \delta W = -\int_V \vec{f}\cdot\delta\vec{u}\,dV + \int_V \vec{\sigma}:\vec{\nabla}\delta\vec{u}\,dV. $$
-
-El primer término representa el trabajo contra las fuerzas de cuerpo. El segundo término corresponde al trabajo contra los esfuerzos internos. La parte del trabajo virtual asociada con los esfuerzos internos define el trabajo infinitesimal de deformación:
-$$ \delta W_{\mathrm{deform}} = \int_V \vec{\sigma}:\vec{\nabla}\delta\vec{u}\,dV = \int_V \vec{\sigma}:\delta\vec{U}\,dV. $$
-Por tanto, el trabajo de deformación representa la contribución a la energía de deformación del cuerpo.
-\fi
-
 \section{Termodinámica de la deformación}
 
 \subsection{Conceptos de termodinámica}

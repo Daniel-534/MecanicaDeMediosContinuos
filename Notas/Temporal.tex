@@ -1,0 +1,92 @@
+En el ejemplo de rotaciones, expandir un poco más los cálculos
+
+Dado un vector de desplazamiento -> identifique si es una traslación, rotación o deformación.
+
+Demuestre que el tensor de deformación \mathbb{U}_{ij} es simétrico
+
+Demostrar condiciones de compatibilidad (ecuación (98) de Elasticity.pdf) e interprete.
+
+Escribir \delta(\vec{a}\cdot\vec{b}) con \sum_{ij}
+
+------Agregar a: ejes princnipales de deformación (ejemplo)-----
+Estudiar implicaciones de la diferencia entre \vec{u} = \alpha(y, x, 0) y \vec{u} = \theta(-y, x, 0)
+
+Diagonalizar una matriz simétrica. ¿Mediante una matriz de rotación?
+
+R(\bete)^T \nabla\vec{u}R(\beta) = (\vec{\nabla}\vec{u})_{diag}
+
+Escribir la amtriz que diagonaliza (\sqrt{2})
+
+(\vec{\nabla}\vec{u})_{diag}(x, y, z) -> ¿Dilatación en x? ¿Contracción en y? (ejes ya rotados)
+-----
+
+Hacer pasos intermedios en el desarrollo del elemento de volumen \delta(dV) = dV U_{ii}
+
+Se inicia la clase 14.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bloque oculto temporalmente: trabajo de desplazamiento.
+\iffalse
+\section{Trabajo de desplazamiento}
+
+Deformar un cuerpo requiere trabajo. Una parte de ese trabajo puede almacenarse como energía potencial elástica, mientras que otra parte puede disiparse como calor debido a la fricción interna. Ningún material real es perfectamente elástico.
+
+Considérese un volumen $V$ de material que no está en equilibrio mecánico. La fuerza efectiva que actúa sobre un elemento de volumen $dV$ es
+$$ d\vec{F} = \vec{f}^{\,*} dV. $$
+Para mantener todos los puntos materiales en posiciones fijas, aunque fuera del equilibrio, es necesario aplicar una distribución externa de fuerzas virtuales
+$$ \vec{f}^{\,\prime} = -\vec{f}^{\,*}. $$
+
+Si el cuerpo se desplaza infinitesimalmente según un campo $\delta\vec{u}(\vec{x})$, el trabajo realizado por las fuerzas virtuales es
+$$ \delta W = \int_V \vec{f}^{\,\prime}\cdot \delta\vec{u}\,dV = -\int_V \vec{f}^{\,*}\cdot\delta\vec{u}\,dV. $$
+Usando $\vec{f}^{\,*} = \vec{f} + \vec{\nabla}\cdot\vec{\sigma}^{\,T}$, se obtiene
+$$ \delta W = -\int_V \vec{f}\cdot\delta\vec{u}\,dV - \int_V \left(\vec{\nabla}\cdot\vec{\sigma}^{\,T}\right)\cdot\delta\vec{u}\,dV. $$
+
+El segundo término puede integrarse por partes. En notación de componentes,
+$$ \int_V \sum_{ij}(\nabla_j \sigma_{ij})\delta u_i\,dV = \int_V \sum_{ij}\nabla_j(\sigma_{ij}\delta u_i)\,dV - \int_V \sum_{ij}\sigma_{ij}\nabla_j\delta u_i\,dV. $$
+El primer término del lado derecho se convierte en una integral de superficie,
+$$ \int_V \sum_{ij}\nabla_j(\sigma_{ij}\delta u_i)\,dV = \int_V \vec{\nabla}\cdot(\vec{\sigma}^{\,T}\cdot\delta\vec{u})\,dV = \oint_S (\vec{\sigma}^{\,T}\cdot\delta\vec{u})\cdot d\vec{S}. $$
+Esta integral de superficie se anula porque el desplazamiento virtual se anula en la frontera, $\delta\vec{u}=0$ sobre $S$.
+
+Por tanto,
+$$ \delta W = -\int_V \vec{f}\cdot\delta\vec{u}\,dV + \int_V \sum_{ij}\sigma_{ij}\nabla_j\delta u_i\,dV. $$
+
+Si el tensor de esfuerzos es simétrico, $\sigma_{ij}=\sigma_{ji}$, puede simetrizarse el término de deformación:
+$$ \int_V \sum_{ij}\sigma_{ij}\nabla_j\delta u_i\,dV = \frac{1}{2}\int_V \sum_{ij}\sigma_{ij}(\nabla_j\delta u_i + \nabla_i\delta u_j)\,dV. $$
+Como
+$$ \delta U_{ij} = \frac{1}{2}(\nabla_i\delta u_j + \nabla_j\delta u_i), $$
+se tiene
+$$ \int_V \sum_{ij}\sigma_{ij}\nabla_j\delta u_i\,dV = \int_V \sum_{ij}\sigma_{ij}\delta U_{ij}\,dV. $$
+En notación de doble contracción,
+$$ \sum_{ij}\sigma_{ij}\delta U_{ij} = \mathrm{Tr}(\vec{\sigma}\cdot\delta\vec{U}) \equiv \vec{\sigma}:\delta\vec{U}. $$
+Así,
+$$ \delta W = -\int_V \vec{f}\cdot\delta\vec{u}\,dV + \int_V \vec{\sigma}:\delta\vec{U}\,dV. $$
+Equivalentemente,
+$$ \delta W = -\int_V \vec{f}\cdot\delta\vec{u}\,dV + \int_V \vec{\sigma}:\vec{\nabla}\delta\vec{u}\,dV. $$
+
+El primer término representa el trabajo contra las fuerzas de cuerpo. El segundo término corresponde al trabajo contra los esfuerzos internos. La parte del trabajo virtual asociada con los esfuerzos internos define el trabajo infinitesimal de deformación:
+$$ \delta W_{\mathrm{deform}} = \int_V \vec{\sigma}:\vec{\nabla}\delta\vec{u}\,dV = \int_V \vec{\sigma}:\delta\vec{U}\,dV. $$
+Por tanto, el trabajo de deformación representa la contribución a la energía de deformación del cuerpo.
+\fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+Estudiar la parte física conceptual de los términos que aparecen en el desarrollo matemático de la sección de trabajo de desplazamiento.
+
+Parte de termodinámica de la deformación: Demostrar la expresión que relaciona el tensor de deformación con el tensor de esfuerzos
+
+La energía relevante en las deformaciones es la energía libre de helmholtz
+
+
+------Ley de hooke------
+Construír F. Tenga en cuenta que una función se puede escribir como una serie de taylor
+
+F = mu sum_{ij}(U_{ij})^2 + \lambda/2(sum_i U_{ii})^2 ... Reescribir sumando y restando un tercio de cierta cantidad...expandir el cuadrado y seguir hasta llegar a la expresión que tiene un tensor con traza cero y aparece el modulo de compresibilidad volumetrica. Hacer el procedimiento explícito
+-------
+Construír \sigma_{ij} en términos de U_{ij}
+Luego construírlo en el otro sentido <---- Ley de Hooke
+
+Para la próxima clase: sección 3.5 hasta 3.5.4
+
+El jueves: 3.6
+
+
+
