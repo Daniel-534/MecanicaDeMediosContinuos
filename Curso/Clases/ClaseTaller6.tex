@@ -405,11 +405,42 @@ Consideramos un cambio entre bases ortonormales, con la convención del problema
 \mathbb T=T_{ij}'\hat e_i'\,\hat e_j'
 =a_{ki}a_{\ell j}T_{ij}'\hat\epsilon_k\,\hat\epsilon_\ell.
 \]
-Por comparación de componentes y usando la ortogonalidad de $\mathbb A$,
+El tensor físico es el mismo; lo que cambia son sus componentes. $T_{k\ell}$ son las componentes en la base original $\hat\epsilon_k$ y $T_{ij}'$ las de la base nueva $\hat e_i'$. La prima indica un cambio de base, no una derivada.
+
+En la base original también escribimos $\mathbb T=T_{k\ell}\hat\epsilon_k\,\hat\epsilon_\ell$. Al comparar con la expresión anterior, el coeficiente de cada díada $\hat\epsilon_k\,\hat\epsilon_\ell$ debe coincidir:
 \[
-T_{k\ell}=a_{ki}a_{\ell j}T_{ij}',
-\qquad T_{ij}'=a_{ki}a_{\ell j}T_{k\ell},
-\qquad \mathbb T'=\mathbb A^T\mathbb T\mathbb A.
+\boxed{T_{k\ell}=a_{ki}a_{\ell j}T_{ij}'}.
+\]
+Aquí $k,\ell$ son libres y se suma sobre $i,j$. Aparecen dos factores de cambio de base porque el tensor tiene dos índices: uno transforma el primer vector de la díada y el otro, el segundo.
+
+Para despejar las componentes nuevas, renombramos los índices mudos $i,j$ como $p,q$ y multiplicamos por $a_{ki}a_{\ell j}$, sumando ahora sobre $k,\ell$:
+\[
+\begin{aligned}
+a_{ki}a_{\ell j}T_{k\ell}
+&=a_{ki}a_{\ell j}a_{kp}a_{\ell q}T_{pq}'\\
+&=\underbrace{a_{ki}a_{kp}}_{\delta_{ip}}
+\underbrace{a_{\ell j}a_{\ell q}}_{\delta_{jq}}T_{pq}'\\
+&=\delta_{ip}\delta_{jq}T_{pq}'=T_{ij}'.
+\end{aligned}
+\]
+La segunda igualdad usa $\mathbb A^T\mathbb A=\mathbb I$: las columnas de $\mathbb A$ son ortonormales. Las deltas seleccionan $p=i$ y $q=j$. Por tanto,
+\[
+\boxed{T_{ij}'=a_{ki}T_{k\ell}a_{\ell j}}.
+\]
+En esta fórmula $i,j$ son libres y $k,\ell$ son mudos. Para reconocer el producto matricial, usamos $(\mathbb A^T)_{ik}=a_{ki}$:
+\[
+T_{ij}'=(\mathbb A^T)_{ik}T_{k\ell}a_{\ell j}
+=(\mathbb A^T\mathbb T\mathbb A)_{ij},
+\]
+En consecuencia,
+\[
+\boxed{\mathbb T'=\mathbb A^T\mathbb T\mathbb A}.
+\]
+Equivalentemente, la relación inicial es $\mathbb T=\mathbb A\mathbb T'\mathbb A^T$. Multiplicar por $\mathbb A^T$ a la izquierda y por $\mathbb A$ a la derecha elimina ambos cambios de base:
+\[
+\mathbb A^T\mathbb T\mathbb A
+=(\mathbb A^T\mathbb A)\mathbb T'(\mathbb A^T\mathbb A)
+=\mathbb T'.
 \]
 
 \textbf{Traza.} Como $a_{ki}a_{\ell i}=\delta_{k\ell}$,
