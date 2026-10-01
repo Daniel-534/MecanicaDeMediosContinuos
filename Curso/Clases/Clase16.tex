@@ -1,0 +1,257 @@
+\chapter{Clase 16}
+
+\section{Estimaciones en elastostática}
+
+Antes de resolver las ecuaciones diferenciales de un problema elástico, conviene estimar los órdenes de magnitud de los esfuerzos, las deformaciones y los desplazamientos. Estas estimaciones orientan el cálculo, pero pueden fallar cerca de concentraciones de esfuerzo o cuando la geometría y las condiciones de frontera introducen otras escalas.
+
+Usamos la convención de suma de Einstein y la notación de la clase anterior: $\vec u$ es el campo de desplazamiento, $\mathbb U$ es el tensor de deformación y $U_{ij}$ y $\sigma_{ij}$ son las componentes de deformación y esfuerzo. En coordenadas cartesianas, $\nabla_i=\partial/\partial x_i$ y $U_{kk}=\mathrm{Tr}\,\mathbb U$.
+
+\subsection{Cargas superficiales}
+
+Consideremos un sólido de tamaño característico $L$, sometido a esfuerzos superficiales de magnitud típica $P$, despreciando su propio peso. Como primera estimación,
+\[
+|\sigma_{ij}|\sim P.
+\]
+La ley de Hooke relaciona estos esfuerzos con las deformaciones:
+\[
+\sigma_{ij}=\lambda U_{kk}\delta_{ij}+2\mu U_{ij}.
+\]
+Si los módulos relevantes para el modo de deformación tienen órdenes de magnitud comparables a $E$, obtenemos
+\[
+E|U_{ij}|\sim P
+\quad\Longrightarrow\quad
+\boxed{|U_{ij}|\sim\frac{P}{E}}.
+\]
+No todos los módulos son necesariamente comparables; por ejemplo, cerca del límite incompresible debe distinguirse entre la respuesta volumétrica, gobernada por $K$, y la de corte, gobernada por $\mu$.
+
+Como la deformación depende de gradientes de desplazamiento, la variación típica de $u_i$ a lo largo del cuerpo satisface
+\[
+|U_{ij}|\sim\frac{|\Delta u_i|}{L}
+\quad\Longrightarrow\quad
+\boxed{|\Delta u_i|\sim\frac{LP}{E}}.
+\]
+Se estima una variación de desplazamiento, no una traslación rígida arbitraria. Para que la aproximación de deformaciones pequeñas sea válida, se requiere $P/E\ll1$.
+
+\textbf{Ejemplo: deformación de las patas de una silla.}
+Una persona de masa $M\approx70\,\mathrm{kg}$ se sienta en una silla de cuatro patas de madera. Tomamos como área \emph{total} de sección transversal de las patas $A\approx30\,\mathrm{cm}^2=3\times10^{-3}\,\mathrm{m}^2$ y como longitud $L=0.5\,\mathrm m$. El esfuerzo medio de compresión es
+\[
+P\approx\frac{Mg_0}{A}\approx2.3\times10^5\,\mathrm{Pa}
+=230\,\mathrm{kPa},
+\qquad g_0\approx9.81\,\mathrm{m\,s^{-2}}.
+\]
+Adoptando $E\approx10^9\,\mathrm{Pa}$ como valor ilustrativo para la madera,
+\[
+|U_{ij}|\sim\frac{P}{E}\approx2.3\times10^{-4},
+\qquad
+|\Delta u_i|\sim\frac{PL}{E}\approx0.1\,\mathrm{mm}.
+\]
+La deformación es adimensional; el acortamiento de las patas tiene unidades de longitud.
+
+\subsection{Carga gravitacional}
+
+Cuando domina el peso propio, la ecuación de equilibrio indica que la variación típica del esfuerzo a lo largo de una altura $L$ es
+\[
+|\Delta\sigma_{ij}|\sim\rho_0g_0L,
+\]
+donde $\rho_0$ es la densidad de referencia. La deformación y el desplazamiento correspondientes se estiman como
+\[
+|U_{ij}|\sim\frac{\rho_0g_0L}{E},
+\qquad
+|\Delta u_i|\sim\frac{\rho_0g_0L^2}{E}.
+\]
+Definimos la \emph{escala de longitud gravitacional}
+\[
+D=\frac{E}{\rho_0g_0}.
+\]
+Entonces,
+\[
+\boxed{|U_{ij}|\sim\frac{L}{D}},
+\qquad
+\boxed{|\Delta u_i|\sim\frac{L^2}{D}}.
+\]
+La condición de deformaciones pequeñas es $L\ll D$.
+
+\textbf{Ejemplo: asentamiento de un edificio alto.}
+Consideremos un edificio con altura $L=413\,\mathrm m$, área de planta $A=(63\,\mathrm m)^2$ y densidad media $\rho=100\,\mathrm{kg\,m^{-3}}$. Su peso es soportado por columnas de acero cuya sección total es $\eta A$, con $\eta=0.01$. Aquí $\rho$ representa la densidad media del edificio, no la densidad del acero.
+
+La masa total y el esfuerzo en las columnas de la base son
+\[
+M\approx\rho AL\approx1.6\times10^8\,\mathrm{kg},
+\]
+\[
+P\approx\frac{Mg_0}{\eta A}
+=\frac{\rho g_0L}{\eta}
+\approx4\times10^7\,\mathrm{Pa}
+\approx400\,\mathrm{bar}.
+\]
+Con $E=2\times10^{11}\,\mathrm{Pa}$ para las columnas,
+\[
+|U_{ij}|\sim\frac{P}{E}
+=\frac{\rho g_0L}{\eta E},
+\qquad
+D=\frac{\eta E}{\rho g_0}\approx2000\,\mathrm{km}.
+\]
+El orden de magnitud del asentamiento es, por tanto,
+\[
+|\Delta L|\sim\frac{L^2}{D}\approx8\,\mathrm{cm}.
+\]
+Esta es una estimación de escala; el valor exacto depende de cómo varía la carga con la altura y de la estructura que la soporta.
+
+\section{Sólidos en reposo: asentamiento}
+
+Consideremos un sólido elástico homogéneo e isótropo, de densidad de referencia constante $\rho_0$, contenido entre paredes verticales rígidas y sin fricción. Las paredes impiden el desplazamiento lateral, pero permiten el vertical. El fondo está en $z=0$ y la superficie superior, libre de tracción, en $z=h$.
+
+La gravedad es $\vec g=-g_0\hat e_z$. Buscamos una solución puramente vertical:
+\[
+\vec u=u_z(z)\hat e_z,
+\qquad
+U_{zz}=\frac{du_z}{dz},
+\]
+con las demás componentes de $\mathbb U$ nulas. Aunque el desplazamiento solo depende de $z$, la deformación no es homogénea: varía con la altura.
+
+Como $U_{kk}=U_{zz}$, la ley de Hooke da
+\[
+\begin{aligned}
+\sigma_{xx}=\sigma_{yy}&=\lambda U_{zz},\\
+\sigma_{zz}&=(\lambda+2\mu)U_{zz}.
+\end{aligned}
+\]
+Todos estos esfuerzos dependen únicamente de $z$. La componente vertical de la ecuación de equilibrio es
+\[
+-\rho_0g_0+\frac{d\sigma_{zz}}{dz}=0.
+\]
+Integrando y aplicando la condición de superficie libre,
+\[
+\sigma_{zz}=\rho_0g_0z+C,
+\qquad
+\sigma_{zz}(h)=0
+\quad\Longrightarrow\quad C=-\rho_0g_0h.
+\]
+Así,
+\[
+\boxed{\sigma_{zz}(z)=-\rho_0g_0(h-z)},
+\qquad
+U_{zz}=\frac{du_z}{dz}
+=-\frac{\rho_0g_0}{\lambda+2\mu}(h-z).
+\]
+El esfuerzo es compresivo y su magnitud aumenta hacia el fondo.
+
+Imponiendo que el fondo no se desplace, $u_z(0)=0$, integramos usando $s$ como variable de integración:
+\[
+\begin{aligned}
+u_z(z)
+&=-\frac{\rho_0g_0}{\lambda+2\mu}\int_0^z(h-s)\,ds\\
+&=-\frac{\rho_0g_0}{\lambda+2\mu}
+\left(hz-\frac{z^2}{2}\right).
+\end{aligned}
+\]
+En este problema la restricción lateral hace que el módulo relevante sea $\lambda+2\mu$, en lugar de $E$. Definiendo
+\[
+D=\frac{\lambda+2\mu}{\rho_0g_0},
+\]
+obtenemos
+\[
+\boxed{u_z(z)=-\frac{h^2-(h-z)^2}{2D}},
+\qquad u_z(h)=-\frac{h^2}{2D}.
+\]
+El desplazamiento es negativo, hacia abajo, y el asentamiento máximo ocurre en la superficie superior. La aproximación lineal requiere $h/D\ll1$.
+
+\section{Ecuación de Navier--Cauchy}
+
+El siguiente desarrollo corresponde al \textbf{problema 2 del Taller 7}. Buscamos una ecuación directamente para $\vec u$ en un sólido elástico lineal, homogéneo e isótropo. Recordemos
+\[
+f_i+\nabla_j\sigma_{ij}=0,
+\qquad
+\sigma_{ij}=\lambda U_{kk}\delta_{ij}+2\mu U_{ij},
+\]
+\[
+U_{ij}=\frac{1}{2}(\nabla_i u_j+\nabla_j u_i),
+\qquad U_{kk}=\nabla_k u_k.
+\]
+Como $\lambda$ y $\mu$ son constantes, al sustituir la ley de Hooke en el equilibrio,
+\[
+f_i+\lambda\delta_{ij}\nabla_j U_{kk}
++2\mu\nabla_j U_{ij}=0.
+\]
+La contracción con $\delta_{ij}$ reemplaza $j$ por $i$. Sustituyendo también la definición de $U_{ij}$ y simplificando $2\mu\,(1/2)=\mu$,
+\[
+f_i+\lambda\nabla_i\nabla_k u_k
++\mu\nabla_j(\nabla_i u_j+\nabla_j u_i)=0.
+\]
+Renombramos el índice mudo $k$ como $j$ en el segundo término y distribuimos la última derivada:
+\[
+f_i+\lambda\nabla_i\nabla_j u_j
++\mu\nabla_j\nabla_i u_j
++\mu\nabla_j\nabla_j u_i=0.
+\]
+Para un campo suficientemente suave, las derivadas parciales conmutan. Usando $\nabla_j u_j=\vec\nabla\cdot\vec u$ y $\nabla_j\nabla_j u_i=\nabla^2u_i$, agrupamos los términos:
+\[
+\boxed{f_i+\mu\nabla^2u_i
++(\lambda+\mu)\nabla_i(\vec\nabla\cdot\vec u)=0}.
+\]
+En forma vectorial, la ecuación de Navier--Cauchy es
+\[
+\boxed{\vec f+\mu\nabla^2\vec u
++(\lambda+\mu)\vec\nabla(\vec\nabla\cdot\vec u)=0}.
+\]
+Aquí $\vec f$ es la fuerza de cuerpo por unidad de volumen, y el laplaciano vectorial actúa sobre cada componente cartesiana de $\vec u$.
+
+Si $\vec f=\rho_0\vec g$, usamos las relaciones de la clase anterior,
+\[
+\mu=\frac{E}{2(1+\nu)},
+\qquad
+\frac{\lambda+\mu}{\mu}=\frac{1}{1-2\nu},
+\]
+para escribir
+\[
+\nabla^2\vec u+\frac{1}{1-2\nu}
+\vec\nabla(\vec\nabla\cdot\vec u)
+=-\frac{2\rho_0(1+\nu)}{E}\vec g.
+\]
+Por otra parte, la identidad cartesiana
+\[
+\nabla^2\vec u
+=\vec\nabla(\vec\nabla\cdot\vec u)
+-\vec\nabla\times(\vec\nabla\times\vec u)
+\]
+permite obtener la forma equivalente
+\[
+\begin{aligned}
+\vec\nabla(\vec\nabla\cdot\vec u)
+-\frac{1-2\nu}{2(1-\nu)}
+\vec\nabla\times(\vec\nabla\times\vec u)
+=-\frac{\rho_0(1+\nu)(1-2\nu)}{E(1-\nu)}\vec g.
+\end{aligned}
+\]
+Estas expresiones suponen módulos finitos y $-1<\nu<1/2$.
+
+\subsection{Ausencia de fuerzas de cuerpo}
+
+Cuando $\vec f=0$, las dos formas anteriores se reducen a
+\[
+(1-2\nu)\nabla^2\vec u
++\vec\nabla(\vec\nabla\cdot\vec u)=0,
+\]
+\[
+2(1-\nu)\vec\nabla(\vec\nabla\cdot\vec u)
+-(1-2\nu)\vec\nabla\times(\vec\nabla\times\vec u)=0.
+\]
+Tomamos la divergencia de la segunda igualdad. La divergencia de un rotacional es nula, por lo que
+\[
+2(1-\nu)\nabla^2(\vec\nabla\cdot\vec u)=0
+\quad\Longrightarrow\quad
+\boxed{\nabla^2(\vec\nabla\cdot\vec u)=0}.
+\]
+Así, la dilatación volumétrica $\vec\nabla\cdot\vec u=U_{ii}$ es una función armónica.
+
+Aplicando el laplaciano a la primera igualdad y conmutando los operadores diferenciales,
+\[
+(1-2\nu)\nabla^4\vec u
++\vec\nabla\left[\nabla^2(\vec\nabla\cdot\vec u)\right]=0.
+\]
+El término entre corchetes se anula por el resultado anterior. Como $1-2\nu\ne0$,
+\[
+\boxed{\nabla^4\vec u=0},
+\qquad \nabla^4=\nabla^2\nabla^2.
+\]
+Por tanto, cada componente cartesiana del desplazamiento es biarmónica. Estas propiedades se cumplen en el interior del sólido; la solución concreta debe satisfacer además las condiciones de frontera.

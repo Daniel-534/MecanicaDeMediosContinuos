@@ -1,0 +1,51 @@
+\begin{tikzpicture}[
+  >=Latex, line cap=round, line join=round, font=\small,
+  base/.style={->, gray!65, line width=0.7pt},
+  inicial/.style={->, blue!65!black, line width=1.2pt},
+  nuevo/.style={->, teal!75!black, line width=1.2pt},
+  proyeccion/.style={->, orange!85!black, line width=1.3pt},
+  auxiliar/.style={densely dashed, gray!55, line width=0.6pt},
+  mixto/.style={->, violet!80!black, line width=1.4pt}
+]
+\begin{scope}
+\node[font=\small\bfseries] at (1.65,3.55) {(a) Variación de la base local};
+\draw[auxiliar] (2.5,0) arc[start angle=0,end angle=70,radius=2.5];
+\draw[base] (0,0) -- (0,2.7) node[above] {$\hat e_j$};
+\draw[inicial] (0,0) -- (2.5,0) node[midway,below] {$\hat e_i(q_j)$};
+\draw[nuevo] (0,0) -- ({2.5*cos(26)},{2.5*sin(26)});
+\node[teal!75!black, anchor=south, fill=white, inner sep=2pt] at (1.4,1.25) {$\hat e_i(q_j+dq_j)$};
+\draw[->, orange!85!black, densely dashed, line width=0.9pt]
+  (2.5,0) -- ({2.5*cos(26)},{2.5*sin(26)});
+\node[orange!85!black, anchor=east, fill=white, inner sep=1pt] at (2.12,0.55) {$d\hat e_i$};
+\draw[proyeccion] (2.5,0) -- (2.5,2.55);
+\node[orange!85!black, anchor=west] at (2.7,2.2) {$\displaystyle\frac{\partial\hat e_i}{\partial q_j}$};
+\draw[gray!65, thin] (2.3,0) -- (2.3,0.2) -- (2.5,0.2);
+\draw[->, gray!75, thin] (0.7,0) arc[start angle=0,end angle=26,radius=0.7];
+\node[gray!75] at (0.95,0.25) {$d\theta$};
+\fill[gray!75] (0,0) circle (1.5pt);
+\fill[blue!65!black] (2.5,0) circle (1.5pt);
+\fill[teal!75!black] ({2.5*cos(26)},{2.5*sin(26)}) circle (1.5pt);
+\node at (1.7,-1.1) {$\displaystyle
+\hat e_i\cdot\frac{\partial\hat e_i}{\partial q_j}=0$};
+\end{scope}
+
+\begin{scope}[xshift=7.2cm]
+\node[font=\small\bfseries] at (1.5,3.55) {(b) Proyección sobre $\hat e_j$};
+\fill[orange!6] (0,0) rectangle (2.9,2.1);
+\draw[base] (0,0) -- (3.75,0) node[right] {$\hat e_i$};
+\draw[base] (0,0) -- (0,2.75) node[above] {$\hat e_j$};
+\draw[auxiliar] (0,2.1) -- (2.9,2.1) -- (2.9,0);
+\draw[inicial] (0,0) -- (2.9,0);
+\draw[proyeccion] (0,0) -- (0,2.1) node[midway,left] {$B$};
+\draw[mixto] (0,0) -- (2.9,2.1) node[pos=0.6,below right] {$\vec m$};
+\node[blue!65!black] at (1.45,-1.1) {$\displaystyle A=\frac{\partial h_i}{\partial q_j}$};
+\fill[violet!80!black] (2.9,2.1) circle (1.8pt);
+\draw[gray!65, thin] (0.22,0) -- (0.22,0.22) -- (0,0.22);
+\end{scope}
+
+\node[draw=orange!65!black, fill=orange!5, rounded corners=3pt,
+  inner xsep=12pt, inner ysep=8pt] at (5.1,-2.4) {$\displaystyle
+B=\hat e_j\cdot\vec m
+=h_i\hat e_j\cdot\frac{\partial\hat e_i}{\partial q_j}
+=\frac{\partial h_j}{\partial q_i}$};
+\end{tikzpicture}

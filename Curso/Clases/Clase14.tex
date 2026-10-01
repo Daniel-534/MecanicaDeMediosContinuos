@@ -1,36 +1,196 @@
 \chapter{Clase 14}
 
-\section{Energías libres de Helmholtz y Gibbs}
+\section{Análisis de Campos de Desplazamiento y Tensor de Deformación}
 
-En la descripción termodinámica de cuerpos elásticos, es conveniente introducir potenciales termodinámicos cuyas variables naturales correspondan a las cantidades físicas que se mantienen fijas en una situación dada. Dos de estos potenciales son la energía libre de Helmholtz y la energía libre de Gibbs.
+\subsection{Clasificación de Campos de Desplazamiento}
 
-\subsubsection{Energía libre de Helmholtz}
+Dado un campo de desplazamiento $\vec{u}(\vec{x})$, su gradiente $\nabla_j u_i$ puede descomponerse de manera única en una parte simétrica y una parte antisimétrica:
+$$ \nabla_j u_i = \mathbb{U}_{ij} + \Omega_{ij} $$
+donde el tensor de deformación (parte simétrica) es $\mathbb{U}_{ij} = \frac{1}{2}(\nabla_i u_j + \nabla_j u_i)$ y el tensor de rotación (parte antisimétrica) es $\Omega_{ij} = \frac{1}{2}(\nabla_i u_j - \nabla_j u_i)$.
 
-La energía libre de Helmholtz se define como
-$$ F = E - TS, $$
-donde $E$ es la energía interna por unidad de volumen, $T$ la temperatura y $S$ la entropía por unidad de volumen. Su forma diferencial es
-$$ dF = -S\,dT + \sum_{ik}\sigma_{ik}\,dU_{ik}. $$
+Con base en esto, podemos identificar la naturaleza del desplazamiento:
+\begin{itemize}
+\item \textbf{Traslación pura:} $\vec{u} = \text{constante}$. El gradiente es nulo ($\nabla_j u_i = 0$), por lo que $\mathbb{U}_{ij} = 0$ y $\Omega_{ij} = 0$. No hay deformación ni rotación.
+\item \textbf{Rotación de cuerpo rígido:} $\vec{u} = \vec{\theta} \times \vec{r}$. El gradiente es puramente antisimétrico ($\mathbb{U}_{ij} = 0$, $\Omega_{ij} \neq 0$). No hay deformación.
+\item \textbf{Deformación pura:} $\mathbb{U}_{ij} \neq 0$. Existe un cambio en las distancias relativas o en los ángulos entre puntos materiales.
+\end{itemize}
 
-Así, $F$ es naturalmente una función de la temperatura y del tensor de deformación:
-$$ F = F(T,U_{ik}). $$
+\subsection{Ejemplo de Rotación: Cálculos Expandidos}
 
-La diferenciación respecto de $U_{ik}$ da el tensor de esfuerzos:
-$$ \sigma_{ik} = \left(\frac{\partial E}{\partial U_{ik}}\right)_S = \left(\frac{\partial F}{\partial U_{ik}}\right)_T. $$
+Consideremos el campo de desplazamiento $\vec{u} = \theta(-y, x, 0)$, donde $\theta$ es una constante pequeña. Calculemos explícitamente el gradiente de desplazamiento:
+$$ \nabla_j u_i = \begin{pmatrix} \partial_x u_x & \partial_y u_x & \partial_z u_x \\ \partial_x u_y & \partial_y u_y & \partial_z u_y \\ \partial_x u_z & \partial_y u_z & \partial_z u_z \end{pmatrix} = \begin{pmatrix} 0 & -\theta & 0 \\ \theta & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix} $$
 
-Esto hace que $F$ sea particularmente útil en elasticidad, donde frecuentemente se especifica la deformación y se busca el esfuerzo correspondiente.
+Ahora, calculemos el tensor de deformación $\mathbb{U}_{ij}$:
+$$ \mathbb{U}_{ij} = \frac{1}{2}(\nabla_i u_j + \nabla_j u_i) = \frac{1}{2} \left[ \begin{pmatrix} 0 & -\theta & 0 \\ \theta & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix} + \begin{pmatrix} 0 & \theta & 0 \\ -\theta & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix} \right] = \begin{pmatrix} 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix} $$
 
-\subsubsection{Energía libre de Gibbs}
+Dado que $\mathbb{U}_{ij} = 0$, concluimos que este campo de desplazamiento corresponde a una \textbf{rotación de cuerpo rígido} pura alrededor del eje $z$ por un ángulo $\theta$, sin ninguna deformación del material. El tensor de rotación asociado es $\Omega_{ij} = \nabla_j u_i$.
 
-La energía libre de Gibbs se define como
-$$ \Phi = E - TS - \sum_{ik}\sigma_{ik}U_{ik} = F - \sum_{ik}\sigma_{ik}U_{ik}. $$
+\subsection{Simetría del Tensor de Deformación}
 
-Su diferencial es
-$$ d\Phi = -S\,dT - \sum_{ik}U_{ik}\,d\sigma_{ik}. $$
+Por definición, el tensor de deformación de Cauchy se construye como la parte simétrica del gradiente de desplazamiento:
+$$ \mathbb{U}_{ij} = \frac{1}{2}(\nabla_i u_j + \nabla_j u_i) $$
+Para demostrar que es simétrico, intercambiamos los índices $i$ y $j$:
+$$ \mathbb{U}_{ji} = \frac{1}{2}(\nabla_j u_i + \nabla_i u_j) $$
+Dado que la suma de escalares (o componentes) es conmutativa, es evidente que:
+$$ \mathbb{U}_{ji} = \frac{1}{2}(\nabla_i u_j + \nabla_j u_i) = \mathbb{U}_{ij} $$
+Por lo tanto, el tensor de deformación es intrínsecamente simétrico ($\mathbb{U}_{ij} = \mathbb{U}_{ji}$), lo que reduce sus componentes independientes de 9 a 6.
 
-Esto muestra que $\Phi$ es naturalmente una función de la temperatura y del esfuerzo:
-$$ \Phi = \Phi(T,\sigma_{ik}). $$
+\subsection{Condiciones de Compatibilidad}
 
-Diferenciando respecto de $\sigma_{ik}$ se obtiene el tensor de deformación:
-$$ U_{ik} = -\left(\frac{\partial \Phi}{\partial \sigma_{ik}}\right)_T. $$
+Dado que el tensor de deformación $\mathbb{U}_{ij}$ tiene 6 componentes independientes pero el campo de desplazamiento $\vec{u}$ solo tiene 3, las componentes de $\mathbb{U}_{ij}$ no pueden elegirse arbitrariamente. Deben satisfacer las ecuaciones de compatibilidad de Saint-Venant para garantizar que exista un campo de desplazamiento $\vec{u}$ continuo y unívoco (sin huecos ni superposiciones en el material).
 
-La transformada de Legendre intercambia las variables conjugadas $(U_{ik},\sigma_{ik})$: $F$ resulta conveniente cuando se controlan la temperatura y la deformación, mientras que $\Phi$ corresponde al control de la temperatura y el esfuerzo. Sus derivadas proporcionan las relaciones constitutivas del material.
+La ecuación de compatibilidad (Ecuación 98 del texto base) es:
+$$ \nabla_i \nabla_j \mathbb{U}_{kl} + \nabla_k \nabla_l \mathbb{U}_{ij} = \nabla_i \nabla_l \mathbb{U}_{kj} + \nabla_k \nabla_j \mathbb{U}_{il} $$
+
+\textbf{Demostración:}
+Sustituimos la definición $\mathbb{U}_{kl} = \frac{1}{2}(\nabla_k u_l + \nabla_l u_k)$ en el primer término:
+$$ \nabla_i \nabla_j \mathbb{U}_{kl} = \frac{1}{2}(\nabla_i \nabla_j \nabla_k u_l + \nabla_i \nabla_j \nabla_l u_k) $$
+De manera similar, para el segundo término:
+$$ \nabla_k \nabla_l \mathbb{U}_{ij} = \frac{1}{2}(\nabla_k \nabla_l \nabla_i u_j + \nabla_k \nabla_l \nabla_j u_i) $$
+Sumando ambas expresiones, el lado izquierdo (LHS) es:
+$$ \text{LHS} = \frac{1}{2}(\nabla_i \nabla_j \nabla_k u_l + \nabla_i \nabla_j \nabla_l u_k + \nabla_k \nabla_l \nabla_i u_j + \nabla_k \nabla_l \nabla_j u_i) $$
+Ahora evaluamos el lado derecho (RHS) usando la misma definición:
+$$ \nabla_i \nabla_l \mathbb{U}_{kj} = \frac{1}{2}(\nabla_i \nabla_l \nabla_k u_j + \nabla_i \nabla_l \nabla_j u_k) $$
+$$ \nabla_k \nabla_j \mathbb{U}_{il} = \frac{1}{2}(\nabla_k \nabla_j \nabla_i u_l + \nabla_k \nabla_j \nabla_l u_i) $$
+Sumando estas dos expresiones:
+$$ \text{RHS} = \frac{1}{2}(\nabla_i \nabla_l \nabla_k u_j + \nabla_i \nabla_l \nabla_j u_k + \nabla_k \nabla_j \nabla_i u_l + \nabla_k \nabla_j \nabla_l u_i) $$
+Dado que las derivadas parciales conmutan en un campo suficientemente suave ($\nabla_a \nabla_b = \nabla_b \nabla_a$), podemos reordenar los términos. Por ejemplo, $\nabla_i \nabla_j \nabla_k u_l = \nabla_k \nabla_j \nabla_i u_l$. Al aplicar esta conmutatividad a todos los términos, es inmediato verificar que $\text{LHS} = \text{RHS}$.
+
+\textbf{Interpretación física:} Estas ecuaciones aseguran que la deformación sea geométricamente posible. Si se impusiera un campo de deformación que no cumpla estas 6 ecuaciones diferenciales, el material se rompería o se superpondría a sí mismo al intentar deformarse, ya que no existiría un mapeo continuo $\vec{x}(\vec{X})$ que generara tal deformación.
+
+\subsection{Variación del Producto Escalar}
+
+Para dos elementos de línea materiales $\vec{a}$ y $\vec{b}$, su variación bajo el desplazamiento es $\delta a_i = \sum_m (\nabla_m u_i) a_m$ y $\delta b_j = \sum_n (\nabla_n u_j) b_n$. La variación de su producto escalar es:
+$$ \delta(\vec{a} \cdot \vec{b}) = \delta\vec{a} \cdot \vec{b} + \vec{a} \cdot \delta\vec{b} = \sum_i (\delta a_i b_i + a_i \delta b_i) $$
+Sustituyendo las variaciones:
+$$ \delta(\vec{a} \cdot \vec{b}) = \sum_i \left[ \left(\sum_j \nabla_j u_i a_j\right) b_i + a_i \left(\sum_j \nabla_j u_i b_j\right) \right] $$
+Reorganizando los sumatorios y renombrando índices mudos en el segundo término (intercambiando $i$ y $j$):
+$$ \delta(\vec{a} \cdot \vec{b}) = \sum_{ij} (\nabla_j u_i) a_j b_i + \sum_{ij} (\nabla_i u_j) a_i b_j $$
+$$ \delta(\vec{a} \cdot \vec{b}) = \sum_{ij} (\nabla_i u_j + \nabla_j u_i) a_i b_j $$
+Usando la definición del tensor de deformación $\mathbb{U}_{ij} = \frac{1}{2}(\nabla_i u_j + \nabla_j u_i)$, obtenemos:
+$$ \delta(\vec{a} \cdot \vec{b}) = 2 \sum_{ij} \mathbb{U}_{ij} a_i b_j $$
+
+\subsection{Ejes Principales de Deformación y Diagonalización}
+
+\subsubsection{Comparación de Campos de Desplazamiento}
+
+Analicemos las implicaciones físicas de dos campos de desplazamiento aparentemente similares:
+1) $\vec{u}_1 = \alpha(y, x, 0)$
+2) $\vec{u}_2 = \theta(-y, x, 0)$
+
+Para $\vec{u}_1$, el gradiente es $\nabla \vec{u}_1 = \begin{pmatrix} 0 & \alpha & 0 \\ \alpha & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}$. La parte simétrica es $\mathbb{U} = \begin{pmatrix} 0 & \alpha & 0 \\ \alpha & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix} \neq 0$. Esto representa una \textbf{deformación de cizalladura pura}.
+
+Para $\vec{u}_2$, el gradiente es $\nabla \vec{u}_2 = \begin{pmatrix} 0 & -\theta & 0 \\ \theta & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}$. La parte simétrica es $\mathbb{U} = 0$. Esto representa una \textbf{rotación de cuerpo rígido pura}.
+
+La diferencia fundamental radica en la simetría del gradiente: la parte simétrica produce cambios en longitudes y ángulos (deformación), mientras que la parte antisimétrica solo produce rotación sin alterar la métrica interna del cuerpo.
+
+\subsubsection{Diagonalización mediante Matriz de Rotación}
+
+Dado que $\mathbb{U}$ es una matriz simétrica real, el teorema espectral garantiza que puede ser diagonalizada mediante una matriz ortogonal (una matriz de rotación $R$). Es crucial notar que no diagonalizamos el gradiente completo $\nabla\vec{u}$ (pues no es simétrico), sino su parte simétrica $\mathbb{U}$. La relación es:
+$$ R(\beta)^T \mathbb{U} R(\beta) = \mathbb{U}_{\text{diag}} $$
+
+Para el caso de cizalladura pura $\mathbb{U} = \begin{pmatrix} 0 & \alpha & 0 \\ \alpha & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}$, los valores propios son $\lambda_1 = \alpha$, $\lambda_2 = -\alpha$, $\lambda_3 = 0$. La matriz de rotación que diagonaliza $\mathbb{U}$ (rotando los ejes $45^\circ$ alrededor de $z$, es decir, $\beta = \pi/4$) es:
+$$ R(\pi/4) = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & -1 & 0 \\ 1 & 1 & 0 \\ 0 & 0 & \sqrt{2} \end{pmatrix} $$
+
+Verificamos la diagonalización:
+$$ \mathbb{U}_{\text{diag}} = R^T \mathbb{U} R = \frac{1}{2} \begin{pmatrix} 1 & 1 & 0 \\ -1 & 1 & 0 \\ 0 & 0 & \sqrt{2} \end{pmatrix} \begin{pmatrix} 0 & \alpha & 0 \\ \alpha & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix} \begin{pmatrix} 1 & -1 & 0 \\ 1 & 1 & 0 \\ 0 & 0 & \sqrt{2} \end{pmatrix} = \begin{pmatrix} \alpha & 0 & 0 \\ 0 & -\alpha & 0 \\ 0 & 0 & 0 \end{pmatrix} $$
+
+\textbf{Interpretación en los ejes rotados:}
+En el sistema de coordenadas original, el elemento se deforma por cizalladura. Sin embargo, al observar el tensor diagonalizado $\mathbb{U}_{\text{diag}}$ en los ejes principales $(x', y', z')$, la deformación se interpreta como una \textbf{dilatación} de magnitud $\alpha$ a lo largo del eje $x'$ (dirección $y=x$) y una \textbf{contracción} de magnitud $-\alpha$ a lo largo del eje $y'$ (dirección $y=-x$), sin ningún cambio en $z'$. Esto demuestra que la cizalladura pura es equivalente a tracción y compresión puras vistas desde un sistema de referencia rotado $45^\circ$.
+
+\subsection{Variación del Elemento de Volumen}
+
+El volumen de un paralelepípedo formado por tres vectores infinitesimales $\vec{a}, \vec{b}, \vec{c}$ es $dV = \vec{a} \cdot (\vec{b} \times \vec{c})$. Su variación es:
+$$ \delta(dV) = \delta\vec{a} \cdot (\vec{b} \times \vec{c}) + \vec{a} \cdot (\delta\vec{b} \times \vec{c}) + \vec{a} \cdot (\vec{b} \times \delta\vec{c}) $$
+Evaluemos el primer término usando $\delta a_i = \sum_m (\nabla_m u_i) a_m$:
+$$ \delta\vec{a} \cdot (\vec{b} \times \vec{c}) = \sum_i \left( \sum_m \nabla_m u_i a_m \right) (\vec{b} \times \vec{c})_i = \sum_{i,m} \nabla_m u_i a_m (\vec{b} \times \vec{c})_i $$
+Si elegimos $\vec{a}, \vec{b}, \vec{c}$ alineados con los ejes coordenados ($\hat{e}_1, \hat{e}_2, \hat{e}_3$), entonces $dV = 1$. El primer término se reduce a:
+$$ \sum_{i,m} \nabla_m u_i (\hat{e}_1)_m (\hat{e}_2 \times \hat{e}_3)_i = \sum_{i,m} \nabla_m u_i \delta_{m1} \delta_{i1} = \nabla_1 u_1 $$
+De manera análoga, el segundo término $\vec{a} \cdot (\delta\vec{b} \times \vec{c})$ aporta $\nabla_2 u_2$, y el tercero $\vec{a} \cdot (\vec{b} \times \delta\vec{c})$ aporta $\nabla_3 u_3$.
+Sumando las tres contribuciones y multiplicando por el volumen original $dV$ para un paralelepípedo general:
+$$ \delta(dV) = (\nabla_1 u_1 + \nabla_2 u_2 + \nabla_3 u_3) dV = (\nabla_i u_i) dV $$
+Dado que la traza del tensor de deformación es $\mathbb{U}_{ii} = \frac{1}{2}(\nabla_i u_i + \nabla_i u_i) = \nabla_i u_i$, obtenemos finalmente:
+$$ \delta(dV) = dV \mathbb{U}_{ii} $$
+Esto demuestra que la traza del tensor de deformación representa el cambio fraccional de volumen (dilatación volumétrica).
+
+\section{Trabajo de Desplazamiento: Interpretación Física}
+
+El desarrollo matemático del trabajo virtual de desplazamiento arroja la siguiente expresión para el trabajo total $\delta W$:
+$$ \delta W = -\int_V \vec{f} \cdot \delta\vec{u} \, dV + \int_V \vec{\sigma} : \delta\mathbb{U} \, dV $$
+
+\textbf{Significado conceptual de los términos:}
+\begin{itemize}
+\item \textbf{Primer término} $\left( -\int_V \vec{f} \cdot \delta\vec{u} \, dV \right)$: Representa el trabajo realizado contra las fuerzas de cuerpo externas (como la gravedad o fuerzas electromagnéticas). Físicamente, este término corresponde al cambio en la energía potencial del cuerpo dentro del campo de fuerzas externo. El signo negativo indica que el trabajo externo se almacena como energía potencial.
+\item \textbf{Segundo término} $\left( \int_V \vec{\sigma} : \delta\mathbb{U} \, dV \right)$: Representa el trabajo realizado contra los esfuerzos internos del material. La cantidad $\vec{\sigma} : \delta\mathbb{U} = \sum_{ij} \sigma_{ij} \delta\mathbb{U}_{ij}$ es la densidad de trabajo de deformación por unidad de volumen. Físicamente, este término cuantifica la energía elástica que se almacena en los enlaces atómicos/moleculares del material al deformarse (energía de deformación). Si el material es disipativo (plástico o viscoso), parte de este trabajo se convierte irreversiblemente en calor.
+\end{itemize}
+
+\section{Termodinámica de la Deformación}
+
+La energía relevante para describir las deformaciones elásticas a temperatura constante es la \textbf{Energía Libre de Helmholtz} $F$ (por unidad de volumen), definida como $F = E - TS$, donde $E$ es la energía interna, $T$ la temperatura y $S$ la entropía.
+
+A partir de la primera ley de la termodinámica para un medio deformable, el diferencial de la energía interna es:
+$$ dE = T dS + \sum_{ij} \sigma_{ij} d\mathbb{U}_{ij} $$
+Diferenciando la energía libre de Helmholtz:
+$$ dF = dE - T dS - S dT $$
+Sustituyendo $dE$:
+$$ dF = (T dS + \sum_{ij} \sigma_{ij} d\mathbb{U}_{ij}) - T dS - S dT = \sum_{ij} \sigma_{ij} d\mathbb{U}_{ij} - S dT $$
+Para un proceso isotérmico ($dT = 0$), la expresión se simplifica a:
+$$ dF = \sum_{ij} \sigma_{ij} d\mathbb{U}_{ij} $$
+De esta relación diferencial, identificamos directamente que el tensor de esfuerzos es la derivada parcial de la energía libre de Helmholtz respecto al tensor de deformación:
+$$ \sigma_{ij} = \left( \frac{\partial F}{\partial \mathbb{U}_{ij}} \right)_T $$
+Esta ecuación demuestra termodinámicamente la relación constitutiva fundamental que conecta el esfuerzo con la deformación.
+
+\section{Ley de Hooke Generalizada}
+
+\subsection{Construcción de la Energía Libre de Helmholtz \texorpdfstring{$F$}{F}}
+
+Para un material elástico lineal, la energía libre de Helmholtz $F$ debe ser una función escalar isotrópica del tensor simétrico $\mathbb{U}_{ij}$. Expandiendo $F$ en serie de Taylor alrededor del estado no deformado ($\mathbb{U}_{ij} = 0$) y truncando en segundo orden (aproximación lineal):
+$$ F = F_0 + \sum_{ij} A_{ij} \mathbb{U}_{ij} + \frac{1}{2} \sum_{ijkl} C_{ijkl} \mathbb{U}_{ij} \mathbb{U}_{kl} $$
+Asumimos $F_0 = 0$ (energía de referencia nula) y $A_{ij} = 0$ (el material no está sometido a esfuerzos iniciales). El tensor elástico de cuarto orden $C_{ijkl}$ para un material isótropo se escribe en términos de dos constantes de Lamé, $\lambda$ y $\mu$:
+$$ C_{ijkl} = \lambda \delta_{ij} \delta_{kl} + \mu (\delta_{ik} \delta_{jl} + \delta_{il} \delta_{jk}) $$
+Sustituyendo esto en la serie de Taylor, obtenemos la forma general de $F$:
+$$ F = \frac{1}{2} \lambda \left( \sum_i \mathbb{U}_{ii} \right)^2 + \mu \sum_{ij} (\mathbb{U}_{ij})^2 $$
+
+Para separar físicamente la energía en contribuciones volumétricas y de forma, reescribimos el tensor de deformación como la suma de su parte desviadora (traza cero) $\mathbb{U}'_{ij}$ y su parte esférica:
+$$ \mathbb{U}_{ij} = \mathbb{U}'_{ij} + \frac{1}{3} \mathbb{U}_{kk} \delta_{ij} $$
+Sustituimos esta descomposición en el término $\sum_{ij} (\mathbb{U}_{ij})^2$:
+$$ \sum_{ij} (\mathbb{U}_{ij})^2 = \sum_{ij} \left( \mathbb{U}'_{ij} + \frac{1}{3} \mathbb{U}_{kk} \delta_{ij} \right)^2 $$
+Expandiendo el cuadrado:
+$$ \sum_{ij} (\mathbb{U}_{ij})^2 = \sum_{ij} (\mathbb{U}'_{ij})^2 + \frac{2}{3} \mathbb{U}_{kk} \sum_{ij} \mathbb{U}'_{ij} \delta_{ij} + \frac{1}{9} (\mathbb{U}_{kk})^2 \sum_{ij} \delta_{ij} \delta_{ij} $$
+Evaluamos los términos cruzados y el último término:
+1) $\sum_{ij} \mathbb{U}'_{ij} \delta_{ij} = \sum_i \mathbb{U}'_{ii} = 0$ (por definición, la parte desviadora tiene traza cero).
+2) $\sum_{ij} \delta_{ij} \delta_{ij} = \sum_i \delta_{ii} = 3$.
+Por lo tanto, la expansión se simplifica a:
+$$ \sum_{ij} (\mathbb{U}_{ij})^2 = \sum_{ij} (\mathbb{U}'_{ij})^2 + \frac{1}{3} (\mathbb{U}_{kk})^2 $$
+
+Sustituimos este resultado de vuelta en la expresión de $F$:
+$$ F = \frac{1}{2} \lambda (\mathbb{U}_{kk})^2 + \mu \left[ \sum_{ij} (\mathbb{U}'_{ij})^2 + \frac{1}{3} (\mathbb{U}_{kk})^2 \right] $$
+Agrupando los términos que contienen la traza $(\mathbb{U}_{kk})^2$:
+$$ F = \mu \sum_{ij} (\mathbb{U}'_{ij})^2 + \frac{1}{2} \left( \lambda + \frac{2}{3} \mu \right) (\mathbb{U}_{kk})^2 $$
+Definiendo el \textbf{módulo de compresibilidad volumétrica} (Bulk modulus) como $K = \lambda + \frac{2}{3}\mu$, la energía libre de Helmholtz adopta su forma física más reveladora:
+$$ F = \mu \sum_{ij} (\mathbb{U}'_{ij})^2 + \frac{1}{2} K (\mathbb{U}_{kk})^2 $$
+Esta ecuación demuestra que la energía elástica se almacena de manera independiente en dos modos: energía de distorsión (cizalladura, gobernada por $\mu$) y energía de cambio de volumen (compresión, gobernada por $K$).
+
+\subsection{Relación Esfuerzo-Deformación (Ley de Hooke Directa)}
+
+Utilizando la relación termodinámica $\sigma_{ij} = \frac{\partial F}{\partial \mathbb{U}_{ij}}$ y la forma original de $F$:
+$$ F = \frac{1}{2} \lambda (\mathbb{U}_{kk})^2 + \mu \mathbb{U}_{mn} \mathbb{U}_{mn} $$
+Derivamos respecto a $\mathbb{U}_{ij}$:
+$$ \sigma_{ij} = \lambda \mathbb{U}_{kk} \frac{\partial \mathbb{U}_{kk}}{\partial \mathbb{U}_{ij}} + 2\mu \mathbb{U}_{mn} \frac{\partial \mathbb{U}_{mn}}{\partial \mathbb{U}_{ij}} $$
+Usando las identidades $\frac{\partial \mathbb{U}_{kk}}{\partial \mathbb{U}_{ij}} = \delta_{ij}$ y $\frac{\partial \mathbb{U}_{mn}}{\partial \mathbb{U}_{ij}} = \delta_{mi} \delta_{nj}$ (considerando la simetría), obtenemos la Ley de Hooke generalizada:
+$$ \sigma_{ij} = \lambda \mathbb{U}_{kk} \delta_{ij} + 2\mu \mathbb{U}_{ij} $$
+
+\subsection{Relación Deformación-Esfuerzo (Ley de Hooke Inversa)}
+
+Para expresar $\mathbb{U}_{ij}$ en términos de $\sigma_{ij}$, primero tomamos la traza de la Ley de Hooke directa (contrayendo con $\delta_{ij}$):
+$$ \sigma_{kk} = \lambda \mathbb{U}_{mm} \delta_{kk} + 2\mu \mathbb{U}_{kk} $$
+Dado que $\delta_{kk} = 3$ en tres dimensiones:
+$$ \sigma_{kk} = 3\lambda \mathbb{U}_{kk} + 2\mu \mathbb{U}_{kk} = (3\lambda + 2\mu) \mathbb{U}_{kk} $$
+Despejamos la traza del tensor de deformación:
+$$ \mathbb{U}_{kk} = \frac{\sigma_{kk}}{3\lambda + 2\mu} $$
+Sustituimos esta expresión de vuelta en la Ley de Hooke directa:
+$$ \sigma_{ij} = \lambda \left( \frac{\sigma_{kk}}{3\lambda + 2\mu} \right) \delta_{ij} + 2\mu \mathbb{U}_{ij} $$
+Despejando $\mathbb{U}_{ij}$:
+$$ 2\mu \mathbb{U}_{ij} = \sigma_{ij} - \frac{\lambda}{3\lambda + 2\mu} \sigma_{kk} \delta_{ij} $$
+$$ \mathbb{U}_{ij} = \frac{1}{2\mu} \sigma_{ij} - \frac{\lambda}{2\mu(3\lambda + 2\mu)} \sigma_{kk} \delta_{ij} $$
+Esta es la forma inversa de la Ley de Hooke, que permite calcular las deformaciones a partir de los esfuerzos aplicados.

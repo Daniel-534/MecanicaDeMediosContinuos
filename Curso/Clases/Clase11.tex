@@ -64,7 +64,7 @@ Los campos de esfuerzo describen la distribución local de fuerzas normales y ta
 \centering
 \input{Clases/Figuras/FigurasClase11/Fig3.tex}
 \par\medskip
-\textbf{Figura 3.} (a) Un cilindro sometido a esfuerzo de tensión se estira una cantidad $\Delta L$. (b) Un cilindro sometido a esfuerzo cortante se deforma una cantidad $\Delta x$, de manera similar a una baraja de cartas. (c) Una esfera sólida sometida a esfuerzo hidráulico uniforme por parte de un fluido se contrae en volumen una cantidad $\Delta V$. Todas las deformaciones mostradas están muy exageradas.
+\textbf{Figura 3.} (a) Tensión: el cilindro se alarga en $\Delta L$ respecto de su longitud inicial $L_0$. (b) Corte: la cara superior se desplaza tangencialmente una distancia $\Delta x$; para deformaciones pequeñas, $\gamma\simeq\Delta x/L_0$. (c) Compresión hidrostática: la presión uniforme $p_0$ reduce el volumen de $V_0$ a $V$, con $\Delta V=V-V_0<0$. Los contornos discontinuos indican la configuración inicial. Las deformaciones están exageradas para facilitar su lectura.
 \end{figure}
 
 \begin{figure}[H]
@@ -73,6 +73,15 @@ Los campos de esfuerzo describen la distribución local de fuerzas normales y ta
 \par\medskip
 \textbf{Figura 4.} Curva esfuerzo–deformación ingenieril para una probeta de acero dúctil. La probeta se deforma permanentemente cuando el esfuerzo alcanza la resistencia de fluencia del material. La resistencia última corresponde al máximo esfuerzo ingenieril; después ocurre la estricción y, finalmente, la rotura.
 \end{figure}
+
+En la Figura 4, el tramo recto inicial corresponde a una deformación elástica: al retirar la fuerza, la probeta recupera su longitud. Para una probeta uniforme inicialmente sin esfuerzo, la ley de Hooke axial establece $F=k\,\Delta L$, donde $k$ es su rigidez. Al definir el esfuerzo ingenieril $\sigma=F/A_0$ y la deformación $\varepsilon=\Delta L/L_0$, resulta
+\[
+\sigma=\frac{k\,\Delta L}{A_0}
+=\frac{kL_0}{A_0}\,\varepsilon
+=E\varepsilon,
+\qquad E=\frac{kL_0}{A_0}.
+\]
+El módulo de Young $E$ es la pendiente de ese tramo. Al superar la fluencia queda deformación permanente; después del máximo esfuerzo ingenieril, la sección se estrecha localmente (estricción) hasta la rotura. La relación $\sigma=E\varepsilon$ solo describe el régimen elástico lineal.
 
 \subsubsection{Esfuerzos externos e internos}
 
@@ -84,6 +93,30 @@ Cuando las fuerzas externas crecen, un sólido puede deformarse plásticamente o
 
 Los materiales dúctiles (por ejemplo, cobre) pueden estirarse sin romperse; los materiales frágiles (por ejemplo, hierro fundido) fallan súbitamente.
 
-Las resistencias a la tracción típicas son: metales, varios cientos de megapascales; fibras de carbono, varios gigapascales; nanotubos de carbono, hasta 50 GPa.
+La tabla reúne valores representativos de resistencia última a la tracción, no del módulo de Young ni del esfuerzo de fluencia. Se especifica el material y su condición para evitar asignar un único valor a toda una familia.
+
+\begin{table}[H]
+\centering
+\small
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{@{}p{7.2cm}rrc@{}}
+\toprule
+\textbf{Material y condición} & \textbf{MPa} & \textbf{GPa} & \textbf{Fuente} \\
+\midrule
+Acero estructural S235JR (chapa de 1.5--20 mm) & $360$--$510$ & $0{,}36$--$0{,}51$ & [1] \\
+Acero inoxidable 304 (producto laminado en frío) & $540$--$750$ & $0{,}54$--$0{,}75$ & [2] \\
+Fibra de carbono Toray T300 & $3\,530$ & $3{,}53$ & [3] \\
+Fibra de carbono Toray T700S & $4\,900$ & $4{,}90$ & [3] \\
+Nanotubos de carbono de paredes múltiples (capa exterior de nanotubos individuales) & $11\,000$--$63\,000$ & $11$--$63$ & [4] \\
+\bottomrule
+\end{tabular}
+\par\medskip
+\begin{minipage}{\textwidth}
+\footnotesize
+Los rangos de los aceros corresponden a especificaciones de producto; los valores de las fibras son propiedades típicas publicadas por el fabricante. El intervalo de los nanotubos procede de 19 ensayos individuales y no representa la resistencia de un material macroscópico compuesto por nanotubos. Los datos de fibra corresponden a la fibra, no a un laminado con resina.
+
+\textbf{Fuentes:} [1] \href{https://industry.arcelormittal.com/catalogue/A30/EN}{ArcelorMittal, catálogo S235JR}; [2] \href{https://www.outokumpu.com/en/products/product-ranges/-/media/files/products/core/outokumpu-core-range-datasheet.pdf}{Outokumpu, ficha Core 304/4301}; [3] \href{https://www.toraycma.com/products/carbon-fiber/}{Toray, propiedades de fibras de carbono}; [4] \href{https://doi.org/10.1126/science.287.5453.637}{Yu et al., \emph{Science} 287, 637--640 (2000)}. Consulta: 1 de octubre de 2026.
+\end{minipage}
+\end{table}
 
 % -----------------------------------------------------------

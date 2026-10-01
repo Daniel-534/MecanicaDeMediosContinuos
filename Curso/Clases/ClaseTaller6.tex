@@ -1,263 +1,554 @@
 \chapter{Clase Taller 6}
 
-\section{Problemas propuestos}
+\section{Notación de índices}
 
-En este taller se emplea la convención de suma de Einstein.
-\subsection*{Problema 2}
+Un escalar no tiene índices; las componentes de un vector tienen un índice y las de un tensor de segundo orden tienen dos:
+\[
+\begin{aligned}
+\text{Escalar:}\quad &\phi,\\
+\text{Vector:}\quad &\vec A=A_i\hat e_i,\\
+\text{Tensor:}\quad &\mathbb T=
+T_{ij}\,\hat e_i\,\hat e_j.
+\end{aligned}
+\]
+El producto diádico se escribe por yuxtaposición, sin ningún símbolo entre los vectores; por ejemplo, $\vec A\vec B$. En una base dada, las componentes se organizan como
+\[
+\{A_i\}=\begin{pmatrix}A_1\\A_2\\A_3\end{pmatrix},
+\qquad
+\{T_{ij}\}=\begin{pmatrix}
+T_{11}&T_{12}&T_{13}\\
+T_{21}&T_{22}&T_{23}\\
+T_{31}&T_{32}&T_{33}
+\end{pmatrix}.
+\]
 
-Partiendo de
-\[
-d\vec r=\sum_i h_i\hat e_i\,dq_i,
-\]
-demuestre que
-\[
-\text{(a)}\qquad
-\frac{\partial\hat e_i}{\partial q_j}
-=\frac{\hat e_j}{h_i}\frac{\partial h_j}{\partial q_i},
-\qquad i\ne j,
-\]
-y que
-\[
-\text{(b)}\qquad
-\frac{\partial\hat e_i}{\partial q_i}
-=-\sum_{k\ne i}\frac{\hat e_k}{h_k}\frac{\partial h_i}{\partial q_k}.
-\]
+\subsection{Convención de suma de Einstein}
 
-\textbf{Solución.} Como
+En las expresiones de componentes, un índice \emph{mudo} aparece exactamente dos veces en un término e indica una suma implícita; puede renombrarse sin cambiar el resultado. Un índice \emph{libre} identifica una componente y debe aparecer en ambos miembros de la igualdad. Por ejemplo,
 \[
-\frac{\partial\vec r}{\partial q_i}=h_i\hat e_i,
+C_{ij}=A_{ik}B_{kj}:
 \]
-la igualdad de las derivadas mixtas implica
+$i$ y $j$ son libres, mientras que $k$ es mudo.
+
+En las expresiones coordenadas con factores de escala y vectores de base, como
 \[
-\frac{\partial}{\partial q_j}(h_i\hat e_i)
-=\frac{\partial}{\partial q_i}(h_j\hat e_j).
+d\vec r=h_i\hat e_i\,dq_i.
 \]
-Para $i\ne j$, al proyectar esta igualdad sobre $\hat e_j$ y usar la ortonormalidad de la base, se obtiene
+se sobreentiende la suma sobre las tres direcciones coordenadas, sin escribir un signo de sumatoria. Esta escritura abreviada se distingue de las fórmulas de derivación de la base: allí los índices indicados como fijos no se suman, aunque aparezcan más de una vez.
+
+\section{Problema 2 del Taller 5}
+
+\subsection{Derivadas de la base ortonormal}
+
+En coordenadas curvilíneas ortogonales $(q_1,q_2,q_3)$, sean $h_i$ los factores de escala y $\hat e_i$ los vectores unitarios de la base. Partimos de
 \[
-h_i\hat e_j\cdot\frac{\partial\hat e_i}{\partial q_j}
-=\frac{\partial h_j}{\partial q_i}.
+d\vec r=h_i\hat e_i\,dq_i,
 \]
-Las demás proyecciones se anulan; por tanto,
+con suma implícita sobre $i$. Por otro lado, el diferencial de $\vec r=\vec r(q_1,q_2,q_3)$ es
 \[
-\boxed{
-\frac{\partial\hat e_i}{\partial q_j}
+d\vec r=\frac{\partial\vec r}{\partial q_i}\,dq_i.
+\]
+Al comparar ambas expresiones y usar que los incrementos $dq_i$ son independientes,
+\[
+\left(\frac{\partial\vec r}{\partial q_i}-h_i\hat e_i\right)dq_i=0
+\quad\Longrightarrow\quad
+\boxed{\frac{\partial\vec r}{\partial q_i}=h_i\hat e_i}
+\quad\text{(sin suma sobre $i$)}.
+\]
+Con $i$ y $j$ fijos, aplicamos $\partial/\partial q_j$ a la relación anterior. Como tanto $h_i$ como $\hat e_i$ dependen de las coordenadas, usamos la regla del producto:
+\[
+\begin{aligned}
+\frac{\partial}{\partial q_j}
+\left(\frac{\partial\vec r}{\partial q_i}\right)
+&=\frac{\partial}{\partial q_j}(h_i\hat e_i),\\
+\frac{\partial^2\vec r}{\partial q_j\partial q_i}
+&=\frac{\partial h_i}{\partial q_j}\hat e_i
++h_i\frac{\partial\hat e_i}{\partial q_j}.
+\end{aligned}
+\]
+Ahora intercambiamos $i\leftrightarrow j$. Partiendo de $\partial\vec r/\partial q_j=h_j\hat e_j$ y derivando respecto de $q_i$,
+\[
+\begin{aligned}
+\frac{\partial}{\partial q_i}
+\left(\frac{\partial\vec r}{\partial q_j}\right)
+&=\frac{\partial}{\partial q_i}(h_j\hat e_j),\\
+\frac{\partial^2\vec r}{\partial q_i\partial q_j}
+&=\frac{\partial h_j}{\partial q_i}\hat e_j
++h_j\frac{\partial\hat e_j}{\partial q_i}.
+\end{aligned}
+\]
+Si $\vec r$ tiene derivadas parciales segundas continuas, las derivadas mixtas conmutan:
+\[
+\frac{\partial^2\vec r}{\partial q_j\partial q_i}
+=\frac{\partial^2\vec r}{\partial q_i\partial q_j}.
+\]
+Por tanto, igualamos los desarrollos obtenidos:
+\[
+\hat e_i\frac{\partial h_i}{\partial q_j}
++h_i\frac{\partial\hat e_i}{\partial q_j}
+=\hat e_j\frac{\partial h_j}{\partial q_i}
++h_j\frac{\partial\hat e_j}{\partial q_i}
+\quad\text{(sin suma sobre $i,j$)}.
+\]
+Para $i\ne j$, comparamos directamente las componentes en las direcciones $\hat e_i$ y $\hat e_j$. En coordenadas curvilíneas ortogonales, la variación de $\hat e_i$ al cambiar $q_j$ es paralela a $\hat e_j$, y viceversa:
+\[
+\frac{\partial\hat e_i}{\partial q_j}=\alpha\hat e_j,
+\qquad
+\frac{\partial\hat e_j}{\partial q_i}=\beta\hat e_i
+\quad\text{(sin suma sobre $i,j$)}.
+\]
+Estas direcciones se deben a la ortogonalidad de la base coordenada y a la igualdad de las derivadas mixtas; la norma unitaria, por sí sola, solo garantiza perpendicularidad al vector que se deriva.
+
+Al sustituir en la igualdad anterior y agrupar por dirección,
+\[
+\underbrace{\frac{\partial h_i}{\partial q_j}}_{\text{componente en }\hat e_i}\hat e_i
++\underbrace{h_i\alpha}_{\text{componente en }\hat e_j}\hat e_j
+=\underbrace{h_j\beta}_{\text{componente en }\hat e_i}\hat e_i
++\underbrace{\frac{\partial h_j}{\partial q_i}}_{\text{componente en }\hat e_j}\hat e_j.
+\]
+Como los vectores de la base son independientes, sus coeficientes deben coincidir:
+\[
+\begin{aligned}
+\text{Dirección }\hat e_i:&\qquad
+\frac{\partial h_i}{\partial q_j}=h_j\beta,\\
+\text{Dirección }\hat e_j:&\qquad
+h_i\alpha=\frac{\partial h_j}{\partial q_i}.
+\end{aligned}
+\]
+Por tanto, $\alpha=(1/h_i)\partial h_j/\partial q_i$ y obtenemos directamente
+\[
+\boxed{\frac{\partial\hat e_i}{\partial q_j}
 =\frac{\hat e_j}{h_i}\frac{\partial h_j}{\partial q_i}},
-\qquad i\ne j.
+\qquad i\ne j\quad\text{(sin suma sobre $i,j$)}.
 \]
-Además, $\hat e_i\cdot\hat e_i=1$ implica que
-$\partial\hat e_i/\partial q_i$ no tiene componente en la dirección $\hat e_i$. Para $k\ne i$,
+La figura siguiente ilustra esta comparación de componentes.
+
+\begin{figure}[H]
+\centering
+\input{Clases/Figuras/FigurasClaseTaller6/Fig1.tex}
+\par\medskip
+\begin{minipage}{\textwidth}
+\textbf{Figura 1 del Taller 6.} Geometría de la proyección para $i\ne j$, con índices fijos. (a) Al mantener $|\hat e_i|=1$, su derivada es perpendicular a $\hat e_i$. La flecha discontinua representa el incremento finito; en el límite, $d\hat e_i\simeq(\partial\hat e_i/\partial q_j)dq_j$ sigue la dirección tangente. (b) En el plano local, $\vec m=\partial^2\vec r/(\partial q_j\partial q_i)=\partial^2\vec r/(\partial q_i\partial q_j)$ tiene componentes $A$ y $B$. Al proyectar sobre $\hat e_j$, el término paralelo a $\hat e_i$ desaparece y ambos desarrollos dan la misma componente $B$ (naranja). Las variaciones y las longitudes de las flechas están exageradas; los otros argumentos de $\hat e_i$ se mantienen fijos.
+\end{minipage}
+\end{figure}
+
+\section{Problema 3 del Taller 5}
+
+Denotamos por $\hat\epsilon_j$ los vectores de la base cartesiana fija y por $\hat e_i$ los de la base curvilínea ortonormal. Usamos la convención de que la columna $i$ de la matriz de cambio de base contiene las componentes cartesianas de $\hat e_i$.
+
+Escribiendo $\vec r=x_j\hat\epsilon_j$, para $i$ fijo,
 \[
-\hat e_k\cdot\frac{\partial\hat e_i}{\partial q_i}
-=-\hat e_i\cdot\frac{\partial\hat e_k}{\partial q_i}
-=-\frac{1}{h_k}\frac{\partial h_i}{\partial q_k},
+\frac{\partial\vec r}{\partial q_i}
+=\frac{\partial x_j}{\partial q_i}\hat\epsilon_j
+=h_i\hat e_i.
 \]
-donde se utilizó el resultado anterior. Así,
+La matriz jacobiana organiza estas derivadas por columnas:
 \[
-\boxed{
-\frac{\partial\hat e_i}{\partial q_i}
-=-\sum_{k\ne i}\frac{\hat e_k}{h_k}
-\frac{\partial h_i}{\partial q_k}}.
+\mathbb J=\{J_{ji}\}
+=\begin{pmatrix}
+\dfrac{\partial x_1}{\partial q_1}&\dfrac{\partial x_1}{\partial q_2}&\dfrac{\partial x_1}{\partial q_3}\\[6pt]
+\dfrac{\partial x_2}{\partial q_1}&\dfrac{\partial x_2}{\partial q_2}&\dfrac{\partial x_2}{\partial q_3}\\[6pt]
+\dfrac{\partial x_3}{\partial q_1}&\dfrac{\partial x_3}{\partial q_2}&\dfrac{\partial x_3}{\partial q_3}
+\end{pmatrix}.
 \]
-
-\subsection*{Problema 3}
-
-Escriba la regla de transformación entre los vectores de la base cartesiana
-$(\hat\epsilon_1,\hat\epsilon_2,\hat\epsilon_3)$ y los vectores de una base arbitraria
-$(\hat e_1,\hat e_2,\hat e_3)$.
-
-\textbf{Solución.} Si $\mathbb A=\{a_{ij}\}$ es la matriz de cambio de base, entonces
+La columna $i$ representa $\partial\vec r/\partial q_i$ en la base cartesiana; su longitud es $h_i$. Los factores de escala se agrupan en
 \[
-\boxed{\hat e_i=a_{ij}\hat\epsilon_j},
+\mathbb H=\begin{pmatrix}h_1&0&0\\0&h_2&0\\0&0&h_3\end{pmatrix},
 \qquad
-a_{ij}=\hat e_i\cdot\hat\epsilon_j.
+\mathbb H^{-1}=\begin{pmatrix}1/h_1&0&0\\0&1/h_2&0\\0&0&1/h_3\end{pmatrix}.
 \]
-La transformación inversa es
-\[
-\hat\epsilon_i=(\mathbb A^{-1})_{ij}\hat e_j.
-\]
-Si ambas bases son ortonormales, $\mathbb A^{-1}=\mathbb A^T$ y, por tanto,
-\[
-\boxed{\hat\epsilon_i=a_{ji}\hat e_j},
-\qquad
-a_{ik}a_{jk}=a_{ki}a_{kj}=\delta_{ij}.
-\]
+Trabajamos en puntos regulares del sistema de coordenadas, donde $h_i>0$.
 
-\subsection*{Problema 4}
+Para obtener un vector unitario, dividimos cada columna de $\mathbb J$ por su factor de escala:
+\[
+\hat e_i=a_{ji}\hat\epsilon_j,
+\qquad
+ a_{ji}=\frac{1}{h_i}\frac{\partial x_j}{\partial q_i}
+\quad\text{(sin suma sobre $i$)}.
+\]
+Esta normalización es la multiplicación por $\mathbb H^{-1}$ a la derecha:
+\[
+\boxed{\mathbb A=\mathbb J\mathbb H^{-1}}
+=\begin{pmatrix}
+\dfrac{1}{h_1}\dfrac{\partial x_1}{\partial q_1}&\dfrac{1}{h_2}\dfrac{\partial x_1}{\partial q_2}&\dfrac{1}{h_3}\dfrac{\partial x_1}{\partial q_3}\\[6pt]
+\dfrac{1}{h_1}\dfrac{\partial x_2}{\partial q_1}&\dfrac{1}{h_2}\dfrac{\partial x_2}{\partial q_2}&\dfrac{1}{h_3}\dfrac{\partial x_2}{\partial q_3}\\[6pt]
+\dfrac{1}{h_1}\dfrac{\partial x_3}{\partial q_1}&\dfrac{1}{h_2}\dfrac{\partial x_3}{\partial q_2}&\dfrac{1}{h_3}\dfrac{\partial x_3}{\partial q_3}
+\end{pmatrix}.
+\]
+Equivalentemente, al recuperar las longitudes de las columnas,
+\[
+\begin{aligned}
+\mathbb J=\mathbb A\mathbb H
+&=\begin{pmatrix}
+a_{11}&a_{12}&a_{13}\\
+a_{21}&a_{22}&a_{23}\\
+a_{31}&a_{32}&a_{33}
+\end{pmatrix}
+\begin{pmatrix}h_1&0&0\\0&h_2&0\\0&0&h_3\end{pmatrix}\\[4pt]
+&=\begin{pmatrix}
+h_1a_{11}&h_2a_{12}&h_3a_{13}\\
+h_1a_{21}&h_2a_{22}&h_3a_{23}\\
+h_1a_{31}&h_2a_{32}&h_3a_{33}
+\end{pmatrix}.
+\end{aligned}
+\]
+Así, multiplicar a la derecha por una matriz diagonal escala las \emph{columnas}, no las filas.
+
+La relación $\hat e_i=a_{ji}\hat\epsilon_j$ significa explícitamente
+\[
+\begin{aligned}
+\hat e_1&=a_{11}\hat\epsilon_1+a_{21}\hat\epsilon_2+a_{31}\hat\epsilon_3,\\
+\hat e_2&=a_{12}\hat\epsilon_1+a_{22}\hat\epsilon_2+a_{32}\hat\epsilon_3,\\
+\hat e_3&=a_{13}\hat\epsilon_1+a_{23}\hat\epsilon_2+a_{33}\hat\epsilon_3.
+\end{aligned}
+\]
+Al apilar los vectores de la base en una columna, aparece la transpuesta:
+\[
+\begin{pmatrix}\hat e_1\\\hat e_2\\\hat e_3\end{pmatrix}
+=\underbrace{\begin{pmatrix}
+a_{11}&a_{21}&a_{31}\\
+a_{12}&a_{22}&a_{32}\\
+a_{13}&a_{23}&a_{33}
+\end{pmatrix}}_{\mathbb A^T}
+\begin{pmatrix}\hat\epsilon_1\\\hat\epsilon_2\\\hat\epsilon_3\end{pmatrix}.
+\]
+Esto no cambia la convención: las componentes de $\hat e_i$ siguen estando en la columna $i$ de $\mathbb A$, que pasa a ser la fila $i$ de $\mathbb A^T$.
+
+Como las columnas de $\mathbb A$ representan una base ortonormal, sus productos escalares forman la identidad:
+\[
+\mathbb A^T\mathbb A
+=\begin{pmatrix}
+\hat e_1\cdot\hat e_1&\hat e_1\cdot\hat e_2&\hat e_1\cdot\hat e_3\\
+\hat e_2\cdot\hat e_1&\hat e_2\cdot\hat e_2&\hat e_2\cdot\hat e_3\\
+\hat e_3\cdot\hat e_1&\hat e_3\cdot\hat e_2&\hat e_3\cdot\hat e_3
+\end{pmatrix}
+=\begin{pmatrix}1&0&0\\0&1&0\\0&0&1\end{pmatrix}
+=\mathbb I.
+\]
+Por tanto, $\mathbb A^{-1}=\mathbb A^T$ y $\mathbb A\mathbb A^T=\mathbb I$. Multiplicando la transformación de la base por $\mathbb A$, obtenemos
+\[
+\begin{pmatrix}\hat\epsilon_1\\\hat\epsilon_2\\\hat\epsilon_3\end{pmatrix}
+=\begin{pmatrix}
+a_{11}&a_{12}&a_{13}\\
+a_{21}&a_{22}&a_{23}\\
+a_{31}&a_{32}&a_{33}
+\end{pmatrix}
+\begin{pmatrix}\hat e_1\\\hat e_2\\\hat e_3\end{pmatrix}.
+\]
+Es decir,
+\[
+\begin{aligned}
+\hat\epsilon_1&=a_{11}\hat e_1+a_{12}\hat e_2+a_{13}\hat e_3,\\
+\hat\epsilon_2&=a_{21}\hat e_1+a_{22}\hat e_2+a_{23}\hat e_3,\\
+\hat\epsilon_3&=a_{31}\hat e_1+a_{32}\hat e_2+a_{33}\hat e_3.
+\end{aligned}
+\]
+En notación indicial, ambas reglas se resumen en
+\[
+\boxed{\hat e_i=a_{ji}\hat\epsilon_j},
+\qquad
+\boxed{\hat\epsilon_j=a_{ji}\hat e_i}.
+\]
+En la transformación directa se suma implícitamente sobre $j$ y en la inversa sobre $i$.
+
+\section{Problema 4 del Taller 5}
 
 Dados
 \[
-\mathbb S=
-\begin{pmatrix}
-1&0&2\\
-0&1&2\\
-3&0&3
-\end{pmatrix},
-\qquad
-\vec a=
-\begin{pmatrix}
-1\\2\\3
-\end{pmatrix},
+\mathbb S=\begin{pmatrix}1&0&2\\0&1&2\\3&0&3\end{pmatrix},
+\qquad \vec a=\begin{pmatrix}1\\2\\3\end{pmatrix},
 \]
-calcule:
-\[
-\text{(a) }S_{ii},
-\qquad
-\text{(b) }S_{ij}S_{ij},
-\qquad
-\text{(c) }S_{ij}S_{ji},
-\]
-\[
-\text{(d) }a_ma_m,
-\qquad
-\text{(e) }S_{mn}a_ma_n.
-\]
-Escriba cada una de estas expresiones en notación matricial.
+calculamos las contracciones y sus representaciones matriciales.
 
-\textbf{Solución.}
-
-La contracción de los índices de un tensor corresponde a su traza:
+\subsection*{Inciso (a): traza}
 \[
-\text{(a)}\qquad
-S_{ii}=\mathrm{Tr}\,\mathbb S=\boxed{5}.
+S_{ii}=S_{11}+S_{22}+S_{33}
+=\mathrm{Tr}\,\mathbb S=\boxed{5}.
 \]
 
-Para $S_{ij}S_{ij}$ se introduce el tensor transpuesto, usando
-$(\mathbb S^T)_{ji}=S_{ij}$:
+\subsection*{Inciso (b): suma de cuadrados de las componentes}
 \[
 \begin{aligned}
-\text{(b)}\qquad
 S_{ij}S_{ij}
-&=(\mathbb S^T)_{ji}S_{ij}\\
-&=(\mathbb S^T\mathbb S)_{jj}\\
-&=\mathrm{Tr}(\mathbb S^T\mathbb S)
-=\boxed{28}.
+&=S_{11}^2+S_{12}^2+S_{13}^2\\
+&\quad+S_{21}^2+S_{22}^2+S_{23}^2\\
+&\quad+S_{31}^2+S_{32}^2+S_{33}^2\\
+&=1^2+0^2+2^2+0^2+1^2+2^2+3^2+0^2+3^2=28.
 \end{aligned}
 \]
+Al introducir la transpuesta, $(\mathbb S^T)_{ji}=S_{ij}$, se reconoce el producto matricial:
+\[
+S_{ij}S_{ij}=S_{ij}(\mathbb S^T)_{ji}
+=(\mathbb S\mathbb S^T)_{ii}
+=\mathrm{Tr}(\mathbb S\mathbb S^T)=\boxed{28}.
+\]
 
-En la contracción cruzada aparece directamente el producto $\mathbb S^2$:
+\subsection*{Inciso (c): contracción con índices intercambiados}
 \[
 \begin{aligned}
-\text{(c)}\qquad
 S_{ij}S_{ji}
-&=(\mathbb S^2)_{ii}\\
-&=\mathrm{Tr}(\mathbb S^2)
-=\boxed{23}.
+&=S_{11}^2+S_{12}S_{21}+S_{13}S_{31}\\
+&\quad+S_{21}S_{12}+S_{22}^2+S_{23}S_{32}\\
+&\quad+S_{31}S_{13}+S_{32}S_{23}+S_{33}^2\\
+&=1+0+6+0+1+0+6+0+9=23.
 \end{aligned}
 \]
-
-Para el vector, la contracción se escribe como un producto fila--columna:
+En este caso no se necesita transponer:
 \[
-\begin{aligned}
-\text{(d)}\qquad
-a_ma_m
-&=(\vec a^{\,T})_m a_m\\
-&=\vec a^{\,T}\vec a
-=\boxed{14}.
-\end{aligned}
+S_{ij}S_{ji}=(\mathbb S^2)_{ii}
+=\mathrm{Tr}(\mathbb S^2)=\boxed{23}.
 \]
 
-Finalmente, como los componentes son escalares, se pueden reordenar para reconocer el producto matricial:
+\subsection*{Inciso (d): norma del vector al cuadrado}
 \[
-\begin{aligned}
-\text{(e)}\qquad
-S_{mn}a_ma_n
-&=a_mS_{mn}a_n\\
-&=(\vec a^{\,T})_mS_{mn}a_n\\
-&=\vec a^{\,T}\mathbb S\vec a
-=\boxed{59}.
-\end{aligned}
+a_ma_m=a_1^2+a_2^2+a_3^2
+=\vec a^{\,T}\vec a=\boxed{14}.
 \]
 
-\subsection*{Problema 6}
-
-Demuestre que si $\mathbb S$ es un tensor simétrico y $\mathbb A$ es un tensor antisimétrico, entonces
+Como $\vec a$ se representa mediante una columna de tamaño $3\times1$, transponemos el primer factor para obtener una fila. Así, el producto fila por columna produce el escalar buscado:
 \[
-S_{ij}A_{ij}=0.
+\underbrace{\vec a^{\,T}}_{1\times3}
+\underbrace{\vec a}_{3\times1}
+=\begin{pmatrix}a_1&a_2&a_3\end{pmatrix}
+\begin{pmatrix}a_1\\a_2\\a_3\end{pmatrix}
+=a_ma_m.
 \]
+Si transponemos únicamente el segundo factor, el producto $\vec a\vec a^{\,T}$ tiene tamaño $3\times3$ y sus elementos son $a_i a_j$: es una matriz, no la norma al cuadrado.
 
-\textbf{Solución.} Sea $C=S_{ij}A_{ij}$. Al intercambiar los índices mudos $i$ y $j$ y usar $S_{ji}=S_{ij}$ y $A_{ji}=-A_{ij}$,
+\subsection*{Inciso (e): forma cuadrática}
 \[
-C=S_{ji}A_{ji}=S_{ij}(-A_{ij})=-C.
+S_{mn}a_ma_n=a_mS_{mn}a_n
+=\vec a^{\,T}\mathbb S\vec a=\boxed{59}.
 \]
-Por consiguiente, $2C=0$ y
+Las contracciones de los incisos (b) y (c) no son iguales en general; coinciden si $\mathbb S$ es simétrico.
+
+\section{Problema 6 del Taller 5}
+
+\subsection{Contracción de un tensor simétrico y uno antisimétrico}
+
+Sean $S_{ij}=S_{ji}$ y $A_{ij}=-A_{ji}$. Intercambiando los índices mudos,
+\[
+S_{ij}A_{ij}=S_{ji}A_{ji}
+=-S_{ij}A_{ij}.
+\]
+La contracción es igual a su negativo, por lo que
 \[
 \boxed{S_{ij}A_{ij}=0}.
 \]
 
-\subsection*{Problema 8}
+\section{Problema 7 del Taller 5}
 
-Demuestre que la traza y el determinante de un tensor son invariantes bajo transformaciones de coordenadas.
+\subsection{Determinante y símbolo de Levi-Civita}
 
-\textbf{Solución.} Para un cambio entre bases cartesianas ortonormales, sea $\mathbb R$ la matriz ortogonal de transformación. Entonces
-\[
-\mathbb T'=\mathbb R\mathbb T\mathbb R^T,
-\qquad
-R_{ik}R_{il}=\delta_{kl}.
-\]
-La traza se transforma como
-\[
-\mathrm{Tr}\,\mathbb T'
-=T'_{ii}
-=R_{ik}R_{il}T_{kl}
-=\delta_{kl}T_{kl}
-=\boxed{\mathrm{Tr}\,\mathbb T}.
-\]
-Además, como $\det\mathbb R=\pm1$,
-\[
-\det\mathbb T'
-=\det\mathbb R\,\det\mathbb T\,\det\mathbb R^T
-=(\det\mathbb R)^2\det\mathbb T
-=\boxed{\det\mathbb T}.
-\]
-
-\subsection*{Problema 11}
-
-El momento de cuadrupolo eléctrico $\mathbb Q$ de una distribución de carga $\rho(\vec r)$ se define como
-\[
-\mathbb Q
-=\int \rho(\vec r\,')
-\left[3\vec r\,'\vec r\,'-r'^2\mathbb I\right]dV'.
-\]
-
-\begin{enumerate}[(a)]
-\item Demuestre que la traza de este tensor es cero.
-\item Calcule el campo electrostático asociado con este cuadrupolo si el potencial se define como
-\[
-\Phi(\vec r)=\frac{1}{2r^5}\,\vec r\cdot\mathbb Q\cdot\vec r.
-\]
-\end{enumerate}
-
-\textbf{Solución.} Para la traza, usando $\delta_{ii}=3$ y $r'_ir'_i=r'^2$,
+En una base cartesiana de orientación positiva, $\varepsilon_{ijk}$ vale $+1$ o $-1$ para las permutaciones pares o impares de $(1,2,3)$, y cero si se repite algún índice. La expansión por la primera fila es
 \[
 \begin{aligned}
-Q_{ii}
-&=\int\rho(\vec r\,')
-\left(3r'_ir'_i-r'^2\delta_{ii}\right)dV'\\
-&=\int\rho(\vec r\,')\left(3r'^2-3r'^2\right)dV'=\boxed{0}.
+\det\mathbb A
+&=A_{11}(A_{22}A_{33}-A_{23}A_{32})\\
+&\quad-A_{12}(A_{21}A_{33}-A_{23}A_{31})\\
+&\quad+A_{13}(A_{21}A_{32}-A_{22}A_{31}).
+\end{aligned}
+\]
+Cada menor puede escribirse mediante las identidades
+\[
+\begin{aligned}
+\delta_{2j}\delta_{3k}-\delta_{3j}\delta_{2k}
+&=\varepsilon_{23\ell}\varepsilon_{jk\ell},\\
+\delta_{3j}\delta_{1k}-\delta_{1j}\delta_{3k}
+&=\varepsilon_{31\ell}\varepsilon_{jk\ell},\\
+\delta_{1j}\delta_{2k}-\delta_{2j}\delta_{1k}
+&=\varepsilon_{12\ell}\varepsilon_{jk\ell}.
+\end{aligned}
+\]
+Por tanto,
+\[
+\begin{aligned}
+\det\mathbb A
+&=A_{11}A_{2j}A_{3k}\varepsilon_{jk1}
++A_{12}A_{2j}A_{3k}\varepsilon_{jk2}\\
+&\quad+A_{13}A_{2j}A_{3k}\varepsilon_{jk3}\\
+&=\varepsilon_{jki}A_{1i}A_{2j}A_{3k}
+=\boxed{\varepsilon_{ijk}A_{1i}A_{2j}A_{3k}}.
+\end{aligned}
+\]
+La última igualdad usa que una permutación cíclica de tres índices no cambia el signo.
+
+\subsection{Determinante de un producto}
+
+Sea $\mathbb C=\mathbb A\mathbb B$, con $C_{ij}=A_{i\ell}B_{\ell j}$. Entonces
+\[
+\begin{aligned}
+\det\mathbb C
+&=\varepsilon_{ijk}C_{1i}C_{2j}C_{3k}\\
+&=A_{1\ell}A_{2m}A_{3n}
+\left(\varepsilon_{ijk}B_{\ell i}B_{mj}B_{nk}\right).
+\end{aligned}
+\]
+El término entre paréntesis es el determinante formado por las filas $\ell,m,n$ de $\mathbb B$. Si dos filas coinciden, se anula; si son distintas, su signo viene dado por $\varepsilon_{\ell mn}$. Así,
+\[
+\varepsilon_{ijk}B_{\ell i}B_{mj}B_{nk}
+=\varepsilon_{\ell mn}\det\mathbb B.
+\]
+Sustituyendo,
+\[
+\det(\mathbb A\mathbb B)
+=\left(\varepsilon_{\ell mn}A_{1\ell}A_{2m}A_{3n}\right)\det\mathbb B
+=\boxed{\det\mathbb A\,\det\mathbb B}.
+\]
+
+\section{Problema 8 del Taller 5}
+
+\subsection{Invariancia de la traza y del determinante}
+
+Consideramos un cambio entre bases ortonormales, con la convención del problema 3: $\hat e_i'=a_{ki}\hat\epsilon_k$. Al expresar el mismo tensor en ambas bases,
+\[
+\mathbb T=T_{ij}'\hat e_i'\,\hat e_j'
+=a_{ki}a_{\ell j}T_{ij}'\hat\epsilon_k\,\hat\epsilon_\ell.
+\]
+Por comparación de componentes y usando la ortogonalidad de $\mathbb A$,
+\[
+T_{k\ell}=a_{ki}a_{\ell j}T_{ij}',
+\qquad T_{ij}'=a_{ki}a_{\ell j}T_{k\ell},
+\qquad \mathbb T'=\mathbb A^T\mathbb T\mathbb A.
+\]
+
+\textbf{Traza.} Como $a_{ki}a_{\ell i}=\delta_{k\ell}$,
+\[
+\mathrm{Tr}\,\mathbb T'=T_{ii}'
+=a_{ki}a_{\ell i}T_{k\ell}
+=\delta_{k\ell}T_{k\ell}
+=T_{kk}=\boxed{\mathrm{Tr}\,\mathbb T}.
+\]
+
+\textbf{Determinante.} Como $\det\mathbb A=\pm1$,
+\[
+\begin{aligned}
+\det\mathbb T'
+&=\det\mathbb A^T\,\det\mathbb T\,\det\mathbb A\\
+&=(\det\mathbb A)^2\det\mathbb T
+=\boxed{\det\mathbb T}.
+\end{aligned}
+\]
+Estas fórmulas se aplican a componentes en bases ortonormales, incluida una base local de coordenadas ortogonales en un punto dado.
+
+\section{Problema 10 del Taller 5}
+
+\subsection{Gradiente del vector posición}
+
+Escribimos $\vec r=x_i\hat\epsilon_i$ en la base cartesiana fija, aunque las coordenadas $x_i=x_i(q_1,q_2,q_3)$ dependan de las coordenadas curvilíneas. El operador gradiente en coordenadas ortogonales es
+\[
+\vec\nabla=\frac{\hat e_k}{h_k}\frac{\partial}{\partial q_k}.
+\]
+Como $\hat\epsilon_i$ es constante y $(1/h_k)\partial x_i/\partial q_k=a_{ik}$, para cada $k$ fijo,
+\[
+\begin{aligned}
+\vec\nabla\vec r
+&=\hat e_k\,
+\left(\frac{1}{h_k}\frac{\partial x_i}{\partial q_k}\hat\epsilon_i\right)\\
+&=\hat e_k\,(a_{ik}\hat\epsilon_i)
+=\hat e_k\,\hat e_k
+=\boxed{\mathbb I}.
 \end{aligned}
 \]
 
-Para calcular el campo, escribimos
+\section{Problema 13 del Taller 5}
+
+\subsection{Convenciones para las identidades cartesianas}
+
+Usamos $\partial_i=\partial/\partial x_i$ y una base cartesiana fija. La divergencia contrae el primer índice y el gradiente diádico tiene componentes
 \[
-\Phi=\frac{1}{2}r^{-5}r_iQ_{ij}r_j.
+(\vec\nabla\cdot\mathbb T)_j=\partial_iT_{ij},
+\qquad (\vec\nabla\vec A)_{ij}=\partial_iA_j.
 \]
-Como $\mathbb Q$ es simétrico,
+Para conservar la forma de las identidades de estos apuntes, en esta sección el símbolo de doble contracción se define como
 \[
-\frac{\partial}{\partial r_k}(r_iQ_{ij}r_j)=2Q_{kj}r_j,
-\qquad
-\frac{\partial r^{-5}}{\partial r_k}=-5r_k r^{-7}.
+\mathbb T:\mathbb R=T_{ij}R_{ji}=\mathrm{Tr}(\mathbb T\mathbb R).
 \]
-Por tanto, $\vec E=-\vec\nabla\Phi$ tiene componentes
+Esta convención se distingue de la contracción $T_{ij}R_{ij}=\mathrm{Tr}(\mathbb T^T\mathbb R)$; las dos coinciden cuando $\mathbb R$ es simétrico. En los gradientes de tensores, la contracción actúa sobre los dos índices tensoriales y deja libre el índice de derivación.
+
+\subsection*{Inciso (a): divergencia de un producto diádico}
+
+Como $(\vec A\,\vec B)_{ij}=A_iB_j$, la regla del producto da
 \[
-E_k
-=-\frac{Q_{kj}r_j}{r^5}
-+\frac{5}{2r^7}(r_iQ_{ij}r_j)r_k.
+\begin{aligned}
+\bigl[\vec\nabla\cdot(\vec A\,\vec B)\bigr]_j
+&=\partial_i(A_iB_j)\\
+&=(\partial_iA_i)B_j+A_i\partial_iB_j.
+\end{aligned}
 \]
-En forma vectorial,
+Por tanto,
 \[
-\boxed{
-\vec E(\vec r)
-=\frac{1}{2r^7}
-\left[5(\vec r\cdot\mathbb Q\cdot\vec r)\vec r
--2r^2\mathbb Q\cdot\vec r\right]}.
+\boxed{\vec\nabla\cdot(\vec A\,\vec B)
+=\vec B(\vec\nabla\cdot\vec A)+(\vec A\cdot\vec\nabla)\vec B}.
+\]
+
+\subsection*{Inciso (b): divergencia de un producto cruz}
+
+Definimos el producto cruz sobre el segundo vector de la díada:
+\[
+\mathbb T\times\vec A
+=T_{ij}\hat e_i\,(\hat e_j\times\vec A),
+\qquad (\mathbb T\times\vec A)_{i\ell}
+=\varepsilon_{\ell jk}T_{ij}A_k.
+\]
+La divergencia resulta
+\[
+\begin{aligned}
+\bigl[\vec\nabla\cdot(\mathbb T\times\vec A)\bigr]_\ell
+&=\partial_i(\varepsilon_{\ell jk}T_{ij}A_k)\\
+&=\varepsilon_{\ell jk}(\partial_iT_{ij})A_k
++\varepsilon_{\ell jk}T_{ij}\partial_iA_k\\
+&=\varepsilon_{\ell jk}(\vec\nabla\cdot\mathbb T)_jA_k
++\varepsilon_{\ell jk}(\mathbb T^T)_{ji}\partial_iA_k.
+\end{aligned}
+\]
+El operador $(\mathbb T^T\cdot\vec\nabla)_j=T_{ij}\partial_i$ actúa solo sobre $\vec A$. Con estas definiciones, el signo del segundo término es positivo:
+\[
+\boxed{\vec\nabla\cdot(\mathbb T\times\vec A)
+=(\vec\nabla\cdot\mathbb T)\times\vec A
++(\mathbb T^T\cdot\vec\nabla)\times\vec A}.
+\]
+El enunciado del PDF escribe un signo negativo; este no corresponde a las convenciones de producto cruz y divergencia empleadas aquí.
+
+\subsection*{Inciso (c): divergencia del producto tensor--vector}
+
+Aplicando la regla del producto,
+\[
+\begin{aligned}
+\vec\nabla\cdot(\mathbb T\cdot\vec A)
+&=\partial_i(T_{ij}A_j)\\
+&=(\partial_iT_{ij})A_j+T_{ij}\partial_iA_j.
+\end{aligned}
+\]
+Con la convención de doble contracción indicada,
+\[
+\mathbb T^T:(\vec\nabla\vec A)
+=(\mathbb T^T)_{ji}(\vec\nabla\vec A)_{ij}
+=T_{ij}\partial_iA_j.
+\]
+De ahí,
+\[
+\boxed{\vec\nabla\cdot(\mathbb T\cdot\vec A)
+=(\vec\nabla\cdot\mathbb T)\cdot\vec A
++\mathbb T^T:(\vec\nabla\vec A)}.
+\]
+
+\subsection*{Inciso (d): gradiente de una doble contracción}
+
+La componente $i$ del gradiente es
+\[
+\begin{aligned}
+\bigl[\vec\nabla(\mathbb T:\mathbb R)\bigr]_i
+&=\partial_i(T_{jk}R_{kj})\\
+&=(\partial_iT_{jk})R_{kj}
++(\partial_iR_{kj})T_{jk}\\
+&=[(\vec\nabla\mathbb T):\mathbb R]_i
++[(\vec\nabla\mathbb R):\mathbb T]_i.
+\end{aligned}
+\]
+Por tanto,
+\[
+\boxed{\vec\nabla(\mathbb T:\mathbb R)
+=(\vec\nabla\mathbb T):\mathbb R
++(\vec\nabla\mathbb R):\mathbb T}.
 \]

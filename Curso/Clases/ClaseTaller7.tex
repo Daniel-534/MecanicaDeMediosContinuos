@@ -1,0 +1,317 @@
+\chapter{Clase Taller 7}
+
+En este taller usamos la convención de suma de Einstein y la notación de las clases 15 y 16: $\vec u$ es el campo de desplazamiento, $\mathbb U$ es el tensor de deformación y $U_{ij}$ y $\sigma_{ij}$ son sus componentes de deformación y esfuerzo. El material es elástico lineal, homogéneo e isótropo, con constantes de Lamé $\lambda$ y $\mu$.
+
+\section{Problema 1 del Taller 7: asentamiento sin cizalladura}
+
+Este desarrollo corresponde también al \textbf{problema 10 del Taller 6}. Retomamos el asentamiento bajo el propio peso de la clase 16, pero ahora retiramos las paredes que impedían el desplazamiento lateral. El cuerpo tiene altura $h$, densidad de referencia $\rho_0$ y gravedad $\vec g=-g_0\hat e_z$.
+
+Buscamos un campo sin esfuerzos cortantes:
+\[
+\sigma_{xy}=\sigma_{yz}=\sigma_{zx}=0.
+\]
+Por la simetría del tensor de esfuerzos, también se anulan sus componentes transpuestas. Las ecuaciones de equilibrio se reducen a
+\[
+\nabla_x\sigma_{xx}=0,
+\qquad
+\nabla_y\sigma_{yy}=0,
+\qquad
+\nabla_z\sigma_{zz}=\rho_0g_0.
+\]
+La primera ecuación indica que $\sigma_{xx}$ es independiente de $x$. Como la tracción se anula en las caras laterales libres, $\sigma_{xx}=0$ en sus puntos con $n_x\ne0$, y este valor se extiende al interior a lo largo de cada línea paralela al eje $x$. Análogamente, $\sigma_{yy}=0$.
+
+Integrando la ecuación vertical y usando $\sigma_{zz}(h)=0$,
+\[
+\boxed{\sigma_{xx}=\sigma_{yy}=0},
+\qquad
+\boxed{\sigma_{zz}=-\rho_0g_0(h-z)}.
+\]
+La ley de Hooke inversa,
+\[
+U_{ij}=\frac{1}{E}
+\left[(1+\nu)\sigma_{ij}-\nu\sigma_{kk}\delta_{ij}\right],
+\]
+produce las deformaciones
+\[
+U_{zz}=-\frac{\rho_0g_0}{E}(h-z),
+\qquad
+U_{xx}=U_{yy}=\frac{\nu\rho_0g_0}{E}(h-z),
+\]
+\[
+U_{xy}=U_{xz}=U_{yz}=0.
+\]
+Para $\nu>0$, la compresión vertical se acompaña de expansión lateral.
+
+Integrando las componentes diagonales del tensor de deformación,
+\[
+\begin{aligned}
+u_x&=\frac{\nu\rho_0g_0}{E}(h-z)x+f_1(y,z),\\
+u_y&=\frac{\nu\rho_0g_0}{E}(h-z)y+f_2(x,z),\\
+u_z&=-\frac{\rho_0g_0}{E}\left(hz-\frac{z^2}{2}\right)+f_3(x,y).
+\end{aligned}
+\]
+La condición $U_{xy}=0$ exige
+\[
+\frac{\partial f_2}{\partial x}+\frac{\partial f_1}{\partial y}=0.
+\]
+Para obtener un campo con la simetría del problema, sin superponer movimientos rígidos, elegimos $f_1=f_2=0$. Esta elección satisface la condición anterior; no es necesario identificar ambas funciones con una misma función de $z$.
+
+Las condiciones restantes de corte nulo determinan $f_3$:
+\[
+\begin{aligned}
+U_{xz}=0
+&\quad\Longrightarrow\quad
+\frac{\partial f_3}{\partial x}=\frac{\nu\rho_0g_0}{E}x,\\
+U_{yz}=0
+&\quad\Longrightarrow\quad
+\frac{\partial f_3}{\partial y}=\frac{\nu\rho_0g_0}{E}y.
+\end{aligned}
+\]
+Por tanto,
+\[
+f_3(x,y)=\frac{\nu\rho_0g_0}{2E}(x^2+y^2)+C.
+\]
+Fijamos la referencia vertical imponiendo $u_z=0$ en el círculo $x^2+y^2=a^2$ del plano $z=0$. Entonces
+\[
+C=-\frac{\nu\rho_0g_0}{2E}a^2.
+\]
+El campo de desplazamiento resultante es
+\[
+\boxed{u_x=\frac{\nu\rho_0g_0}{E}(h-z)x},
+\qquad
+\boxed{u_y=\frac{\nu\rho_0g_0}{E}(h-z)y},
+\]
+\[
+\boxed{u_z=-\frac{\rho_0g_0}{2E}
+\left[h^2-(h-z)^2+\nu(a^2-x^2-y^2)\right]}.
+\]
+En el fondo,
+\[
+u_z(x,y,0)=\frac{\nu\rho_0g_0}{2E}(x^2+y^2-a^2).
+\]
+Así, $u_z$ no se anula sobre toda la base. Esta solución sin cizalladura no satisface el apoyo sobre un plano rígido: imponer $u_z=0$ en todo el fondo requiere, en general, admitir esfuerzos cortantes. Fijar el desplazamiento en el círculo solo determina la constante $C$; no reemplaza las condiciones mecánicas del apoyo.
+
+\section{Problema 3 del Taller 7: tensor de deformación en una base local}
+
+En una base ortonormal variable, el tensor de deformación se define por
+\[
+\mathbb U=\frac{1}{2}
+\left(\vec\nabla\vec u+(\vec\nabla\vec u)^T\right),
+\qquad
+U_{ij}=\hat e_i\cdot\mathbb U\cdot\hat e_j.
+\]
+El producto diádico se escribe por yuxtaposición, sin un símbolo adicional. Consideremos coordenadas curvilíneas ortogonales $q_i$, con factores de escala $h_i$, y escribamos
+\[
+\vec u=u_\ell\hat e_\ell,
+\qquad
+\vec\nabla=\frac{\hat e_k}{h_k}\frac{\partial}{\partial q_k}.
+\]
+La última expresión emplea la suma coordenada implícita sobre $k$. En este problema, $\partial_i$ denota $\partial/\partial q_i$; la derivada direccional sobre un escalar es $\nabla_i=(1/h_i)\partial_i$.
+
+Proyectamos el gradiente diádico sobre $\hat e_i$ y $\hat e_j$, manteniendo ambos índices libres:
+\[
+\begin{aligned}
+(\vec\nabla\vec u)_{ij}
+&=\hat e_i\cdot(\vec\nabla\vec u)\cdot\hat e_j\\
+&=\frac{1}{h_i}\partial_i(u_\ell\hat e_\ell)\cdot\hat e_j\\
+&=\frac{1}{h_i}
+\left[(\partial_i u_\ell)(\hat e_\ell\cdot\hat e_j)
++u_\ell(\partial_i\hat e_\ell)\cdot\hat e_j\right]\\
+&=\frac{1}{h_i}
+\left[\partial_i u_j+u_\ell(\partial_i\hat e_\ell)\cdot\hat e_j\right].
+\end{aligned}
+\]
+El primer término deriva las componentes del desplazamiento; el segundo tiene en cuenta la variación de los vectores de la base.
+
+Definimos los coeficientes de conexión de la base ortonormal local como
+\[
+c_{\ell i j}=(\partial_i\hat e_\ell)\cdot\hat e_j.
+\]
+Estos describen cómo gira la base y no deben identificarse directamente con los símbolos de Christoffel de una base coordenada no normalizada. Al derivar $\hat e_\ell\cdot\hat e_j=\delta_{\ell j}$, se obtiene $c_{\ell i j}=-c_{j i\ell}$.
+
+Simetrizando los índices $i,j$, llegamos a
+\[
+\boxed{U_{ij}=\frac{1}{2}
+\left[
+\frac{\partial_i u_j}{h_i}
++\frac{\partial_j u_i}{h_j}
++\frac{u_\ell}{h_i}c_{\ell i j}
++\frac{u_\ell}{h_j}c_{\ell j i}
+\right]}.
+\]
+Aquí se suma sobre $\ell$, no sobre $i$ ni $j$. En una base cartesiana fija, $h_i=1$ y $c_{\ell i j}=0$, por lo que se recupera
+\[
+U_{ij}=\frac{1}{2}(\partial_i u_j+\partial_j u_i).
+\]
+
+\section{Problema 4 del Taller 7: tubo cilíndrico}
+
+Consideremos un tubo de radio interior $a$ y exterior $b$, con $0<a<b$, sometido a una presión externa $p>0$ y sin presión interna:
+\[
+\sigma_{rr}(a)=0,
+\qquad \sigma_{rr}(b)=-p.
+\]
+Suponemos simetría axial, ausencia de fuerzas de cuerpo y un desplazamiento puramente radial,
+\[
+\vec u=u_r(r)\hat e_r,
+\qquad u_\theta=u_z=0.
+\]
+Este es un modelo de \emph{deformación plana}, con $U_{zz}=0$; presupone una restricción axial compatible y no describe, en general, un tubo con extremos libres de tracción.
+
+Como el campo radial es irrotacional, la ecuación de Navier--Cauchy sin fuerzas de cuerpo se reduce a
+\[
+\vec\nabla(\vec\nabla\cdot\vec u)=0
+\quad\Longrightarrow\quad
+\vec\nabla\cdot\vec u=\alpha,
+\]
+donde $\alpha$ es constante. En coordenadas cilíndricas,
+\[
+\frac{1}{r}\frac{d(ru_r)}{dr}=\alpha.
+\]
+Integrando,
+\[
+ru_r=\frac{\alpha}{2}r^2+B
+\quad\Longrightarrow\quad
+u_r=Ar+\frac{B}{r},
+\qquad A=\frac{\alpha}{2}.
+\]
+Para calcular los esfuerzos, necesitamos las deformaciones diagonales. Usamos $\partial\hat e_r/\partial r=0$ y $\partial\hat e_r/\partial\theta=\hat e_\theta$:
+\[
+\begin{aligned}
+U_{rr}
+&=\frac{\partial}{\partial r}(u_r\hat e_r)\cdot\hat e_r
+=\frac{du_r}{dr}=A-\frac{B}{r^2},\\
+U_{\theta\theta}
+&=\frac{1}{r}\frac{\partial}{\partial\theta}(u_r\hat e_r)\cdot\hat e_\theta
+=\frac{u_r}{r}=A+\frac{B}{r^2},\\
+U_{zz}&=0.
+\end{aligned}
+\]
+Las componentes de corte son nulas y
+\[
+\mathrm{Tr}\,\mathbb U=U_{rr}+U_{\theta\theta}+U_{zz}=2A.
+\]
+La ley de Hooke proporciona
+\[
+\sigma_{rr}=\lambda\,\mathrm{Tr}\,\mathbb U+2\mu U_{rr}
+=2(\lambda+\mu)A-\frac{2\mu B}{r^2}.
+\]
+Al aplicar las condiciones de frontera y dividir entre dos,
+\[
+\begin{aligned}
+(\lambda+\mu)A-\frac{\mu B}{a^2}&=0,\\
+(\lambda+\mu)A-\frac{\mu B}{b^2}&=-\frac{p}{2}.
+\end{aligned}
+\]
+Restando la segunda ecuación de la primera,
+\[
+\mu B\left(\frac{1}{b^2}-\frac{1}{a^2}\right)=\frac{p}{2}
+\quad\Longrightarrow\quad
+B=-\frac{pa^2b^2}{2\mu(b^2-a^2)}.
+\]
+Sustituyendo en la primera ecuación,
+\[
+A=\frac{\mu B}{a^2(\lambda+\mu)}
+=-\frac{pb^2}{2(\lambda+\mu)(b^2-a^2)}.
+\]
+Finalmente,
+\[
+\boxed{u_r(r)=-\frac{pb^2}{2(b^2-a^2)}
+\left(\frac{r}{\lambda+\mu}+\frac{a^2}{\mu r}\right)}.
+\]
+El signo negativo indica una contracción radial. Como verificación,
+\[
+\sigma_{rr}(r)=-\frac{pb^2}{b^2-a^2}
+\left(1-\frac{a^2}{r^2}\right),
+\]
+que satisface $\sigma_{rr}(a)=0$ y $\sigma_{rr}(b)=-p$. La restricción axial también produce $\sigma_{zz}=2\lambda A$, aunque $U_{zz}=0$.
+
+\section{Problema 7 del Taller 7: esfera bajo su propia gravedad}
+
+Consideremos una esfera sólida de radio $R$ y densidad de referencia uniforme $\rho_0$. Denotamos por $g_R$ la magnitud de la gravedad en su superficie y usamos el campo de la configuración no deformada:
+\[
+\vec g(r)=-g_R\frac{r}{R}\hat e_r,
+\qquad
+\vec f(r)=\rho_0\vec g(r).
+\]
+Por simetría esférica, el desplazamiento es radial,
+\[
+\vec u=u_r(r)\hat e_r,
+\]
+y debe ser regular en el centro. La superficie está libre de tracción:
+\[
+\sigma_{rr}(R)=0.
+\]
+Como $\vec\nabla\times\vec u=0$, la ecuación de Navier--Cauchy se reduce a
+\[
+(\lambda+2\mu)\vec\nabla(\vec\nabla\cdot\vec u)
+=-\vec f
+=\rho_0g_R\frac{r}{R}\hat e_r.
+\]
+Definimos
+\[
+\alpha=\frac{\rho_0g_R}{R(\lambda+2\mu)}
+=\frac{\rho_0g_R(1+\nu)(1-2\nu)}{RE(1-\nu)}.
+\]
+En coordenadas esféricas,
+\[
+\vec\nabla\cdot\vec u=\frac{1}{r^2}\frac{d(r^2u_r)}{dr},
+\]
+de modo que la ecuación radial es
+\[
+\frac{d}{dr}\left[\frac{1}{r^2}\frac{d(r^2u_r)}{dr}\right]=\alpha r.
+\]
+Integramos dos veces:
+\[
+\begin{aligned}
+\frac{1}{r^2}\frac{d(r^2u_r)}{dr}
+&=\frac{\alpha}{2}r^2+C_1,\\
+r^2u_r&=\frac{\alpha}{10}r^5+\frac{C_1}{3}r^3+B.
+\end{aligned}
+\]
+Definiendo $A=C_1/3$, el desplazamiento queda
+\[
+u_r=\frac{\alpha}{10}r^3+Ar+\frac{B}{r^2}.
+\]
+La regularidad en $r=0$ exige $B=0$.
+
+Para hallar $A$, calculamos las componentes diagonales de $\mathbb U$. Con $\theta$ como ángulo polar y $\phi$ como ángulo azimutal, usamos $\partial_\theta\hat e_r=\hat e_\theta$ y $\partial_\phi\hat e_r=\sin\theta\,\hat e_\phi$:
+\[
+\begin{aligned}
+U_{rr}
+&=\frac{du_r}{dr}=\frac{3\alpha}{10}r^2+A,\\
+U_{\theta\theta}
+&=\frac{1}{r}\frac{\partial}{\partial\theta}(u_r\hat e_r)\cdot\hat e_\theta
+=\frac{u_r}{r}=\frac{\alpha}{10}r^2+A,\\
+U_{\phi\phi}
+&=\frac{1}{r\sin\theta}\frac{\partial}{\partial\phi}(u_r\hat e_r)\cdot\hat e_\phi
+=\frac{u_r}{r}=\frac{\alpha}{10}r^2+A.
+\end{aligned}
+\]
+Por tanto,
+\[
+\mathrm{Tr}\,\mathbb U=\frac{\alpha}{2}r^2+3A.
+\]
+La componente radial del esfuerzo es
+\[
+\begin{aligned}
+\sigma_{rr}
+&=\lambda\,\mathrm{Tr}\,\mathbb U+2\mu U_{rr}\\
+&=(3\lambda+2\mu)A+\frac{\alpha}{10}(5\lambda+6\mu)r^2.
+\end{aligned}
+\]
+Imponiendo $\sigma_{rr}(R)=0$,
+\[
+A=-\frac{\alpha R^2}{10}\frac{5\lambda+6\mu}{3\lambda+2\mu}
+=-\frac{\alpha R^2}{10}\frac{3-\nu}{1+\nu}.
+\]
+El resultado final es
+\[
+\boxed{u_r(r)=\frac{\alpha R^2r}{10}
+\left(\frac{r^2}{R^2}-\frac{3-\nu}{1+\nu}\right)}.
+\]
+Se verifica que $u_r(0)=0$ y que
+\[
+\sigma_{rr}(r)=\frac{\alpha}{10}(5\lambda+6\mu)(r^2-R^2),
+\]
+por lo que el esfuerzo radial se anula en la superficie y es compresivo en el interior. Para módulos estables, $-1<\nu<1/2$, el desplazamiento también es hacia el centro. La solución supone gradientes de desplazamiento pequeños y evalúa la gravedad en la configuración de referencia.
