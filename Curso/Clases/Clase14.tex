@@ -35,28 +35,49 @@ Dado que la suma de escalares (o componentes) es conmutativa, es evidente que:
 $$ \mathbb{U}_{ji} = \frac{1}{2}(\nabla_i u_j + \nabla_j u_i) = \mathbb{U}_{ij} $$
 Por lo tanto, el tensor de deformación es intrínsecamente simétrico ($\mathbb{U}_{ij} = \mathbb{U}_{ji}$), lo que reduce sus componentes independientes de 9 a 6.
 
-\subsection{Condiciones de Compatibilidad}
+Para interpretar geométricamente el tensor de deformación, consideremos dos elementos de línea materiales $\vec a$ y $\vec b$. Bajo el campo de desplazamiento $\vec u(\vec x)$, cambian a $\vec a+\delta\vec a$ y $\vec b+\delta\vec b$, con
+\[
+\delta a_i=(\nabla_j u_i)a_j,
+\qquad
+\delta b_i=(\nabla_j u_i)b_j.
+\]
+Trabajamos a primer orden en el gradiente de desplazamiento, de modo que despreciamos el producto $\delta\vec a\cdot\delta\vec b$. La variación del producto escalar es entonces
+\[
+\begin{aligned}
+\delta(\vec a\cdot\vec b)
+&=\delta\vec a\cdot\vec b+\vec a\cdot\delta\vec b\\
+&=(\delta a_i)b_i+a_i(\delta b_i)\\
+&=(\nabla_j u_i)a_jb_i+(\nabla_j u_i)a_ib_j.
+\end{aligned}
+\]
+En el primer término intercambiamos los índices mudos $i$ y $j$, sin alterar la suma implícita. Así, ambos términos contienen el mismo producto $a_i b_j$:
+\[
+\delta(\vec a\cdot\vec b)
+=(\nabla_i u_j)a_ib_j+(\nabla_j u_i)a_ib_j
+=(\nabla_i u_j+\nabla_j u_i)a_ib_j.
+\]
+Como las componentes del tensor de deformación infinitesimal son
+\[
+U_{ij}=\frac{1}{2}(\nabla_i u_j+\nabla_j u_i),
+\]
+obtenemos
+\[
+\delta(\vec a\cdot\vec b)
+=2U_{ij}a_ib_j
+=2\vec a\cdot\mathbb U\cdot\vec b.
+\]
+Esta expresión muestra que solo la parte simétrica del gradiente de desplazamiento modifica el producto escalar a primer orden.
 
-Dado que el tensor de deformación $\mathbb{U}_{ij}$ tiene 6 componentes independientes pero el campo de desplazamiento $\vec{u}$ solo tiene 3, las componentes de $\mathbb{U}_{ij}$ no pueden elegirse arbitrariamente. Deben satisfacer las ecuaciones de compatibilidad de Saint-Venant para garantizar que exista un campo de desplazamiento $\vec{u}$ continuo y unívoco (sin huecos ni superposiciones en el material).
-
-La ecuación de compatibilidad (Ecuación 98 del texto base) es:
-$$ \nabla_i \nabla_j \mathbb{U}_{kl} + \nabla_k \nabla_l \mathbb{U}_{ij} = \nabla_i \nabla_l \mathbb{U}_{kj} + \nabla_k \nabla_j \mathbb{U}_{il} $$
-
-\textbf{Demostración:}
-Sustituimos la definición $\mathbb{U}_{kl} = \frac{1}{2}(\nabla_k u_l + \nabla_l u_k)$ en el primer término:
-$$ \nabla_i \nabla_j \mathbb{U}_{kl} = \frac{1}{2}(\nabla_i \nabla_j \nabla_k u_l + \nabla_i \nabla_j \nabla_l u_k) $$
-De manera similar, para el segundo término:
-$$ \nabla_k \nabla_l \mathbb{U}_{ij} = \frac{1}{2}(\nabla_k \nabla_l \nabla_i u_j + \nabla_k \nabla_l \nabla_j u_i) $$
-Sumando ambas expresiones, el lado izquierdo (LHS) es:
-$$ \text{LHS} = \frac{1}{2}(\nabla_i \nabla_j \nabla_k u_l + \nabla_i \nabla_j \nabla_l u_k + \nabla_k \nabla_l \nabla_i u_j + \nabla_k \nabla_l \nabla_j u_i) $$
-Ahora evaluamos el lado derecho (RHS) usando la misma definición:
-$$ \nabla_i \nabla_l \mathbb{U}_{kj} = \frac{1}{2}(\nabla_i \nabla_l \nabla_k u_j + \nabla_i \nabla_l \nabla_j u_k) $$
-$$ \nabla_k \nabla_j \mathbb{U}_{il} = \frac{1}{2}(\nabla_k \nabla_j \nabla_i u_l + \nabla_k \nabla_j \nabla_l u_i) $$
-Sumando estas dos expresiones:
-$$ \text{RHS} = \frac{1}{2}(\nabla_i \nabla_l \nabla_k u_j + \nabla_i \nabla_l \nabla_j u_k + \nabla_k \nabla_j \nabla_i u_l + \nabla_k \nabla_j \nabla_l u_i) $$
-Dado que las derivadas parciales conmutan en un campo suficientemente suave ($\nabla_a \nabla_b = \nabla_b \nabla_a$), podemos reordenar los términos. Por ejemplo, $\nabla_i \nabla_j \nabla_k u_l = \nabla_k \nabla_j \nabla_i u_l$. Al aplicar esta conmutatividad a todos los términos, es inmediato verificar que $\text{LHS} = \text{RHS}$.
-
-\textbf{Interpretación física:} Estas ecuaciones aseguran que la deformación sea geométricamente posible. Si se impusiera un campo de deformación que no cumpla estas 6 ecuaciones diferenciales, el material se rompería o se superpondría a sí mismo al intentar deformarse, ya que no existiría un mapeo continuo $\vec{x}(\vec{X})$ que generara tal deformación.
+Para expresar el resultado en términos de las direcciones de los elementos de línea, definimos $\hat a=\vec a/|\vec a|$ y $\hat b=\vec b/|\vec b|$, suponiendo que ambos vectores son no nulos. La proyección del tensor sobre estas direcciones es
+\[
+U_{ab}=\hat a\cdot\mathbb U\cdot\hat b
+=\frac{\vec a\cdot\mathbb U\cdot\vec b}{|\vec a|\,|\vec b|}.
+\]
+Aquí los subíndices $a,b$ identifican direcciones, no índices de suma. Por tanto, $\vec a\cdot\mathbb U\cdot\vec b=|\vec a|\,|\vec b|\,U_{ab}$, y finalmente
+\[
+\boxed{\delta(\vec a\cdot\vec b)=2|\vec a|\,|\vec b|\,U_{ab}}.
+\]
+La proyección $U_{ab}$ cuantifica el cambio del producto escalar de los elementos materiales, normalizado por sus longitudes.
 
 \subsection{Variación del Producto Escalar}
 
