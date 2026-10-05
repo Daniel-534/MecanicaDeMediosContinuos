@@ -1,0 +1,62 @@
+\begin{tikzpicture}[
+  >=Latex, line cap=round, line join=round, font=\small,
+  x={(-0.8cm,-0.5cm)}, y={(0.9cm,0cm)}, z={(0cm,0.85cm)},
+  exterior/.style={->, red!75!black, line width=1.3pt}
+]
+\coordinate (O) at (0,0,0);
+\coordinate (A) at (2.7,0,0);
+\coordinate (B) at (0,3.2,0);
+\coordinate (C) at (0,0,3.0);
+
+\node[font=\small\bfseries] at (0,1.2,4.35) {(a) Normales exteriores};
+
+\filldraw[fill=gray!8, draw=gray!60] (O) -- (B) -- (C) -- cycle;
+\filldraw[fill=blue!9, draw=blue!55!black] (O) -- (A) -- (B) -- cycle;
+\filldraw[fill=orange!10, draw=orange!70!black] (O) -- (A) -- (C) -- cycle;
+\filldraw[fill=green!8, fill opacity=0.55, draw=green!40!black]
+  (A) -- (B) -- (C) -- cycle;
+
+\draw[->, green!45!black] (O) -- (3.5,0,0) node[below] {$+\hat e_x$};
+\draw[->, green!45!black] (O) -- (0,4.0,0) node[right] {$+\hat e_y$};
+\draw[->, green!45!black] (O) -- (0,0,3.5) node[above left] {$+\hat e_z$};
+
+\coordinate (Pyz) at (0,1.15,1.25);
+\coordinate (Pzx) at (1.15,0,1.15);
+\coordinate (Pxy) at (1.15,1.15,0);
+
+\draw[exterior] (Pyz) -- ++(-1.35,0,0)
+  node[above right] {$\hat n_x=-\hat e_x$};
+
+\draw[exterior] (Pzx) -- ++(0,-1.45,0)
+  node[above left] {$\hat n_y=-\hat e_y$};
+
+\draw[exterior] (Pxy) -- ++(0,0,-1.35)
+  node[midway,right] {$\hat n_z=-\hat e_z$};
+
+\begin{scope}[xshift=8.7cm, x={(1cm,0cm)}, y={(0cm,1cm)}, z={(0cm,0cm)}]
+\node[font=\small\bfseries] at (0,3.5) {(b) Signo de la tracción};
+
+\node[draw=gray!45, fill=gray!3, rounded corners=3pt,
+      text width=5.8cm, align=center, inner sep=9pt] at (0,2.15)
+  {En la cara coordenada normal a la dirección $j$, la normal exterior es
+  \[
+    \hat n^{(j)}=-\hat e_j.
+  \]};
+
+\node[align=center] at (0,0.55) {$\displaystyle
+  d\vec F_j
+  =\bigl(\vec\sigma\cdot\hat n^{(j)}\bigr)dS_j
+  =\vec\sigma\cdot(-\hat e_j)dS_j$};
+
+\node[align=center, text=blue!65!black] at (0,-0.65) {$\displaystyle
+  d\vec F_j=-\underbrace{(\vec\sigma\cdot\hat e_j)}_{\vec\sigma_j}dS_j
+  =-\vec\sigma_jdS_j$};
+
+\node[draw=blue!45, fill=blue!4, rounded corners=3pt,
+      inner sep=8pt] at (0,-1.85) {$\displaystyle
+  \boxed{\vec\sigma_j=-\frac{d\vec F_j}{dS_j}}$};
+
+\node[align=center, font=\footnotesize] at (0,-2.85)
+  {El signo menos no describe compresión.\\Proviene únicamente de la orientación de la cara.};
+\end{scope}
+\end{tikzpicture}

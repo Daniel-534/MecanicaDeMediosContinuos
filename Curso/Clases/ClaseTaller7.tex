@@ -91,6 +91,16 @@ u_z(x,y,0)=\frac{\nu\rho_0g_0}{2E}(x^2+y^2-a^2).
 \]
 Así, $u_z$ no se anula sobre toda la base. Esta solución sin cizalladura no satisface el apoyo sobre un plano rígido: imponer $u_z=0$ en todo el fondo requiere, en general, admitir esfuerzos cortantes. Fijar el desplazamiento en el círculo solo determina la constante $C$; no reemplaza las condiciones mecánicas del apoyo.
 
+
+\begin{figure}[H]
+\centering
+\input{Clases/Figuras/FigurasClaseTaller7/Fig1.tex}
+\par\medskip
+\begin{minipage}{\textwidth}
+\textbf{Figura 1 del Taller 7.} Asentamiento sin cizalladura para $\nu>0$. (a) Corte vertical: la compresión reduce la altura y produce expansión lateral. El contorno discontinuo representa el cuerpo inicial. (b) Perfil de $u_z(x,0)$ en $y=0$: la referencia elegida anula el desplazamiento en $x=\pm a$, pero no en el interior. Por ello, el campo no satisface el apoyo sobre un fondo plano rígido. Las deformaciones y la escala vertical del perfil se exageran para facilitar su lectura.
+\end{minipage}
+\end{figure}
+
 \section{Problema 3 del Taller 7: tensor de deformación en una base local}
 
 En una base ortonormal variable, el tensor de deformación se define por
@@ -143,6 +153,16 @@ Aquí se suma sobre $\ell$, no sobre $i$ ni $j$. En una base cartesiana fija, $h
 \[
 U_{ij}=\frac{1}{2}(\partial_i u_j+\partial_j u_i).
 \]
+
+
+\begin{figure}[H]
+\centering
+\input{Clases/Figuras/FigurasClaseTaller7/Fig2.tex}
+\par\medskip
+\begin{minipage}{\textwidth}
+\textbf{Figura 2 del Taller 7.} Variación de una base local, ilustrada con la base polar $\hat e_r,\hat e_\theta$. (a) Al pasar de $P$ a $Q$, los vectores de la base giran. Un vector de desplazamiento constante en el espacio, dibujado en azul, tiene componentes distintas en ambas bases. (b) La regla del producto separa la variación de las componentes de la variación de la base; si $\vec u$ es constante, ambas contribuciones se cancelan. El cambio angular se representa ampliado.
+\end{minipage}
+\end{figure}
 
 \section{Problema 4 del Taller 7: tubo cilíndrico}
 
@@ -225,6 +245,16 @@ El signo negativo indica una contracción radial. Como verificación,
 \left(1-\frac{a^2}{r^2}\right),
 \]
 que satisface $\sigma_{rr}(a)=0$ y $\sigma_{rr}(b)=-p$. La restricción axial también produce $\sigma_{zz}=2\lambda A$, aunque $U_{zz}=0$.
+
+
+\begin{figure}[H]
+\centering
+\input{Clases/Figuras/FigurasClaseTaller7/Fig3.tex}
+\par\medskip
+\begin{minipage}{\textwidth}
+\textbf{Figura 3 del Taller 7.} Tubo sometido a presión externa. (a) La sección anular tiene radio interior $a$ y exterior $b$; la cavidad no está presurizada. Las flechas naranjas representan la presión exterior y la violeta indica la contracción radial. El modelo impone $u_z=0$. (b) El esfuerzo radial es nulo en la pared interior y alcanza $-p$ en la exterior. El perfil ilustra un tubo con $b/a=2$; la solución del texto es válida para cualquier $0<a<b$.
+\end{minipage}
+\end{figure}
 
 \section{Problema 7 del Taller 7: esfera bajo su propia gravedad}
 
@@ -315,3 +345,12 @@ Se verifica que $u_r(0)=0$ y que
 \sigma_{rr}(r)=\frac{\alpha}{10}(5\lambda+6\mu)(r^2-R^2),
 \]
 por lo que el esfuerzo radial se anula en la superficie y es compresivo en el interior. Para módulos estables, $-1<\nu<1/2$, el desplazamiento también es hacia el centro. La solución supone gradientes de desplazamiento pequeños y evalúa la gravedad en la configuración de referencia.
+
+\begin{figure}[H]
+\centering
+\input{Clases/Figuras/FigurasClaseTaller7/Fig4.tex}
+\par\medskip
+\begin{minipage}{\textwidth}
+\textbf{Figura 4 del Taller 7.} Esfera bajo su propia gravedad. (a) Corte por el centro: las flechas gravitacionales apuntan hacia él y aumentan de magnitud con la distancia. El contorno discontinuo representa la esfera inicial y el sólido, una contracción exagerada. (b) Para densidad uniforme, la magnitud del campo gravitacional de referencia crece linealmente desde cero hasta $g_R$. La regularidad exige $u_r(0)=0$ y la superficie libre exige $\sigma_{rr}(R)=0$.
+\end{minipage}
+\end{figure}

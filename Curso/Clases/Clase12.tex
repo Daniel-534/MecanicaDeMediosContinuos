@@ -72,18 +72,54 @@ Considérese un elemento de superficie con forma de un pequeño triángulo con v
 \centering
 \input{Clases/Figuras/FigurasClase12/Fig6.tex}
 \par\medskip
-\textbf{Figura 6.} El pequeño triángulo y sus proyecciones forman un tetraedro. La fuerza (vectorial) que actúa sobre el triángulo en el plano $xy$ se denomina $d\vec{F}_z$, y la fuerza que actúa sobre el triángulo en el plano $zx$ es $d\vec{F}_y$. La fuerza $d\vec{F}_x$ que actúa sobre el triángulo en el plano $yz$ queda oculta. La fuerza $d\vec{F}$ actúa sobre el triángulo inclinado.
+\textbf{Figura 6(a).} El pequeño triángulo y sus proyecciones forman un tetraedro. La fuerza (vectorial) que actúa sobre el triángulo en el plano $xy$ se denomina $d\vec{F}_z$, y la fuerza que actúa sobre el triángulo en el plano $zx$ es $d\vec{F}_y$. La fuerza $d\vec{F}_x$ que actúa sobre el triángulo en el plano $yz$ queda oculta. La fuerza $d\vec{F}$ actúa sobre el triángulo inclinado.
 \end{figure}
 
-Sumando la fuerza externa $d\vec{F}$ que actúa sobre la cara inclinada y una posible fuerza volumétrica $\vec{f}\,dV$, la segunda ley de Newton para el pequeño tetraedro es:
+Además de las fuerzas de contacto que actúan sobre sus caras, el tetraedro puede experimentar fuerzas que actúan sobre toda la materia contenida en su interior. Estas se denominan \emph{fuerzas volumétricas} o \emph{fuerzas de cuerpo}. El campo $\vec f(\vec x,t)$ representa la fuerza por unidad de volumen y tiene unidades de $\mathrm{N/m^3}$. Por ello, la fuerza volumétrica sobre un volumen infinitesimal $dV$ es
+\[
+d\vec F_{\mathrm{vol}}=\vec f\,dV.
+\]
+Más precisamente, sobre un volumen finito sería $\int_V\vec f\,dV$; para el tetraedro infinitesimal, $\vec f$ puede considerarse aproximadamente constante y salir de la integral. El ejemplo más importante es la gravedad: si $\rho$ es la densidad de masa y $\vec g$ el campo gravitacional, entonces
+\[
+\vec f=\rho\vec g,
+\qquad
+d\vec F_{\mathrm{vol}}=\rho\vec g\,dV=\vec g\,dM.
+\]
+A diferencia de las tracciones, que solo aparecen por contacto sobre la frontera y son proporcionales al área, una fuerza volumétrica actúa directamente sobre cada elemento de masa del interior.
+
+Sumando la fuerza $d\vec F$ que actúa sobre la cara inclinada, las fuerzas sobre las tres caras coordenadas y la posible fuerza volumétrica, la segunda ley de Newton para el pequeño tetraedro es
 $$ \vec{a}_{CM}\,dM = \vec{f}\,dV + d\vec{F}_x + d\vec{F}_y + d\vec{F}_z + d\vec{F}, $$
 donde $\vec{a}_{CM}$ es la aceleración del centro de masas del tetraedro y $dM = \rho\,dV$ su masa.
 
-El volumen del tetraedro escala como la tercera potencia de su tamaño lineal, mientras que el área superficial escala solo como la segunda potencia. Al hacer el tetraedro progresivamente más pequeño, el término de fuerza volumétrica y el término de aceleración se anulan más rápidamente que los términos de superficie. En el límite de un tetraedro verdaderamente infinitesimal, solo sobreviven los términos de superficie, de modo que:
-$$ d\vec{F}_x + d\vec{F}_y + d\vec{F}_z + d\vec{F} = 0. $$
+Para justificar la simplificación, sea $\ell$ el tamaño lineal característico del tetraedro. Sus áreas son de orden $\ell^2$, mientras que su volumen y su masa son de orden $\ell^3$:
+\[
+dS\sim \ell^2,
+\qquad
+dV\sim \ell^3,
+\qquad
+dM=\rho\,dV\sim \ell^3.
+\]
+Si los esfuerzos, la fuerza volumétrica y la aceleración permanecen acotados, las fuerzas de superficie son de orden $\sigma\ell^2$, mientras que la fuerza volumétrica y el término inercial son de orden $f\ell^3$ y $\rho a_{CM}\ell^3$, respectivamente. La segunda ley puede escribirse entonces de manera esquemática como
+\[
+\underbrace{d\vec F_x+d\vec F_y+d\vec F_z+d\vec F}_{\text{orden }\ell^2}
+=
+\underbrace{(\rho\vec a_{CM}-\vec f)dV}_{\text{orden }\ell^3}.
+\]
+Al dividir entre $\ell^2$ y tomar el límite $\ell\to0$, el miembro derecho es proporcional a $\ell$ y tiende a cero. Por ello, en el orden dominante queda el equilibrio entre las fuerzas de superficie:
+\[
+d\vec F_x+d\vec F_y+d\vec F_z+d\vec F=0.
+\]
+No significa que la gravedad o la inercia sean siempre nulas, sino que su contribución es de orden superior en este argumento local usado para obtener la relación de Cauchy.
 
 Teniendo en cuenta que las proyecciones de área $dS_x$, $dS_y$ y $dS_z$ apuntan hacia el interior del tetraedro, se definen los vectores de esfuerzo a lo largo de las direcciones coordenadas:
 $$ \vec{\sigma}_x = -\frac{d\vec{F}_x}{dS_x}, \qquad \vec{\sigma}_y = -\frac{d\vec{F}_y}{dS_y}, \qquad \vec{\sigma}_z = -\frac{d\vec{F}_z}{dS_z}. $$
+
+\begin{figure}[H]
+\centering
+\input{Clases/Figuras/FigurasClase12/Fig6Signos.tex}
+\par\medskip
+\textbf{Figura 6(b).} Origen del signo negativo en las caras coordenadas del tetraedro. Las normales exteriores son $-\hat e_x$, $-\hat e_y$ y $-\hat e_z$, porque las direcciones coordenadas positivas apuntan hacia el interior del tetraedro. Por ello, la tracción sobre la cara $j$ es $\vec\sigma\cdot(-\hat e_j)=-\vec\sigma_j$, de donde $\vec\sigma_j=-d\vec F_j/dS_j$. Este signo se debe a la orientación y no indica por sí mismo que el esfuerzo sea de compresión.
+\end{figure}
 
 En consecuencia:
 $$ d\vec{F} = \vec{\sigma}_x\,dS_x + \vec{\sigma}_y\,dS_y + \vec{\sigma}_z\,dS_z. $$
@@ -97,11 +133,34 @@ Sea $S=\partial V$ la superficie cerrada que limita el volumen $V$, con normal e
 F_i=\int_V f_i\,dV+\oint_S dF_i
 =\int_V f_i\,dV+\oint_S\sigma_{ij}n_j\,dS.
 \]
-Se entiende suma sobre el índice repetido $j$, mientras que $i$ es libre, y se escribe $\partial_j=\partial/\partial x_j$. Para cada $i$ fijo, el teorema de Gauss aplicado al campo de componentes $\sigma_{ij}$ da, suponiendo suficiente regularidad,
+Se entiende suma sobre el índice repetido $j$, mientras que $i$ es libre, y se escribe $\partial_j=\partial/\partial x_j$. Recordemos primero el teorema de Gauss en su forma usual. Para un campo vectorial $\vec A=(A_x,A_y,A_z)$,
 \[
-\oint_S\sigma_{ij}n_j\,dS
-=\int_V\partial_j\sigma_{ij}\,dV.
+\oint_S
+(A_xn_x+A_yn_y+A_zn_z)\,dS
+=\int_V
+(\partial_xA_x+\partial_yA_y+\partial_zA_z)\,dV.
 \]
+En notación indicial, esta misma igualdad es
+\[
+\oint_S A_jn_j\,dS=\int_V\partial_jA_j\,dV.
+\]
+Ahora fijamos el índice $i$ y hacemos la identificación
+\[
+(A_x,A_y,A_z)=(\sigma_{ix},\sigma_{iy},\sigma_{iz}).
+\]
+Por ejemplo, para $i=x$ se toma $\vec A=(\sigma_{xx},\sigma_{xy},\sigma_{xz})$. La fórmula usual de Gauss se convierte entonces en
+\[
+\oint_S
+(\sigma_{xx}n_x+\sigma_{xy}n_y+\sigma_{xz}n_z)\,dS
+=\int_V
+(\partial_x\sigma_{xx}+\partial_y\sigma_{xy}+\partial_z\sigma_{xz})\,dV.
+\]
+Escribiendo simultáneamente los casos $i=x,y,z$, esta igualdad se resume como
+\[
+\boxed{\oint_S\sigma_{ij}n_j\,dS
+=\int_V\partial_j\sigma_{ij}\,dV}.
+\]
+Por tanto, no se está usando una versión diferente del teorema de Gauss: se aplica el teorema vectorial usual a cada fila del tensor de esfuerzo. El índice $j$ recorre las componentes del campo vectorial, mientras que $i$ permanece fijo y selecciona la componente de la fuerza resultante.
 Por tanto,
 \[
 F_i=\int_V\left(f_i+\partial_j\sigma_{ij}\right)\,dV.
@@ -128,11 +187,43 @@ $\vec F=\int_V\vec f^{\,*}\,dV$, y dado que $V$ es arbitrario, se obtiene
 \]
 El transpuesto responde a la convención de contracción de índices; no se ha supuesto simetría del tensor de esfuerzo.
 
-La Figura 7 da una interpretación local del resultado. Para una caja de volumen $dV=dx\,dy\,dz$, las fuerzas sobre las dos caras normales a $x$ tienen signos opuestos. Manteniendo $y$ y $z$ fijos y usando $dS_x=dy\,dz$, su suma es
+La Figura 7 da una interpretación local del resultado. Consideremos una caja de volumen
 \[
-\bigl[\vec\sigma_x(x+dx)-\vec\sigma_x(x)\bigr]dS_x
-\simeq \partial_x\vec\sigma_x\,dV.
+dV=dx\,dy\,dz
 \]
+y las dos caras perpendiculares al eje $x$, cada una con área $dS_x=dy\,dz$. Recordemos que $\vec\sigma_x=\vec\sigma\cdot\hat e_x$ es la tracción correspondiente a una cara cuya normal apunta en la dirección $+x$.
+
+En la cara derecha, situada en $x+dx$, la normal exterior es $+\hat e_x$ y la fuerza es
+\[
+d\vec F_x^{\,+}=\vec\sigma_x(x+dx)\,dS_x.
+\]
+En la cara izquierda, situada en $x$, la normal exterior es $-\hat e_x$. Por la dependencia lineal de la tracción con la normal, la fuerza sobre esta cara es
+\[
+d\vec F_x^{\,-}=-\vec\sigma_x(x)\,dS_x.
+\]
+Por tanto, la fuerza resultante de esta pareja de caras es
+\[
+d\vec F_x^{\,+}+d\vec F_x^{\,-}
+=\bigl[\vec\sigma_x(x+dx)-\vec\sigma_x(x)\bigr]dS_x.
+\]
+Para una caja pequeña, expandimos el esfuerzo de la cara derecha alrededor de $x$:
+\[
+\vec\sigma_x(x+dx)
+\simeq\vec\sigma_x(x)
++\frac{\partial\vec\sigma_x}{\partial x}\,dx.
+\]
+La diferencia entre las tracciones de ambas caras es entonces
+\[
+\begin{aligned}
+d\vec F_x^{\,+}+d\vec F_x^{\,-}
+&\simeq\frac{\partial\vec\sigma_x}{\partial x}
+\,dx\,dS_x\\
+&=\frac{\partial\vec\sigma_x}{\partial x}
+\,dx\,dy\,dz
+=\partial_x\vec\sigma_x\,dV.
+\end{aligned}
+\]
+Si el esfuerzo fuera igual en las dos caras, ambas fuerzas se cancelarían. La fuerza neta aparece únicamente porque el campo de esfuerzos cambia con la posición.
 Las otras dos parejas aportan términos análogos; por tanto, la fuerza de contacto resultante es
 \[
 d\vec F_{\mathrm{contacto}}
@@ -144,7 +235,7 @@ d\vec F_{\mathrm{contacto}}
 \centering
 \input{Clases/Figuras/FigurasClase12/Fig7.tex}
 \par\medskip
-\textbf{Figura 7.} Fuerzas de contacto sobre las caras situadas en $x$ y $x+dx$. Las flechas representan tracciones esquemáticas, no necesariamente normales a las caras. La diferencia de los vectores de esfuerzo produce la contribución $\partial_x\vec\sigma_x\,dV$.
+\textbf{Figura 7.} Fuerzas sobre las dos caras normales a $x$ de un elemento diferencial. Las normales exteriores son opuestas: en la cara situada en $x$ apunta $-\hat e_x$, mientras que en la cara situada en $x+dx$ apunta $+\hat e_x$. Por ello, las fuerzas correspondientes tienen signos opuestos. Las flechas de fuerza son esquemáticas y no tienen que ser normales a las caras.
 \end{figure}
 
 \subsection{Presión mecánica}
@@ -362,4 +453,3 @@ Un segmento inicialmente paralelo a $x$, de longitud $L_0=2\,\mathrm{m}$, pasa a
 \frac{L-L_0}{L_0}=\frac{3-2}{2}=0.5=50\%.
 \]
 En este caso sí hay deformación: las longitudes paralelas a $x$ aumentan, mientras que las paralelas a $y$ y $z$ no cambian. El escalado es finito; no se está usando una aproximación de deformaciones pequeñas.
-

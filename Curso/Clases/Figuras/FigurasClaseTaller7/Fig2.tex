@@ -1,0 +1,47 @@
+\begin{tikzpicture}[
+  >=Latex, line cap=round, line join=round, font=\small,
+  auxiliar/.style={densely dashed, gray!60, line width=0.7pt},
+  radial/.style={->, teal!75!black, line width=1.2pt},
+  angular/.style={->, orange!85!black, line width=1.2pt},
+  desplazamiento/.style={->, blue!65!black, line width=1.3pt}
+]
+\node[font=\small\bfseries] at (1.8,4.1) {(a) Una base que cambia};
+\coordinate (Origen) at (0,0);
+\coordinate (PuntoP) at ({2.2*cos(20)},{2.2*sin(20)});
+\coordinate (PuntoQ) at ({2.2*cos(65)},{2.2*sin(65)});
+\draw[->, gray!60] (0,0) -- (3.8,0) node[right] {$x$};
+\draw[->, gray!60] (0,0) -- (0,3.35) node[above] {$y$};
+\draw[auxiliar] (Origen) -- (PuntoP) (Origen) -- (PuntoQ);
+\draw[gray!60] ({2.2*cos(8)},{2.2*sin(8)})
+  arc[start angle=8,end angle=80,radius=2.2];
+\draw[->, gray!75] ({1.1*cos(20)},{1.1*sin(20)})
+  arc[start angle=20,end angle=65,radius=1.1];
+\node[gray!75] at (0.95,1.05) {$d\theta$};
+\draw[radial] (PuntoP) -- ++({0.8*cos(20)},{0.8*sin(20)}) node[above right] {$\hat e_r(P)$};
+\draw[angular] (PuntoP) -- ++({-0.8*sin(20)},{0.8*cos(20)}) node[right] {$\hat e_\theta(P)$};
+\draw[radial] (PuntoQ) -- ++({0.8*cos(65)},{0.8*sin(65)}) node[above] {$\hat e_r(Q)$};
+\draw[angular] (PuntoQ) -- ++({-0.8*sin(65)},{0.8*cos(65)}) node[above left] {$\hat e_\theta(Q)$};
+\draw[desplazamiento] (PuntoP) -- ++(1.2,0) node[right] {$\vec u$};
+\draw[desplazamiento] (PuntoQ) -- ++(1.2,0) node[right] {$\vec u$};
+\fill[gray!80] (PuntoP) circle (1.8pt) (PuntoQ) circle (1.8pt);
+\node[below] at (PuntoP) {$P$};
+\node[below left] at (PuntoQ) {$Q$};
+\node[below left] at (Origen) {$O$};
+\node[blue!65!black, align=center, font=\footnotesize] at (1.8,-0.75)
+  {El mismo vector $\vec u$:\\nueva base, nuevas componentes};
+
+\begin{scope}[xshift=8cm]
+\node[font=\small\bfseries] at (0,4.1) {(b) Dos contribuciones};
+\node[draw=gray!40, fill=gray!3, rounded corners=3pt, inner sep=10pt]
+  at (0,2.7) {$\displaystyle
+  \partial_i\vec u
+  =\underbrace{(\partial_i u_\ell)\hat e_\ell}_{\text{cambian las componentes}}
+  +\underbrace{u_\ell\partial_i\hat e_\ell}_{\text{cambia la base}}$};
+\node[align=center] at (0,1.4)
+  {Aunque $\vec u$ sea constante,\\sus componentes locales pueden variar.};
+\node[blue!65!black] at (0,0.25) {$\displaystyle
+  (\partial_i u_\ell)\hat e_\ell+u_\ell\partial_i\hat e_\ell=0$};
+\node[font=\footnotesize, align=center] at (0,-0.75)
+  {En ese caso los dos términos se compensan.\\Se suma sobre $\ell$; $i$ es fijo.};
+\end{scope}
+\end{tikzpicture}

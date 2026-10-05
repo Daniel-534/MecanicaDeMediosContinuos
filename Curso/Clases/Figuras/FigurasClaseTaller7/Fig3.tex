@@ -1,0 +1,41 @@
+\begin{tikzpicture}[
+  >=Latex, line cap=round, line join=round, font=\small,
+  presion/.style={->, orange!85!black, line width=1.2pt},
+  auxiliar/.style={densely dashed, gray!60, line width=0.7pt}
+]
+\node[font=\small\bfseries] at (0,3.65) {(a) Sección del tubo};
+\fill[blue!7, even odd rule] (0,0) circle (2.2) (0,0) circle (1.1);
+\draw[blue!65!black, line width=1.1pt] (0,0) circle (2.2) (0,0) circle (1.1);
+\foreach \direction in {0,60,90,120,180,240,270,300} {
+  \draw[presion] ({2.95*cos(\direction)},{2.95*sin(\direction)})
+    -- ({2.23*cos(\direction)},{2.23*sin(\direction)});
+}
+\node[orange!85!black] at (2.5,2.55) {$p>0$};
+\draw[->, gray!80] (0,0) -- (1.1,0) node[midway,above] {$a$};
+\draw[->, gray!80] (0,0) -- ({2.2*cos(-35)},{2.2*sin(-35)})
+  node[pos=0.8,below left] {$b$};
+\fill[gray!80] (0,0) circle (1.5pt);
+\node[below left] at (0,0) {$O$};
+\node[font=\footnotesize] at (0,0.75) {Cavidad libre};
+\draw[->, violet!80!black, line width=1.3pt]
+  ({2.2*cos(35)},{2.2*sin(35)}) -- ({1.7*cos(35)},{1.7*sin(35)});
+\node[violet!80!black, anchor=west] at (1.9,1.45) {$u_r<0$};
+\node[font=\footnotesize] at (0,-3.45) {$u_z=0$: restricción axial};
+
+\begin{scope}[xshift=7.5cm,yshift=1cm]
+\node[font=\small\bfseries] at (1.6,2.65) {(b) Esfuerzo radial};
+\draw[->, gray!75] (0,0) -- (4.0,0) node[right] {$r$};
+\draw[->, gray!75] (0,-3.0) -- (0,0.8) node[above] {$\sigma_{rr}$};
+\draw[auxiliar] (0,-2.6) -- (3.4,-2.6) -- (3.4,0);
+\draw[blue!65!black, line width=1.3pt]
+  plot[domain=1:2, samples=60, variable=\parameter]
+  ({0.8+2.6*(\parameter-1)},{-2.6*4/3*(1-1/\parameter^2)});
+\fill[blue!65!black] (0.8,0) circle (2pt) (3.4,-2.6) circle (2pt);
+\node[above] at (0.8,0.1) {$a$};
+\node[above] at (3.4,0.1) {$b$};
+\node[left] at (0,-2.6) {$-p$};
+\node[below left] at (0,0) {$0$};
+\node[blue!65!black, align=center, font=\footnotesize] at (1.8,-3.75)
+  {$\sigma_{rr}(a)=0$,\qquad $\sigma_{rr}(b)=-p$\\Compresión creciente hacia el exterior};
+\end{scope}
+\end{tikzpicture}
