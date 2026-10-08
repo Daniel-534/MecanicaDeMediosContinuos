@@ -1,0 +1,29 @@
+\begin{tikzpicture}[
+  >=Latex,
+  x=1.45cm,
+  y=1.45cm,
+  line cap=round,
+  line join=round,
+  font=\small,
+  radial/.style={->, orange!80!black, line width=1.25pt},
+  eje/.style={->, gray!70!black, line width=0.9pt}
+]
+
+\coordinate (C) at (0,0);
+\fill[blue!5] (C) circle (2.0);
+\draw[blue!65!black, line width=1.3pt] (C) circle (2.0);
+
+\draw[eje] (C) -- (2.55,0) node[right] {$x$};
+\draw[eje] (C) -- (0,2.55) node[above] {$z$};
+\draw[eje] (C) -- (-1.25,1.05) node[above left] {$y$};
+
+\draw[red!75!black, <->, line width=1.5pt] (C) -- (1.42,1.42)
+  node[pos=0.72, above left, fill=white, inner sep=1.5pt] {$R$};
+\foreach \angulo in {30,90,150,210,270,330} {
+  \draw[radial]
+    ({1.52*cos(\angulo)},{1.52*sin(\angulo)}) --
+    ({2.28*cos(\angulo)},{2.28*sin(\angulo)});
+}
+\fill[black] (C) circle (1.8pt);
+
+\end{tikzpicture}

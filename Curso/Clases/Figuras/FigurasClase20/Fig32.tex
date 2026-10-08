@@ -1,0 +1,44 @@
+\begin{tikzpicture}[
+  >=Latex,
+  x=1.25cm,
+  y=1.25cm,
+  line cap=round,
+  line join=round,
+  font=\small,
+  frente/.style={draw=blue!65!black, line width=1.25pt},
+  propagacion/.style={->, orange!85!black, line width=1.35pt},
+  dimension/.style={<->, black!75, line width=0.9pt}
+]
+
+\coordinate (C) at (0,0);
+
+% Frentes de onda en el corte radial del medio.
+\foreach \radio in {1.35,1.95,2.55,3.15} {
+  \draw[frente] (C) circle (\radio);
+}
+
+% Cavidad y radios característicos.
+\fill[blue!3] (C) circle (0.86);
+\draw[black!70, line width=1.4pt] (C) circle (0.86);
+\node[font=\small\bfseries] at (0,0.28) {cavidad};
+\fill[black!70] (C) circle (1.5pt);
+\draw[dimension] (C) -- (0.78,-0.36)
+  node[pos=0.66, below=1pt, fill=white, inner sep=1.5pt] {$R$};
+\draw[dimension] (C) -- (-2.12,-2.12)
+  node[pos=0.72, below left, fill=white, inner sep=1.5pt] {$r$};
+
+% Flechas radiales: propagación hacia afuera.
+\foreach \angulo in {30,90,150,270,330} {
+  \draw[propagacion]
+    ({1.05*cos(\angulo)},{1.05*sin(\angulo)}) --
+    ({1.62*cos(\angulo)},{1.62*sin(\angulo)});
+}
+
+% Identificación de las ondas y del material.
+\node[align=center, text=blue!55!black, fill=white, inner sep=2pt]
+  at (-4.35,2.10) {frentes de onda\\longitudinal saliente};
+\draw[blue!55!black, thin] (-3.42,1.80) -- (-2.05,2.05);
+\node[align=center, fill=white, inner sep=2pt] at (4.15,-2.05)
+  {medio elástico\\infinito};
+
+\end{tikzpicture}

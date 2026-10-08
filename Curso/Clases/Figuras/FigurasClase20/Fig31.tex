@@ -1,0 +1,68 @@
+\begin{tikzpicture}[
+  >=Latex,
+  x=1cm,
+  y=1cm,
+  line cap=round,
+  line join=round,
+  font=\small,
+  incidente/.style={->, blue!75!black, line width=1.5pt},
+  reflejada/.style={->, teal!70!black, line width=1.5pt},
+  transmitida/.style={->, orange!85!black, line width=1.5pt},
+  frentei/.style={draw=blue!45, line width=0.9pt},
+  frenter/.style={draw=teal!45, line width=0.9pt},
+  frentet/.style={draw=orange!55, line width=0.9pt}
+]
+
+\fill[blue!4] (-5.1,0.08) rectangle (5.1,3.25);
+\fill[orange!5] (-5.1,-2.75) rectangle (5.1,-0.08);
+\draw[black!75, line width=1.3pt] (-5.1,0) -- (5.1,0);
+\node[anchor=north east, fill=white, inner sep=2pt] at (-4.75,3.02)
+  {medio 1};
+\node[anchor=south east, fill=white, inner sep=2pt] at (-4.75,-2.52)
+  {medio 2};
+\node[anchor=west, fill=white, inner sep=2pt] at (3.0,0.12)
+  {interfaz $z=0$};
+
+\draw[densely dashed, gray!75] (0,-2.35) -- (0,2.9);
+\draw[->, gray!75, line width=1pt] (0.12,1.85) -- (0.12,2.65)
+  node[above] {$+z$};
+\draw[->, gray!75, line width=1pt] (-4.3,-2.25) -- (-3.2,-2.25)
+  node[right] {$x$};
+
+\draw[frentei] (-2.42,2.31) -- (-1.98,2.83);
+\draw[frentei] (-1.77,1.54) -- (-1.33,2.06);
+\draw[frentei] (-1.12,0.78) -- (-0.68,1.30);
+\draw[incidente] (-2.08,2.43) -- (-0.25,0.30);
+
+\draw[frenter] (0.33,0.90) -- (0.77,0.38);
+\draw[frenter] (0.93,1.60) -- (1.37,1.08);
+\draw[frenter] (1.53,2.30) -- (1.97,1.78);
+\draw[reflejada] (0.25,0.30) -- (2.08,2.43);
+
+\draw[frentet] (0.35,-0.78) -- (0.75,-0.32);
+\draw[frentet] (0.95,-1.28) -- (1.35,-0.82);
+\draw[frentet] (1.60,-1.83) -- (2.00,-1.37);
+\draw[transmitida] (0.25,-0.30) -- (2.13,-1.90);
+
+\fill[black] (0,0) circle (2pt);
+\draw[gray!80!black, line width=0.8pt] (0,0.62)
+  arc[start angle=90,end angle=130,radius=0.62];
+\node[fill=white, inner sep=1pt] at (-0.48,0.72) {$\theta_i$};
+\draw[gray!80!black, line width=0.8pt] (0,0.62)
+  arc[start angle=90,end angle=50,radius=0.62];
+\node[fill=white, inner sep=1pt] at (0.55,0.72) {$\theta_r$};
+\draw[gray!80!black, line width=0.8pt] (0,-0.62)
+  arc[start angle=-90,end angle=-50,radius=0.62];
+\node[fill=white, inner sep=1pt] at (0.47,-0.68) {$\theta_t$};
+
+\node[align=center, text=blue!75!black, fill=white, inner sep=2pt]
+  at (-3.2,1.35) {incidente\\P o S};
+\node[align=center, text=teal!70!black, fill=white, inner sep=2pt]
+  at (3.18,1.42) {reflejada\\P o S};
+\node[align=center, text=orange!85!black, fill=white, inner sep=2pt]
+  at (3.15,-1.55) {transmitida\\P o S};
+\node[font=\footnotesize, text=gray!70!black, fill=white, inner sep=2pt]
+  at (-2.92,-0.72) {frentes de onda};
+\draw[gray!70!black, thin] (-2.16,-0.58) -- (-1.27,0.68);
+
+\end{tikzpicture}

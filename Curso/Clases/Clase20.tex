@@ -1,0 +1,192 @@
+\chapter{Clase 20}
+
+\section{Aplicaciones}
+
+\subsection{Ondas en interfaces elásticas}
+
+Cuando una onda elástica encuentra una interfaz entre dos materiales, parte de su energía puede reflejarse y parte transmitirse. Como los medios pueden tener propiedades distintas, durante el proceso también puede ocurrir conversión entre ondas longitudinales (P) y transversales (S).
+
+\subsubsection{Ondas planas}
+
+Representamos cada onda plana mediante
+\[
+\vec u_\alpha(\vec r,t)
+=\vec U_\alpha e^{i(\vec k_\alpha\cdot\vec r-\omega t)},
+\]
+donde $\vec U_\alpha$ es su amplitud vectorial, $\vec k_\alpha$ su vector de onda y $\omega$ su frecuencia angular. El subíndice $\alpha$ identifica la onda incidente, reflejada o transmitida; en un sólido, cada una puede ser longitudinal (P) o transversal (S).
+
+\subsubsection{Condiciones en la interfaz}
+
+Consideremos una interfaz plana y estacionaria en $z=0$ entre los medios 1 y 2, perfectamente adheridos entre sí. La continuidad del desplazamiento exige que el desplazamiento total en el medio 1 coincida con el del medio 2:
+\[
+\vec u_{\mathrm{inc}}^{(1)}+\vec u_{\mathrm{ref}}^{(1)}
+=\vec u_{\mathrm{trans}}^{(2)}
+\qquad (z=0).
+\]
+Además, debe ser continua la tracción sobre la interfaz:
+\[
+\left(\boldsymbol{\sigma}_{\mathrm{inc}}^{(1)}
++\boldsymbol{\sigma}_{\mathrm{ref}}^{(1)}\right)\cdot\hat e_z
+=\boldsymbol{\sigma}_{\mathrm{trans}}^{(2)}\cdot\hat e_z
+\qquad (z=0).
+\]
+Aquí cada término puede representar la suma de los modos P y S presentes en ese medio. Estas condiciones, junto con la coincidencia de fase para todo $x$, $y$ y $t$, determinan los ángulos y amplitudes de las ondas reflejadas y transmitidas.
+
+En particular, la frecuencia y las componentes del vector de onda paralelas a la interfaz se conservan:
+\[
+\omega_{\mathrm{inc}}=\omega_{\mathrm{ref}}=\omega_{\mathrm{trans}},
+\qquad
+k_{x,\mathrm{inc}}=k_{x,\mathrm{ref}}=k_{x,\mathrm{trans}},
+\qquad
+k_{y,\mathrm{inc}}=k_{y,\mathrm{ref}}=k_{y,\mathrm{trans}}.
+\]
+Esta es la forma ondulatoria de la ley de Snell. Las componentes normales a la interfaz pueden cambiar, y la conversión de modo permite, por ejemplo, que una onda P incidente genere ondas P y S reflejadas o transmitidas.
+
+\begin{figure}[H]
+\centering
+\input{Clases/Figuras/FigurasClase20/Fig31.tex}
+\par\medskip
+\textbf{Figura 31.} Reflexión y transmisión de ondas en una interfaz entre dos medios. Las flechas indican la dirección de propagación y las líneas finas, los frentes de onda; los ángulos se miden respecto de la normal. Las ondas reflejadas y transmitidas pueden ser P o S, por lo que el esquema representa una posibilidad y no todas las ramas de conversión.
+\end{figure}
+
+\subsubsection{Ondas Rayleigh}
+
+Las ondas Rayleigh son ondas superficiales que se propagan junto a una superficie libre. En un medio elástico homogéneo, las partículas cercanas a la superficie se mueven en el plano vertical que contiene la dirección de propagación y describen, de manera aproximada, órbitas elípticas retrógradas: el sentido del movimiento orbital es opuesto al avance de la onda.
+
+\begin{figure}[H]
+\centering
+\input{Clases/Figuras/FigurasClase20/Fig29.tex}
+\par\medskip
+\textbf{Figura 29.} Esquema de una onda Rayleigh. La onda se propaga a lo largo de la superficie, mientras que una partícula superficial describe una órbita elíptica retrógrada en el plano vertical de propagación. El movimiento está ampliado.
+\end{figure}
+
+\subsection{Vibraciones radiales de una esfera elástica}
+
+Consideremos una esfera elástica maciza de radio $R$. Por simetría esférica, un modo radial tiene desplazamiento
+\[
+\vec u(\vec r,t)=u_r(r,t)\,\hat r.
+\]
+La Figura 30 muestra la geometría y la dirección radial del movimiento.
+
+\begin{figure}[H]
+\centering
+\input{Clases/Figuras/FigurasClase20/Fig30.tex}
+\par\medskip
+\textbf{Figura 30.} Corte esquemático de una esfera elástica de radio $R$. Las flechas indican el desplazamiento de un modo puramente radial.
+\end{figure}
+
+Para un sólido isotrópico y homogéneo, la ecuación de Navier es
+\[
+\rho\ddot{\vec u}
+=\mu\nabla^2\vec u+(\lambda+\mu)\nabla(\nabla\cdot\vec u),
+\]
+donde $\lambda$ y $\mu$ son las constantes de Lamé. Un campo radial que depende solo de $r$ no tiene rotacional; por ello, podemos escribir
+\[
+\nabla\times\vec u=0,
+\qquad
+\vec u=\nabla\phi
+=\frac{\partial\phi}{\partial r}\,\hat r.
+\]
+Al sustituir este potencial en la ecuación de Navier, se obtiene la ecuación de onda longitudinal
+\[
+c_L^2\nabla^2\phi=\ddot\phi,
+\qquad
+c_L^2=\frac{\lambda+2\mu}{\rho},
+\qquad
+c_T^2=\frac{\mu}{\rho}.
+\]
+Para oscilaciones armónicas proporcionales a $e^{-i\omega t}$, la ecuación radial queda
+\[
+\nabla^2\phi
+=\frac{1}{r^2}\frac{d}{dr}\left(r^2\frac{d\phi}{dr}\right)
+=-k^2\phi,
+\qquad k=\frac{\omega}{c_L}.
+\]
+La ecuación radial es la ecuación de Bessel esférica de orden cero. Su solución general puede escribirse como
+\[
+\phi(r)=A j_0(kr)+B n_0(kr),
+\qquad
+j_0(x)=\frac{\sin x}{x},
+\qquad
+n_0(x)=-\frac{\cos x}{x}.
+\]
+La función $n_0$ diverge en el origen, de modo que la regularidad exige $B=0$. Absorbiendo el factor constante $1/k$ en la amplitud, queda
+\[
+\phi(r)=A\frac{\sin(kr)}{kr}.
+\]
+
+La ley de Hooke para un sólido isotrópico es
+\[
+\sigma_{ij}=2\mu U_{ij}+\lambda\delta_{ij}U_{kk},
+\]
+donde $U_{ij}$ es el tensor de deformación. Para el desplazamiento radial, $U_{rr}=\partial u_r/\partial r=\partial^2\phi/\partial r^2$ y $U_{kk}=\nabla\cdot\vec u=\nabla^2\phi$. Así,
+\[
+\sigma_{rr}
+=2\mu\frac{d^2\phi}{dr^2}+\lambda\nabla^2\phi
+=\rho\left\{(c_L^2-2c_T^2)\nabla^2\phi
++2c_T^2\frac{d^2\phi}{dr^2}\right\}.
+\]
+Usando la ecuación de Helmholtz, se obtiene
+\[
+\frac{\sigma_{rr}}{\rho}
+=-\omega^2\phi-\frac{4c_T^2}{r}\frac{d\phi}{dr}.
+\]
+
+En una superficie libre, el esfuerzo radial se anula: $\sigma_{rr}(R)=0$. Definamos $q=kR$. Para la solución radial,
+\[
+\phi(R)=A\frac{\sin q}{q},
+\qquad
+\phi'(R)=\frac{A}{Rq}(q\cos q-\sin q).
+\]
+Al sustituir en la condición de frontera, resulta
+\[
+\omega^2R^2\sin q+4c_T^2(q\cos q-\sin q)=0.
+\]
+Reordenando y usando $q=kR$ y $\omega=kc_L$, la ecuación trascendental para las frecuencias características queda
+\[
+\frac{\tan(kR)}{kR}
+=\frac{1}{1-\left(\dfrac{kR c_L}{2c_T}\right)^2}.
+\]
+Sus raíces determinan los modos normales radiales de la esfera.
+
+\textbf{Conexión con las oscilaciones radiales estelares.}
+En ambos problemas se estudian pequeñas perturbaciones alrededor de un equilibrio esférico y se obtienen modos radiales con frecuencias características. Para la esfera elástica, la condición de frontera es $\sigma_{rr}(R)=0$; para una estrella fluida, la condición análoga es que la perturbación lagrangiana de presión se anule en la superficie, $\Delta p(R)=0$. Un sólido elástico soporta ondas longitudinales y transversales, mientras que un fluido ideal no soporta esfuerzos cortantes ($\mu=0$) y solo admite perturbaciones compresionales.
+
+\subsection{Vibraciones radiales de una cavidad esférica en un medio elástico infinito}
+
+Ahora consideremos una cavidad de radio $R$ rodeada por un medio elástico que se extiende indefinidamente. Cuando la cavidad oscila, emite ondas longitudinales hacia el exterior; estas transportan energía y amortiguan la oscilación. En el régimen $c_L\gg c_T$, la radiación es débil y el amortiguamiento es pequeño.
+
+Como $K=\lambda+2\mu/3$, $c_L^2=(K+4\mu/3)/\rho$ y $c_T^2=\mu/\rho$, este régimen corresponde a un módulo de compresibilidad $K$ mucho mayor que el módulo de cizalladura $\mu$. La oscilación considerada requiere $\mu\ne0$; si el medio no ofrece resistencia al cizallamiento, desaparece este modo elástico de cavidad.
+
+\begin{figure}[H]
+\centering
+\input{Clases/Figuras/FigurasClase20/Fig32.tex}
+\par\medskip
+\textbf{Figura 32.} Corte esquemático de una cavidad esférica en un medio elástico infinito. Los círculos representan frentes de onda longitudinal que se propagan radialmente hacia el exterior; $R$ es el radio de la cavidad y $r$ la distancia al centro.
+\end{figure}
+
+Buscamos una onda esférica saliente,
+\[
+\phi(r)=\frac{A e^{ikr}}{r},
+\qquad k=\frac{\omega}{c_L}.
+\]
+Al imponer la condición de superficie libre, $\sigma_{rr}(R)=0$, resulta
+\[
+\left(\frac{kR c_L}{c_T}\right)^2=4(1-ikR).
+\]
+Para $c_L\gg c_T$, la frecuencia compleja se aproxima por
+\[
+\omega\simeq\frac{2c_T}{R}\left(1-i\frac{c_T}{c_L}\right).
+\]
+La parte real determina la frecuencia de oscilación y la parte imaginaria describe el amortiguamiento. En el límite $c_L\to\infty$, este amortiguamiento por radiación desaparece. En esta aproximación, $kR\simeq2c_T/c_L\ll1$, así que la longitud de onda es mucho mayor que el radio de la cavidad. En contraste, para una esfera maciza y $c_L\gg c_T$, la primera frecuencia característica corresponde a $kR\simeq\pi$.
+
+\subsection{Ondas sísmicas en un medio elástico}
+
+Las ondas sísmicas ilustran cómo se propagan las perturbaciones elásticas desde un foco. Las ondas P son longitudinales y las más rápidas; las ondas S son transversales y no se propagan en fluidos. Las ondas superficiales viajan cerca de la superficie terrestre y pueden producir movimientos intensos. Por ello, la detección de ondas P puede dar aviso antes de la llegada de ondas posteriores, aunque el tiempo disponible depende de la distancia y del sistema de alerta.
+
+\begin{figure}[H]
+\centering
+\input{Clases/Figuras/FigurasClase20/Fig33.tex}
+\par\medskip
+\textbf{Figura 33.} Esquema de las trayectorias de ondas sísmicas desde un foco hasta la superficie. Las ondas P atraviesan el interior como perturbaciones compresionales; las ondas S lo hacen como perturbaciones transversales, mientras que las ondas superficiales se propagan junto al límite del terreno.
+\end{figure}
