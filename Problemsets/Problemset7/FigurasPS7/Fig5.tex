@@ -1,0 +1,41 @@
+\begin{tikzpicture}[
+  >=Latex,
+  line cap=round,
+  line join=round,
+  font=\small,
+  gravedad/.style={->, orange!85!black, line width=1pt},
+  desplazamiento/.style={->, violet!80!black, line width=1.2pt},
+  inicial/.style={densely dashed, gray!65, line width=1pt}
+]
+% Panel (a): corte por el centro de una esfera.
+\node[font=\small\bfseries] at (0,2.65) {(a) Contracción gravitacional};
+\draw[inicial] (0,0) circle (2.0);
+\draw[blue!65!black,line width=1.3pt] (0,0) circle (1.52);
+\fill[gray!35] (0,0) circle (1.52);
+\draw[blue!65!black,line width=1.3pt] (0,0) circle (1.52);
+\foreach \angulo in {0,45,90,135,180,225,270,315} {
+  \draw[gravedad] ({1.82*cos(\angulo)},{1.82*sin(\angulo)})
+    -- ({0.88*cos(\angulo)},{0.88*sin(\angulo)});
+  \draw[desplazamiento] ({1.52*cos(\angulo)},{1.52*sin(\angulo)})
+    -- ({1.23*cos(\angulo)},{1.23*sin(\angulo)});
+}
+\fill[black] (0,0) circle (1.5pt) node[below right=2pt] {centro};
+\draw[->,gray!70] (0,0) -- ({2*cos(35)},{2*sin(35)}) node[pos=0.72,above] {$R$};
+\node[gray!70,anchor=west] at (-1.95,-2.32) {radio inicial (discontinuo)};
+\node[blue!65!black,anchor=west] at (-1.95,-2.62) {radio deformado (exagerado)};
+
+% Panel (b): campo gravitacional de densidad uniforme.
+\begin{scope}[xshift=6.8cm]
+  \node[font=\small\bfseries] at (1.65,2.65) {(b) Magnitud de $g(r)$};
+  \draw[->,gray!75] (-0.15,0) -- (3.8,0) node[right] {$r$};
+  \draw[->,gray!75] (0,-0.15) -- (0,2.35) node[above] {$g$};
+  \draw[blue!65!black,line width=1.3pt] (0,0) -- (3.1,1.85);
+  \fill[blue!65!black] (0,0) circle (2pt) (3.1,1.85) circle (2pt);
+  \draw[gray!55,densely dotted] (3.1,0) -- (3.1,1.85) -- (0,1.85);
+  \node[below] at (3.1,0) {$R$};
+  \node[left] at (0,1.85) {$g_R$};
+  \node[below left] at (0,0) {$0$};
+  \node[font=\footnotesize,align=center] at (1.6,-0.72)
+    {$g(r)=g_R\,r/R$ para densidad uniforme};
+\end{scope}
+\end{tikzpicture}

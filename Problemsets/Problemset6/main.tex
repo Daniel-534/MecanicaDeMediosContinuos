@@ -1,0 +1,470 @@
+\documentclass[a4paper]{article}
+
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb}
+\usepackage[margin=2cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{parskip}
+\usepackage[most]{tcolorbox}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usepackage[hidelinks]{hyperref}
+
+\usetikzlibrary{calc}
+\pagestyle{fancy}
+\fancyhead[l]{Mecánica de Medios Continuos}
+\fancyhead[c]{Taller 6}
+\fancyhead[r]{\today}
+\fancyfoot[c]{\thepage}
+\setlength{\headheight}{14.5pt}
+\renewcommand{\headrulewidth}{0.2pt}
+
+\begin{document}
+\tableofcontents
+
+\section{Problema 1}
+
+Considere un cilindro elástico de paredes gruesas, con radio interno $a$ y radio externo $b$, sometido al campo de esfuerzos:
+$$ \sigma_{rr} = A + \frac{B}{r^2}, \qquad \sigma_{\theta\theta} = A - \frac{B}{r^2} $$
+donde $A$ y $B$ son constantes y las demás componentes del tensor de esfuerzos son nulas.
+\begin{enumerate}[(a)]
+    \item Verifique que el campo de esfuerzos satisface la ecuación de equilibrio en ausencia de fuerzas volumétricas.
+    \item Encuentre el vector de tracción en $r=a$, indicando la normal usada.
+    \item Determine $A$ y $B$ si la superficie interna está sujeta a una presión uniforme $p$, mientras que la superficie externa está libre de tracción.
+\end{enumerate}
+
+\input{FigurasPS6/Fig1.tex}
+
+\subsection{Solución}
+
+\subsubsection*{Inciso (a)}
+El equilibrio local, en ausencia de fuerzas volumétricas, se escribe como $\nabla\cdot\boldsymbol{\sigma}=\vec{0}$. Para ver su componente radial en coordenadas cilíndricas, usamos la expresión de la divergencia de un tensor en la base ortonormal $(\hat e_r,\hat e_\theta,\hat e_z)$:
+$$
+(\nabla\cdot\boldsymbol{\sigma})_r
+=\frac{1}{r}\frac{\partial(r\sigma_{rr})}{\partial r}
++\frac{1}{r}\frac{\partial\sigma_{r\theta}}{\partial\theta}
++\frac{\partial\sigma_{rz}}{\partial z}
+-\frac{\sigma_{\theta\theta}}{r}.
+$$
+El término $-\sigma_{\theta\theta}/r$ aparece porque la dirección $\hat e_\theta$ cambia con el ángulo. En este problema el campo es axisimétrico, no depende de $\theta$ ni de $z$, y las componentes cortantes son nulas. Entonces, $(\nabla\cdot\boldsymbol{\sigma})_r=0$ se reduce a
+$$ \frac{\partial \sigma_{rr}}{\partial r} + \frac{\sigma_{rr} - \sigma_{\theta\theta}}{r} = 0 $$
+Con el campo propuesto, calculamos
+$$ \frac{\partial \sigma_{rr}}{\partial r} = -\frac{2B}{r^3} $$
+$$ \sigma_{rr} - \sigma_{\theta\theta} = \left(A + \frac{B}{r^2}\right) - \left(A - \frac{B}{r^2}\right) = \frac{2B}{r^2} $$
+Al sustituir ambos resultados en el equilibrio radial,
+$$ -\frac{2B}{r^3} + \frac{1}{r}\left(\frac{2B}{r^2}\right) = -\frac{2B}{r^3} + \frac{2B}{r^3} = 0 $$
+se verifica que la componente radial de la ecuación de equilibrio se satisface. Las componentes angular y axial también se anulan, pues no hay dependencias angulares o axiales ni esfuerzos cortantes.
+
+\subsubsection*{Inciso (b)}
+El vector de tracción $\vec{T}$ en una superficie con normal $\hat{n}$ se define como $\vec{T} = \boldsymbol{\sigma} \cdot \hat{n}$. Para la superficie $r=a$, si se toma $\hat{n}=\hat{e}_r$:
+$$ \vec{T} = \sigma_{rr}(a)\hat{e}_r + \sigma_{r\theta}(a)\hat{e}_\theta + \sigma_{rz}(a)\hat{e}_z $$
+Dado que las componentes de corte son nulas ($\sigma_{r\theta} = \sigma_{rz} = 0$), el vector de tracción es puramente radial:
+$$ \vec{T} = \left(A + \frac{B}{a^2}\right) \hat{e}_r $$
+Si $r=a$ es la pared interna, la normal exterior al material es $-\hat{e}_r$ y la tracción cambia de signo.
+
+\subsubsection*{Inciso (c)}
+Las condiciones de frontera son:
+\begin{enumerate}[(i)]
+    \item En la superficie interna ($r=a$), la presión uniforme impone $\sigma_{rr}(a)=-p$.
+    \item En la superficie externa ($r=b$), la condición sin tracción impone $\sigma_{rr}(b)=0$.
+\end{enumerate}
+
+Esto genera el siguiente sistema de ecuaciones:
+$$ A + \frac{B}{a^2} = -p $$
+$$ A + \frac{B}{b^2} = 0 \implies A = -\frac{B}{b^2} $$
+Sustituyendo $A$ en la primera ecuación:
+$$ -\frac{B}{b^2} + \frac{B}{a^2} = -p \implies B \left(\frac{b^2 - a^2}{a^2 b^2}\right) = -p $$
+Despejando las constantes $A$ y $B$:
+$$ B = -\frac{p a^2 b^2}{b^2 - a^2} $$
+$$ A = \frac{p a^2}{b^2 - a^2} $$
+
+\section{Problema 2}
+
+Justifique matemáticamente por qué una traslación y una rotación rígida no son deformaciones.
+\input{FigurasPS6/Fig2.tex}
+
+\subsection{Solución}
+En la teoría de pequeñas deformaciones, mostramos que $U_{ij} = \frac{1}{2}(\partial_j u_i + \partial_i u_j)$ se anula para una traslación y una rotación infinitesimal. Una rotación rígida finita también conserva exactamente longitudes y ángulos.
+
+\subsubsection*{Traslación}
+El campo de desplazamientos es un vector constante $\vec{u} = \vec{c}$, es decir, $u_i = c_i$.
+$$ \partial_j u_i = \partial_j c_i = 0 $$
+$$ U_{ij} = \frac{1}{2}(0 + 0) = 0 $$
+Al ser el tensor de deformación nulo, no hay cambio en las longitudes ni en los ángulos; por lo tanto, no hay deformación.
+
+\subsubsection*{Rotación}
+Para una rotación infinitesimal con vector $\vec{\omega}$, el desplazamiento es $\vec{u} = \vec{\omega} \times \vec{x}$. En notación de índices: $u_i = \epsilon_{ijk} \omega_j x_k$.
+Una rotación rígida finita se representa como $\vec{x}'=Q\vec{x}+\vec{c}$, donde $Q^{T}Q=I$. Para cualquier elemento de línea:
+$$
+\lVert d\vec{x}'\rVert^2 = (Q\,d\vec{x})\cdot(Q\,d\vec{x}) = d\vec{x}\cdot(Q^TQ)\,d\vec{x} = \lVert d\vec{x}\rVert^2.
+$$
+La derivada que se necesita aquí es $\partial_m u_i=\partial u_i/\partial x_m$ (la derivada de la componente de desplazamiento $u_i$ respecto a la coordenada $x_m$). En índices,
+$$
+\partial_m u_i
+=\frac{\partial}{\partial x_m}\left(\epsilon_{ijk}\omega_jx_k\right)
+=\epsilon_{ijk}\omega_j\frac{\partial x_k}{\partial x_m}
+=\epsilon_{ijk}\omega_j\delta_{km}
+=\epsilon_{ijm}\omega_j.
+$$
+Por ejemplo, escribiendo explícitamente $\vec{u}=\vec{\omega}\times\vec{x}$,
+$$
+\begin{aligned}
+u_1&=\omega_2x_3-\omega_3x_2,\\
+u_2&=\omega_3x_1-\omega_1x_3,\\
+u_3&=\omega_1x_2-\omega_2x_1,
+\end{aligned}
+\qquad
+\left[\partial_m u_i\right]
+=\begin{pmatrix}
+0&-\omega_3&\omega_2\\
+\omega_3&0&-\omega_1\\
+-\omega_2&\omega_1&0
+\end{pmatrix}.
+$$
+Esta matriz es antisimétrica. Por eso, al tomar su parte simétrica para formar el tensor de deformación,
+$$
+U_{im}=\frac12(\partial_m u_i+\partial_i u_m)=0.
+$$
+Al anularse la parte simétrica del gradiente de desplazamientos, no existe deformación del material, solo un cambio de posición y orientación en el espacio.
+
+\section{Problema 3}
+
+A un cubo unitario cuyas aristas son paralelas a los ejes coordenados se le aplica el campo de desplazamientos $u_1 = kx_1$, $u_2 = u_3 = 0$ con $k = 10^{-4}$. Encuentre el incremento en la longitud de la diagonal en la cara paralela al plano $x_1x_2$.
+\input{FigurasPS6/Fig3.tex}
+
+\subsection{Solución}
+El campo de desplazamientos es $u_1 = k x_1$, $u_2 = 0$, $u_3 = 0$.
+El tensor de pequeñas deformaciones tiene una única componente no nula:
+$$ U_{11} = \partial_1 u_1 = k $$
+La diagonal de la cara paralela al plano $x_1 x_2$ de un cubo unitario conecta, por ejemplo, el origen $(0,0,0)$ con el punto $(1,1,0)$. El vector original es $\vec{L}_0 = \hat{e}_1 + \hat{e}_2$, y su longitud original es $L_0 = \sqrt{1^2 + 1^2} = \sqrt{2}$.
+La diagonal deformada tiene vector $\vec{L}'=(1+k)\hat{e}_1+\hat{e}_2$, por lo que su longitud y el incremento exacto son
+$$ L'=\sqrt{(1+k)^2+1}, \qquad \Delta L=\sqrt{(1+k)^2+1}-\sqrt{2}. $$
+Para expandir a primer orden en $k$, factorizamos $2$ dentro de la raíz:
+$$
+L'=\sqrt{2+2k+k^2}
+=\sqrt{2}\sqrt{1+k+\frac{k^2}{2}}.
+$$
+Usamos la expansión de Taylor $\sqrt{1+\varepsilon}=1+\varepsilon/2+O(\varepsilon^2)$ cuando $|\varepsilon|\ll1$. Con $\varepsilon=k+k^2/2$, a primer orden en $k$ queda
+$$
+L'=\sqrt{2}\left(1+\frac{k}{2}+O(k^2)\right),
+\qquad
+\Delta L=L'-L_0=\frac{k}{\sqrt{2}}+O(k^2).
+$$
+Para $k=10^{-4}$,
+$$ \Delta L\approx\frac{10^{-4}}{\sqrt{2}}\approx 7.07\times10^{-5}. $$
+
+\section{Problema 4}
+
+Considere el campo de desplazamientos $u_1 = k(2x_1^2 + x_1x_2)$, $u_2 = kx_2^2$, $u_3 = 0$ con $k = 10^{-4}$.
+\begin{enumerate}[(a)]
+    \item Encuentre las elongaciones unitarias y el cambio en el ángulo para dos elementos de línea materiales $d\vec{x}_1 = dx_1\hat{e}_1$ y $d\vec{x}_2 = dx_2\hat{e}_2$ para la partícula en $\vec{x} = \hat{e}_1 - \hat{e}_2$.
+    \item Bosqueje las posiciones deformadas de estos dos elementos.
+\end{enumerate}
+
+\subsection{Solución}
+
+\subsubsection*{Inciso (a)}
+El campo de desplazamientos es $u_1 = k(2x_1^2 + x_1 x_2)$, $u_2 = k x_2^2$, $u_3 = 0$.
+Calculamos las derivadas parciales del desplazamiento:
+$$ \partial_1 u_1 = k(4x_1 + x_2), \quad \partial_2 u_1 = k x_1, \quad \partial_3 u_1 = 0 $$
+$$ \partial_1 u_2 = 0, \quad \partial_2 u_2 = 2k x_2, \quad \partial_3 u_2 = 0 $$
+Las componentes del tensor de deformación $U_{ij} = \frac{1}{2}(\partial_j u_i + \partial_i u_j)$ son:
+$$ U_{11} = k(4x_1 + x_2), \quad U_{22} = 2k x_2, \quad U_{12} = \frac{1}{2}k x_1 $$
+Evaluamos en la partícula $\vec{x} = \hat{e}_1 - \hat{e}_2$, lo que significa $x_1 = 1$ y $x_2 = -1$:
+$$ U_{11} = k(4(1) - 1) = 3k $$
+$$ U_{22} = 2k(-1) = -2k $$
+$$ U_{12} = \frac{1}{2}k(1) = 0.5k $$
+
+Las elongaciones unitarias para los elementos materiales en las direcciones de los ejes son las componentes diagonales del tensor de deformación:
+\begin{enumerate}
+    \item Para $d\vec{x}^{(1)} = dx_1 \hat{e}_1$: $\epsilon_1 = U_{11} = 3k = 3 \times 10^{-4}$.
+    \item Para $d\vec{x}^{(2)} = dx_2 \hat{e}_2$: $\epsilon_2 = U_{22} = -2k = -2 \times 10^{-4}$.
+\end{enumerate}
+
+La deformación por corte ingenieril es
+$$ \gamma_{12} = 2 U_{12} = k = 10^{-4}. $$
+Para construir los vectores que determinan el ángulo, usamos el gradiente del desplazamiento evaluado en el punto $(x_1,x_2)=(1,-1)$:
+$$
+\nabla\vec u=
+\begin{pmatrix}
+\partial_1u_1&\partial_2u_1\\
+\partial_1u_2&\partial_2u_2
+\end{pmatrix}_{(1,-1)}
+=\begin{pmatrix}3k&k\\0&-2k\end{pmatrix}.
+$$
+Un elemento diferencial se transforma según $d\vec{x}'=(I+\nabla\vec{u})d\vec{x}$. Para los elementos iniciales $d\vec{x}_1=dx_1\hat e_1$ y $d\vec{x}_2=dx_2\hat e_2$, dividimos los vectores deformados por sus longitudes iniciales diferenciales; así obtenemos los vectores tangentes por unidad de longitud original:
+$$
+\begin{aligned}
+\vec v_1
+&=\frac{d\vec{x}'_1}{dx_1}
+=(I+\nabla\vec u)\hat e_1
+=\begin{pmatrix}1+3k&k\\0&1-2k\end{pmatrix}
+\begin{pmatrix}1\\0\end{pmatrix}
+=(1+3k)\hat e_1,\\[2mm]
+\vec v_2
+&=\frac{d\vec{x}'_2}{dx_2}
+=(I+\nabla\vec u)\hat e_2
+=\begin{pmatrix}1+3k&k\\0&1-2k\end{pmatrix}
+\begin{pmatrix}0\\1\end{pmatrix}
+=k\hat e_1+(1-2k)\hat e_2.
+\end{aligned}
+$$
+No son vectores unitarios deformados; sus direcciones sí son las de los elementos después de deformarse, y por eso sirven para hallar el ángulo.
+El primero sigue sobre el eje $x_1$. El segundo forma con ese eje el ángulo
+$$
+\theta'=\arctan\!\left(\frac{1-2k}{k}\right)
+=\frac{\pi}{2}-\arctan\!\left(\frac{k}{1-2k}\right),
+$$
+para el valor positivo y pequeño de $k$ usado aquí. Como el ángulo inicial es $\theta_0=\pi/2$, el cambio es
+$$
+\Delta\theta=\theta'-\theta_0
+=-\arctan\!\left(\frac{k}{1-2k}\right)
+\approx -k=-10^{-4}\,\text{rad}.
+$$
+El signo negativo indica que el ángulo recto se cierra. A primer orden, esto coincide con $\Delta\theta\approx-\gamma_{12}$.
+
+\subsubsection*{Inciso (b)}
+Para describir las posiciones deformadas, usamos la relación $d\vec{x}' = d\vec{x} + (\nabla \vec{u}) d\vec{x}$. El gradiente de desplazamiento evaluado en el punto es:
+$$ \nabla \vec{u} = \begin{pmatrix} 3k & k & 0 \\ 0 & -2k & 0 \\ 0 & 0 & 0 \end{pmatrix} $$
+Si los extremos del elemento están en $\vec{x}$ y $\vec{x}+d\vec{x}$, el cambio de desplazamiento entre ellos es
+$$
+\Delta\vec{u}=\vec{u}(\vec{x}+d\vec{x})-\vec{u}(\vec{x})
+\approx(\nabla\vec{u})\,d\vec{x},
+\qquad
+\Delta u_i=\frac{\partial u_i}{\partial x_j}\,dx_j.
+$$
+Esta es la expansión de Taylor a primer orden en el tamaño diferencial $d\vec{x}$. Para el primer elemento, $d\vec{x}_1=dx_1\hat e_1$, así que
+$$
+\Delta\vec{u}_1
+=\begin{pmatrix}3k&k&0\\0&-2k&0\\0&0&0\end{pmatrix}
+\begin{pmatrix}dx_1\\0\\0\end{pmatrix}
+=\begin{pmatrix}3k\,dx_1\\0\\0\end{pmatrix}
+=3k\,dx_1\hat e_1,
+\qquad
+d\vec{x}'_1=d\vec{x}_1+\Delta\vec{u}_1=(1+3k)dx_1\hat e_1.
+$$
+Para el segundo elemento, $d\vec{x}_2=dx_2\hat e_2$, de modo que su componente en $x_1$ es cero y la multiplicación da
+$$
+\Delta\vec{u}_2
+=\begin{pmatrix}3k&k&0\\0&-2k&0\\0&0&0\end{pmatrix}
+\begin{pmatrix}0\\dx_2\\0\end{pmatrix}
+=\begin{pmatrix}k\,dx_2\\-2k\,dx_2\\0\end{pmatrix}
+=dx_2(k\hat e_1-2k\hat e_2).
+$$
+Por tanto,
+$$
+d\vec{x}'_2=d\vec{x}_2+\Delta\vec{u}_2
+=dx_2\left[k\hat e_1+(1-2k)\hat e_2\right].
+$$
+La figura muestra las configuraciones inicial y deformada; la inclinación y los cambios de longitud se exageran para hacerlos visibles.
+\input{FigurasPS6/Fig4.tex}
+
+\section{Problema 5}
+
+Dadas las componentes no nulas del tensor de deformación $U_{11} = \frac{1}{\alpha} f(x_2, x_3)$, $U_{22} = U_{33} = -\frac{\nu}{\alpha} f(x_2, x_3)$, y $U_{12} = U_{13} = U_{23} = 0$, demuestre que las condiciones de compatibilidad requieren que $f(x_2, x_3)$ sea lineal en $x_2$ y $x_3$.
+
+\subsection{Solución}
+Suponemos $\alpha\ne 0$, pues aparece en el denominador de las deformaciones. Las ecuaciones de compatibilidad de Saint-Venant son las condiciones que debe satisfacer $U_{ij}$ para que exista un campo de desplazamientos $u_i$ tal que $U_{ij}=\tfrac12(\partial_j u_i+\partial_i u_j)$. En notación compacta se escriben
+$$
+U_{ij,kl}+U_{kl,ij}-U_{ik,jl}-U_{jl,ik}=0,
+\qquad i,j,k,l\in\{1,2,3\},
+$$
+donde la coma indica derivación: por ejemplo, $U_{11,22}=\partial^2 U_{11}/\partial x_2^2$. En tres dimensiones, las seis ecuaciones independientes pueden escribirse como
+$$
+\begin{aligned}
+U_{11,22}+U_{22,11}&=2U_{12,12},\\
+U_{22,33}+U_{33,22}&=2U_{23,23},\\
+U_{33,11}+U_{11,33}&=2U_{13,13},\\
+U_{12,33}+U_{33,12}&=U_{13,23}+U_{23,13},\\
+U_{23,11}+U_{11,23}&=U_{12,13}+U_{13,12},\\
+U_{13,22}+U_{22,13}&=U_{12,23}+U_{23,12}.
+\end{aligned}
+$$
+
+Ahora aplicamos este sistema al campo dado:
+$$
+U_{11}=\frac{f(x_2,x_3)}{\alpha},\qquad
+U_{22}=U_{33}=-\frac{\nu}{\alpha}f(x_2,x_3),\qquad
+U_{12}=U_{13}=U_{23}=0.
+$$
+Como $f$ depende solo de $x_2$ y $x_3$, cualquier derivada respecto a $x_1$ es cero. Además, las componentes de corte y sus derivadas también son cero. Por eso:
+\begin{itemize}
+    \item La primera ecuación queda $U_{11,22}=0$, es decir, $f_{,22}/\alpha=0$.
+    \item La tercera ecuación queda $U_{11,33}=0$, es decir, $f_{,33}/\alpha=0$.
+    \item La quinta ecuación queda $U_{11,23}=0$, es decir, $f_{,23}/\alpha=0$.
+\end{itemize}
+Como $\alpha\ne0$, las condiciones que resultan son
+$$
+f_{,22}=0,\qquad f_{,33}=0,\qquad f_{,23}=0,
+$$
+o, de forma explícita,
+$$
+\frac{\partial^2 f}{\partial x_2^2}=0,\qquad
+\frac{\partial^2 f}{\partial x_3^2}=0,\qquad
+\frac{\partial^2 f}{\partial x_2\partial x_3}=0.
+$$
+Las otras tres ecuaciones no añaden restricciones: la segunda se satisface al usar $f_{,22}=f_{,33}=0$, y la cuarta y la sexta contienen derivadas respecto a $x_1$ o derivadas de componentes de corte nulas.
+
+Para ver qué forma tiene $f$, integramos estas condiciones. De $f_{,22}=0$ se sigue que $f$ debe ser lineal en $x_2$, aunque sus coeficientes podrían depender de $x_3$:
+$$
+f(x_2,x_3)=A(x_3)x_2+B(x_3).
+$$
+La condición $f_{,33}=0$ implica $A''(x_3)x_2+B''(x_3)=0$, de modo que $A''=B''=0$. La condición mixta $f_{,23}=0$ exige además $A'(x_3)=0$, por lo que $A$ es constante y $B$ es lineal en $x_3$. En consecuencia,
+$$ f(x_2, x_3) = A x_2 + B x_3 + C $$
+con $A$, $B$ y $C$ constantes. Así, las condiciones de compatibilidad obligan a que $f$ sea afín (lineal más una constante) en $x_2$ y $x_3$.
+
+\section{Problema 6}
+
+Demuestre que para un material isotrópico que sigue la ley de Hooke las direcciones principales de esfuerzo coinciden con las direcciones principales de deformación, y encuentre una relación entre los valores de los esfuerzos principales y las deformaciones principales.
+
+\subsection{Solución}
+La ley de Hooke para un material isotrópico linealmente elástico es
+$$
+\boldsymbol{\sigma}
+=2\mu\mathbf{U}+\lambda\,\operatorname{tr}(\mathbf{U})\mathbf{I},
+$$
+donde $\mathbf{U}$ es el tensor de pequeñas deformaciones, $\boldsymbol{\sigma}$ es el tensor de esfuerzos, $\mathbf{I}$ es el tensor identidad y $\lambda,\mu$ son los coeficientes de Lamé. En componentes, $\operatorname{tr}(\mathbf{U})=U_{kk}$.
+
+El tensor $\mathbf{U}$ es simétrico, así que tiene tres direcciones principales ortogonales. Llamemos $\hat{n}_i$ a una de ellas y $U_i$ a la deformación principal correspondiente. Decir que son un par propio significa, por definición, que al aplicar el tensor a ese vector, el resultado queda en la misma dirección:
+$$
+\mathbf{U}\hat{n}_i=U_i\hat{n}_i.
+$$
+Aquí $\hat{n}_i$ indica la dirección, mientras que el escalar $U_i$ indica cuánto se estira o contrae esa dirección (y con qué signo). Esta propiedad es justamente lo que define un vector propio y su valor propio. Las direcciones principales de deformación son, por tanto, los vectores propios de $\mathbf{U}$.
+
+Ahora aplicamos el tensor de esfuerzos a esa misma dirección. Usamos que la identidad no cambia ningún vector, $\mathbf{I}\hat{n}_i=\hat{n}_i$, y sustituimos el par propio de deformación:
+$$
+\begin{aligned}
+\boldsymbol{\sigma}\hat{n}_i
+&=\left[2\mu\mathbf{U}+\lambda\,\operatorname{tr}(\mathbf{U})\mathbf{I}\right]\hat{n}_i\\
+&=2\mu\left(\mathbf{U}\hat{n}_i\right)
+ +\lambda\,\operatorname{tr}(\mathbf{U})\left(\mathbf{I}\hat{n}_i\right)\\
+&=2\mu U_i\hat{n}_i
+ +\lambda\,\operatorname{tr}(\mathbf{U})\hat{n}_i\\
+&=\left[2\mu U_i+\lambda\,\operatorname{tr}(\mathbf{U})\right]\hat{n}_i.
+\end{aligned}
+$$
+El resultado vuelve a ser un múltiplo escalar de $\hat{n}_i$. Por definición, esto demuestra que $\hat{n}_i$ también es un vector propio de $\boldsymbol{\sigma}$: la dirección no cambia al aplicar el tensor de esfuerzos. El término $2\mu\mathbf U$ conserva las direcciones propias de $\mathbf U$, y el término isotrópico $\lambda\operatorname{tr}(\mathbf U)\mathbf I$ solo añade el mismo escalar a todas las direcciones, sin privilegiar ni girar ninguna.
+
+Como $\mathbf U$ es simétrico, sus vectores propios pueden elegirse ortonormales y su traza es la suma de sus valores propios:
+$$
+\operatorname{tr}(\mathbf U)=U_1+U_2+U_3.
+$$
+Por consiguiente, el valor propio de esfuerzo en la dirección $\hat n_i$ es
+$$
+\boxed{\sigma_i=2\mu U_i+\lambda(U_1+U_2+U_3)},
+\qquad i=1,2,3.
+$$
+En la base principal común, esto equivale a
+$$
+\mathbf U=\begin{pmatrix}U_1&0&0\\0&U_2&0\\0&0&U_3\end{pmatrix},
+\qquad
+\boldsymbol{\sigma}=\begin{pmatrix}\sigma_1&0&0\\0&\sigma_2&0\\0&0&\sigma_3\end{pmatrix}.
+$$
+Así, las direcciones principales de esfuerzo y deformación coinciden. Si algún valor propio está repetido, las direcciones dentro de ese subespacio no son únicas, pero se puede elegir una misma base ortonormal principal para ambos tensores.
+
+La figura ilustra en dos dimensiones esta acción: cada tensor puede cambiar la magnitud del vector asociado a una dirección principal, pero su imagen permanece sobre esa misma dirección (si el valor propio es negativo, el sentido de la flecha se invierte, no el eje principal).
+\input{FigurasPS6/Fig5.tex}
+
+\section{Problema 7}
+
+Un material es incompresible si su volumen no cambia bajo ningún estado de esfuerzo. Pruebe que para un sólido incompresible, isotrópico y linealmente elástico con módulo de Young finito $E_Y$: (a) la razón de Poisson es $\nu = 1/2$, (b) el módulo de corte es $\mu = E_Y/3$ y (c) el módulo volumétrico $K\to\infty$ y $\lambda\to\infty$, mientras $K-\lambda=2\mu/3$.
+
+\subsection{Solución}
+
+\subsubsection*{Inciso (a): Razón de Poisson}
+La deformación volumétrica (dilatación) $e$ se define como la traza del tensor de deformaciones, $e = U_{kk}$. Usando la ley de Hooke invertida, la dilatación en función de la traza del tensor de esfuerzos $\sigma_{kk}$ es:
+$$ e = U_{kk} = \frac{1 - 2\nu}{E_Y} \sigma_{kk} $$
+Para un material incompresible, el volumen no cambia bajo ningún estado de esfuerzo, lo que significa que $e = 0$ para cualquier valor arbitrario de $\sigma_{kk}$. Dado que el módulo de Young $E_Y$ es finito y distinto de cero, la única forma de que esta ecuación se cumpla universalmente es que el numerador sea cero:
+$$ 1 - 2\nu = 0 \implies \nu = \frac{1}{2} $$
+
+\subsubsection*{Inciso (b): Módulo de corte}
+La relación fundamental entre el módulo de Young $E_Y$, el módulo de corte $\mu$ y la razón de Poisson $\nu$ es:
+$$ E_Y = 2\mu(1 + \nu) $$
+Sustituyendo el valor $\nu = 1/2$ obtenido en el inciso anterior:
+$$ E_Y = 2\mu \left(1 + \frac{1}{2}\right) = 2\mu \left(\frac{3}{2}\right) = 3\mu $$
+Despejando el módulo de corte, obtenemos directamente:
+$$ \mu = \frac{E_Y}{3} $$
+
+\subsubsection*{Inciso (c): Comportamiento de los módulos $K$ y $\lambda$}
+El módulo de compresibilidad volumétrica $K$ se relaciona con $E_Y$ y $\nu$ mediante:
+$$ K = \frac{E_Y}{3(1 - 2\nu)} $$
+Al tender $\nu \to 1/2$, el denominador tiende a cero mientras el numerador es finito y positivo, por lo que:
+$$ K \to \infty $$
+La relación entre $K$, el parámetro de Lamé $\lambda$ y el módulo de corte $\mu$ es:
+$$ K = \lambda + \frac{2}{3}\mu $$
+De aquí, $\lambda=K-2\mu/3\to\infty$, pues $\mu=E_Y/3$ permanece finito. Además,
+$$ K - \lambda = \frac{2}{3}\mu $$
+Esta diferencia es estrictamente finita e igual a $\frac{2}{3}\mu$, como se quería demostrar. Físicamente, aunque $K$ y $\lambda$ divergen en el límite incompresible, su diferencia permanece finita y está determinada por el módulo de corte $\mu$.
+
+\section{Problema 8}
+
+Encuentre la deformación de un sólido isotrópico elástico sumergido en un fluido a presión constante $p$.
+
+\subsection{Solución}
+Al estar sumergido en un fluido a presión $p$, el sólido experimenta un estado de esfuerzo hidrostático en todas sus direcciones. El tensor de esfuerzos es:
+$$ \sigma_{ij} = -p \delta_{ij} $$
+La traza del tensor de esfuerzos es $\sigma_{kk} = -3p$.
+Utilizando la ley de Hooke generalizada para materiales isotrópicos, el tensor de deformación $U_{ij}$ se relaciona con los esfuerzos mediante:
+$$ U_{ij} = \frac{1+\nu}{E_Y} \sigma_{ij} - \frac{\nu}{E_Y} \sigma_{kk} \delta_{ij} $$
+Sustituyendo $\sigma_{ij}$:
+$$ U_{ij} = \frac{1+\nu}{E_Y} (-p \delta_{ij}) - \frac{\nu}{E_Y} (-3p) \delta_{ij} = -\frac{p(1-2\nu)}{E_Y} \delta_{ij} $$
+Definiendo el módulo de compresibilidad volumétrica como $K = \frac{E_Y}{3(1-2\nu)}$, la deformación se expresa de forma compacta como:
+$$ U_{ij} = -\frac{p}{3K} \delta_{ij} $$
+Esto indica que el sólido sufre una compresión uniforme. Las componentes diagonales del tensor de deformación son $U_{xx} = U_{yy} = U_{zz} = -\frac{p}{3K}$, y las componentes de corte son nulas.
+
+Un campo de desplazamientos particular que produce esta deformación uniforme es:
+$$ \vec{u} = -\frac{p}{3K}\vec{r}. $$
+La solución general puede sumarle cualquier traslación y rotación infinitesimal de cuerpo rígido.
+
+\section{Problema 9}
+
+Encuentre la deformación de una varilla que es estirada al ejercer sobre sus extremos un esfuerzo $p$ en términos del módulo de Young y la razón de Poisson.
+
+\subsection{Solución}
+Alineamos el eje $z$ con el eje longitudinal de la varilla. Al aplicar un esfuerzo de tracción $p$ uniformemente distribuido en los extremos y no haber fuerzas laterales, el único componente no nulo del tensor de esfuerzos es:
+$$ \sigma_{zz} = p, \quad \sigma_{ij} = 0 \text{ para } (i,j) \neq (z,z) $$
+Aplicando la ley de Hooke invertida, las componentes del tensor de deformación son:
+$$ U_{zz} = \frac{p}{E_Y} $$
+$$ U_{xx} = U_{yy} = -\nu \frac{p}{E_Y} $$
+$$ U_{xy} = U_{yz} = U_{zx} = 0 $$
+Un campo de desplazamientos que reproduce estas deformaciones es
+$$
+\vec{u}= -\nu\frac{p}{E_Y}x\,\hat{e}_x
+          -\nu\frac{p}{E_Y}y\,\hat{e}_y
+          +\frac{p}{E_Y}z\,\hat{e}_z.
+$$
+Puede añadirse un desplazamiento de cuerpo rígido sin alterar la deformación.
+Físicamente, esto describe una varilla que se alarga en la dirección $z$ y se contrae uniformemente en las direcciones transversales $x$ e $y$ debido al efecto de Poisson.
+
+\section{Problema 10}
+
+Determine la deformación de una varilla larga de longitud $l$ en un campo gravitacional constante.
+
+\subsection{Solución}
+Modelamos la varilla como esbelta, con esfuerzo uniaxial y sin considerar los efectos locales de los extremos. El eje $z$ apunta hacia arriba, desde $z=0$ hasta $z=l$, y la gravedad actúa en dirección $-z$ con aceleración $g_0$. La densidad del material es $\rho$.
+La ecuación de equilibrio $\partial_j\sigma_{ij}+f_i=0$, con $f_z=-\rho g_0$, se reduce a
+$$ \partial_z \sigma_{zz} = \rho g_0. $$
+Integrando y aplicando la condición de frontera de superficie libre en el tope ($z=l$), donde $\sigma_{zz}(l) = 0$, obtenemos:
+$$ \sigma_{zz} = -\rho g_0 (l - z) $$
+Todos los demás componentes del tensor de esfuerzos son nulos ($\sigma_{ij} = 0$).
+Las componentes del tensor de deformación se calculan mediante la ley de Hooke:
+$$ U_{zz} = \frac{\sigma_{zz}}{E_Y} = -\frac{\rho g_0}{E_Y} (l - z) $$
+$$ U_{xx} = U_{yy} = -\nu \frac{\sigma_{zz}}{E_Y} = \frac{\nu \rho g_0}{E_Y} (l - z) $$
+$$ U_{xy} = U_{yz} = U_{zx} = 0 $$
+Las deformaciones son compatibles con el siguiente campo de desplazamientos particular:
+$$
+\begin{aligned}
+u_x&=\frac{\nu\rho g_0}{E_Y}(l-z)x,\\
+u_y&=\frac{\nu\rho g_0}{E_Y}(l-z)y,\\
+u_z&=-\frac{\rho g_0}{E_Y}\left(lz-\frac{z^2}{2}\right)
+     +\frac{\nu\rho g_0}{2E_Y}(x^2+y^2).
+\end{aligned}
+$$
+Se fija $\vec{u}(0,0,0)=\vec{0}$ como elección del movimiento rígido global; esto no equivale a imponer un empotramiento en toda la base. El término axial es negativo y representa el acortamiento por el peso propio; los términos transversales describen la expansión lateral de Poisson y hacen compatible el campo de deformaciones con los cortes nulos.
+
+\end{document}

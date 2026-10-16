@@ -1,0 +1,39 @@
+\begin{tikzpicture}[
+  >=Latex,
+  line cap=round,
+  line join=round,
+  font=\small,
+  base/.style={->, gray!70!black, line width=1pt},
+  vector/.style={->, blue!75!black, line width=1.3pt},
+  arco/.style={gray!55, densely dotted, line width=0.8pt}
+]
+% Panel (a): una base polar cambia de orientación entre dos puntos.
+\node[font=\small\bfseries] at (1.7,2.65) {(a) La base local gira};
+\draw[arco] (0,0) circle (1.7);
+\fill[gray!70!black] (1.2,0) circle (2pt) node[below right] {$P$};
+\fill[gray!70!black] (0,1.2) circle (2pt) node[above right] {$Q$};
+\draw[base] (0,0) -- (1.2,0) node[midway,below] {$\hat e_r(P)$};
+\draw[base] (1.2,0) -- (1.2,0.78) node[above right] {$\hat e_\theta(P)$};
+\draw[base] (0,0) -- (0,1.2) node[midway,left] {$\hat e_r(Q)$};
+\draw[base] (0,1.2) -- (-0.78,1.2) node[above left] {$\hat e_\theta(Q)$};
+\draw[vector] (1.2,0) -- (1.85,0.48);
+\draw[vector] (0,1.2) -- (0.65,1.68);
+\node[blue!75!black,anchor=west] at (1.45,1.78) {$\vec u$ constante};
+\node[font=\footnotesize,align=center,text width=3.2cm] at (0.55,-1.95)
+  {El mismo vector espacial\\tiene componentes locales distintas};
+
+% Panel (b): regla del producto y cancelación para u constante.
+\begin{scope}[xshift=6.6cm]
+  \node[font=\small\bfseries] at (2.0,2.65) {(b) Derivar también la base};
+  \node[draw=blue!45,rounded corners,fill=blue!5,align=center,minimum width=4.0cm,minimum height=0.72cm] (a) at (2,1.75)
+    {$\partial_i(u_\ell\hat e_\ell)$};
+  \node[draw=gray!50,rounded corners,fill=gray!7,align=center,text width=1.95cm,minimum height=0.95cm] (b) at (0.8,0.35)
+    {$\partial_i u_\ell$\\cambio de componentes};
+  \node[draw=gray!50,rounded corners,fill=gray!7,align=center,text width=1.95cm,minimum height=0.95cm] (c) at (3.2,0.35)
+    {$u_\ell\partial_i\hat e_\ell$\\cambio de base};
+  \draw[->,gray!70] (a.south) -- (b.north);
+  \draw[->,gray!70] (a.south) -- (c.north);
+  \node[align=center,text width=4.3cm] at (2,-1.2)
+    {$\vec u$ constante: los dos términos se compensan,\\por lo que $\vec\nabla\vec u=\boldsymbol{0}$ y $\mathbb U=\boldsymbol{0}$.};
+\end{scope}
+\end{tikzpicture}

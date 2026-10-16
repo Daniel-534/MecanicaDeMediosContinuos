@@ -1,0 +1,29 @@
+\begin{tikzpicture}[
+  >=Latex,
+  line cap=round,
+  line join=round,
+  font=\small,
+  paso/.style={draw=blue!50!black, rounded corners=2pt, fill=blue!5,
+    align=center, text width=3.1cm, minimum height=1.65cm, inner sep=5pt},
+  flecha/.style={->, gray!70!black, line width=1pt}
+]
+\node[paso] (eq) at (0,0)
+  {Equilibrio local\\[2pt]
+   $\partial_j\sigma_{ij}+f_i=0$};
+\node[paso] (hooke) at (3.8,0)
+  {Ley de Hooke\\[2pt]
+   $\sigma_{ij}=\lambda U_{kk}\delta_{ij}+2\mu U_{ij}$};
+\node[paso] (strain) at (7.6,0)
+  {Deformación desde $\vec u$\\[2pt]
+   $U_{ij}=\frac12(\partial_i u_j+\partial_j u_i)$};
+\node[paso] (navier) at (11.4,0)
+  {Ecuación para el desplazamiento\\[2pt]
+   {\scriptsize $\begin{gathered}
+     \mu\nabla^2\vec u
+     +(\lambda+\mu)\vec\nabla(\vec\nabla\cdot\vec u)\\
+     +\vec f=\vec0
+   \end{gathered}$}};
+\draw[flecha] (eq.east) -- (hooke.west);
+\draw[flecha] (hooke.east) -- (strain.west);
+\draw[flecha] (strain.east) -- (navier.west);
+\end{tikzpicture}

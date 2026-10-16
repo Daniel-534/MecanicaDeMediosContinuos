@@ -1,0 +1,723 @@
+\documentclass[a4paper]{article}
+
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=2cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage[shortlabels]{enumitem}
+\usepackage{parskip}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usepackage[hidelinks]{hyperref}
+
+\usetikzlibrary{calc,arrows.meta,babel}
+\pagestyle{fancy}
+\fancyhead[l]{Mecánica de Medios Continuos}
+\fancyhead[c]{Taller 7}
+\fancyhead[r]{\today}
+\fancyfoot[c]{\thepage}
+\setlength{\headheight}{14.5pt}
+\renewcommand{\headrulewidth}{0.2pt}
+
+\begin{document}
+\tableofcontents
+
+\section{Problema 1: varilla bajo gravedad}
+
+\textbf{Enunciado.} Determine la deformación de una varilla larga de longitud $h$ en un campo gravitacional constante.
+
+\subsection{Solución}
+
+Este desarrollo corresponde también al \textbf{problema 10 del Taller 6}. Retomamos el asentamiento bajo el propio peso de la clase 16, pero ahora retiramos las paredes que impedían el desplazamiento lateral. El cuerpo tiene altura $h$, densidad de referencia $\rho_0$ y gravedad $\vec g=-g_0\hat e_z$.
+
+Buscamos un campo sin esfuerzos cortantes:
+\[
+\sigma_{xy}=\sigma_{yz}=\sigma_{zx}=0.
+\]
+Por la simetría del tensor de esfuerzos, también se anulan sus componentes transpuestas. Las ecuaciones de equilibrio se reducen a
+\[
+\nabla_x\sigma_{xx}=0,
+\qquad
+\nabla_y\sigma_{yy}=0,
+\qquad
+\nabla_z\sigma_{zz}=\rho_0g_0.
+\]
+La primera ecuación indica que $\sigma_{xx}$ es independiente de $x$. Como la tracción se anula en las caras laterales libres, $\sigma_{xx}=0$ en sus puntos con $n_x\ne0$, y este valor se extiende al interior a lo largo de cada línea paralela al eje $x$. Análogamente, $\sigma_{yy}=0$.
+
+Integrando la ecuación vertical y usando $\sigma_{zz}(h)=0$,
+\[
+\boxed{\sigma_{xx}=\sigma_{yy}=0},
+\qquad
+\boxed{\sigma_{zz}=-\rho_0g_0(h-z)}.
+\]
+La ley de Hooke inversa,
+\[
+U_{ij}=\frac{1}{E}
+\left[(1+\nu)\sigma_{ij}-\nu\sigma_{kk}\delta_{ij}\right],
+\]
+se aplica usando
+\[
+\sigma_{kk}=\sigma_{xx}+\sigma_{yy}+\sigma_{zz}
+=-\rho_0g_0(h-z),
+\qquad
+\delta_{xx}=\delta_{yy}=\delta_{zz}=1.
+\]
+Para la componente vertical, sustituimos $\sigma_{zz}=\sigma_{kk}=-\rho_0g_0(h-z)$:
+\[
+\begin{aligned}
+U_{zz}
+&=\frac{1}{E}\left[(1+\nu)\sigma_{zz}-\nu\sigma_{kk}\delta_{zz}\right]\\
+&=\frac{1}{E}\left[-(1+\nu)\rho_0g_0(h-z)
++\nu\rho_0g_0(h-z)\right]\\
+&=-\frac{\rho_0g_0}{E}(h-z).
+\end{aligned}
+\]
+Para las componentes horizontales, usamos $\sigma_{xx}=\sigma_{yy}=0$:
+\[
+\begin{aligned}
+U_{xx}
+&=\frac{1}{E}\left[(1+\nu)\sigma_{xx}-\nu\sigma_{kk}\delta_{xx}\right]\\
+&=\frac{1}{E}\left[0-\nu\bigl(-\rho_0g_0(h-z)\bigr)\right]
+=\frac{\nu\rho_0g_0}{E}(h-z),\\
+U_{yy}
+&=\frac{1}{E}\left[(1+\nu)\sigma_{yy}-\nu\sigma_{kk}\delta_{yy}\right]\\
+&=\frac{1}{E}\left[0-\nu\bigl(-\rho_0g_0(h-z)\bigr)\right]
+=\frac{\nu\rho_0g_0}{E}(h-z).
+\end{aligned}
+\]
+Finalmente, para $i\ne j$ se tiene $\delta_{ij}=0$ y los esfuerzos cortantes son nulos; por tanto, $U_{ij}=(1+\nu)\sigma_{ij}/E=0$. En conjunto, las deformaciones son
+\[
+U_{zz}=-\frac{\rho_0g_0}{E}(h-z),
+\qquad
+U_{xx}=U_{yy}=\frac{\nu\rho_0g_0}{E}(h-z),
+\]
+\[
+U_{xy}=U_{xz}=U_{yz}=0.
+\]
+Para $\nu>0$, la compresión vertical se acompaña de expansión lateral.
+
+Integrando las componentes diagonales del tensor de deformación,
+\[
+\begin{aligned}
+u_x&=\frac{\nu\rho_0g_0}{E}(h-z)x+f_1(y,z),\\
+u_y&=\frac{\nu\rho_0g_0}{E}(h-z)y+f_2(x,z),\\
+u_z&=-\frac{\rho_0g_0}{E}\left(hz-\frac{z^2}{2}\right)+f_3(x,y).
+\end{aligned}
+\]
+La condición $U_{xy}=0$ exige
+\[
+\frac{\partial f_2}{\partial x}+\frac{\partial f_1}{\partial y}=0.
+\]
+Para obtener un campo con la simetría del problema, sin superponer movimientos rígidos, elegimos $f_1=f_2=0$. Esta elección satisface la condición anterior; no es necesario identificar ambas funciones con una misma función de $z$.
+
+Las condiciones restantes de corte nulo determinan $f_3$:
+\[
+\begin{aligned}
+U_{xz}=0
+&\quad\Longrightarrow\quad
+\frac{\partial f_3}{\partial x}=\frac{\nu\rho_0g_0}{E}x,\\
+U_{yz}=0
+&\quad\Longrightarrow\quad
+\frac{\partial f_3}{\partial y}=\frac{\nu\rho_0g_0}{E}y.
+\end{aligned}
+\]
+Por tanto,
+\[
+f_3(x,y)=\frac{\nu\rho_0g_0}{2E}(x^2+y^2)+C.
+\]
+Fijamos la referencia vertical imponiendo $u_z=0$ en el círculo $x^2+y^2=a^2$ del plano $z=0$. Entonces
+\[
+C=-\frac{\nu\rho_0g_0}{2E}a^2.
+\]
+El campo de desplazamiento resultante es
+\[
+\boxed{u_x=\frac{\nu\rho_0g_0}{E}(h-z)x},
+\qquad
+\boxed{u_y=\frac{\nu\rho_0g_0}{E}(h-z)y},
+\]
+\[
+\boxed{u_z=-\frac{\rho_0g_0}{2E}
+\left[h^2-(h-z)^2+\nu(a^2-x^2-y^2)\right]}.
+\]
+En el fondo,
+\[
+u_z(x,y,0)=\frac{\nu\rho_0g_0}{2E}(x^2+y^2-a^2).
+\]
+Así, $u_z$ no se anula sobre toda la base. Esta solución sin cizalladura no satisface el apoyo sobre un plano rígido: imponer $u_z=0$ en todo el fondo requiere, en general, admitir esfuerzos cortantes. Fijar el desplazamiento en el círculo solo determina la constante $C$; no reemplaza las condiciones mecánicas del apoyo.
+
+
+\begin{figure}[H]
+\centering
+\input{FigurasPS7/Fig1.tex}
+\par\medskip
+\begin{minipage}{\textwidth}
+\textbf{Figura 1 del Taller 7.} Asentamiento sin cizalladura para $\nu>0$. (a) Corte vertical: la compresión reduce la altura y produce expansión lateral. El contorno discontinuo representa el cuerpo inicial. (b) Perfil de $u_z(x,0)$ en $y=0$: la referencia elegida anula el desplazamiento en $x=\pm a$, pero no en el interior. Por ello, el campo no satisface el apoyo sobre un fondo plano rígido. Las deformaciones y la escala vertical del perfil se exageran para facilitar su lectura.
+\end{minipage}
+\end{figure}
+
+\section{Problema 2: ecuación diferencial para el desplazamiento}
+
+\textbf{Enunciado.} Deduzca una sola ecuación diferencial para el campo de desplazamientos $\vec u$ a partir de las ecuaciones de equilibrio.
+
+\subsection{Solución}
+
+Suponemos un sólido homogéneo, isotrópico y linealmente elástico, con pequeñas deformaciones y módulos de Lamé constantes $\lambda$ y $\mu$. El equilibrio local, incluyendo una fuerza de cuerpo por unidad de volumen $\vec f$, es
+\[
+\partial_j\sigma_{ij}+f_i=0.
+\]
+La ley de Hooke y la definición del tensor de pequeñas deformaciones son
+\[
+\sigma_{ij}=\lambda U_{kk}\delta_{ij}+2\mu U_{ij},
+\qquad
+U_{ij}=\frac{1}{2}(\partial_i u_j+\partial_j u_i).
+\]
+Sustituimos primero la ley de Hooke en el equilibrio. Como $\lambda$ y $\mu$ son constantes y $\delta_{ij}$ es el delta de Kronecker,
+\[
+\begin{aligned}
+0
+&=\partial_j\sigma_{ij}+f_i\\
+&=\partial_j\left(\lambda U_{kk}\delta_{ij}+2\mu U_{ij}\right)+f_i\\
+&=\lambda\,\partial_i U_{kk}+2\mu\,\partial_j U_{ij}+f_i.
+\end{aligned}
+\]
+Ahora reemplazamos $U_{kk}=\partial_k u_k$ y
+$U_{ij}=\tfrac12(\partial_i u_j+\partial_j u_i)$:
+\[
+\begin{aligned}
+0
+&=\lambda\,\partial_i(\partial_k u_k)
++\mu\,\partial_j\left(\partial_i u_j+\partial_j u_i\right)+f_i\\
+&=\lambda\,\partial_i\partial_k u_k
++\mu\,\partial_j\partial_i u_j
++\mu\,\partial_j\partial_j u_i+f_i.
+\end{aligned}
+\]
+El término $\partial_j\partial_i u_j$ se reordena porque las derivadas parciales conmutan; además, $j$ es un índice mudo de suma, así que podemos renombrarlo como $k$:
+\[
+\partial_j\partial_i u_j
+=\partial_i\partial_j u_j
+=\partial_i\partial_k u_k.
+\]
+Por ello, los dos términos con derivadas de la divergencia se combinan:
+\[
+(\lambda+\mu)\,\partial_i\partial_k u_k
++\mu\,\partial_j\partial_j u_i+f_i=0.
+\]
+Para reconocer la notación vectorial, observamos que la componente $i$ de
+$\vec\nabla(\vec\nabla\cdot\vec u)$ es $\partial_i\partial_k u_k$, mientras que la componente $i$ de $\nabla^2\vec u$ es $\partial_j\partial_j u_i$. Como esta igualdad vale para cada componente $i$, queda
+\[
+\boxed{\mu\nabla^2\vec u+(\lambda+\mu)\vec\nabla(\vec\nabla\cdot\vec u)+\vec f=\vec 0.}
+\]
+Esta es la ecuación de Navier--Cauchy. Si no hay fuerzas de cuerpo, se toma $\vec f=\vec 0$. Usando la identidad $\nabla^2\vec u=\vec\nabla(\vec\nabla\cdot\vec u)-\vec\nabla\times(\vec\nabla\times\vec u)$, también puede escribirse como
+\[
+\boxed{(\lambda+2\mu)\vec\nabla(\vec\nabla\cdot\vec u)
+-\mu\vec\nabla\times(\vec\nabla\times\vec u)+\vec f=\vec 0.}
+\]
+
+\begin{figure}[H]
+\centering
+\input{FigurasPS7/FigPS2.tex}
+\par\medskip
+\begin{minipage}{\textwidth}
+\textbf{Figura 2 del Taller 7.} Esquema de la deducción de Navier--Cauchy: equilibrio, ley de Hooke y deformación se combinan para obtener una ecuación diferencial solo para el desplazamiento.
+\end{minipage}
+\end{figure}
+
+\section{Problema 3: tensor de deformación en una base local}
+
+\textbf{Enunciado.} Escriba una expresión para el tensor de deformaciones en un sistema de coordenadas curvilíneas ortogonales arbitrario.
+
+\subsection{Solución}
+
+En una base ortonormal variable, el tensor de deformación se define por
+\[
+\mathbb U=\frac{1}{2}
+\left(\vec\nabla\vec u+(\vec\nabla\vec u)^T\right),
+\qquad
+U_{ij}=\hat e_i\cdot\mathbb U\cdot\hat e_j.
+\]
+El producto diádico se escribe por yuxtaposición, sin un símbolo adicional. Consideremos coordenadas curvilíneas ortogonales $q_i$, con factores de escala $h_i$, y escribamos
+\[
+\vec u=u_\ell\hat e_\ell,
+\qquad
+\vec\nabla=\frac{\hat e_k}{h_k}\frac{\partial}{\partial q_k}.
+\]
+La última expresión emplea la suma coordenada implícita sobre $k$. En este problema, $\partial_i$ denota $\partial/\partial q_i$; la derivada direccional sobre un escalar es $\nabla_i=(1/h_i)\partial_i$.
+
+Proyectamos el gradiente diádico sobre $\hat e_i$ y $\hat e_j$, manteniendo ambos índices libres:
+\[
+\begin{aligned}
+(\vec\nabla\vec u)_{ij}
+&=\hat e_i\cdot(\vec\nabla\vec u)\cdot\hat e_j\\
+&=\frac{1}{h_i}\partial_i(u_\ell\hat e_\ell)\cdot\hat e_j\\
+&=\frac{1}{h_i}
+\left[(\partial_i u_\ell)(\hat e_\ell\cdot\hat e_j)
++u_\ell(\partial_i\hat e_\ell)\cdot\hat e_j\right]\\
+&=\frac{1}{h_i}
+\left[\partial_i u_j+u_\ell(\partial_i\hat e_\ell)\cdot\hat e_j\right].
+\end{aligned}
+\]
+El primer término deriva las componentes del desplazamiento; el segundo tiene en cuenta la variación de los vectores de la base.
+
+Definimos los coeficientes de conexión de la base ortonormal local como
+\[
+c_{\ell i j}=(\partial_i\hat e_\ell)\cdot\hat e_j.
+\]
+Estos describen cómo gira la base y no deben identificarse directamente con los símbolos de Christoffel de una base coordenada no normalizada. Al derivar $\hat e_\ell\cdot\hat e_j=\delta_{\ell j}$, se obtiene $c_{\ell i j}=-c_{j i\ell}$.
+
+Simetrizando los índices $i,j$, llegamos a
+\[
+\boxed{U_{ij}=\frac{1}{2}
+\left[
+\frac{\partial_i u_j}{h_i}
++\frac{\partial_j u_i}{h_j}
++\frac{u_\ell}{h_i}c_{\ell i j}
++\frac{u_\ell}{h_j}c_{\ell j i}
+\right]}.
+\]
+Aquí se suma sobre $\ell$, no sobre $i$ ni $j$. En una base cartesiana fija, $h_i=1$ y $c_{\ell i j}=0$, por lo que se recupera
+\[
+U_{ij}=\frac{1}{2}(\partial_i u_j+\partial_j u_i).
+\]
+
+
+\begin{figure}[H]
+\centering
+\input{FigurasPS7/Fig2.tex}
+\par\medskip
+\begin{minipage}{\textwidth}
+\textbf{Figura 3 del Taller 7.} Variación de una base local, ilustrada con la base polar $\hat e_r,\hat e_\theta$. (a) Al pasar de $P$ a $Q$, los vectores de la base giran. Un vector de desplazamiento constante en el espacio, dibujado en azul, tiene componentes distintas en ambas bases. (b) La regla del producto separa la variación de las componentes de la variación de la base; si $\vec u$ es constante, ambas contribuciones se cancelan. El cambio angular se representa ampliado.
+\end{minipage}
+\end{figure}
+
+\section{Problema 4: tubo cilíndrico bajo presión interior}
+
+\textbf{Enunciado.} Determine completamente la deformación de un tubo cilíndrico largo sometido a una presión $p$ en el interior y presión nula en el exterior.
+
+\subsection{Solución}
+
+Tomamos $a$ como el radio interior y $b$ como el radio exterior, con $0<a<b$. La presión interna comprime la pared en la dirección normal a la superficie interior, mientras que la superficie exterior está libre de tracción:
+\[
+\sigma_{rr}(a)=-p,
+\qquad
+\sigma_{rr}(b)=0.
+\]
+Como en el problema siguiente, usamos el modelo de deformación plana para un tubo largo, $U_{zz}=0$, y suponemos simetría axial, ausencia de fuerzas de cuerpo y desplazamiento puramente radial:
+\[
+\vec u=u_r(r)\hat e_r,
+\qquad u_\theta=u_z=0.
+\]
+
+El campo radial es irrotacional, de modo que la ecuación de Navier--Cauchy sin fuerzas de cuerpo implica que su divergencia es constante. En coordenadas cilíndricas,
+\[
+\vec\nabla(\vec\nabla\cdot\vec u)=0,
+\qquad
+\vec\nabla\cdot\vec u
+=\frac{1}{r}\frac{d(ru_r)}{dr}=2A,
+\]
+donde $A$ es una constante. Integrando,
+\[
+\frac{d(ru_r)}{dr}=2Ar
+\quad\Longrightarrow\quad
+ru_r=Ar^2+B
+\quad\Longrightarrow\quad
+u_r=Ar+\frac{B}{r}.
+\]
+Las deformaciones no nulas son
+\[
+U_{rr}=\frac{du_r}{dr}=A-\frac{B}{r^2},
+\qquad
+U_{\theta\theta}=\frac{u_r}{r}=A+\frac{B}{r^2},
+\qquad
+U_{zz}=0,
+\]
+por lo que $\mathrm{Tr}\,\mathbb U=2A$. La ley de Hooke da el esfuerzo radial
+\[
+\sigma_{rr}
+=\lambda\,\mathrm{Tr}\,\mathbb U+2\mu U_{rr}
+=2(\lambda+\mu)A-\frac{2\mu B}{r^2}.
+\]
+Aplicamos las condiciones de frontera y dividimos entre dos:
+\[
+\begin{aligned}
+(\lambda+\mu)A-\frac{\mu B}{a^2}&=-\frac{p}{2},\\
+(\lambda+\mu)A-\frac{\mu B}{b^2}&=0.
+\end{aligned}
+\]
+Restando la primera ecuación de la segunda, obtenemos
+\[
+\mu B\left(\frac{1}{a^2}-\frac{1}{b^2}\right)
+=\frac{p}{2}
+\quad\Longrightarrow\quad
+B=\frac{pa^2b^2}{2\mu(b^2-a^2)}.
+\]
+La condición en la superficie exterior determina entonces
+\[
+A=\frac{\mu B}{b^2(\lambda+\mu)}
+=\frac{pa^2}{2(\lambda+\mu)(b^2-a^2)}.
+\]
+Así, el desplazamiento radial completo es
+\[
+\boxed{
+u_r(r)=\frac{pa^2}{2(b^2-a^2)}
+\left(\frac{r}{\lambda+\mu}+\frac{b^2}{\mu r}\right),
+\qquad a\le r\le b.
+}
+\]
+Es positivo en toda la pared: el tubo se expande. Las deformaciones pueden escribirse explícitamente como
+\[
+\boxed{
+U_{rr}=\frac{pa^2}{2(b^2-a^2)}
+\left(\frac{1}{\lambda+\mu}-\frac{b^2}{\mu r^2}\right),
+\qquad
+U_{\theta\theta}=\frac{pa^2}{2(b^2-a^2)}
+\left(\frac{1}{\lambda+\mu}+\frac{b^2}{\mu r^2}\right),
+\qquad U_{zz}=0.
+}
+\]
+Además del esfuerzo radial, el esfuerzo circunferencial y el axial son
+\[
+\boxed{
+\sigma_{rr}(r)=\frac{pa^2}{b^2-a^2}
+\left(1-\frac{b^2}{r^2}\right),
+\qquad
+\sigma_{\theta\theta}(r)=\frac{pa^2}{b^2-a^2}
+\left(1+\frac{b^2}{r^2}\right),
+\qquad
+\sigma_{zz}=2\lambda A
+=\frac{\lambda pa^2}{(\lambda+\mu)(b^2-a^2)}.
+}
+\]
+Las componentes de corte son nulas. Se verifica que $\sigma_{rr}(a)=-p$ y $\sigma_{rr}(b)=0$, como requieren las condiciones de frontera. El esfuerzo axial aparece debido a la restricción $U_{zz}=0$ del modelo de deformación plana.
+
+\begin{figure}[H]
+\centering
+\input{FigurasPS7/Fig3.tex}
+\par\medskip
+\textbf{Figura 4 del Taller 7.} Tubo largo sometido a presión interna. (a) La presión actúa radialmente hacia fuera sobre la pared interior y produce expansión. (b) El esfuerzo radial cambia de $-p$ en $r=a$ a cero en $r=b$; el perfil se ilustra para $b/a=2$.
+\end{figure}
+
+\section{Problema 5: tubo cilíndrico bajo presión exterior}
+
+\textbf{Enunciado.} Determine completamente la deformación de un tubo cilíndrico largo sometido a una presión $p$ en el exterior y presión nula en el interior.
+
+\subsection{Solución}
+
+Consideremos un tubo de radio interior $a$ y exterior $b$, con $0<a<b$, sometido a una presión externa $p>0$ y sin presión interna:
+\[
+\sigma_{rr}(a)=0,
+\qquad \sigma_{rr}(b)=-p.
+\]
+Suponemos simetría axial, ausencia de fuerzas de cuerpo y un desplazamiento puramente radial,
+\[
+\vec u=u_r(r)\hat e_r,
+\qquad u_\theta=u_z=0.
+\]
+Este es un modelo de \emph{deformación plana}, con $U_{zz}=0$; presupone una restricción axial compatible y no describe, en general, un tubo con extremos libres de tracción.
+
+Como el campo radial es irrotacional, la ecuación de Navier--Cauchy sin fuerzas de cuerpo se reduce a
+\[
+\vec\nabla(\vec\nabla\cdot\vec u)=0
+\quad\Longrightarrow\quad
+\vec\nabla\cdot\vec u=\alpha,
+\]
+donde $\alpha$ es constante. En coordenadas cilíndricas,
+\[
+\frac{1}{r}\frac{d(ru_r)}{dr}=\alpha.
+\]
+Integrando,
+\[
+ru_r=\frac{\alpha}{2}r^2+B
+\quad\Longrightarrow\quad
+u_r=Ar+\frac{B}{r},
+\qquad A=\frac{\alpha}{2}.
+\]
+Para calcular los esfuerzos, necesitamos las deformaciones diagonales. Usamos $\partial\hat e_r/\partial r=0$ y $\partial\hat e_r/\partial\theta=\hat e_\theta$:
+\[
+\begin{aligned}
+U_{rr}
+&=\frac{\partial}{\partial r}(u_r\hat e_r)\cdot\hat e_r
+=\frac{du_r}{dr}=A-\frac{B}{r^2},\\
+U_{\theta\theta}
+&=\frac{1}{r}\frac{\partial}{\partial\theta}(u_r\hat e_r)\cdot\hat e_\theta
+=\frac{u_r}{r}=A+\frac{B}{r^2},\\
+U_{zz}&=0.
+\end{aligned}
+\]
+Las componentes de corte son nulas y
+\[
+\mathrm{Tr}\,\mathbb U=U_{rr}+U_{\theta\theta}+U_{zz}=2A.
+\]
+La ley de Hooke proporciona
+\[
+\sigma_{rr}=\lambda\,\mathrm{Tr}\,\mathbb U+2\mu U_{rr}
+=2(\lambda+\mu)A-\frac{2\mu B}{r^2}.
+\]
+Al aplicar las condiciones de frontera y dividir entre dos,
+\[
+\begin{aligned}
+(\lambda+\mu)A-\frac{\mu B}{a^2}&=0,\\
+(\lambda+\mu)A-\frac{\mu B}{b^2}&=-\frac{p}{2}.
+\end{aligned}
+\]
+Restando la segunda ecuación de la primera,
+\[
+\mu B\left(\frac{1}{b^2}-\frac{1}{a^2}\right)=\frac{p}{2}
+\quad\Longrightarrow\quad
+B=-\frac{pa^2b^2}{2\mu(b^2-a^2)}.
+\]
+Sustituyendo en la primera ecuación,
+\[
+A=\frac{\mu B}{a^2(\lambda+\mu)}
+=-\frac{pb^2}{2(\lambda+\mu)(b^2-a^2)}.
+\]
+Finalmente,
+\[
+\boxed{u_r(r)=-\frac{pb^2}{2(b^2-a^2)}
+\left(\frac{r}{\lambda+\mu}+\frac{a^2}{\mu r}\right)}.
+\]
+El signo negativo indica una contracción radial. Como verificación,
+\[
+\sigma_{rr}(r)=-\frac{pb^2}{b^2-a^2}
+\left(1-\frac{a^2}{r^2}\right),
+\]
+que satisface $\sigma_{rr}(a)=0$ y $\sigma_{rr}(b)=-p$. La restricción axial también produce $\sigma_{zz}=2\lambda A$, aunque $U_{zz}=0$.
+
+
+\begin{figure}[H]
+\centering
+\input{FigurasPS7/Fig4.tex}
+\par\medskip
+\begin{minipage}{\textwidth}
+\textbf{Figura 5 del Taller 7.} Tubo sometido a presión externa. (a) La sección anular tiene radio interior $a$ y exterior $b$; la cavidad no está presurizada. Las flechas naranjas representan la presión exterior y la violeta indica la contracción radial. El modelo impone $u_z=0$. (b) El esfuerzo radial es nulo en la pared interior y alcanza $-p$ en la exterior. El perfil ilustra un tubo con $b/a=2$; la solución del texto es válida para cualquier $0<a<b$.
+\end{minipage}
+\end{figure}
+
+\section{Problema 6: esfera hueca sometida a presión}
+
+\textbf{Enunciado.} Determine completamente la deformación de una esfera hueca de radio exterior $a$ e interior $b$, sometida a una presión $p_a$ en $r=a$ y a una presión $p_b$ en $r=b$.
+
+\subsection{Solución}
+
+Tomamos $0<b<a$, material homogéneo e isotrópico, pequeñas deformaciones, simetría esférica y ausencia de fuerzas de cuerpo. El desplazamiento solo tiene componente radial, $\vec u=u_r(r)\hat e_r$, y las presiones imponen
+\[
+\sigma_{rr}(a)=-p_a,
+\qquad
+\sigma_{rr}(b)=-p_b.
+\]
+La ecuación de equilibrio radial es
+\[
+\frac{d\sigma_{rr}}{dr}+\frac{2}{r}(\sigma_{rr}-\sigma_{\theta\theta})=0.
+\]
+Su solución esféricamente simétrica tiene la forma
+\[
+\sigma_{rr}=A-\frac{B}{r^3},
+\qquad
+\sigma_{\theta\theta}=\sigma_{\phi\phi}=A+\frac{B}{2r^3}.
+\]
+Al imponer las dos condiciones de frontera se obtiene
+\[
+\boxed{A=\frac{p_b b^3-p_a a^3}{a^3-b^3}},
+\qquad
+\boxed{B=\frac{(p_b-p_a)a^3b^3}{a^3-b^3}}.
+\]
+Por tanto, los esfuerzos completos son
+\[
+\boxed{\sigma_{rr}(r)=A-\frac{B}{r^3}},
+\qquad
+\boxed{\sigma_{\theta\theta}(r)=\sigma_{\phi\phi}(r)=A+\frac{B}{2r^3}},
+\qquad b\le r\le a,
+\]
+y las componentes de corte son nulas.
+
+Para hallar el desplazamiento, escribimos las deformaciones esféricas
+\[
+U_{rr}=\frac{du_r}{dr},
+\qquad
+U_{\theta\theta}=U_{\phi\phi}=\frac{u_r}{r}.
+\]
+La simetría y el equilibrio dan un desplazamiento de la forma $u_r=Cr+D/r^2$. La ley de Hooke, $\sigma_{ij}=\lambda U_{kk}\delta_{ij}+2\mu U_{ij}$, relaciona sus constantes con las de esfuerzo:
+\[
+A=(3\lambda+2\mu)C,
+\qquad B=4\mu D.
+\]
+Así, el campo de desplazamientos y las deformaciones son
+\[
+\boxed{u_r(r)=\frac{A}{3\lambda+2\mu}r+\frac{B}{4\mu r^2}},
+\]
+\[
+\boxed{U_{rr}=\frac{A}{3\lambda+2\mu}-\frac{B}{2\mu r^3}},
+\qquad
+\boxed{U_{\theta\theta}=U_{\phi\phi}
+=\frac{A}{3\lambda+2\mu}+\frac{B}{4\mu r^3}}.
+\]
+Las deformaciones cortantes también son cero. En particular, si $p_a=p_b=p$, entonces $B=0$ y se recupera la compresión hidrostática uniforme: $u_r=-pr/(3\lambda+2\mu)$.
+
+\begin{figure}[H]
+\centering
+\input{FigurasPS7/FigPS6.tex}
+\par\medskip
+\begin{minipage}{\textwidth}
+\textbf{Figura 6 del Taller 7.} Esfera hueca sometida a presiones en sus caras interior y exterior. Las flechas indican la dirección de las tracciones compresivas; el esquema radial muestra el material entre $b$ y $a$ y las condiciones de borde correspondientes.
+\end{minipage}
+\end{figure}
+
+\section{Problema 7: esfera bajo su propia gravedad}
+
+\textbf{Enunciado.} Determine completamente la deformación de una esfera sólida de radio $R$ debido a su propio campo gravitacional.
+
+\subsection{Solución}
+
+Consideremos una esfera sólida de radio $R$ y densidad de referencia uniforme $\rho_0$. Denotamos por $g_R$ la magnitud de la gravedad en su superficie y usamos el campo de la configuración no deformada:
+\[
+\vec g(r)=-g_R\frac{r}{R}\hat e_r,
+\qquad
+\vec f(r)=\rho_0\vec g(r).
+\]
+Por simetría esférica, el desplazamiento es radial,
+\[
+\vec u=u_r(r)\hat e_r,
+\]
+y debe ser regular en el centro. La superficie está libre de tracción:
+\[
+\sigma_{rr}(R)=0.
+\]
+Como $\vec\nabla\times\vec u=0$, la ecuación de Navier--Cauchy se reduce a
+\[
+(\lambda+2\mu)\vec\nabla(\vec\nabla\cdot\vec u)
+=-\vec f
+=\rho_0g_R\frac{r}{R}\hat e_r.
+\]
+Definimos
+\[
+\alpha=\frac{\rho_0g_R}{R(\lambda+2\mu)}
+=\frac{\rho_0g_R(1+\nu)(1-2\nu)}{RE(1-\nu)}.
+\]
+En coordenadas esféricas,
+\[
+\vec\nabla\cdot\vec u=\frac{1}{r^2}\frac{d(r^2u_r)}{dr},
+\]
+de modo que la ecuación radial es
+\[
+\frac{d}{dr}\left[\frac{1}{r^2}\frac{d(r^2u_r)}{dr}\right]=\alpha r.
+\]
+Integramos dos veces:
+\[
+\begin{aligned}
+\frac{1}{r^2}\frac{d(r^2u_r)}{dr}
+&=\frac{\alpha}{2}r^2+C_1,\\
+r^2u_r&=\frac{\alpha}{10}r^5+\frac{C_1}{3}r^3+B.
+\end{aligned}
+\]
+Definiendo $A=C_1/3$, el desplazamiento queda
+\[
+u_r=\frac{\alpha}{10}r^3+Ar+\frac{B}{r^2}.
+\]
+La regularidad en $r=0$ exige $B=0$.
+
+Para hallar $A$, calculamos las componentes diagonales de $\mathbb U$. Con $\theta$ como ángulo polar y $\phi$ como ángulo azimutal, usamos $\partial_\theta\hat e_r=\hat e_\theta$ y $\partial_\phi\hat e_r=\sin\theta\,\hat e_\phi$:
+\[
+\begin{aligned}
+U_{rr}
+&=\frac{du_r}{dr}=\frac{3\alpha}{10}r^2+A,\\
+U_{\theta\theta}
+&=\frac{1}{r}\frac{\partial}{\partial\theta}(u_r\hat e_r)\cdot\hat e_\theta
+=\frac{u_r}{r}=\frac{\alpha}{10}r^2+A,\\
+U_{\phi\phi}
+&=\frac{1}{r\sin\theta}\frac{\partial}{\partial\phi}(u_r\hat e_r)\cdot\hat e_\phi
+=\frac{u_r}{r}=\frac{\alpha}{10}r^2+A.
+\end{aligned}
+\]
+Por tanto,
+\[
+\mathrm{Tr}\,\mathbb U=\frac{\alpha}{2}r^2+3A.
+\]
+La componente radial del esfuerzo es
+\[
+\begin{aligned}
+\sigma_{rr}
+&=\lambda\,\mathrm{Tr}\,\mathbb U+2\mu U_{rr}\\
+&=(3\lambda+2\mu)A+\frac{\alpha}{10}(5\lambda+6\mu)r^2.
+\end{aligned}
+\]
+Imponiendo $\sigma_{rr}(R)=0$,
+\[
+A=-\frac{\alpha R^2}{10}\frac{5\lambda+6\mu}{3\lambda+2\mu}
+=-\frac{\alpha R^2}{10}\frac{3-\nu}{1+\nu}.
+\]
+El resultado final es
+\[
+\boxed{u_r(r)=\frac{\alpha R^2r}{10}
+\left(\frac{r^2}{R^2}-\frac{3-\nu}{1+\nu}\right)}.
+\]
+Se verifica que $u_r(0)=0$ y que
+\[
+\sigma_{rr}(r)=\frac{\alpha}{10}(5\lambda+6\mu)(r^2-R^2),
+\]
+por lo que el esfuerzo radial se anula en la superficie y es compresivo en el interior. Para módulos estables, $-1<\nu<1/2$, el desplazamiento también es hacia el centro. La solución supone gradientes de desplazamiento pequeños y evalúa la gravedad en la configuración de referencia.
+
+\begin{figure}[H]
+\centering
+\input{FigurasPS7/Fig5.tex}
+\par\medskip
+\begin{minipage}{\textwidth}
+\textbf{Figura 7 del Taller 7.} Esfera bajo su propia gravedad. (a) Corte por el centro: las flechas gravitacionales apuntan hacia él y aumentan de magnitud con la distancia. El contorno discontinuo representa la esfera inicial y el sólido, una contracción exagerada. (b) Para densidad uniforme, la magnitud del campo gravitacional de referencia crece linealmente desde cero hasta $g_R$. La regularidad exige $u_r(0)=0$ y la superficie libre exige $\sigma_{rr}(R)=0$.
+\end{minipage}
+\end{figure}
+
+\section{Problema 8: cilindro largo en rotación uniforme}
+
+\textbf{Enunciado.} Determine completamente la deformación de un cilindro largo de radio $R$ que rota uniformemente con velocidad angular $\Omega$ en torno a su eje.
+
+\subsection{Solución}
+
+Modelamos el cilindro como homogéneo e isotrópico, de densidad de referencia $\rho_0$, y usamos elasticidad lineal con pequeñas deformaciones. Por simetría, el desplazamiento es radial. Al ser largo, adoptamos deformación plana, $U_{zz}=0$, y la superficie lateral está libre de tracción. En el sistema de referencia que gira con el cilindro, la aceleración centrífuga equivale a la fuerza de cuerpo por unidad de volumen
+\[
+\vec f=\rho_0\Omega^2r\,\hat e_r.
+\]
+El equilibrio radial es
+\[
+\begin{aligned}
+\frac{d\sigma_{rr}}{dr}+\frac{\sigma_{rr}-\sigma_{\theta\theta}}{r}
++\rho_0\Omega^2r&=0,\\
+(\lambda+2\mu)\left(\frac{d^2u_r}{dr^2}
++\frac{1}{r}\frac{du_r}{dr}-\frac{u_r}{r^2}\right)
++\rho_0\Omega^2r&=0.
+\end{aligned}
+\]
+En la segunda línea usamos $U_{rr}=du_r/dr$, $U_{\theta\theta}=u_r/r$ y la ley de Hooke. La solución regular en el eje y la condición lateral libre se escriben como
+\[
+\begin{aligned}
+u_r(r)&=Cr-\frac{\rho_0\Omega^2}{8(\lambda+2\mu)}r^3,\\
+\sigma_{rr}&=(\lambda+2\mu)\frac{du_r}{dr}+\lambda\frac{u_r}{r},
+\qquad \sigma_{rr}(R)=0.
+\end{aligned}
+\]
+Esta última condición determina $C$. Expresando el resultado con $E$ y $\nu$,
+\[
+\begin{aligned}
+q&=\frac{\rho_0\Omega^2(1+\nu)(1-2\nu)}{8E(1-\nu)},\\
+u_r(r)&=q\left[(3-2\nu)R^2r-r^3\right].
+\end{aligned}
+\]
+El desplazamiento es hacia fuera para un material elástico estable con $-1<\nu<1/2$. Las componentes de deformación son
+\[
+\begin{aligned}
+U_{rr}&=q\left[(3-2\nu)R^2-3r^2\right],\\
+U_{\theta\theta}&=q\left[(3-2\nu)R^2-r^2\right],\\
+U_{zz}&=U_{r\theta}=U_{rz}=U_{\theta z}=0.
+\end{aligned}
+\]
+
+\begin{figure}[H]
+\centering
+\input{FigurasPS7/FigPS8.tex}
+\par\medskip
+\begin{minipage}{\textwidth}
+\textbf{Figura 8 del Taller 7.} Cilindro largo en rotación uniforme. (a) La fuerza centrífuga produce expansión radial respecto al radio inicial discontinuo; el desplazamiento se exagera para visualizarlo. (b) La fuerza de cuerpo por unidad de volumen $f_r=\rho_0\Omega^2r$ crece linealmente desde el eje hasta la superficie $r=R$.
+\end{minipage}
+\end{figure}
+\end{document}

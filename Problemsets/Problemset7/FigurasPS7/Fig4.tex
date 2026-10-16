@@ -1,0 +1,44 @@
+\begin{tikzpicture}[
+  >=Latex,
+  line cap=round,
+  line join=round,
+  font=\small,
+  presion/.style={->, orange!85!black, line width=1.2pt},
+  desplazamiento/.style={->, violet!80!black, line width=1.3pt},
+  auxiliar/.style={densely dashed, gray!60, line width=0.7pt}
+]
+\node[font=\small\bfseries] at (0,2.8) {(a) Presión y contracción};
+\fill[blue!7, even odd rule] (0,0) circle (2.0) (0,0) circle (1.0);
+\draw[blue!65!black, line width=1.1pt] (0,0) circle (2.0) (0,0) circle (1.0);
+\foreach \angulo in {0,45,90,135,180,225,270,315} {
+  \draw[presion]
+    ({2.55*cos(\angulo)},{2.55*sin(\angulo)})
+    -- ({2.03*cos(\angulo)},{2.03*sin(\angulo)});
+}
+\draw[desplazamiento] ({2*cos(35)},{2*sin(35)})
+  -- ({1.62*cos(35)},{1.62*sin(35)});
+\node[violet!80!black, anchor=west] at (1.55,1.55) {$u_r<0$};
+\draw[->, gray!75] (0,0) -- (1,0) node[midway,above] {$a$};
+\draw[->, gray!75] (0,0) -- ({2*cos(-35)},{2*sin(-35)})
+  node[pos=0.78,below left] {$b$};
+\node[font=\footnotesize] at (0,-2.55) {Cavidad interior sin presión};
+
+\begin{scope}[xshift=6.5cm,yshift=0.35cm]
+  \node[font=\small\bfseries] at (1.7,2.45) {(b) Esfuerzo radial};
+  \draw[->, gray!75] (0,0) -- (4.0,0) node[right] {$r$};
+  \draw[->, gray!75] (0,-2.55) -- (0,0.75) node[above] {$\sigma_{rr}$};
+  \draw[auxiliar] (0,-1.65) -- (3.25,-1.65) -- (3.25,0);
+  \draw[blue!65!black, line width=1.3pt]
+    plot[domain=1:2, samples=60, variable=\radio]
+    ({0.75+2.5*(\radio-1)},
+     {-1.65*(1-1/\radio^2)/(3/4)});
+  \fill[blue!65!black] (0.75,0) circle (2pt) (3.25,-1.65) circle (2pt);
+  \node[below] at (0.75,-0.05) {$a$};
+  \node[below] at (3.25,-0.05) {$b$};
+  \node[left] at (0,-1.65) {$-p$};
+  \node[below left] at (0,0) {$0$};
+  \node[font=\footnotesize, align=center] at (1.9,-2.95)
+    {$\sigma_{rr}(a)=0,\qquad \sigma_{rr}(b)=-p$\\
+     Perfil ilustrado para $b/a=2$};
+\end{scope}
+\end{tikzpicture}

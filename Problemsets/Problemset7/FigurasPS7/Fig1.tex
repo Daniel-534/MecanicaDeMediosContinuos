@@ -1,0 +1,47 @@
+\begin{tikzpicture}[
+  >=Latex,
+  line cap=round,
+  line join=round,
+  font=\small,
+  inicial/.style={densely dashed, gray!70, line width=1pt},
+  deformado/.style={blue!65!black, line width=1.2pt},
+  gravedad/.style={->, orange!85!black, line width=0.9pt},
+  lateral/.style={->, violet!80!black, line width=1pt}
+]
+% Panel (a): sección vertical esquemática de la varilla.
+\node[font=\small\bfseries] at (1.1,4.65) {(a) Deformación de la varilla};
+\draw[inicial] (0,0) rectangle (2.2,4.2);
+\draw[deformado]
+  (-0.32,-0.30) .. controls (-0.18,-0.12) and (-0.08,-0.02) .. (0,0)
+  -- (0.12,4.2)
+  (2.08,4.2) -- (2.2,0)
+  .. controls (2.28,-0.02) and (2.38,-0.12) .. (2.52,-0.30);
+\draw[deformado] (-0.32,-0.30) .. controls (0.75,-0.52) and (1.45,-0.52) .. (2.52,-0.30);
+\foreach \x/\y in {0.45/3.6,1.1/3.6,1.75/3.6,0.45/2.6,1.1/2.6,1.75/2.6,0.45/1.6,1.1/1.6,1.75/1.6} {
+  \draw[gravedad] (\x,\y) -- ++(0,-0.58);
+}
+\draw[lateral] (0.08,0.85) -- (-0.43,0.85);
+\draw[lateral] (2.12,0.85) -- (2.63,0.85);
+\node[orange!85!black,anchor=west] at (1.9,3.0) {$\vec g$};
+\node[blue!65!black,anchor=west] at (2.55,1.15) {$\nu>0$};
+\draw[->,gray!70] (-0.55,0) -- (-0.55,4.2) node[midway,left] {$h$};
+\node[gray!70,anchor=west] at (0.05,-0.77) {inicial (discontinua)};
+\node[blue!65!black,anchor=west] at (0.05,-1.08) {deformada (exagerada)};
+
+% Panel (b): desplazamiento de la base con la referencia elegida.
+\begin{scope}[xshift=6.7cm,yshift=0.35cm]
+  \node[font=\small\bfseries] at (1.65,4.3) {(b) Perfil del desplazamiento de la base};
+  \draw[->,gray!75] (-0.15,0) -- (3.75,0) node[right] {$x/a$};
+  \draw[->,gray!75] (0,-1.2) -- (0,0.65) node[above] {$u_z$};
+  \draw[gray!55,densely dotted] (0.55,0) -- (0.55,-0.88) -- (3.05,-0.88) -- (3.05,0);
+  \draw[blue!65!black,line width=1.25pt,domain=0:1,samples=60,variable=\t]
+    plot ({0.55+2.5*\t},{-0.88*(1-(2*\t-1)^2)});
+  \fill[blue!65!black] (0.55,0) circle (2pt) (3.05,0) circle (2pt);
+  \node[below] at (0.55,-0.02) {$-1$};
+  \node[below] at (1.8,-0.02) {$0$};
+  \node[below] at (3.05,-0.02) {$1$};
+  \node[font=\footnotesize,align=center] at (1.8,-1.25)
+    {$u_z(\pm a,0)=0$, pero $u_z(0,0)<0$\\
+     la base no permanece plana};
+\end{scope}
+\end{tikzpicture}

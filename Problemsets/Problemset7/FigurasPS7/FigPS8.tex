@@ -1,0 +1,40 @@
+\begin{tikzpicture}[
+  >=Latex,
+  line cap=round,
+  line join=round,
+  font=\small,
+  fuerza/.style={->, orange!85!black, line width=1.1pt},
+  desplazamiento/.style={->, violet!80!black, line width=1.2pt},
+  radio/.style={->, gray!70!black, line width=0.8pt},
+  inicial/.style={densely dashed, gray!65, line width=1pt}
+]
+\node[font=\small\bfseries] at (0,2.65) {(a) Expansión por rotación};
+\fill[blue!7] (0,0) circle (1.95);
+\draw[inicial] (0,0) circle (1.65);
+\draw[blue!65!black,line width=1.2pt] (0,0) circle (1.95);
+\foreach \angulo in {0,45,90,135,180,225,270,315} {
+  \draw[fuerza] ({0.55*cos(\angulo)},{0.55*sin(\angulo)})
+    -- ({1.20*cos(\angulo)},{1.20*sin(\angulo)});
+}
+\draw[desplazamiento] ({1.65*cos(30)},{1.65*sin(30)})
+  -- ({1.95*cos(30)},{1.95*sin(30)});
+\node[violet!80!black,anchor=west] at (1.38,1.20) {$u_r>0$};
+\node at (0,0) {$\Omega$};
+\draw[radio] (0,0) -- ({1.65*cos(-35)},{1.65*sin(-35)})
+  node[pos=0.72,below left] {$R$};
+\node[gray!65,anchor=west] at (-1.65,-2.25) {radio inicial (discontinuo)};
+\node[blue!65!black,anchor=west] at (-1.65,-2.55) {sección deformada (exagerada)};
+
+\begin{scope}[xshift=6.7cm,yshift=0.2cm]
+  \node[font=\small\bfseries] at (1.65,2.45) {(b) Fuerza centrífuga};
+  \draw[->,gray!75] (-0.12,0) -- (3.8,0) node[right] {$r$};
+  \draw[->,gray!75] (0,-0.12) -- (0,2.15) node[above] {$f_r$};
+  \draw[blue!65!black,line width=1.3pt] (0,0) -- (3.1,1.65);
+  \fill[blue!65!black] (0,0) circle (2pt) (3.1,1.65) circle (2pt);
+  \draw[gray!55,densely dotted] (3.1,0) -- (3.1,1.65) -- (0,1.65);
+  \node[below] at (3.1,0) {$R$};
+  \node[left] at (0,1.65) {$\rho_0\Omega^2R$};
+  \node[font=\footnotesize,align=center] at (1.55,-0.72)
+    {$f_r(r)=\rho_0\Omega^2r$};
+\end{scope}
+\end{tikzpicture}
