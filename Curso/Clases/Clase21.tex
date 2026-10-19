@@ -1,0 +1,146 @@
+\chapter{Clase 21}
+
+\section{Hidrodinámica}
+
+La hidrodinámica describe el movimiento de los fluidos. Para ello, primero se especifica la velocidad en cada punto y se distinguen las curvas que representan instantáneamente el campo de las trayectorias de sus partículas. Finalmente, se formula la conservación de la masa.
+
+\subsection{Campo de velocidad y momento lineal}
+
+El movimiento de un fluido continuo se describe mediante el campo de velocidad
+\[
+\vec v=\vec v(\vec r,t),
+\]
+que asigna a cada posición $\vec r$ y tiempo $t$ la velocidad de la porción de fluido que ocupa ese punto. En coordenadas cartesianas,
+\[
+\vec v(\vec r,t)=v_x(\vec r,t)\,\hat e_x+v_y(\vec r,t)\,\hat e_y+v_z(\vec r,t)\,\hat e_z.
+\]
+La velocidad es un campo euleriano: se describe cómo cambia en posiciones fijas del espacio, aunque las partículas de fluido se muevan.
+
+Una porción infinitesimal de masa $dm=\rho\,dV$, con densidad $\rho$, tiene momento lineal
+\[
+d\vec p=\vec v\,dm=\rho\vec v\,dV.
+\]
+Por tanto, la densidad de momento lineal (momento por unidad de volumen) es $\rho\vec v$.
+
+\subsection{Visualización del flujo}
+
+Un campo de velocidad puede representarse mediante flechas que muestran la dirección y magnitud de $\vec v$ en distintos puntos. También se utilizan curvas geométricas que permiten visualizar cómo se orienta el flujo.
+
+\textbf{Línea de corriente.} En un instante fijo $t_0$, una línea de corriente es una curva cuya tangente en cada punto es paralela a la velocidad local. Si $\vec r_s(s)$ la parametriza, entonces
+\[
+\frac{d\vec r_s}{ds}=\alpha(s)\,\vec v\bigl(\vec r_s(s),t_0\bigr),
+\]
+donde $\alpha(s)$ es un factor escalar que depende de la parametrización. En componentes, cuando las velocidades correspondientes no son nulas, esto equivale a
+\[
+\frac{dx}{v_x}=\frac{dy}{v_y}=\frac{dz}{v_z}.
+\]
+La ecuación se resuelve manteniendo fijo el tiempo $t_0$: cada línea describe la dirección instantánea del flujo, no necesariamente el recorrido posterior de una partícula.
+
+En un punto donde $\vec v\ne0$ solo hay una dirección de velocidad; por eso, dos líneas de corriente no se cruzan. En los puntos de estancamiento, donde $\vec v=0$, la dirección tangente no queda definida.
+
+Algunos ejemplos sencillos son:
+\begin{itemize}
+  \item Si $\vec v=U_0\hat e_x$, con $U_0$ constante, las líneas de corriente son rectas paralelas al eje $x$.
+  \item Si $\vec v=\vec\Omega\times\vec r$ describe una rotación rígida alrededor de un eje, las líneas de corriente son circunferencias centradas en dicho eje.
+\end{itemize}
+
+\textbf{Tubo de corriente.} Es la región limitada por un conjunto de líneas de corriente. Como la velocidad es tangente a sus paredes, el fluido no las atraviesa: la masa solo entra o sale por las secciones de sus extremos.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  >=Latex,
+  line cap=round,
+  line join=round,
+  font=\small,
+  flujo/.style={->, blue!75!black, line width=1.15pt},
+  linea/.style={blue!55!black, line width=0.9pt}
+]
+\node[font=\small\bfseries] at (-4.45,1.8) {campo uniforme};
+\foreach \y in {-1.05,-0.35,0.35,1.05} {
+  \draw[linea] (-5.9,\y) -- (-3.0,\y);
+  \draw[flujo] (-4.5,\y) -- (-3.7,\y);
+}
+
+\node[font=\small\bfseries] at (-0.2,1.8) {rotación rígida};
+\fill[black!70] (-0.2,0) circle (1.5pt);
+\foreach \radio in {0.55,1.0,1.45} {
+  \draw[linea] (-0.2,0) circle (\radio);
+  \draw[flujo] ({-0.2+\radio},0)
+    arc[start angle=0,end angle=42,radius=\radio];
+}
+\node[fill=white, inner sep=1pt] at (-0.2,-1.8) {$\vec v=\vec\Omega\times\vec r$};
+
+\node[font=\small\bfseries] at (4.35,1.8) {tubo de corriente};
+\fill[blue!5]
+  (2.15,1.1) .. controls (3.5,1.05) and (4.8,0.72) .. (6.25,0.62)
+  -- (6.25,-0.62) .. controls (4.8,-0.72) and (3.5,-1.05) .. (2.15,-1.1)
+  -- cycle;
+\draw[linea] (2.15,1.1) .. controls (3.5,1.05) and (4.8,0.72) .. (6.25,0.62);
+\draw[linea] (2.15,-1.1) .. controls (3.5,-1.05) and (4.8,-0.72) .. (6.25,-0.62);
+\draw[densely dashed, gray!75] (2.3,-1.06) -- (2.3,1.06);
+\draw[densely dashed, gray!75] (6.1,-0.63) -- (6.1,0.63);
+\node[above, fill=white, inner sep=1pt] at (2.3,1.1) {$A_1$};
+\node[above, fill=white, inner sep=1pt] at (6.1,0.63) {$A_2$};
+\draw[flujo] (2.8,0.48) -- (3.8,0.45);
+\draw[flujo] (3.8,-0.05) -- (4.8,-0.05);
+\draw[flujo] (4.7,-0.43) -- (5.6,-0.40);
+\end{tikzpicture}
+\par\medskip
+\textbf{Figura 34.} Representaciones de un flujo uniforme, de una rotación rígida y de un tubo de corriente. Las paredes del tubo siguen líneas de corriente, por lo que no hay flujo de masa a través de ellas.
+\end{figure}
+
+\subsection{Trayectorias de las partículas y líneas de corriente}
+
+La \textbf{trayectoria} (o \emph{pathline}) es el camino que recorre una partícula concreta a medida que transcurre el tiempo. Si su posición es $\vec r_p(t)$, satisface la ecuación de movimiento
+\[
+\frac{d\vec r_p}{dt}=\vec v\bigl(\vec r_p(t),t\bigr),
+\qquad
+\vec r_p(t_0)=\vec r_0.
+\]
+A diferencia de la línea de corriente, que se construye para un instante fijo, la trayectoria sigue a la misma partícula y, por tanto, incorpora la evolución temporal del campo de velocidad.
+
+En un flujo estacionario, el campo de velocidad no depende explícitamente del tiempo y las trayectorias coinciden con las líneas de corriente. En un flujo no estacionario, en general son distintas. Por ejemplo, para el campo plano $\vec v=(U,\gamma t)$, con $U\ne0$ y $\gamma$ constantes, las líneas de corriente en un instante dado son rectas de pendiente $\gamma t/U$. En cambio, una partícula que parte de $(x_0,y_0)$ en el instante $t_0$ sigue
+\[
+x(t)=x_0+U(t-t_0),
+\qquad
+y(t)=y_0+\frac{\gamma}{2}(t^2-t_0^2),
+\]
+que es una trayectoria parabólica si $\gamma\ne0$.
+
+\subsection{Conservación de la masa}
+
+La masa de un sistema material se conserva. Si $V_m(t)$ es un volumen que se mueve junto con las mismas partículas de fluido, su masa es
+\[
+M(t)=\int_{V_m(t)}\rho\,dV,
+\qquad
+\frac{d}{dt}\int_{V_m(t)}\rho\,dV=0.
+\]
+
+También se puede describir el balance en un volumen de control fijo $V$, limitado por una superficie cerrada $S$ con normal exterior $\hat n$. La variación de la masa dentro de $V$ más el flujo neto de masa que sale a través de $S$ debe ser cero:
+\[
+\frac{d}{dt}\int_V\rho\,dV
++\oint_S\rho\,\vec v\cdot\hat n\,dS=0.
+\]
+El primer término mide la acumulación de masa dentro del volumen; el segundo es el caudal másico neto saliente. Aplicando el teorema de Gauss y considerando volúmenes arbitrarios, se obtiene la forma local de la ecuación de continuidad:
+\[
+\boxed{\frac{\partial\rho}{\partial t}+\nabla\cdot(\rho\vec v)=0.}
+\]
+En términos de la derivada material,
+\[
+\frac{D\rho}{Dt}
+=\frac{\partial\rho}{\partial t}+\vec v\cdot\nabla\rho,
+\qquad
+\frac{D\rho}{Dt}+\rho\,\nabla\cdot\vec v=0.
+\]
+Así, un fluido de densidad constante satisface $\nabla\cdot\vec v=0$; se dice entonces que su movimiento es incompresible.
+
+En régimen estacionario, la masa que atraviesa por unidad de tiempo cualquier sección transversal de un tubo de corriente es la misma:
+\[
+\dot m=\int_A\rho\,\vec v\cdot\hat n\,dA=\text{constante}.
+\]
+Si la densidad y la velocidad normal son uniformes en cada sección, esto se reduce a
+\[
+\rho_1A_1v_1=\rho_2A_2v_2.
+\]
+Para un fluido incompresible, $\rho$ es constante y por tanto $A_1v_1=A_2v_2$: al disminuir el área de la sección, aumenta la rapidez media del flujo.

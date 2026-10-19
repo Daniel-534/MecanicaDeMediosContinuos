@@ -2,7 +2,9 @@
 
 En este taller usamos la convención de suma de Einstein y la notación de las clases 15 y 16: $\vec u$ es el campo de desplazamiento, $\mathbb U$ es el tensor de deformación y $U_{ij}$ y $\sigma_{ij}$ son sus componentes de deformación y esfuerzo. El material es elástico lineal, homogéneo e isótropo, con constantes de Lamé $\lambda$ y $\mu$.
 
-\section{Problema 1 del Taller 7: asentamiento sin cizalladura}
+\section{Problema 1 del Taller 7: varilla bajo gravedad}
+
+\textbf{Enunciado.} Determine la deformación de una varilla larga de longitud $h$ en un campo gravitacional constante.
 
 Este desarrollo corresponde también al \textbf{problema 10 del Taller 6}. Retomamos el asentamiento bajo el propio peso de la clase 16, pero ahora retiramos las paredes que impedían el desplazamiento lateral. El cuerpo tiene altura $h$, densidad de referencia $\rho_0$ y gravedad $\vec g=-g_0\hat e_z$.
 
@@ -31,7 +33,37 @@ La ley de Hooke inversa,
 U_{ij}=\frac{1}{E}
 \left[(1+\nu)\sigma_{ij}-\nu\sigma_{kk}\delta_{ij}\right],
 \]
-produce las deformaciones
+se aplica usando
+\[
+\sigma_{kk}=\sigma_{xx}+\sigma_{yy}+\sigma_{zz}
+=-\rho_0g_0(h-z),
+\qquad
+\delta_{xx}=\delta_{yy}=\delta_{zz}=1.
+\]
+Para la componente vertical, sustituimos $\sigma_{zz}=\sigma_{kk}=-\rho_0g_0(h-z)$:
+\[
+\begin{aligned}
+U_{zz}
+&=\frac{1}{E}\left[(1+\nu)\sigma_{zz}-\nu\sigma_{kk}\delta_{zz}\right]\\
+&=\frac{1}{E}\left[-(1+\nu)\rho_0g_0(h-z)
++\nu\rho_0g_0(h-z)\right]\\
+&=-\frac{\rho_0g_0}{E}(h-z).
+\end{aligned}
+\]
+Para las componentes horizontales, usamos $\sigma_{xx}=\sigma_{yy}=0$:
+\[
+\begin{aligned}
+U_{xx}
+&=\frac{1}{E}\left[(1+\nu)\sigma_{xx}-\nu\sigma_{kk}\delta_{xx}\right]\\
+&=\frac{1}{E}\left[0-\nu\bigl(-\rho_0g_0(h-z)\bigr)\right]
+=\frac{\nu\rho_0g_0}{E}(h-z),\\
+U_{yy}
+&=\frac{1}{E}\left[(1+\nu)\sigma_{yy}-\nu\sigma_{kk}\delta_{yy}\right]\\
+&=\frac{1}{E}\left[0-\nu\bigl(-\rho_0g_0(h-z)\bigr)\right]
+=\frac{\nu\rho_0g_0}{E}(h-z).
+\end{aligned}
+\]
+Finalmente, para $i\ne j$ se tiene $\delta_{ij}=0$ y los esfuerzos cortantes son nulos; por tanto, $U_{ij}=(1+\nu)\sigma_{ij}/E=0$. En conjunto, las deformaciones son
 \[
 U_{zz}=-\frac{\rho_0g_0}{E}(h-z),
 \qquad
@@ -103,6 +135,8 @@ Así, $u_z$ no se anula sobre toda la base. Esta solución sin cizalladura no sa
 
 \section{Problema 3 del Taller 7: tensor de deformación en una base local}
 
+\textbf{Enunciado.} Escriba una expresión para el tensor de deformaciones en un sistema de coordenadas curvilíneas ortogonales arbitrario.
+
 En una base ortonormal variable, el tensor de deformación se define por
 \[
 \mathbb U=\frac{1}{2}
@@ -164,7 +198,158 @@ U_{ij}=\frac{1}{2}(\partial_i u_j+\partial_j u_i).
 \end{minipage}
 \end{figure}
 
-\section{Problema 4 del Taller 7: tubo cilíndrico}
+\section{Problema 4 del Taller 7: tubo cilíndrico bajo presión interior}
+
+\textbf{Enunciado.} Determine completamente la deformación de un tubo cilíndrico largo sometido a una presión $p$ en el interior y presión nula en el exterior.
+
+Tomamos $a$ como el radio interior y $b$ como el radio exterior, con $0<a<b$. La presión interna comprime la pared en la dirección normal a la superficie interior, mientras que la superficie exterior está libre de tracción:
+\[
+\sigma_{rr}(a)=-p,
+\qquad
+\sigma_{rr}(b)=0.
+\]
+Como en el problema siguiente, usamos el modelo de deformación plana para un tubo largo, $U_{zz}=0$, y suponemos simetría axial, ausencia de fuerzas de cuerpo y desplazamiento puramente radial:
+\[
+\vec u=u_r(r)\hat e_r,
+\qquad u_\theta=u_z=0.
+\]
+
+El campo radial es irrotacional, de modo que la ecuación de Navier--Cauchy sin fuerzas de cuerpo implica que su divergencia es constante. En coordenadas cilíndricas,
+\[
+\vec\nabla(\vec\nabla\cdot\vec u)=0,
+\qquad
+\vec\nabla\cdot\vec u
+=\frac{1}{r}\frac{d(ru_r)}{dr}=2A,
+\]
+donde $A$ es una constante. Integrando,
+\[
+\frac{d(ru_r)}{dr}=2Ar
+\quad\Longrightarrow\quad
+ru_r=Ar^2+B
+\quad\Longrightarrow\quad
+u_r=Ar+\frac{B}{r}.
+\]
+Las deformaciones no nulas son
+\[
+U_{rr}=\frac{du_r}{dr}=A-\frac{B}{r^2},
+\qquad
+U_{\theta\theta}=\frac{u_r}{r}=A+\frac{B}{r^2},
+\qquad
+U_{zz}=0,
+\]
+por lo que $\mathrm{Tr}\,\mathbb U=2A$. La ley de Hooke da el esfuerzo radial
+\[
+\sigma_{rr}
+=\lambda\,\mathrm{Tr}\,\mathbb U+2\mu U_{rr}
+=2(\lambda+\mu)A-\frac{2\mu B}{r^2}.
+\]
+Aplicamos las condiciones de frontera y dividimos entre dos:
+\[
+\begin{aligned}
+(\lambda+\mu)A-\frac{\mu B}{a^2}&=-\frac{p}{2},\\
+(\lambda+\mu)A-\frac{\mu B}{b^2}&=0.
+\end{aligned}
+\]
+Restando la primera ecuación de la segunda, obtenemos
+\[
+\mu B\left(\frac{1}{a^2}-\frac{1}{b^2}\right)
+=\frac{p}{2}
+\quad\Longrightarrow\quad
+B=\frac{pa^2b^2}{2\mu(b^2-a^2)}.
+\]
+La condición en la superficie exterior determina entonces
+\[
+A=\frac{\mu B}{b^2(\lambda+\mu)}
+=\frac{pa^2}{2(\lambda+\mu)(b^2-a^2)}.
+\]
+Así, el desplazamiento radial completo es
+\[
+\boxed{
+u_r(r)=\frac{pa^2}{2(b^2-a^2)}
+\left(\frac{r}{\lambda+\mu}+\frac{b^2}{\mu r}\right),
+\qquad a\le r\le b.
+}
+\]
+Es positivo en toda la pared: el tubo se expande. Las deformaciones pueden escribirse explícitamente como
+\[
+\boxed{
+U_{rr}=\frac{pa^2}{2(b^2-a^2)}
+\left(\frac{1}{\lambda+\mu}-\frac{b^2}{\mu r^2}\right),
+\qquad
+U_{\theta\theta}=\frac{pa^2}{2(b^2-a^2)}
+\left(\frac{1}{\lambda+\mu}+\frac{b^2}{\mu r^2}\right),
+\qquad U_{zz}=0.
+}
+\]
+Además del esfuerzo radial, el esfuerzo circunferencial y el axial son
+\[
+\boxed{
+\sigma_{rr}(r)=\frac{pa^2}{b^2-a^2}
+\left(1-\frac{b^2}{r^2}\right),
+\qquad
+\sigma_{\theta\theta}(r)=\frac{pa^2}{b^2-a^2}
+\left(1+\frac{b^2}{r^2}\right),
+\qquad
+\sigma_{zz}=2\lambda A
+=\frac{\lambda pa^2}{(\lambda+\mu)(b^2-a^2)}.
+}
+\]
+Las componentes de corte son nulas. Se verifica que $\sigma_{rr}(a)=-p$ y $\sigma_{rr}(b)=0$, como requieren las condiciones de frontera. El esfuerzo axial aparece debido a la restricción $U_{zz}=0$ del modelo de deformación plana.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  >=Latex,
+  line cap=round,
+  line join=round,
+  font=\small,
+  presion/.style={->, orange!85!black, line width=1.2pt},
+  desplazamiento/.style={->, violet!80!black, line width=1.3pt},
+  auxiliar/.style={densely dashed, gray!60, line width=0.7pt}
+]
+\node[font=\small\bfseries] at (0,2.8) {(a) Presión y expansión};
+\fill[blue!7, even odd rule] (0,0) circle (2.0) (0,0) circle (1.0);
+\draw[blue!65!black, line width=1.1pt] (0,0) circle (2.0) (0,0) circle (1.0);
+\foreach \angulo in {0,45,90,135,180,225,270,315} {
+  \draw[presion]
+    ({0.52*cos(\angulo)},{0.52*sin(\angulo)})
+    -- ({0.98*cos(\angulo)},{0.98*sin(\angulo)});
+}
+\node[orange!85!black] at (0,0) {$p$};
+\draw[->, gray!75] (0,0) -- (1,0) node[midway,above] {$a$};
+\draw[->, gray!75] (0,0) -- ({2*cos(-35)},{2*sin(-35)})
+  node[pos=0.78,below left] {$b$};
+\draw[desplazamiento] ({2*cos(35)},{2*sin(35)})
+  -- ({2.48*cos(35)},{2.48*sin(35)});
+\node[violet!80!black, anchor=west] at (1.85,1.8) {$u_r>0$};
+\node[font=\footnotesize] at (0,-2.55) {Sección transversal del tubo};
+
+\begin{scope}[xshift=6.5cm,yshift=0.35cm]
+\node[font=\small\bfseries] at (1.7,2.45) {(b) Esfuerzo radial};
+\draw[->, gray!75] (0,0) -- (4.0,0) node[right] {$r$};
+\draw[->, gray!75] (0,-2.55) -- (0,0.75) node[above] {$\sigma_{rr}$};
+\draw[auxiliar] (0,-2.1) -- (3.25,-2.1) -- (3.25,0);
+\draw[blue!65!black, line width=1.3pt]
+  plot[domain=1:2, samples=60, variable=\radio]
+  ({0.75+2.5*(\radio-1)},
+   {0.7*(1-4/\radio^2)});
+\fill[blue!65!black] (0.75,-2.1) circle (2pt) (3.25,0) circle (2pt);
+\node[below] at (0.75,-0.05) {$a$};
+\node[below] at (3.25,-0.05) {$b$};
+\node[left] at (0,-2.1) {$-p$};
+\node[below left] at (0,0) {$0$};
+\node[font=\footnotesize, align=center] at (1.9,-2.95)
+  {$\sigma_{rr}(a)=-p,\qquad \sigma_{rr}(b)=0$\\
+   Perfil ilustrado para $b/a=2$};
+\end{scope}
+\end{tikzpicture}
+\par\medskip
+\textbf{Figura 3 del Taller 7.} Tubo largo sometido a presión interna. (a) La presión actúa radialmente hacia fuera sobre la pared interior y produce expansión. (b) El esfuerzo radial cambia de $-p$ en $r=a$ a cero en $r=b$; el perfil se ilustra para $b/a=2$.
+\end{figure}
+
+\section{Problema 5 del Taller 7: tubo cilíndrico bajo presión exterior}
+
+\textbf{Enunciado.} Determine completamente la deformación de un tubo cilíndrico largo sometido a una presión $p$ en el exterior y presión nula en el interior.
 
 Consideremos un tubo de radio interior $a$ y exterior $b$, con $0<a<b$, sometido a una presión externa $p>0$ y sin presión interna:
 \[
@@ -252,11 +437,13 @@ que satisface $\sigma_{rr}(a)=0$ y $\sigma_{rr}(b)=-p$. La restricción axial ta
 \input{Clases/Figuras/FigurasClaseTaller7/Fig3.tex}
 \par\medskip
 \begin{minipage}{\textwidth}
-\textbf{Figura 3 del Taller 7.} Tubo sometido a presión externa. (a) La sección anular tiene radio interior $a$ y exterior $b$; la cavidad no está presurizada. Las flechas naranjas representan la presión exterior y la violeta indica la contracción radial. El modelo impone $u_z=0$. (b) El esfuerzo radial es nulo en la pared interior y alcanza $-p$ en la exterior. El perfil ilustra un tubo con $b/a=2$; la solución del texto es válida para cualquier $0<a<b$.
+\textbf{Figura 4 del Taller 7.} Tubo sometido a presión externa. (a) La sección anular tiene radio interior $a$ y exterior $b$; la cavidad no está presurizada. Las flechas naranjas representan la presión exterior y la violeta indica la contracción radial. El modelo impone $u_z=0$. (b) El esfuerzo radial es nulo en la pared interior y alcanza $-p$ en la exterior. El perfil ilustra un tubo con $b/a=2$; la solución del texto es válida para cualquier $0<a<b$.
 \end{minipage}
 \end{figure}
 
 \section{Problema 7 del Taller 7: esfera bajo su propia gravedad}
+
+\textbf{Enunciado.} Determine completamente la deformación de una esfera sólida de radio $R$ debido a su propio campo gravitacional.
 
 Consideremos una esfera sólida de radio $R$ y densidad de referencia uniforme $\rho_0$. Denotamos por $g_R$ la magnitud de la gravedad en su superficie y usamos el campo de la configuración no deformada:
 \[
@@ -351,6 +538,6 @@ por lo que el esfuerzo radial se anula en la superficie y es compresivo en el in
 \input{Clases/Figuras/FigurasClaseTaller7/Fig4.tex}
 \par\medskip
 \begin{minipage}{\textwidth}
-\textbf{Figura 4 del Taller 7.} Esfera bajo su propia gravedad. (a) Corte por el centro: las flechas gravitacionales apuntan hacia él y aumentan de magnitud con la distancia. El contorno discontinuo representa la esfera inicial y el sólido, una contracción exagerada. (b) Para densidad uniforme, la magnitud del campo gravitacional de referencia crece linealmente desde cero hasta $g_R$. La regularidad exige $u_r(0)=0$ y la superficie libre exige $\sigma_{rr}(R)=0$.
+\textbf{Figura 5 del Taller 7.} Esfera bajo su propia gravedad. (a) Corte por el centro: las flechas gravitacionales apuntan hacia él y aumentan de magnitud con la distancia. El contorno discontinuo representa la esfera inicial y el sólido, una contracción exagerada. (b) Para densidad uniforme, la magnitud del campo gravitacional de referencia crece linealmente desde cero hasta $g_R$. La regularidad exige $u_r(0)=0$ y la superficie libre exige $\sigma_{rr}(R)=0$.
 \end{minipage}
 \end{figure}
