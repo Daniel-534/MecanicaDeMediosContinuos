@@ -1,0 +1,50 @@
+\begin{tikzpicture}[
+  >=Latex,
+  line cap=round,
+  line join=round,
+  font=\small,
+  inicial/.style={densely dashed, gray!65, line width=1pt},
+  deformada/.style={blue!65!black, line width=1.2pt},
+  malla/.style={blue!45!black, line width=0.65pt},
+  vector/.style={->, violet!85!black, line width=1.25pt}
+]
+% Vista esquemática de una cáscara esférica en proyección tridimensional.
+\node[font=\small\bfseries] at (0,1.72) {(a) Antes};
+\path[fill=blue!7, even odd rule]
+  (0,0) ellipse (1.28 and 1.05)
+  (0,0) ellipse (0.57 and 0.46);
+\draw[inicial] (0,0) ellipse (1.28 and 1.05);
+\draw[inicial] (0,0) ellipse (0.57 and 0.46);
+% Meridianos y paralelos sugieren la geometría tridimensional.
+\draw[inicial] (0,0) ellipse (1.28 and 0.34);
+\draw[inicial] (0,0) ellipse (0.48 and 1.02);
+\draw[inicial] (0,0) ellipse (0.57 and 0.17);
+\draw[inicial] (0,0) ellipse (0.22 and 0.45);
+\node[gray!70!black] at (0,-1.43) {cáscara hueca inicial};
+
+\begin{scope}[xshift=6.2cm]
+  \node[font=\small\bfseries] at (0,1.72) {(b) Después};
+  % El contorno discontinuo conserva la referencia inicial para comparar.
+  \draw[inicial] (0,0) ellipse (1.28 and 1.05);
+  \draw[inicial] (0,0) ellipse (0.57 and 0.46);
+  % Caso ilustrativo: presión interior p_b=p y presión exterior nula.
+  \path[fill=blue!10, even odd rule]
+    (0,0) ellipse (1.53 and 1.25)
+    (0,0) ellipse (0.72 and 0.58);
+  \draw[deformada] (0,0) ellipse (1.53 and 1.25);
+  \draw[malla] (0,0) ellipse (1.53 and 0.40);
+  \draw[malla] (0,0) ellipse (0.58 and 1.22);
+  \draw[deformada] (0,0) ellipse (0.72 and 0.58);
+  \draw[malla] (0,0) ellipse (0.72 and 0.20);
+  \draw[malla] (0,0) ellipse (0.29 and 0.57);
+  % Desplazamientos radiales sobre las superficies exterior e interior.
+  \draw[vector] (1.29,0) -- (1.51,0);
+  \draw[vector] (-1.29,0) -- (-1.51,0);
+  \draw[vector] (0,1.06) -- (0,1.23);
+  \draw[vector] (0,-1.06) -- (0,-1.23);
+  \draw[vector] (0.58,0) -- (0.70,0);
+  \draw[vector] (-0.58,0) -- (-0.70,0);
+  \node[violet!85!black, anchor=west] at (0.84,0.78) {$\vec u$};
+  \node[gray!70!black] at (0,-1.54) {$p_b=p$, $p_a=0$; $\vec u$ radial hacia fuera};
+\end{scope}
+\end{tikzpicture}

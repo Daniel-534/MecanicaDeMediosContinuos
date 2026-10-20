@@ -29,6 +29,15 @@
 
 \textbf{Enunciado.} Determine la deformación de una varilla larga de longitud $h$ en un campo gravitacional constante.
 
+\begin{figure}[H]
+\centering
+\input{FigurasPS7/Fig1.tex}
+\par\medskip
+\begin{minipage}{\textwidth}
+\textbf{Figura 1 del Taller 7.} Asentamiento sin cizalladura para $\nu>0$. (a) Corte vertical: la compresión reduce la altura y produce expansión lateral. El contorno discontinuo representa el cuerpo inicial. (b) Perfil de $u_z(x,0)$ en $y=0$: la referencia elegida anula el desplazamiento en $x=\pm a$, pero no en el interior. Por ello, el campo no satisface el apoyo sobre un fondo plano rígido. Las deformaciones y la escala vertical del perfil se exageran para facilitar su lectura.
+\end{minipage}
+\end{figure}
+
 \subsection{Solución}
 
 Este desarrollo corresponde también al \textbf{problema 10 del Taller 6}. Retomamos el asentamiento bajo el propio peso de la clase 16, pero ahora retiramos las paredes que impedían el desplazamiento lateral. El cuerpo tiene altura $h$, densidad de referencia $\rho_0$ y gravedad $\vec g=-g_0\hat e_z$.
@@ -149,18 +158,20 @@ u_z(x,y,0)=\frac{\nu\rho_0g_0}{2E}(x^2+y^2-a^2).
 Así, $u_z$ no se anula sobre toda la base. Esta solución sin cizalladura no satisface el apoyo sobre un plano rígido: imponer $u_z=0$ en todo el fondo requiere, en general, admitir esfuerzos cortantes. Fijar el desplazamiento en el círculo solo determina la constante $C$; no reemplaza las condiciones mecánicas del apoyo.
 
 
-\begin{figure}[H]
-\centering
-\input{FigurasPS7/Fig1.tex}
-\par\medskip
-\begin{minipage}{\textwidth}
-\textbf{Figura 1 del Taller 7.} Asentamiento sin cizalladura para $\nu>0$. (a) Corte vertical: la compresión reduce la altura y produce expansión lateral. El contorno discontinuo representa el cuerpo inicial. (b) Perfil de $u_z(x,0)$ en $y=0$: la referencia elegida anula el desplazamiento en $x=\pm a$, pero no en el interior. Por ello, el campo no satisface el apoyo sobre un fondo plano rígido. Las deformaciones y la escala vertical del perfil se exageran para facilitar su lectura.
-\end{minipage}
-\end{figure}
+
 
 \section{Problema 2: ecuación diferencial para el desplazamiento}
 
 \textbf{Enunciado.} Deduzca una sola ecuación diferencial para el campo de desplazamientos $\vec u$ a partir de las ecuaciones de equilibrio.
+
+\begin{figure}[H]
+\centering
+\input{FigurasPS7/FigPS2.tex}
+\par\medskip
+\begin{minipage}{\textwidth}
+\textbf{Figura 2 del Taller 7.} Esquema de la deducción de Navier--Cauchy: equilibrio, ley de Hooke y deformación se combinan para obtener una ecuación diferencial solo para el desplazamiento.
+\end{minipage}
+\end{figure}
 
 \subsection{Solución}
 
@@ -217,18 +228,20 @@ Esta es la ecuación de Navier--Cauchy. Si no hay fuerzas de cuerpo, se toma $\v
 -\mu\vec\nabla\times(\vec\nabla\times\vec u)+\vec f=\vec 0.}
 \]
 
-\begin{figure}[H]
-\centering
-\input{FigurasPS7/FigPS2.tex}
-\par\medskip
-\begin{minipage}{\textwidth}
-\textbf{Figura 2 del Taller 7.} Esquema de la deducción de Navier--Cauchy: equilibrio, ley de Hooke y deformación se combinan para obtener una ecuación diferencial solo para el desplazamiento.
-\end{minipage}
-\end{figure}
+
 
 \section{Problema 3: tensor de deformación en una base local}
 
 \textbf{Enunciado.} Escriba una expresión para el tensor de deformaciones en un sistema de coordenadas curvilíneas ortogonales arbitrario.
+
+\begin{figure}[H]
+\centering
+\input{FigurasPS7/Fig2.tex}
+\par\medskip
+\begin{minipage}{\textwidth}
+\textbf{Figura 3 del Taller 7.} Variación de una base local, ilustrada con la base polar $\hat e_r,\hat e_\theta$. (a) Al pasar de $P$ a $Q$, los vectores de la base giran. Un vector de desplazamiento constante en el espacio, dibujado en azul, tiene componentes distintas en ambas bases. (b) La regla del producto separa la variación de las componentes de la variación de la base; si $\vec u$ es constante, ambas contribuciones se cancelan. El cambio angular se representa ampliado.
+\end{minipage}
+\end{figure}
 
 \subsection{Solución}
 
@@ -284,18 +297,18 @@ U_{ij}=\frac{1}{2}(\partial_i u_j+\partial_j u_i).
 \]
 
 
-\begin{figure}[H]
-\centering
-\input{FigurasPS7/Fig2.tex}
-\par\medskip
-\begin{minipage}{\textwidth}
-\textbf{Figura 3 del Taller 7.} Variación de una base local, ilustrada con la base polar $\hat e_r,\hat e_\theta$. (a) Al pasar de $P$ a $Q$, los vectores de la base giran. Un vector de desplazamiento constante en el espacio, dibujado en azul, tiene componentes distintas en ambas bases. (b) La regla del producto separa la variación de las componentes de la variación de la base; si $\vec u$ es constante, ambas contribuciones se cancelan. El cambio angular se representa ampliado.
-\end{minipage}
-\end{figure}
+
 
 \section{Problema 4: tubo cilíndrico bajo presión interior}
 
 \textbf{Enunciado.} Determine completamente la deformación de un tubo cilíndrico largo sometido a una presión $p$ en el interior y presión nula en el exterior.
+
+\begin{figure}[H]
+\centering
+\input{FigurasPS7/Fig3.tex}
+\par\medskip
+\textbf{Figura 4 del Taller 7.} Tubo largo sometido a presión interna. (a) La presión actúa radialmente hacia fuera sobre la pared interior y produce expansión. (b) El esfuerzo radial cambia de $-p$ en $r=a$ a cero en $r=b$; el perfil se ilustra para $b/a=2$.
+\end{figure}
 
 \subsection{Solución}
 
@@ -311,14 +324,39 @@ Como en el problema siguiente, usamos el modelo de deformación plana para un tu
 \qquad u_\theta=u_z=0.
 \]
 
-El campo radial es irrotacional, de modo que la ecuación de Navier--Cauchy sin fuerzas de cuerpo implica que su divergencia es constante. En coordenadas cilíndricas,
+Para obtener la ecuación que determina $u_r$, partimos de Navier--Cauchy sin fuerzas de cuerpo:
 \[
-\vec\nabla(\vec\nabla\cdot\vec u)=0,
+\mu\nabla^2\vec u+(\lambda+\mu)\vec\nabla(\vec\nabla\cdot\vec u)=\vec 0.
+\]
+El campo supuesto es puramente radial, $\vec u=u_r(r)\hat e_r$, y no depende de $\theta$ ni de $z$. Su rotacional es, por tanto, nulo. Usando la identidad vectorial
+\[
+\nabla^2\vec u
+=\vec\nabla(\vec\nabla\cdot\vec u)
+-\vec\nabla\times(\vec\nabla\times\vec u),
+\]
+la ecuación de Navier--Cauchy se reduce a
+\[
+(\lambda+2\mu)\vec\nabla(\vec\nabla\cdot\vec u)=\vec 0.
+\]
+Para un material elástico estable, $\lambda+2\mu\ne0$, así que
+\[
+\vec\nabla(\vec\nabla\cdot\vec u)=\vec 0.
+\]
+Esto significa que la divergencia del desplazamiento es espacialmente constante. Para escribirla en coordenadas cilíndricas, usamos
+\[
+\vec\nabla\cdot\vec u
+=\frac{1}{r}\frac{\partial(ru_r)}{\partial r}
++\frac{1}{r}\frac{\partial u_\theta}{\partial\theta}
++\frac{\partial u_z}{\partial z}.
+\]
+Como $u_\theta=u_z=0$ y $u_r$ depende únicamente de $r$, los dos últimos términos se anulan. Además, el gradiente de esta divergencia escalar, que solo depende de $r$, es su derivada radial multiplicada por $\hat e_r$; por eso, que su gradiente sea cero implica que dicha divergencia es constante. En conjunto,
+\[
+\vec\nabla(\vec\nabla\cdot\vec u)=\vec 0,
 \qquad
 \vec\nabla\cdot\vec u
 =\frac{1}{r}\frac{d(ru_r)}{dr}=2A,
 \]
-donde $A$ es una constante. Integrando,
+donde escribimos la constante como $2A$ por conveniencia algebraica. Integrando,
 \[
 \frac{d(ru_r)}{dr}=2Ar
 \quad\Longrightarrow\quad
@@ -326,15 +364,42 @@ ru_r=Ar^2+B
 \quad\Longrightarrow\quad
 u_r=Ar+\frac{B}{r}.
 \]
-Las deformaciones no nulas son
+Para calcular $U_{ij}$ usamos la definición del tensor de deformación en una base ortonormal local,
 \[
-U_{rr}=\frac{du_r}{dr}=A-\frac{B}{r^2},
-\qquad
-U_{\theta\theta}=\frac{u_r}{r}=A+\frac{B}{r^2},
-\qquad
-U_{zz}=0,
+U_{ij}=\frac12\left[
+\hat e_i\cdot\left(\nabla_{\hat e_j}\vec u\right)
++\hat e_j\cdot\left(\nabla_{\hat e_i}\vec u\right)
+\right].
 \]
-por lo que $\mathrm{Tr}\,\mathbb U=2A$. La ley de Hooke da el esfuerzo radial
+En coordenadas cilíndricas, los factores de escala son $h_r=1$, $h_\theta=r$ y $h_z=1$. Además, $\hat e_r$ cambia con el ángulo: $\partial_\theta\hat e_r=\hat e_\theta$, mientras que $\partial_r\hat e_r=\partial_z\hat e_r=\vec 0$. Por tanto, las derivadas direccionales del desplazamiento son
+\[
+\begin{aligned}
+\nabla_{\hat e_r}\vec u
+&=\partial_r(u_r\hat e_r)
+=\frac{du_r}{dr}\hat e_r,\\
+\nabla_{\hat e_\theta}\vec u
+&=\frac{1}{r}\partial_\theta(u_r\hat e_r)
+=\frac{u_r}{r}\hat e_\theta,\\
+\nabla_{\hat e_z}\vec u
+&=\partial_z(u_r\hat e_r)=\vec 0.
+\end{aligned}
+\]
+En la dirección angular, aunque la componente escalar $u_r$ no depende de $\theta$, sí cambia el vector de base; esa variación produce la componente circunferencial $u_r/r$. Al proyectar y simetrizar, las componentes diagonales quedan
+\[
+\begin{aligned}
+U_{rr}
+&=\hat e_r\cdot\left(\nabla_{\hat e_r}\vec u\right)
+=\frac{du_r}{dr}
+=A-\frac{B}{r^2},\\
+U_{\theta\theta}
+&=\hat e_\theta\cdot\left(\nabla_{\hat e_\theta}\vec u\right)
+=\frac{u_r}{r}
+=A+\frac{B}{r^2},\\
+U_{zz}
+&=\hat e_z\cdot\left(\nabla_{\hat e_z}\vec u\right)=0.
+\end{aligned}
+\]
+Las componentes cortantes son nulas, pues las derivadas direccionales obtenidas apuntan en la misma dirección que cada vector de base. Así, $\mathrm{Tr}\,\mathbb U=U_{rr}+U_{\theta\theta}+U_{zz}=2A$. La ley de Hooke da el esfuerzo radial
 \[
 \sigma_{rr}
 =\lambda\,\mathrm{Tr}\,\mathbb U+2\mu U_{rr}
@@ -393,16 +458,20 @@ Además del esfuerzo radial, el esfuerzo circunferencial y el axial son
 \]
 Las componentes de corte son nulas. Se verifica que $\sigma_{rr}(a)=-p$ y $\sigma_{rr}(b)=0$, como requieren las condiciones de frontera. El esfuerzo axial aparece debido a la restricción $U_{zz}=0$ del modelo de deformación plana.
 
-\begin{figure}[H]
-\centering
-\input{FigurasPS7/Fig3.tex}
-\par\medskip
-\textbf{Figura 4 del Taller 7.} Tubo largo sometido a presión interna. (a) La presión actúa radialmente hacia fuera sobre la pared interior y produce expansión. (b) El esfuerzo radial cambia de $-p$ en $r=a$ a cero en $r=b$; el perfil se ilustra para $b/a=2$.
-\end{figure}
+
 
 \section{Problema 5: tubo cilíndrico bajo presión exterior}
 
 \textbf{Enunciado.} Determine completamente la deformación de un tubo cilíndrico largo sometido a una presión $p$ en el exterior y presión nula en el interior.
+
+\begin{figure}[H]
+\centering
+\input{FigurasPS7/Fig4.tex}
+\par\medskip
+\begin{minipage}{\textwidth}
+\textbf{Figura 5 del Taller 7.} Tubo sometido a presión externa. (a) La sección anular tiene radio interior $a$ y exterior $b$; la cavidad no está presurizada. Las flechas naranjas representan la presión exterior y la violeta indica la contracción radial. El modelo impone $u_z=0$. (b) El esfuerzo radial es nulo en la pared interior y alcanza $-p$ en la exterior. El perfil ilustra un tubo con $b/a=2$; la solución del texto es válida para cualquier $0<a<b$.
+\end{minipage}
+\end{figure}
 
 \subsection{Solución}
 
@@ -487,18 +556,20 @@ El signo negativo indica una contracción radial. Como verificación,
 que satisface $\sigma_{rr}(a)=0$ y $\sigma_{rr}(b)=-p$. La restricción axial también produce $\sigma_{zz}=2\lambda A$, aunque $U_{zz}=0$.
 
 
-\begin{figure}[H]
-\centering
-\input{FigurasPS7/Fig4.tex}
-\par\medskip
-\begin{minipage}{\textwidth}
-\textbf{Figura 5 del Taller 7.} Tubo sometido a presión externa. (a) La sección anular tiene radio interior $a$ y exterior $b$; la cavidad no está presurizada. Las flechas naranjas representan la presión exterior y la violeta indica la contracción radial. El modelo impone $u_z=0$. (b) El esfuerzo radial es nulo en la pared interior y alcanza $-p$ en la exterior. El perfil ilustra un tubo con $b/a=2$; la solución del texto es válida para cualquier $0<a<b$.
-\end{minipage}
-\end{figure}
+
 
 \section{Problema 6: esfera hueca sometida a presión}
 
 \textbf{Enunciado.} Determine completamente la deformación de una esfera hueca de radio exterior $a$ e interior $b$, sometida a una presión $p_a$ en $r=a$ y a una presión $p_b$ en $r=b$.
+
+\begin{figure}[H]
+\centering
+\input{FigurasPS7/FigPS6.tex}
+\par\medskip
+\begin{minipage}{\textwidth}
+\textbf{Figura 6 del Taller 7.} Esfera hueca sometida a presiones en sus caras interior y exterior. Las flechas indican la dirección de las tracciones compresivas; el esquema radial muestra el material entre $b$ y $a$ y las condiciones de borde correspondientes.
+\end{minipage}
+\end{figure}
 
 \subsection{Solución}
 
@@ -508,7 +579,45 @@ Tomamos $0<b<a$, material homogéneo e isotrópico, pequeñas deformaciones, sim
 \qquad
 \sigma_{rr}(b)=-p_b.
 \]
-La ecuación de equilibrio radial es
+Para construir la ecuación de equilibrio, partimos de
+\[
+\vec\nabla\cdot\boldsymbol{\sigma}+\vec f=\vec 0,
+\qquad \vec f=\vec 0.
+\]
+En la base esférica ortonormal, la simetría hace que el esfuerzo sea diagonal y solo dependa de $r$:
+\[
+\boldsymbol{\sigma}
+=\sigma_{rr}\hat e_r\hat e_r
++\sigma_{\theta\theta}\hat e_\theta\hat e_\theta
++\sigma_{\phi\phi}\hat e_\phi\hat e_\phi,
+\]
+donde los productos de vectores representan productos diádicos. Para obtener la componente radial, consideramos una cuña esférica diferencial entre $r$ y $r+dr$, que subtiende un ángulo sólido $d\Omega$. Las áreas de sus caras esféricas son $r^2d\Omega$ y $(r+dr)^2d\Omega$. La fuerza radial neta sobre esas dos caras es
+\[
+\begin{aligned}
+dF_r^{\rm esf}
+&=\left[(r+dr)^2\sigma_{rr}(r+dr)-r^2\sigma_{rr}(r)\right]d\Omega\\
+&=\frac{d}{dr}(r^2\sigma_{rr})\,dr\,d\Omega
++\text{términos de orden superior}.
+\end{aligned}
+\]
+En las caras angulares, las tracciones asociadas a los esfuerzos tangenciales tienen, por la curvatura, una resultante radial hacia el centro:
+\[
+dF_r^{\rm ang}
+=-r(\sigma_{\theta\theta}+\sigma_{\phi\phi})\,dr\,d\Omega.
+\]
+La suma de fuerzas radiales debe ser cero. Sumando ambas contribuciones y dividiendo por el volumen de la cuña, $r^2dr\,d\Omega$, obtenemos
+\[
+(\vec\nabla\cdot\boldsymbol{\sigma})_r
+=\frac{1}{r^2}\frac{d}{dr}(r^2\sigma_{rr})
+-\frac{\sigma_{\theta\theta}+\sigma_{\phi\phi}}{r}=0.
+\]
+Al expandir la derivada,
+\[
+(\vec\nabla\cdot\boldsymbol{\sigma})_r
+=\frac{d\sigma_{rr}}{dr}
++\frac{2\sigma_{rr}-\sigma_{\theta\theta}-\sigma_{\phi\phi}}{r}.
+\]
+Por simetría esférica, $\sigma_{\theta\theta}=\sigma_{\phi\phi}$, y queda
 \[
 \frac{d\sigma_{rr}}{dr}+\frac{2}{r}(\sigma_{rr}-\sigma_{\theta\theta})=0.
 \]
@@ -533,49 +642,122 @@ Por tanto, los esfuerzos completos son
 \]
 y las componentes de corte son nulas.
 
-Para hallar el desplazamiento, escribimos las deformaciones esféricas
+Para hallar el desplazamiento, primero relacionamos los esfuerzos con las deformaciones mediante la ley de Hooke inversa en las direcciones principales:
 \[
-U_{rr}=\frac{du_r}{dr},
+U_{rr}=\frac{1}{E}\left[\sigma_{rr}
+-\nu(\sigma_{\theta\theta}+\sigma_{\phi\phi})\right],
 \qquad
-U_{\theta\theta}=U_{\phi\phi}=\frac{u_r}{r}.
+U_{\theta\theta}=\frac{1}{E}\left[\sigma_{\theta\theta}
+-\nu(\sigma_{rr}+\sigma_{\phi\phi})\right].
 \]
-La simetría y el equilibrio dan un desplazamiento de la forma $u_r=Cr+D/r^2$. La ley de Hooke, $\sigma_{ij}=\lambda U_{kk}\delta_{ij}+2\mu U_{ij}$, relaciona sus constantes con las de esfuerzo:
+Al sustituir los esfuerzos obtenidos arriba y usar
+$\sigma_{\theta\theta}=\sigma_{\phi\phi}$, resulta
 \[
-A=(3\lambda+2\mu)C,
-\qquad B=4\mu D.
+\begin{aligned}
+U_{rr}
+&=\frac{(1-2\nu)A}{E}-\frac{(1+\nu)B}{Er^3},\\
+U_{\theta\theta}=U_{\phi\phi}
+&=\frac{(1-2\nu)A}{E}
++\frac{(1+\nu)B}{2Er^3}.
+\end{aligned}
 \]
-Así, el campo de desplazamientos y las deformaciones son
+La cinemática de un desplazamiento radial, $\vec u=u_r(r)\hat e_r$, da
+$U_{\theta\theta}=u_r/r$. Por tanto, esta componente determina el perfil:
 \[
-\boxed{u_r(r)=\frac{A}{3\lambda+2\mu}r+\frac{B}{4\mu r^2}},
+u_r(r)=rU_{\theta\theta}
+=\underbrace{\frac{(1-2\nu)A}{E}}_{C}r
++\underbrace{\frac{(1+\nu)B}{2E}}_{D}\frac{1}{r^2}.
 \]
+Así aparece la forma $u_r=Cr+D/r^2$; al derivarla se verifica
+$du_r/dr=C-2D/r^3=U_{rr}$.
+
+También se puede comprobar la relación entre las constantes usando la ley de Hooke directa. Para este campo,
 \[
-\boxed{U_{rr}=\frac{A}{3\lambda+2\mu}-\frac{B}{2\mu r^3}},
+U_{rr}=C-\frac{2D}{r^3},
 \qquad
-\boxed{U_{\theta\theta}=U_{\phi\phi}
-=\frac{A}{3\lambda+2\mu}+\frac{B}{4\mu r^3}}.
+U_{\theta\theta}=U_{\phi\phi}=C+\frac{D}{r^3},
+\qquad \operatorname{Tr}\mathbb U=3C.
 \]
-Las deformaciones cortantes también son cero. En particular, si $p_a=p_b=p$, entonces $B=0$ y se recupera la compresión hidrostática uniforme: $u_r=-pr/(3\lambda+2\mu)$.
+Entonces
+\[
+\sigma_{rr}=\lambda\operatorname{Tr}\mathbb U+2\mu U_{rr}
+=(3\lambda+2\mu)C-\frac{4\mu D}{r^3}.
+\]
+Comparando con $\sigma_{rr}=A-B/r^3$ se obtiene
+$A=(3\lambda+2\mu)C$ y $B=4\mu D$, como antes. Para escribir el resultado solo con los parámetros del problema usamos
+$C=(1-2\nu)A/E$ y $D=(1+\nu)B/(2E)$.
+
+Sustituyendo ahora las expresiones conocidas de $A$ y $B$, el desplazamiento queda directamente en términos de las presiones, radios y constantes elásticas:
+\[
+\boxed{
+u_r(r)=\frac{1}{E(a^3-b^3)}\left[
+(1-2\nu)(p_b b^3-p_a a^3)r
++\frac{1+\nu}{2}\frac{(p_b-p_a)a^3b^3}{r^2}
+\right]},
+\qquad b\le r\le a.
+\]
+Las deformaciones, obtenidas como $U_{rr}=du_r/dr$ y
+$U_{\theta\theta}=U_{\phi\phi}=u_r/r$, son
+\[
+\boxed{
+U_{rr}=\frac{(1-2\nu)(p_b b^3-p_a a^3)}{E(a^3-b^3)}
+-\frac{(1+\nu)(p_b-p_a)a^3b^3}{E(a^3-b^3)r^3}},
+\]
+\[
+\boxed{
+U_{\theta\theta}=U_{\phi\phi}
+=\frac{(1-2\nu)(p_b b^3-p_a a^3)}{E(a^3-b^3)}
++\frac{(1+\nu)(p_b-p_a)a^3b^3}{2E(a^3-b^3)r^3}}.
+\]
+Las deformaciones cortantes también son cero. Si $p_a=p_b=p$, se obtiene $B=0$ y la compresión hidrostática uniforme
+$u_r(r)=-(1-2\nu)pr/E$.
 
 \begin{figure}[H]
 \centering
-\input{FigurasPS7/FigPS6.tex}
+\input{FigurasPS7/FigPS6deform.tex}
 \par\medskip
 \begin{minipage}{\textwidth}
-\textbf{Figura 6 del Taller 7.} Esfera hueca sometida a presiones en sus caras interior y exterior. Las flechas indican la dirección de las tracciones compresivas; el esquema radial muestra el material entre $b$ y $a$ y las condiciones de borde correspondientes.
+\textbf{Figura adicional del problema 6.} Vista tridimensional esquemática de la cáscara hueca antes y después de deformarse. Se ilustra el caso particular de presión interior $p_b=p$ y presión exterior nula ($p_a=0$): las flechas violetas representan el desplazamiento radial hacia fuera. La deformación se exagera y no está a escala; la solución analítica general depende de $p_a$ y $p_b$.
 \end{minipage}
 \end{figure}
+
+
 
 \section{Problema 7: esfera bajo su propia gravedad}
 
 \textbf{Enunciado.} Determine completamente la deformación de una esfera sólida de radio $R$ debido a su propio campo gravitacional.
 
+\begin{figure}[H]
+\centering
+\input{FigurasPS7/Fig5.tex}
+\par\medskip
+\begin{minipage}{\textwidth}
+\textbf{Figura 7 del Taller 7.} Esfera bajo su propia gravedad. (a) Corte por el centro: las flechas gravitacionales apuntan hacia él y aumentan de magnitud con la distancia. El contorno discontinuo representa la esfera inicial y el sólido, una contracción exagerada. (b) Para densidad uniforme, la magnitud del campo gravitacional de referencia crece linealmente desde cero hasta $g_R$. La regularidad exige $u_r(0)=0$ y la superficie libre exige $\sigma_{rr}(R)=0$.
+\end{minipage}
+\end{figure}
+
 \subsection{Solución}
 
-Consideremos una esfera sólida de radio $R$ y densidad de referencia uniforme $\rho_0$. Denotamos por $g_R$ la magnitud de la gravedad en su superficie y usamos el campo de la configuración no deformada:
+Consideremos una esfera sólida de radio $R$ y densidad de referencia uniforme $\rho_0$. Evaluamos la gravedad en la configuración no deformada, y llamamos $r$ a la distancia al centro. La masa encerrada en una esfera de radio $r$ se obtiene integrando la densidad sobre capas esféricas de radio $s$ y espesor $ds$:
 \[
-\vec g(r)=-g_R\frac{r}{R}\hat e_r,
+M(r)=\int_0^r 4\pi s^2\rho_0\,ds
+=4\pi\rho_0\left[\frac{s^3}{3}\right]_0^r
+=\frac{4\pi}{3}\rho_0r^3.
+\]
+Por simetría esférica, solo contribuye la masa encerrada dentro de $r$; las capas exteriores producen fuerza gravitatoria neta nula. La ley de gravitación da entonces
+\[
+\vec g(r)=-\frac{GM(r)}{r^2}\hat e_r
+=-\frac{4\pi G\rho_0}{3}r\hat e_r.
+\]
+En la superficie,
+\[
+g_R=\frac{GM(R)}{R^2}=\frac{4\pi G\rho_0}{3}R.
+\]
+Al sustituir esta expresión para $g_R$ en el campo interior y multiplicar por la densidad, resulta
+\[
+\boxed{\vec g(r)=-g_R\frac{r}{R}\hat e_r},
 \qquad
-\vec f(r)=\rho_0\vec g(r).
+\boxed{\vec f(r)=\rho_0\vec g(r)}.
 \]
 Por simetría esférica, el desplazamiento es radial,
 \[
@@ -590,6 +772,21 @@ Como $\vec\nabla\times\vec u=0$, la ecuación de Navier--Cauchy se reduce a
 (\lambda+2\mu)\vec\nabla(\vec\nabla\cdot\vec u)
 =-\vec f
 =\rho_0g_R\frac{r}{R}\hat e_r.
+\]
+Para expresar el resultado con el módulo de Young $E$ y el coeficiente de Poisson $\nu$, usamos las relaciones
+\[
+\mu=\frac{E}{2(1+\nu)},
+\qquad
+\lambda=\frac{E\nu}{(1+\nu)(1-2\nu)}.
+\]
+Entonces,
+\[
+\lambda+2\mu
+=\frac{E\nu}{(1+\nu)(1-2\nu)}+\frac{E}{1+\nu}
+=\frac{E(1-\nu)}{(1+\nu)(1-2\nu)},
+\qquad
+\frac{1}{\lambda+2\mu}
+=\frac{(1+\nu)(1-2\nu)}{E(1-\nu)}.
 \]
 Definimos
 \[
@@ -661,34 +858,99 @@ por lo que el esfuerzo radial se anula en la superficie y es compresivo en el in
 
 \begin{figure}[H]
 \centering
-\input{FigurasPS7/Fig5.tex}
+\resizebox{\textwidth}{!}{\input{FigurasPS7/FigPS7sphere3d.tex}}
 \par\medskip
 \begin{minipage}{\textwidth}
-\textbf{Figura 7 del Taller 7.} Esfera bajo su propia gravedad. (a) Corte por el centro: las flechas gravitacionales apuntan hacia él y aumentan de magnitud con la distancia. El contorno discontinuo representa la esfera inicial y el sólido, una contracción exagerada. (b) Para densidad uniforme, la magnitud del campo gravitacional de referencia crece linealmente desde cero hasta $g_R$. La regularidad exige $u_r(0)=0$ y la superficie libre exige $\sigma_{rr}(R)=0$.
+\textbf{Figura adicional del problema 7.} Geometría vectorial de la esfera en proyección tridimensional. La flecha negra representa $\vec r=r\hat e_r$; las flechas naranjas muestran $\vec g(r)$, radial hacia el centro y de magnitud proporcional a $r$; la flecha violeta muestra el desplazamiento de la superficie, también hacia el centro. El contorno discontinuo indica el radio de referencia $R$ y la contracción está exagerada. La gravedad se evalúa en la configuración no deformada.
 \end{minipage}
 \end{figure}
+
 
 \section{Problema 8: cilindro largo en rotación uniforme}
 
 \textbf{Enunciado.} Determine completamente la deformación de un cilindro largo de radio $R$ que rota uniformemente con velocidad angular $\Omega$ en torno a su eje.
 
+\begin{figure}[H]
+\centering
+\input{FigurasPS7/FigPS8.tex}
+\par\medskip
+\begin{minipage}{\textwidth}
+\textbf{Figura 8 del Taller 7.} Cilindro largo en rotación uniforme. (a) La fuerza centrífuga produce expansión radial respecto al radio inicial discontinuo; el desplazamiento se exagera para visualizarlo. (b) La fuerza de cuerpo por unidad de volumen $f_r=\rho_0\Omega^2r$ crece linealmente desde el eje hasta la superficie $r=R$.
+\end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\resizebox{0.84\textwidth}{!}{\input{FigurasPS7/FigPS83d.tex}}
+\par\medskip
+\begin{minipage}{\textwidth}
+\textbf{Figura adicional del problema 8.} Representación tridimensional del cilindro: $\vec\Omega$ es paralelo al eje y, en $P$, $\vec r$ y $\vec f$ apuntan radialmente hacia fuera. Las flechas naranjas indican que $|\vec f|$ crece con la distancia al eje.
+\end{minipage}
+\end{figure}
+
 \subsection{Solución}
 
-Modelamos el cilindro como homogéneo e isotrópico, de densidad de referencia $\rho_0$, y usamos elasticidad lineal con pequeñas deformaciones. Por simetría, el desplazamiento es radial. Al ser largo, adoptamos deformación plana, $U_{zz}=0$, y la superficie lateral está libre de tracción. En el sistema de referencia que gira con el cilindro, la aceleración centrífuga equivale a la fuerza de cuerpo por unidad de volumen
-\[
-\vec f=\rho_0\Omega^2r\,\hat e_r.
-\]
-El equilibrio radial es
+Modelamos el cilindro como homogéneo e isotrópico, de densidad de referencia $\rho_0$, y usamos elasticidad lineal con pequeñas deformaciones. Por simetría, el desplazamiento es radial. Al ser largo, adoptamos deformación plana, $U_{zz}=0$, y la superficie lateral está libre de tracción. Para obtener la fuerza de cuerpo, tomamos un elemento $dV$ a distancia $r$ del eje. En el marco rotante, su aceleración ficticia es radial hacia fuera y su masa es $dm=\rho_0\,dV$; por unidad de volumen,
 \[
 \begin{aligned}
-\frac{d\sigma_{rr}}{dr}+\frac{\sigma_{rr}-\sigma_{\theta\theta}}{r}
-+\rho_0\Omega^2r&=0,\\
-(\lambda+2\mu)\left(\frac{d^2u_r}{dr^2}
-+\frac{1}{r}\frac{du_r}{dr}-\frac{u_r}{r^2}\right)
-+\rho_0\Omega^2r&=0.
+\vec a_{\rm cf}&=\Omega^2r\,\hat e_r,\\
+dm&=\rho_0\,dV,\qquad d\vec F_{\rm cf}=dm\,\vec a_{\rm cf}
+=\rho_0\,dV\,\Omega^2r\,\hat e_r,\\
+\vec f&=\frac{d\vec F_{\rm cf}}{dV}
+=\rho_0\Omega^2r\,\hat e_r.
 \end{aligned}
 \]
-En la segunda línea usamos $U_{rr}=du_r/dr$, $U_{\theta\theta}=u_r/r$ y la ley de Hooke. La solución regular en el eje y la condición lateral libre se escriben como
+Así, $\vec f$ apunta hacia fuera y $|\vec f|=\rho_0\Omega^2r$ crece linealmente con $r$. En el marco inercial, la aceleración real apunta hacia el eje; el término centrífugo aparece al escribir el equilibrio en el marco rotante.
+El punto de partida es el equilibrio local, $\vec\nabla\cdot\boldsymbol{\sigma}+\vec f=\vec 0$. Para un campo axisimétrico, con esfuerzos cortantes nulos y sin dependencia de $\theta$ ni de $z$, la componente radial de la divergencia del esfuerzo en coordenadas cilíndricas es
+\[
+(\vec\nabla\cdot\boldsymbol{\sigma})_r
+=\frac{1}{r}\frac{d(r\sigma_{rr})}{dr}
+-\frac{\sigma_{\theta\theta}}{r}
+=\frac{d\sigma_{rr}}{dr}
++\frac{\sigma_{rr}-\sigma_{\theta\theta}}{r}.
+\]
+Como $f_r=\rho_0\Omega^2r$, el balance radial queda
+\[
+\frac{d\sigma_{rr}}{dr}
++\frac{\sigma_{rr}-\sigma_{\theta\theta}}{r}
++\rho_0\Omega^2r=0.
+\]
+Ahora expresamos los esfuerzos en términos del desplazamiento. Por simetría, $\vec u=u_r(r)\hat e_r$; las deformaciones cilíndricas son
+\[
+U_{rr}=\frac{du_r}{dr},
+\qquad
+U_{\theta\theta}=\frac{u_r}{r},
+\qquad
+U_{zz}=0.
+\]
+La última igualdad es la hipótesis de deformación plana. Con la ley de Hooke $\sigma_{ij}=\lambda U_{kk}\delta_{ij}+2\mu U_{ij}$ y $U_{kk}=U_{rr}+U_{\theta\theta}$, las componentes necesarias son
+\[
+\begin{aligned}
+\sigma_{rr}
+&=\lambda(U_{rr}+U_{\theta\theta})+2\mu U_{rr}
+=(\lambda+2\mu)\frac{du_r}{dr}+\lambda\frac{u_r}{r},\\
+\sigma_{\theta\theta}
+&=\lambda(U_{rr}+U_{\theta\theta})+2\mu U_{\theta\theta}
+=\lambda\frac{du_r}{dr}+(\lambda+2\mu)\frac{u_r}{r}.
+\end{aligned}
+\]
+Derivamos $\sigma_{rr}$ y calculamos la diferencia de esfuerzos que aparece en el equilibrio:
+\[
+\begin{aligned}
+\frac{d\sigma_{rr}}{dr}
+&=(\lambda+2\mu)\frac{d^2u_r}{dr^2}
++\lambda\left(\frac{1}{r}\frac{du_r}{dr}-\frac{u_r}{r^2}\right),\\
+\frac{\sigma_{rr}-\sigma_{\theta\theta}}{r}
+&=2\mu\left(\frac{1}{r}\frac{du_r}{dr}-\frac{u_r}{r^2}\right).
+\end{aligned}
+\]
+Al sumar estos dos términos, los coeficientes de $u_r'/r-u_r/r^2$ se combinan como $\lambda+2\mu$. Por tanto, al sustituir en el balance radial se obtiene la ecuación diferencial únicamente para $u_r$:
+\[
+\boxed{(\lambda+2\mu)\left(\frac{d^2u_r}{dr^2}
++\frac{1}{r}\frac{du_r}{dr}-\frac{u_r}{r^2}\right)
++\rho_0\Omega^2r=0.}
+\]
+La solución regular en el eje y la condición lateral libre se escriben como
 \[
 \begin{aligned}
 u_r(r)&=Cr-\frac{\rho_0\Omega^2}{8(\lambda+2\mu)}r^3,\\
@@ -712,12 +974,5 @@ U_{zz}&=U_{r\theta}=U_{rz}=U_{\theta z}=0.
 \end{aligned}
 \]
 
-\begin{figure}[H]
-\centering
-\input{FigurasPS7/FigPS8.tex}
-\par\medskip
-\begin{minipage}{\textwidth}
-\textbf{Figura 8 del Taller 7.} Cilindro largo en rotación uniforme. (a) La fuerza centrífuga produce expansión radial respecto al radio inicial discontinuo; el desplazamiento se exagera para visualizarlo. (b) La fuerza de cuerpo por unidad de volumen $f_r=\rho_0\Omega^2r$ crece linealmente desde el eje hasta la superficie $r=R$.
-\end{minipage}
-\end{figure}
+
 \end{document}

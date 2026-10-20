@@ -1,0 +1,76 @@
+\begin{tikzpicture}[
+  >=Latex,
+  line cap=round,
+  line join=round,
+  font=\small,
+  escala/.style={->, black!75, line width=0.9pt},
+  gravedad/.style={->, orange!85!black, line width=1.25pt},
+  desplazamiento/.style={->, violet!85!black, line width=1.45pt},
+  malla/.style={blue!45!black, line width=0.7pt},
+  inicial/.style={densely dashed, gray!65, line width=1.1pt}
+]
+% Esfera en proyección ortográfica: el contorno discontinuo es la
+% configuración de referencia y el sólido azul la esfera contraída.
+\node[font=\small\bfseries] at (0,2.95) {(a) Geometría radial tridimensional};
+\draw[inicial] (0,0) circle (2.55);
+\shade[ball color=blue!13] (0,0) circle (2.28);
+\begin{scope}
+  \clip (0,0) circle (2.28);
+  % Meridianos y paralelos proyectados sobre la esfera.
+  \draw[malla] (0,0) ellipse (2.28 and 0.78);
+  \draw[malla] (0,0) ellipse (0.78 and 2.28);
+  \draw[malla] (0,0) ellipse (1.62 and 2.18);
+  \draw[malla] (0,0) ellipse (2.28 and 0.38);
+\end{scope}
+\draw[blue!65!black, line width=1.25pt] (0,0) circle (2.28);
+
+% Centro, punto material de referencia y vector posición r=R e_r.
+\fill (0,0) circle (1.5pt) node[below left=2pt] {$O$};
+\fill (1.53,2.04) circle (1.5pt) node[above right=1pt] {$P$};
+\draw[escala] (0,0) -- (1.53,2.04)
+  node[pos=0.48,above left,fill=white,inner sep=1pt] {$\vec r=r\hat e_r$};
+\node[gray!70!black] at (-1.55,2.08) {$r=R$};
+
+% Campo gravitacional radial hacia el centro, con longitud creciente con r.
+\draw[gravedad] (0,2.05) -- (0,1.48);
+\draw[gravedad] (-1.86,0.72) -- (-1.33,0.51);
+\draw[gravedad] (-1.48,-1.12) -- (-1.05,-0.80);
+\draw[gravedad] (0.38,-1.98) -- (0.27,-1.42);
+\draw[gravedad] (1.83,0.82) -- (1.30,0.58);
+\node[orange!85!black, anchor=west] at (1.28,1.05) {$\vec g(r)$};
+
+% Desplazamiento de la superficie: del punto inicial al punto deformado.
+\fill[gray!65] (2.53,0) circle (1.5pt);
+\fill[blue!65!black] (2.27,0) circle (1.5pt);
+\draw[desplazamiento] (2.51,0) -- (2.29,0)
+  node[midway,above=3pt,fill=white,inner sep=1pt] {$\vec u$};
+
+% Triedro de referencia dibujado fuera de la esfera para no ocultar los vectores.
+\begin{scope}[shift={(-2.05,-2.15)},scale=0.62]
+  \fill (0,0) circle (1.3pt);
+  \draw[->,gray!75!black] (0,0) -- (1.15,0) node[right] {$\hat e_x$};
+  \draw[->,gray!75!black] (0,0) -- (0,1.15) node[above] {$\hat e_z$};
+  \draw[->,gray!75!black] (0,0) -- (-0.72,-0.72) node[below left] {$\hat e_y$};
+\end{scope}
+% Relaciones vectoriales que se usan en la solución.
+\begin{scope}[xshift=3.55cm]
+  \node[font=\small\bfseries, anchor=west] at (0,2.60) {Relaciones vectoriales};
+  \draw[escala] (0,2.05) -- (0.8,2.05);
+  \node[anchor=west, align=left] at (1.0,2.05)
+    {$\vec r=r\hat e_r$\\posición radial desde $O$};
+  \draw[gravedad] (0,1.05) -- (0.8,1.05);
+  \node[anchor=west, align=left] at (1.0,1.05)
+    {$\vec g(r)=-g_R\dfrac{r}{R}\hat e_r$\\$\vec f=\rho_0\vec g$};
+  \draw[desplazamiento] (0,0.05) -- (0.8,0.05);
+  \node[anchor=west, align=left] at (1.0,0.05)
+    {$\vec u=u_r(r)\hat e_r$, $u_r<0$\\contracción hacia el centro};
+  \draw[gray!60,densely dotted] (0,-0.52) -- (5.15,-0.52);
+  \node[anchor=west, align=left] at (0,-1.05)
+    {$|\vec g|=g_R\,r/R$: crece linealmente desde $O$;\\
+     $\vec g(0)=\vec 0$ y $|\vec g(R)|=g_R$.};
+  \node[anchor=west, align=left] at (0,-1.92)
+    {Superficie libre: $\hat n=\hat e_r$,\\$\sigma_{rr}(R)=0$.};
+  \node[anchor=west, align=left, gray!70!black] at (0,-2.62)
+    {Contorno discontinuo: radio inicial $R$.\\Contracción esquemática, exagerada.};
+\end{scope}
+\end{tikzpicture}
