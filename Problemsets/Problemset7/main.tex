@@ -975,4 +975,114 @@ U_{zz}&=U_{r\theta}=U_{rz}=U_{\theta z}=0.
 \]
 
 
+\subsubsection*{Solución alternativa: método vectorial de las notas}
+
+Partimos de la forma vectorial de Navier--Cauchy
+\[
+(\lambda+2\mu)\vec\nabla(\vec\nabla\cdot\vec u)
+-\mu\vec\nabla\times(\vec\nabla\times\vec u)
++\vec f=\vec 0.
+\]
+Al expresar los módulos de Lamé mediante $E$ y $\nu$,
+\[
+\frac{\mu}{\lambda+2\mu}
+=\frac{1-2\nu}{2(1-\nu)},
+\qquad
+\frac{1}{\lambda+2\mu}
+=\frac{(1+\nu)(1-2\nu)}{E(1-\nu)},
+\]
+la ecuación queda
+\[
+\vec\nabla(\vec\nabla\cdot\vec u)
+-\frac{1-2\nu}{2(1-\nu)}
+\vec\nabla\times(\vec\nabla\times\vec u)
+=-\frac{(1+\nu)(1-2\nu)}{E(1-\nu)}\vec f.
+\]
+Por simetría, usamos $\vec u=u_r(r)\hat e_r$. Al ser un campo puramente radial que solo depende de $r$, $\vec\nabla\times\vec u=\vec 0$; además,
+\[
+\vec\nabla\cdot\vec u
+=\frac{1}{r}\frac{d(ru_r)}{dr},
+\qquad
+\vec f=\rho_0\Omega^2r\,\hat e_r.
+\]
+Definimos
+\[
+\beta=\frac{\rho_0\Omega^2(1+\nu)(1-2\nu)}{E(1-\nu)}.
+\]
+La componente radial de la ecuación vectorial se reduce a
+\[
+\frac{d}{dr}\left[\frac{1}{r}\frac{d(ru_r)}{dr}\right]
+=-\beta r.
+\]
+Integramos una primera vez y luego multiplicamos por $r$ para integrar de nuevo:
+\[
+\begin{aligned}
+\frac{1}{r}\frac{d(ru_r)}{dr}
+&=-\frac{\beta}{2}r^2+A,\\
+\frac{d(ru_r)}{dr}
+&=-\frac{\beta}{2}r^3+Ar,\\
+ru_r&=-\frac{\beta}{8}r^4+\frac{A}{2}r^2+B.
+\end{aligned}
+\]
+Si definimos $C=A/2$, resulta
+\[
+u_r(r)=-\frac{\beta}{8}r^3+Cr+\frac{B}{r}.
+\]
+La regularidad del desplazamiento en el eje exige $B=0$, pues el término $B/r$ diverge cuando $r\to0$.
+
+Calculamos ahora las deformaciones, usando $U_{rr}=du_r/dr$ y $U_{\theta\theta}=u_r/r$:
+\[
+U_{rr}=-\frac{3\beta}{8}r^2+C,
+\qquad
+U_{\theta\theta}=-\frac{\beta}{8}r^2+C,
+\qquad
+U_{zz}=0.
+\]
+Por tanto,
+\[
+\operatorname{Tr}(\mathbb U)
+=U_{rr}+U_{\theta\theta}+U_{zz}
+=-\frac{\beta}{2}r^2+2C.
+\]
+Con la ley de Hooke en términos de $E$ y $\nu$,
+\[
+\sigma_{rr}
+=\frac{E}{1+\nu}\left[
+U_{rr}+\frac{\nu}{1-2\nu}\operatorname{Tr}(\mathbb U)
+\right].
+\]
+La superficie lateral libre impone $\sigma_{rr}(R)=0$. Como el factor $E/(1+\nu)$ de la ley de Hooke no es nulo, se cancela al imponer esta condición. Sustituyendo las expresiones anteriores,
+\[
+\begin{aligned}
+0
+&=\left(-\frac{3\beta R^2}{8}+C\right)
++\frac{\nu}{1-2\nu}
+\left(-\frac{\beta R^2}{2}+2C\right)\\
+&=\frac{1}{1-2\nu}
+\left[C-\frac{\beta(3-2\nu)}{8}R^2\right],
+\end{aligned}
+\]
+de donde
+\[
+C=\frac{\beta(3-2\nu)}{8}R^2.
+\]
+Así, el desplazamiento es
+\[
+\boxed{
+u_r(r)=\frac{\beta}{8}
+\left[(3-2\nu)R^2r-r^3\right]
+=\frac{\rho_0\Omega^2(1+\nu)(1-2\nu)}{8E(1-\nu)}
+\left[(3-2\nu)R^2r-r^3\right].
+}
+\]
+Las deformaciones correspondientes, que coinciden con las obtenidas arriba, son
+\[
+\boxed{U_{rr}=\frac{\beta}{8}\left[(3-2\nu)R^2-3r^2\right]},
+\qquad
+\boxed{U_{\theta\theta}=\frac{\beta}{8}
+\left[(3-2\nu)R^2-r^2\right]},
+\qquad
+U_{zz}=U_{r\theta}=U_{rz}=U_{\theta z}=0.
+\]
+
 \end{document}
